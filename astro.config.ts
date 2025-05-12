@@ -13,6 +13,8 @@ import type { AstroIntegration } from 'astro';
 
 import astrowind from './vendor/integration';
 
+import starlight from '@astrojs/starlight';
+
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -28,6 +30,14 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
+    starlight({
+  title: 'Documentação CPPS',
+  disable404Route: true, // desativa o 404 do Starlight
+  sidebar: [
+    { label: 'Início', link: '/docs' },
+    { label: 'Teste', link: '/docs/teste' },
+  ],
+}),
     sitemap(),
     mdx(),
     icon({
