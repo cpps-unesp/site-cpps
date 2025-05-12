@@ -74,5 +74,5 @@ const docsCollection = defineCollection({
 
 export const collections = {
   post: postCollection,
-  docs: docsCollection, // Starlight 
+  docs: docsCollection, // Starlight
 };

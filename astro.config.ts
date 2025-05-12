@@ -31,13 +31,13 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     starlight({
-  title: 'Documentação CPPS',
-  disable404Route: true, // desativa o 404 do Starlight
-  sidebar: [
-    { label: 'Início', link: '/docs' },
-    { label: 'Teste', link: '/docs/teste' },
-  ],
-}),
+      title: 'Documentação CPPS',
+      disable404Route: true, // desativa o 404 do Starlight
+      sidebar: [
+        { label: 'Início', link: '/docs' },
+        { label: 'Teste', link: '/docs/teste' },
+      ],
+    }),
     sitemap(),
     mdx(),
     icon({
