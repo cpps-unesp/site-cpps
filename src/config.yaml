@@ -1,6 +1,6 @@
 site:
   name: CPPS/UNESP 
-  site: 'https://cpps-unesp.github.io/site-cpps
+  site: 'https://cpps-unesp.github.io/site-cpps'
   base: '/site-cpps/'
   trailingSlash: false
 
