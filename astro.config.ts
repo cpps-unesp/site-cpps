@@ -81,8 +81,11 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['cdn.pixabay.com'],
+  service: {
+    entrypoint: "astro/assets/services/sharp"
   },
+  domains: ['cdn.pixabay.com'],
+},
 
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
