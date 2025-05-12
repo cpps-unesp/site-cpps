@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://cpps-unesp.github.io/site-cpps/sitemap-index.xml
