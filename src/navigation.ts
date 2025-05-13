@@ -111,8 +111,8 @@ export const headerData = {
       ],
     },
     {
-      text: 'Widgets',
-      href: '#',
+      text: 'Docs',
+      href: '/docs',
     },
   ],
   actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
