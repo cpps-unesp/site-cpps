@@ -1,7 +1,7 @@
 site:
   name: CPPS/UNESP
   site: 'https://cpps-unesp.github.io/site-cpps'
-  base: '/site-cpps/'
+  base: '/'
   trailingSlash: false
 
   googleSiteVerificationId: orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M
@@ -16,7 +16,7 @@ metadata:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: CPPS/UNESP
     images:
       - url: '~/assets/images/default.png'
         width: 1200

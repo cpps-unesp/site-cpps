@@ -14,6 +14,7 @@ import type { AstroIntegration } from 'astro';
 import astrowind from './vendor/integration';
 
 import starlight from '@astrojs/starlight';
+import pagefind from 'astro-pagefind';
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
@@ -37,6 +38,7 @@ export default defineConfig({
         { label: 'Teste', link: '/docs/teste' },
       ],
     }),
+    pagefind({}),
     sitemap(),
     mdx(),
     icon({

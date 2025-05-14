@@ -13,7 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Centro de Pesquisa Política e Social - CPPS/UNESP',
   ignoreTitleTemplate: true,
 };
 ---
@@ -23,14 +23,14 @@ const metadata = {
 
   <Hero
     actions={[
-      {
-        variant: 'primary',
-        text: 'Github',
-        href: 'https://github.com/cpps-unesp',
-        target: '_blank',
-        icon: 'tabler:download',
-      },
-      { text: 'Learn more', href: '#projetos' },
+      // {
+      //   variant: 'primary',
+      //   text: 'Github',
+      //   href: 'https://github.com/cpps-unesp',
+      //   target: '_blank',
+      //   icon: 'tabler:download',
+      // },
+      { text: 'Saiba Mais', href: '/about' },
     ]}
     image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
   >
@@ -41,10 +41,11 @@ const metadata = {
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">CPPS</span> busca apoia e difundir boas práticas de pesquisa.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Conheça nossos projetos e atividades
+        <span class="font-semibold">Buscamos apoiar e difundir
+        <span class="text-accent dark:text-white">boas práticas de pesquisa.</span
+      > Conheça nossos iniciativas e atividades</span>
+      
+      
     </Fragment>
   </Hero>
 
@@ -56,8 +57,8 @@ const metadata = {
 
   <Features
     id="projetos"
-    tagline="Projetos"
-    title="Nossos Projetos"
+    tagline="Conheça"
+    title="Nossas Iniciativas"
     subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
     items={[
       {
@@ -249,9 +250,9 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="Principais Iniciativas"
+    subtitle="Conheça as iniciativas em destaque"
+    tagline="Destaques"
     items={[
       {
         title: 'Headers',
@@ -313,7 +314,7 @@ const metadata = {
   <!-- HighlightedPosts Widget ******* -->
 
   <BlogLatestPosts
-    title="Find out more content in our Blog"
+    title="Acompanhe as atividades"
     information={`The blog is used to display AstroWind documentation.
                         Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
                         Astro is a very interesting technology. Thanks.
