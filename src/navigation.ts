@@ -124,6 +124,9 @@ export const headerData = {
       text: 'Docs',
       href: 'docs',
     },
+    {
+  text: '__LANG_SELECTOR__'
+},
 
   ],
   actions: [{ text: 'Atendimento', href: 'docs', target: '_blank' }],

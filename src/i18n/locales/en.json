@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About"
+  },
+  "home": {
+    "title": "Center for Political and Social Research - CPPS/UNESP",
+    "welcome": "This is the homepage in English.",
+    "hero": {
+      "title": {
+        "part1": "Welcome to the Center for Political and Social Research -",
+        "part2": " CPPS/UNESP"
+      },
+      "subtitle": "We aim to support and promote best research practices. Get to know our initiatives and activities.",
+      "button": "Learn More"
+    },
+    "blogTitle": "Follow our activities",
+    "blogInfo": "Here we publish updates, articles, and events from CPPS. Stay tuned to our latest activities."
+  },
+  "about": {
+    "title": "About us",
+    "content": "This is the about page in English.",
+    "hero": {
+      "tagline": "About us",
+      "title": {
+        "part1": "Elevate your online presence with our",
+        "part2": " Beautiful Website Templates"
+      },
+      "subtitle": "Donec efficitur, ipsum quis congue luctus, mauris magna convallis mauris, eu auctor nisi lectus non augue. Donec quis lorem non massa vulputate efficitur ac at turpis. Sed tincidunt ex a nunc convallis, et lobortis nisi tempus. Suspendisse vitae nisi eget tortor luctus maximus sed non lectus."
+    },
+    "stats": {
+      "title": "Statistics about us",
+      "offices": "Offices",
+      "employees": "Employees",
+      "templates": "Templates",
+      "awards": "Awards"
+    }
+  },
+  "head": {
+    "title": "My Website"
+  }
+}

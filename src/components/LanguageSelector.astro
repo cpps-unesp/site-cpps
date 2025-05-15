@@ -1,0 +1,50 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const { lang, currentPath = "" } = Astro.props;
+
+const supportedLangs: Record<string, string> = {
+  pt: "🇧🇷 Português",
+  en: "🇬🇧 English",
+  es: "🇪🇸 Español"
+};
+
+const langKeys = Object.keys(supportedLangs);
+if (!langKeys.includes(lang)) {
+  throw new Error(`Idioma não suportado: ${lang}`);
+}
+
+const otherLangs = langKeys.filter(key => key !== lang);
+const needsDropdown = otherLangs.length > 0;
+
+const generateUrl = (targetLang: string) =>
+  currentPath.startsWith(`/${lang}`)
+    ? currentPath.replace(`/${lang}`, `/${targetLang}`)
+    : `/${targetLang}${currentPath}`;
+---
+{needsDropdown && (
+  <li class="dropdown">
+    <button
+      type="button"
+      class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
+    >
+      {supportedLangs[lang]}
+      <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden md:inline" />
+    </button>
+    <ul class="dropdown-menu md:backdrop-blur-md dark:md:bg-dark rounded md:absolute pl-4 md:pl-0 md:hidden font-medium md:bg-white/90 md:min-w-[200px] drop-shadow-xl">
+      {otherLangs.map((code) => (
+        <li>
+          <a
+            href={generateUrl(code)}
+            class:list={[
+              'first:rounded-t last:rounded-b md:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+              { 'aw-link-active': currentPath.startsWith(`/${code}`) },
+            ]}
+          >
+            {supportedLangs[code]}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </li>
+)}
