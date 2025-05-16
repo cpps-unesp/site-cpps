@@ -1,0 +1,49 @@
+{
+  "abas": {
+    "livros": [
+      {
+        "titulo": "",
+        "subtitulo": null,
+        "autor": "",
+        "ano": "",
+        "link": ""
+      }
+    ],
+    "artigos": [
+      {
+        "titulo": "",
+        "subtitulo": "",
+        "autor": "",
+        "ano": "",
+        "link": ""
+      }
+    ],
+    "teses": [
+      {
+        "titulo": "",
+        "subtitulo": "",
+        "autor": "",
+        "ano": "",
+        "link": ""
+      }
+    ],
+    "tccs": [
+      {
+        "titulo": "",
+        "subtitulo": "",
+        "autor": "",
+        "ano": "",
+        "link": ""
+      }
+    ],
+    "relatorios": [
+      {
+        "titulo": "",
+        "subtitulo": "",
+        "autor": "",
+        "ano": "",
+        "link": ""
+      }
+    ]
+  }
+}
