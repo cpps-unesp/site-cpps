@@ -3,47 +3,47 @@
       "ordem": 1,
       "foto": "/imagens/equipe/Joao_Vidal.jpg",
       "rede1": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
-      "icone1": "",
+      "icone1": "/imagens/logos/linkedin_icon2.svg",
       "rede2": "https://www.instagram.com/_vidaljp/",
       "icone2": ""
     },
        "Caio_Palombo": {
-      "ordem": 1,
+      "ordem": 2,
       "foto": "",
-      "rede1": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
+      "rede1": "",
       "icone1": "",
       "rede2": "https://www.instagram.com/Caio_2664/",
-      "icone2": ""
+      "icone2": "/imagens/logos/instagram_icon_cinza.svg"
     },
         "Ligia_Simplicio": {
-      "ordem": 1,
+      "ordem": 3,
       "foto": "/imagens/equipe/ligia_simplicio.jpeg",
       "rede1": "http://lattes.cnpq.br/9979622141210229",
-      "icone1": "",
+      "icone1": "/imagens/logos/lattes_icon.svg",
       "rede2": "https://www.instagram.com/ligia.simplicio/",
-      "icone2": ""
+      "icone2": "/imagens/logos/instagram_icon_cinza.svg"
     },
         "Marcelo_Mariano": {
-      "ordem": 1,
+      "ordem": 4,
       "foto": "",
       "rede1": "http://lattes.cnpq.br/3505849964932313",
-      "icone1": "",
+      "icone1": "/imagens/logos/lattes_icon.svg",
       "rede2": "",
       "icone2": ""
     },
         "Murilo_Gaspardo": {
-      "ordem": 1,
+      "ordem": 5,
       "foto": "",
       "rede1": "http://lattes.cnpq.br/7249928800890408",
-      "icone1": "",
+      "icone1": "/imagens/logos/lattes_icon.svg",
       "rede2": "",
       "icone2": ""
     },
         "Thais_Amoroso": {
-      "ordem": 1,
+      "ordem": 6,
       "foto": "",
       "rede1": " http://lattes.cnpq.br/1531037509340384",
-      "icone1": "",
+      "icone1": "/imagens/logos/lattes_icon.svg",
       "rede2": "",
       "icone2": ""
     }
