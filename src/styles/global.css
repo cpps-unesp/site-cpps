@@ -1,6 +1,16 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+/* Fonte Lovelo */
+@font-face {
+  font-family: 'Lovelo';
+  src: url('/fonts/Lovelo.woff2') format('woff2');
+}
+
 body {
   @apply font-sans text-neutral bg-base-100;
+}
+
+h1, h2, h3 {
+  font-family: 'Lovelo', sans-serif;
 }
