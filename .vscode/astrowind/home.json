@@ -1,0 +1,17 @@
+{
+    "apresentar": {
+        "imagem": ""
+    },
+    "sobre": {
+        "imagem": "",
+        "link": "/sobre"
+    },
+    "noticias": {
+        "imagem": "/images/noticias1.svg",
+        "link": "/noticias"
+    },
+    "publicacoes": {
+        "imagem": "/images/projetos1.svg",
+        "link": "/publicacoes"
+    }
+}

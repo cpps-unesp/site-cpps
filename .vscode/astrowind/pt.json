@@ -1,0 +1,81 @@
+{
+    "home": {
+        "apresentar": {
+            "texto": "O Centro de Pesquisa Política e Social visa a integração das atividades de pesquisa das áreas de Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, dentre outras. Com uma abordagem interdisciplinar, o centro pretende coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo."
+        },
+    
+    "sobre": {
+        "titulo": "Sobre",
+        "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
+        "btn": "Saiba Mais"
+    },
+    "noticias": {
+        "titulo": "Notícias",
+        "texto": "Acesse as notícias mais recentes sobre o Centro de Pesquisa Política e Social e suas atividades.",
+        "btn": "Saiba Mais"
+    },
+    "publicacoes": {
+        "titulo": "Publicações",
+        "texto": "Acesse as publicações dos membros e pesquisadores do Centro de Pesquisa Política e Social.",
+        "btn": "Saiba Mais"
+    }
+},
+
+    "rodape": {
+        "contato": "Contato",
+        "social": "Rede Social"
+    },
+    "sobre": {
+        "titulo": "Centro de Pesquisa Política e Social",
+        "objetivos": "Objetivos",
+        "paragrafo1": "A Faculdade de Ciências Humanas e Sociais da UNESP propõe a criação do Centro de Pesquisa Política e Social, concebido como um centro interdepartamental que visa a integração das atividades de pesquisa das áreas de Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, dentre outras. Com uma abordagem interdisciplinar, o centro pretende coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo.",
+        "paragrafo2": "O Centro de Pesquisa Política e Social possui dois objetivos principais: fomentar a integração do conhecimento produzido em diversas áreas acadêmicas, oferecendo uma visão mais abrangente e detalhada dos processos sociais e políticos, e concentrar-se nas humanidades digitais, uma área que envolve o uso de tecnologias digitais avançadas na pesquisa acadêmica. O centro promoverá a colaboração intensa entre os pesquisadores, fará uso de metodologias avançadas e infraestrutura de pesquisa adequada, e se esforçará para manter e expandir a infraestrutura computacional existente, adaptando-se ao uso acadêmico de novas tecnologias digitais.",
+        "paragrafo3": "Os objetivos específicos do Centro incluem a realização e organização de eventos acadêmicos, a formação, aperfeiçoamento e incentivo à participação em pesquisa, o estímulo à colaboração internacional, intercâmbio e cooperação, a publicação e disseminação de pesquisas, o suporte a atividades acadêmicas com infraestrutura computacional, o desenvolvimento e adaptação de ferramentas para pesquisa, a capacitação em humanidades digitais e a gestão de dados de pesquisa. Assim, o Centro de Pesquisa Política e Social é concebido como um núcleo de excelência em pesquisa que fomenta uma abordagem integrada e interdisciplinar no estudo das ciências humanas e sociais, com um forte compromisso com a incorporação das tecnologias digitais para fins científicos, a colaboração e a relevância acadêmica e social.",
+        "paragrafo4": "A iniciativa de estabelecer o Centro de Pesquisa Política e Social não é um ponto de partida isolado, mas um movimento estratégico para articular e amplificar esforços preexistentes. O novo centro tem como objetivo capitalizar a infraestrutura e as atividades do já consolidado Centro de Pesquisas em Ciências Humanas e Sociais, bem como do Centro de Humanidades Digitais, que se originou a partir dos avanços e da infraestrutura computacional desenvolvida pelo Laboratório de Relações Internacionais. A criação do Centro de Humanidades Digitais da UNESP representou a formalização institucional das atividades iniciadas pelo Laboratório de Relações Internacionais (LabRI) em 2012, como parte da estrutura do departamento de Relações Internacionais (DERI) da UNESP, campus Franca."
+    },
+    "noticias": {
+        "noticiaNaoEncontrada": "Notícia não encontrada",
+        "noticiaIndisponivelNesseIdioma": "Esta notícia não está disponível nesse idioma.",
+        "voltarParaNoticias": "Voltar para Notícias",
+        "titulo": "Notícias",
+        "texto": "Leia as últimas notícias sobre o Núcleo de Estudos em Filosofia, Teoria e Sociedade.",
+        "tags_titulo": "Notícias relacionadas a: ",
+        "todas_tags": "Todas as Tags",
+        "sem_tags": "Nenhuma tag encontrada.",
+        "texto_categorias": "Para visualizar as categorias de notícias",
+        "ver_categorias": "clique aqui"
+    },
+    "publicacoes": {
+        "titulo": "Publicações",
+        "livros": "Livros",
+        "artigos": "Capítulos de Livros e Artigos",
+        "teses": "Teses e Dissertações",
+        "tccs": "TCCs",
+        "relatorios": "Relatórios de Pesquisa"
+    },
+    "videos": {
+        "titulo": "Vídeos",
+        "texto": "Confira os vídeos postados em nosso canal do ",
+        "btn": "Ver Lista Completa"
+    },
+    "menu": {
+        "home": "Home",
+        "sobre": "Sobre",
+        "equipe": "Equipe",
+        "noticias": "Notícias",
+        "publicacoes": "Publicações",
+        "videos": "Vídeos"
+    },
+    "equipe": {
+        "titulo": "Equipe",
+        "Membro 1": "nome" ,
+        "cargo": "",
+        "sobre": ""
+    },
+    "titulo": "Equipe",
+    "Membro 1": {
+        "nome": "",
+        "cargo": "",
+        "sobre": ""
+    }
+}
