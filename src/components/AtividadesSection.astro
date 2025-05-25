@@ -1,0 +1,31 @@
+---
+import AtividadesCard from './AtividadesCard.astro';
+const { title, description, image, activities, reverse = false } = Astro.props;
+
+const sectionClasses = reverse 
+  ? "max-w-6xl mx-auto flex flex-col md:flex-row-reverse gap-8 items-center"
+  : "max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-center";
+---
+
+<section class="mt-16">
+  <div class={sectionClasses}>
+    <div class="md:w-1/2 transform transition duration-500 hover:scale-105">
+      <h3 class="text-2xl font-extrabold mb-4">{title}</h3>
+      <p class="text-lg text-base-content mb-6">{description}</p>
+
+      <ul class="space-y-4">
+        {activities.map((item) => (
+          <AtividadesCard 
+            icon={item.icon} 
+            title={item.title} 
+            description={item.description} 
+          />
+        ))}
+      </ul>
+    </div>
+
+    <div class="md:w-1/2 transform transition duration-500 hover:scale-105">
+      <img src={image} alt={title} class="rounded-lg shadow-lg" />
+    </div>
+  </div>
+</section>

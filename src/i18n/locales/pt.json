@@ -1,0 +1,9 @@
+{
+  "titulo": "Centro de Pesquisa Política e Social",
+  "descricao": "O Centro de Pesquisa Política e Social promove conhecimento, inovação e análise crítica para transformar a sociedade.",
+  "link": "/imagens/campus/entrada-unesp-franca.jpg",
+  "botao": {
+    "texto": "Saiba mais",
+    "url": "/iniciativas/sobre"
+  }
+}

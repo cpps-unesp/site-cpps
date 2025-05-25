@@ -1,7 +1,96 @@
-<nav class="bg-primary text-white p-4 flex justify-between items-center">
-  <a class="font-[Lovelo] text-xl" href="/">CPPS</a>
-  <div>
-    <a href="#institucional" class="btn btn-sm">Institucional</a>
-    <a href="#iniciativas" class="btn btn-sm">Iniciativas</a>
+---
+import AlterarTema from "./AlterarTema.astro";
+---
+
+<div class="drawer">
+  <input id="menu-drawer" type="checkbox" class="drawer-toggle" />
+
+  <div class="drawer-content">
+    <!-- Navbar -->
+    <nav class="navbar bg-[#2197C5] text-white">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="btn btn-ghost normal-case text-xl">CPPS</a>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex menu menu-horizontal px-1">
+          <li><a href="/">Home</a></li>
+
+          <li class="dropdown dropdown-hover group">
+            <label tabindex="0" class="flex items-center cursor-pointer hover:text-gray-300">
+              Institucional
+              <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20">
+                <path d="M5.25 7.75L10 12.5l4.75-4.75" />
+              </svg>
+            </label>
+            <ul class="dropdown-content menu p-0 shadow bg-base-100 text-base-content rounded-sm w-40 -translate-y-2 
+                        transition transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-150 ease-out">
+              <li><a href="/institucional/sobre">Sobre</a></li>
+              <li><a href="/institucional/equipe">Equipe</a></li>
+            </ul>
+          </li>
+
+          <li class="dropdown dropdown-hover group">
+            <label tabindex="0" class="flex items-center cursor-pointer hover:text-gray-300">
+              Iniciativas
+              <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20">
+                <path d="M5.25 7.75L10 12.5l4.75-4.75" />
+              </svg>
+            </label>
+            <ul class="dropdown-content menu p-0 shadow bg-base-100 text-base-content rounded-sm w-40 -translate-y-2 
+                        transition transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-150 ease-out">
+              <li><a href="/iniciativas/projetos">Projetos</a></li>
+              <li><a href="/iniciativas/cafe-consciencia">Café Consciência</a></li>
+              <li><a href="/iniciativas/planejamento">Planejamento</a></li>
+            </ul>
+          </li>
+
+          <li><a href="/noticias">Notícias</a></li>
+
+          <li><AlterarTema /></li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <label for="menu-drawer" class="btn btn-square btn-ghost md:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+            viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </label>
+      </div>
+    </nav>
   </div>
-</nav>
+
+  <!-- Drawer side -->
+  <div class="drawer-side">
+    <label for="menu-drawer" class="drawer-overlay"></label>
+    <ul class="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
+      <li><a href="/">Home</a></li>
+
+      <li>
+        <details>
+          <summary>Institucional</summary>
+          <ul>
+            <li><a href="/institucional/sobre">Sobre</a></li>
+            <li><a href="/institucional/equipe">Equipe</a></li>
+          </ul>
+        </details>
+      </li>
+
+      <li>
+        <details>
+          <summary>Iniciativas</summary>
+          <ul>
+            <li><a href="/iniciativas/projetos">Projetos</a></li>
+            <li><a href="/iniciativas/cafe-consciencia">Café Consciência</a></li>
+            <li><a href="/iniciativas/planejamento">Planejamento</a></li>
+          </ul>
+        </details>
+      </li>
+
+      <li><a href="/noticias">Notícias</a></li>
+
+      <li><AlterarTema /></li>
+    </ul>
+  </div>
+</div>

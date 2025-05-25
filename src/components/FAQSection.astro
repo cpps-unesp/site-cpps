@@ -1,0 +1,25 @@
+---
+const { title = "Frequently Asked Questions", subtitle = "Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey.", faqs } = Astro.props;
+---
+
+<section class="mt-16">
+  <p class="text-center text-primary font-semibold uppercase tracking-wide mb-2">FAQs</p>
+  <h2 class="text-center text-4xl font-extrabold mb-4">{title}</h2>
+  <p class="text-center text-base-content mb-10 max-w-2xl mx-auto">
+    {subtitle}
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {faqs.map((faq) => (
+      <div class="space-y-2">
+        <div class="flex items-start space-x-2">
+          <span class="text-primary text-xl">›</span>
+          <h3 class="font-bold text-lg">{faq.question}</h3>
+        </div>
+        <p class="text-base-content text-sm">
+          {faq.answer}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>

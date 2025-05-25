@@ -1,0 +1,12 @@
+---
+const { title, description, link } = Astro.props;
+---
+
+<div class="card bg-base-100 text-base-content shadow-md p-6 border border-primary hover:shadow-lg transition">
+  <h3 class="text-xl font-bold text-primary">{title}</h3>
+  <p class="my-2">{description}</p>
+  <a href={link} class="btn btn-primary mt-2">
+    Saiba mais
+  </a>
+</div>
+
