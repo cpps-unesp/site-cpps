@@ -8,7 +8,6 @@ import FAQSection from '../../components/FAQSection.astro';
 import MostUsedWidgets from '../../components/MostUsedWidgets.astro';
 import EquipeSection from '../../components/EquipeSection.astro';
 
-// ✅ getStaticPaths para SSG
 export function getStaticPaths() {
   return [
     { params: { lang: 'pt' } },
@@ -17,22 +16,18 @@ export function getStaticPaths() {
   ];
 }
 
-// ✅ Fallback padrão para lang
 const currentLang = Astro.params.lang ?? 'pt';
 
-// ✅ Validação de idioma
 const allowedLangs = ['pt', 'en', 'es'];
 if (!allowedLangs.includes(currentLang)) {
   return Astro.redirect('/pt/');
 }
 
-// ✅ Importação segura do locale
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
 
 const { 
   titulo, 
   descricao, 
-  texts, 
   equipe, 
   initiatives, 
   atividadesPesquisa, 
@@ -44,50 +39,49 @@ const {
 } = locale.default;
 ---
 
-<BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={texts}>
+<BaseLayout lang={currentLang} titulo={titulo} descricao={descricao}>
   <Hero heroData={locale.default} />
 
   <section class="mt-16">
-    <p class="text-center text-primary font-semibold uppercase tracking-wide mb-2">{texts.initiatives}</p>
-    <h2 class="text-center text-3xl font-extrabold mb-4">{texts.whatYouFind}</h2>
+    <h2 class="text-center text-3xl font-extrabold mb-4">{initiatives.titulo}</h2>
     <p class="text-center text-xl text-base-content mb-10 max-w-2xl mx-auto">
-      Conheça nossas principais iniciativas, projetos e formas de atuação que promovem o desenvolvimento acadêmico e social.
+      {initiatives.descricao}
     </p>
 
     <div class="grid gap-8 md:grid-cols-2">
-      {initiatives.map((item: { icon: string; title: string; description: string }) => (
+      {initiatives.items.map((item) => (
         <InitiativeCard icon={item.icon} title={item.title} description={item.description} />
       ))}
     </div>
   </section>
 
   <section class="mt-16">
-    <p class="text-center text-primary font-semibold uppercase tracking-wide mb-2">{texts.activities}</p>
-    <h2 class="text-center text-3xl font-extrabold mb-4">{texts.whatWeDo}</h2>
+    <h2 class="text-center text-3xl font-extrabold mb-4">{atividadesPesquisa.titulo}</h2>
     <p class="text-center text-xl text-base-content mb-10 max-w-2xl mx-auto">
-      Veja nossas principais atividades, que promovem ensino, pesquisa e extensão no CPPS.
+      {atividadesPesquisa.descricao}
     </p>
   </section>
 
   <AtividadesSection 
-    title={texts.ourResearch} 
-    description={texts.researchDescription} 
+    title={atividadesPesquisa.titulo} 
+    description={atividadesPesquisa.descricao} 
     image={imagens.pesquisa} 
-    activities={atividadesPesquisa}
+    activities={atividadesPesquisa.items}
   />
 
   <AtividadesSection 
-    title={texts.ourExtensions} 
-    description={texts.extensionDescription} 
+    title={atividadesExtensao.titulo} 
+    description={atividadesExtensao.descricao} 
     image={imagens.extensao} 
-    activities={atividadesExtensao} 
+    activities={atividadesExtensao.items}
     reverse={true}
-/>
+  />
 
   <ProdutosSection 
-    title={texts.productsTitle} 
+    title={produtos.titulo} 
+    description={produtos.descricao} 
     image={imagens.produtos} 
-    produtos={produtos}
+    produtos={produtos.items}
   />
 
   <MostUsedWidgets widgets={widgets} />

@@ -1,41 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import EquipeSection from '../../components/EquipeSection.astro';
 import { routeTranslations } from '../../i18n/routes';
 
 type SupportedLang = 'pt' | 'en' | 'es';
 
-// ✅ getStaticPaths para SSG dinâmico
 export function getStaticPaths() {
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
-
-  // Gera todas as rotas de todas as traduções de forma dinâmica:
   const allSlugs = Object.values(routeTranslations).flatMap(translations =>
     langs.map(lang => translations[lang])
   );
-
-  const paths = langs.flatMap(lang =>
+  return langs.flatMap(lang =>
     allSlugs.map(slug => ({
       params: { lang, slug }
     }))
   );
-
-  return paths;
 }
 
-// ✅ Fallback padrão para lang
 const currentLang = Astro.params.lang as SupportedLang ?? 'pt';
-
-// ✅ Tratamento seguro do slug
 const slug = Astro.params.slug ?? '';
 const slugArray = slug.split('/').filter(Boolean);
 const slugPath = slugArray.join('/');
 
-// ✅ Importação segura do locale
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
-const { titulo, descricao, texts } = locale.default;
+const { titulo, descricao, texts, equipe } = locale.default;
 
-// ✅ Inversão do `routeTranslations` para identificar qual é a chave original
 function findOriginalKey(translatedSlug: string, lang: SupportedLang): string | null {
   for (const [key, translations] of Object.entries(routeTranslations)) {
     if (translations[lang] === translatedSlug) {
@@ -46,8 +36,6 @@ function findOriginalKey(translatedSlug: string, lang: SupportedLang): string | 
 }
 
 const originalKey = findOriginalKey(slugPath, currentLang);
-
-// ✅ Mensagem padrão com base na chave
 const pageContent = originalKey
   ? `Esta é a página ${originalKey} (${currentLang})`
   : null;
@@ -56,7 +44,9 @@ const pageContent = originalKey
 <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={texts}>
   <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
 
-  {pageContent ? (
+  {originalKey === "institucional/equipe" ? (
+    <EquipeSection equipe={equipe} />
+  ) : pageContent ? (
     <>
       <h1 class="text-3xl font-bold mb-4">{slugArray.join(' / ')}</h1>
       <p class="mb-4">{pageContent}</p>

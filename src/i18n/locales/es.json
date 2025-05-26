@@ -6,83 +6,104 @@
     "texto": "Saber más",
     "url": "/iniciativas/sobre"
   },
-  "texts": {
-  "home": "Inicio",
-  "initiatives": "Iniciativas",
-  "activities": "Actividades",
-  "noticias": "Notícias",
-  "notFound": "Página no encontrada",
-  "breadcrumbHome": "Inicio",
-  "whatYouFind": "Lo que encontrarás en el CPPS",
-  "whatWeDo": "Lo que hacemos",
-  "ourResearch": "Nuestras Investigaciones",
-  "ourExtensions": "Nuestros Proyectos de Extensión",
-  "researchDescription": "Consulta algunos de los proyectos de investigación en curso en el CPPS.",
-  "extensionDescription": "Proyectos de extensión que acercan la universidad a la comunidad.",
-  "productsTitle": "Pon en marcha tu sitio web soñado rápidamente con AstroWind."
-},
-"imagens": {
-  "pesquisa": "/images/investigacion.jpg",
-  "extensao": "/images/extension.jpg",
-  "produtos": "/images/reloj.jpg"
-},
-  "equipe": [
-    {
-      "nome": "Hélio Alexandre da Silva",
-      "cargo": "Investigador – Coordinador",
-      "foto": "/images/helio.jpg",
-      "descricao": "Profesor Asistente Doctor en la UNESP, campus Franca...",
-      "linkedin": "https://linkedin.com/in/helio"
-    },
-    {
-      "nome": "Ana Júlia Diniz Neves do Lago",
-      "cargo": "Estudiante de Maestría",
-      "foto": "/images/ana.jpg",
-      "descricao": "Estudiante de Relaciones Internacionales en FCHS/UNESP...",
-      "instagram": "https://instagram.com/anajulia"
-    },
-    {
-      "nome": "Beatriz Furlan de Carvalho",
-      "cargo": "Estudiante de Maestría",
-      "foto": "/images/beatriz.jpg",
-      "descricao": "Estudiante de Maestría en Filosofía en UNESP-Marília...",
-      "instagram": "https://instagram.com/beatriz"
-    }
-  ],
-  "initiatives": [
-    { "icon": "🧪", "title": "Proyectos", "description": "Explore nuestros proyectos de investigación que impactan directamente en la sociedad." },
-    { "icon": "🗂️", "title": "Planificación", "description": "Nuestra planificación estratégica guía nuestras acciones y decisiones." },
-    { "icon": "☕", "title": "Café Consciência", "description": "Debates y eventos académicos que promueven la reflexión y el diálogo." },
-    { "icon": "📰", "title": "Noticias", "description": "Siga nuestras actualizaciones y manténgase informado." },
-    { "icon": "🏛️", "title": "Sobre", "description": "Conozca nuestra misión, valores y objetivos institucionales." },
-    { "icon": "👥", "title": "Equipo", "description": "Conozca a las personas que forman parte del CPPS y colaboran con nuestras acciones." }
-  ],
-  "atividadesPesquisa": [
-    { "icon": "✅", "title": "Investigación A", "description": "Desarrollamos proyectos de investigación que impactan en la sociedad y la producción científica." },
-    { "icon": "✅", "title": "Investigación B", "description": "Investigación aplicada a problemas sociales relevantes." }
-  ],
-  "atividadesExtensao": [
-    { "icon": "✅", "title": "Extensión X", "description": "Proyectos de extensión que acercan la universidad a la comunidad." },
-    { "icon": "✅", "title": "Extensión Y", "description": "Talleres y eventos culturales para promover la inclusión social." }
-  ],
-  "produtos": [
-    { "icon": "📥", "title": "Paso 1: Descargar", "description": "¡Comience con GitHub! Puede bifurcar la plantilla de AstroWind o simplemente hacer clic en 'Usar esta plantilla'. Su lienzo le espera, listo para su obra maestra digital." },
-    { "icon": "✍️", "title": "Paso 2: Añadir contenido", "description": "Vierta su visión en él. Añada imágenes, texto y todo lo necesario para dar vida a su espacio digital." },
-    { "icon": "🎨", "title": "Paso 3: Personalizar estilos", "description": "Ajuste colores, fuentes y diseños hasta que se sienta perfecto. ¡Su estilo único, amplificado por AstroWind!" },
-    { "icon": "✅", "title": "¡Listo!", "description": "Ha establecido la base, añadido su contenido, personalizado. ¡Ahora está listo para brillar!" }
-  ],
-  "faqs": [
-    { "question": "¿Por qué AstroWind?", "answer": "Michael Knight un joven solitario en una cruzada para defender la causa de los inocentes..." },
-    { "question": "¿Qué necesito para empezar?", "answer": "El espacio, la última frontera. Estos son los viajes de la nave espacial Enterprise..." },
-    { "question": "¿Cómo instalar la plantilla Astro + Tailwind CSS?", "answer": "Bueno, la forma en que hacen los programas es que hacen un programa..." },
-    { "question": "¿Qué es algo que no entiendes?", "answer": "Una flor en mi jardín, un misterio en mis pantaletas..." }
-  ],
-  "widgets": [
-    { "icon": "🖼️", "title": "Encabezados", "description": "¿Alguna vez intentó conducir sin GPS? ¡Boom! Por eso los sitios web necesitan encabezados para orientarse." },
-    { "icon": "🦸", "title": "Héroes", "description": "Imagine un superhéroe aterrizando: épico, ¿verdad? Ese es el trabajo de una sección Hero, hacer entradas grandiosas." },
-    { "icon": "✅", "title": "Características", "description": "Donde los sitios web muestran sus cosas y presumen de sus superpoderes. ¡Sin restricciones!" },
-    { "icon": "📄", "title": "Contenido", "description": "Sumérjase en el núcleo de un sitio; sin él, solo estaría mirando escaparates. El contenido es el rey." },
-    { "icon": "📢", "title": "Llamado a la acción", "description": "Ese amigo entusiasta que siempre dice '¡Hazlo! ¡Hazlo!'. Sí, ese es este botón que lo impulsa a la aventura." },
-    { "icon": "💲", "title": "Precios", "description": "He aquí el menú de postres del mundo web. Opciones tentadoras le esperan, ¿puede resistirse?" }
-  ]
+  "imagens": {
+    "pesquisa": "/images/investigacion.jpg",
+    "extensao": "/images/extension.jpg",
+    "produtos": "/images/reloj.jpg"
+  },
+  "equipe": {
+    "titulo": "Equipo",
+    "membros": [
+      {
+        "nome": "Hélio Alexandre da Silva",
+        "cargo": "Investigador – Coordinador",
+        "foto": "/images/helio.jpg",
+        "descricao": "Profesor asistente en la UNESP, campus Franca...",
+        "linkedin": "https://linkedin.com/in/helio"
+      },
+      {
+        "nome": "Ana Júlia Diniz Neves do Lago",
+        "cargo": "Estudiante de maestría",
+        "foto": "/images/ana.jpg",
+        "descricao": "Estudiante de pregrado en Relaciones Internacionales en FCHS/UNESP...",
+        "instagram": "https://instagram.com/anajulia"
+      },
+      {
+        "nome": "Beatriz Furlan de Carvalho",
+        "cargo": "Estudiante de maestría",
+        "foto": "/images/beatriz.jpg",
+        "descricao": "Estudiante de maestría en Filosofía en UNESP-Marília...",
+        "instagram": "https://instagram.com/beatriz"
+      }
+    ]
+  },
+  "initiatives": {
+    "titulo": "Iniciativas",
+    "items": [
+      {
+        "icon": "🧪",
+        "title": "Proyectos",
+        "description": "Explora nuestros proyectos de investigación que impactan directamente en la sociedad."
+      },
+      {
+        "icon": "🗂️",
+        "title": "Planificación",
+        "description": "Nuestra planificación estratégica guía nuestras acciones y decisiones."
+      },
+      {
+        "icon": "☕",
+        "title": "Café Consciência",
+        "description": "Debates y eventos académicos que promueven la reflexión y el diálogo."
+      }
+    ]
+  },
+  "atividadesPesquisa": {
+    "titulo": "Actividades de Investigación",
+    "items": [
+      {
+        "icon": "✅",
+        "title": "Investigación A",
+        "description": "Desarrollamos proyectos de investigación que impactan en la sociedad y la producción científica."
+      }
+    ]
+  },
+  "atividadesExtensao": {
+    "titulo": "Actividades de Extensión",
+    "items": [
+      {
+        "icon": "✅",
+        "title": "Extensión X",
+        "description": "Proyectos de extensión que acercan la universidad a la comunidad."
+      }
+    ]
+  },
+  "produtos": {
+    "titulo": "Productos",
+    "items": [
+      {
+        "icon": "📥",
+        "title": "Paso 1: Descargar",
+        "description": "¡Comienza con GitHub! Haz un fork o usa la plantilla de AstroWind."
+      }
+    ]
+  },
+  "faqs": {
+    "titulo": "Preguntas Frecuentes",
+    "items": [
+      {
+        "question": "¿Por qué AstroWind?",
+        "answer": "Michael Knight, un joven solitario en una cruzada para..."
+      }
+    ]
+  },
+  "widgets": {
+    "titulo": "Widgets",
+    "items": [
+      {
+        "icon": "🖼️",
+        "title": "Encabezados",
+        "description": "¿Alguna vez intentaste conducir sin GPS? Por eso los sitios web necesitan encabezados."
+      }
+    ]
+  }
 }

@@ -7,90 +7,103 @@
     "url": "/initiatives/about"
   },
   "imagens": {
-  "pesquisa": "/images/research.jpg",
-  "extensao": "/images/extension.jpg",
-  "produtos": "/images/clock.jpg"
-},
-  "texts": {
-  "home": "Home",
-  "initiatives": "Initiatives",
-  "activities": "Activities",
-  "news": "News",
-  "notFound": "Page not found",
-  "breadcrumbHome": "Home",
-  "whatYouFind": "What you find at CPPS",
-  "whatWeDo": "What we do",
-  "ourResearch": "Our Research",
-  "ourExtensions": "Our Extension Projects",
-  "researchDescription": "See some ongoing research projects at CPPS.",
-  "extensionDescription": "Extension projects that bring the university closer to the community.",
-  "productsTitle": "Get your dream website up and running in no time with AstroWind."
-},
-"noticias": [
-  {
-    "slug": "exemplo-de-noticia",
-    "title": "Example News",
-    "resumo": "Short summary of the news.",
-    "date": "2024-10-01"
+    "pesquisa": "/images/research.jpg",
+    "extensao": "/images/extension.jpg",
+    "produtos": "/images/clock.jpg"
+  },
+  "equipe": {
+    "titulo": "Team",
+    "membros": [
+      {
+        "nome": "Hélio Alexandre da Silva",
+        "cargo": "Researcher – Coordinator",
+        "foto": "/images/helio.jpg",
+        "descricao": "Assistant Professor at UNESP, Franca campus...",
+        "linkedin": "https://linkedin.com/in/helio"
+      },
+      {
+        "nome": "Ana Júlia Diniz Neves do Lago",
+        "cargo": "Master's student",
+        "foto": "/images/ana.jpg",
+        "descricao": "Undergraduate student in International Relations at FCHS/UNESP...",
+        "instagram": "https://instagram.com/anajulia"
+      },
+      {
+        "nome": "Beatriz Furlan de Carvalho",
+        "cargo": "Master's student",
+        "foto": "/images/beatriz.jpg",
+        "descricao": "Master's student in Philosophy at UNESP-Marília...",
+        "instagram": "https://instagram.com/beatriz"
+      }
+    ]
+  },
+  "initiatives": {
+    "titulo": "Initiatives",
+    "items": [
+      {
+        "icon": "🧪",
+        "title": "Projects",
+        "description": "Explore our research projects that directly impact society."
+      },
+      {
+        "icon": "🗂️",
+        "title": "Planning",
+        "description": "Our strategic planning guides our actions and decisions."
+      },
+      {
+        "icon": "☕",
+        "title": "Café Consciência",
+        "description": "Academic debates and events promoting reflection and dialogue."
+      }
+    ]
+  },
+  "atividadesPesquisa": {
+    "titulo": "Research Activities",
+    "items": [
+      {
+        "icon": "✅",
+        "title": "Research A",
+        "description": "We develop research projects that impact society and scientific production."
+      }
+    ]
+  },
+  "atividadesExtensao": {
+    "titulo": "Extension Activities",
+    "items": [
+      {
+        "icon": "✅",
+        "title": "Extension X",
+        "description": "Extension projects that bring the university closer to the community."
+      }
+    ]
+  },
+  "produtos": {
+    "titulo": "Products",
+    "items": [
+      {
+        "icon": "📥",
+        "title": "Step 1: Download",
+        "description": "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'."
+      }
+    ]
+  },
+  "faqs": {
+    "titulo": "FAQs",
+    "items": [
+      {
+        "question": "Why AstroWind?",
+        "answer": "Michael Knight, a young loner on a crusade to champion the cause of the innocent..."
+      }
+    ]
+  },
+  "widgets": {
+    "titulo": "Widgets",
+    "items": [
+      {
+        "icon": "🖼️",
+        "title": "Headers",
+        "description": "Ever tried driving without GPS? That's why websites need headers for direction."
+      }
+    ]
   }
-],
-  "equipe": [
-    {
-      "nome": "Hélio Alexandre da Silva",
-      "cargo": "Researcher – Coordinator",
-      "foto": "/images/helio.jpg",
-      "descricao": "Assistant Professor at UNESP, Franca campus...",
-      "linkedin": "https://linkedin.com/in/helio"
-    },
-    {
-      "nome": "Ana Júlia Diniz Neves do Lago",
-      "cargo": "Master's student",
-      "foto": "/images/ana.jpg",
-      "descricao": "Undergraduate student in International Relations at FCHS/UNESP...",
-      "instagram": "https://instagram.com/anajulia"
-    },
-    {
-      "nome": "Beatriz Furlan de Carvalho",
-      "cargo": "Master's student",
-      "foto": "/images/beatriz.jpg",
-      "descricao": "Master's student in Philosophy at UNESP-Marília...",
-      "instagram": "https://instagram.com/beatriz"
-    }
-  ],
-  "initiatives": [
-    { "icon": "🧪", "title": "Projects", "description": "Explore our research projects that directly impact society." },
-    { "icon": "🗂️", "title": "Planning", "description": "Our strategic planning guides our actions and decisions." },
-    { "icon": "☕", "title": "Café Consciência", "description": "Academic debates and events promoting reflection and dialogue." },
-    { "icon": "📰", "title": "News", "description": "Follow our updates and stay informed." },
-    { "icon": "🏛️", "title": "About", "description": "Learn about our mission, values, and institutional goals." },
-    { "icon": "👥", "title": "Team", "description": "Meet the people who make up CPPS and collaborate with our actions." }
-  ],
-  "atividadesPesquisa": [
-    { "icon": "✅", "title": "Research A", "description": "We develop research projects that impact society and scientific production." },
-    { "icon": "✅", "title": "Research B", "description": "Applied research to relevant social problems." }
-  ],
-  "atividadesExtensao": [
-    { "icon": "✅", "title": "Extension X", "description": "Extension projects that bring the university closer to the community." },
-    { "icon": "✅", "title": "Extension Y", "description": "Workshops and cultural events to promote social inclusion." }
-  ],
-  "produtos": [
-    { "icon": "📥", "title": "Step 1: Download", "description": "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece." },
-    { "icon": "✍️", "title": "Step 2: Add content", "description": "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space." },
-    { "icon": "🎨", "title": "Step 3: Customize styles", "description": "Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind!" },
-    { "icon": "✅", "title": "Ready!", "description": "You've set the foundation, added your content, customized it. Now it's ready to shine!" }
-  ],
-  "faqs": [
-    { "question": "Why AstroWind?", "answer": "Michael Knight a young loner on a crusade to champion the cause of the innocent..." },
-    { "question": "What do I need to start?", "answer": "Space, the final frontier. These are the voyages of the Starship Enterprise..." },
-    { "question": "How to install the Astro + Tailwind CSS template?", "answer": "Well, the way they make shows is, they make one show..." },
-    { "question": "What's something that you don't understand?", "answer": "A flower in my garden, a mystery in my panties..." }
-  ],
-  "widgets": [
-    { "icon": "🖼️", "title": "Headers", "description": "Ever tried driving without GPS? Boom! That's why websites need headers for direction." },
-    { "icon": "🦸", "title": "Heros", "description": "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!" },
-    { "icon": "✅", "title": "Features", "description": "Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!" },
-    { "icon": "📄", "title": "Content", "description": "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king." },
-    { "icon": "📢", "title": "Call-to-Action", "description": "That enthusiastic friend who's always urging, 'Do it! Do it!'? Yeah, that's this button nudging you towards adventure." },
-    { "icon": "💲", "title": "Pricing", "description": "Behold the dessert menu of the website world. Tempting choices await, can you resist?" }
-  ]
 }
