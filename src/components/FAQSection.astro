@@ -9,17 +9,18 @@ const { title = "Frequently Asked Questions", subtitle = "Dive into the followin
     {subtitle}
   </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    {faqs.map((faq) => (
-      <div class="space-y-2">
-        <div class="flex items-start space-x-2">
-          <span class="text-primary text-xl">›</span>
-          <h3 class="font-bold text-lg">{faq.question}</h3>
-        </div>
-        <p class="text-base-content text-sm">
-          {faq.answer}
-        </p>
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  {faqs.map((faq: { question: string; answer: string }) => (
+    <div class="space-y-2">
+      <div class="flex items-start space-x-2">
+        <span class="text-primary text-xl">›</span>
+        <h3 class="font-bold text-lg">{faq.question}</h3>
       </div>
-    ))}
-  </div>
+      <p class="text-base-content text-sm">
+        {faq.answer}
+      </p>
+    </div>
+  ))}
+</div>
+
 </section>

@@ -1,19 +1,22 @@
 ---
 import AlterarTema from "./AlterarTema.astro";
+import LanguageSelector from "./LanguageSelector.astro";
+import { getTranslatedPath } from "../utils/getTranslatedPath";
+import type { SupportedLang } from "../types/lang";
+
+const { lang = "pt", texts = {} } = Astro.props as { lang: SupportedLang; texts: Record<string, string> };
 ---
 
 <div class="drawer">
   <input id="menu-drawer" type="checkbox" class="drawer-toggle" />
 
   <div class="drawer-content">
-    <!-- Navbar -->
     <nav class="navbar bg-[#2197C5] text-white">
       <div class="container mx-auto flex justify-between items-center">
-        <a href="/" class="btn btn-ghost normal-case text-xl">CPPS</a>
+        <a href={`/${lang}/`} class="btn btn-ghost normal-case text-xl">CPPS</a>
 
-        <!-- Desktop Menu -->
-        <ul class="hidden md:flex menu menu-horizontal px-1">
-          <li><a href="/">Home</a></li>
+        <ul class="hidden md:flex menu menu-horizontal px-1 items-center gap-2">
+          <li><a href={`/${lang}/`}>Home</a></li>
 
           <li class="dropdown dropdown-hover group">
             <label tabindex="0" class="flex items-center cursor-pointer hover:text-gray-300">
@@ -24,8 +27,12 @@ import AlterarTema from "./AlterarTema.astro";
             </label>
             <ul class="dropdown-content menu p-0 shadow bg-base-100 text-base-content rounded-sm w-40 -translate-y-2 
                         transition transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-150 ease-out">
-              <li><a href="/institucional/sobre">Sobre</a></li>
-              <li><a href="/institucional/equipe">Equipe</a></li>
+              <li>
+                <a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a>
+              </li>
+              <li>
+                <a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>Equipe</a>
+              </li>
             </ul>
           </li>
 
@@ -38,18 +45,32 @@ import AlterarTema from "./AlterarTema.astro";
             </label>
             <ul class="dropdown-content menu p-0 shadow bg-base-100 text-base-content rounded-sm w-40 -translate-y-2 
                         transition transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-150 ease-out">
-              <li><a href="/iniciativas/projetos">Projetos</a></li>
-              <li><a href="/iniciativas/cafe-consciencia">Café Consciência</a></li>
-              <li><a href="/iniciativas/planejamento">Planejamento</a></li>
+              <li>
+                <a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>Projetos</a>
+              </li>
+              <li>
+                <a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-consciencia", lang)}`}>Café Consciência</a>
+              </li>
+              <li>
+                <a href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}>Planejamento</a>
+              </li>
             </ul>
           </li>
 
-          <li><a href="/noticias">Notícias</a></li>
+          <li>
+            <a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a>
+          </li>
 
+          <li><LanguageSelector /></li>
           <li><AlterarTema /></li>
+
+          <li>
+            <label for="search-modal" class="btn btn-ghost btn-circle">
+              🔍
+            </label>
+          </li>
         </ul>
 
-        <!-- Mobile Menu Button -->
         <label for="menu-drawer" class="btn btn-square btn-ghost md:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
             viewBox="0 0 24 24" stroke="currentColor">
@@ -61,18 +82,21 @@ import AlterarTema from "./AlterarTema.astro";
     </nav>
   </div>
 
-  <!-- Drawer side -->
   <div class="drawer-side">
     <label for="menu-drawer" class="drawer-overlay"></label>
     <ul class="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
-      <li><a href="/">Home</a></li>
+      <li><a href={`/${lang}/`}>Home</a></li>
 
       <li>
         <details>
           <summary>Institucional</summary>
           <ul>
-            <li><a href="/institucional/sobre">Sobre</a></li>
-            <li><a href="/institucional/equipe">Equipe</a></li>
+            <li>
+              <a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a>
+            </li>
+            <li>
+              <a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>Equipe</a>
+            </li>
           </ul>
         </details>
       </li>
@@ -81,16 +105,31 @@ import AlterarTema from "./AlterarTema.astro";
         <details>
           <summary>Iniciativas</summary>
           <ul>
-            <li><a href="/iniciativas/projetos">Projetos</a></li>
-            <li><a href="/iniciativas/cafe-consciencia">Café Consciência</a></li>
-            <li><a href="/iniciativas/planejamento">Planejamento</a></li>
+            <li>
+              <a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>Projetos</a>
+            </li>
+            <li>
+              <a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-consciencia", lang)}`}>Café Consciência</a>
+            </li>
+            <li>
+              <a href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}>Planejamento</a>
+            </li>
           </ul>
         </details>
       </li>
 
-      <li><a href="/noticias">Notícias</a></li>
+      <li>
+        <a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a>
+      </li>
 
+      <li><LanguageSelector /></li>
       <li><AlterarTema /></li>
+
+      <li>
+        <label for="search-modal" class="btn btn-ghost btn-circle">
+          🔍
+        </label>
+      </li>
     </ul>
   </div>
 </div>

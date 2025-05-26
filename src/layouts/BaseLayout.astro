@@ -1,51 +1,81 @@
 ---
-const { children } = Astro.props;
+const {
+  children,
+  lang = "pt",
+  titulo = "CPPS",
+  descricao = "",
+  texts = {},
+} = Astro.props;
+
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import AlternarTema from "../components/AlterarTema.astro";
+import SearchModal from "../components/SearchModal.astro";
+
 import "../styles/global.css";
 ---
 
-<html lang="pt" >
+<html lang={lang}>
   <head>
-  <meta charset="utf-8" />
-  <title>CPPS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
-    rel="stylesheet"
-  />
+    <meta charset="utf-8" />
+    <title>{titulo} | CPPS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
-  <script type="module" src="/src/scripts/themeSwitcher.js"></script>
+    <!-- ✅ SEO -->
+    <meta name="description" content={descricao} />
+    <meta property="og:title" content={`${titulo} | CPPS`} />
+    <meta property="og:description" content={descricao} />
+    <meta property="og:locale" content={lang} />
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const savedTheme = localStorage.getItem('theme') || 'light';
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    });
-  </script>
-
-  <style is:global>
-    body {
-      font-family: "Montserrat", sans-serif;
+    <!-- ✅ SEO multilíngue -->
+    {
+      ["pt", "en", "es"].map((l) => (
+        <link rel="alternate" hreflang={l} href={`https://seusite.com/${l}/`} />
+      ))
     }
-    h1, h2, h3 {
-      font-family: "Lovelo", sans-serif;
-    }
-  </style>
-</head>
+
+    <!-- ✅ canonical -->
+    <link rel="canonical" href={`https://seusite.com/${lang}/`} />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+    <script type="module" src="/src/scripts/themeSwitcher.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      });
+    </script>
+
+    <style is:global>
+      body {
+        font-family: "Montserrat", sans-serif;
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: "Lovelo", sans-serif;
+      }
+    </style>
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <Header>
+    <Header lang={lang} texts={texts}>
       <AlternarTema />
     </Header>
-    
+
     <main class="container mx-auto p-8">
       <slot />
     </main>
 
-    <Footer />
+    <Footer lang={lang} texts={texts} />
+
+    <!-- ✅ Modal de busca com Pagefind -->
+    <SearchModal />
   </body>
 </html>

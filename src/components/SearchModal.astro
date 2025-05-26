@@ -1,0 +1,115 @@
+---
+
+---
+
+<input type="checkbox" id="search-modal" class="modal-toggle" />
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
+  <div class="modal-box animate-scale-up glass-modal">
+    <h3 id="search-title" class="font-bold text-lg mb-4">Buscar</h3>
+
+    <input 
+      id="search-input" 
+      type="text" 
+      placeholder="Digite sua busca..." 
+      class="input input-bordered w-full mb-4 bg-white/20 backdrop-blur-lg border border-white/30"
+      aria-label="Buscar"
+    />
+
+    <ul 
+      id="search-results" 
+      class="menu bg-base-100/30 backdrop-blur-lg rounded-box shadow hidden border border-white/20"
+    ></ul>
+
+    <div class="modal-action">
+      <label for="search-modal" class="btn">Fechar</label>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+  import("/pagefind/pagefind.js").then(({ default: pagefind }) => {
+    const input = document.getElementById('search-input');
+    const resultsContainer = document.getElementById('search-results');
+    const modalToggle = document.getElementById('search-modal');
+
+    let debounceTimeout = null;
+
+    function clearResults() {
+      resultsContainer.innerHTML = '';
+      resultsContainer.classList.add('hidden');
+    }
+
+    function createResultItem(url, title) {
+      const li = document.createElement('li');
+      li.className = 'p-2 hover:bg-base-200 cursor-pointer rounded-box';
+      li.innerHTML = `<a href="${url}" class="block">${title}</a>`;
+      return li;
+    }
+
+    modalToggle.addEventListener('change', () => {
+      if (modalToggle.checked) {
+        requestAnimationFrame(() => input.focus());
+      } else {
+        input.value = '';
+        clearResults();
+      }
+    });
+
+    input.addEventListener('input', () => {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(async () => {
+        const term = input.value.trim();
+        if (term.length < 2) {
+          clearResults();
+          return;
+        }
+        const results = await pagefind.search(term);
+        clearResults();
+
+        if (results.length) {
+          resultsContainer.classList.remove('hidden');
+          for (const result of results) {
+            const item = await result.data();
+            const li = createResultItem(item.url, item.meta.title || item.excerpt);
+            resultsContainer.appendChild(li);
+          }
+        } else {
+          resultsContainer.classList.remove('hidden');
+          const li = document.createElement('li');
+          li.className = 'p-2 text-sm text-gray-500';
+          li.textContent = 'Nenhum resultado encontrado';
+          resultsContainer.appendChild(li);
+        }
+      }, 300); // debounce 300ms
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalToggle.checked) {
+        modalToggle.checked = false;
+      }
+    });
+  });
+</script>
+
+<style is:global>
+  @keyframes scale-up {
+    0% {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  .animate-scale-up {
+    animation: scale-up 0.2s ease-out;
+  }
+  .glass-modal {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+  }
+</style>

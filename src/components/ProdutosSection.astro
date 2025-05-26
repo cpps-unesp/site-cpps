@@ -13,24 +13,29 @@ const sectionClasses = reverse
       <h2 class="text-4xl font-extrabold mb-8">{title}</h2>
 
       <ol class="space-y-8 relative">
-        {produtos.map((produto, index) => (
-          <li class="relative pl-10">
-            <!-- Ícone -->
-            <span class="absolute left-0 top-1 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 border-2 border-primary rounded-full text-primary bg-white z-10">
-              {produto.icon}
-            </span>
+        {
+          produtos.map(
+            (
+              produto: { icon: string; title: string; description: string },
+              index: number,
+            ) => (
+              <li class="relative pl-10">
+                <span class="absolute left-0 top-1 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 border-2 border-primary rounded-full text-primary bg-white z-10">
+                  {produto.icon}
+                </span>
 
-            <!-- Linha conectando para o próximo, exceto no último item -->
-            {index !== produtos.length - 1 && (
-              <span class="absolute left-0 top-9 transform -translate-x-1/2 h-full border-l-2 border-gray-300"></span>
-            )}
+                {index !== produtos.length - 1 && (
+                  <span class="absolute left-0 top-9 transform -translate-x-1/2 h-full border-l-2 border-gray-300" />
+                )}
 
-            <h3 class="font-bold text-base">{produto.title}</h3>
-            <p class="text-base-content text-sm mt-1">
-              {produto.description}
-            </p>
-          </li>
-        ))}
+                <h3 class="font-bold text-base">{produto.title}</h3>
+                <p class="text-base-content text-sm mt-1">
+                  {produto.description}
+                </p>
+              </li>
+            ),
+          )
+        }
       </ol>
     </div>
 

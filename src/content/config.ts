@@ -1,14 +1,10 @@
 import { defineCollection, z } from 'astro:content';
-
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
+import slugify from "slugify";
 
-import slugify from "slugify"; // Certifique-se de ter instalado: npm install slugify
-
-// Função auxiliar para gerar slug
-function createSlug(date: string, num: string): string {
-  
-  return slugify(`${date}-${num}`, { lower: true, strict: true });
+function createSlug(date: string, title: string): string {
+  return slugify(`${date}-${title}`, { lower: true, strict: true });
 }
 
 const noticias = defineCollection({
@@ -16,16 +12,14 @@ const noticias = defineCollection({
     title: z.string(),
     date: z.string(),
     resumo: z.string(),
-    image: z.string(),
+    lang: z.enum(['pt', 'en', 'es']),
   }).transform((data) => ({
     ...data,
-    slug: createSlug(data.date,data.title),
+    slug: createSlug(data.date, data.title),
   })),
 });
 
-
 export const collections = {
   noticias,
-  docs: defineCollection({ loader: docsLoader(), schema: docsSchema() })
+  docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
 };
-
