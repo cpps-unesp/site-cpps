@@ -67,15 +67,56 @@
         "videos": "Vídeos"
     },
     "equipe": {
+        "Marcelo_Mariano": {
         "titulo": "Equipe",
-        "Membro 1": "nome" ,
+        "nome": "Prof. Dr. Marcelo Passini Mariano" ,
         "cargo": "",
-        "sobre": ""
+        "sobre": "Professor do Departamento de Relações Internacionais da Faculdade de Ciências Humanas e Sociais da Universidade Estadual Paulista (UNESP) e no Programa de Pós-Graduação em Relações Internacionais San Tiago Dantas (UNESP, UNICAMP, PUC-SP). Coordena o Laboratório de Novas Tecnologias de Pesquisa em Relações Internacionais (LANTRI) e é pesquisador associado no Centro de Estudos de Cultura Contemporânea (CEDEC), no Observatório de Regionalismo (ODR) e na Rede Desenvolvimento, Política Internacional e Paz (DIPP). Graduado em Ciências Sociais pela Universidade de São Paulo (1992), obteve seu mestrado em Ciência Política pela mesma universidade (1998) e doutorado em Sociologia pela Universidade Estadual Paulista (2007). Foi pesquisador convidado do Instituto de Pesquisa Econômica Aplicada (IPEA) entre 2011-2013 e 2021-2023. "
     },
-    "titulo": "Equipe",
-    "Membro 1": {
-        "nome": "",
+    "Murilo_Gaspardo": {
+        "nome": "Prof. Dr. Murilo Gaspardo",
         "cargo": "",
-        "sobre": ""
-    }
+        "sobre": "Vice-diretor da Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista Júlio de Mesquita Filho (UNESP) - Campus de Franca - SP (Gestão 2022 - 2026), onde foi Diretor (Gestão 2018 - 2022) e é professor associado do Departamento de Direito Público e do Programa de Pós-graduação em Direito (Mestrado e Doutorado). Possui graduação em Direito (2005), Mestrado (2009) e Doutorado (2013) em Direito do Estado pela Faculdade de Direito da Universidade de São Paulo (USP) e Livre-docência (2019) em Teoria do Estado pela UNESP. Realizou estágio de pesquisa de pós-doutorado na Universidade de Durham, Reino Unido (2017 - 2018), com bolsa da FAPESP, e na London School of Economics and Political Science (LSE), com bolsa do CNPq (2023 - 2024). Honorary Fellow da School of Government and International Affairs, Universidade de Durham, Reino Unido (2022 - 2025). Tem experiência na área de Direito, com ênfase em Teoria do Estado. Dedica-se especialmete a pesquisas sobre democracia e instituições."
+    },
+    "Thais_Amoroso": {
+        "nome": "Thais Amoroso Paschoal",
+        "cargo": "",
+        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+    },
+    "Rafael_Almeida": {
+        "nome": "Rafael Augusto Ribeiro de Almeida",
+        "cargo": "",
+        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+    },
+    "Joao_Vidal": {
+        "nome": "João Pedro Dias Vidal",
+        "cargo": "",
+        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+    },
+    "Caio_Palombo": {
+        "nome": "Caio Tomaz Palombo",
+        "cargo": "Estagiária Remunerada",
+        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+    },
+   
+    "Ligia_Simplicio": {
+        "nome": "Lígia de Lima Simplicio",
+        "cargo": "Estagiária Remunerada",
+        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+   
+        },"Monize_Cruz": {
+        "nome": "Monize Cruz Gonçalves",
+        "cargo": "Estagiária Voluntária",
+        "sobre": "Graduanda do curso de Relações Internacionais na Universidade Estadual Júlio de mesquita Filho (UNESP)no campus de Franca em São Paulo, interessada  nas áreas de Identidade Nacional, Interseccionalidade, estudos étnico-raciais, ciência política, periferia e politicas públicas.Membro do centro acadêmico Jõao Cabral de Melo Neto, representante discente e atuante no campus."
+   
+        },"Luana_Vitorino": {
+        "nome": "Luana Assunção Vitorino",
+        "cargo": "Pibic-Jr.",
+        "sobre": "Estudante de Curso Técnico em Desenvolvimento de Sistemas, com grande paixão por tecnologia e um entusiasmo contínuo por aprender coisas novas. Integra o programa PIBIC Jr. e compõe o Centro de Pesquisa Política Social (CPPS) da UNESP, conectando seus interesses em tecnologia com a pesquisa acadêmica." 
+    },
+        "Heloisa_Ricci": {
+        "nome": "Heloisa Ghisleri Ricci.",
+        "cargo": "Pibic-Jr.",
+        "sobre": "Estudante de Curso Técnico em Desenvolvimento de Sistemas na escola técnica Dr. Júlio Cardoso. Integra o programa PIBIC Jr. e compõe o Centro de Pesquisa Política Social (CPPS) da UNESP." 
+    }}
 }
