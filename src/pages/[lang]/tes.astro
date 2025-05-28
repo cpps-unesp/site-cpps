@@ -1,0 +1,14 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'pt' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'es' } }
+  ];
+}
+
+const { lang } = Astro.params;
+import Search from "astro-pagefind/components/Search";
+---
+
+<Search id="search" className="pagefind-ui" uiOptions={{ showImages: false }} />
