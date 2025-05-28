@@ -6,7 +6,7 @@ import AtividadesSection from '../../components/AtividadesSection.astro';
 import ProdutosSection from '../../components/ProdutosSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import MostUsedWidgets from '../../components/MostUsedWidgets.astro';
-import EquipeSection from '../../components/EquipeSection.astro';
+
 
 export function getStaticPaths() {
   return [
@@ -26,9 +26,9 @@ if (!allowedLangs.includes(currentLang)) {
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
 
 const { 
+  hero,
   titulo, 
-  descricao, 
-  equipe, 
+  descricao,  
   initiatives, 
   atividadesPesquisa, 
   atividadesExtensao, 
@@ -42,8 +42,9 @@ const {
 <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao}>
   <Hero heroData={locale.default} />
 
-  <section class="mt-16">
-    <h2 class="text-center text-3xl font-extrabold mb-4">{initiatives.titulo}</h2>
+
+   <section class="mt-16">
+    <h2 class="text-center text-3xl font-extrabold mb-4">{initiatives.title}</h2>
     <p class="text-center text-xl text-base-content mb-10 max-w-2xl mx-auto">
       {initiatives.descricao}
     </p>
@@ -56,37 +57,37 @@ const {
   </section>
 
   <section class="mt-16">
-    <h2 class="text-center text-3xl font-extrabold mb-4">{atividadesPesquisa.titulo}</h2>
+    <h2 class="text-center text-3xl font-extrabold mb-4">{atividadesPesquisa.title}</h2>
     <p class="text-center text-xl text-base-content mb-10 max-w-2xl mx-auto">
       {atividadesPesquisa.descricao}
     </p>
   </section>
 
   <AtividadesSection 
-    title={atividadesPesquisa.titulo} 
-    description={atividadesPesquisa.descricao} 
-    image={imagens.pesquisa} 
+    title={atividadesPesquisa.title} 
+    description={atividadesPesquisa.description} 
+    image={hero.link} 
     activities={atividadesPesquisa.items}
   />
-
   <AtividadesSection 
-    title={atividadesExtensao.titulo} 
-    description={atividadesExtensao.descricao} 
-    image={imagens.extensao} 
-    activities={atividadesExtensao.items}
+    title={atividadesPesquisa.title} 
+    description={atividadesPesquisa.description} 
+    image={hero.link} 
+    activities={atividadesPesquisa.items}
     reverse={true}
   />
 
+
+
   <ProdutosSection 
-    title={produtos.titulo} 
-    description={produtos.descricao} 
-    image={imagens.produtos} 
+    title={produtos.title} 
+    description={produtos.description} 
+    image={hero.link} 
     produtos={produtos.items}
   />
 
-  <MostUsedWidgets widgets={widgets} />
+<MostUsedWidgets widgets={locale.default.widgets} />
 
-  <FAQSection faqs={faqs} />
+  <FAQSection faqs={locale.default.faqs.items} />
 
-  <EquipeSection equipe={equipe} />
 </BaseLayout>

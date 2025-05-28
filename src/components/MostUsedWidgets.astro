@@ -1,23 +1,28 @@
 ---
-const { title = "Most used widgets", subtitle = "Provides frequently used components for building websites using Tailwind CSS", widgets } = Astro.props;
+const { widgets } = Astro.props;
+
+const { title = "Most used widgets", items = [] } = widgets ?? {};
 ---
 
 <section class="mt-16">
-  <p class="text-center text-primary font-semibold uppercase tracking-wide mb-2">Components</p>
-  <h2 class="text-center text-4xl font-extrabold mb-4">{title}</h2>
-  <p class="text-center text-base-content mb-10 max-w-2xl mx-auto">
-    {subtitle}
+  <p
+    class="text-center text-primary font-semibold uppercase tracking-wide mb-2"
+  >
+    Components
   </p>
+  <h2 class="text-center text-4xl font-extrabold mb-4">{title}</h2>
+  <p class="text-center text-base-content mb-10 max-w-2xl mx-auto"></p>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {widgets.map((widget) => (
-      <div class="card bg-base-100 shadow-md rounded-lg p-6 space-y-2">
-        <div class="text-3xl">{widget.icon}</div>
-        <h3 class="font-bold text-lg">{widget.title}</h3>
-        <p class="text-base-content text-sm">
-          {widget.description}
-        </p>
-      </div>
-    ))}
+    {
+      Array.isArray(items) &&
+        items.map((widget) => (
+          <div class="card bg-base-100 shadow-md rounded-lg p-6 space-y-2">
+            <div class="text-3xl">{widget.icon}</div>
+            <h3 class="font-bold text-lg">{widget.title}</h3>
+            <p class="text-base-content text-sm">{widget.description}</p>
+          </div>
+        ))
+    }
   </div>
 </section>

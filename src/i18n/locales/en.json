@@ -1,109 +1,171 @@
 {
-  "titulo": "Center for Political and Social Research",
-  "descricao": "The Center for Political and Social Research promotes knowledge, innovation, and critical analysis to transform society.",
-  "link": "/imagens/campus/entrada-unesp-franca.jpg",
-  "botao": {
-    "texto": "Learn more",
-    "url": "/initiatives/about"
+  "titulo": "My Page",
+  "descricao": "Page description",
+  "texts": {
+    "notFound": "Página não encontrada"
   },
-  "imagens": {
-    "pesquisa": "/images/research.jpg",
-    "extensao": "/images/extension.jpg",
-    "produtos": "/images/clock.jpg"
+  "hero": {
+    "titulo": "Center",
+    "descricao": "Com ciência e colaboração",
+    "botao": {
+      "url": "/pt/sobre",
+      "texto": "Saiba mais"
+    },
+    "link": "/imagens/campus/entrada-unesp-franca.jpg"
+  },
+  "cafe": {
+    "titulo": "Café com Ciência",
+    "descricao": "O Café com Ciência é uma iniciativa de divulgação científica promovida pelo NÉFiTs, com episódios que discutem temas relevantes nas ciências humanas.",
+    "episodios": [
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 1: Filosofia e Sociedade",
+        "descricao": "Uma conversa sobre os impactos da filosofia na sociedade contemporânea."
+      },
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 2: Ética na Pesquisa",
+        "descricao": "Debatendo os desafios éticos enfrentados pelos pesquisadores na atualidade."
+      },
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 3: Democracia e Participação",
+        "descricao": "Explorando a importância da participação popular em regimes democráticos."
+      }
+    ]
   },
   "equipe": {
-    "titulo": "Team",
-    "membros": [
+  "title": "Equipe",
+  "membros": [
+    {
+      "nome": "Nome do membro",
+      "cargo": "Cargo",
+      "foto": "/images/foto.jpg",
+      "descricao": "Descrição curta",
+      "linkedin": "https://linkedin.com/..."
+    }
+  ]
+},
+"initiatives": {
+  "title": "Iniciativas",
+  "descricao": "Conheça nossas principais iniciativas...",
+  "items": [
+    {
+      "icon": "🧪",
+      "title": "Projeto X",
+      "description": "Descrição do projeto"
+    },
+    {
+      "icon": "🧪",
+      "title": "Projeto X",
+      "description": "Descrição do projeto"
+    }
+  ]
+},
+"atividadesPesquisa": {
+  "title": "Atividades de Pesquisa",
+  "description": "Descrição das atividades de pesquisa.",
+  "items": [
+    {
+      "icon": "✅",
+      "title": "Pesquisa A",
+      "description": "Descrição da pesquisa A"
+    }
+  ]
+},
+"produtos": {
+  "title": "Produtos",
+  "description": "Descrição dos produtos.",
+  "items": [
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    }
+  ]
+},
+"faqs": {
+  "title": "Perguntas Frequentes",
+  "items": [
+    {
+      "question": "Pergunta 1",
+      "answer": "Resposta da pergunta"
+    }
+  ]
+},
+ "projetos": {
+    "titulo": "Nossos Projetos",
+    "lista": [
       {
-        "nome": "Hélio Alexandre da Silva",
-        "cargo": "Researcher – Coordinator",
-        "foto": "/images/helio.jpg",
-        "descricao": "Assistant Professor at UNESP, Franca campus...",
-        "linkedin": "https://linkedin.com/in/helio"
+        "icone": "🎓",
+        "titulo": "Projeto Educacional",
+        "descricao": "Aprimorando a criação de conteúdos instrucionais e materiais educacionais engajadores."
       },
       {
-        "nome": "Ana Júlia Diniz Neves do Lago",
-        "cargo": "Master's student",
-        "foto": "/images/ana.jpg",
-        "descricao": "Undergraduate student in International Relations at FCHS/UNESP...",
-        "instagram": "https://instagram.com/anajulia"
+        "icone": "🏠",
+        "titulo": "Design de Interiores",
+        "descricao": "Criando espaços funcionais e visualmente atraentes para uso residencial e comercial."
       },
       {
-        "nome": "Beatriz Furlan de Carvalho",
-        "cargo": "Master's student",
-        "foto": "/images/beatriz.jpg",
-        "descricao": "Master's student in Philosophy at UNESP-Marília...",
-        "instagram": "https://instagram.com/beatriz"
-      }
-    ]
-  },
-  "initiatives": {
-    "titulo": "Initiatives",
-    "items": [
-      {
-        "icon": "🧪",
-        "title": "Projects",
-        "description": "Explore our research projects that directly impact society."
+        "icone": "📷",
+        "titulo": "Fotografia",
+        "descricao": "Facilitando a narrativa visual para fotógrafos profissionais e entusiastas."
       },
       {
-        "icon": "🗂️",
-        "title": "Planning",
-        "description": "Our strategic planning guides our actions and decisions."
+        "icone": "🛒",
+        "titulo": "E-commerce",
+        "descricao": "Garantindo presença dinâmica para exibir produtos de forma eficaz, ideal para startups."
       },
       {
-        "icon": "☕",
-        "title": "Café Consciência",
-        "description": "Academic debates and events promoting reflection and dialogue."
+        "icone": "📝",
+        "titulo": "Blog",
+        "descricao": "Capacitando a apresentação eficaz de conteúdos para escritores, com foco em tipografia."
+      },
+      {
+        "icone": "🏢",
+        "titulo": "Negócios",
+        "descricao": "Oferecendo opções visuais refinadas para fortalecer a presença de marcas profissionais."
       }
     ]
   },
-  "atividadesPesquisa": {
-    "titulo": "Research Activities",
-    "items": [
-      {
-        "icon": "✅",
-        "title": "Research A",
-        "description": "We develop research projects that impact society and scientific production."
-      }
-    ]
-  },
-  "atividadesExtensao": {
-    "titulo": "Extension Activities",
-    "items": [
-      {
-        "icon": "✅",
-        "title": "Extension X",
-        "description": "Extension projects that bring the university closer to the community."
-      }
-    ]
-  },
-  "produtos": {
-    "titulo": "Products",
-    "items": [
-      {
-        "icon": "📥",
-        "title": "Step 1: Download",
-        "description": "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'."
-      }
-    ]
-  },
-  "faqs": {
-    "titulo": "FAQs",
-    "items": [
-      {
-        "question": "Why AstroWind?",
-        "answer": "Michael Knight, a young loner on a crusade to champion the cause of the innocent..."
-      }
-    ]
-  },
-  "widgets": {
-    "titulo": "Widgets",
-    "items": [
-      {
-        "icon": "🖼️",
-        "title": "Headers",
-        "description": "Ever tried driving without GPS? That's why websites need headers for direction."
-      }
-    ]
-  }
+"widgets": {
+  "title": "Widgets",
+  "items": [
+    {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
+     {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
+    {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
+    {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    }
+  ]
+}
 }

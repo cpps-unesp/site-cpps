@@ -1,5 +1,98 @@
-{"equipe": {
-  "titulo": "Equipe",
+{
+  "titulo": "My Page",
+  "descricao": "Page description",
+  "texts": {
+    "notFound": "Página não encontrada"
+  },
+  "hero": {
+    "titulo": "Transformando o mundo",
+    "descricao": "Com ciência e colaboração",
+    "botao": {
+      "url": "/pt/sobre",
+      "texto": "Saiba mais"
+    },
+    "link": "/imagens/campus/entrada-unesp-franca.jpg"
+  },
+  "cafe": {
+    "titulo": "Café com Ciência",
+    "descricao": "O Café com Ciência é uma iniciativa de divulgação científica promovida pelo NÉFiTs, com episódios que discutem temas relevantes nas ciências humanas.",
+    "episodios": [
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 1: Filosofia e Sociedade",
+        "descricao": "Uma conversa sobre os impactos da filosofia na sociedade contemporânea."
+      },
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 2: Ética na Pesquisa",
+        "descricao": "Debatendo os desafios éticos enfrentados pelos pesquisadores na atualidade."
+      },
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 3: Democracia e Participação",
+        "descricao": "Explorando a importância da participação popular em regimes democráticos."
+      }
+    ]
+  },
+  "sobre": {
+    "quem-somos": {
+      "titulo": "Quem somos",
+      "texto": "Descrição da seção quem somos...",
+      "imagem": "/images/equipe.jpg"
+    },
+    "objetivos": {
+      "titulo": "Objetivos",
+      "texto": "Descrição da seção objetivos...",
+      "imagem": "/images/livros.jpg"
+    },
+    "missao": {
+      "titulo": "Missão",
+      "texto": "Descrição da missão...",
+      "imagem": "/images/missao.jpg"
+    },
+    "valores": {
+      "titulo": "Valores",
+      "texto": "Descrição dos valores...",
+      "imagem": "/images/valores.jpg"
+    }
+  },
+  "projetos": {
+    "titulo": "Nossos Projetos",
+    "lista": [
+      {
+        "icone": "🎓",
+        "titulo": "Projeto Educacional",
+        "descricao": "Aprimorando a criação de conteúdos instrucionais e materiais educacionais engajadores."
+      },
+      {
+        "icone": "🏠",
+        "titulo": "Design de Interiores",
+        "descricao": "Criando espaços funcionais e visualmente atraentes para uso residencial e comercial."
+      },
+      {
+        "icone": "📷",
+        "titulo": "Fotografia",
+        "descricao": "Facilitando a narrativa visual para fotógrafos profissionais e entusiastas."
+      },
+      {
+        "icone": "🛒",
+        "titulo": "E-commerce",
+        "descricao": "Garantindo presença dinâmica para exibir produtos de forma eficaz, ideal para startups."
+      },
+      {
+        "icone": "📝",
+        "titulo": "Blog",
+        "descricao": "Capacitando a apresentação eficaz de conteúdos para escritores, com foco em tipografia."
+      },
+      {
+        "icone": "🏢",
+        "titulo": "Negócios",
+        "descricao": "Oferecendo opções visuais refinadas para fortalecer a presença de marcas profissionais."
+      }
+    ]
+  },
+  "equipe": {
+  "title": "Equipe",
   "membros": [
     {
       "nome": "Nome do membro",
@@ -11,9 +104,14 @@
   ]
 },
 "initiatives": {
-  "titulo": "Iniciativas",
+  "title": "Iniciativas",
   "descricao": "Conheça nossas principais iniciativas...",
   "items": [
+    {
+      "icon": "🧪",
+      "title": "Projeto X",
+      "description": "Descrição do projeto"
+    },
     {
       "icon": "🧪",
       "title": "Projeto X",
@@ -22,8 +120,8 @@
   ]
 },
 "atividadesPesquisa": {
-  "titulo": "Atividades de Pesquisa",
-  "descricao": "Descrição das atividades de pesquisa.",
+  "title": "Atividades de Pesquisa",
+  "description": "Descrição das atividades de pesquisa.",
   "items": [
     {
       "icon": "✅",
@@ -33,9 +131,24 @@
   ]
 },
 "produtos": {
-  "titulo": "Produtos",
-  "descricao": "Descrição dos produtos.",
+  "title": "Produtos",
+  "description": "Descrição dos produtos.",
   "items": [
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
     {
       "icon": "📥",
       "title": "Produto 1",
@@ -44,7 +157,7 @@
   ]
 },
 "faqs": {
-  "titulo": "Perguntas Frequentes",
+  "title": "Perguntas Frequentes",
   "items": [
     {
       "question": "Pergunta 1",
@@ -53,8 +166,23 @@
   ]
 },
 "widgets": {
-  "titulo": "Widgets",
+  "title": "Widgets",
   "items": [
+    {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
+     {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
+    {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
     {
       "icon": "🖼️",
       "title": "Widget 1",

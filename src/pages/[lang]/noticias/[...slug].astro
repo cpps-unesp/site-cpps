@@ -1,0 +1,33 @@
+---
+import NoticiaPage from '../../../components/NoticiaPage.astro';
+import { getCollection } from 'astro:content';
+import { routeTranslations } from '../../../i18n/routes';
+
+export async function getStaticPaths() {
+  const langs = ["pt", "en", "es"];
+  const allNoticias = await getCollection('noticias');
+
+  return langs.flatMap((lang) => 
+    allNoticias
+      .filter(post => post.data.lang === lang)
+      .map((post) => ({
+        params: { lang, slug: post.slug },
+      }))
+  );
+}
+
+const currentLang = (Astro.params.lang ?? "pt") as "pt" | "en" | "es";
+const slug = Astro.params.slug;
+
+// Detect if it's a news route
+const isNewsRoute = slug.startsWith(routeTranslations['noticias'][currentLang]);
+---
+
+{isNewsRoute ? (
+  <NoticiaPage lang={currentLang} slug={slug} />
+) : (
+  <>
+    <h1>404 - Not Found</h1>
+    <p>Página não encontrada.</p>
+  </>
+)}

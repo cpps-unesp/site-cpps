@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NoticiasSection from '../../components/NoticiasSection.astro';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'pt' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'es' } },
+  ];
+}
+
+const currentLang = (Astro.params.lang ?? "pt") as "pt" | "en" | "es";
+
+const allNoticias = await getCollection('noticias');
+
+const noticias = allNoticias
+  .filter(post => post.data.lang === currentLang)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());  // ✅ Ordenado por data desc.
+---
+
+<BaseLayout lang={currentLang} titulo="Notícias" descricao="" texts={{}}>
+  <NoticiasSection noticias={noticias} lang={currentLang} />
+</BaseLayout>

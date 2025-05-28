@@ -1,32 +1,53 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import EquipeSection from '../../components/EquipeSection.astro';
-import { routeTranslations } from '../../i18n/routes';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import EquipeSection from "../../components/EquipeSection.astro";
+import SobreSection from "../../components/SobreSection.astro";
+import ProjetosSection from "../../components/ProjetosSection.astro";
+import CafeComCienciaSection from "../../components/CafeComCienciaSection.astro";
+import NoticiaPage from "../../components/NoticiaPage.astro";
+import { routeTranslations } from "../../i18n/routes";
+import { getCollection } from "astro:content";
 
-type SupportedLang = 'pt' | 'en' | 'es';
+type SupportedLang = "pt" | "en" | "es";
 
-export function getStaticPaths() {
-  const langs: SupportedLang[] = ['pt', 'en', 'es'];
-  const allSlugs = Object.values(routeTranslations).flatMap(translations =>
-    langs.map(lang => translations[lang])
+export async function getStaticPaths() {
+  const langs: SupportedLang[] = ["pt", "en", "es"];
+  const allSlugs = Object.values(routeTranslations).flatMap((translations) =>
+    langs.map((lang) => translations[lang]),
   );
-  return langs.flatMap(lang =>
-    allSlugs.map(slug => ({
-      params: { lang, slug }
-    }))
-  );
+
+  const allNoticias = await getCollection("noticias");
+
+  const noticiaSlugs = allNoticias.map((post) => ({
+    lang: post.data.lang,
+    slug: `${routeTranslations['noticias'][post.data.lang]}/${post.slug}`,
+  }));
+
+  return [
+    ...langs.flatMap((lang) =>
+      allSlugs.map((slug) => ({
+        params: { lang, slug },
+      }))
+    ),
+    ...noticiaSlugs.map(({ lang, slug }) => ({
+      params: { lang, slug },
+    })),
+  ];
 }
 
-const currentLang = Astro.params.lang as SupportedLang ?? 'pt';
-const slug = Astro.params.slug ?? '';
-const slugArray = slug.split('/').filter(Boolean);
-const slugPath = slugArray.join('/');
+const currentLang = (Astro.params.lang as SupportedLang) ?? "pt";
+const slug = Astro.params.slug ?? "";
+const slugArray = slug.split("/").filter(Boolean);
+const slugPath = slugArray.join("/");
 
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
-const { titulo, descricao, texts, equipe } = locale.default;
+const { titulo, descricao, texts, equipe, sobre, projetos, cafe } = locale.default;
 
-function findOriginalKey(translatedSlug: string, lang: SupportedLang): string | null {
+function findOriginalKey(
+  translatedSlug: string,
+  lang: SupportedLang,
+): string | null {
   for (const [key, translations] of Object.entries(routeTranslations)) {
     if (translations[lang] === translatedSlug) {
       return key;
@@ -39,23 +60,45 @@ const originalKey = findOriginalKey(slugPath, currentLang);
 const pageContent = originalKey
   ? `Esta é a página ${originalKey} (${currentLang})`
   : null;
+
+const noticiasPrefix = routeTranslations['noticias'][currentLang];
+const isNoticia = slug.startsWith(`${noticiasPrefix}/`);
 ---
 
-<BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={texts}>
-  <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
+{isNoticia ? (
+  <NoticiaPage lang={currentLang} slug={slug} />
+) : (
+  <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={texts}>
+    <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
 
-  {originalKey === "institucional/equipe" ? (
-    <EquipeSection equipe={equipe} />
-  ) : pageContent ? (
-    <>
-      <h1 class="text-3xl font-bold mb-4">{slugArray.join(' / ')}</h1>
-      <p class="mb-4">{pageContent}</p>
-    </>
-  ) : (
-    <>
-      <h1 class="text-3xl font-bold mb-4">404 - {texts.notFound}</h1>
-      <p class="mb-4">Desculpe, não encontramos a página: <strong>{slugPath}</strong></p>
-      <p>Idioma: <strong>{currentLang}</strong></p>
-    </>
-  )}
-</BaseLayout>
+    {(() => {
+      switch (originalKey) {
+        case "institucional/equipe":
+          return <EquipeSection equipe={equipe} />;
+        case "institucional/sobre":
+          return <SobreSection sobre={sobre} />;
+        case "iniciativas/projetos":
+          return <ProjetosSection projetos={projetos} />;
+        case "iniciativas/cafe-com-ciencia":
+          return <CafeComCienciaSection cafe={cafe} />;
+        default:
+          return pageContent ? (
+            <>
+              <h1 class="text-3xl font-bold mb-4">{slugArray.join(" / ")}</h1>
+              <p class="mb-4">{pageContent}</p>
+            </>
+          ) : (
+            <>
+              <h1 class="text-3xl font-bold mb-4">404 - {texts.notFound}</h1>
+              <p class="mb-4">
+                Desculpe, não encontramos a página: <strong>{slugPath}</strong>
+              </p>
+              <p>
+                Idioma: <strong>{currentLang}</strong>
+              </p>
+            </>
+          );
+      }
+    })()}
+  </BaseLayout>
+)}

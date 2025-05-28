@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getEntry } from 'astro:content';
+import { routeTranslations } from '../i18n/routes'; 
+
+const { lang, slug } = Astro.props;
+
+const post = await getEntry('noticias', slug.replace(`${routeTranslations['noticias'][lang]}/`, ''));
+
+if (!post) throw new Error(`Notícia não encontrada: ${slug}`);
+
+const { title, date, image } = post.data;
+const { Content } = await post.render();
+---
+
+<BaseLayout lang={lang} titulo={title} descricao="" texts={{}}>
+  <article class="prose max-w-3xl mx-auto py-10">
+    <h1>{title}</h1>
+    <p class="text-sm text-gray-500">{new Date(date).toLocaleDateString()}</p>
+    <img src={image} alt={title} class="my-6 rounded-lg" />
+    <Content />
+  </article>
+</BaseLayout>

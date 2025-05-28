@@ -1,0 +1,24 @@
+---
+const { title, resumo, image, tags, slug, lang } = Astro.props;
+import slugify from "slugify";
+---
+
+<div class="bg-base-100 rounded-xl shadow-md p-4 flex flex-col space-y-2 hover:shadow-lg transition-shadow">
+  <div class="flex gap-2">
+    {tags.map(tag => (
+      <a 
+        href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`} 
+        class="badge badge-neutral text-xs"
+      >
+        {tag}
+      </a>
+    ))}
+  </div>
+  
+  <img src={image} alt={title} class="rounded-lg h-48 w-full object-cover" />
+
+  <h3 class="text-lg font-bold text-primary">{title}</h3>
+  <p class="text-sm">{resumo}</p>
+
+  <a href={slug} class="text-sm text-primary underline">Leia mais</a>
+</div>

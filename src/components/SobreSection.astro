@@ -1,0 +1,36 @@
+---
+const { sobre } = Astro.props;
+// sobre = { "quem-somos": { titulo, texto, imagem }, "objetivos": { ... }, "missao": { ... }, ... }
+---
+
+{sobre ? (
+  <section class="mt-16 space-y-16">
+    {Object.entries(sobre).map(([key, secao], index) => (
+      <div class="grid md:grid-cols-2 gap-8 items-center" key={key}>
+        {index % 2 === 0 ? (
+          <>
+            <div>
+              <h2 class="text-4xl font-extrabold mb-4">{secao.titulo}</h2>
+              <p class="text-base-content leading-relaxed">{secao.texto}</p>
+            </div>
+            <div>
+              <img src={secao.imagem} alt={secao.titulo} class="rounded-xl w-full max-w-sm mx-auto" />
+            </div>
+          </>
+        ) : (
+          <>
+            <div>
+              <img src={secao.imagem} alt={secao.titulo} class="rounded-xl w-full max-w-sm mx-auto" />
+            </div>
+            <div>
+              <h2 class="text-4xl font-extrabold mb-4">{secao.titulo}</h2>
+              <p class="text-base-content leading-relaxed">{secao.texto}</p>
+            </div>
+          </>
+        )}
+      </div>
+    ))}
+  </section>
+) : (
+  <p class="text-error">Conteúdo 'sobre' não encontrado.</p>
+)}

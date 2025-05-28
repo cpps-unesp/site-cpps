@@ -1,109 +1,171 @@
 {
-  "titulo": "Centro de Investigación Política y Social",
-  "descricao": "El Centro de Investigación Política y Social promueve el conocimiento, la innovación y el análisis crítico para transformar la sociedad.",
-  "link": "/imagens/campus/entrada-unesp-franca.jpg",
-  "botao": {
-    "texto": "Saber más",
-    "url": "/iniciativas/sobre"
+  "titulo": "My Page",
+  "descricao": "Page description",
+  "texts": {
+    "notFound": "Página não encontrada"
   },
-  "imagens": {
-    "pesquisa": "/images/investigacion.jpg",
-    "extensao": "/images/extension.jpg",
-    "produtos": "/images/reloj.jpg"
+  "hero": {
+    "titulo": "Centro",
+    "descricao": "Com ciência e colaboração",
+    "botao": {
+      "url": "/pt/sobre",
+      "texto": "Saiba mais"
+    },
+    "link": "/imagens/campus/entrada-unesp-franca.jpg"
+  },
+   "projetos": {
+    "titulo": "Nossos Projetos",
+    "lista": [
+      {
+        "icone": "🎓",
+        "titulo": "Projeto Educacional",
+        "descricao": "Aprimorando a criação de conteúdos instrucionais e materiais educacionais engajadores."
+      },
+      {
+        "icone": "🏠",
+        "titulo": "Design de Interiores",
+        "descricao": "Criando espaços funcionais e visualmente atraentes para uso residencial e comercial."
+      },
+      {
+        "icone": "📷",
+        "titulo": "Fotografia",
+        "descricao": "Facilitando a narrativa visual para fotógrafos profissionais e entusiastas."
+      },
+      {
+        "icone": "🛒",
+        "titulo": "E-commerce",
+        "descricao": "Garantindo presença dinâmica para exibir produtos de forma eficaz, ideal para startups."
+      },
+      {
+        "icone": "📝",
+        "titulo": "Blog",
+        "descricao": "Capacitando a apresentação eficaz de conteúdos para escritores, com foco em tipografia."
+      },
+      {
+        "icone": "🏢",
+        "titulo": "Negócios",
+        "descricao": "Oferecendo opções visuais refinadas para fortalecer a presença de marcas profissionais."
+      }
+    ]
+  },
+  "cafe": {
+    "titulo": "Café com Ciência",
+    "descricao": "O Café com Ciência é uma iniciativa de divulgação científica promovida pelo NÉFiTs, com episódios que discutem temas relevantes nas ciências humanas.",
+    "episodios": [
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 1: Filosofia e Sociedade",
+        "descricao": "Uma conversa sobre os impactos da filosofia na sociedade contemporânea."
+      },
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 2: Ética na Pesquisa",
+        "descricao": "Debatendo os desafios éticos enfrentados pelos pesquisadores na atualidade."
+      },
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 3: Democracia e Participação",
+        "descricao": "Explorando a importância da participação popular em regimes democráticos."
+      }
+    ]
   },
   "equipe": {
-    "titulo": "Equipo",
-    "membros": [
-      {
-        "nome": "Hélio Alexandre da Silva",
-        "cargo": "Investigador – Coordinador",
-        "foto": "/images/helio.jpg",
-        "descricao": "Profesor asistente en la UNESP, campus Franca...",
-        "linkedin": "https://linkedin.com/in/helio"
-      },
-      {
-        "nome": "Ana Júlia Diniz Neves do Lago",
-        "cargo": "Estudiante de maestría",
-        "foto": "/images/ana.jpg",
-        "descricao": "Estudiante de pregrado en Relaciones Internacionales en FCHS/UNESP...",
-        "instagram": "https://instagram.com/anajulia"
-      },
-      {
-        "nome": "Beatriz Furlan de Carvalho",
-        "cargo": "Estudiante de maestría",
-        "foto": "/images/beatriz.jpg",
-        "descricao": "Estudiante de maestría en Filosofía en UNESP-Marília...",
-        "instagram": "https://instagram.com/beatriz"
-      }
-    ]
-  },
-  "initiatives": {
-    "titulo": "Iniciativas",
-    "items": [
-      {
-        "icon": "🧪",
-        "title": "Proyectos",
-        "description": "Explora nuestros proyectos de investigación que impactan directamente en la sociedad."
-      },
-      {
-        "icon": "🗂️",
-        "title": "Planificación",
-        "description": "Nuestra planificación estratégica guía nuestras acciones y decisiones."
-      },
-      {
-        "icon": "☕",
-        "title": "Café Consciência",
-        "description": "Debates y eventos académicos que promueven la reflexión y el diálogo."
-      }
-    ]
-  },
-  "atividadesPesquisa": {
-    "titulo": "Actividades de Investigación",
-    "items": [
-      {
-        "icon": "✅",
-        "title": "Investigación A",
-        "description": "Desarrollamos proyectos de investigación que impactan en la sociedad y la producción científica."
-      }
-    ]
-  },
-  "atividadesExtensao": {
-    "titulo": "Actividades de Extensión",
-    "items": [
-      {
-        "icon": "✅",
-        "title": "Extensión X",
-        "description": "Proyectos de extensión que acercan la universidad a la comunidad."
-      }
-    ]
-  },
-  "produtos": {
-    "titulo": "Productos",
-    "items": [
-      {
-        "icon": "📥",
-        "title": "Paso 1: Descargar",
-        "description": "¡Comienza con GitHub! Haz un fork o usa la plantilla de AstroWind."
-      }
-    ]
-  },
-  "faqs": {
-    "titulo": "Preguntas Frecuentes",
-    "items": [
-      {
-        "question": "¿Por qué AstroWind?",
-        "answer": "Michael Knight, un joven solitario en una cruzada para..."
-      }
-    ]
-  },
-  "widgets": {
-    "titulo": "Widgets",
-    "items": [
-      {
-        "icon": "🖼️",
-        "title": "Encabezados",
-        "description": "¿Alguna vez intentaste conducir sin GPS? Por eso los sitios web necesitan encabezados."
-      }
-    ]
-  }
+  "title": "Equipe",
+  "membros": [
+    {
+      "nome": "Nome do membro",
+      "cargo": "Cargo",
+      "foto": "/images/foto.jpg",
+      "descricao": "Descrição curta",
+      "linkedin": "https://linkedin.com/..."
+    }
+  ]
+},
+"initiatives": {
+  "title": "Iniciativas",
+  "descricao": "Conheça nossas principais iniciativas...",
+  "items": [
+    {
+      "icon": "🧪",
+      "title": "Projeto X",
+      "description": "Descrição do projeto"
+    },
+    {
+      "icon": "🧪",
+      "title": "Projeto X",
+      "description": "Descrição do projeto"
+    }
+  ]
+},
+"atividadesPesquisa": {
+  "title": "Atividades de Pesquisa",
+  "description": "Descrição das atividades de pesquisa.",
+  "items": [
+    {
+      "icon": "✅",
+      "title": "Pesquisa A",
+      "description": "Descrição da pesquisa A"
+    }
+  ]
+},
+"produtos": {
+  "title": "Produtos",
+  "description": "Descrição dos produtos.",
+  "items": [
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    },
+    {
+      "icon": "📥",
+      "title": "Produto 1",
+      "description": "Descrição do produto"
+    }
+  ]
+},
+"faqs": {
+  "title": "Perguntas Frequentes",
+  "items": [
+    {
+      "question": "Pergunta 1",
+      "answer": "Resposta da pergunta"
+    }
+  ]
+},
+"widgets": {
+  "title": "Widgets",
+  "items": [
+    {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
+     {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
+    {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    },
+    {
+      "icon": "🖼️",
+      "title": "Widget 1",
+      "description": "Descrição do widget"
+    }
+  ]
+}
 }

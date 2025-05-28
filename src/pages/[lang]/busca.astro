@@ -1,0 +1,106 @@
+---
+export function getStaticPaths() {
+  return [
+    { params: { lang: 'pt' } },
+    { params: { lang: 'en' } },
+    { params: { lang: 'es' } }
+  ];
+}
+
+const { lang } = Astro.params;
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8">
+    <title>Busca - CPPS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1rem;
+        font-family: Arial, sans-serif;
+      }
+      .input {
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+      }
+      .menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .menu li {
+        padding: 0.5rem;
+        border-bottom: 1px solid #eee;
+      }
+      .menu li:hover {
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Buscar ({lang})</h1>
+      <input 
+        id="search-input" 
+        type="text" 
+        placeholder="Digite sua busca..." 
+        class="input"
+        aria-label="Buscar"
+      />
+
+      <ul id="search-results" class="menu"></ul>
+    </div>
+
+    <script type="module">
+      import("/_pagefind/pagefind.js").then(({ default: pagefind }) => {
+        const input = document.getElementById('search-input');
+        const resultsContainer = document.getElementById('search-results');
+
+        let debounceTimeout = null;
+
+        function clearResults() {
+          resultsContainer.innerHTML = '';
+        }
+
+        function createResultItem(url, title) {
+          const li = document.createElement('li');
+          li.innerHTML = `<a href="${url}">${title}</a>`;
+          return li;
+        }
+
+        input.addEventListener('input', () => {
+          clearTimeout(debounceTimeout);
+          debounceTimeout = setTimeout(async () => {
+            const term = input.value.trim();
+            if (term.length < 2) {
+              clearResults();
+              return;
+            }
+
+            const results = await pagefind.search(term);
+            clearResults();
+
+            if (results.length) {
+              for (const result of results) {
+                const item = await result.data();
+                const li = createResultItem(item.url, item.meta.title || item.excerpt);
+                resultsContainer.appendChild(li);
+              }
+            } else {
+              const li = document.createElement('li');
+              li.textContent = 'Nenhum resultado encontrado';
+              resultsContainer.appendChild(li);
+            }
+          }, 300);
+        });
+      });
+    </script>
+  </body>
+</html>

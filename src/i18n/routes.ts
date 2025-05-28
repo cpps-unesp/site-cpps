@@ -4,6 +4,11 @@ export const routeTranslations = {
     en: "initiatives/projects",
     es: "iniciativas/proyectos",
   },
+  "iniciativas/cafe-com-ciencia": {
+    pt: "iniciativas/cafe-com-ciencia",
+    en: "initiatives/coffee-with-science",
+    es: "iniciativas/cafe-con-ciencia",
+  },
   "institucional/sobre": {
     pt: "institucional/sobre",
     en: "institutional/about",
@@ -20,3 +25,5 @@ export const routeTranslations = {
     es: "noticias",
   },
 } as const;
+
+
