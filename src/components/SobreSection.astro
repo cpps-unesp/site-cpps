@@ -1,12 +1,12 @@
 ---
 const { sobre } = Astro.props;
-// sobre = { "quem-somos": { titulo, texto, imagem }, "objetivos": { ... }, "missao": { ... }, ... }
+// sobre = { "quem-somos": { titulo, texto, imagem }, ... }
 ---
 
 {sobre ? (
-  <section class="mt-16 space-y-16">
+  <section class="mt-16 space-y-24 px-4 md:px-8 lg:px-16">
     {Object.entries(sobre).map(([key, secao], index) => (
-      <div class="grid md:grid-cols-2 gap-8 items-center" key={key}>
+      <div class="grid md:grid-cols-2 gap-12 items-center" key={key}>
         {index % 2 === 0 ? (
           <>
             <div>
@@ -14,15 +14,25 @@ const { sobre } = Astro.props;
               <p class="text-base-content leading-relaxed">{secao.texto}</p>
             </div>
             <div>
-              <img src={secao.imagem} alt={secao.titulo} class="rounded-xl w-full max-w-sm mx-auto" />
+              <img
+                src={secao.imagem}
+                alt={`Imagem ilustrativa da seção ${secao.titulo}`}
+                class="rounded-xl w-full max-w-md mx-auto transition duration-300 ease-in-out"
+                loading="lazy"
+              />
             </div>
           </>
         ) : (
           <>
-            <div>
-              <img src={secao.imagem} alt={secao.titulo} class="rounded-xl w-full max-w-sm mx-auto" />
+            <div class="order-2 md:order-1">
+              <img
+                src={secao.imagem}
+                alt={`Imagem ilustrativa da seção ${secao.titulo}`}
+                class="rounded-xl w-full max-w-md mx-auto transition duration-300 ease-in-out"
+                loading="lazy"
+              />
             </div>
-            <div>
+            <div class="order-1 md:order-2">
               <h2 class="text-4xl font-extrabold mb-4">{secao.titulo}</h2>
               <p class="text-base-content leading-relaxed">{secao.texto}</p>
             </div>
@@ -32,5 +42,5 @@ const { sobre } = Astro.props;
     ))}
   </section>
 ) : (
-  <p class="text-error">Conteúdo 'sobre' não encontrado.</p>
+  <p class="text-error px-4 md:px-8">Conteúdo 'sobre' não encontrado.</p>
 )}

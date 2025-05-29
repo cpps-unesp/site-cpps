@@ -40,23 +40,24 @@
   "sobre": {
     "quem-somos": {
       "titulo": "Quem somos",
-      "texto": "Descrição da seção quem somos...",
-      "imagem": "/images/equipe.jpg"
+        "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
+
+      "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
     },
     "objetivos": {
       "titulo": "Objetivos",
-      "texto": "Descrição da seção objetivos...",
-      "imagem": "/images/livros.jpg"
+      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
+      "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
     },
     "missao": {
       "titulo": "Missão",
-      "texto": "Descrição da missão...",
-      "imagem": "/images/missao.jpg"
+      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
+      "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
     },
     "valores": {
       "titulo": "Valores",
-      "texto": "Descrição dos valores...",
-      "imagem": "/images/valores.jpg"
+      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
+      "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
     }
   },
   "projetos": {
@@ -95,22 +96,49 @@
     ]
   },
   "equipe": {
-  "title": "Equipe",
-  "membros": [
-    {
-  "nome": "Ligia Simplicio",
-  "cargo": "Estagiária Remunerada (Serviço Social)",
-  "descricao": "Descrição breve do membro.",
-  "foto": "/imagens/equipe/ligia_simplicio.jpeg",
-  "prioridade": 1,
-  "redes": [
-  { "tipo": "lattes", "url": "https://linkedin.com/in/fulano", "icone": "/imagens/logos/lattes_icon.svg" },
-  { "tipo": "linkedin", "url": "https://instagram.com/fulano", "icone": "/imagens/logos/linkedin_icon.svg" },
-  { "tipo": "instagram", "url": "https://github.com/fulano", "icone": "/imagens/logos/instagram_icon_cinza.svg" }
-]
-}
-  ]
-},
+    "title": "Equipe",
+    "intro": [
+      "Somos um time interdisciplinar dedicado à pesquisa e ao ensino.",
+      "Conheça os diferentes <a href='#coordenação'>grupos</a>, <a href='#pesquisadores'>grupos</a> que compõem nossa equipe."
+    ],
+    "categorias": {
+      "Coordenação": [
+        {
+          "nome": "Maria Silva",
+          "cargo": "Coordenadora Geral",
+          "descricao": "Responsável pela supervisão geral do projeto.",
+          "foto": "/imagens/equipe/maria_silva.jpg",
+          "prioridade": 1,
+          "redes": [
+            { "tipo": "lattes", "url": "https://lattes.cnpq.br/exemplo", "icone": "/imagens/logos/lattes_icon.svg" },
+            { "tipo": "linkedin", "url": "https://linkedin.com/in/mariasilva", "icone": "/imagens/logos/linkedin_icon.svg" }
+          ]
+        }
+      ],
+      "Pesquisadores": [
+        {
+          "nome": "João Souza",
+          "cargo": "Pesquisador",
+          "descricao": "Atua na área de política internacional.",
+          "foto": "/imagens/equipe/joao_souza.jpg",
+          "redes": []
+        }
+      ],
+      "Estagiários": [
+        {
+          "nome": "Ligia Simplicio",
+          "cargo": "Estagiária Remunerada (Serviço Social)",
+          "descricao": "Descrição breve do membro.",
+          "foto": "/imagens/equipe/ligia_simplicio.jpeg",
+          "prioridade": 2,
+          "redes": [
+            { "tipo": "lattes", "url": "https://lattes.cnpq.br/ligia", "icone": "/imagens/logos/lattes_icon.svg" },
+            { "tipo": "instagram", "url": "https://instagram.com/ligia", "icone": "/imagens/logos/instagram_icon_cinza.svg" }
+          ]
+        }
+      ]
+    }
+  },
 "initiatives2": {
   "title": "Iniciativas",
   "descricao": "Conheça as principais iniciativas",
