@@ -5,6 +5,7 @@ const {
   titulo = "CPPS",
   descricao = "",
   texts = {},
+  identidade = {},
 } = Astro.props;
 
 import Header from "../components/Header.astro";
@@ -15,7 +16,7 @@ import SearchModal from "../components/SearchModal.astro";
 import "../styles/global.css";
 ---
 
-<html lang={lang}>
+<html lang={lang} data-theme="cpps">
   <head>
     <meta charset="utf-8" />
     <title>{titulo} | CPPS</title>
@@ -28,17 +29,16 @@ import "../styles/global.css";
     <meta property="og:locale" content={lang} />
 
     <!-- ✅ SEO multilíngue -->
-    {
-      ["pt", "en", "es"].map((l) => (
-        <link rel="alternate" hreflang={l} href={`https://seusite.com/${l}/`} />
-      ))
-    }
+    {["pt", "en", "es"].map((l) => (
+      <link rel="alternate" hreflang={l} href={`https://cpps.franca.unesp.br/${l}/`} />
+    ))}
 
     <!-- ✅ canonical -->
-    <link rel="canonical" href={`https://seusite.com/${lang}/`} />
+    <link rel="canonical" href={`https://cpps.franca.unesp.br/${lang}/`} />
 
+    <!-- ✅ Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
@@ -56,26 +56,25 @@ import "../styles/global.css";
       body {
         font-family: "Montserrat", sans-serif;
       }
-      h1,
-      h2,
-      h3 {
+      h1, h2, h3, .titulo {
         font-family: "Lovelo", sans-serif;
       }
     </style>
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <Header lang={lang} texts={texts}>
+    <Header lang={lang} texts={texts} identidade={identidade}>
+      
       <AlternarTema />
     </Header>
 
-    <main class="container mx-auto p-8"data-pagefind-body>
+   <main class="pt-8 flex-1" data-pagefind-body>
+
       <slot />
     </main>
 
     <Footer lang={lang} texts={texts} />
+    <SearchModal/>
 
-    <!-- ✅ Modal de busca com Pagefind -->
-    <SearchModal />
   </body>
 </html>

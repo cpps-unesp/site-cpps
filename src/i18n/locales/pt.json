@@ -1,14 +1,17 @@
 {
-  "titulo": "My Page",
-  "descricao": "Page description",
+  "titulo": "Site",
+  "descricao": "Centro de Pesquisa Política e Social da Universidade EStadual Paulista (UNESP)",
+  "identidade":{
+    "logo":"/imagens/logos/logo-cpps-unesp.svg"
+  },
   "texts": {
     "notFound": "Página não encontrada"
   },
   "hero": {
-    "titulo": "Transformando o mundo",
-    "descricao": "Com ciência e colaboração",
+    "titulo": "Centro de Pesquisa Política e Social",
+    "descricao": "Busca apoiar a execução de pesquisas na <span class='text-primary font-semibold bg-white px-1 rounded'>Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)</span>, localizado no município de Franca/SP.",
     "botao": {
-      "url": "/pt/sobre",
+      "url": "/institucional/sobre",
       "texto": "Saiba mais"
     },
     "link": "/imagens/campus/entrada-unesp-franca.jpg"
@@ -95,27 +98,46 @@
   "title": "Equipe",
   "membros": [
     {
-      "nome": "Nome do membro",
-      "cargo": "Cargo",
-      "foto": "/images/foto.jpg",
-      "descricao": "Descrição curta",
-      "linkedin": "https://linkedin.com/..."
-    }
+  "nome": "Ligia Simplicio",
+  "cargo": "Estagiária Remunerada (Serviço Social)",
+  "descricao": "Descrição breve do membro.",
+  "foto": "/imagens/equipe/ligia_simplicio.jpeg",
+  "prioridade": 1,
+  "redes": [
+  { "tipo": "lattes", "url": "https://linkedin.com/in/fulano", "icone": "/imagens/logos/lattes_icon.svg" },
+  { "tipo": "linkedin", "url": "https://instagram.com/fulano", "icone": "/imagens/logos/linkedin_icon.svg" },
+  { "tipo": "instagram", "url": "https://github.com/fulano", "icone": "/imagens/logos/instagram_icon_cinza.svg" }
+]
+}
   ]
 },
-"initiatives": {
+"initiatives2": {
   "title": "Iniciativas",
-  "descricao": "Conheça nossas principais iniciativas...",
+  "descricao": "Conheça as principais iniciativas",
   "items": [
     {
-      "icon": "🧪",
-      "title": "Projeto X",
-      "description": "Descrição do projeto"
+      "icon": "💬",
+      "title": "Café com Ciência",
+      "description": "Seminário Mensal do Centro de Pesquisa Política e Social que busca debates temas relacionados as agendas de pesquisa de docentes da UNESP/Franca",
+      "url": "/iniciativas/cafe-com-ciencia"
     },
     {
-      "icon": "🧪",
-      "title": "Projeto X",
-      "description": "Descrição do projeto"
+      "icon": "💡",
+      "title": "Dados Governamentais",
+      "description": "Descrição do projeto",
+      "url": "/projetos"
+    },
+    {
+      "icon": "💡",
+      "title": "Notícias de Jornais",
+      "description": "Descrição do projeto",
+      "url": "/projetos"
+    },
+    {
+      "icon": "💡",
+      "title": "Oficinas",
+      "description": "Descrição do projeto",
+      "url": "/projetos"
     }
   ]
 },
@@ -165,28 +187,51 @@
     }
   ]
 },
-"widgets": {
-  "title": "Widgets",
+"initiatives": {
+  "label": "Iniciativas",
+  "title": "Conheça as iniciativas do Centro",
   "items": [
     {
-      "icon": "🖼️",
-      "title": "Widget 1",
-      "description": "Descrição do widget"
+      "icon": "👥💬",
+      "title": "Café com Ciência ",
+      "tipo": "ciência",
+      "link": "/iniciativas/cafe-com-ciencia",
+      "description": "Seminário mensal voltado a debater temas relacionados a agendas de pesquisa dos docentes da FCHS/UNESP/Franca"
+    },
+    {
+      "icon": "🗃️",
+      "title": "Projetos de dados",
+      "tipo": "dados",
+      "link": "/iniciativas/cafe-com-ciencia",
+      "description": "Os projetos de dados são iniciativas que visam coletar, tratar, analisar e, quando possível, disponibilizar dados relevantes para as pesquisas"
     },
      {
-      "icon": "🖼️",
-      "title": "Widget 1",
-      "description": "Descrição do widget"
+      "icon": "👩🏻‍💻",
+      "title": "Auxílio à Pesquisa",
+      "tipo": "Pesquisa",
+      "link": "/iniciativas/cafe-com-ciencia",
+      "description": "Apoio a preparação e execução de projetos de pesquisas"
     },
     {
-      "icon": "🖼️",
-      "title": "Widget 1",
-      "description": "Descrição do widget"
+      "icon": "📚",
+      "title": "Material de Apoio",
+      "tipo": "apoio",
+      "link": "/iniciativas/cafe-com-ciencia",
+      "description": "Realização de oficinas, material de apoio e cursos que incentivem e auxiliem uma melhor incorporação de ferramentas tecnológicas nas atividades de pesquisa."
     },
     {
-      "icon": "🖼️",
-      "title": "Widget 1",
-      "description": "Descrição do widget"
+      "icon": "⚙️",
+      "title": "Soluções Tecnológicas",
+      "tipo": "sistemas",
+      "link": "/iniciativas/cafe-com-ciencia",
+      "description": "Promover uma melhor utilização dos recursos computacionais, bem como a implementação e o desenvolvimento de software e serviços voltados para as pesquisas "
+    },
+     {
+      "icon": "🫱🏽‍🫲🏼",
+      "title": "Cooperação e Parceiras",
+      "tipo": "apoio",
+      "link": "/iniciativas/cafe-com-ciencia",
+      "description": "Apoio para a cooperação científica e no estabelecimentos de parceirias, nacionais e internacionais, voltadas para o desenvolvimento de pesquisas"
     }
   ]
 }

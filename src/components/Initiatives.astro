@@ -1,0 +1,32 @@
+---
+const { initiatives, lang = "pt" } = Astro.props;
+const { label, title = "Most used initiatives", items = [] } = initiatives ?? {};
+---
+
+<div class="bg-base-100 py-16">
+  <div class="max-w-screen-xl mx-auto px-4">
+    <p class="text-center text-primary font-semibold uppercase tracking-wide mb-2">
+      {label}
+    </p>
+
+    <h2 class="titulo text-center text-primary mb-4">{title}</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {items.map((initiative) => (
+        <a
+          href={`/${lang}${initiative.link}`}
+          class="relative block card bg-base-200 text-base-content shadow-md hover:shadow-lg transition-shadow rounded-xl p-6 space-y-3 hover:bg-base-300"
+        >
+          <!-- Tag no canto superior direito -->
+          <span class="absolute top-2 right-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase">
+            {initiative.tipo}
+          </span>
+
+          <div class="text-3xl text-primary">{initiative.icon}</div>
+          <h3 class="text-[20px] font-display mb-1 text-primary">{initiative.title}</h3>
+          <p class="text-[12px] leading-snug">{initiative.description}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>

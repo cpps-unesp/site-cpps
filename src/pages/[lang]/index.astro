@@ -1,93 +1,73 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Hero from '../../components/Hero.astro';
-import InitiativeCard from '../../components/InitiativeCard.astro';
-import AtividadesSection from '../../components/AtividadesSection.astro';
-import ProdutosSection from '../../components/ProdutosSection.astro';
-import FAQSection from '../../components/FAQSection.astro';
-import MostUsedWidgets from '../../components/MostUsedWidgets.astro';
-
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import AtividadesSection from "../../components/AtividadesSection.astro";
+import ProdutosSection from "../../components/ProdutosSection.astro";
+import FAQSection from "../../components/FAQSection.astro";
+import Initiatives from "../../components/Initiatives.astro";
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'pt' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'es' } },
+    { params: { lang: "pt" } },
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
   ];
 }
 
-const currentLang = Astro.params.lang ?? 'pt';
+const currentLang = Astro.params.lang ?? "pt";
 
-const allowedLangs = ['pt', 'en', 'es'];
+const allowedLangs = ["pt", "en", "es"];
 if (!allowedLangs.includes(currentLang)) {
-  return Astro.redirect('/pt/');
+  return Astro.redirect("/pt/");
 }
 
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
 
-const { 
+const {
   hero,
-  titulo, 
-  descricao,  
-  initiatives, 
-  atividadesPesquisa, 
-  atividadesExtensao, 
-  produtos, 
-  faqs, 
-  widgets,
-  imagens
+  titulo,
+  descricao,
+  initiatives,
+  atividadesPesquisa,
+  atividadesExtensao,
+  produtos,
+  faqs,
+  imagens,
 } = locale.default;
 ---
 
 <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao}>
   <Hero heroData={locale.default} />
-
-
-   <section class="mt-16">
-    <h2 class="text-center text-3xl font-extrabold mb-4">{initiatives.title}</h2>
-    <p class="text-center text-xl text-base-content mb-10 max-w-2xl mx-auto">
-      {initiatives.descricao}
-    </p>
-
-    <div class="grid gap-8 md:grid-cols-2">
-      {initiatives.items.map((item) => (
-        <InitiativeCard icon={item.icon} title={item.title} description={item.description} />
-      ))}
-    </div>
-  </section>
+  <!-- <Initiatives initiatives={locale.default.initiatives} />
 
   <section class="mt-16">
-    <h2 class="text-center text-3xl font-extrabold mb-4">{atividadesPesquisa.title}</h2>
+    <h2 class="text-center text-3xl font-extrabold mb-4">
+      {atividadesPesquisa.title}
+    </h2>
     <p class="text-center text-xl text-base-content mb-10 max-w-2xl mx-auto">
       {atividadesPesquisa.descricao}
     </p>
-  </section>
+  </section> -->
 
-  <AtividadesSection 
-    title={atividadesPesquisa.title} 
-    description={atividadesPesquisa.description} 
-    image={hero.link} 
+  <!-- <AtividadesSection
+    title={atividadesPesquisa.title}
+    description={atividadesPesquisa.description}
+    image={hero.link}
     activities={atividadesPesquisa.items}
   />
-  <AtividadesSection 
-    title={atividadesPesquisa.title} 
-    description={atividadesPesquisa.description} 
-    image={hero.link} 
+  <AtividadesSection
+    title={atividadesPesquisa.title}
+    description={atividadesPesquisa.description}
+    image={hero.link}
     activities={atividadesPesquisa.items}
     reverse={true}
   />
 
-
-
-  <ProdutosSection 
-    title={produtos.title} 
-    description={produtos.description} 
-    image={hero.link} 
+  <ProdutosSection
+    title={produtos.title}
+    description={produtos.description}
+    image={hero.link}
     produtos={produtos.items}
   />
-
-<MostUsedWidgets widgets={locale.default.widgets} />
-
-  <FAQSection faqs={locale.default.faqs.items} />
-
+  <FAQSection faqs={locale.default.faqs.items} /> -->
 </BaseLayout>

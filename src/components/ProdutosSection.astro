@@ -1,47 +1,19 @@
 ---
-const { title, image, produtos, reverse = false } = Astro.props;
-
-const sectionClasses = reverse
-  ? "max-w-6xl mx-auto flex flex-col md:flex-row-reverse gap-8 items-center"
-  : "max-w-6xl mx-auto flex flex-col md:flex-row gap-8 items-center";
+const { icon, title, description } = Astro.props;
 ---
 
-<section class="mt-16">
-  <div class={sectionClasses}>
-    <!-- Texto e lista -->
-    <div class="md:w-1/2">
-      <h2 class="text-4xl font-extrabold mb-8">{title}</h2>
-
-      <ol class="space-y-8 relative">
-        {
-          produtos.map(
-            (
-              produto: { icon: string; title: string; description: string },
-              index: number,
-            ) => (
-              <li class="relative pl-10">
-                <span class="absolute left-0 top-1 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 border-2 border-primary rounded-full text-primary bg-white z-10">
-                  {produto.icon}
-                </span>
-
-                {index !== produtos.length - 1 && (
-                  <span class="absolute left-0 top-9 transform -translate-x-1/2 h-full border-l-2 border-gray-300" />
-                )}
-
-                <h3 class="font-bold text-base">{produto.title}</h3>
-                <p class="text-base-content text-sm mt-1">
-                  {produto.description}
-                </p>
-              </li>
-            ),
-          )
-        }
-      </ol>
-    </div>
-
-    <!-- Imagem -->
-    <div class="md:w-1/2">
-      <img src={image} alt={title} class="rounded-lg shadow-lg" />
+<div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+  <div class="card-body">
+    <div class="flex items-start space-x-4">
+      <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-base-100 text-2xl">
+        {icon}
+      </div>
+      <div class="max-w-sm">
+        <h3 class="card-title text-[20px] font-display mb-1 text-primary">{title}</h3>
+        <p class="text-[12px] text-base-content leading-snug">
+          {description}
+        </p>
+      </div>
     </div>
   </div>
-</section>
+</div>

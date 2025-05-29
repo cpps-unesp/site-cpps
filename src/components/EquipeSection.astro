@@ -1,24 +1,50 @@
 ---
-const { equipe } = Astro.props; // equipe = { titulo: string, membros: [] }
+const { equipe } = Astro.props;
+
+const membrosOrdenados = [...equipe.membros].sort((a, b) => {
+  if (a.prioridade != null && b.prioridade != null) {
+    return a.prioridade - b.prioridade;
+  }
+  if (a.prioridade != null) return -1;
+  if (b.prioridade != null) return 1;
+  return a.nome.localeCompare(b.nome);
+});
 ---
 
 <section class="mt-16">
-  <h2 class="text-4xl font-extrabold mb-8">{equipe.titulo}</h2>
+  <h2 class="titulo text-center text-primary mb-8">{equipe.titulo}</h2>
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {equipe.membros.map((membro) => (
-      <div class="bg-base-100 rounded-lg shadow-md p-6 flex flex-col space-y-4">
-        <img src={membro.foto} alt={membro.nome} class="rounded-md w-full h-48 object-cover" />
+    {membrosOrdenados.map((membro) => (
+      <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow rounded-xl overflow-hidden">
+        <img src={membro.foto} alt={membro.nome} class="w-full h-48 object-cover saturate-50 contrast-125" />
 
-        <div class="flex space-x-2">
-          {membro.linkedin && <a href={membro.linkedin} class="text-primary text-xl">🔗</a>}
-          {membro.instagram && <a href={membro.instagram} class="text-primary text-xl">📸</a>}
-        </div>
+        <div class="card-body space-y-3">
+          
+          {membro.redes && membro.redes.length > 0 && (
+            <div class="flex justify-center space-x-4">
+              {membro.redes.slice(0, 3).map((rede) => (
+                <a 
+                  href={rede.url} 
+                  target="_blank" 
+                  rel="noopener" 
+                  class="hover:scale-110 transition-transform"
+                >
+                  <img 
+                    src={rede.icone} 
+                    alt={rede.tipo} 
+                    class="w-6 h-6"
+                  />
+                </a>
+              ))}
+            </div>
+          )}
 
-        <div>
-          <h3 class="text-lg font-bold text-red-600">{membro.nome}</h3>
-          <p class="text-sm text-gray-600 mb-2">{membro.cargo}</p>
-          <p class="text-sm text-base-content">{membro.descricao}</p>
+          <div class="text-center">
+            <h3 class="text-[20px] font-display text-primary mb-1">{membro.nome}</h3>
+            <p class="text-[12px] text-neutral mb-1">{membro.cargo}</p>
+            <p class="text-[12px] text-base-content">{membro.descricao}</p>
+          </div>
         </div>
       </div>
     ))}

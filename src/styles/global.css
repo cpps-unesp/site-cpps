@@ -9,20 +9,63 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #2197C5;
-  --color-secondary: #347D9B;
-  --color-accent: #00ACF0;
-  --color-neutral: #2E3F46;
-  --color-base-100: #ffffff;
-  --color-base-content: #2E3F46;
+  --color-primary: #347D9B;       /* Azul principal */
+  --color-secondary: #2197C5;     /* Azul intermediário */
+  --color-accent: #00ACF0;        /* Azul vibrante */
+  --color-neutral: #2E3F46;       /* Cinza escuro */
+  --color-base-100: #ffffff;      /* Fundo branco */
+  --color-base-content: #2E3F46;  /* Texto: cinza escuro */
 }
 
 @plugin "daisyui/theme" {
   name: "dark";
-  --color-primary: #00ACF0;
-  --color-secondary: #347D9B;
-  --color-accent: #2197C5;
-  --color-neutral: #2E3F46;
-  --color-base-100: #1F2937;
-  --color-base-content: #f3f4f6;
+  --color-primary: #00ACF0;             /* Mantém azul vibrante */
+  --color-secondary: #347D9B;           /* Azul intermediário */
+  --color-accent: #2197C5;              /* Azul principal */
+  --color-neutral: #2E3F46;             /* Cinza escuro */
+  --color-base-100: #1F2937;            /* Fundo: cinza bem escuro */
+  --color-base-content: #f3f4f6;        /* Texto: cinza claro */
+}
+
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: theme('colors.base-100');
+}
+
+/* Garante que o body não deixe sobra no fim */
+body > *:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, h4, .titulo {
+  font-family: 'Lovelo', sans-serif;
+}
+
+.titulo {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.subtitulo {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.paragrafo {
+  font-size: 12px;
 }
