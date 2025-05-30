@@ -1,20 +1,27 @@
 ---
+import { ordenarPorPrioridadeOuNome } from '../utils/ordenar';
+import EquipeTabs from '../components/EquipeTabs.astro';
 const { equipe } = Astro.props;
 
-// Extrai membros de todas as categorias e ordena
-const membrosOrdenados = Object.values(equipe.categorias ?? {})
-  .flat()
-  .sort((a, b) => {
-    if (a.prioridade != null && b.prioridade != null) {
-      return a.prioridade - b.prioridade;
-    }
-    if (a.prioridade != null) return -1;
-    if (b.prioridade != null) return 1;
-    return a.nome.localeCompare(b.nome);
-  });
+// Organiza os membros ativos por categoria
+const ativosPorCategoria = Object.entries(equipe.categorias ?? {}).map(
+  ([categoria, membros]) => [
+    categoria,
+    ordenarPorPrioridadeOuNome(
+      membros.filter((m) => m.status !== 'inativo'),
+      'prioridade',
+      'nome',
+      'asc'
+    )
+  ]
+);
 
-// Agrupa membros por categoria
-const membrosPorCategoria = Object.entries(equipe.categorias ?? {});
+// Coleta e ordena todos os membros inativos
+const inativosTodos = Object.values(equipe.categorias ?? {})
+  .flat()
+  .filter((m) => m.status === 'inativo');
+
+const inativosOrdenados = ordenarPorPrioridadeOuNome(inativosTodos, 'prioridade', 'nome', 'asc');
 ---
 
 <section class="mt-16 px-4 md:px-8 max-w-screen-xl mx-auto">
@@ -24,51 +31,10 @@ const membrosPorCategoria = Object.entries(equipe.categorias ?? {});
     <div class="mb-10 space-y-4 text-base-content text-center max-w-3xl mx-auto">
       {equipe.intro.map((paragrafo) => (
         <p set:html={paragrafo} class="[&>a]:text-primary [&>a]:underline hover:[&>a]:text-secondary transition"></p>
-
       ))}
     </div>
   )}
 
-  {membrosPorCategoria.map(([categoria, membros]) => (
-    <div key={categoria} class="mb-12">
-      <h3 id={categoria.toLowerCase().replace(/\s+/g, "-")} class="text-2xl font-semibold text-primary mt-8 mb-6">
-        {categoria}
-      </h3>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {membros.map((membro) => (
-          <div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow rounded-xl overflow-hidden">
-            <img
-              src={membro.foto}
-              alt={membro.nome}
-              class="w-full h-48 object-cover saturate-50 contrast-125"
-            />
-
-            <div class="card-body space-y-3">
-              {membro.redes && membro.redes.length > 0 && (
-                <div class="flex justify-center space-x-4">
-                  {membro.redes.slice(0, 3).map((rede) => (
-                    <a
-                      href={rede.url}
-                      target="_blank"
-                      rel="noopener"
-                      class="hover:scale-110 transition-transform"
-                    >
-                      <img src={rede.icone} alt={rede.tipo} class="w-6 h-6" />
-                    </a>
-                  ))}
-                </div>
-              )}
-
-              <div class="text-center">
-                <h3 class="text-[20px] font-display text-primary mb-1">{membro.nome}</h3>
-                <p class="text-[12px] text-neutral mb-1">{membro.cargo}</p>
-                <p class="text-[12px] text-base-content">{membro.descricao}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  ))}
+  <!-- Tabs com layout unificado usando componente padrão do DaisyUI -->
+  <EquipeTabs ativos={ativosPorCategoria} inativos={inativosOrdenados} lang={Astro.params.lang ?? 'pt'} layout="pesquisador" />
 </section>

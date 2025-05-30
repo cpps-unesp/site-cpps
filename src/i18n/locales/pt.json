@@ -1,8 +1,8 @@
 {
   "titulo": "Site",
   "descricao": "Centro de Pesquisa Política e Social da Universidade EStadual Paulista (UNESP)",
-  "identidade":{
-    "logo":"/imagens/logos/logo-cpps-unesp.svg"
+  "identidade": {
+    "logo": "/imagens/logos/logo-cpps-unesp.svg"
   },
   "texts": {
     "notFound": "Página não encontrada"
@@ -40,8 +40,7 @@
   "sobre": {
     "quem-somos": {
       "titulo": "Quem somos",
-        "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
-
+      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
       "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
     },
     "objetivos": {
@@ -108,46 +107,93 @@
           "cargo": "Coordenação",
           "descricao": "Responsável pela supervisão geral do projeto",
           "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
-          "prioridade": "",  
+          "prioridade": "",
+          "status": "ativo",
           "redes": [
-            { "tipo": "lattes", "url": "http://lattes.cnpq.br/7249928800890408", "icone": "/imagens/logos/lattes_icon.svg" },
-            { "tipo": "linkedin", "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/", "icone": "/imagens/logos/linkedin_icon.svg" }
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/7249928800890408",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }
           ]
         },
-          {
+        {
           "nome": "Marcelo Passini Mariano",
           "cargo": "Coordenação",
           "descricao": "Responsável pela supervisão geral do projeto.",
           "foto": "/imagens/equipe/Marcelo_Mariano.jpg",
           "prioridade": "",
+          "status": "ativo",
           "redes": [
-            { "tipo": "lattes", "url": " http://lattes.cnpq.br/3505849964932313", "icone": "/imagens/logos/lattes_icon.svg" }
+            {
+              "tipo": "lattes",
+              "url": " http://lattes.cnpq.br/3505849964932313",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
           ]
         },
-         {
+        {
           "nome": "Thais Amoroso Paschoal",
           "cargo": "Coordenação",
           "descricao": "Responsável pela supervisão geral do projeto.",
           "foto": "/imagens/equipe/Thais_Amoroso.jpg",
           "prioridade": "",
+          "status": "ativo",
           "redes": [
-            { "tipo": "lattes", "url": "http://lattes.cnpq.br/1531037509340384", "icone": "/imagens/logos/lattes_icon.svg" },
-            { "tipo": "linkedin", "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/", "icone": "/imagens/logos/linkedin_icon.svg" }
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/1531037509340384",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }
           ]
         }
       ],
-      
       "Pesquisadores": [
         {
           "nome": "João Souza",
           "cargo": "Pesquisador",
           "descricao": "Atua na área de política internacional.",
           "foto": "/imagens/equipe/joao_souza.jpg",
-          "redes": []
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/1531037509340384",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Joana D'Arc",
+          "cargo": "Pesquisadora Associada",
+          "descricao": "Especialista em ciência política comparada.",
+          "foto": "/imagens/equipe/joana_darc.jpg",
+          "prioridade": "",
+          "status": "inativo",
+          "contribuicao": "Liderou o projeto de cooperação internacional entre 2018 e 2020.",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/123456789",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
         }
       ],
-      
-
       "Estagiários": [
         {
           "nome": "Ligia Simplicio",
@@ -156,19 +202,35 @@
           "foto": "/imagens/equipe/ligia_simplicio.jpeg",
           "prioridade": "",
           "redes": [
-            { "tipo": "lattes", "url": " http://lattes.cnpq.br/9979622141210229", "icone": "/imagens/logos/lattes_icon.svg" },
-            { "tipo": "instagram", "url": "https://www.instagram.com/ligia.simplicio", "icone": "/imagens/logos/instagram_icon_cinza.svg" }
+            {
+              "tipo": "lattes",
+              "url": " http://lattes.cnpq.br/9979622141210229",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "instagram",
+              "url": "https://www.instagram.com/ligia.simplicio",
+              "icone": "/imagens/logos/instagram_icon_cinza.svg"
+            }
           ]
         },
-         {
+        {
           "nome": "João Pedro Dias Vidal",
           "cargo": "Estagiário Remunerado (Direito)",
           "descricao": "Graduando em Direito na Unesp Franca e Membro ativo do CPPS",
           "foto": "/imagens/equipe/Joao_Vidal.jpg",
           "prioridade": "",
           "redes": [
-            { "tipo": "lattes", "url": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/", "icone": "/imagens/logos/linkedin_icon2.svg" },
-            { "tipo": "instagram", "url": "https://www.instagram.com/_vidaljp/", "icone": "/imagens/logos/instagram_icon_cinza.svg" }
+            {
+              "tipo": "lattes",
+              "url": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
+              "icone": "/imagens/logos/linkedin_icon2.svg"
+            },
+            {
+              "tipo": "instagram",
+              "url": "https://www.instagram.com/_vidaljp/",
+              "icone": "/imagens/logos/instagram_icon_cinza.svg"
+            }
           ]
         },
         {
@@ -178,8 +240,16 @@
           "foto": "/imagens/equipe/caio_tomaz.png",
           "prioridade": "",
           "redes": [
-            { "tipo": "lattes", "url": "https://www.linkedin.com/in/caio-t-palomvo2664/", "icone": "/imagens/logos/linkedin_icon2.svg" },
-            { "tipo": "instagram", "url": "https://www.instagram.com/Caio_2664/", "icone": "/imagens/logos/instagram_icon_cinza.svg" }
+            {
+              "tipo": "lattes",
+              "url": "https://www.linkedin.com/in/caio-t-palomvo2664/",
+              "icone": "/imagens/logos/linkedin_icon2.svg"
+            },
+            {
+              "tipo": "instagram",
+              "url": "https://www.instagram.com/Caio_2664/",
+              "icone": "/imagens/logos/instagram_icon_cinza.svg"
+            }
           ]
         },
         {
@@ -189,135 +259,143 @@
           "foto": "/imagens/equipe/00-person.svg",
           "prioridade": "",
           "redes": [
-            { "tipo": "lattes", "url": "", "icone": "/imagens/logos/linkedin_icon2.svg" },
-            { "tipo": "instagram", "url": "", "icone": "/imagens/logos/instagram_icon_cinza.svg" }
+            {
+              "tipo": "lattes",
+              "url": "",
+              "icone": "/imagens/logos/linkedin_icon2.svg"
+            },
+            {
+              "tipo": "instagram",
+              "url": "",
+              "icone": "/imagens/logos/instagram_icon_cinza.svg"
+            }
           ]
         }
       ]
     }
   },
-"initiatives2": {
-  "title": "Iniciativas",
-  "descricao": "Conheça as principais iniciativas",
-  "items": [
-    {
-      "icon": "💬",
-      "title": "Café com Ciência",
-      "description": "Seminário Mensal do Centro de Pesquisa Política e Social que busca debates temas relacionados as agendas de pesquisa de docentes da UNESP/Franca",
-      "url": "/iniciativas/cafe-com-ciencia"
-    },
-    {
-      "icon": "💡",
-      "title": "Dados Governamentais",
-      "description": "Descrição do projeto",
-      "url": "/projetos"
-    },
-    {
-      "icon": "💡",
-      "title": "Notícias de Jornais",
-      "description": "Descrição do projeto",
-      "url": "/projetos"
-    },
-    {
-      "icon": "💡",
-      "title": "Oficinas",
-      "description": "Descrição do projeto",
-      "url": "/projetos"
-    }
-  ]
-},
-"atividadesPesquisa": {
-  "title": "Atividades de Pesquisa",
-  "description": "Descrição das atividades de pesquisa.",
-  "items": [
-    {
-      "icon": "✅",
-      "title": "Pesquisa A",
-      "description": "Descrição da pesquisa A"
-    }
-  ]
-},
-"produtos": {
-  "title": "Produtos",
-  "description": "Descrição dos produtos.",
-  "items": [
-    {
-      "icon": "📥",
-      "title": "Produto 1",
-      "description": "Descrição do produto"
-    },
-    {
-      "icon": "📥",
-      "title": "Produto 1",
-      "description": "Descrição do produto"
-    },
-    {
-      "icon": "📥",
-      "title": "Produto 1",
-      "description": "Descrição do produto"
-    },
-    {
-      "icon": "📥",
-      "title": "Produto 1",
-      "description": "Descrição do produto"
-    }
-  ]
-},
-"faqs": {
-  "title": "Perguntas Frequentes",
-  "items": [
-    {
-      "question": "Pergunta 1",
-      "answer": "Resposta da pergunta"
-    }
-  ]
-},
-"initiatives": {
-  "label": "Iniciativas",
-  "title": "Conheça as iniciativas do Centro",
-  "items": [
-    {
-      "icon": "👥💬",
-      "title": "Café com Ciência ",
-      "tipo": "ciência",
-      "link": "/iniciativas/cafe-com-ciencia",
-      "description": "Seminário mensal voltado a debater temas relacionados a agendas de pesquisa dos docentes da FCHS/UNESP/Franca"
-    },
-    {
-      "icon": "🗃️",
-      "title": "Projetos de dados",
-      "tipo": "dados",
-      "link": "/iniciativas/cafe-com-ciencia",
-      "description": "Os projetos de dados são iniciativas que visam coletar, tratar, analisar e, quando possível, disponibilizar dados relevantes para as pesquisas"
-    },
-     {
-      "icon": "👩🏻‍💻",
-      "title": "Auxílio à Pesquisa",
-      "tipo": "Pesquisa",
-      "link": "/iniciativas/cafe-com-ciencia",
-      "description": "Apoio a preparação e execução de projetos de pesquisas"
-    },
-    {
-      "icon": "📚",
-      "title": "Material de Apoio",
-      "tipo": "apoio",
-      "link": "/iniciativas/cafe-com-ciencia",
-      "description": "Realização de oficinas, material de apoio e cursos que incentivem e auxiliem uma melhor incorporação de ferramentas tecnológicas nas atividades de pesquisa."
-    },
-    {
-      "icon": "⚙️",
-      "title": "Soluções Tecnológicas",
-      "tipo": "sistemas",
-      "link": "/iniciativas/cafe-com-ciencia",
-      "description": "Promover uma melhor utilização dos recursos computacionais, bem como a implementação e o desenvolvimento de software e serviços voltados para as pesquisas "
-    },
-     {
-      "icon": "🫱🏽‍🫲🏼",
-      "title": "Cooperação e Parceiras",
-      "tipo": "apoio",
-      "link": "/iniciativas/cafe-com-ciencia",
-      "description": "Apoio para a cooperação científica e no estabelecimentos de parceirias, nacionais e internacionais, voltadas para o desenvolvimento de pesquisas"
-    }
-  ]
-}
+  "initiatives2": {
+    "title": "Iniciativas",
+    "descricao": "Conheça as principais iniciativas",
+    "items": [
+      {
+        "icon": "💬",
+        "title": "Café com Ciência",
+        "description": "Seminário Mensal do Centro de Pesquisa Política e Social que busca debates temas relacionados as agendas de pesquisa de docentes da UNESP/Franca",
+        "url": "/iniciativas/cafe-com-ciencia"
+      },
+      {
+        "icon": "💡",
+        "title": "Dados Governamentais",
+        "description": "Descrição do projeto",
+        "url": "/projetos"
+      },
+      {
+        "icon": "💡",
+        "title": "Notícias de Jornais",
+        "description": "Descrição do projeto",
+        "url": "/projetos"
+      },
+      {
+        "icon": "💡",
+        "title": "Oficinas",
+        "description": "Descrição do projeto",
+        "url": "/projetos"
+      }
+    ]
+  },
+  "atividadesPesquisa": {
+    "title": "Atividades de Pesquisa",
+    "description": "Descrição das atividades de pesquisa.",
+    "items": [
+      {
+        "icon": "✅",
+        "title": "Pesquisa A",
+        "description": "Descrição da pesquisa A"
+      }
+    ]
+  },
+  "produtos": {
+    "title": "Produtos",
+    "description": "Descrição dos produtos.",
+    "items": [
+      {
+        "icon": "📥",
+        "title": "Produto 1",
+        "description": "Descrição do produto"
+      },
+      {
+        "icon": "📥",
+        "title": "Produto 1",
+        "description": "Descrição do produto"
+      },
+      {
+        "icon": "📥",
+        "title": "Produto 1",
+        "description": "Descrição do produto"
+      },
+      {
+        "icon": "📥",
+        "title": "Produto 1",
+        "description": "Descrição do produto"
+      }
+    ]
+  },
+  "faqs": {
+    "title": "Perguntas Frequentes",
+    "items": [
+      {
+        "question": "Pergunta 1",
+        "answer": "Resposta da pergunta"
+      }
+    ]
+  },
+  "initiatives": {
+    "label": "Iniciativas",
+    "title": "Conheça as iniciativas do Centro",
+    "items": [
+      {
+        "icon": "👥💬",
+        "title": "Café com Ciência ",
+        "tipo": "ciência",
+        "link": "/iniciativas/cafe-com-ciencia",
+        "description": "Seminário mensal voltado a debater temas relacionados a agendas de pesquisa dos docentes da FCHS/UNESP/Franca"
+      },
+      {
+        "icon": "🗃️",
+        "title": "Projetos de dados",
+        "tipo": "dados",
+        "link": "/iniciativas/cafe-com-ciencia",
+        "description": "Os projetos de dados são iniciativas que visam coletar, tratar, analisar e, quando possível, disponibilizar dados relevantes para as pesquisas"
+      },
+      {
+        "icon": "👩🏻‍💻",
+        "title": "Auxílio à Pesquisa",
+        "tipo": "Pesquisa",
+        "link": "/iniciativas/cafe-com-ciencia",
+        "description": "Apoio a preparação e execução de projetos de pesquisas"
+      },
+      {
+        "icon": "📚",
+        "title": "Material de Apoio",
+        "tipo": "apoio",
+        "link": "/iniciativas/cafe-com-ciencia",
+        "description": "Realização de oficinas, material de apoio e cursos que incentivem e auxiliem uma melhor incorporação de ferramentas tecnológicas nas atividades de pesquisa."
+      },
+      {
+        "icon": "⚙️",
+        "title": "Soluções Tecnológicas",
+        "tipo": "sistemas",
+        "link": "/iniciativas/cafe-com-ciencia",
+        "description": "Promover uma melhor utilização dos recursos computacionais, bem como a implementação e o desenvolvimento de software e serviços voltados para as pesquisas "
+      },
+      {
+        "icon": "🫱🏽‍🫲🏼",
+        "title": "Cooperação e Parceiras",
+        "tipo": "apoio",
+        "link": "/iniciativas/cafe-com-ciencia",
+        "description": "Apoio para a cooperação científica e no estabelecimentos de parceirias, nacionais e internacionais, voltadas para o desenvolvimento de pesquisas"
+      }
+    ]
+  }
 }
