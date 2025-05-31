@@ -1,4 +1,5 @@
 {
+  
   "equipe": {
     "title": "team",
     "intro": [
@@ -182,8 +183,10 @@
   "titulo": "My Page",
   "descricao": "Page description",
   "texts": {
-    "notFound": "Página não encontrada"
-  },
+  "languageUnavailable": "Não disponível",
+  "notFound": "Página não encontrada",
+  "buttonPersonalPage": "Personal page"
+},
   "hero": {
     "titulo": "Center for Political and Social Research",
     "descricao": "Aims to support the execution of research at the <span class='text-primary font-semibold'>Faculty of Humanities and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the municipality of Franca/SP",

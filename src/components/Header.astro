@@ -114,7 +114,7 @@ const {
               >Notícias</a
             >
           </li>
-          <li><LanguageSelector lang={lang} /></li>
+          <li><LanguageSelector lang={lang} texts={texts} /></li>
           <li><AlterarTema /></li>
 
           <!-- ✅ Ícone de busca com hover e branco -->
@@ -230,7 +230,7 @@ const {
       <li>
         <a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a>
       </li>
-      <li><LanguageSelector /></li>
+      <li><LanguageSelector lang={lang} texts={texts} /></li>
     </ul>
   </div>
 </div>

@@ -6,43 +6,75 @@ import SobreSection from "../../components/SobreSection.astro";
 import ProjetosSection from "../../components/ProjetosSection.astro";
 import CafeComCienciaSection from "../../components/CafeComCienciaSection.astro";
 import NoticiaPage from "../../components/NoticiaPage.astro";
+
 import { routeTranslations } from "../../i18n/routes";
 import { getCollection } from "astro:content";
+import type { SupportedLang } from "../../types/lang";
 
-type SupportedLang = "pt" | "en" | "es";
-
+// Caminhos estáticos
 export async function getStaticPaths() {
   const langs: SupportedLang[] = ["pt", "en", "es"];
-  const allSlugs = Object.values(routeTranslations).flatMap((translations) =>
-    langs.map((lang) => translations[lang]),
-  );
+  const paths = [];
+
+  for (const [key, traducoes] of Object.entries(routeTranslations)) {
+    for (const lang of langs) {
+      const slugValue = traducoes[lang];
+      if (typeof slugValue === "string") {
+        paths.push({
+          params: {
+            lang,
+            slug: slugValue,
+          },
+        });
+      }
+    }
+  }
 
   const allNoticias = await getCollection("noticias");
+  for (const noticia of allNoticias) {
+    const lang = noticia.data.lang as SupportedLang;
+    const prefix = routeTranslations["noticias"][lang];
+    paths.push({
+      params: {
+        lang,
+        slug: `${prefix}/${noticia.slug}`,
+      },
+    });
+  }
 
-  const noticiaSlugs = allNoticias.map((post) => ({
-    lang: post.data.lang,
-    slug: `${routeTranslations['noticias'][post.data.lang]}/${post.slug}`,
-  }));
+  const allMembros = await getCollection("membros");
+  for (const membro of allMembros) {
+    const fileName = membro.id.split("/").pop() ?? "";
+    const slugWithoutLang = fileName.replace(/\.(pt|en|es)\.mdx$/, "");
 
-  return [
-    ...langs.flatMap((lang) =>
-      allSlugs.map((slug) => ({
-        params: { lang, slug },
-      }))
-    ),
-    ...noticiaSlugs.map(({ lang, slug }) => ({
-      params: { lang, slug },
-    })),
-  ];
+    paths.push({
+      params: {
+        lang: membro.data.lang,
+        slug: slugWithoutLang,
+      },
+    });
+  }
+
+  console.log("\u2705 Caminhos finais gerados:");
+  console.log(paths.map((p) => `/${p.params.lang}/${p.params.slug}`));
+
+  return paths;
 }
 
 const currentLang = (Astro.params.lang as SupportedLang) ?? "pt";
-const slug = Astro.params.slug ?? "";
-const slugArray = slug.split("/").filter(Boolean);
-const slugPath = slugArray.join("/");
+const slugParam = Astro.params.slug;
+const slugPath = Array.isArray(slugParam)
+  ? slugParam.join("/")
+  : (slugParam ?? "");
+const slugArray = slugPath.split("/");
 
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
-const { titulo, descricao, texts, equipe, sobre, projetos, cafe } = locale.default;
+const { titulo, descricao, texts, equipe, sobre, projetos, cafe } =
+  locale.default;
+
+const noticiasPrefix = routeTranslations["noticias"][currentLang];
+const isNoticia = slugPath.startsWith(`${noticiasPrefix}/`);
+const allNoticias = isNoticia ? await getCollection("noticias") : [];
 
 function findOriginalKey(
   translatedSlug: string,
@@ -55,50 +87,93 @@ function findOriginalKey(
   }
   return null;
 }
-
 const originalKey = findOriginalKey(slugPath, currentLang);
-const pageContent = originalKey
-  ? `Esta é a página ${originalKey} (${currentLang})`
-  : null;
 
-const noticiasPrefix = routeTranslations['noticias'][currentLang];
-const isNoticia = slug.startsWith(`${noticiasPrefix}/`);
+const allMembros = await getCollection("membros");
+function getSlugFromEntry(entry: any) {
+  const fileName = entry.id.split("/").pop() ?? "";
+  return fileName.replace(/\.(pt|en|es)\.mdx$/, "");
+}
+
+let membroSelecionado = allMembros.find(
+  (entry) =>
+    getSlugFromEntry(entry) === slugPath && entry.data.lang === currentLang,
+);
+
+if (!membroSelecionado) {
+  membroSelecionado = allMembros.find(
+    (entry) => getSlugFromEntry(entry) === slugPath,
+  );
+}
 ---
 
-{isNoticia ? (
-  <NoticiaPage lang={currentLang} slug={slug} />
-) : (
-  <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={texts}>
-    <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
+{
+  isNoticia ? (
+    <NoticiaPage lang={currentLang} slug={slugPath} />
+  ) : membroSelecionado ? (
+    <BaseLayout
+      lang={currentLang}
+      titulo={membroSelecionado.data.title}
+      descricao={membroSelecionado.data.cargo ?? ""}
+      texts={texts}
+    >
+      <article class="max-w-3xl mx-auto py-10 text-center">
+        <img
+          src={membroSelecionado.data.foto}
+          alt={membroSelecionado.data.title}
+          class="w-48 h-48 object-cover rounded-xl mx-auto mb-4"
+        />
+        <h1 class="text-3xl font-bold text-primary">
+          {membroSelecionado.data.title}
+        </h1>
+        <p class="text-neutral text-sm">{membroSelecionado.data.cargo}</p>
+        {membroSelecionado.Content ? (
+          <div class="mt-4 prose mx-auto text-left">
+            <membroSelecionado.Content />
+          </div>
+        ) : (
+          <p class="text-warning mt-4">
+            {texts.languageUnavailable ??
+              "Conteúdo do membro indisponível neste idioma."}
+          </p>
+        )}
+      </article>
+    </BaseLayout>
+  ) : (
+    <BaseLayout
+      lang={currentLang}
+      titulo={titulo}
+      descricao={descricao}
+      texts={texts}
+    >
+      <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
 
-    {(() => {
-      switch (originalKey) {
-        case "institucional/equipe":
-          return <EquipeSection equipe={equipe} />;
-        case "institucional/sobre":
-          return <SobreSection sobre={sobre} />;
-        case "iniciativas/projetos":
-          return <ProjetosSection projetos={projetos} />;
-        case "iniciativas/cafe-com-ciencia":
-          return <CafeComCienciaSection cafe={cafe} />;
-        default:
-          return pageContent ? (
-            <>
-              <h1 class="text-3xl font-bold mb-4">{slugArray.join(" / ")}</h1>
-              <p class="mb-4">{pageContent}</p>
-            </>
-          ) : (
-            <>
-              <h1 class="text-3xl font-bold mb-4">404 - {texts.notFound}</h1>
-              <p class="mb-4">
-                Desculpe, não encontramos a página: <strong>{slugPath}</strong>
-              </p>
-              <p>
-                Idioma: <strong>{currentLang}</strong>
-              </p>
-            </>
-          );
-      }
-    })()}
-  </BaseLayout>
-)}
+      {(() => {
+        switch (originalKey) {
+          case "institucional/equipe":
+            return <EquipeSection equipe={equipe} texts={texts} />;
+
+          case "institucional/sobre":
+            return <SobreSection sobre={sobre} />;
+          case "iniciativas/projetos":
+            return <ProjetosSection projetos={projetos} />;
+          case "iniciativas/cafe-com-ciencia":
+            return <CafeComCienciaSection cafe={cafe} />;
+          default:
+            return (
+              <>
+                <h1 class="text-3xl font-bold mb-4">404 - {texts.notFound}</h1>
+                <p class="mb-4">
+                  {texts.pageNotFound ?? "Desculpe, não encontramos a página"}:{" "}
+                  <strong>{slugPath}</strong>
+                </p>
+                <p>
+                  Idioma: <strong>{currentLang}</strong>
+                </p>
+              </>
+            );
+        }
+      })()}
+    </BaseLayout>
+  )
+}

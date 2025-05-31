@@ -1,7 +1,7 @@
 ---
 import { ordenarPorPrioridadeOuNome } from '../utils/ordenar';
 import EquipeTabs from '../components/EquipeTabs.astro';
-const { equipe } = Astro.props;
+const { equipe,texts } = Astro.props;
 
 // Organiza os membros ativos por categoria
 const ativosPorCategoria = Object.entries(equipe.categorias ?? {}).map(
@@ -36,5 +36,5 @@ const inativosOrdenados = ordenarPorPrioridadeOuNome(inativosTodos, 'prioridade'
   )}
 
   <!-- Tabs com layout unificado usando componente padrão do DaisyUI -->
-  <EquipeTabs ativos={ativosPorCategoria} inativos={inativosOrdenados} lang={Astro.params.lang ?? 'pt'} layout="pesquisador" />
+  <EquipeTabs ativos={ativosPorCategoria} inativos={inativosOrdenados} lang={Astro.params.lang ?? 'pt'} layout="pesquisador" texts={texts}/>
 </section>

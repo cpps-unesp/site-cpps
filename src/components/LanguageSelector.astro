@@ -2,12 +2,9 @@
 import { routeTranslations } from '../i18n/routes';
 import { getTranslatedPath } from '../utils/getTranslatedPath';
 import type { SupportedLang } from '../i18n/routeTranslations';
+import { getCollection } from 'astro:content';
 
 const { lang = 'pt' } = Astro.props;
-
-
-// Sigla em maiúsculo
-const langCode = lang.toUpperCase();
 
 const languages: { code: SupportedLang; label: string }[] = [
   { code: 'pt', label: 'Português' },
@@ -15,41 +12,80 @@ const languages: { code: SupportedLang; label: string }[] = [
   { code: 'es', label: 'Español' },
 ];
 
-// Caminho atual
+// Importa traduções de todos os idiomas
+const translations: Record<SupportedLang, any> = {
+  pt: (await import(`../i18n/locales/pt.json`)).default,
+  en: (await import(`../i18n/locales/en.json`)).default,
+  es: (await import(`../i18n/locales/es.json`)).default,
+};
+
+// Caminho atual sem barra inicial
 const pathParts = Astro.url.pathname.split('/').filter(Boolean);
 const currentPath = pathParts.slice(1).join('/');
 
+// 🔎 Verifica se é página institucional ou iniciativa
 function findOriginalKey(path: string) {
   return (Object.keys(routeTranslations) as Array<keyof typeof routeTranslations>)
     .find((key) => Object.values(routeTranslations[key]).includes(path));
 }
-
 const originalKey = findOriginalKey(currentPath);
+
+// 🔍 Se não for rota conhecida, tenta encontrar membro correspondente
+let membroBaseSlug: string | null = null;
+let membrosPorIdioma: Record<SupportedLang, boolean> = { pt: false, en: false, es: false };
+
+if (!originalKey && currentPath) {
+  const allMembros = await getCollection('membros');
+
+  for (const membro of allMembros) {
+    const fileName = membro.id.split('/').pop() ?? '';
+    const baseSlug = fileName.replace(/\.(pt|en|es)\.mdx$/, '');
+    const idioma = membro.data.lang;
+
+    if (baseSlug === currentPath || membroBaseSlug === baseSlug) {
+      membroBaseSlug = baseSlug;
+      membrosPorIdioma[idioma] = true;
+    }
+  }
+}
 ---
 
-<div class="dropdown dropdown-hover dropdown-end w-full md:w-auto">
+<div class="dropdown dropdown-hover dropdown-end w-full md:w-auto group">
   <label tabindex="0" class="flex items-center gap-1 cursor-pointer hover:text-gray-300 w-full md:w-auto">
-  <img src="/imagens/logos/icon-lang.svg" alt="Idioma" class="w-5 h-5" />
-  <span class="text-white font-normal text-sm">
-    {lang.toUpperCase()}
-  </span>
-  <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20">
-    <path d="M5.25 7.75L10 12.5l4.75-4.75" />
-  </svg>
-</label>
+    <img src="/imagens/logos/icon-lang.svg" alt="Idioma" class="w-5 h-5" />
+    <span class="text-white font-normal text-sm">{lang.toUpperCase()}</span>
+    <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20">
+      <path d="M5.25 7.75L10 12.5l4.75-4.75" />
+    </svg>
+  </label>
 
   <ul class="dropdown-content menu p-0 shadow bg-base-100 text-base-content rounded-sm w-full md:w-40 -translate-y-2 
               transition transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-150 ease-out">
     {languages.map((l) => {
       let href = `/${l.code}/`;
+      let disabled = false;
+      let labelExtra = "";
+
       if (originalKey) {
         const translatedPath = getTranslatedPath(originalKey, l.code);
         href = `/${l.code}/${translatedPath}`;
+      } else if (membroBaseSlug) {
+        href = `/${l.code}/${membroBaseSlug}`;
+        if (!membrosPorIdioma[l.code]) {
+          disabled = true;
+          labelExtra = ` (${translations[l.code]?.texts?.languageUnavailable ?? "Not available"})`;
+        }
       }
 
       return (
         <li>
-          <a href={href} class="hover:bg-base-200">{l.label}</a>
+          <a
+            href={disabled ? undefined : href}
+            class={`hover:bg-base-200 ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+            aria-disabled={disabled}
+          >
+            {l.label}{labelExtra}
+          </a>
         </li>
       );
     })}

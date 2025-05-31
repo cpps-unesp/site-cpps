@@ -1,30 +1,54 @@
 ---
-const { ativos, inativos, lang = 'pt', layout = 'pesquisador' } = Astro.props;
+const {
+  ativos,
+  inativos,
+  lang = "pt",
+  layout = "pesquisador",
+  texts = {},
+} = Astro.props;
+console.log("TEXTOS RECEBIDOS:", texts);
+import { getCollection } from "astro:content";
+
+const membrosCollection = await getCollection("membros");
+const membrosDisponiveis = new Set(
+  membrosCollection
+    .filter((entry) => entry.id.endsWith(`.${lang}.mdx`))
+    .map((entry) =>
+      entry.id
+        .split("/")
+        .pop()
+        .replace(/\.(pt|en|es)\.mdx$/, ""),
+    ),
+);
 
 function getSlug(membro) {
-  return membro.slug?.trim() || membro.nome.toLowerCase().replace(/\s+/g, '-');
+  return membro.slug?.trim() || membro.nome.toLowerCase().replace(/\s+/g, "-");
 }
 ---
 
 <script type="module" is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll('[data-tab]');
-    const secoes = document.querySelectorAll('[data-categoria]');
-    const inativoContainer = document.querySelector('#inativos-tab');
+  document.addEventListener("DOMContentLoaded", () => {
+    const tabs = document.querySelectorAll("[data-tab]");
+    const secoes = document.querySelectorAll("[data-categoria]");
+    const inativoContainer = document.querySelector("#inativos-tab");
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const alvo = tab.getAttribute('data-tab');
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const alvo = tab.getAttribute("data-tab");
 
-        tabs.forEach(t => t.classList.remove('tab-active'));
-        tab.classList.add('tab-active');
+        tabs.forEach((t) => t.classList.remove("tab-active"));
+        tab.classList.add("tab-active");
 
-        secoes.forEach(sec => {
-          sec.style.display = alvo === 'todos' || sec.dataset.categoria === alvo ? 'flex' : 'none';
+        secoes.forEach((sec) => {
+          sec.style.display =
+            alvo === "todos" || sec.dataset.categoria === alvo
+              ? "flex"
+              : "none";
         });
 
         if (inativoContainer) {
-          inativoContainer.style.display = alvo === 'inativos' ? 'flex' : 'none';
+          inativoContainer.style.display =
+            alvo === "inativos" ? "flex" : "none";
         }
       });
     });
@@ -33,75 +57,156 @@ function getSlug(membro) {
 
 <div class="tabs tabs-boxed justify-center mb-10">
   <button class="tab tab-active" data-tab="todos">Todos</button>
-  {ativos.map(([categoria]) => (
-    <button class="tab" data-tab={categoria}>{categoria}</button>
-  ))}
+  {
+    ativos.map(([categoria]) => (
+      <button class="tab" data-tab={categoria}>
+        {categoria}
+      </button>
+    ))
+  }
   <button class="tab" data-tab="inativos">Já passaram por aqui</button>
 </div>
 
 <!-- Membros ativos -->
-{ativos.map(([categoria, membros]) => (
-  <div data-categoria={categoria} class="mb-12 flex flex-col gap-12">
-    <h3 id={categoria.toLowerCase().replace(/\s+/g, "-")} class="text-2xl font-semibold text-primary mt-8 mb-6">
-      {categoria}
-    </h3>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {membros.map((membro) => (
-        <div class="card bg-base-100 text-base-content shadow-md hover:shadow-lg transition-shadow rounded-xl overflow-hidden p-6 flex flex-col items-center text-center">
-          <img
-            src={membro.foto}
-            alt={membro.nome}
-            class="w-48 h-48 object-cover rounded-xl mb-4"
-          />
-          {membro.redes && membro.redes.length > 0 && (
-            <div class="flex justify-center space-x-4 mb-2">
-              {membro.redes.slice(0, 3).map((rede) => (
-                <a href={rede.url} target="_blank" rel="noopener" class="hover:scale-110 transition-transform">
-                  <img src={rede.icone} alt={rede.tipo} class="w-6 h-6" />
-                </a>
-              ))}
+{
+  ativos.map(([categoria, membros]) => (
+    <div data-categoria={categoria} class="mb-12 flex flex-col gap-12">
+      <h3
+        id={categoria.toLowerCase().replace(/\s+/g, "-")}
+        class="text-2xl font-semibold text-primary mt-8 mb-6"
+      >
+        {categoria}
+      </h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {membros.map((membro) => {
+          const slug = getSlug(membro);
+          const temPagina = membrosDisponiveis.has(slug);
+          return (
+            <div class="relative card bg-base-100 text-base-content shadow-md hover:shadow-lg transition-shadow rounded-xl overflow-hidden p-6 pt-8 flex flex-col items-center text-center">
+  {temPagina ? (
+    <a href={`/${lang}/${slug}`} class="absolute top-1 right-2 bg-primary text-white text-xs font-semibold px-2 py-1 rounded shadow z-10">
+      {texts.buttonPersonalPage}
+    </a>
+  ) : null}
+
+  {temPagina ? (
+    <a href={`/${lang}/${slug}`}>
+      <img
+        src={membro.foto}
+        alt={membro.nome}
+        class="w-48 h-48 object-cover rounded-xl mb-4 hover:opacity-80 transition"
+      />
+    </a>
+  ) : (
+    <img
+      src={membro.foto}
+      alt={membro.nome}
+      class="w-48 h-48 object-cover rounded-xl mb-4"
+    />
+  )}
+              {membro.redes && membro.redes.length > 0 && (
+                <div class="flex justify-center space-x-4 mb-2">
+                  {membro.redes.slice(0, 3).map((rede) => (
+                    <a
+                      href={rede.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="hover:scale-110 transition-transform"
+                    >
+                      <img src={rede.icone} alt={rede.tipo} class="w-6 h-6" />
+                    </a>
+                  ))}
+                </div>
+              )}
+              <h3 class="text-[20px] font-display text-primary mb-1">
+                {membro.nome}
+              </h3>
+              <p class="text-[12px] text-neutral mb-1">{membro.cargo}</p>
+              <p class="text-[12px] text-base-content">{membro.descricao}</p>
+              {membro.contribuicao && (
+                <p class="text-[12px] italic mt-2 text-base-content">
+                  {membro.contribuicao}
+                </p>
+              )}
             </div>
-          )}
-          <h3 class="text-[20px] font-display text-primary mb-1">{membro.nome}</h3>
-          <p class="text-[12px] text-neutral mb-1">{membro.cargo}</p>
-          <p class="text-[12px] text-base-content">{membro.descricao}</p>
-          {membro.contribuicao && (
-            <p class="text-[12px] italic mt-2 text-base-content">{membro.contribuicao}</p>
-          )}
-        </div>
-      ))}
+          );
+        })}
+      </div>
     </div>
-  </div>
-))}
+  ))
+}
 
 <!-- Membros inativos com destaque e paginação -->
 <div id="inativos-tab" style="display: none;" class="space-y-16 flex flex-col">
-  {Array.from({ length: Math.ceil(inativos.length / 21) }).map((_, pageIndex) => (
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-      {inativos.slice(pageIndex * 21, (pageIndex + 1) * 21).map((membro) => (
-        <div class="card bg-base-100 text-base-content shadow-md hover:shadow-lg transition-shadow rounded-xl overflow-hidden p-6 flex flex-col items-center text-center">
-          <img
-            src={membro.foto}
-            alt={membro.nome}
-            class="w-48 h-48 object-cover rounded-xl mb-4"
-          />
-          {membro.redes && membro.redes.length > 0 && (
-            <div class="flex justify-center space-x-4 mb-2">
-              {membro.redes.slice(0, 3).map((rede) => (
-                <a href={rede.url} target="_blank" rel="noopener" class="hover:scale-110 transition-transform">
-                  <img src={rede.icone} alt={rede.tipo} class="w-6 h-6" />
-                </a>
-              ))}
-            </div>
-          )}
-          <h3 class="text-[20px] font-display text-primary mb-1">{membro.nome}</h3>
-          <p class="text-[12px] text-neutral mb-1">{membro.cargo}</p>
-          <p class="text-[12px] text-base-content">{membro.descricao}</p>
-          {membro.contribuicao && (
-            <p class="text-[12px] italic mt-2 text-base-content">{membro.contribuicao}</p>
-          )}
+  {
+    Array.from({ length: Math.ceil(inativos.length / 21) }).map(
+      (_, pageIndex) => (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {inativos
+            .slice(pageIndex * 21, (pageIndex + 1) * 21)
+            .map((membro) => {
+              const slug = getSlug(membro);
+              const temPagina = membrosDisponiveis.has(slug);
+              return (
+                <div class="relative card bg-base-100 text-base-content shadow-md hover:shadow-lg transition-shadow rounded-xl overflow-hidden p-6 flex flex-col items-center text-center">
+                  {temPagina ? (
+                    <a
+                      href={`/${lang}/${slug}`}
+                      class="absolute top-3 right-3 bg-primary text-white text-xs font-semibold px-2 py-1 rounded z-10"
+                    >
+                      {texts.buttonPersonalPage}
+                    </a>
+                  ) : null}
+                  {temPagina ? (
+                    <a href={`/${lang}/${slug}`}>
+                      <img
+                        src={membro.foto}
+                        alt={membro.nome}
+                        class="w-48 h-48 object-cover rounded-xl mb-4 hover:opacity-80 transition"
+                      />
+                    </a>
+                  ) : (
+                    <img
+                      src={membro.foto}
+                      alt={membro.nome}
+                      class="w-48 h-48 object-cover rounded-xl mb-4"
+                    />
+                  )}
+                  {membro.redes && membro.redes.length > 0 && (
+                    <div class="flex justify-center space-x-4 mb-2">
+                      {membro.redes.slice(0, 3).map((rede) => (
+                        <a
+                          href={rede.url}
+                          target="_blank"
+                          rel="noopener"
+                          class="hover:scale-110 transition-transform"
+                        >
+                          <img
+                            src={rede.icone}
+                            alt={rede.tipo}
+                            class="w-6 h-6"
+                          />
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                  <h3 class="text-[20px] font-display text-primary mb-1">
+                    {membro.nome}
+                  </h3>
+                  <p class="text-[12px] text-neutral mb-1">{membro.cargo}</p>
+                  <p class="text-[12px] text-base-content">
+                    {membro.descricao}
+                  </p>
+                  {membro.contribuicao && (
+                    <p class="text-[12px] italic mt-2 text-base-content">
+                      {membro.contribuicao}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
         </div>
-      ))}
-    </div>
-  ))}
+      ),
+    )
+  }
 </div>

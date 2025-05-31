@@ -1,11 +1,16 @@
 {
+  
   "titulo": "Site",
   "descricao": "Centro de Pesquisa Política e Social da Universidade EStadual Paulista (UNESP)",
   "identidade": {
     "logo": "/imagens/logos/logo-cpps-unesp.svg"
   },
   "texts": {
-    "notFound": "Página não encontrada"
+    "languageUnavailable": "Não disponível",
+    
+    "notFound": "Página não encontrada",
+    "buttonPersonalPage": "Pág. Pessoal"
+
   },
   "hero": {
     "titulo": "Centro de Pesquisa Política e Social",

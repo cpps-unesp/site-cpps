@@ -1,7 +1,9 @@
 {
+  
   "titulo": "My Page",
   "descricao": "Page description",
   "texts": {
+    "languageUnavailable": "No disponible",
     "notFound": "Página não encontrada"
   },
   "hero": {
