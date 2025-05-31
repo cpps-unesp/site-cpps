@@ -112,7 +112,7 @@
           "cargo": "Coordenação",
           "descricao": "Responsável pela supervisão geral do projeto",
           "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
-          "prioridade": "",
+          "prioridade": 1,
           "status": "ativo",
           "redes": [
             {
@@ -182,6 +182,7 @@
             }
           ]
         },
+
         {
           "nome": "Joana D'Arc",
           "cargo": "Pesquisadora Associada",
@@ -189,6 +190,43 @@
           "foto": "/imagens/equipe/joana_darc.jpg",
           "prioridade": "",
           "status": "inativo",
+          "contribuicao": "Liderou o projeto de cooperação internacional entre 2018 e 2020.",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/123456789",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        }
+      ],
+      "funcionarios": [
+        {
+          "nome": "João Souza",
+          "cargo": "Pesquisador",
+          "descricao": "Atua na área de política internacional.",
+          "foto": "/imagens/equipe/joao_souza.jpg",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/1531037509340384",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }
+          ]
+        },
+        
+        {
+          "nome": "Joana D'Arc",
+          "cargo": "Pesquisadora Associada",
+          "descricao": "Especialista em ciência política comparada.",
+          "foto": "/imagens/equipe/joana_darc.jpg",
+          "prioridade": "",
+          "status": "",
           "contribuicao": "Liderou o projeto de cooperação internacional entre 2018 e 2020.",
           "redes": [
             {

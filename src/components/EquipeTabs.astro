@@ -14,16 +14,22 @@ const membrosDisponiveis = new Set(
   membrosCollection
     .filter((entry) => entry.id.endsWith(`.${lang}.mdx`))
     .map((entry) =>
-      entry.id
-        .split("/")
-        .pop()
-        .replace(/\.(pt|en|es)\.mdx$/, ""),
-    ),
+      entry.id.split("/").pop().replace(/\.(pt|en|es)\.mdx$/, "")
+    )
 );
 
 function getSlug(membro) {
   return membro.slug?.trim() || membro.nome.toLowerCase().replace(/\s+/g, "-");
 }
+
+const categoriasTodas = Array.from(
+  new Set([
+    ...ativos.map(([cat]) => cat),
+    ...Object.keys(
+      Object.fromEntries(ativos.concat([["inativos", inativos]]))
+    ),
+  ])
+);
 ---
 
 <script type="module" is:inline>
@@ -54,7 +60,6 @@ function getSlug(membro) {
     });
   });
 </script>
-
 <div class="tabs tabs-boxed justify-center mb-10">
   <button class="tab tab-active" data-tab="todos">Todos</button>
   {
