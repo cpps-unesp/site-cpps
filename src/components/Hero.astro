@@ -1,60 +1,68 @@
 ---
 const { heroData, lang = "pt" } = Astro.props;
 ---
+
 <section
   class="relative w-full min-h-[100dvh] bg-cover bg-center sm:bg-top bg-no-repeat z-0"
   style={`background-image: url('${heroData?.hero.link}')`}
 >
   <!-- 🔳 Overlay branco em mobile -->
-  <div class="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-white via-white/90 to-white/80"></div>
+  <div
+    class="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-white via-white/90 to-white/80"
+  >
+  </div>
 
   <!-- 🔳 Gradiente lateral no desktop -->
   <div class="absolute inset-0 z-0 hidden sm:block">
     <div class="absolute inset-y-0 left-0 w-80 bg-white"></div>
-    <div class="absolute inset-y-0 left-80 right-[35%] bg-gradient-to-r from-white/95 via-white/90 to-transparent"></div>
+    <div
+      class="absolute inset-y-0 left-80 right-[35%] bg-gradient-to-r from-white/95 via-white/90 to-transparent"
+    >
+    </div>
   </div>
 
   <!-- Conteúdo -->
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[100dvh] flex items-start sm:items-center pt-32 sm:pt-0">
+  <div
+    class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[100dvh] flex items-start sm:items-center pt-32 sm:pt-0"
+  >
     <div class="flex flex-col items-start text-left w-full">
       <!-- Logo + Título -->
-      <div class="flex flex-col sm:flex-row items-center gap-6 mb-8 text-center sm:text-left">
+      <div
+        class="flex flex-col sm:flex-row items-center gap-6 mb-8 text-center sm:text-left"
+      >
         <img
           src="/imagens/logos/cpps/logo-cpps-01_preview_rev_1.png"
           alt="Logo CPPS"
           class="h-32 sm:h-48 md:h-64 w-auto z-10"
         />
-        <h1 class="titulo text-3xl sm:text-5xl md:text-6xl leading-tight z-10 text-[#2E3F46] mt-4 sm:mt-0">
-          Centro de Pesquisa<br class="hidden sm:block" />Política e Social
-        </h1>
+        <h1
+          class="titulo text-3xl sm:text-5xl md:text-6xl leading-tight z-10 text-[#2E3F46] mt-4 sm:mt-0"
+          set:html={heroData?.hero.title}
+        />
       </div>
 
       <!-- Descrição -->
       <div class="max-w-2xl w-full text-center sm:text-left px-2 sm:px-0">
         <p
           class="text-base md:text-lg leading-relaxed mb-6 text-[#2E3F46]"
-          set:html={heroData?.hero.descricao}
+          set:html={heroData?.hero.description}
         />
 
-        <!-- Botões -->
-        <div class="flex flex-col sm:flex-row sm:justify-start items-center gap-4">
-          {heroData?.hero.botao && (
-            <a
-              href={`/${lang}${heroData.hero.botao.url}`}
-              class="btn btn-primary px-6 py-3 text-lg shadow-lg whitespace-nowrap"
-              style="color: white;"
-            >
-              {heroData.hero.botao.texto}
-            </a>
-          )}
-          {heroData?.hero.botaoSecundario && (
-            <a
-              href={`/${lang}${heroData.hero.botaoSecundario.url}`}
-              class="btn btn-outline border-[#2E3F46] hover:bg-[#2E3F46]/10 px-6 py-3 text-lg text-[#2E3F46]"
-            >
-              {heroData.hero.botaoSecundario.texto}
-            </a>
-          )}
+        <!-- Botão -->
+        <div
+          class="flex flex-col sm:flex-row justify-end sm:justify-end items-center sm:items-end gap-4 mt-4"
+        >
+          {
+            heroData?.hero.button && (
+              <a
+                href={`/${lang}${heroData.hero.button.url}`}
+                class="btn btn-primary px-6 py-3 text-lg shadow-lg whitespace-nowrap"
+                style="color: white;"
+              >
+                {heroData.hero.button.text}
+              </a>
+            )
+          }
         </div>
       </div>
     </div>

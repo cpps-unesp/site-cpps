@@ -1,7 +1,7 @@
 ---
 import { ordenarPorPrioridadeOuNome } from '../utils/ordenar';
 import EquipeTabs from '../components/EquipeTabs.astro';
-const { equipe,texts } = Astro.props;
+const { equipe, texts } = Astro.props;
 
 // Organiza os membros ativos por categoria
 const ativosPorCategoria = Object.entries(equipe.categorias ?? {}).map(
@@ -25,12 +25,12 @@ const inativosOrdenados = ordenarPorPrioridadeOuNome(inativosTodos, 'prioridade'
 ---
 
 <section class="mt-16 px-4 md:px-8 max-w-screen-xl mx-auto">
-  <h2 class="titulo text-center text-primary mb-8">{equipe.title}</h2>
+  <h1 class="titulo text-center text-primary mb-8">{equipe.title}</h1>
 
   {equipe.intro && equipe.intro.length > 0 && (
     <div class="mb-10 space-y-4 text-base-content text-center max-w-3xl mx-auto">
       {equipe.intro.map((paragrafo) => (
-        <p set:html={paragrafo} class="[&>a]:text-primary [&>a]:underline hover:[&>a]:text-secondary transition"></p>
+        <p set:html={paragrafo} class="paragrafo text-[clamp(0.95rem,1vw+0.2rem,1.125rem)] leading-relaxed [&>a]:text-primary [&>a]:underline hover:[&>a]:text-secondary transition"></p>
       ))}
     </div>
   )}

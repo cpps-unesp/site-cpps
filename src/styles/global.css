@@ -9,9 +9,9 @@
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #347D9B;       /* Azul principal */
-  --color-secondary: #2197C5;     /* Azul intermediário */
-  --color-accent: #00ACF0;        /* Azul vibrante */
+  --color-primary: #00ACF0;             /* Mantém azul vibrante */
+  --color-secondary: #347D9B;           /* Azul intermediário */
+  --color-accent: #2197C5;              /* Azul principal */
   --color-neutral: #2E3F46;       /* Cinza escuro */
   --color-base-100: #ffffff;      /* Fundo branco */
   --color-base-content: #2E3F46;  /* Texto: cinza escuro */
@@ -66,6 +66,7 @@ h3,
   font-weight: normal;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsivo */
 }
 
 .subtitulo {
@@ -74,5 +75,6 @@ h3,
 }
 
 .paragrafo {
-  font-size: 12px;
+  font-size: clamp(0.98rem, 1vw + 0.2rem, 1.125rem); /* entre 15px e 18px */
+  line-height: 1.6;
 }

@@ -27,7 +27,7 @@ const membros = defineCollection({
   schema: z.object({
     title: z.string(),
     lang: z.enum(['pt', 'en', 'es']),
-    foto: z.string(),
+    foto: z.string().optional(),
     cargo: z.string(),
     contribuicao: z.string().optional(),
     redes: z.array(

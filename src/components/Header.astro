@@ -39,12 +39,12 @@ const {
             <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
           </label>
           <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-40">
-            <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a></li>
+            <!-- <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a></li> -->
             <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>Equipe</a></li>
           </ul>
         </li>
 
-        <li class="dropdown dropdown-hover group">
+        <!-- <li class="dropdown dropdown-hover group">
           <label tabindex="0" class="flex items-center cursor-pointer hover:text-primary transition">
             Iniciativas
             <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
@@ -56,7 +56,7 @@ const {
           </ul>
         </li>
 
-        <li><a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a></li>
+        <li><a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a></li> -->
         <li><LanguageSelector lang={lang} texts={texts} /></li>
         <li><AlterarTema /></li>
         <li>
@@ -99,12 +99,12 @@ const {
           <details>
             <summary class="cursor-pointer">Institucional</summary>
             <ul>
-              <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a></li>
+              <!-- <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a></li> -->
               <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>Equipe</a></li>
             </ul>
           </details>
         </li>
-        <li class="dropdown dropdown-hover">
+        <!-- <li class="dropdown dropdown-hover">
           <details>
             <summary class="cursor-pointer">Iniciativas</summary>
             <ul>
@@ -114,7 +114,7 @@ const {
             </ul>
           </details>
         </li>
-        <li><a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a></li>
+        <li><a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a></li> -->
         <li><LanguageSelector lang={lang} texts={texts} /></li>
         <li><AlterarTema /></li>
         <li>

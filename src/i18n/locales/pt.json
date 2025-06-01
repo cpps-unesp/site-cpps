@@ -13,11 +13,11 @@
 
   },
   "hero": {
-    "titulo": "Centro de Pesquisa Política e Social",
-    "descricao": "Busca apoiar a execução de pesquisas na <span class='text-primary font-semibold bg-white px-1 rounded'>Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)</span>, localizado no município de Franca/SP.",
-    "botao": {
-      "url": "/institucional/sobre",
-      "texto": "Saiba mais"
+    "title": "Centro de Pesquisa<br class='hidden sm:inline' />Política e Social",
+    "description": "Apoia a execução de pesquisas na <span class='text-primary font-semibold bg-white px-1 rounded'>Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)</span>, localizado no município de Franca/SP.",
+    "button": {
+      "url": "/institucional/equipe",
+      "text": "Saiba mais"
     },
     "link": "/imagens/campus/entrada-unesp-franca.jpg"
   },
@@ -102,8 +102,8 @@
   "equipe": {
     "title": "Equipe",
     "intro": [
-      "Somos um time interdisciplinar dedicado à pesquisa e ao ensino.",
-      "Conheça os diferentes <a href='#coordenação'>grupos</a>, <a href='#pesquisadores'>grupos</a> que compõem nossa equipe."
+      "Conheça as pessoas que colaboram e pesquisam no<br class='hidden sm:inline' />Centro de Pesquisa Política e Social"
+      
     ],
     "categorias": {
       "Coordenação": [
@@ -129,7 +129,7 @@
         },
         {
           "nome": "Marcelo Passini Mariano",
-          "cargo": "Coordenação",
+          "cargo": "Líder",
           "descricao": "Responsável pela supervisão geral do projeto.",
           "foto": "/imagens/equipe/Marcelo_Mariano.jpg",
           "prioridade": "",
@@ -144,7 +144,7 @@
         },
         {
           "nome": "Thais Amoroso Paschoal",
-          "cargo": "Coordenação",
+          "cargo": "Vice Líder",
           "descricao": "Responsável pela supervisão geral do projeto.",
           "foto": "/imagens/equipe/Thais_Amoroso.jpg",
           "prioridade": "",
@@ -159,80 +159,6 @@
               "tipo": "linkedin",
               "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
               "icone": "/imagens/logos/linkedin_icon.svg"
-            }
-          ]
-        }
-      ],
-      "Pesquisadores": [
-        {
-          "nome": "João Souza",
-          "cargo": "Pesquisador",
-          "descricao": "Atua na área de política internacional.",
-          "foto": "/imagens/equipe/joao_souza.jpg",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/1531037509340384",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "linkedin",
-              "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
-              "icone": "/imagens/logos/linkedin_icon.svg"
-            }
-          ]
-        },
-
-        {
-          "nome": "Joana D'Arc",
-          "cargo": "Pesquisadora Associada",
-          "descricao": "Especialista em ciência política comparada.",
-          "foto": "/imagens/equipe/joana_darc.jpg",
-          "prioridade": "",
-          "status": "inativo",
-          "contribuicao": "Liderou o projeto de cooperação internacional entre 2018 e 2020.",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/123456789",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            }
-          ]
-        }
-      ],
-      "funcionarios": [
-        {
-          "nome": "João Souza",
-          "cargo": "Pesquisador",
-          "descricao": "Atua na área de política internacional.",
-          "foto": "/imagens/equipe/joao_souza.jpg",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/1531037509340384",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "linkedin",
-              "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
-              "icone": "/imagens/logos/linkedin_icon.svg"
-            }
-          ]
-        },
-        
-        {
-          "nome": "Joana D'Arc",
-          "cargo": "Pesquisadora Associada",
-          "descricao": "Especialista em ciência política comparada.",
-          "foto": "/imagens/equipe/joana_darc.jpg",
-          "prioridade": "",
-          "status": "",
-          "contribuicao": "Liderou o projeto de cooperação internacional entre 2018 e 2020.",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/123456789",
-              "icone": "/imagens/logos/lattes_icon.svg"
             }
           ]
         }
@@ -312,6 +238,18 @@
               "url": "",
               "icone": "/imagens/logos/instagram_icon_cinza.svg"
             }
+          ]
+        },
+        {
+          "nome": "Breno Andreazza",
+          "cargo": "Estagiário Remunerada (Relações Internacionais)",
+          "descricao": "Graduando em Relações Internacionais na Unesp Franca",
+          "contribuicao":"Auxilio na transição do CPPS",
+          "foto": "/imagens/equipe/00-person.svg",
+          "status": "inativo",
+          "prioridade": "",
+          "redes": [
+            
           ]
         }
       ]
