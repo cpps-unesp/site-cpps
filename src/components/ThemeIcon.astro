@@ -1,0 +1,37 @@
+---
+import IconSun from "../icons/IconThemeSun.astro";
+import IconMoon from "../icons/IconThemeMoon.astro";
+import IconCupcake from "../icons/IconThemeCupcake.astro";
+const { class: className = "" } = Astro.props;
+---
+
+<span class={`relative ${className}`} data-theme-icon>
+  <span class="theme-icon theme-light block"><IconSun class="w-5 h-5" /></span>
+  <span class="theme-icon theme-dark hidden"><IconMoon class="w-5 h-5" /></span>
+  <span class="theme-icon theme-cupcake hidden"><IconCupcake class="w-5 h-5" /></span>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      function updateThemeIcon(scope) {
+        const current = document.documentElement.getAttribute("data-theme") || "light";
+        scope.querySelectorAll(".theme-icon").forEach(el => {
+          el.style.display = el.classList.contains(`theme-${current}`) ? "block" : "none";
+        });
+      }
+
+      document.querySelectorAll("[data-theme-icon]").forEach(scope => {
+        updateThemeIcon(scope);
+      });
+
+      document.querySelectorAll("[data-set-theme]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          setTimeout(() => {
+            document.querySelectorAll("[data-theme-icon]").forEach(scope => {
+              updateThemeIcon(scope);
+            });
+          }, 50);
+        });
+      });
+    });
+  </script>
+</span>

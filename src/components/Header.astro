@@ -1,6 +1,7 @@
 ---
 import AlterarTema from "./AlterarTema.astro";
 import LanguageSelector from "./LanguageSelector.astro";
+import IconSearch from "../icons/IconSearch.astro";
 import { getTranslatedPath } from "../utils/getTranslatedPath";
 import type { SupportedLang } from "../types/lang";
 
@@ -15,222 +16,132 @@ const {
 };
 ---
 
-<div class="drawer">
-  <input id="menu-drawer" type="checkbox" class="drawer-toggle" />
+<nav class="w-full bg-base-100 text-base-content border-b border-base-300 transition-transform duration-300 fixed top-0 z-50">
+  <div class="mx-auto max-w-screen-2xl px-4 md:px-8 py-2">
+    <div class="flex items-center justify-between">
+      <!-- 🔹 ESQUERDA: Logo CPPS + texto -->
+      <a href={`/${lang}/`} class="flex items-center gap-3">
+        <img
+          src={identidade.logo ?? "/imagens/logos/cpps/logo-cpps-01_preview_rev_1.png"}
+          alt="Logo CPPS UNESP"
+          class="h-16 w-auto"
+        />
+        <span class="font-bold text-2xl leading-tight">CPPS</span>
+      </a>
 
-  <!-- ✅ Conteúdo principal -->
-  <div class="drawer-content">
-    <nav
-      class="absolute top-0 left-0 w-full z-50 bg-primary text-primary-content backdrop-blur-md"
-    >
-      <div
-        class="mx-auto max-w-screen-lg flex items-center justify-center px-4 relative gap-x-4"
-      >
-        <!-- ✅ Logo CPPS (esquerda) com hover igual ao menu -->
-        <a
-          href={`/${lang}/`}
-          class="absolute left-0 flex items-center gap-2 transition duration-150 ease-in-out hover:text-gray-300 cursor-pointer"
-        >
-          <img
-            src={identidade.logo ?? "/imagens/logos/logo-cpps-unesp.svg"}
-            alt="Logo CPPS"
-            class="h-8 sm:h-9 w-auto mix-blend-multiply"
-          />
-          <span class="font-bold text-lg hidden sm:inline">CPPS</span>
-        </a>
+      <!-- 🔹 MENU DESKTOP -->
+      <ul class="hidden lg:flex items-center gap-6 text-sm sm:text-base font-semibold">
+        <li><a class="hover:text-primary transition" href={`/${lang}/`}>Home</a></li>
 
-        <!-- ✅ Menu centralizado -->
-        <ul
-          class="hidden md:flex menu menu-horizontal px-1 items-center gap-4 text-lg font-semibold"
-        >
-          <li><a class="hover:text-gray-300" href={`/${lang}/`}>Home</a></li>
+        <li class="dropdown dropdown-hover group">
+          <label tabindex="0" class="flex items-center cursor-pointer hover:text-primary transition">
+            Institucional
+            <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
+          </label>
+          <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-40">
+            <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>Equipe</a></li>
+          </ul>
+        </li>
 
-          <li class="dropdown dropdown-hover group">
-            <label
-              tabindex="0"
-              class="flex items-center cursor-pointer hover:text-gray-300"
-            >
-              Institucional
-              <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20">
-                <path d="M5.25 7.75L10 12.5l4.75-4.75"></path>
-              </svg>
-            </label>
-            <ul
-              class="dropdown-content menu p-0 shadow bg-base-100 text-base-content rounded-sm w-40 -translate-y-2 transition transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-150 ease-out"
-            >
-              <li>
-                <a
-                  href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}
-                  >Sobre</a
-                >
-              </li>
-              <li>
-                <a
-                  href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}
-                  >Equipe</a
-                >
-              </li>
-            </ul>
-          </li>
+        <li class="dropdown dropdown-hover group">
+          <label tabindex="0" class="flex items-center cursor-pointer hover:text-primary transition">
+            Iniciativas
+            <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
+          </label>
+          <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-40">
+            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>Projetos</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>Café com Ciência</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}>Planejamento</a></li>
+          </ul>
+        </li>
 
-          <li class="dropdown dropdown-hover group">
-            <label
-              tabindex="0"
-              class="flex items-center cursor-pointer hover:text-gray-300"
-            >
-              Iniciativas
-              <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20">
-                <path d="M5.25 7.75L10 12.5l4.75-4.75"></path>
-              </svg>
-            </label>
-            <ul
-              class="dropdown-content menu p-0 shadow bg-base-100 text-base-content rounded-sm w-40 -translate-y-2 transition transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-150 ease-out"
-            >
-              <li>
-                <a
-                  href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}
-                  >Projetos</a
-                >
-              </li>
-              <li>
-                <a
-                  href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}
-                  >Café com Ciência</a
-                >
-              </li>
-              <li>
-                <a
-                  href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}
-                  >Planejamento</a
-                >
-              </li>
-            </ul>
-          </li>
+        <li><a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a></li>
+        <li><LanguageSelector lang={lang} texts={texts} /></li>
+        <li><AlterarTema /></li>
+        <li>
+          <label for="search-modal" class="flex items-center cursor-pointer hover:text-primary transition">
+            <IconSearch />
+          </label>
+        </li>
+      </ul>
 
-          <li>
-            <a
-              class="hover:text-gray-300"
-              href={`/${lang}/${getTranslatedPath("noticias", lang)}`}
-              >Notícias</a
-            >
-          </li>
-          <li><LanguageSelector lang={lang} texts={texts} /></li>
-          <li><AlterarTema /></li>
-
-          <!-- ✅ Ícone de busca com hover e branco -->
-          <li>
-            <label
-              for="search-modal"
-              class="btn btn-ghost btn-circle p-1 hover:text-gray-300 transition"
-            >
-              <img
-                src="/imagens/logos/icon-busca.svg"
-                alt="Buscar"
-                class="w-5 h-5 invert brightness-0"
-              />
-            </label>
-          </li>
-        </ul>
-
-        <!-- ✅ Logo UNESP (direita) com hover igual ao menu -->
-        <a
-          href="https://www.franca.unesp.br/"
-          target="_blank"
-          rel="noopener"
-          class="absolute right-0 flex items-center transition duration-150 ease-in-out hover:text-gray-300 cursor-pointer"
-        >
-          <img
-            src="/imagens/logos/logo-unesp02/AV01A.jpg"
-            alt="UNESP Franca"
-            class="h-8 sm:h-9 w-auto mix-blend-multiply"
-          />
-        </a>
-
-        <!-- ✅ Botão de menu mobile -->
-        <label for="menu-drawer" class="btn btn-square btn-ghost md:hidden">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </label>
+      <!-- 🔹 DIREITA: Logo UNESP + círculos -->
+      <div class="hidden lg:flex items-center gap-3">
+        <img
+          id="logo-unesp"
+          src="/imagens/logos/logo-unesp02/AV01A.png"
+          alt="Logo UNESP"
+          class="h-16 w-auto"
+        />
+        <img
+          src="/imagens/logos/cpps/circulos_grade_01.svg"
+          alt="Círculos decorativos"
+          class="h-16 w-auto"
+        />
       </div>
-    </nav>
+
+      <!-- 🔹 BOTÃO HAMBÚRGUER -->
+      <div class="lg:hidden">
+        <button class="btn btn-ghost" onclick="document.getElementById('menu-mobile').classList.toggle('hidden')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- 🔹 MENU MOBILE (colapsável) -->
+    <div id="menu-mobile" class="lg:hidden hidden mt-2">
+      <ul class="flex flex-col gap-2 text-base font-semibold">
+        <li><a href={`/${lang}/`}>Home</a></li>
+        <li class="dropdown dropdown-hover">
+          <details>
+            <summary class="cursor-pointer">Institucional</summary>
+            <ul>
+              <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a></li>
+              <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>Equipe</a></li>
+            </ul>
+          </details>
+        </li>
+        <li class="dropdown dropdown-hover">
+          <details>
+            <summary class="cursor-pointer">Iniciativas</summary>
+            <ul>
+              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>Projetos</a></li>
+              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>Café com Ciência</a></li>
+              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}>Planejamento</a></li>
+            </ul>
+          </details>
+        </li>
+        <li><a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a></li>
+        <li><LanguageSelector lang={lang} texts={texts} /></li>
+        <li><AlterarTema /></li>
+        <li>
+          <label for="search-modal" class="flex items-center cursor-pointer">
+            <IconSearch />
+          </label>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  <!-- ✅ Menu lateral (mobile) com tema e busca no topo -->
-  <div class="drawer-side z-50">
-    <label for="menu-drawer" class="drawer-overlay"></label>
-    <ul
-      class="menu pt-[80px] px-4 w-80 min-h-full bg-base-100 text-base-content text-xl font-semibold gap-3"
-    >
-      <li><AlterarTema /></li>
-      <li>
-        <label for="search-modal" class="btn btn-ghost btn-circle">
-          <img
-            src="/imagens/logos/icon-busca.svg"
-            alt="Buscar"
-            class="w-5 h-5 invert brightness-0"
-          />
-        </label>
-      </li>
-      <li><a href={`/${lang}/`}>Home</a></li>
-      <li>
-        <details>
-          <summary>Institucional</summary>
-          <ul>
-            <li>
-              <a
-                href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}
-                >Sobre</a
-              >
-            </li>
-            <li>
-              <a
-                href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}
-                >Equipe</a
-              >
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <details>
-          <summary>Iniciativas</summary>
-          <ul>
-            <li>
-              <a
-                href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}
-                >Projetos</a
-              >
-            </li>
-            <li>
-              <a
-                href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}
-                >Café com Ciência</a
-              >
-            </li>
-            <li>
-              <a
-                href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}
-                >Planejamento</a
-              >
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a>
-      </li>
-      <li><LanguageSelector lang={lang} texts={texts} /></li>
-    </ul>
-  </div>
-</div>
+  <!-- ✅ Script para troca de logo UNESP no dark mode -->
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const atualizarLogo = () => {
+        const logo = document.getElementById("logo-unesp");
+        const tema = document.documentElement.getAttribute("data-theme");
+        const src = tema === "dark"
+          ? "/imagens/logos/logo-unesp03/AV01F.svg"
+          : "/imagens/logos/logo-unesp02/AV01A.png";
+        if (logo) logo.src = src;
+      };
+      atualizarLogo();
+      new MutationObserver(atualizarLogo).observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["data-theme"]
+      });
+    });
+  </script>
+</nav>

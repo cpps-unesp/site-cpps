@@ -29,9 +29,15 @@ import "../styles/global.css";
     <meta property="og:locale" content={lang} />
 
     <!-- ✅ SEO multilíngue -->
-    {["pt", "en", "es"].map((l) => (
-      <link rel="alternate" hreflang={l} href={`https://cpps.franca.unesp.br/${l}/`} />
-    ))}
+    {
+      ["pt", "en", "es"].map((l) => (
+        <link
+          rel="alternate"
+          hreflang={l}
+          href={`https://cpps.franca.unesp.br/${l}/`}
+        />
+      ))
+    }
 
     <!-- ✅ canonical -->
     <link rel="canonical" href={`https://cpps.franca.unesp.br/${lang}/`} />
@@ -41,8 +47,13 @@ import "../styles/global.css";
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
 
-    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/theme-change@2.0.2/index.js"
+    ></script>
     <script type="module" src="/src/scripts/themeSwitcher.js"></script>
 
     <script>
@@ -52,29 +63,19 @@ import "../styles/global.css";
       });
     </script>
 
-    <style is:global>
-      body {
-        font-family: "Montserrat", sans-serif;
-      }
-      h1, h2, h3, .titulo {
-        font-family: "Lovelo", sans-serif;
-      }
-    </style>
+    
   </head>
 
   <body class="bg-base-100 text-base-content">
     <Header lang={lang} texts={texts} identidade={identidade}>
-      
       <AlternarTema />
     </Header>
 
-   <main class="pt-8 flex-1" data-pagefind-body>
-
+    <main class="pt-8 flex-1" data-pagefind-body>
       <slot />
     </main>
 
     <Footer lang={lang} texts={texts} />
-    <SearchModal/>
-
+    <SearchModal />
   </body>
 </html>

@@ -52,13 +52,20 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-h1, h2, h3, h4, .titulo {
-  font-family: 'Lovelo', sans-serif;
+h1,
+h2,
+h3,
+.titulo {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.5px; /* ou 1px para mais espaçamento */
+  text-transform: uppercase; /* se quiser tudo em maiúsculas */
 }
 
 .titulo {
-  font-size: 20px;
-  font-weight: bold;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: normal;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .subtitulo {
