@@ -2,8 +2,7 @@
   "equipe": {
     "title": "Team",
     "intro": [
-      "Somos um time interdisciplinar dedicado à pesquisa e ao ensino.",
-      "Conheça os diferentes <a href='#coordenação'>grupos</a>, <a href='#pesquisadores'>grupos</a> que compõem nossa equipe."
+      "Meet the people who collaborate and research at the<br class='hidden sm:inline' />Center for Political and Social Research"
     ],
     "categorias": {
       "Coordenação": [

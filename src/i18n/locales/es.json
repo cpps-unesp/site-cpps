@@ -72,17 +72,161 @@
     ]
   },
   "equipe": {
-  "title": "Equipe",
-  "membros": [
-    {
-      "nome": "Nome do membro",
-      "cargo": "Cargo",
-      "foto": "/images/foto.jpg",
-      "descricao": "Descrição curta",
-      "linkedin": "https://linkedin.com/..."
+    "title": "Equipo",
+    "intro": [
+      "Conozca a las personas que colaboran e investigan en el<br class='hidden sm:inline' />Centro de Investigación Política y Social."
+      
+    ],
+    "categorias": {
+      "Coordenação": [
+        {
+          "nome": "Murilo Gaspardo",
+          "cargo": "Coordenação",
+          "descricao": "Responsável pela supervisão geral do projeto",
+          "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
+          "prioridade": 1,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/7249928800890408",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Marcelo Passini Mariano",
+          "cargo": "Líder",
+          "descricao": "Responsável pela supervisão geral do projeto.",
+          "foto": "/imagens/equipe/Marcelo_Mariano.jpg",
+          "prioridade": "",
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": " http://lattes.cnpq.br/3505849964932313",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Thais Amoroso Paschoal",
+          "cargo": "Vice Líder",
+          "descricao": "Responsável pela supervisão geral do projeto.",
+          "foto": "/imagens/equipe/Thais_Amoroso.jpg",
+          "prioridade": "",
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/1531037509340384",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }
+          ]
+        }
+      ],
+      "Estagiários": [
+        {
+          "nome": "Ligia Simplicio",
+          "cargo": "Estagiária Remunerada (Serviço Social)",
+          "descricao": "Graduanda em Serviço Social na Unesp Franca e Membro ativo do CPPS",
+          "foto": "/imagens/equipe/ligia_simplicio.jpeg",
+          "prioridade": "",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": " http://lattes.cnpq.br/9979622141210229",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "instagram",
+              "url": "https://www.instagram.com/ligia.simplicio",
+              "icone": "/imagens/logos/instagram_icon_cinza.svg"
+            }
+          ]
+        },
+        {
+          "nome": "João Pedro Dias Vidal",
+          "cargo": "Estagiário Remunerado (Direito)",
+          "descricao": "Graduando em Direito na Unesp Franca e Membro ativo do CPPS",
+          "foto": "/imagens/equipe/Joao_Vidal.jpg",
+          "prioridade": "",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
+              "icone": "/imagens/logos/linkedin_icon2.svg"
+            },
+            {
+              "tipo": "instagram",
+              "url": "https://www.instagram.com/_vidaljp/",
+              "icone": "/imagens/logos/instagram_icon_cinza.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Caio Tomaz Palombo",
+          "cargo": "Estagiário Remunerado (História)",
+          "descricao": "Graduando em história na Unesp Franca e Membro ativo do CPPS",
+          "foto": "/imagens/equipe/caio_tomaz.png",
+          "prioridade": "",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "https://www.linkedin.com/in/caio-t-palomvo2664/",
+              "icone": "/imagens/logos/linkedin_icon2.svg"
+            },
+            {
+              "tipo": "instagram",
+              "url": "https://www.instagram.com/Caio_2664/",
+              "icone": "/imagens/logos/instagram_icon_cinza.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Mavi Silva",
+          "cargo": "Estagiário Remunerado (Relações Internacionais)",
+          "descricao": "Graduando em Relações Internacionais na Unesp Franca e Membro ativo do CPPS",
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "",
+              "icone": "/imagens/logos/linkedin_icon2.svg"
+            },
+            {
+              "tipo": "instagram",
+              "url": "",
+              "icone": "/imagens/logos/instagram_icon_cinza.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Breno Andreazza",
+          "cargo": "Estagiário Remunerada (Relações Internacionais)",
+          "descricao": "Graduando em Relações Internacionais na Unesp Franca",
+          "contribuicao":"Auxilio na transição do CPPS",
+          "foto": "/imagens/equipe/00-person.svg",
+          "status": "inativo",
+          "prioridade": "",
+          "redes": [
+            
+          ]
+        }
+      ]
     }
-  ]
-},
+  },
 "initiatives": {
   "title": "Iniciativas",
   "descricao": "Conheça nossas principais iniciativas...",
