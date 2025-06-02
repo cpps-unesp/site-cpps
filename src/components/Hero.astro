@@ -6,17 +6,17 @@ const { heroData, lang = "pt" } = Astro.props;
   class="relative w-full min-h-[100dvh] bg-cover bg-center sm:bg-top bg-no-repeat z-0"
   style={`background-image: url('${heroData?.hero.link}')`}
 >
-  <!-- 🔳 Overlay branco em mobile -->
+  <!-- 🔳 Overlay em mobile usando base-100 para adaptação automática ao tema -->
   <div
-    class="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-white via-white/90 to-white/80"
+    class="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-base-100 via-base-100/90 to-base-100/80"
   >
   </div>
 
-  <!-- 🔳 Gradiente lateral no desktop -->
+  <!-- 🔳 Gradiente lateral no desktop usando base-100 para adaptação automática ao tema -->
   <div class="absolute inset-0 z-0 hidden sm:block">
-    <div class="absolute inset-y-0 left-0 w-80 bg-white"></div>
+    <div class="absolute inset-y-0 left-0 w-80 bg-base-100"></div>
     <div
-      class="absolute inset-y-0 left-80 right-[35%] bg-gradient-to-r from-white/95 via-white/90 to-transparent"
+      class="absolute inset-y-0 left-80 right-[35%] bg-gradient-to-r from-base-100 via-base-100/90 to-transparent"
     >
     </div>
   </div>
@@ -36,7 +36,7 @@ const { heroData, lang = "pt" } = Astro.props;
           class="h-32 sm:h-48 md:h-64 w-auto z-10"
         />
         <h1
-          class="titulo text-3xl sm:text-5xl md:text-6xl leading-tight z-10 text-[#2E3F46] mt-4 sm:mt-0"
+          class="titulo text-3xl sm:text-5xl md:text-6xl leading-tight z-10 text-base-content mt-4 sm:mt-0"
           set:html={heroData?.hero.title}
         />
       </div>
@@ -44,7 +44,7 @@ const { heroData, lang = "pt" } = Astro.props;
       <!-- Descrição -->
       <div class="max-w-2xl w-full text-center sm:text-left px-2 sm:px-0">
         <p
-          class="text-base md:text-lg leading-relaxed mb-6 text-[#2E3F46]"
+          class="text-base md:text-lg leading-relaxed mb-6 text-base-content"
           set:html={heroData?.hero.description}
         />
 
