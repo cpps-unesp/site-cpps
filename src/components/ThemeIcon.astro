@@ -1,37 +1,86 @@
 ---
 import IconSun from "../icons/IconThemeSun.astro";
 import IconMoon from "../icons/IconThemeMoon.astro";
-import IconCupcake from "../icons/IconThemeCupcake.astro";
 const { class: className = "" } = Astro.props;
+
+// Gera um ID único para esta instância específica do componente
+const uniqueId = `theme-icon-instance-${crypto.randomUUID().slice(0, 8)}`;
+const themeStorageKey = 'theme'; // Defina aqui para passar para o script
 ---
 
-<span class={`relative ${className}`} data-theme-icon>
-  <span class="theme-icon theme-light block"><IconSun class="w-5 h-5" /></span>
-  <span class="theme-icon theme-dark hidden"><IconMoon class="w-5 h-5" /></span>
-  <span class="theme-icon theme-cupcake hidden"><IconCupcake class="w-5 h-5" /></span>
+<span id={uniqueId} class={`relative ${className}`} data-theme-icon-container>
+  {/* Ícones para o tema claro e escuro. A visibilidade é controlada via script. */}
+  <span class="theme-icon theme-light"><IconSun class="w-5 h-5" /></span>
+  <span class="theme-icon theme-dark"><IconMoon class="w-5 h-5" /></span>
+</span>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      function updateThemeIcon(scope) {
-        const current = document.documentElement.getAttribute("data-theme") || "light";
-        scope.querySelectorAll(".theme-icon").forEach(el => {
-          el.style.display = el.classList.contains(`theme-${current}`) ? "block" : "none";
-        });
+<script define:vars={{ hostElementId: uniqueId, THEME_STORAGE_KEY: themeStorageKey }}>
+  // Este script executa no cliente após o componente ser montado.
+  // `hostElementId` e `THEME_STORAGE_KEY` estão agora disponíveis aqui.
+
+  const hostElement = document.getElementById(hostElementId);
+
+  if (hostElement) {
+    const lightIcon = hostElement.querySelector('.theme-light');
+    const darkIcon = hostElement.querySelector('.theme-dark');
+
+    function updateDisplayedIcon() {
+      // Verifica se os ícones são HTMLElements antes de tentar manipular o estilo.
+      if (!(lightIcon instanceof HTMLElement) || !(darkIcon instanceof HTMLElement)) {
+        // console.error(`Ícones de tema não são HTMLElements ou não foram encontrados para o host #${hostElementId}.`);
+        return;
       }
 
-      document.querySelectorAll("[data-theme-icon]").forEach(scope => {
-        updateThemeIcon(scope);
-      });
+      const actualTheme = document.documentElement.getAttribute('data-theme');
 
-      document.querySelectorAll("[data-set-theme]").forEach(btn => {
-        btn.addEventListener("click", () => {
-          setTimeout(() => {
-            document.querySelectorAll("[data-theme-icon]").forEach(scope => {
-              updateThemeIcon(scope);
-            });
-          }, 50);
-        });
+      // Define ambos como 'none' inicialmente para evitar piscar ou sobreposição.
+      lightIcon.style.display = 'none';
+      darkIcon.style.display = 'none';
+
+      // console.log(`[${hostElementId}] Tema atual: ${actualTheme}`); // Log para depuração
+
+      if (actualTheme === 'dark') {
+        darkIcon.style.display = 'inline-block'; // ou 'block' dependendo do layout desejado
+      } else {
+        // Padrão para light se não for dark (cobre 'light', "cpps" inicial, null, ou valores inesperados)
+        lightIcon.style.display = 'inline-block'; // ou 'block'
+      }
+    }
+
+    // Observador para mudanças no atributo data-theme do HTML.
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+          updateDisplayedIcon();
+          break;
+        }
+      }
+    });
+    observer.observe(document.documentElement, { attributes: true });
+
+    // Chamada inicial para definir o ícone.
+    // Usar setTimeout para dar uma chance ao themeSwitcher.js (ou similar) de definir o tema inicial,
+    // ou se o data-theme é definido por um script que roda antes deste.
+    setTimeout(updateDisplayedIcon, 0);
+
+    // Listener para storage (outras abas).
+    window.addEventListener('storage', (e) => {
+      if (e.key === THEME_STORAGE_KEY) { // THEME_STORAGE_KEY vem de define:vars
+        updateDisplayedIcon();
+      }
+    });
+
+    // Listener para cliques nos botões de tema para atualização imediata.
+    // Isto assume que botões com 'data-set-theme' existem em outra parte do documento.
+    document.querySelectorAll('[data-set-theme]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Aguarda a próxima microtarefa para garantir que o themeSwitcher.js (ou similar)
+        // atualizou o data-theme no documentElement.
+        Promise.resolve().then(updateDisplayedIcon);
       });
     });
-  </script>
-</span>
+
+  } else {
+     console.error(`Elemento hospedeiro para ThemeIcon com ID '${hostElementId}' não encontrado.`);
+  }
+</script>
