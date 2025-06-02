@@ -1,0 +1,83 @@
+---
+// BackToTop Component
+const { lang = "pt" } = Astro.props;
+
+// Textos multilíngues
+const texts: Record<string, string> = {
+  pt: "Voltar ao topo",
+  en: "Back to top", 
+  es: "Volver arriba"
+};
+
+const ariaLabel = texts[lang as string] || texts.pt;
+---
+
+<button
+  id="back-to-top"
+  class="fixed bottom-6 right-6 bg-primary hover:bg-primary-focus text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible z-50 hover:scale-110"  aria-label={ariaLabel}
+  title={ariaLabel}
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+    stroke-width="2"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const backToTopButton = document.getElementById('back-to-top');
+    
+    if (!backToTopButton) return;
+
+    // Mostrar/ocultar botão baseado no scroll
+    function toggleVisibility() {
+      if (!backToTopButton) return;
+      
+      if (window.pageYOffset > 300) {
+        backToTopButton.classList.remove('opacity-0', 'invisible');
+        backToTopButton.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopButton.classList.add('opacity-0', 'invisible');
+        backToTopButton.classList.remove('opacity-100', 'visible');
+      }
+    }
+
+    // Scroll suave para o topo
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Event listeners
+    window.addEventListener('scroll', toggleVisibility);
+    backToTopButton.addEventListener('click', scrollToTop);
+
+    // Verificar posição inicial
+    toggleVisibility();
+  });
+</script>
+
+<style>
+  #back-to-top {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+  
+  #back-to-top:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Animação suave para mudanças de visibilidade */
+  #back-to-top {
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+  }
+</style>
