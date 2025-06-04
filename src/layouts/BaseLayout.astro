@@ -2,8 +2,8 @@
 const {
   children,
   lang = "pt",
-  titulo = "CPPS",
-  descricao = "",
+  titulo = "CPPS | UNESP",
+  descricao = "Centro de Pesquisa Política e Social da Faculdade de Ciências Humanas e Sociais da Unesp, campus Franca",
   texts = {},
   identidade = {},
 } = Astro.props;
@@ -16,17 +16,27 @@ import SearchModal from "../components/SearchModal.astro";
 import "../styles/global.css";
 ---
 
-<html lang={lang} data-theme="cpps">
+<html lang={lang} dir="ltr" data-theme="cpps">
   <head>
     <meta charset="utf-8" />
-    <title>{titulo} | CPPS</title>
+    <title>{titulo}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- ✅ SEO -->
     <meta name="description" content={descricao} />
-    <meta property="og:title" content={`${titulo} | CPPS`} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#003366" />
+
+    <!-- ✅ Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={titulo} />
     <meta property="og:description" content={descricao} />
+    <meta property="og:url" content={`https://cpps.franca.unesp.br/${lang}/`} />
     <meta property="og:locale" content={lang} />
+    <meta property="og:image" content="https://cpps.franca.unesp.br/imagens/logos/cpps/logo-cpps-01_rev_1.png" />
+    <meta property="og:image:alt" content="Logotipo do CPPS - UNESP" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+  
 
     <!-- ✅ SEO multilíngue -->
     {
@@ -42,7 +52,9 @@ import "../styles/global.css";
     <!-- ✅ canonical -->
     <link rel="canonical" href={`https://cpps.franca.unesp.br/${lang}/`} />
 
-    <!-- ✅ Fonts -->
+    <!-- ✅ Performance com fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
       rel="stylesheet"
@@ -51,8 +63,11 @@ import "../styles/global.css";
       href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
       rel="stylesheet"
     />
+<<<<<<< HEAD
 
     <script type="module" src="/scripts/themeSwitcher.js"></script>
+=======
+>>>>>>> b3ab0a3 (ajuste na tag metas)
   </head>
 
   <body class="bg-base-100 text-base-content">
@@ -66,5 +81,6 @@ import "../styles/global.css";
 
     <Footer lang={lang} texts={texts} />
     <SearchModal />
+    <script type="module" src="/src/scripts/themeSwitcher.js"></script>
   </body>
 </html>
