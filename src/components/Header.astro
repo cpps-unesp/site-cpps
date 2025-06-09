@@ -41,12 +41,12 @@ const h = texts.header ?? {};
             <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
           </label>
           <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-40">
-            <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>{h.sobre}</a></li>
+            <!-- <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>{h.sobre}</a></li>-->
             <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>{h.equipe}</a></li>
-          </ul>
+          </ul> 
         </li>
 
-        <li class="dropdown dropdown-hover group">
+        <!-- <li class="dropdown dropdown-hover group">
           <label tabindex="0" class="flex items-center cursor-pointer hover:text-primary transition">
             {h.iniciativas}
             <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
@@ -56,9 +56,9 @@ const h = texts.header ?? {};
             <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>{h.cafe}</a></li>
             <li><a href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}>{h.planejamento}</a></li>
           </ul>
-        </li>
+        </li> -->
 
-        <li><a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>{h.noticias}</a></li>
+        <!-- <li><a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>{h.noticias}</a></li> -->
         <li><LanguageSelector lang={lang} texts={texts} /></li>
         <li><AlterarTema /></li>
         <li>
