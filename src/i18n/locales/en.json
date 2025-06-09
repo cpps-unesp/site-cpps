@@ -183,7 +183,19 @@
   "texts": {
     "languageUnavailable": "Não disponível",
     "notFound": "Página não encontrada",
-    "buttonPersonalPage": "Personal page"
+    "buttonPersonalPage": "Personal page",
+    "header": {
+    "home": "Home",
+    "institucional": "Institutional",
+    "sobre": "About",
+    "equipe": "Team",
+    "iniciativas": "Iniciativas",
+    "projetos": "Projetos",
+    "cafe": "Café com Ciência",
+    "planejamento": "Planejamento",
+    "noticias": "Notícias",
+    "buscar": "Buscar"
+  }
   },
   "hero": {
     "title": "Center for Political<br class='hidden sm:inline' />and Social Research",

@@ -1,5 +1,4 @@
 {
-  
   "titulo": "UNESP Franca | Centro de Pesquisa Política e Social",
   "descricao": "Centro de Pesquisa Política e Social da Universidade Estadual Paulista (UNESP), câmpus Franca",
   "identidade": {
@@ -7,10 +6,20 @@
   },
   "texts": {
     "languageUnavailable": "Não disponível",
-    
     "notFound": "Página não encontrada",
-    "buttonPersonalPage": "Pág. Pessoal"
-
+    "buttonPersonalPage": "Pág. Pessoal",
+    "header": {
+      "home": "Home",
+      "institucional": "Institucional",
+      "sobre": "Sobre",
+      "equipe": "Equipe",
+      "iniciativas": "Iniciativas",
+      "projetos": "Projetos",
+      "cafe": "Café com Ciência",
+      "planejamento": "Planejamento",
+      "noticias": "Notícias",
+      "buscar": "Buscar"
+    }
   },
   "hero": {
     "title": "Centro de Pesquisa<br class='hidden sm:inline' />Política e Social",
@@ -103,7 +112,6 @@
     "title": "Equipe",
     "intro": [
       "Conheça as pessoas que colaboram e pesquisam no<br class='hidden sm:inline' />Centro de Pesquisa Política e Social"
-      
     ],
     "categorias": {
       "Coordenação": [
@@ -244,13 +252,11 @@
           "nome": "Breno Andreazza",
           "cargo": "Estagiário Remunerada (Relações Internacionais)",
           "descricao": "Graduando em Relações Internacionais na Unesp Franca",
-          "contribuicao":"Auxilio na transição do CPPS",
+          "contribuicao": "Auxilio na transição do CPPS",
           "foto": "/imagens/equipe/00-person.svg",
           "status": "inativo",
           "prioridade": "",
-          "redes": [
-            
-          ]
+          "redes": []
         }
       ]
     }

@@ -4,7 +4,19 @@
   "descricao": "Page description",
   "texts": {
     "languageUnavailable": "No disponible",
-    "notFound": "Página não encontrada"
+    "notFound": "Página não encontrada",
+    "header": {
+    "home": "Home",
+    "institucional": "Institucional",
+    "sobre": "Sobre",
+    "equipe": "Equipe",
+    "iniciativas": "Iniciativas",
+    "projetos": "Projetos",
+    "cafe": "Café com Ciência",
+    "planejamento": "Planejamento",
+    "noticias": "Notícias",
+    "buscar": "Buscar"
+  }
   },
   "hero": {
     "title": "Centro de Investigaciones<br class='hidden sm:inline' />Políticas y Sociales",

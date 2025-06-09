@@ -11,9 +11,11 @@ const {
   identidade = {},
 } = Astro.props as {
   lang: SupportedLang;
-  texts: Record<string, string>;
+  texts: Record<string, any>;
   identidade: { logo: string };
 };
+
+const h = texts.header ?? {};
 ---
 
 <nav class="w-full bg-base-100 text-base-content border-b border-base-300 transition-transform duration-300 fixed top-0 z-50">
@@ -31,32 +33,32 @@ const {
 
       <!-- 🔹 MENU DESKTOP -->
       <ul class="hidden lg:flex items-center gap-6 text-sm sm:text-base font-semibold">
-        <li><a class="hover:text-primary transition" href={`/${lang}/`}>Home</a></li>
+        <li><a class="hover:text-primary transition" href={`/${lang}/`}>{h.home}</a></li>
 
         <li class="dropdown dropdown-hover group">
           <label tabindex="0" class="flex items-center cursor-pointer hover:text-primary transition">
-            Institucional
+            {h.institucional}
             <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
           </label>
           <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-40">
-            <!-- <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a></li> -->
-            <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>Equipe</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>{h.sobre}</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>{h.equipe}</a></li>
           </ul>
         </li>
 
-        <!-- <li class="dropdown dropdown-hover group">
+        <li class="dropdown dropdown-hover group">
           <label tabindex="0" class="flex items-center cursor-pointer hover:text-primary transition">
-            Iniciativas
+            {h.iniciativas}
             <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
           </label>
           <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-40">
-            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>Projetos</a></li>
-            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>Café com Ciência</a></li>
-            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}>Planejamento</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>{h.projetos}</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>{h.cafe}</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}>{h.planejamento}</a></li>
           </ul>
         </li>
 
-        <li><a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a></li> -->
+        <li><a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>{h.noticias}</a></li>
         <li><LanguageSelector lang={lang} texts={texts} /></li>
         <li><AlterarTema /></li>
         <li>
@@ -94,27 +96,15 @@ const {
     <!-- 🔹 MENU MOBILE (colapsável) -->
     <div id="menu-mobile" class="lg:hidden hidden mt-2">
       <ul class="flex flex-col gap-2 text-base font-semibold">
-        <li><a href={`/${lang}/`}>Home</a></li>
+        <li><a href={`/${lang}/`}>{h.home}</a></li>
         <li class="dropdown dropdown-hover">
           <details>
-            <summary class="cursor-pointer">Institucional</summary>
+            <summary class="cursor-pointer">{h.institucional}</summary>
             <ul>
-              <!-- <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>Sobre</a></li> -->
-              <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>Equipe</a></li>
+              <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>{h.equipe}</a></li>
             </ul>
           </details>
         </li>
-        <!-- <li class="dropdown dropdown-hover">
-          <details>
-            <summary class="cursor-pointer">Iniciativas</summary>
-            <ul>
-              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>Projetos</a></li>
-              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>Café com Ciência</a></li>
-              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/planejamento", lang)}`}>Planejamento</a></li>
-            </ul>
-          </details>
-        </li>
-        <li><a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>Notícias</a></li> -->
         <li><LanguageSelector lang={lang} texts={texts} /></li>
         <li><AlterarTema /></li>
         <li>
