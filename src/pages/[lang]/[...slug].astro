@@ -159,7 +159,13 @@ const originalKey = findOriginalKey(slugPath, currentLang);
           case "institucional/equipe":
             return <EquipeSection equipe={equipe} texts={texts} />;
           case "institucional/sobre":
-            return <SobreSection sobre={sobre} />;
+            return (
+              <SobreSection
+                sobre={sobre}
+                objetivosGerais={locale.default.objetivosGerais}
+                objetivosEspecificos={locale.default.objetivosEspecificos}
+              />
+            );
           case "iniciativas/projetos":
             return <ProjetosSection projetos={projetos} />;
           case "iniciativas/cafe-com-ciencia":

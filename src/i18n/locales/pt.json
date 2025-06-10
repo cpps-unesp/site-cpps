@@ -73,6 +73,42 @@
       "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
     }
   },
+  "objetivosGerais": {
+  "title": "Objetivos Gerais",
+  "description": "Nossos objetivos amplos e estratégicos.",
+  "image": "/imagens/campus/entrada-unesp-franca.jpg",
+  "reverse": false,
+  "activities": [
+    {
+      "icon": "🎯",
+      "title": "Desenvolver pesquisas interdisciplinares",
+      "description": "Foco em política, sociedade e ciência social aplicada."
+    },
+    {
+      "icon": "🎯",
+      "title": "Consolidar redes de pesquisa",
+      "description": "Incluindo parcerias regionais e internacionais."
+    }
+  ]
+},
+"objetivosEspecificos": {
+  "title": "Objetivos Específicos",
+  "description": "Metas práticas para alcançar os objetivos gerais.",
+  "image": "/imagens/campus/entrada-unesp-franca.jpg",
+  "reverse": true,
+  "activities": [
+    {
+      "icon": "✅",
+      "title": "Formação de estudantes",
+      "description": "Incluir estudantes em projetos e eventos científicos."
+    },
+    {
+      "icon": "✅",
+      "title": "Produção acadêmica",
+      "description": "Fomentar artigos, livros e apresentações em congressos."
+    }
+  ]
+},
   "projetos": {
     "titulo": "Nossos Projetos",
     "lista": [

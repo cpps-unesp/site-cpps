@@ -1,6 +1,6 @@
 ---
-const { sobre } = Astro.props;
-// sobre = { "quem-somos": { titulo, texto, imagem }, ... }
+import AtividadesSection from "./AtividadesSection.astro";
+const { sobre, objetivosGerais, objetivosEspecificos } = Astro.props;
 ---
 
 {sobre ? (
@@ -40,6 +40,26 @@ const { sobre } = Astro.props;
         )}
       </div>
     ))}
+
+    {objetivosGerais && (
+      <AtividadesSection
+        title={objetivosGerais.title}
+        description={objetivosGerais.description}
+        image={objetivosGerais.image}
+        reverse={objetivosGerais.reverse}
+        activities={objetivosGerais.activities}
+      />
+    )}
+
+    {objetivosEspecificos && (
+      <AtividadesSection
+        title={objetivosEspecificos.title}
+        description={objetivosEspecificos.description}
+        image={objetivosEspecificos.image}
+        reverse={objetivosEspecificos.reverse}
+        activities={objetivosEspecificos.activities}
+      />
+    )}
   </section>
 ) : (
   <p class="text-error px-4 md:px-8">Conteúdo 'sobre' não encontrado.</p>
