@@ -3,30 +3,28 @@
 
 @plugin "daisyui" {
   themes: all;
-  
 }
 
 @plugin "daisyui/theme" {
   name: "light";
   default: true;
-  --color-primary: #00ACF0;             /* Mantém azul vibrante */
-  --color-secondary: #347D9B;           /* Azul intermediário */
-  --color-accent: #2197C5;              /* Azul principal */
-  --color-neutral: #2E3F46;       /* Cinza escuro */
-  --color-base-100: #ffffff;      /* Fundo branco */
-  --color-base-content: #2E3F46;  /* Texto: cinza escuro */
+  --color-primary: #00ACF0;
+  --color-secondary: #347D9B;
+  --color-accent: #2197C5;
+  --color-neutral: #2E3F46;
+  --color-base-100: #ffffff;
+  --color-base-content: #2E3F46;
 }
 
 @plugin "daisyui/theme" {
   name: "dark";
-  --color-primary: #00ACF0;             /* Mantém azul vibrante */
-  --color-secondary: #347D9B;           /* Azul intermediário */
-  --color-accent: #2197C5;              /* Azul principal */
-  --color-neutral: #557480;             /* Cinza médio */
-  --color-base-100: #1F2937;            /* Fundo: cinza bem escuro */
-  --color-base-content: #f3f4f6;        /* Texto: cinza claro */
+  --color-primary: #00ACF0;
+  --color-secondary: #347D9B;
+  --color-accent: #2197C5;
+  --color-neutral: #557480;
+  --color-base-100: #1F2937;
+  --color-base-content: #f3f4f6;
 }
-
 
 html {
   height: 100%;
@@ -40,41 +38,46 @@ body {
   padding: 0;
   overflow-x: hidden;
   background-color: theme('colors.base-100');
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* Garante que o body não deixe sobra no fim */
 body > *:last-child {
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-}
-
-h1,
-h2,
-h3,
-.titulo {
+/* Títulos */
+h1, h2, h3, .titulo {
   font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 0.5px; /* ou 1px para mais espaçamento */
-  text-transform: uppercase; /* se quiser tudo em maiúsculas */
-}
-
-.titulo {
-  font-family: "Bebas Neue", sans-serif;
-  font-weight: normal;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-  font-size: clamp(2rem, 5vw, 3.5rem); /* Responsivo */
+}
+
+.titulo {
+  font-weight: normal;
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
 }
 
 .subtitulo {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
 }
 
+/* Parágrafos */
 .paragrafo {
-  font-size: clamp(0.98rem, 1vw + 0.2rem, 1.125rem); /* entre 15px e 18px */
-  line-height: 1.6;
+  font-size: clamp(1.2rem, 1vw + 0.5rem, 1.45rem);
+  line-height: 1.85;
+  max-width: 65ch;
+  text-align: justify;
+  hyphens: auto;
+}
+.paragrafo a {
+  color: #00ACF0;
+  font-weight: 600;
+  text-decoration: none; /* remove sublinhado */
+}
+
+.paragrafo a:hover {
+  color: #2197C5;
+  /* text-decoration: underline;  */
 }

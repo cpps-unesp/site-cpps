@@ -1,66 +1,32 @@
 ---
-import AtividadesSection from "./AtividadesSection.astro";
+import SectionPadrao from "./SectionPadrao.astro";
 const { sobre, objetivosGerais, objetivosEspecificos } = Astro.props;
 ---
 
-{sobre ? (
-  <section class="mt-16 space-y-24 px-4 md:px-8 lg:px-16">
-    {Object.entries(sobre).map(([key, secao], index) => (
-      <div class="grid md:grid-cols-2 gap-12 items-center" key={key}>
-        {index % 2 === 0 ? (
-          <>
-            <div>
-              <h2 class="text-4xl font-extrabold mb-4">{secao.titulo}</h2>
-              <p class="text-base-content leading-relaxed">{secao.texto}</p>
-            </div>
-            <div>
-              <img
-                src={secao.imagem}
-                alt={`Imagem ilustrativa da seção ${secao.titulo}`}
-                class="rounded-xl w-full max-w-md mx-auto transition duration-300 ease-in-out"
-                loading="lazy"
-              />
-            </div>
-          </>
-        ) : (
-          <>
-            <div class="order-2 md:order-1">
-              <img
-                src={secao.imagem}
-                alt={`Imagem ilustrativa da seção ${secao.titulo}`}
-                class="rounded-xl w-full max-w-md mx-auto transition duration-300 ease-in-out"
-                loading="lazy"
-              />
-            </div>
-            <div class="order-1 md:order-2">
-              <h2 class="text-4xl font-extrabold mb-4">{secao.titulo}</h2>
-              <p class="text-base-content leading-relaxed">{secao.texto}</p>
-            </div>
-          </>
-        )}
-      </div>
-    ))}
+<section class="mt-16 space-y-24 px-4 md:px-8 lg:px-16">
 
-    {objetivosGerais && (
-      <AtividadesSection
-        title={objetivosGerais.title}
-        description={objetivosGerais.description}
-        image={objetivosGerais.image}
-        reverse={objetivosGerais.reverse}
-        activities={objetivosGerais.activities}
-      />
-    )}
+  {Object.entries(sobre).map(([key, secao], index) => (
+    <SectionPadrao
+      titulo={secao.titulo}
+      texto={secao.texto}
+      imagem={secao.imagem}
+      departamentos={secao.departamentos}
+      reverse={secao.reverse ?? (index % 2 === 1)}
+    />
+  ))}
 
-    {objetivosEspecificos && (
-      <AtividadesSection
-        title={objetivosEspecificos.title}
-        description={objetivosEspecificos.description}
-        image={objetivosEspecificos.image}
-        reverse={objetivosEspecificos.reverse}
-        activities={objetivosEspecificos.activities}
-      />
-    )}
-  </section>
-) : (
-  <p class="text-error px-4 md:px-8">Conteúdo 'sobre' não encontrado.</p>
-)}
+  <SectionPadrao
+    titulo={objetivosGerais.titulo}
+    texto={objetivosGerais.texto}
+    imagem={objetivosGerais.imagem}
+    reverse={objetivosGerais.reverse ?? false}
+  />
+
+  <SectionPadrao
+    titulo={objetivosEspecificos.titulo}
+    texto={objetivosEspecificos.texto}
+    imagem={objetivosEspecificos.imagem}
+    reverse={objetivosEspecificos.reverse ?? false}
+  />
+
+</section>

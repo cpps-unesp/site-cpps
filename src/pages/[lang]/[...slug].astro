@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EquipeSection from "../../components/EquipeSection.astro";
-import SobreSection from "../../components/SobreSection.astro";
+import SobreSection from "../../components/BlocoSection.astro";
 import ProjetosSection from "../../components/ProjetosSection.astro";
 import CafeComCienciaSection from "../../components/CafeComCienciaSection.astro";
 import NoticiaPage from "../../components/NoticiaPage.astro";
@@ -160,11 +160,7 @@ const originalKey = findOriginalKey(slugPath, currentLang);
             return <EquipeSection equipe={equipe} texts={texts} />;
           case "institucional/sobre":
             return (
-              <SobreSection
-                sobre={sobre}
-                objetivosGerais={locale.default.objetivosGerais}
-                objetivosEspecificos={locale.default.objetivosEspecificos}
-              />
+              <SobreSection blocos={sobre} />
             );
           case "iniciativas/projetos":
             return <ProjetosSection projetos={projetos} />;
