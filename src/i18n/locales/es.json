@@ -26,6 +26,121 @@
     },
     "link": "/imagens/campus/entrada-unesp-franca.jpg"
   },
+  "documentos": {
+    "titulo": "Documentos, informes y similares",
+    "descricao": "",
+    "grupos": [
+      {
+        "titulo": "RESOLUÇÃO UNESP No 19, DE 15 DE MAIO DE 2025",
+        "descricao": "Formalização da criação do Centro de Pesquisa Política e Social através de resolução da reitoria da UNESP publicada no diário Oficial  do Estado de São Paulo",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1uLEUk7i2xj8ADrjMvDLLh5iwRLstwWXZ/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1uLEUk7i2xj8ADrjMvDLLh5iwRLstwWXZ/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Regimento",
+        "descricao": "Formalização da criação do Centro de Pesquisa Política e Social através de resolução da reitoria da UNESP publicada no diário Oficial  do Estado de São Paulo",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1lKnNg6OCtkgyQVEC3DPfPBcK9Cw3Rt_d/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1lKnNg6OCtkgyQVEC3DPfPBcK9Cw3Rt_d/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Plano Inicial de Gestão e Metas",
+        "descricao": "Delineia um cronograma estratégico e progressivo para os próximos oito semestres, integrando diretamente as diretrizes estabelecidas no regimento interno do centro.",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1qD8-n3zIJ9xYWvVJ0087-2PrbqboQUUj/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1qD8-n3zIJ9xYWvVJ0087-2PrbqboQUUj/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Proposta de Criação",
+        "descricao": "Dispõe sobre a criação, a organização, o funcionamento do Centros de Pesquisa Política e Social",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"}
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Parecer e Manifestação dos Departamentos",
+        "descricao": "Avaliação e subscrição dos seis departamentos da Faculdade de Ciências Humanas e Sociais da UNESP em relação a criação do Centro de Pesquisa Interdepartamental",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1IqJ54KQibJ_UkHgE60BHqdtwtSac6UmF/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1IqJ54KQibJ_UkHgE60BHqdtwtSac6UmF/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "RESOLUÇÃO UNESP Nº 19, DE 08 DE ABRIL DE 2020",
+        "descricao": "Dispõe sobre a criação, a organização, o funcionamento e o encerramento de Centros de Pesquisa.",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "HTML",
+                "url": "https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "sobre": {
     "quem-somos": {
       "titulo": "Centro de Investigaciones Políticas y Sociales",

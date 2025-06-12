@@ -58,6 +58,14 @@ h1, h2, h3, .titulo {
   font-size: clamp(2.5rem, 5vw, 4.25rem);
 }
 
+.mini-titulo {
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: normal;
+  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+}
+
 .subtitulo {
   font-size: 18px;
   font-weight: 600;
@@ -74,10 +82,9 @@ h1, h2, h3, .titulo {
 .paragrafo a {
   color: #00ACF0;
   font-weight: 600;
-  text-decoration: none; /* remove sublinhado */
+  text-decoration: none;
 }
 
 .paragrafo a:hover {
   color: #2197C5;
-  /* text-decoration: underline;  */
 }
