@@ -23,7 +23,7 @@
     }
   },
   "hero": {
-    "title": "Centro de Pesquisa<br class='hidden sm:inline' />Política e Social",
+    "title": "Centro de Pesquisa<br class='hidden sm:inline' /> Política e Social",
     "description": "Apoia a execução de pesquisas na <span class='text-primary font-semibold bg-white px-1 rounded'>Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)</span>, localizado no município de Franca/SP.",
     "button": {
       "url": "/institucional/sobre",
@@ -340,10 +340,29 @@
   "equipe": {
     "title": "Equipe",
     "intro": [
-      "Conheça as pessoas que colaboram e pesquisam no<br class='hidden sm:inline' />Centro de Pesquisa Política e Social"
+      "Conheça as pessoas que colaboram e pesquisam no<br class='hidden sm:inline' /> Centro de Pesquisa Política e Social"
     ],
     "categorias": {
       "Coordenação": [
+        {
+          "nome": " Fernanda Mello Sant’Anna",
+          "cargo": "Coordenadora Geral",
+          "descricao": "Responsável pela supervisão geral do projeto",
+          "foto": "/imagens/equipe/fernanda_mello.png",
+          "prioridade": 1,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/6759610800922658",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://br.linkedin.com/in/fernanda-mello-sant-anna-79b8882b3",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }]
+          },
         {
           "nome": "Marcelo Passini Mariano",
           "cargo": "Líder",

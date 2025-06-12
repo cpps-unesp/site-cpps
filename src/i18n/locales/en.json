@@ -1,4 +1,5 @@
-{"sobre": {
+{
+  "sobre": {
     "quem-somos": {
       "titulo": "Center for Political and Social Research",
       "reverse": false,
@@ -100,7 +101,7 @@
   "equipe": {
     "title": "Team",
     "intro": [
-      "Meet the people who collaborate and research at the<br class='hidden sm:inline' />Center for Political and Social Research"
+      "Meet the people who collaborate and research at the<br class='hidden sm:inline' /> Center for Political and Social Research"
     ],
     "categorias": {
       "Coordenação": [
@@ -283,20 +284,21 @@
     "notFound": "Página não encontrada",
     "buttonPersonalPage": "Personal page",
     "header": {
-    "home": "Home",
-    "institucional": "Institutional",
-    "sobre": "About",
-    "equipe": "Team",
-    "iniciativas": "Iniciativas",
-    "projetos": "Projetos",
-    "cafe": "Café com Ciência",
-    "planejamento": "Planejamento",
-    "noticias": "Notícias",
-    "buscar": "Buscar"
-  }
+      "home": "Home",
+      "institucional": "Institutional",
+      "sobre": "About",
+      "equipe": "Team",
+      "documentos": "Documents",
+      "iniciativas": "Iniciativas",
+      "projetos": "Projetos",
+      "cafe": "Café com Ciência",
+      "planejamento": "Planejamento",
+      "noticias": "Notícias",
+      "buscar": "Buscar"
+    }
   },
   "hero": {
-    "title": "Center for Political<br class='hidden sm:inline' />and Social Research",
+    "title": "Center for Political<br class='hidden sm:inline' /> and Social Research",
     "description": "Supports the execution of research at the <span class='text-primary font-semibold bg-white px-1 rounded'>Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the city of Franca/SP.",
     "button": {
       "url": "/institutional/about",
@@ -305,15 +307,15 @@
     "link": "/imagens/campus/entrada-unesp-franca.jpg"
   },
   "documentos": {
-    "titulo": "Documents, Reports",
-    "descricao": "",
+    "titulo": "Documents",
+    "descricao": "Institutional and administrative documents of the Research Center.",
     "grupos": [
       {
-        "titulo": "RESOLUÇÃO UNESP No 19, DE 15 DE MAIO DE 2025",
-        "descricao": "Formalização da criação do Centro de Pesquisa Política e Social através de resolução da reitoria da UNESP publicada no diário Oficial  do Estado de São Paulo",
+        "titulo": "UNESP RESOLUTION No. 19, MAY 15, 2025",
+        "descricao": "Formal establishment of the Political and Social Research Center through the UNESP Rector's Office resolution published in the Official Gazette of the State of São Paulo.",
         "arquivos": [
           {
-            "nome": "",
+            "nome": "UNESP RESOLUTION No. 19, 2025",
             "formatos": [
               {
                 "tipo": "PDF",
@@ -328,11 +330,11 @@
         ]
       },
       {
-        "titulo": "Regimento",
-        "descricao": "Formalização da criação do Centro de Pesquisa Política e Social através de resolução da reitoria da UNESP publicada no diário Oficial  do Estado de São Paulo",
+        "titulo": "Bylaws",
+        "descricao": "Internal bylaws of the Political and Social Research Center.",
         "arquivos": [
           {
-            "nome": "",
+            "nome": "Bylaws",
             "formatos": [
               {
                 "tipo": "PDF",
@@ -347,11 +349,11 @@
         ]
       },
       {
-        "titulo": "Plano Inicial de Gestão e Metas",
-        "descricao": "Delineia um cronograma estratégico e progressivo para os próximos oito semestres, integrando diretamente as diretrizes estabelecidas no regimento interno do centro.",
+        "titulo": "Initial Management and Goals Plan",
+        "descricao": "Outlines a strategic and progressive schedule for the next eight semesters, directly integrating the guidelines established in the internal bylaws.",
         "arquivos": [
           {
-            "nome": "",
+            "nome": "Initial Management Plan",
             "formatos": [
               {
                 "tipo": "PDF",
@@ -366,11 +368,11 @@
         ]
       },
       {
-        "titulo": "Proposta de Criação",
-        "descricao": "Dispõe sobre a criação, a organização, o funcionamento do Centros de Pesquisa Política e Social",
+        "titulo": "Creation Proposal",
+        "descricao": "Details the creation, organization, and operation of the Research Center.",
         "arquivos": [
           {
-            "nome": "",
+            "nome": "Creation Proposal",
             "formatos": [
               {
                 "tipo": "PDF",
@@ -378,17 +380,18 @@
               },
               {
                 "tipo": "HTML",
-                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"}
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
+              }
             ]
           }
         ]
       },
       {
-        "titulo": "Parecer e Manifestação dos Departamentos",
-        "descricao": "Avaliação e subscrição dos seis departamentos da Faculdade de Ciências Humanas e Sociais da UNESP em relação a criação do Centro de Pesquisa Interdepartamental",
+        "titulo": "Departments' Opinion and Statement",
+        "descricao": "Evaluation and endorsement by the six departments of the Faculty of Human and Social Sciences of UNESP regarding the Center's creation.",
         "arquivos": [
           {
-            "nome": "",
+            "nome": "Departments' Statement",
             "formatos": [
               {
                 "tipo": "PDF",
@@ -403,11 +406,11 @@
         ]
       },
       {
-        "titulo": "RESOLUÇÃO UNESP Nº 19, DE 08 DE ABRIL DE 2020",
-        "descricao": "Dispõe sobre a criação, a organização, o funcionamento e o encerramento de Centros de Pesquisa.",
+        "titulo": "UNESP RESOLUTION No. 19, APRIL 8, 2020",
+        "descricao": "Establishes the creation, organization, and operation of Research Centers.",
         "arquivos": [
           {
-            "nome": "",
+            "nome": "UNESP RESOLUTION No. 19, 2020",
             "formatos": [
               {
                 "tipo": "HTML",

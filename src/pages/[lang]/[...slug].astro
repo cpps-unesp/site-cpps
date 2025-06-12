@@ -68,7 +68,7 @@ const slugPath = Array.isArray(slugParam)
 const slugArray = slugPath.split("/");
 
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
-const { titulo, descricao, texts, equipe, sobre, projetos, cafe,documentos } =
+const { titulo, descricao, texts, equipe, sobre, projetos, cafe, documentos } =
   locale.default;
 
 const noticiasPrefix = routeTranslations["noticias"][currentLang];
