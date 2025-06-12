@@ -229,26 +229,6 @@
     "categorias": {
       "Coordenação": [
         {
-          "nome": "Murilo Gaspardo",
-          "cargo": "Coordenação",
-          "descricao": "Responsável pela supervisão geral do projeto",
-          "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
-          "prioridade": 1,
-          "status": "ativo",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/7249928800890408",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "linkedin",
-              "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/",
-              "icone": "/imagens/logos/linkedin_icon.svg"
-            }
-          ]
-        },
-        {
           "nome": "Marcelo Passini Mariano",
           "cargo": "Líder",
           "descricao": "Responsável pela supervisão geral do projeto.",
@@ -279,6 +259,28 @@
             {
               "tipo": "linkedin",
               "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }
+          ]
+        }
+      ],
+      "Pesquisadores": [
+        {
+          "nome": "Murilo Gaspardo",
+          "cargo": "Pesquisador",
+          "descricao": "",
+          "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
+          "prioridade": 1,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/7249928800890408",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/",
               "icone": "/imagens/logos/linkedin_icon.svg"
             }
           ]
