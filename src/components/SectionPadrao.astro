@@ -14,9 +14,7 @@ const { titulo, texto, imagem, departamentos = null, reverse = false } = Astro.p
           class="rounded-xl w-full max-w-md mx-auto transition duration-300 ease-in-out"
           loading="lazy"
         />
-      </div>
-
-      <div>
+      </div>      <div>
         <h2 class="text-4xl font-extrabold mb-6">{titulo}</h2>
         <TextoComCheck texto={texto} />
 
@@ -24,7 +22,7 @@ const { titulo, texto, imagem, departamentos = null, reverse = false } = Astro.p
           <ul class="list-none mt-6 space-y-4 pl-8">
             {departamentos.map((item) => (
               <div class="flex items-start gap-2">
-                <CheckIcon size={24} class="mt-1 flex-shrink-0" />
+                <CheckIcon size={24} class="mt-1" />
                 <span class="paragrafo">{item}</span>
               </div>
             ))}
@@ -32,8 +30,7 @@ const { titulo, texto, imagem, departamentos = null, reverse = false } = Astro.p
         )}
       </div>
     </>
-  ) : (
-    <>
+  ) : (    <>
       <div>
         <h2 class="text-4xl font-extrabold mb-6">{titulo}</h2>
         <TextoComCheck texto={texto} />
@@ -42,7 +39,7 @@ const { titulo, texto, imagem, departamentos = null, reverse = false } = Astro.p
           <ul class="list-none mt-6 space-y-4 pl-8">
             {departamentos.map((item) => (
               <div class="flex items-start gap-2">
-                <CheckIcon size={24} class="mt-1 flex-shrink-0" />
+                <CheckIcon size={24} class="mt-1" />
                 <span class="paragrafo">{item}</span>
               </div>
             ))}

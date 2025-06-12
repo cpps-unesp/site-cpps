@@ -7,13 +7,12 @@ const { texto } = Astro.props;
 ---
 
 {texto.map((par, idx) => (
-  <div class="flex items-start mb-4" key={idx}>
-    {par.check ? (
-      <div class="mt-1 mr-3">
-        <CheckIcon size={24} color="#22c55e" class="flex-shrink-0" />
+  <div class="flex items-start mb-4" key={idx}>    {par.check ? (
+      <div class="mt-1 mr-3 flex-shrink-0">
+        <CheckIcon size={24} color="#22c55e" />
       </div>
     ) : (
-      <div class="w-[24px] mr-3"></div>  <!-- reserva o espaço vazio do ícone -->
+      <div class="w-[24px] mr-3 flex-shrink-0"></div>  <!-- reserva o espaço vazio do ícone -->
     )}
     <div
       class="paragrafo text-justify hyphens-auto"

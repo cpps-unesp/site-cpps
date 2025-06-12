@@ -22,10 +22,9 @@ const { blocos } = Astro.props;
           <TextoComCheck texto={bloco.texto} />
 
           {bloco.departamentos && (
-            <ul class="list-none mt-6 space-y-4 pl-8">
-              {bloco.departamentos.map((item) => (
+            <ul class="list-none mt-6 space-y-4 pl-8">              {bloco.departamentos.map((item) => (
                 <div class="flex items-start gap-2">
-                  <CheckIcon size={24} class="mt-1 flex-shrink-0" />
+                  <CheckIcon size={24} class="mt-1" />
                   <span class="paragrafo">{item}</span>
                 </div>
               ))}
