@@ -18,7 +18,7 @@ const { blocos } = Astro.props;
 
         {/* Coluna de texto */}
         <div class="md:w-7/12">
-          <h2 class="text-4xl font-extrabold mb-6">{bloco.titulo}</h2>
+          <h2 class="text-4xl text-primary font-extrabold mb-6">{bloco.titulo}</h2>
           <TextoComCheck texto={bloco.texto} />
 
           {bloco.departamentos && (
