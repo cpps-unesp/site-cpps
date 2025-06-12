@@ -19,7 +19,7 @@
     }
   },
   "hero": {
-    "title": "Centro de<br class='hidden sm:inline' /> investigación<br class='hidden sm:inline' /> Políticas y Sociales",
+    "title": "Centro de<br class='hidden sm:inline' /> Investigación<br class='hidden sm:inline' /> Política y Social",
     "description": "Apoya la ejecución de investigaciones en la <span class='text-primary font-semibold bg-white px-1 rounded'>Facultad de Ciencias Humanas y Sociales (FCHS) de la Universidad Estadual Paulista (UNESP)</span>, ubicada en la ciudad de Franca/SP.",
     "button": {
       "url": "/institucional/conocer",
@@ -144,7 +144,7 @@
   },
   "sobre": {
     "quem-somos": {
-      "titulo": "Centro de Investigaciones Políticas y Sociales",
+      "titulo": "Centro de Investigación Política y Social",
       "reverse": false,
       "texto": [
         {
