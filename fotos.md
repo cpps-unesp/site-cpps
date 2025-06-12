@@ -1,0 +1,14 @@
+```
+ https://arquivodigital.unesp.br/index.php/corredor-da-central-de-aula-1
+ https://arquivodigital.unesp.br/index.php/biblioteca-17
+ https://arquivodigital.unesp.br/index.php/curso-de-relacoes-internacionais-central-de-aulas
+ https://arquivodigital.unesp.br/index.php/predio-administracao
+ https://arquivodigital.unesp.br/index.php/centros-academicos
+ https://arquivodigital.unesp.br/index.php/restaurante-universitario-3
+ https://arquivodigital.unesp.br/index.php/sala-de-congregacoes-1
+ https://arquivodigital.unesp.br/index.php/salas-de-aulas-10
+https://arquivodigital.unesp.br/index.php/restaurante-universitario-3
+https://arquivodigital.unesp.br/index.php/centros-academicos
+https://arquivodigital.unesp.br/index.php/biblioteca-22
+https://arquivodigital.unesp.br/index.php/salas-de-aulas-8
+```
