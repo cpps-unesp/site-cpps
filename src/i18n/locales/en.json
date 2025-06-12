@@ -1,4 +1,102 @@
-{
+{"sobre": {
+    "quem-somos": {
+      "titulo": "Center for Political and Social Research",
+      "reverse": false,
+      "texto": [
+        {
+          "conteudo": "Somos um Centro de Pesquisa, modalidade de [Centro Interdepartamental](https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2019&dataDocumento=28/02/2019), da Universidade Estadual Paulista (UNESP) localizado na cidade de Franca. Reunimos os pesquisadores dos seis departamentos da [Faculdade de Ciências Humanas e Sociais (FCHS)](https://www.franca.unesp.br/).",
+          "check": false
+        },
+        {
+          "conteudo": "Buscamos coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo.",
+          "check": false
+        }
+      ],
+      "departamentos": [
+        "Departamento de Direito Privado, de Processo Civil e do Trabalho",
+        "Departamento de Direito Público",
+        "Departamento de Educação, Ciências Sociais e Políticas Públicas",
+        "Departamento de Relações Internacionais",
+        "Departamento de História",
+        "Departamento de Serviço Social"
+      ],
+      "imagem": [
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg"
+      ]
+    },
+    "objetivos": {
+      "titulo": "Objetivos",
+      "reverse": true,
+      "texto": [
+        {
+          "conteudo": "Fomentar a integração do conhecimento produzido em diversas áreas acadêmicas, oferecendo uma visão mais abrangente e detalhada dos processos sociais e políticos",
+          "check": true
+        },
+        {
+          "conteudo": "Para isso, o Centro busca promover uma colaboração intensa entre os pesquisadores e fará uso de metodologias avançadas e infraestrutura de pesquisa adequada, que facilitem análises interdisciplinares. Essa abordagem visa ampliar a capacidade analítica e propositiva da universidade, contribuindo para o avanço do conhecimento acadêmico e a elaboração de políticas públicas bem fundamentadas e alicerçadas em evidências científicas.",
+          "check": false
+        },
+        {
+          "conteudo": "Disseminar a utilização de ferramentas, técnicas e métodos das Humanidades Digitais e Ciências Sociais Computacionais na análise dos dados produzidos e avaliados pelas pesquisas, alinhando-se às boas práticas da Ciência Aberta.",
+          "check": true
+        },
+        {
+          "conteudo": "Para isso, o Centro procura oferecer infraestrutura computacional adequada e uma gestão eficiente de dados, assegurando sua acessibilidade, reutilização e preservação a longo prazo, ao mesmo tempo em que fomenta a inovação metodológica.",
+          "check": false
+        }
+      ],
+      "imagem": [
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg"
+      ]
+    },
+    "objetivosEspecificos": {
+      "titulo": "Objetivos Específicos",
+      "reverse": false,
+      "texto": [
+        {
+          "conteudo": "**Realização e organização de eventos acadêmicos**: organizar uma variedade de atividades acadêmicas, incluindo pesquisas, cursos, conferências, colóquios, programas e seminários, promovendo a integração entre diferentes instâncias acadêmicas e administrativas da UNESP.",
+          "check": true
+        },
+        {
+          "conteudo": "**Formação, aperfeiçoamento e incentivo à participação em pesquisa**: promover a formação e o aperfeiçoamento de pesquisadores, incentivando a participação ativa de acadêmicos e colaboradores de diversas instâncias em pesquisas realizadas pela FCHS.",
+          "check": true
+        },
+        {
+          "conteudo": "**Estímulo à colaboração internacional, intercâmbio e cooperação**: facilitar a colaboração internacional e estabelecer parcerias estratégicas para expandir as oportunidades de pesquisa conjunta e atividades de extensão. Utilizar essas colaborações para disseminar novas ideias e perspectivas, estimulando o debate intelectual e a inovação. Além disso, promover o intercâmbio e a cooperação para superar barreiras geográficas, fomentando um ambiente de pesquisa colaborativo e inclusivo.",
+          "check": true
+        },
+        {
+          "conteudo": "**Publicação e disseminação de pesquisas**: promover a publicação e a disseminação de pesquisas, aumentando a acessibilidade e o impacto global dos estudos realizados.",
+          "check": true
+        },
+        {
+          "conteudo": "**Suporte a atividades acadêmicas com infraestrutura computacional**: propiciar espaços físicos e virtuais que permitam a realização de atividades de ensino, pesquisa e extensão, especialmente aquelas que exigem intensa utilização de infraestrutura computacional.",
+          "check": true
+        },
+        {
+          "conteudo": "**Desenvolvimento e adaptação de ferramentas para pesquisa**: estimular a criação e adaptação de ferramentas que facilitam a análise de grandes volumes de dados, possibilitando estudos mais profundos sobre cultura, política e sociedade.",
+          "check": true
+        },
+        {
+          "conteudo": "**Capacitação em humanidades digitais**: promover o treinamento de discentes e docentes no uso de novos instrumentos de coleta, organização, armazenamento, análise e divulgação de dados, orientado pela lógica da ciência e dados abertos.",
+          "check": true
+        },
+        {
+          "conteudo": "**Gestão de dados de pesquisa**: implementar práticas de gestão de dados para assegurar a acessibilidade, reutilização e preservação a longo prazo dos dados de pesquisa, fortalecendo a integridade e sustentabilidade dos projetos acadêmicos.",
+          "check": true
+        }
+      ],
+      "imagem": [
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg"
+      ]
+    }
+  },
   "equipe": {
     "title": "Team",
     "intro": [
