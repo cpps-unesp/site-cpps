@@ -419,8 +419,246 @@
               "icone": "/imagens/logos/linkedin_icon.svg"
             }
           ]
+        },
+        {
+          "nome": "Agnaldo de Sousa Barbosa",
+          "cargo": "Professor Associado",
+          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Direito — responsável pelas disciplinas de “Sociologia Geral e Jurídica e Direito” e “Questão Social e Políticas Públicas\". Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas e do Programa de Pós-Graduação em Serviço Social da UNESP, Docente colaborador do Programa de Pós-Graduação em Direito da UNESP.",
+          "foto": "/imagens/equipe/Agnaldo_Barbosa.png",
+          "prioridade": 1,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/7871008221742180",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/173633",
+              "icone": ""
+            }
+          ]
+        },
+        {
+          "nome": "Almir Mantovani",
+          "cargo": "Professor Doutor",
+          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Direito — responsável pelas disciplinas de metodologia da pesquisa jurídica e metodologia da pesquisa científica. Curso de Graduação em Relações Internacionais - responsável pela disciplina “métodos quantitativos em relações internacionais”. Docente permanente Câmpus de Franca do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas da UNESP.",
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": 2,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/6987179879125144",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/173638",
+              "icone": ""
+            }
+          ]
+        },
+        {
+          "nome": "Ana Gabriela Mendes Braga",
+          "cargo": "Professora Doutora",
+          "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Penal I e II e Processo Penal IV. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "foto": "",
+          "prioridade": 3,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/2586480165949878",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Bruno Bastos de Oliveira",
+          "cargo": "Professor Doutor",
+          "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Tributário e Financeiro. Docente permanente do Programa de Pós-Graduação Direito da UNESP.",
+          "foto": "",
+          "prioridade": 4,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/1416133820227723",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Edvânia Ângela de Souza",
+          "cargo": "Professora Doutora",
+          "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas Serviço Social e Legislação Social I e II, Processo Educativo em Serviço Social (PESS), Estágio Supervisionado, Trabalho e Conclusão de Curso (TCC) e eventuais optativas. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP e Docente Colaboradora do Programa de Pós-Graduação em Serviço Social e Política Social da UNIFESP-BS.",
+          "foto": "",
+          "prioridade": 5,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/7361975407662731",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Fernanda de Oliveira Sarreta",
+          "cargo": "Professora Associada",
+          "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas de FTMSS Fundamentos Teóricos e Metodológicos do Serviço Social VII e VIII. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP.",
+          "foto": "",
+          "prioridade": 6,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/9852924287537869",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Frederico Daia Firmiano",
+          "cargo": "Professor Doutor",
+          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Atua no Curso de Graduação em Serviço Social — responsável pelas disciplinas de Fundamentos Sociológicos 1 e II. Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas da UNESP.",
+          "foto": "",
+          "prioridade": 8,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/7151157247612663",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Hélio Alexandre da Silva",
+          "cargo": "Professor Doutor",
+          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Ética e Filosofia das Ciências Humanas. Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas e do Programa de Pós-graduação em Filosofia da UNESP.",
+          "foto": "",
+          "prioridade": 9,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/4826365546594429",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "José Duarte Neto",
+          "cargo": "Professor Doutor",
+          "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Constitucional II e II na Graduação do Curso de Direito da FCHS - UNESP - Câmpus de Franca. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "foto": "",
+          "prioridade": 10,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/7074318788171978",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Karina Anhezini de Araujo",
+          "cargo": "Professora Doutora",
+          "descricao": "Departamento de História. Curso de Graduação em História — responsável pelas disciplinas de Metodologia da História e História da Historiografia Brasileira. Docente Permanente do Programa de Pós-Graduação em História da UNESP.",
+          "foto": "",
+          "prioridade": 11,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/8686623063970617",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Luciana Lopes Canavez",
+          "cargo": "Professora Doutora",
+          "descricao": "Departamento de Direito Privado, Processo Civil e do Trabalho. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Civil e Direito da Propriedade Intelectual. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "foto": "",
+          "prioridade": 12,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/2799438446436625",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Marília Carolina Barbosa de Souza Pimenta",
+          "cargo": "Professora Doutora",
+          "descricao": "Departamento de Relações Internacionais. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Introdução às Relações Internacionais e Segurança Internacional. Docente permanente do Programa Interinstitucional (UNESP, UNICAMP e PUC-SP) de Pós-graduação em Relações Internacionais San Tiago Dantas.",
+          "foto": "",
+          "prioridade": 14,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4481866H1",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Ricardo Alexandre Ferreira",
+          "cargo": "Professor Associado",
+          "descricao": "Departamento de História. Curso de Graduação em História, responsável pelo conjunto de disciplinas: História Moderna I e II. Docente permanente do Programa de Pós-Graduação em História da UNESP.",
+          "foto": "",
+          "prioridade": 16,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/6899226322073487",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Regina Cláudia Laisner",
+          "cargo": "Professora Doutora",
+          "descricao": "Departamento de Relações Internacionais. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Formação Política e Econômica do Brasil e Teoria Política. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "foto": "",
+          "prioridade": 17,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/2849922787767639",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
+        },
+        {
+          "nome": "Thaís Amoroso Paschoal",
+          "cargo": "Professora Doutora",
+          "descricao": "Departamento de Direito Privado, Processo Civil e do Trabalho. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Processual Civil. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "foto": "",
+          "prioridade": 18,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/1531037509340384",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            }
+          ]
         }
-      ],
+      ]
+    },
+
+
       "Estagiários": [
         {
           "nome": "Ligia Simplicio",
@@ -509,8 +747,8 @@
           "redes": []
         }
       ]
-    }
-  },
+    },
+
   "initiatives2": {
     "title": "Iniciativas",
     "descricao": "Conheça as principais iniciativas",
