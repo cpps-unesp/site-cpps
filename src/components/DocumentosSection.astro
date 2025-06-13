@@ -1,0 +1,43 @@
+---
+const { documentos } = Astro.props;
+---
+
+<section class="mt-16 mb-32 space-y-12 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
+    <h1 class="titulo text-center text-primary mb-8">{documentos.titulo}</h1>
+    <p class="paragrafo text-center mb-16">{documentos.descricao}</p>
+
+    <div class="flex flex-wrap justify-center gap-10">
+        {
+            documentos.grupos.map((grupo, i) => (
+                <div
+                    class="bg-base-100 rounded-xl shadow-md p-8 flex flex-col gap-4 w-[28rem]"
+                    key={i}
+                >
+                    <h2 class="text-2xl font-semibold mb-2">{grupo.titulo}</h2>
+                    <p class="paragrafo text-sm">{grupo.descricao}</p>
+
+                    <ul class="mt-4 space-y-3">
+                        {grupo.arquivos.map((arquivo, j) => (
+                            <li key={j}>
+                                <div class="font-semibold">{arquivo.nome}</div>
+                                <div class="flex flex-wrap gap-2 mt-1">
+                                    {arquivo.formatos.map((formato, k) => (
+                                        <a
+                                            key={k}
+                                            href={formato.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            class="btn btn-sm btn-outline"
+                                        >
+                                            {formato.tipo}
+                                        </a>
+                                    ))}
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))
+        }
+    </div>
+</section>

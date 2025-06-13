@@ -19,6 +19,11 @@ export const routeTranslations = {
     en: "institutional/team",
     es: "institucional/equipo",
   },
+  "institucional/documentos": {
+    pt: "institucional/documentos",
+    en: "institutional/documents",
+    es: "institucional/documentos",
+  },
   "noticias": {
     pt: "noticias",
     en: "news",

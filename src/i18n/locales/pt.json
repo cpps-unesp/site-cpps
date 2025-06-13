@@ -13,6 +13,7 @@
       "institucional": "Institucional",
       "sobre": "Sobre",
       "equipe": "Equipe",
+      "documentos": "Documentos",
       "iniciativas": "Iniciativas",
       "projetos": "Projetos",
       "cafe": "Café com Ciência",
@@ -22,10 +23,10 @@
     }
   },
   "hero": {
-    "title": "Centro de Pesquisa<br class='hidden sm:inline' />Política e Social",
+    "title": "Centro de Pesquisa<br class='hidden sm:inline' /> Política e Social",
     "description": "Apoia a execução de pesquisas na <span class='text-primary font-semibold bg-white px-1 rounded'>Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)</span>, localizado no município de Franca/SP.",
     "button": {
-      "url": "/institucional/equipe",
+      "url": "/institucional/sobre",
       "text": "Saiba mais"
     },
     "link": "/imagens/campus/entrada-unesp-franca.jpg"
@@ -51,27 +52,255 @@
       }
     ]
   },
+  "documentos": {
+    "titulo": "Documentos, Relatórios e Afins",
+    "descricao": "",
+    "grupos": [
+      {
+        "titulo": "RESOLUÇÃO UNESP No 19, DE 15 DE MAIO DE 2025",
+        "descricao": "Formalização da criação do Centro de Pesquisa Política e Social através de resolução da reitoria da UNESP publicada no diário Oficial  do Estado de São Paulo",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1uLEUk7i2xj8ADrjMvDLLh5iwRLstwWXZ/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1uLEUk7i2xj8ADrjMvDLLh5iwRLstwWXZ/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Regimento",
+        "descricao": "Formalização da criação do Centro de Pesquisa Política e Social através de resolução da reitoria da UNESP publicada no diário Oficial  do Estado de São Paulo",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1lKnNg6OCtkgyQVEC3DPfPBcK9Cw3Rt_d/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1lKnNg6OCtkgyQVEC3DPfPBcK9Cw3Rt_d/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Plano Inicial de Gestão e Metas",
+        "descricao": "Delineia um cronograma estratégico e progressivo para os próximos oito semestres, integrando diretamente as diretrizes estabelecidas no regimento interno do centro.",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1qD8-n3zIJ9xYWvVJ0087-2PrbqboQUUj/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1qD8-n3zIJ9xYWvVJ0087-2PrbqboQUUj/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Proposta de Criação",
+        "descricao": "Dispõe sobre a criação, a organização, o funcionamento do Centros de Pesquisa Política e Social",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"}
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Parecer e Manifestação dos Departamentos",
+        "descricao": "Avaliação e subscrição dos seis departamentos da Faculdade de Ciências Humanas e Sociais da UNESP em relação a criação do Centro de Pesquisa Interdepartamental",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1IqJ54KQibJ_UkHgE60BHqdtwtSac6UmF/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1IqJ54KQibJ_UkHgE60BHqdtwtSac6UmF/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "RESOLUÇÃO UNESP Nº 19, DE 08 DE ABRIL DE 2020",
+        "descricao": "Dispõe sobre a criação, a organização, o funcionamento e o encerramento de Centros de Pesquisa.",
+        "arquivos": [
+          {
+            "nome": "",
+            "formatos": [
+              {
+                "tipo": "HTML",
+                "url": "https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
   "sobre": {
     "quem-somos": {
-      "titulo": "Quem somos",
-      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
-      "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
+      "titulo": "O Centro de Pesquisa Política e Social",
+      "reverse": false,
+      "texto": [
+        {
+          "conteudo": "Somos um Centro de Pesquisa, modalidade de [Centro Interdepartamental](https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020), da Universidade Estadual Paulista (UNESP) localizado na cidade de Franca. Reunimos os pesquisadores dos seis departamentos da [Faculdade de Ciências Humanas e Sociais (FCHS)](https://www.franca.unesp.br/).",
+          "check": false
+        },
+        {
+          "conteudo": "Buscamos coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo.",
+          "check": false
+        }
+      ],
+      "departamentos": [
+        "Departamento de Direito Privado, de Processo Civil e do Trabalho",
+        "Departamento de Direito Público",
+        "Departamento de Educação, Ciências Sociais e Políticas Públicas",
+        "Departamento de Relações Internacionais",
+        "Departamento de História",
+        "Departamento de Serviço Social"
+      ],
+      "imagem": [
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca2.jpg"
+      ]
     },
     "objetivos": {
       "titulo": "Objetivos",
-      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
-      "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
+      "reverse": true,
+      "texto": [
+        {
+          "conteudo": "Fomentar a integração do conhecimento produzido em diversas áreas acadêmicas, oferecendo uma visão mais abrangente e detalhada dos processos sociais e políticos",
+          "check": true
+        },
+        {
+          "conteudo": "Para isso, o Centro busca promover uma colaboração intensa entre os pesquisadores e fará uso de metodologias avançadas e infraestrutura de pesquisa adequada, que facilitem análises interdisciplinares. Essa abordagem visa ampliar a capacidade analítica e propositiva da universidade, contribuindo para o avanço do conhecimento acadêmico e a elaboração de políticas públicas bem fundamentadas e alicerçadas em evidências científicas.",
+          "check": false
+        },
+        {
+          "conteudo": "Disseminar a utilização de ferramentas, técnicas e métodos das Humanidades Digitais e Ciências Sociais Computacionais na análise dos dados produzidos e avaliados pelas pesquisas, alinhando-se às boas práticas da Ciência Aberta.",
+          "check": true
+        },
+        {
+          "conteudo": "Para isso, o Centro procura oferecer infraestrutura computacional adequada e uma gestão eficiente de dados, assegurando sua acessibilidade, reutilização e preservação a longo prazo, ao mesmo tempo em que fomenta a inovação metodológica.",
+          "check": false
+        }
+      ],
+      "imagem": [
+        "/imagens/campus/entrada-unesp-franca3.jpg",
+        "/imagens/campus/unesp-franca-blocos-1-e-2-central-de-aulas.jpg"
+      ]
     },
-    "missao": {
-      "titulo": "Missão",
-      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
-      "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
-    },
-    "valores": {
-      "titulo": "Valores",
-      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
-      "imagem": "/imagens/campus/entrada-unesp-franca.jpg"
+    "objetivosEspecificos": {
+      "titulo": "Objetivos Específicos",
+      "reverse": false,
+      "texto": [
+        {
+          "conteudo": "**Realização e organização de eventos acadêmicos**: organizar uma variedade de atividades acadêmicas, incluindo pesquisas, cursos, conferências, colóquios, programas e seminários, promovendo a integração entre diferentes instâncias acadêmicas e administrativas da UNESP.",
+          "check": true
+        },
+        {
+          "conteudo": "**Formação, aperfeiçoamento e incentivo à participação em pesquisa**: promover a formação e o aperfeiçoamento de pesquisadores, incentivando a participação ativa de acadêmicos e colaboradores de diversas instâncias em pesquisas realizadas pela FCHS.",
+          "check": true
+        },
+        {
+          "conteudo": "**Estímulo à colaboração internacional, intercâmbio e cooperação**: facilitar a colaboração internacional e estabelecer parcerias estratégicas para expandir as oportunidades de pesquisa conjunta e atividades de extensão. Utilizar essas colaborações para disseminar novas ideias e perspectivas, estimulando o debate intelectual e a inovação. Além disso, promover o intercâmbio e a cooperação para superar barreiras geográficas, fomentando um ambiente de pesquisa colaborativo e inclusivo.",
+          "check": true
+        },
+        {
+          "conteudo": "**Publicação e disseminação de pesquisas**: promover a publicação e a disseminação de pesquisas, aumentando a acessibilidade e o impacto global dos estudos realizados.",
+          "check": true
+        },
+        {
+          "conteudo": "**Suporte a atividades acadêmicas com infraestrutura computacional**: propiciar espaços físicos e virtuais que permitam a realização de atividades de ensino, pesquisa e extensão, especialmente aquelas que exigem intensa utilização de infraestrutura computacional.",
+          "check": true
+        },
+        {
+          "conteudo": "**Desenvolvimento e adaptação de ferramentas para pesquisa**: estimular a criação e adaptação de ferramentas que facilitam a análise de grandes volumes de dados, possibilitando estudos mais profundos sobre cultura, política e sociedade.",
+          "check": true
+        },
+        {
+          "conteudo": "**Capacitação em humanidades digitais**: promover o treinamento de discentes e docentes no uso de novos instrumentos de coleta, organização, armazenamento, análise e divulgação de dados, orientado pela lógica da ciência e dados abertos.",
+          "check": true
+        },
+        {
+          "conteudo": "**Gestão de dados de pesquisa**: implementar práticas de gestão de dados para assegurar a acessibilidade, reutilização e preservação a longo prazo dos dados de pesquisa, fortalecendo a integridade e sustentabilidade dos projetos acadêmicos.",
+          "check": true
+        }
+      ],
+      "imagem": [
+        "/imagens/campus/unesp-franca-congregacao.jpg",
+        "/imagens/campus/unesp-franca-corredor-da-central-de-aula-1.jpg",
+        "/imagens/campus/unesp-franca-cpps-sala-reunao.jpg",
+        "/imagens/campus/unesp-franca-salas-aula2.jpg",
+        "/imagens/campus/unesp-franca-biblioteca2.jpg"
+      ]
     }
+  },
+  "objetivosGerais": {
+    "title": "Objetivos Gerais",
+    "description": "Nossos objetivos amplos e estratégicos.",
+    "image": "/imagens/campus/entrada-unesp-franca.jpg",
+    "reverse": false,
+    "activities": [
+      {
+        "icon": "🎯",
+        "title": "Desenvolver pesquisas interdisciplinares",
+        "description": "Foco em política, sociedade e ciência social aplicada."
+      },
+      {
+        "icon": "🎯",
+        "title": "Consolidar redes de pesquisa",
+        "description": "Incluindo parcerias regionais e internacionais."
+      }
+    ]
+  },
+  "objetivosEspecificos": {
+    "title": "Objetivos Específicos",
+    "description": "Metas práticas para alcançar os objetivos gerais.",
+    "image": "/imagens/campus/entrada-unesp-franca.jpg",
+    "reverse": true,
+    "activities": [
+      {
+        "icon": "✅",
+        "title": "Formação de estudantes",
+        "description": "Incluir estudantes em projetos e eventos científicos."
+      },
+      {
+        "icon": "✅",
+        "title": "Produção acadêmica",
+        "description": "Fomentar artigos, livros e apresentações em congressos."
+      }
+    ]
   },
   "projetos": {
     "titulo": "Nossos Projetos",
@@ -111,30 +340,29 @@
   "equipe": {
     "title": "Equipe",
     "intro": [
-      "Conheça as pessoas que colaboram e pesquisam no<br class='hidden sm:inline' />Centro de Pesquisa Política e Social"
+      "Conheça as pessoas que colaboram e pesquisam no<br class='hidden sm:inline' /> Centro de Pesquisa Política e Social"
     ],
     "categorias": {
       "Coordenação": [
         {
-          "nome": "Murilo Gaspardo",
-          "cargo": "Coordenação",
+          "nome": " Fernanda Mello Sant’Anna",
+          "cargo": "Coordenadora Geral",
           "descricao": "Responsável pela supervisão geral do projeto",
-          "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
+          "foto": "/imagens/equipe/fernanda_mello.png",
           "prioridade": 1,
           "status": "ativo",
           "redes": [
             {
               "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/7249928800890408",
+              "url": "http://lattes.cnpq.br/6759610800922658",
               "icone": "/imagens/logos/lattes_icon.svg"
             },
             {
               "tipo": "linkedin",
-              "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/",
+              "url": "https://br.linkedin.com/in/fernanda-mello-sant-anna-79b8882b3",
               "icone": "/imagens/logos/linkedin_icon.svg"
-            }
-          ]
-        },
+            }]
+          },
         {
           "nome": "Marcelo Passini Mariano",
           "cargo": "Líder",
@@ -166,6 +394,28 @@
             {
               "tipo": "linkedin",
               "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            }
+          ]
+        }
+      ],
+      "Pesquisadores": [
+        {
+          "nome": "Murilo Gaspardo",
+          "cargo": "Pesquisador",
+          "descricao": "",
+          "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
+          "prioridade": 1,
+          "status": "ativo",
+          "redes": [
+            {
+              "tipo": "lattes",
+              "url": "http://lattes.cnpq.br/7249928800890408",
+              "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "linkedin",
+              "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/",
               "icone": "/imagens/logos/linkedin_icon.svg"
             }
           ]

@@ -2,9 +2,11 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import EquipeSection from "../../components/EquipeSection.astro";
-import SobreSection from "../../components/SobreSection.astro";
+import SobreSection from "../../components/BlocoSection.astro";
 import ProjetosSection from "../../components/ProjetosSection.astro";
 import CafeComCienciaSection from "../../components/CafeComCienciaSection.astro";
+import DocumentosSection from "../../components/DocumentosSection.astro";
+
 import NoticiaPage from "../../components/NoticiaPage.astro";
 import { routeTranslations } from "../../i18n/routes";
 import { getCollection } from "astro:content";
@@ -66,7 +68,7 @@ const slugPath = Array.isArray(slugParam)
 const slugArray = slugPath.split("/");
 
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
-const { titulo, descricao, texts, equipe, sobre, projetos, cafe } =
+const { titulo, descricao, texts, equipe, sobre, projetos, cafe, documentos } =
   locale.default;
 
 const noticiasPrefix = routeTranslations["noticias"][currentLang];
@@ -159,11 +161,14 @@ const originalKey = findOriginalKey(slugPath, currentLang);
           case "institucional/equipe":
             return <EquipeSection equipe={equipe} texts={texts} />;
           case "institucional/sobre":
-            return <SobreSection sobre={sobre} />;
+            return <SobreSection blocos={sobre} />;
           case "iniciativas/projetos":
             return <ProjetosSection projetos={projetos} />;
           case "iniciativas/cafe-com-ciencia":
             return <CafeComCienciaSection cafe={cafe} />;
+          case "institucional/documentos":
+            return <DocumentosSection documentos={documentos} />;
+
           default:
             return (
               <>

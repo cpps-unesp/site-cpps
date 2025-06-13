@@ -1,8 +1,107 @@
 {
+  "sobre": {
+    "quem-somos": {
+      "titulo": "Center for Political and Social Research",
+      "reverse": false,
+      "texto": [
+        {
+          "conteudo": "Somos um Centro de Pesquisa, modalidade de [Centro Interdepartamental](https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2019&dataDocumento=28/02/2019), da Universidade Estadual Paulista (UNESP) localizado na cidade de Franca. Reunimos os pesquisadores dos seis departamentos da [Faculdade de Ciências Humanas e Sociais (FCHS)](https://www.franca.unesp.br/).",
+          "check": false
+        },
+        {
+          "conteudo": "Buscamos coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo.",
+          "check": false
+        }
+      ],
+      "departamentos": [
+        "Departamento de Direito Privado, de Processo Civil e do Trabalho",
+        "Departamento de Direito Público",
+        "Departamento de Educação, Ciências Sociais e Políticas Públicas",
+        "Departamento de Relações Internacionais",
+        "Departamento de História",
+        "Departamento de Serviço Social"
+      ],
+      "imagem": [
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg"
+      ]
+    },
+    "objetivos": {
+      "titulo": "Objetivos",
+      "reverse": true,
+      "texto": [
+        {
+          "conteudo": "Fomentar a integração do conhecimento produzido em diversas áreas acadêmicas, oferecendo uma visão mais abrangente e detalhada dos processos sociais e políticos",
+          "check": true
+        },
+        {
+          "conteudo": "Para isso, o Centro busca promover uma colaboração intensa entre os pesquisadores e fará uso de metodologias avançadas e infraestrutura de pesquisa adequada, que facilitem análises interdisciplinares. Essa abordagem visa ampliar a capacidade analítica e propositiva da universidade, contribuindo para o avanço do conhecimento acadêmico e a elaboração de políticas públicas bem fundamentadas e alicerçadas em evidências científicas.",
+          "check": false
+        },
+        {
+          "conteudo": "Disseminar a utilização de ferramentas, técnicas e métodos das Humanidades Digitais e Ciências Sociais Computacionais na análise dos dados produzidos e avaliados pelas pesquisas, alinhando-se às boas práticas da Ciência Aberta.",
+          "check": true
+        },
+        {
+          "conteudo": "Para isso, o Centro procura oferecer infraestrutura computacional adequada e uma gestão eficiente de dados, assegurando sua acessibilidade, reutilização e preservação a longo prazo, ao mesmo tempo em que fomenta a inovação metodológica.",
+          "check": false
+        }
+      ],
+      "imagem": [
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg"
+      ]
+    },
+    "objetivosEspecificos": {
+      "titulo": "Objetivos Específicos",
+      "reverse": false,
+      "texto": [
+        {
+          "conteudo": "**Realização e organização de eventos acadêmicos**: organizar uma variedade de atividades acadêmicas, incluindo pesquisas, cursos, conferências, colóquios, programas e seminários, promovendo a integração entre diferentes instâncias acadêmicas e administrativas da UNESP.",
+          "check": true
+        },
+        {
+          "conteudo": "**Formação, aperfeiçoamento e incentivo à participação em pesquisa**: promover a formação e o aperfeiçoamento de pesquisadores, incentivando a participação ativa de acadêmicos e colaboradores de diversas instâncias em pesquisas realizadas pela FCHS.",
+          "check": true
+        },
+        {
+          "conteudo": "**Estímulo à colaboração internacional, intercâmbio e cooperação**: facilitar a colaboração internacional e estabelecer parcerias estratégicas para expandir as oportunidades de pesquisa conjunta e atividades de extensão. Utilizar essas colaborações para disseminar novas ideias e perspectivas, estimulando o debate intelectual e a inovação. Além disso, promover o intercâmbio e a cooperação para superar barreiras geográficas, fomentando um ambiente de pesquisa colaborativo e inclusivo.",
+          "check": true
+        },
+        {
+          "conteudo": "**Publicação e disseminação de pesquisas**: promover a publicação e a disseminação de pesquisas, aumentando a acessibilidade e o impacto global dos estudos realizados.",
+          "check": true
+        },
+        {
+          "conteudo": "**Suporte a atividades acadêmicas com infraestrutura computacional**: propiciar espaços físicos e virtuais que permitam a realização de atividades de ensino, pesquisa e extensão, especialmente aquelas que exigem intensa utilização de infraestrutura computacional.",
+          "check": true
+        },
+        {
+          "conteudo": "**Desenvolvimento e adaptação de ferramentas para pesquisa**: estimular a criação e adaptação de ferramentas que facilitam a análise de grandes volumes de dados, possibilitando estudos mais profundos sobre cultura, política e sociedade.",
+          "check": true
+        },
+        {
+          "conteudo": "**Capacitação em humanidades digitais**: promover o treinamento de discentes e docentes no uso de novos instrumentos de coleta, organização, armazenamento, análise e divulgação de dados, orientado pela lógica da ciência e dados abertos.",
+          "check": true
+        },
+        {
+          "conteudo": "**Gestão de dados de pesquisa**: implementar práticas de gestão de dados para assegurar a acessibilidade, reutilização e preservação a longo prazo dos dados de pesquisa, fortalecendo a integridade e sustentabilidade dos projetos acadêmicos.",
+          "check": true
+        }
+      ],
+      "imagem": [
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg",
+        "/imagens/campus/entrada-unesp-franca.jpg"
+      ]
+    }
+  },
   "equipe": {
     "title": "Team",
     "intro": [
-      "Meet the people who collaborate and research at the<br class='hidden sm:inline' />Center for Political and Social Research"
+      "Meet the people who collaborate and research at the<br class='hidden sm:inline' /> Center for Political and Social Research"
     ],
     "categorias": {
       "Coordenação": [
@@ -178,33 +277,150 @@
       ]
     }
   },
-  "titulo": "My Page",
-  "descricao": "Page description",
+  "titulo": "UNESP Franca | Center for Political and Social Research",
+  "descricao": "Center for Political and Social Research of the São Paulo State University (UNESP), Franca campus",
   "texts": {
     "languageUnavailable": "Não disponível",
     "notFound": "Página não encontrada",
     "buttonPersonalPage": "Personal page",
     "header": {
-    "home": "Home",
-    "institucional": "Institutional",
-    "sobre": "About",
-    "equipe": "Team",
-    "iniciativas": "Iniciativas",
-    "projetos": "Projetos",
-    "cafe": "Café com Ciência",
-    "planejamento": "Planejamento",
-    "noticias": "Notícias",
-    "buscar": "Buscar"
-  }
+      "home": "Home",
+      "institucional": "Institutional",
+      "sobre": "About",
+      "equipe": "Team",
+      "documentos": "Documents",
+      "iniciativas": "Iniciativas",
+      "projetos": "Projetos",
+      "cafe": "Café com Ciência",
+      "planejamento": "Planejamento",
+      "noticias": "Notícias",
+      "buscar": "Buscar"
+    }
   },
   "hero": {
-    "title": "Center for Political<br class='hidden sm:inline' />and Social Research",
+    "title": "Center for Political<br class='hidden sm:inline' /> and Social Research",
     "description": "Supports the execution of research at the <span class='text-primary font-semibold bg-white px-1 rounded'>Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the city of Franca/SP.",
     "button": {
-      "url": "/institutional/team",
+      "url": "/institutional/about",
       "text": "About us"
     },
     "link": "/imagens/campus/entrada-unesp-franca.jpg"
+  },
+  "documentos": {
+    "titulo": "Documents",
+    "descricao": "Institutional and administrative documents of the Research Center.",
+    "grupos": [
+      {
+        "titulo": "UNESP RESOLUTION No. 19, MAY 15, 2025",
+        "descricao": "Formal establishment of the Political and Social Research Center through the UNESP Rector's Office resolution published in the Official Gazette of the State of São Paulo.",
+        "arquivos": [
+          {
+            "nome": "UNESP RESOLUTION No. 19, 2025",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1uLEUk7i2xj8ADrjMvDLLh5iwRLstwWXZ/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1uLEUk7i2xj8ADrjMvDLLh5iwRLstwWXZ/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Bylaws",
+        "descricao": "Internal bylaws of the Political and Social Research Center.",
+        "arquivos": [
+          {
+            "nome": "Bylaws",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1lKnNg6OCtkgyQVEC3DPfPBcK9Cw3Rt_d/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1lKnNg6OCtkgyQVEC3DPfPBcK9Cw3Rt_d/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Initial Management and Goals Plan",
+        "descricao": "Outlines a strategic and progressive schedule for the next eight semesters, directly integrating the guidelines established in the internal bylaws.",
+        "arquivos": [
+          {
+            "nome": "Initial Management Plan",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1qD8-n3zIJ9xYWvVJ0087-2PrbqboQUUj/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1qD8-n3zIJ9xYWvVJ0087-2PrbqboQUUj/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Creation Proposal",
+        "descricao": "Details the creation, organization, and operation of the Research Center.",
+        "arquivos": [
+          {
+            "nome": "Creation Proposal",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "Departments' Opinion and Statement",
+        "descricao": "Evaluation and endorsement by the six departments of the Faculty of Human and Social Sciences of UNESP regarding the Center's creation.",
+        "arquivos": [
+          {
+            "nome": "Departments' Statement",
+            "formatos": [
+              {
+                "tipo": "PDF",
+                "url": "https://drive.google.com/file/d/1IqJ54KQibJ_UkHgE60BHqdtwtSac6UmF/view?usp=sharing"
+              },
+              {
+                "tipo": "HTML",
+                "url": "https://drive.google.com/file/d/1IqJ54KQibJ_UkHgE60BHqdtwtSac6UmF/view?usp=sharing"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "titulo": "UNESP RESOLUTION No. 19, APRIL 8, 2020",
+        "descricao": "Establishes the creation, organization, and operation of Research Centers.",
+        "arquivos": [
+          {
+            "nome": "UNESP RESOLUTION No. 19, 2020",
+            "formatos": [
+              {
+                "tipo": "HTML",
+                "url": "https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   "cafe": {
     "titulo": "Café com Ciência",

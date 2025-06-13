@@ -1,0 +1,51 @@
+---
+// src/components/BlocoSection.astro
+import TextoComCheck from "./TextoComCheck.astro";
+import CheckIcon from "../icons/CheckIcon.astro";
+
+const { blocos } = Astro.props;
+---
+
+<section class="mt-16 space-y-24 px-4 md:px-8 lg:px-16">
+  {Object.entries(blocos).map(([key, bloco], index) => {
+    const aplicarReverse = bloco.intercalar ? (index % 2 === 1) : bloco.reverse ?? false;
+
+    // Garante que imagem seja sempre array
+    const imagens = Array.isArray(bloco.imagem) ? bloco.imagem : [bloco.imagem];
+
+    return (
+      <div class={`max-w-7xl mx-auto flex flex-col md:flex-row ${aplicarReverse ? 'md:flex-row-reverse' : ''} gap-8 items-center`} key={key}>
+
+        {/* Coluna de texto */}
+        <div class="md:w-7/12">
+          <h2 class="text-4xl text-primary font-extrabold mb-6">{bloco.titulo}</h2>
+          <TextoComCheck texto={bloco.texto} />
+
+          {bloco.departamentos && (
+            <ul class="list-none mt-6 space-y-4 pl-8">              {bloco.departamentos.map((item) => (
+                <div class="flex items-start gap-2">
+                  <CheckIcon size={24} class="mt-1" />
+                  <span class="paragrafo">{item}</span>
+                </div>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        {/* Coluna fixa de imagens */}
+        <div class="md:w-5/12 flex flex-col items-center justify-center gap-6">
+          {imagens.map((imgSrc, i) => (
+            <img
+              key={i}
+              src={imgSrc}
+              alt={`Imagem ilustrativa de ${bloco.titulo}`}
+              class="rounded-xl w-full max-w-sm md:max-w-md transition duration-300 ease-in-out"
+              loading="lazy"
+            />
+          ))}
+        </div>
+
+      </div>
+    );
+  })}
+</section>

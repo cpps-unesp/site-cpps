@@ -18,7 +18,9 @@ const {
 const h = texts.header ?? {};
 ---
 
-<nav class="w-full bg-base-100 text-base-content border-b border-base-300 transition-transform duration-300 fixed top-0 z-50">
+<nav
+  class="w-full bg-base-100 text-base-content border-b border-base-300 transition-transform duration-300 fixed top-0 z-50"
+>
   <div class="mx-auto max-w-screen-2xl px-4 md:px-8 py-2">
     <div class="flex items-center justify-between">
       <!-- 🔹 ESQUERDA: Logo CPPS + texto -->
@@ -32,18 +34,43 @@ const h = texts.header ?? {};
       </a>
 
       <!-- 🔹 MENU DESKTOP -->
-      <ul class="hidden lg:flex items-center gap-6 text-sm sm:text-base font-semibold">
-        <li><a class="hover:text-primary transition" href={`/${lang}/`}>{h.home}</a></li>
+      <ul
+        class="hidden lg:flex items-center gap-6 text-sm sm:text-base font-semibold"
+      >
+        <li>
+          <a class="hover:text-primary transition" href={`/${lang}/`}
+            >{h.home}</a>
+        </li>
 
         <li class="dropdown dropdown-hover group">
-          <label tabindex="0" class="flex items-center cursor-pointer hover:text-primary transition">
+          <label
+            tabindex="0"
+            class="flex items-center cursor-pointer hover:text-primary transition"
+          >
             {h.institucional}
-            <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"><path d="M5.25 7.75L10 12.5l4.75-4.75" /></svg>
+            <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20"
+              ><path d="M5.25 7.75L10 12.5l4.75-4.75"></path></svg
+            >
           </label>
-          <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-40">
-            <!-- <li><a href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}>{h.sobre}</a></li> -->
-            <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>{h.equipe}</a></li>
-          </ul> 
+          <ul
+            class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-40"
+          >
+            <li>
+              <a
+                href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}
+                >{h.sobre}</a>
+            </li>
+            <li>
+              <a
+                href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}
+                >{h.equipe}</a>
+            </li>
+            <li>
+              <a
+                href={`/${lang}/${getTranslatedPath("institucional/documentos", lang)}`}
+                >{h.documentos}</a>
+            </li>
+          </ul>
         </li>
 
         <!-- <li class="dropdown dropdown-hover group">
@@ -62,7 +89,10 @@ const h = texts.header ?? {};
         <li><LanguageSelector lang={lang} texts={texts} /></li>
         <li><AlterarTema /></li>
         <li>
-          <label for="search-modal" class="flex items-center cursor-pointer hover:text-primary transition">
+          <label
+            for="search-modal"
+            class="flex items-center cursor-pointer hover:text-primary transition"
+          >
             <IconSearch />
           </label>
         </li>
@@ -85,9 +115,22 @@ const h = texts.header ?? {};
 
       <!-- 🔹 BOTÃO HAMBÚRGUER -->
       <div class="lg:hidden">
-        <button class="btn btn-ghost" onclick="document.getElementById('menu-mobile').classList.toggle('hidden')">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        <button
+          class="btn btn-ghost"
+          onclick="document.getElementById('menu-mobile').classList.toggle('hidden')"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
         </button>
       </div>
@@ -101,7 +144,21 @@ const h = texts.header ?? {};
           <details>
             <summary class="cursor-pointer">{h.institucional}</summary>
             <ul>
-              <li><a href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}>{h.equipe}</a></li>
+              <li>
+                <a
+                  href={`/${lang}/${getTranslatedPath("institucional/sobre", lang)}`}
+                  >{h.sobre}</a>
+              </li>
+              <li>
+                <a
+                  href={`/${lang}/${getTranslatedPath("institucional/equipe", lang)}`}
+                  >{h.equipe}</a>
+              </li>
+              <li>
+                <a
+                  href={`/${lang}/${getTranslatedPath("institucional/documentos", lang)}`}
+                  >{h.documentos}</a>
+              </li>
             </ul>
           </details>
         </li>
@@ -122,15 +179,16 @@ const h = texts.header ?? {};
       const atualizarLogo = () => {
         const logo = document.getElementById("logo-unesp");
         const tema = document.documentElement.getAttribute("data-theme");
-        const src = tema === "dark"
-          ? "/imagens/logos/logo-unesp03/AV01F.svg"
-          : "/imagens/logos/logo-unesp02/AV01A.svg";
+        const src =
+          tema === "dark"
+            ? "/imagens/logos/logo-unesp03/AV01F.svg"
+            : "/imagens/logos/logo-unesp02/AV01A.svg";
         if (logo) logo.src = src;
       };
       atualizarLogo();
       new MutationObserver(atualizarLogo).observe(document.documentElement, {
         attributes: true,
-        attributeFilter: ["data-theme"]
+        attributeFilter: ["data-theme"],
       });
     });
   </script>
