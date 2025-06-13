@@ -185,7 +185,7 @@ Centro de Pesquisa Política e Social - UNESP Franca
 ## Agradecimentos
 
 - [@ArthurCarrenho](https://github.com/ArthurCarrenho) - primeira versão do readme e otimizações iniciais
-- [@ligiadlsimplicio](https://github.com/ligiadlsimplicio) - inclusão as informações inciais no site
+- [@ligiadlsimplicio](https://github.com/ligiadlsimplicio) - inclusão das informações inciais no site
 
 ---
 
