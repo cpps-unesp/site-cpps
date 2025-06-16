@@ -362,6 +362,11 @@
               "tipo": "linkedin",
               "url": "https://br.linkedin.com/in/fernanda-mello-sant-anna-79b8882b3",
               "icone": "/imagens/logos/linkedin_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/175836",
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -402,6 +407,11 @@
               "tipo": "linkedin",
               "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
               "icone": "/imagens/logos/linkedin_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/473485",
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         }
@@ -424,6 +434,11 @@
               "tipo": "linkedin",
               "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/",
               "icone": "/imagens/logos/linkedin_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/207620",
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -483,7 +498,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/197836",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -503,7 +518,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/418287",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -523,7 +538,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/173653",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -543,7 +558,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/193591",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -563,7 +578,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/286098",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -583,7 +598,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/72044",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -603,7 +618,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/173675",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -623,7 +638,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/163195",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -643,7 +658,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/198123",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -663,7 +678,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/176450",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -683,7 +698,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/173707",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -703,7 +718,7 @@
              {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/173706",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         }
