@@ -471,14 +471,19 @@
           "nome": "Ana Gabriela Mendes Braga",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Penal I e II e Processo Penal IV. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
-          "foto": "/imagens/equipe/00-person.svg",
-          "prioridade": "",
+          "foto": "/imagens/equipe/ana.png",
+          "prioridade": 3,
           "status": "ativo",
           "redes": [
             {
               "tipo": "lattes",
               "url": "http://lattes.cnpq.br/2586480165949878",
               "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/197836",
+              "icone": ""
             }
           ]
         },
@@ -486,14 +491,19 @@
           "nome": "Bruno Bastos de Oliveira",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Tributário e Financeiro. Docente permanente do Programa de Pós-Graduação Direito da UNESP.",
-          "foto": "/imagens/equipe/00-person.svg",
-          "prioridade": "",
+          "foto": "/imagens/equipe/Bruno_Oliveira.png",
+          "prioridade": 4,
           "status": "ativo",
           "redes": [
             {
               "tipo": "lattes",
               "url": "http://lattes.cnpq.br/1416133820227723",
               "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/418287",
+              "icone": ""
             }
           ]
         },
@@ -501,14 +511,19 @@
           "nome": "Edvânia Ângela de Souza",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas Serviço Social e Legislação Social I e II, Processo Educativo em Serviço Social (PESS), Estágio Supervisionado, Trabalho e Conclusão de Curso (TCC) e eventuais optativas. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP e Docente Colaboradora do Programa de Pós-Graduação em Serviço Social e Política Social da UNIFESP-BS.",
-          "foto": "/imagens/equipe/00-person.svg",
-          "prioridade": "",
+          "foto": "/imagens/equipe/edvania.png",
+          "prioridade": 5,
           "status": "ativo",
           "redes": [
             {
               "tipo": "lattes",
               "url": "http://lattes.cnpq.br/7361975407662731",
               "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/173653",
+              "icone": ""
             }
           ]
         },
@@ -539,6 +554,11 @@
               "tipo": "lattes",
               "url": "http://lattes.cnpq.br/7151157247612663",
               "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/173638",
+              "icone": ""
             }
           ]
         },
@@ -554,6 +574,11 @@
               "tipo": "lattes",
               "url": "http://lattes.cnpq.br/4826365546594429",
               "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/173638",
+              "icone": ""
             }
           ]
         },
@@ -569,6 +594,11 @@
               "tipo": "lattes",
               "url": "http://lattes.cnpq.br/7074318788171978",
               "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/173638",
+              "icone": ""
             }
           ]
         },
@@ -584,6 +614,11 @@
               "tipo": "lattes",
               "url": "http://lattes.cnpq.br/8686623063970617",
               "icone": "/imagens/logos/lattes_icon.svg"
+            },
+             {
+              "tipo": "Portal Unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/173638",
+              "icone": ""
             }
           ]
         },
