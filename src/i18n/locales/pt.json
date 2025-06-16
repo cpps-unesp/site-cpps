@@ -126,7 +126,8 @@
               },
               {
                 "tipo": "HTML",
-                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"}
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
+              }
             ]
           }
         ]
@@ -361,8 +362,9 @@
               "tipo": "linkedin",
               "url": "https://br.linkedin.com/in/fernanda-mello-sant-anna-79b8882b3",
               "icone": "/imagens/logos/linkedin_icon.svg"
-            }]
-          },
+            }
+          ]
+        },
         {
           "nome": "Marcelo Passini Mariano",
           "cargo": "Líder",
@@ -375,6 +377,11 @@
               "tipo": "lattes",
               "url": " http://lattes.cnpq.br/3505849964932313",
               "icone": "/imagens/logos/lattes_icon.svg"
+            },
+            {
+              "tipo": "portal docente unesp",
+              "url": "https://unesp.br/portaldocentes/docentes/173683",
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -405,7 +412,7 @@
           "cargo": "Pesquisador",
           "descricao": "",
           "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
-          "prioridade": 1,
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -425,7 +432,7 @@
           "cargo": "Professor Associado",
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Direito — responsável pelas disciplinas de “Sociologia Geral e Jurídica e Direito” e “Questão Social e Políticas Públicas\". Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas e do Programa de Pós-Graduação em Serviço Social da UNESP, Docente colaborador do Programa de Pós-Graduação em Direito da UNESP.",
           "foto": "/imagens/equipe/Agnaldo_Barbosa.png",
-          "prioridade": 1,
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -433,10 +440,10 @@
               "url": "http://lattes.cnpq.br/7871008221742180",
               "icone": "/imagens/logos/lattes_icon.svg"
             },
-             {
+            {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/173633",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -445,7 +452,7 @@
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Direito — responsável pelas disciplinas de metodologia da pesquisa jurídica e metodologia da pesquisa científica. Curso de Graduação em Relações Internacionais - responsável pela disciplina “métodos quantitativos em relações internacionais”. Docente permanente Câmpus de Franca do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas da UNESP.",
           "foto": "/imagens/equipe/00-person.svg",
-          "prioridade": 2,
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -453,10 +460,10 @@
               "url": "http://lattes.cnpq.br/6987179879125144",
               "icone": "/imagens/logos/lattes_icon.svg"
             },
-             {
+            {
               "tipo": "Portal Unesp",
               "url": "https://unesp.br/portaldocentes/docentes/173638",
-              "icone": ""
+              "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
         },
@@ -464,8 +471,8 @@
           "nome": "Ana Gabriela Mendes Braga",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Penal I e II e Processo Penal IV. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
-          "foto": "",
-          "prioridade": 3,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -479,8 +486,8 @@
           "nome": "Bruno Bastos de Oliveira",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Tributário e Financeiro. Docente permanente do Programa de Pós-Graduação Direito da UNESP.",
-          "foto": "",
-          "prioridade": 4,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -494,8 +501,8 @@
           "nome": "Edvânia Ângela de Souza",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas Serviço Social e Legislação Social I e II, Processo Educativo em Serviço Social (PESS), Estágio Supervisionado, Trabalho e Conclusão de Curso (TCC) e eventuais optativas. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP e Docente Colaboradora do Programa de Pós-Graduação em Serviço Social e Política Social da UNIFESP-BS.",
-          "foto": "",
-          "prioridade": 5,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -509,8 +516,8 @@
           "nome": "Fernanda de Oliveira Sarreta",
           "cargo": "Professora Associada",
           "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas de FTMSS Fundamentos Teóricos e Metodológicos do Serviço Social VII e VIII. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP.",
-          "foto": "",
-          "prioridade": 6,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -524,8 +531,8 @@
           "nome": "Frederico Daia Firmiano",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Atua no Curso de Graduação em Serviço Social — responsável pelas disciplinas de Fundamentos Sociológicos 1 e II. Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas da UNESP.",
-          "foto": "",
-          "prioridade": 8,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -539,8 +546,8 @@
           "nome": "Hélio Alexandre da Silva",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Ética e Filosofia das Ciências Humanas. Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas e do Programa de Pós-graduação em Filosofia da UNESP.",
-          "foto": "",
-          "prioridade": 9,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -554,8 +561,8 @@
           "nome": "José Duarte Neto",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Constitucional II e II na Graduação do Curso de Direito da FCHS - UNESP - Câmpus de Franca. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
-          "foto": "",
-          "prioridade": 10,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -569,8 +576,8 @@
           "nome": "Karina Anhezini de Araujo",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de História. Curso de Graduação em História — responsável pelas disciplinas de Metodologia da História e História da Historiografia Brasileira. Docente Permanente do Programa de Pós-Graduação em História da UNESP.",
-          "foto": "",
-          "prioridade": 11,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -584,8 +591,8 @@
           "nome": "Luciana Lopes Canavez",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Direito Privado, Processo Civil e do Trabalho. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Civil e Direito da Propriedade Intelectual. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
-          "foto": "",
-          "prioridade": 12,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -599,8 +606,8 @@
           "nome": "Marília Carolina Barbosa de Souza Pimenta",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Relações Internacionais. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Introdução às Relações Internacionais e Segurança Internacional. Docente permanente do Programa Interinstitucional (UNESP, UNICAMP e PUC-SP) de Pós-graduação em Relações Internacionais San Tiago Dantas.",
-          "foto": "",
-          "prioridade": 14,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -614,8 +621,8 @@
           "nome": "Ricardo Alexandre Ferreira",
           "cargo": "Professor Associado",
           "descricao": "Departamento de História. Curso de Graduação em História, responsável pelo conjunto de disciplinas: História Moderna I e II. Docente permanente do Programa de Pós-Graduação em História da UNESP.",
-          "foto": "",
-          "prioridade": 16,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -629,8 +636,8 @@
           "nome": "Regina Cláudia Laisner",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Relações Internacionais. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Formação Política e Econômica do Brasil e Teoria Política. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
-          "foto": "",
-          "prioridade": 17,
+          "foto": "/imagens/equipe/00-person.svg",
+          "prioridade": "",
           "status": "ativo",
           "redes": [
             {
@@ -639,116 +646,98 @@
               "icone": "/imagens/logos/lattes_icon.svg"
             }
           ]
-        },
-        {
-          "nome": "Thaís Amoroso Paschoal",
-          "cargo": "Professora Doutora",
-          "descricao": "Departamento de Direito Privado, Processo Civil e do Trabalho. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Processual Civil. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
-          "foto": "",
-          "prioridade": 18,
-          "status": "ativo",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/1531037509340384",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            }
-          ]
         }
       ]
     },
-
-
-      "Estagiários": [
-        {
-          "nome": "Ligia Simplicio",
-          "cargo": "Estagiária Remunerada (Serviço Social)",
-          "descricao": "Graduanda em Serviço Social na Unesp Franca e Membro ativo do CPPS",
-          "foto": "/imagens/equipe/ligia_simplicio.jpeg",
-          "prioridade": "",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/9979622141210229",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "instagram",
-              "url": "https://www.instagram.com/ligia.simplicio",
-              "icone": "/imagens/logos/instagram_icon_cinza.svg"
-            }
-          ]
-        },
-        {
-          "nome": "João Pedro Dias Vidal",
-          "cargo": "Estagiário Remunerado (Direito)",
-          "descricao": "Graduando em Direito na Unesp Franca e Membro ativo do CPPS",
-          "foto": "/imagens/equipe/Joao_Vidal.jpg",
-          "prioridade": "",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
-              "icone": "/imagens/logos/linkedin_icon2.svg"
-            },
-            {
-              "tipo": "instagram",
-              "url": "https://www.instagram.com/_vidaljp/",
-              "icone": "/imagens/logos/instagram_icon_cinza.svg"
-            }
-          ]
-        },
-        {
-          "nome": "Caio Tomaz Palombo",
-          "cargo": "Estagiário Remunerado (História)",
-          "descricao": "Graduando em história na Unesp Franca e Membro ativo do CPPS",
-          "foto": "/imagens/equipe/caio_tomaz.png",
-          "prioridade": "",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "https://www.linkedin.com/in/caio-t-palomvo2664/",
-              "icone": "/imagens/logos/linkedin_icon2.svg"
-            },
-            {
-              "tipo": "instagram",
-              "url": "https://www.instagram.com/Caio_2664/",
-              "icone": "/imagens/logos/instagram_icon_cinza.svg"
-            }
-          ]
-        },
-        {
-          "nome": "Mavi Silva",
-          "cargo": "Estagiário Remunerado (Relações Internacionais)",
-          "descricao": "Graduando em Relações Internacionais na Unesp Franca e Membro ativo do CPPS",
-          "foto": "/imagens/equipe/Mavi.png",
-          "prioridade": "",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "",
-              "icone": "/imagens/logos/linkedin_icon2.svg"
-            },
-            {
-              "tipo": "instagram",
-              "url": "https://www.instagram.com/maviobservando/",
-              "icone": "/imagens/logos/instagram_icon_cinza.svg"
-            }
-          ]
-        },
-        {
-          "nome": "Breno Andreazza",
-          "cargo": "Estagiário Remunerada (Relações Internacionais)",
-          "descricao": "Graduando em Relações Internacionais na Unesp Franca",
-          "contribuicao": "Auxilio na transição do CPPS",
-          "foto": "/imagens/equipe/00-person.svg",
-          "status": "inativo",
-          "prioridade": "",
-          "redes": []
-        }
-      ]
-    },
-
+    "Estagiários": [
+      {
+        "nome": "Ligia Simplicio",
+        "cargo": "Estagiária Remunerada (Serviço Social)",
+        "descricao": "Graduanda em Serviço Social na Unesp Franca e Membro ativo do CPPS",
+        "foto": "/imagens/equipe/ligia_simplicio.jpeg",
+        "prioridade": "",
+        "redes": [
+          {
+            "tipo": "lattes",
+            "url": " http://lattes.cnpq.br/9979622141210229",
+            "icone": "/imagens/logos/lattes_icon.svg"
+          },
+          {
+            "tipo": "instagram",
+            "url": "https://www.instagram.com/ligia.simplicio",
+            "icone": "/imagens/logos/instagram_icon_cinza.svg"
+          }
+        ]
+      },
+      {
+        "nome": "João Pedro Dias Vidal",
+        "cargo": "Estagiário Remunerado (Direito)",
+        "descricao": "Graduando em Direito na Unesp Franca e Membro ativo do CPPS",
+        "foto": "/imagens/equipe/Joao_Vidal.jpg",
+        "prioridade": "",
+        "redes": [
+          {
+            "tipo": "lattes",
+            "url": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
+            "icone": "/imagens/logos/linkedin_icon2.svg"
+          },
+          {
+            "tipo": "instagram",
+            "url": "https://www.instagram.com/_vidaljp/",
+            "icone": "/imagens/logos/instagram_icon_cinza.svg"
+          }
+        ]
+      },
+      {
+        "nome": "Caio Tomaz Palombo",
+        "cargo": "Estagiário Remunerado (História)",
+        "descricao": "Graduando em história na Unesp Franca e Membro ativo do CPPS",
+        "foto": "/imagens/equipe/caio_tomaz.png",
+        "prioridade": "",
+        "redes": [
+          {
+            "tipo": "lattes",
+            "url": "https://www.linkedin.com/in/caio-t-palomvo2664/",
+            "icone": "/imagens/logos/linkedin_icon2.svg"
+          },
+          {
+            "tipo": "instagram",
+            "url": "https://www.instagram.com/Caio_2664/",
+            "icone": "/imagens/logos/instagram_icon_cinza.svg"
+          }
+        ]
+      },
+      {
+        "nome": "Mavi Silva",
+        "cargo": "Estagiário Remunerado (Relações Internacionais)",
+        "descricao": "Graduando em Relações Internacionais na Unesp Franca e Membro ativo do CPPS",
+        "foto": "/imagens/equipe/Mavi.png",
+        "prioridade": "",
+        "redes": [
+          {
+            "tipo": "lattes",
+            "url": "",
+            "icone": "/imagens/logos/linkedin_icon2.svg"
+          },
+          {
+            "tipo": "instagram",
+            "url": "https://www.instagram.com/maviobservando/",
+            "icone": "/imagens/logos/instagram_icon_cinza.svg"
+          }
+        ]
+      },
+      {
+        "nome": "Breno Andreazza",
+        "cargo": "Estagiário Remunerada (Relações Internacionais)",
+        "descricao": "Graduando em Relações Internacionais na Unesp Franca",
+        "contribuicao": "Auxilio na transição do CPPS",
+        "foto": "/imagens/equipe/00-person.svg",
+        "status": "inativo",
+        "prioridade": "",
+        "redes": []
+      }
+    ]
+  },
   "initiatives2": {
     "title": "Iniciativas",
     "descricao": "Conheça as principais iniciativas",
