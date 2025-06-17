@@ -1,0 +1,35 @@
+---
+// IconSocial.astro
+const { tipo, url, tamanho = "text-lg" } = Astro.props;
+
+// Normaliza o nome para facilitar comparações
+const tipoNormalizado = tipo.toLowerCase();
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener"
+  title={tipo}
+  class="hover:scale-110 transition-transform inline-flex items-center justify-center"
+>
+  {
+    tipoNormalizado === "linkedin" ? (
+      <i class={`fab fa-linkedin ${tamanho}`}></i>
+    ) : tipoNormalizado === "lattes" ? (
+      <i class={`ai ai-lattes ${tamanho}`}></i>
+    ) : tipoNormalizado === "orcid" ? (
+      <i class={`ai ai-orcid ${tamanho}`}></i>
+    ) : tipoNormalizado === "portal-docente-unesp" ? (
+      <img
+        src="/imagens/logos/logo-unesp-mapa.svg"
+        alt="Portal Docente UNESP"
+        class="w-8 h-8 object-contain"
+        loading="lazy"
+      />
+    ) : (
+      // Ícone padrão (fallback) se tipo não for reconhecido
+      <span class={`${tamanho}`}>🔗</span>
+    )
+  }
+</a>
