@@ -8,6 +8,7 @@ const {
 } = Astro.props;
 
 import { getCollection } from "astro:content";
+import IconSocial from "./IconSocial.astro";
 
 const membrosCollection = await getCollection("membros");
 const membrosDisponiveis = new Set(
@@ -98,9 +99,7 @@ const categoriasTodas = Array.from(
             {membro.redes && membro.redes.length > 0 && (
               <div class="flex justify-center space-x-4 mb-2">
                 {membro.redes.slice(0, 3).map((rede) => (
-                  <a href={rede.url} target="_blank" rel="noopener" class="hover:scale-110 transition-transform">
-                    <img src={rede.icone} alt={rede.tipo} class="max-h-6 max-w-12 object-contain" loading="lazy" />
-                  </a>
+                  <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
                 ))}
               </div>
             )}
@@ -142,9 +141,7 @@ const categoriasTodas = Array.from(
             {membro.redes && membro.redes.length > 0 && (
               <div class="flex justify-center space-x-4 mb-2">
                 {membro.redes.slice(0, 3).map((rede) => (
-                  <a href={rede.url} target="_blank" rel="noopener" class="hover:scale-110 transition-transform">
-                    <img src={rede.icone} alt={rede.tipo} class="max-h-6 max-w-12 object-contain" loading="lazy" />
-                  </a>
+                  <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
                 ))}
               </div>
             )}
