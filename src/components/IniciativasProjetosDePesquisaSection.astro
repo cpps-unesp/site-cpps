@@ -95,7 +95,6 @@ const agenciaInicial = agenciaParam || "";
   </div>
 </section>
 
-
 <script is:inline define:vars={{ projetosData, ordemInicial, agenciaInicial }}>
   let allProjects = projetosData || [];
   let currentSort = ordemInicial || 'titulo';
@@ -155,17 +154,42 @@ const agenciaInicial = agenciaParam || "";
     });
   }
 
-  function renderProject(p) {
-    return `<article class="card bg-base-100 shadow border border-base-300">
+ function renderProject(p, index) {
+  const id = `extra-info-${index}`;
+
+  const temExtras = p.publico_alvo || p.resultados || p.links || p.processo || p.natureza || p.valor || p.associados || p.apoioCentro;
+
+  return `
+    <article class="card bg-base-100 shadow border border-base-300 transition-all duration-300">
       <div class="card-body">
         <h2 class="card-title text-primary">${escapeHtml(p.titulo)}</h2>
         <p><strong>Docente responsável:</strong> ${escapeHtml(p.docente)}</p>
         <p class="text-sm text-base-content/70">Departamento: ${escapeHtml(p.departamento || '')}</p>
         <p><strong>Agência:</strong> ${escapeHtml(p.agencia)} | <strong>Período:</strong> ${escapeHtml(p.periodo)}</p>
-        <p class="mt-2 text-base-content/80">${escapeHtml(p.resumo)}</p>
+
+        <p class="mt-2 text-base-content/80">
+          <strong>Resumo:</strong> ${escapeHtml(p.resumo || '')}
+        </p>
+
+        <div id="${id}" class="hidden mt-2 space-y-2 text-base-content/80">
+          ${p.publico_alvo ? `<p><strong>Público-alvo:</strong> ${escapeHtml(p.publico_alvo)}</p>` : ''}
+          ${p.resultados ? `<p><strong>Resultados esperados:</strong> ${escapeHtml(p.resultados)}</p>` : ''}
+          ${p.links ? `<p><strong>Links:</strong> <a href="${escapeHtml(p.links)}" target="_blank" class="link link-primary">${escapeHtml(p.links)}</a></p>` : ''}
+          ${p.processo ? `<p><strong>Nº do Processo:</strong> ${escapeHtml(p.processo)}</p>` : ''}
+          ${p.natureza ? `<p><strong>Natureza:</strong> ${escapeHtml(p.natureza)}</p>` : ''}
+          ${p.valor ? `<p><strong>Valor Financiado:</strong> ${escapeHtml(p.valor)}</p>` : ''}
+          ${p.associados ? `<p><strong>Pesquisadores Associados:</strong> ${escapeHtml(p.associados)}</p>` : ''}
+          ${Array.isArray(p.apoioCentro) && p.apoioCentro.length > 0
+            ? `<div><strong>Apoio do CPPS:</strong><ul class="list-disc ml-6">${p.apoioCentro.map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div>`
+            : ''}
+        </div>
+
+        ${temExtras
+          ? `<button class="btn btn-sm btn-link text-primary-content px-0" onclick="toggleExtra('${id}', this)">Mostrar mais</button>`
+          : ''}
       </div>
     </article>`;
-  }
+}
 
   function renderProjects() {
     const list = document.getElementById('lista-projetos');
@@ -173,7 +197,7 @@ const agenciaInicial = agenciaParam || "";
     const filtered = filterProjects(allProjects);
     const sorted = sortProjects(filtered, currentSort);
 
-    list.innerHTML = sorted.map(renderProject).join('');
+    list.innerHTML = sorted.map((p, i) => renderProject(p, i)).join('');
     document.getElementById('project-counter').textContent = sorted.length;
     noResults.classList.toggle('hidden', sorted.length > 0);
     atualizarBotoes(currentSort, currentOrder);
@@ -191,7 +215,7 @@ const agenciaInicial = agenciaParam || "";
 
   function atualizarBotoes(criterioAtivo, ordemAtual) {
     const icones = {
-      asc: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>` ,
+      asc: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>`,
       desc: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>`
     };
 
@@ -216,6 +240,15 @@ const agenciaInicial = agenciaParam || "";
     select.innerHTML = '<option value="">Todos</option>' + docentes.map(d => `<option>${escapeHtml(d)}</option>`).join('');
   }
 
+  function toggleExtra(id, btn) {
+    const el = document.getElementById(id);
+    if (!el) return;
+
+    const expanded = !el.classList.contains('hidden');
+    el.classList.toggle('hidden');
+    btn.textContent = expanded ? 'Mostrar mais' : 'Mostrar menos';
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     preencherDocentes();
     ['filtro-agencia', 'filtro-docente', 'filtro-inicio', 'filtro-fim'].forEach(id => {
@@ -225,6 +258,7 @@ const agenciaInicial = agenciaParam || "";
   });
 
   window.ordenarProjetos = ordenarProjetos;
+  window.toggleExtra = toggleExtra;
 </script>
 
 <style>
