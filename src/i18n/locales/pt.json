@@ -53,10 +53,11 @@
     "porPeriodo": "Período",
     "projetosLista": [
       {
-        "titulo": "AAAAAAA",
-        "docente": "BBBBB",
-        "periodo": "2020–2024",
-        "agencia": "FAPESP",
+        "titulo": "Ruptura metabólica e crise estrutural do capital: o complexo minero-industrial em Minas Gerais e a tendência à eliminação das condições elementares da reprodução social",
+        "docente": "Frederico Daia Firmiano",
+        "periodo": "2023–2026",
+        "departamento": "teste",
+        "agencia": "CNPq",
         "processo": "2022/02922-1",
         "natureza": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
         "valor": "R$ 174.353,54 + Quota de Bolsa Orçamentária (Mestrado: 2, IC: 8)",
@@ -69,9 +70,10 @@
         ]
       },
       {
-        "titulo": "BBBBBBB",
-        "docente": "CCCCC",
+        "titulo": "Crítica da pobreza como objeto da filosofia social",
+        "docente": "Hélio Alexandre da Silva",
         "periodo": "2019–2024",
+        "departamento": "teste",
         "agencia": "FAPESP",
         "processo": "2022/02922-1",
         "natureza": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
@@ -85,9 +87,10 @@
         ]
       },
       {
-        "titulo": "CCCCCCC",
-        "docente": "AAAA",
+        "titulo": "Crise da democracia e arranjos jurídico-institucionais: uma análise a partir das relações entre a política e o direito",
+        "docente": "Murilo Gaspardo",
         "periodo": "2022–2024",
+        "departamento": "teste",
         "agencia": "FAPESP",
         "processo": "2022/02922-1",
         "natureza": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",

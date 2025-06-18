@@ -1,36 +1,21 @@
 ---
 const { textos, iniciativas, projetos = [] } = Astro.props;
 
-// Usar os dados do JSON fornecido
 const projetosData = iniciativas?.projetosLista || projetos || [];
 
 console.log("Total de projetos:", projetosData.length);
 console.log("Estrutura do primeiro projeto:", Object.keys(projetosData[0] || {}));
 
-// Obter parâmetros iniciais da URL para estado inicial
 const url = new URL(Astro.request.url);
 const ordemValida = ["titulo", "docente", "periodo"];
 const ordemParam = url.searchParams.get("ordem") ?? "";
 const agenciaParam = url.searchParams.get("agencia") ?? "";
 
-// Determinar estado inicial
 const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : "titulo";
 const agenciaInicial = agenciaParam || "";
-
-// Função para escapar HTML (movida para o servidor)
-const escapeHtml = (text: any) => {
-  if (!text) return '';
-  return text.toString()
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
-};
 ---
 
 <section class="max-w-5xl mx-auto px-4 py-16 space-y-8">
-  <!-- Cabeçalho -->
   <div class="text-center mb-8">
     <h1 class="text-4xl font-bold text-primary mb-4">
       {iniciativas?.projetosDePesquisa ?? "Projetos de Pesquisa"}
@@ -39,80 +24,84 @@ const escapeHtml = (text: any) => {
       {iniciativas?.descricaoProjetosDePesquisa ?? "Projetos desenvolvidos por docentes e associados ao CPPS."}
     </p>
   </div>
-  <!-- Estatísticas -->
-  <div class="stats shadow w-full mb-8">
-    <div class="stat">
-      <div class="stat-title">Total de Projetos</div>
-      <div class="stat-value text-primary" id="project-counter">{projetosData.length}</div>
+
+  <div class="flex flex-wrap gap-4 items-center justify-start mb-4 p-4 bg-base-200 rounded-lg">
+    <span class="font-semibold text-base-content">
+      {iniciativas?.ordenarPor ?? "Ordenar por"}:
+    </span>
+    <div class="btn-group" id="ordenacao-botoes">
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('titulo')">Título</button>
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('docente')">Docente</button>
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('periodo')">Período</button>
     </div>
-    <div class="stat">
-      <div class="stat-title">Ordenação Atual</div>
-      <div class="stat-value text-sm" id="current-sort">
-        {ordemInicial === 'titulo' ? 'Por Título' : 
-         ordemInicial === 'docente' ? 'Por Docente' : 
-         'Por Período'}
+  </div>
+
+  <div class="md:flex md:items-start md:justify-between gap-6 mb-8">
+    <div class="w-full md:w-2/3 space-y-4">
+      <div class="md:flex md:gap-4">
+        <label class="form-control md:w-1/2">
+          <span class="label-text">Agência de Fomento</span>
+          <select id="filtro-agencia" class="select select-bordered select-sm">
+            <option value="">Todas</option>
+            <option value="FAPESP">FAPESP</option>
+            <option value="CNPq">CNPq</option>
+            <option value="CAPES">CAPES</option>
+          </select>
+        </label>
+        <label class="form-control md:w-1/2">
+          <span class="label-text">Docente Responsável</span>
+          <select id="filtro-docente" class="select select-bordered select-sm">
+            <option value="">Todos</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="md:flex md:gap-4">
+        <label class="form-control md:w-1/2">
+          <span class="label-text">Departamento</span>
+          <select id="filtro-departamento" class="select select-bordered select-sm">
+            <option value="">Todos</option>
+          </select>
+        </label>
+        <div class="flex gap-4">
+          <label class="form-control w-32">
+            <span class="label-text">Ano Início</span>
+            <input type="number" id="filtro-inicio" class="input input-bordered input-sm" min="1900" max="2100" />
+          </label>
+          <label class="form-control w-32">
+            <span class="label-text">Ano Fim</span>
+            <input type="number" id="filtro-fim" class="input input-bordered input-sm" min="1900" max="2100" />
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="stats shadow mt-6 md:mt-0 w-full md:w-1/3">
+      <div class="stat">
+        <div class="stat-title">Total de Projetos</div>
+        <div class="stat-value text-primary" id="project-counter">0</div>
       </div>
     </div>
   </div>
 
-  <!-- Seletor de ordenação melhorado -->
-  <div class="flex flex-wrap gap-4 items-center justify-between mb-8 p-4 bg-base-200 rounded-lg">
-    <div class="flex items-center gap-2">
-      <span class="font-semibold text-base-content">
-        {iniciativas?.ordenarPor ?? "Ordenar por"}:
-      </span>      <div class="btn-group">
-        <button 
-          class={`btn btn-sm ${ordemInicial === 'titulo' ? 'btn-active btn-primary' : 'btn-outline'}`}
-          onclick="ordenarProjetos('titulo')"
-        >
-          {iniciativas?.porTitulo ?? "Título"}
-        </button>
-        <button 
-          class={`btn btn-sm ${ordemInicial === 'docente' ? 'btn-active btn-primary' : 'btn-outline'}`}
-          onclick="ordenarProjetos('docente')"
-        >
-          {iniciativas?.porDocente ?? "Docente"}
-        </button>
-        <button 
-          class={`btn btn-sm ${ordemInicial === 'periodo' ? 'btn-active btn-primary' : 'btn-outline'}`}
-          onclick="ordenarProjetos('periodo')"
-        >
-          {iniciativas?.porPeriodo ?? "Período"}
-        </button>
-      </div>
-    </div>
-    
-    <!-- Filtro adicional -->
-    <div class="flex items-center gap-2">
-      <span class="font-semibold text-base-content">Filtrar:</span>      <select class="select select-bordered select-sm" id="filtro-agencia">
-        <option value="" selected={!agenciaInicial}>Todas as Agências</option>
-        <option value="FAPESP" selected={agenciaInicial === 'FAPESP'}>FAPESP</option>
-        <option value="CNPq" selected={agenciaInicial === 'CNPq'}>CNPq</option>
-        <option value="CAPES" selected={agenciaInicial === 'CAPES'}>CAPES</option>
-      </select>
-    </div>
-  </div>  <!-- Lista de projetos melhorada -->
-  <div id="lista-projetos" class="space-y-6">
-    <!-- Projetos serão inseridos aqui via JavaScript -->
-  </div>
+  <span id="mensagem-periodo-invalido" class="text-error text-sm hidden">
+    Ano inicial não pode ser maior que o final.
+  </span>
 
-  <!-- Mensagem quando não há projetos -->
-  <div id="no-projects-message" class="text-center py-12 hidden">
-    <div class="text-6xl mb-4">📚</div>
-    <h3 class="text-xl font-semibold text-base-content mb-2">Nenhum projeto encontrado</h3>
-    <p class="text-base-content/60">Não há projetos disponíveis no momento.</p>
+  <div id="lista-projetos" class="space-y-6"></div>
+
+  <div id="no-projects-message" class="hidden text-center py-12">
+    <div class="text-6xl mb-4">📂</div>
+    <p class="text-xl font-semibold">Nenhum projeto encontrado com os filtros selecionados.</p>
   </div>
 </section>
 
-<!-- Dados para o cliente -->
+
 <script is:inline define:vars={{ projetosData, ordemInicial, agenciaInicial }}>
-  console.log("Dados dos projetos:", projetosData);
-  // Estado global da aplicação
   let allProjects = projetosData || [];
   let currentSort = ordemInicial || 'titulo';
+  let currentOrder = 'asc';
   let currentFilter = agenciaInicial || '';
 
-  // Função para escapar HTML
   function escapeHtml(text) {
     if (!text) return '';
     const div = document.createElement('div');
@@ -120,225 +109,123 @@ const escapeHtml = (text: any) => {
     return div.innerHTML;
   }
 
-  // Função para ordenar projetos
+  function getPeriodoAno(periodo) {
+    const match = (periodo || '').match(/\d{4}/g);
+    return match ? match.map(Number) : [];
+  }
+
   function sortProjects(projects, ordem) {
     return [...projects].sort((a, b) => {
-      // Get the values to compare, handling null/undefined
-      const valorA = (a[ordem] ?? "").toString().trim();
-      const valorB = (b[ordem] ?? "").toString().trim();
-      
-      if (ordem === "periodo") {
-        // Extract years from period strings like "2020–2024" or "2020-2024"
-        const anoA = parseInt(valorA.match(/(\d{4})/)?.[1] || "0");
-        const anoB = parseInt(valorB.match(/(\d{4})/)?.[1] || "0");
-        
-        // Sort by starting year (descending - most recent first)
-        return anoB - anoA;
+      const valA = (a[ordem] ?? '').toString();
+      const valB = (b[ordem] ?? '').toString();
+
+      if (ordem === 'periodo') {
+        const anoA = getPeriodoAno(valA)[0] || 0;
+        const anoB = getPeriodoAno(valB)[0] || 0;
+        return currentOrder === 'asc' ? anoA - anoB : anoB - anoA;
       }
 
-      // For other sorting criteria, use case-insensitive comparison
-      return valorA.toLowerCase().localeCompare(valorB.toLowerCase(), 'pt-BR', { sensitivity: 'base' });
+      return currentOrder === 'asc'
+        ? valA.localeCompare(valB, 'pt-BR')
+        : valB.localeCompare(valA, 'pt-BR');
     });
   }
 
-  // Função para filtrar projetos por agência
-  function filterProjects(projects, agencia) {
-    if (!agencia) return projects;
-    return projects.filter(proj => proj.agencia === agencia);
+  function filterProjects(projects) {
+    const agencia = document.getElementById('filtro-agencia')?.value || '';
+    const docente = document.getElementById('filtro-docente')?.value || '';
+    const inicio = parseInt(document.getElementById('filtro-inicio')?.value);
+    const fim = parseInt(document.getElementById('filtro-fim')?.value);
+    const mensagem = document.getElementById('mensagem-periodo-invalido');
+
+    if (inicio && fim && inicio > fim) {
+      mensagem.classList.remove('hidden');
+      return [];
+    } else {
+      mensagem.classList.add('hidden');
+    }
+
+    return projects.filter(p => {
+      if (agencia && p.agencia !== agencia) return false;
+      if (docente && p.docente !== docente) return false;
+      const anos = getPeriodoAno(p.periodo);
+      if (inicio && (!anos[0] || anos[0] < inicio)) return false;
+      if (fim && (!anos[1] || anos[1] > fim)) return false;
+      return true;
+    });
   }
 
-  // Função para renderizar um projeto
-  function renderProject(proj, index) {
-    const apoioHtml = Array.isArray(proj.apoioCentro) && proj.apoioCentro.length > 0 
-      ? `<div class="mt-4">
-           <h4 class="font-semibold text-primary mb-2">Apoios do CPPS:</h4>
-           <ul class="list-disc list-inside space-y-1 text-sm">
-             ${proj.apoioCentro.map(item => `<li class="text-base-content/80">${escapeHtml(item)}</li>`).join('')}
-           </ul>
-         </div>`
-      : '';
-
-    return `
-      <article class="card bg-base-100 shadow-lg border border-base-300 hover:shadow-xl transition-shadow duration-300">
-        <div class="card-body">
-          <!-- Cabeçalho do projeto -->
-          <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
-            <div class="flex-1">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="badge badge-primary badge-sm">#${index + 1}</span>
-                <span class="badge badge-outline badge-sm">${escapeHtml(proj.agencia)}</span>
-                <span class="badge badge-ghost badge-sm">${escapeHtml(proj.periodo)}</span>
-              </div>
-              <h2 class="card-title text-xl text-primary mb-2">
-                ${escapeHtml(proj.titulo)}
-              </h2>
-              <p class="text-base-content font-medium">
-                <span class="text-sm text-neutral-500">Docente responsável:</span> ${escapeHtml(proj.docente)}
-              </p>
-            </div>
-            <button class="btn btn-circle btn-ghost btn-sm" onclick="toggleDetails('projeto-${index}')">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-              </svg>
-            </button>
-          </div>
-
-          <!-- Resumo sempre visível -->
-          <div class="mb-4">
-            <h3 class="font-semibold text-base-content mb-2">Resumo:</h3>
-            <p class="text-sm text-base-content/80 line-clamp-3">
-              ${escapeHtml(proj.resumo)}
-            </p>
-          </div>
-
-          <!-- Detalhes expansíveis -->
-          <div id="projeto-${index}" class="hidden space-y-4 pt-4 border-t border-base-300">
-            <div class="grid md:grid-cols-2 gap-4">
-              <div class="space-y-2">
-                <p><strong class="text-primary">Processo:</strong> ${escapeHtml(proj.processo)}</p>
-                <p><strong class="text-primary">Natureza:</strong> ${escapeHtml(proj.natureza)}</p>
-                <p><strong class="text-primary">Valor:</strong> ${escapeHtml(proj.valor)}</p>
-              </div>
-              <div class="space-y-2">
-                <p><strong class="text-primary">Pesquisadores Associados:</strong> ${escapeHtml(proj.associados)}</p>
-              </div>
-            </div>
-            ${apoioHtml}
-          </div>
-        </div>
-      </article>
-    `;
+  function renderProject(p) {
+    return `<article class="card bg-base-100 shadow border border-base-300">
+      <div class="card-body">
+        <h2 class="card-title text-primary">${escapeHtml(p.titulo)}</h2>
+        <p><strong>Docente responsável:</strong> ${escapeHtml(p.docente)}</p>
+        <p class="text-sm text-base-content/70">Departamento: ${escapeHtml(p.departamento || '')}</p>
+        <p><strong>Agência:</strong> ${escapeHtml(p.agencia)} | <strong>Período:</strong> ${escapeHtml(p.periodo)}</p>
+        <p class="mt-2 text-base-content/80">${escapeHtml(p.resumo)}</p>
+      </div>
+    </article>`;
   }
 
-  // Função para renderizar a lista de projetos
   function renderProjects() {
-    const filteredProjects = filterProjects(allProjects, currentFilter);
-    const sortedProjects = sortProjects(filteredProjects, currentSort);
-    
-    const container = document.getElementById('lista-projetos');
-    const noProjectsMessage = document.getElementById('no-projects-message');
-    
-    if (sortedProjects.length === 0) {
-      container.innerHTML = '';
-      noProjectsMessage.classList.remove('hidden');
-    } else {
-      noProjectsMessage.classList.add('hidden');
-      container.innerHTML = sortedProjects.map((proj, index) => renderProject(proj, index)).join('');
-    }
-    
-    // Atualizar contador
-    updateProjectCounter(sortedProjects.length);
-    
-    // Atualizar label de ordenação
-    updateSortLabel(currentSort);
+    const list = document.getElementById('lista-projetos');
+    const noResults = document.getElementById('no-projects-message');
+    const filtered = filterProjects(allProjects);
+    const sorted = sortProjects(filtered, currentSort);
+
+    list.innerHTML = sorted.map(renderProject).join('');
+    document.getElementById('project-counter').textContent = sorted.length;
+    noResults.classList.toggle('hidden', sorted.length > 0);
+    atualizarBotoes(currentSort, currentOrder);
   }
 
-  // Função para alternar detalhes do projeto
-  function toggleDetails(elementId) {
-    const element = document.getElementById(elementId);
-    const button = element?.previousElementSibling?.querySelector('button[onclick*="toggleDetails"]');
-    
-    if (element) {
-      element.classList.toggle('hidden');
-      if (button) {
-        const svg = button.querySelector('svg');
-        if (svg) {
-          svg.style.transform = element.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
-        }
-      }
-    }
-  }
-
-  // Função para ordenar projetos (chamada pelos botões)
   function ordenarProjetos(criterio) {
-    currentSort = criterio;
-    updateURL();
-    atualizarBotoes(criterio);
+    if (currentSort === criterio) {
+      currentOrder = currentOrder === 'asc' ? 'desc' : 'asc';
+    } else {
+      currentSort = criterio;
+      currentOrder = 'asc';
+    }
     renderProjects();
   }
 
-  // Função para filtrar por agência
-  function filtrarPorAgencia() {
-    const filtroAgencia = document.getElementById('filtro-agencia').value;
-    currentFilter = filtroAgencia;
-    updateURL();
-    renderProjects();
-  }
+  function atualizarBotoes(criterioAtivo, ordemAtual) {
+    const icones = {
+      asc: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" /></svg>` ,
+      desc: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>`
+    };
 
-  // Função para atualizar URL sem recarregar a página
-  function updateURL() {
-    const url = new URL(window.location);
-    
-    if (currentSort && currentSort !== 'titulo') {
-      url.searchParams.set('ordem', currentSort);
-    } else {
-      url.searchParams.delete('ordem');
-    }
-    
-    if (currentFilter) {
-      url.searchParams.set('agencia', currentFilter);
-    } else {
-      url.searchParams.delete('agencia');
-    }
-    
-    history.replaceState(null, '', url.toString());
-  }
-
-  // Função para atualizar contador de projetos
-  function updateProjectCounter(count) {
-    const statValue = document.getElementById('project-counter');
-    if (statValue) {
-      statValue.textContent = count;
-    }
-  }
-
-  // Função para atualizar label de ordenação
-  function updateSortLabel(criterio) {
-    const sortLabel = document.getElementById('current-sort');
-    if (sortLabel) {
-      const labels = {
-        'titulo': 'Por Título',
-        'docente': 'Por Docente',
-        'periodo': 'Por Período'
-      };
-      sortLabel.textContent = labels[criterio] || 'Por Título';
-    }
-  }
-
-  // Função para atualizar visual dos botões
-  function atualizarBotoes(criterioAtivo) {
-    document.querySelectorAll('.btn-group button').forEach(btn => {
+    document.querySelectorAll('#ordenacao-botoes button').forEach(btn => {
       const criterio = btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
+      const label = criterio === 'titulo' ? 'Título' : criterio === 'docente' ? 'Docente' : 'Período';
+
       if (criterio === criterioAtivo) {
-        btn.className = 'btn btn-sm btn-active btn-primary';
+        btn.className = 'btn btn-sm btn-primary';
+        btn.innerHTML = `${label}${icones[ordemAtual]}`;
       } else {
         btn.className = 'btn btn-sm btn-outline';
+        btn.innerHTML = label;
       }
     });
-  }  // Inicialização
-  document.addEventListener('DOMContentLoaded', function() {
-    // Atualizar botões com o estado inicial
-    atualizarBotoes(currentSort);
-    
-    // Configurar o filtro inicial e adicionar listener
-    const filtroAgencia = document.getElementById('filtro-agencia');
-    if (filtroAgencia) {
-      if (currentFilter) {
-        filtroAgencia.value = currentFilter;
-      }
-      filtroAgencia.addEventListener('change', filtrarPorAgencia);
-    }
+  }
 
-    // Renderizar projetos inicialmente
+  function preencherDocentes() {
+    const select = document.getElementById('filtro-docente');
+    if (!select) return;
+    const docentes = [...new Set(allProjects.map(p => p.docente).filter(Boolean))].sort();
+    select.innerHTML = '<option value="">Todos</option>' + docentes.map(d => `<option>${escapeHtml(d)}</option>`).join('');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    preencherDocentes();
+    ['filtro-agencia', 'filtro-docente', 'filtro-inicio', 'filtro-fim'].forEach(id => {
+      document.getElementById(id)?.addEventListener('input', renderProjects);
+    });
     renderProjects();
   });
 
-  // Tornar funções globais
-  window.toggleDetails = toggleDetails;
   window.ordenarProjetos = ordenarProjetos;
-  window.filtrarPorAgencia = filtrarPorAgencia;
 </script>
-
 
 <style>
   .line-clamp-3 {
@@ -346,5 +233,16 @@ const escapeHtml = (text: any) => {
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  #filtro-inicio,
+  #filtro-fim {
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    width: 100%;
+  }
+
+  #mensagem-periodo-invalido {
+    margin-left: 0.5rem;
   }
 </style>
