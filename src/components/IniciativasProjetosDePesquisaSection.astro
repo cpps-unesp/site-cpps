@@ -7,35 +7,18 @@ const projetosData = iniciativas?.projetosLista || projetos || [];
 console.log("Total de projetos:", projetosData.length);
 console.log("Estrutura do primeiro projeto:", Object.keys(projetosData[0] || {}));
 
-// Obter parâmetro de ordenação da URL
+// Obter parâmetros iniciais da URL para estado inicial
 const url = new URL(Astro.request.url);
 const ordemValida = ["titulo", "docente", "periodo"];
 const ordemParam = url.searchParams.get("ordem") ?? "";
+const agenciaParam = url.searchParams.get("agencia") ?? "";
 
-console.log("Parâmetro 'ordem' da URL:", ordemParam);
+// Determinar estado inicial
+const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : "titulo";
+const agenciaInicial = agenciaParam || "";
 
-// Determinar ordem final
-const ordem = ordemValida.includes(ordemParam)? ordemParam : "titulo";
-console.log("Ordem selecionada:", ordem);
-
-const getOrdenado = (ordem: string) => {
-  return [...projetosData].sort((a, b) => {
-    const valorA = (a[ordem] ?? "").toString().trim().toLowerCase();
-    const valorB = (b[ordem] ?? "").toString().trim().toLowerCase();
-
-    if (ordem === "periodo") {
-      const anoA = parseInt(valorA.match(/(\d{4})/)?.[1] || "0");
-      const anoB = parseInt(valorB.match(/(\d{4})/)?.[1] || "0");
-      return anoA - anoB;
-    }
-
-    return valorA.localeCompare(valorB, 'pt-BR', { sensitivity: 'base' });
-  });
-}
-const projetosOrdenados = getOrdenado(ordem);
-
-// Função para escapar HTML
-const escapeHtml = (text) => {
+// Função para escapar HTML (movida para o servidor)
+const escapeHtml = (text: any) => {
   if (!text) return '';
   return text.toString()
     .replace(/&/g, '&amp;')
@@ -56,18 +39,17 @@ const escapeHtml = (text) => {
       {iniciativas?.descricaoProjetosDePesquisa ?? "Projetos desenvolvidos por docentes e associados ao CPPS."}
     </p>
   </div>
-
   <!-- Estatísticas -->
   <div class="stats shadow w-full mb-8">
     <div class="stat">
       <div class="stat-title">Total de Projetos</div>
-      <div class="stat-value text-primary">{projetosOrdenados.length}</div>
+      <div class="stat-value text-primary" id="project-counter">{projetosData.length}</div>
     </div>
     <div class="stat">
       <div class="stat-title">Ordenação Atual</div>
-      <div class="stat-value text-sm">
-        {ordem === 'titulo' ? 'Por Título' : 
-         ordem === 'docente' ? 'Por Docente' : 
+      <div class="stat-value text-sm" id="current-sort">
+        {ordemInicial === 'titulo' ? 'Por Título' : 
+         ordemInicial === 'docente' ? 'Por Docente' : 
          'Por Período'}
       </div>
     </div>
@@ -78,22 +60,21 @@ const escapeHtml = (text) => {
     <div class="flex items-center gap-2">
       <span class="font-semibold text-base-content">
         {iniciativas?.ordenarPor ?? "Ordenar por"}:
-      </span>
-      <div class="btn-group">
+      </span>      <div class="btn-group">
         <button 
-          class={`btn btn-sm ${ordem === 'titulo' ? 'btn-active btn-primary' : 'btn-outline'}`}
+          class={`btn btn-sm ${ordemInicial === 'titulo' ? 'btn-active btn-primary' : 'btn-outline'}`}
           onclick="ordenarProjetos('titulo')"
         >
           {iniciativas?.porTitulo ?? "Título"}
         </button>
         <button 
-          class={`btn btn-sm ${ordem === 'docente' ? 'btn-active btn-primary' : 'btn-outline'}`}
+          class={`btn btn-sm ${ordemInicial === 'docente' ? 'btn-active btn-primary' : 'btn-outline'}`}
           onclick="ordenarProjetos('docente')"
         >
           {iniciativas?.porDocente ?? "Docente"}
         </button>
         <button 
-          class={`btn btn-sm ${ordem === 'periodo' ? 'btn-active btn-primary' : 'btn-outline'}`}
+          class={`btn btn-sm ${ordemInicial === 'periodo' ? 'btn-active btn-primary' : 'btn-outline'}`}
           onclick="ordenarProjetos('periodo')"
         >
           {iniciativas?.porPeriodo ?? "Período"}
@@ -103,37 +84,99 @@ const escapeHtml = (text) => {
     
     <!-- Filtro adicional -->
     <div class="flex items-center gap-2">
-      <span class="font-semibold text-base-content">Filtrar:</span>
-      <select class="select select-bordered select-sm" id="filtro-agencia">
-        <option value="">Todas as Agências</option>
-        <option value="FAPESP">FAPESP</option>
-        <option value="CNPq">CNPq</option>
-        <option value="CAPES">CAPES</option>
+      <span class="font-semibold text-base-content">Filtrar:</span>      <select class="select select-bordered select-sm" id="filtro-agencia">
+        <option value="" selected={!agenciaInicial}>Todas as Agências</option>
+        <option value="FAPESP" selected={agenciaInicial === 'FAPESP'}>FAPESP</option>
+        <option value="CNPq" selected={agenciaInicial === 'CNPq'}>CNPq</option>
+        <option value="CAPES" selected={agenciaInicial === 'CAPES'}>CAPES</option>
       </select>
     </div>
+  </div>  <!-- Lista de projetos melhorada -->
+  <div id="lista-projetos" class="space-y-6">
+    <!-- Projetos serão inseridos aqui via JavaScript -->
   </div>
 
-  <!-- Lista de projetos melhorada -->
-  <div id="lista-projetos" class="space-y-6">
-    {projetosOrdenados.map((proj, index) => (
-      <article class="card bg-base-100 shadow-lg border border-base-300 hover:shadow-xl transition-shadow duration-300" key={index}>
+  <!-- Mensagem quando não há projetos -->
+  <div id="no-projects-message" class="text-center py-12 hidden">
+    <div class="text-6xl mb-4">📚</div>
+    <h3 class="text-xl font-semibold text-base-content mb-2">Nenhum projeto encontrado</h3>
+    <p class="text-base-content/60">Não há projetos disponíveis no momento.</p>
+  </div>
+</section>
+
+<!-- Dados para o cliente -->
+<script is:inline define:vars={{ projetosData, ordemInicial, agenciaInicial }}>
+  console.log("Dados dos projetos:", projetosData);
+  // Estado global da aplicação
+  let allProjects = projetosData || [];
+  let currentSort = ordemInicial || 'titulo';
+  let currentFilter = agenciaInicial || '';
+
+  // Função para escapar HTML
+  function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
+  // Função para ordenar projetos
+  function sortProjects(projects, ordem) {
+    return [...projects].sort((a, b) => {
+      // Get the values to compare, handling null/undefined
+      const valorA = (a[ordem] ?? "").toString().trim();
+      const valorB = (b[ordem] ?? "").toString().trim();
+      
+      if (ordem === "periodo") {
+        // Extract years from period strings like "2020–2024" or "2020-2024"
+        const anoA = parseInt(valorA.match(/(\d{4})/)?.[1] || "0");
+        const anoB = parseInt(valorB.match(/(\d{4})/)?.[1] || "0");
+        
+        // Sort by starting year (descending - most recent first)
+        return anoB - anoA;
+      }
+
+      // For other sorting criteria, use case-insensitive comparison
+      return valorA.toLowerCase().localeCompare(valorB.toLowerCase(), 'pt-BR', { sensitivity: 'base' });
+    });
+  }
+
+  // Função para filtrar projetos por agência
+  function filterProjects(projects, agencia) {
+    if (!agencia) return projects;
+    return projects.filter(proj => proj.agencia === agencia);
+  }
+
+  // Função para renderizar um projeto
+  function renderProject(proj, index) {
+    const apoioHtml = Array.isArray(proj.apoioCentro) && proj.apoioCentro.length > 0 
+      ? `<div class="mt-4">
+           <h4 class="font-semibold text-primary mb-2">Apoios do CPPS:</h4>
+           <ul class="list-disc list-inside space-y-1 text-sm">
+             ${proj.apoioCentro.map(item => `<li class="text-base-content/80">${escapeHtml(item)}</li>`).join('')}
+           </ul>
+         </div>`
+      : '';
+
+    return `
+      <article class="card bg-base-100 shadow-lg border border-base-300 hover:shadow-xl transition-shadow duration-300">
         <div class="card-body">
           <!-- Cabeçalho do projeto -->
           <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
             <div class="flex-1">
               <div class="flex items-center gap-2 mb-2">
-                <span class="badge badge-primary badge-sm">#{index + 1}</span>
-                <span class="badge badge-outline badge-sm">{proj.agencia}</span>
-                <span class="badge badge-ghost badge-sm">{proj.periodo}</span>
+                <span class="badge badge-primary badge-sm">#${index + 1}</span>
+                <span class="badge badge-outline badge-sm">${escapeHtml(proj.agencia)}</span>
+                <span class="badge badge-ghost badge-sm">${escapeHtml(proj.periodo)}</span>
               </div>
               <h2 class="card-title text-xl text-primary mb-2">
-                {proj.titulo}
+                ${escapeHtml(proj.titulo)}
               </h2>
               <p class="text-base-content font-medium">
-                <span class="text-sm text-neutral-500">Docente responsável:</span> {proj.docente}
+                <span class="text-sm text-neutral-500">Docente responsável:</span> ${escapeHtml(proj.docente)}
               </p>
             </div>
-            <button class="btn btn-circle btn-ghost btn-sm" onclick={`toggleDetails('projeto-${index}')`}>
+            <button class="btn btn-circle btn-ghost btn-sm" onclick="toggleDetails('projeto-${index}')">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
@@ -144,61 +187,50 @@ const escapeHtml = (text) => {
           <div class="mb-4">
             <h3 class="font-semibold text-base-content mb-2">Resumo:</h3>
             <p class="text-sm text-base-content/80 line-clamp-3">
-              {proj.resumo}
+              ${escapeHtml(proj.resumo)}
             </p>
           </div>
 
           <!-- Detalhes expansíveis -->
-          <div id={`projeto-${index}`} class="hidden space-y-4 pt-4 border-t border-base-300">
+          <div id="projeto-${index}" class="hidden space-y-4 pt-4 border-t border-base-300">
             <div class="grid md:grid-cols-2 gap-4">
               <div class="space-y-2">
-                <p><strong class="text-primary">Processo:</strong> {proj.processo}</p>
-                <p><strong class="text-primary">Natureza:</strong> {proj.natureza}</p>
-                <p><strong class="text-primary">Valor:</strong> {proj.valor}</p>
+                <p><strong class="text-primary">Processo:</strong> ${escapeHtml(proj.processo)}</p>
+                <p><strong class="text-primary">Natureza:</strong> ${escapeHtml(proj.natureza)}</p>
+                <p><strong class="text-primary">Valor:</strong> ${escapeHtml(proj.valor)}</p>
               </div>
               <div class="space-y-2">
-                <p><strong class="text-primary">Pesquisadores Associados:</strong> {proj.associados}</p>
+                <p><strong class="text-primary">Pesquisadores Associados:</strong> ${escapeHtml(proj.associados)}</p>
               </div>
             </div>
-            
-            {Array.isArray(proj.apoioCentro) && proj.apoioCentro.length > 0 && (
-              <div class="mt-4">
-                <h4 class="font-semibold text-primary mb-2">Apoios do CPPS:</h4>
-                <ul class="list-disc list-inside space-y-1 text-sm">
-                  {proj.apoioCentro.map((item, i) => (
-                    <li key={i} class="text-base-content/80">{item}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            ${apoioHtml}
           </div>
         </div>
       </article>
-    ))}
-  </div>
+    `;
+  }
 
-  <!-- Mensagem quando não há projetos -->
-  {projetosOrdenados.length === 0 && (
-    <div class="text-center py-12">
-      <div class="text-6xl mb-4">📚</div>
-      <h3 class="text-xl font-semibold text-base-content mb-2">Nenhum projeto encontrado</h3>
-      <p class="text-base-content/60">Não há projetos disponíveis no momento.</p>
-    </div>
-  )}
-</section>
-
-<!-- Dados para o cliente -->
-<script type="application/json" id="projetos-data">
-  {JSON.stringify(projetosOrdenados)}
-</script>
-
-<script is:inline>
-  // Função para escapar HTML
-  function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
+  // Função para renderizar a lista de projetos
+  function renderProjects() {
+    const filteredProjects = filterProjects(allProjects, currentFilter);
+    const sortedProjects = sortProjects(filteredProjects, currentSort);
+    
+    const container = document.getElementById('lista-projetos');
+    const noProjectsMessage = document.getElementById('no-projects-message');
+    
+    if (sortedProjects.length === 0) {
+      container.innerHTML = '';
+      noProjectsMessage.classList.remove('hidden');
+    } else {
+      noProjectsMessage.classList.add('hidden');
+      container.innerHTML = sortedProjects.map((proj, index) => renderProject(proj, index)).join('');
+    }
+    
+    // Atualizar contador
+    updateProjectCounter(sortedProjects.length);
+    
+    // Atualizar label de ordenação
+    updateSortLabel(currentSort);
   }
 
   // Função para alternar detalhes do projeto
@@ -217,14 +249,63 @@ const escapeHtml = (text) => {
     }
   }
 
-  // Função para ordenar e recarregar a página
+  // Função para ordenar projetos (chamada pelos botões)
   function ordenarProjetos(criterio) {
-    const url = new URL(window.location);
-    url.searchParams.set('ordem', criterio);
-    window.location.href = url.toString(); // 🔁 reload com o novo critério
+    currentSort = criterio;
+    updateURL();
+    atualizarBotoes(criterio);
+    renderProjects();
   }
 
-  // Função para atualizar visual dos botões (opcional, se quiser manter ativo visualmente)
+  // Função para filtrar por agência
+  function filtrarPorAgencia() {
+    const filtroAgencia = document.getElementById('filtro-agencia').value;
+    currentFilter = filtroAgencia;
+    updateURL();
+    renderProjects();
+  }
+
+  // Função para atualizar URL sem recarregar a página
+  function updateURL() {
+    const url = new URL(window.location);
+    
+    if (currentSort && currentSort !== 'titulo') {
+      url.searchParams.set('ordem', currentSort);
+    } else {
+      url.searchParams.delete('ordem');
+    }
+    
+    if (currentFilter) {
+      url.searchParams.set('agencia', currentFilter);
+    } else {
+      url.searchParams.delete('agencia');
+    }
+    
+    history.replaceState(null, '', url.toString());
+  }
+
+  // Função para atualizar contador de projetos
+  function updateProjectCounter(count) {
+    const statValue = document.getElementById('project-counter');
+    if (statValue) {
+      statValue.textContent = count;
+    }
+  }
+
+  // Função para atualizar label de ordenação
+  function updateSortLabel(criterio) {
+    const sortLabel = document.getElementById('current-sort');
+    if (sortLabel) {
+      const labels = {
+        'titulo': 'Por Título',
+        'docente': 'Por Docente',
+        'periodo': 'Por Período'
+      };
+      sortLabel.textContent = labels[criterio] || 'Por Título';
+    }
+  }
+
+  // Função para atualizar visual dos botões
   function atualizarBotoes(criterioAtivo) {
     document.querySelectorAll('.btn-group button').forEach(btn => {
       const criterio = btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
@@ -234,22 +315,28 @@ const escapeHtml = (text) => {
         btn.className = 'btn btn-sm btn-outline';
       }
     });
-  }
-
-  // Inicialização: destaca o botão correto se houver parâmetro na URL
+  }  // Inicialização
   document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const ordemUrl = urlParams.get('ordem');
-    const ordemValida = ['titulo', 'docente', 'periodo'];
+    // Atualizar botões com o estado inicial
+    atualizarBotoes(currentSort);
     
-    if (ordemUrl && ordemValida.includes(ordemUrl)) {
-      atualizarBotoes(ordemUrl);
+    // Configurar o filtro inicial e adicionar listener
+    const filtroAgencia = document.getElementById('filtro-agencia');
+    if (filtroAgencia) {
+      if (currentFilter) {
+        filtroAgencia.value = currentFilter;
+      }
+      filtroAgencia.addEventListener('change', filtrarPorAgencia);
     }
+
+    // Renderizar projetos inicialmente
+    renderProjects();
   });
 
   // Tornar funções globais
   window.toggleDetails = toggleDetails;
   window.ordenarProjetos = ordenarProjetos;
+  window.filtrarPorAgencia = filtrarPorAgencia;
 </script>
 
 
