@@ -1,4 +1,12 @@
 {
+  "iniciativas": {
+  "publicacoes": "Publications",
+  "materialDeApoio": "Support Material",
+  "oficinas": "Workshops and Trainings",
+  "projetos": "Projects",
+  "solucoesTecnologicas": "Technological Solutions",
+  "cafeComCiencia": "Coffee with Science"
+},
   "sobre": {
     "quem-somos": {
       "titulo": "Center for Political and Social Research",

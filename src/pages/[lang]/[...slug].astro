@@ -7,6 +7,15 @@ import ProjetosSection from "../../components/ProjetosSection.astro";
 import CafeComCienciaSection from "../../components/CafeComCienciaSection.astro";
 import DocumentosSection from "../../components/DocumentosSection.astro";
 
+import IniciativasPublicacoesSection from "../../components/IniciativasPublicacoesSection.astro";
+import IniciativasMaterialApoioSection from "../../components/IniciativasMaterialApoioSection.astro";
+import IniciativasOficinasSection from "../../components/IniciativasOficinasSection.astro";
+import IniciativasParceiriasSection from "../../components/IniciativasParceiriasSection.astro";
+import IniciativasSolucoesTecnologicasSection from "../../components/IniciativasSolucoesTecnologicasSection.astro";
+import IniciativasProjetosSection from "../../components/IniciativasProjetosSection.astro";
+import IniciativasProjetosDeDadosSection from "../../components/IniciativasProjetosDeDadosSection.astro";
+import IniciativasProjetosDePesquisaSection from "../../components/IniciativasProjetosDePesquisaSection.astro";
+
 import NoticiaPage from "../../components/NoticiaPage.astro";
 import { routeTranslations } from "../../i18n/routes";
 import { getCollection } from "astro:content";
@@ -68,7 +77,7 @@ const slugPath = Array.isArray(slugParam)
 const slugArray = slugPath.split("/");
 
 const locale = await import(`../../i18n/locales/${currentLang}.json`);
-const { titulo, descricao, texts, equipe, sobre, projetos, cafe, documentos } =
+const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } =
   locale.default;
 
 const noticiasPrefix = routeTranslations["noticias"][currentLang];
@@ -162,12 +171,28 @@ const originalKey = findOriginalKey(slugPath, currentLang);
             return <EquipeSection equipe={equipe} texts={texts} />;
           case "institucional/sobre":
             return <SobreSection blocos={sobre} />;
-          case "iniciativas/projetos":
-            return <ProjetosSection projetos={projetos} />;
-          case "iniciativas/cafe-com-ciencia":
-            return <CafeComCienciaSection cafe={cafe} />;
           case "institucional/documentos":
             return <DocumentosSection documentos={documentos} />;
+
+          // Iniciativas
+          case "iniciativas/cafe-com-ciencia":
+            return <CafeComCienciaSection cafe={cafe} />;
+          case "iniciativas/publicacoes":
+            return <IniciativasPublicacoesSection texts={texts} />;
+          case "iniciativas/material-de-apoio":
+            return <IniciativasMaterialApoioSection texts={texts} />;
+          case "iniciativas/oficinas":
+            return <IniciativasOficinasSection texts={texts} />;
+          case "iniciativas/projetos":
+            return <IniciativasProjetosSection texts={texts} />;
+          case "iniciativas/projetos-de-pesquisa":
+            return <IniciativasProjetosDePesquisaSection texts={texts} projetos={iniciativas.projetosLista} iniciativas={iniciativas}/>;
+          case "iniciativas/projetos-de-dados":
+            return <IniciativasProjetosDeDadosSection texts={texts} />;
+          case "iniciativas/parcerias":
+            return <IniciativasParceiriasSection texts={texts} />;
+          case "iniciativas/solucoes-tecnologicas":
+            return <IniciativasSolucoesTecnologicasSection texts={texts} />;
 
           default:
             return (
