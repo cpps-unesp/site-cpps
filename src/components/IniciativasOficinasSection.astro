@@ -1,0 +1,12 @@
+---
+
+const { texts } = Astro.props;
+---
+<section class="max-w-4xl mx-auto px-4 py-16 space-y-6">
+  <h1 class="text-3xl font-bold text-primary">
+    {texts?.iniciativas?.oficinas ?? "Oficinas e Treinamentos"}
+  </h1>
+  <p class="text-base-content">
+    Informações sobre oficinas, cursos e formações oferecidas pelo CPPS.
+  </p>
+</section>

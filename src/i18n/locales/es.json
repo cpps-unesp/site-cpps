@@ -18,6 +18,14 @@
       "buscar": "Buscar"
     }
   },
+  "iniciativas": {
+    "publicacoes": "Publicaciones",
+    "materialDeApoio": "Material de Apoyo",
+    "oficinas": "Talleres y Capacitaciones",
+    "projetos": "Proyectos",
+    "solucoesTecnologicas": "Soluciones Tecnológicas",
+    "cafeComCiencia": "Café con Ciencia"
+  },
   "hero": {
     "title": "Centro de<br class='hidden sm:inline' /> Investigación<br class='hidden sm:inline' /> Política y Social",
     "description": "Apoya la ejecución de investigaciones en la <span class='text-primary font-semibold bg-white px-1 rounded'>Facultad de Ciencias Humanas y Sociales (FCHS) de la Universidad Estadual Paulista (UNESP)</span>, ubicada en la ciudad de Franca/SP.",
@@ -101,7 +109,8 @@
               },
               {
                 "tipo": "HTML",
-                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"}
+                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
+              }
             ]
           }
         ]

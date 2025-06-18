@@ -17,8 +17,15 @@
       "iniciativas": "Iniciativas",
       "projetos": "Projetos",
       "cafe": "Café com Ciência",
+      "publicacoes": "Publicações",
+      "oficinas": "Oficinas",
+      "materialDeApoio": "Material de Apoio",
+      "solucoesTecnologicas": "Soluções Tecnológicas",
+      "parcerias": "Parcerias e Cooperação",
       "planejamento": "Planejamento",
       "noticias": "Notícias",
+      "projetosDePesquisa": "Projetos de Pesquisa",
+      "projetosDeDados": "Projetos de Dados",
       "buscar": "Buscar"
     }
   },
@@ -30,6 +37,70 @@
       "text": "Saiba mais"
     },
     "link": "/imagens/campus/entrada-unesp-franca.jpg"
+  },
+  "iniciativas": {
+    "publicacoes": "Publicações",
+    "materialDeApoio": "Material de Apoio",
+    "oficinas": "Oficinas e Treinamentos",
+    "projetos": "Projetos",
+    "solucoesTecnologicas": "Soluções Tecnológicas",
+    "cafeComCiencia": "Café com Ciência",
+    "projetosDePesquisa": "Projetos de Pesquisa",
+    "descricaoProjetosDePesquisa": "Projetos desenvolvidos por docentes e associados ao CPPS, com apoio de agências de fomento.",
+    "ordenarPor": "Ordenar por",
+    "porTitulo": "Título",
+    "porDocente": "Docente",
+    "porPeriodo": "Período",
+    "projetosLista": [
+      {
+        "titulo": "AAAAAAA",
+        "docente": "BBBBB",
+        "periodo": "2020–2024",
+        "agencia": "FAPESP",
+        "processo": "2022/02922-1",
+        "natureza": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
+        "valor": "R$ 174.353,54 + Quota de Bolsa Orçamentária (Mestrado: 2, IC: 8)",
+        "associados": "Alessandro Pinzani (UFSC), Leonardo Jorge da Hora Pereira (UFBA)",
+        "resumo": "O projeto investiga a pobreza como objeto da filosofia social, partindo da pergunta: em quais sentidos a pobreza, como experiência social negativa e multidimensional, pode contribuir para a crítica social? A pesquisa se organiza em quatro momentos: (1) análise da filosofia social, (2) estudo de teorias da pobreza, (3) investigação de abordagens das ciências sociais sobre grupos em privação, (4) síntese filosófica dos resultados para responder à questão central.",
+        "apoioCentro": [
+          "Indicação institucional do CPPS como centro associado",
+          "Divulgação em canais institucionais",
+          "Organização de atividades de extensão e eventos vinculados ao projeto"
+        ]
+      },
+      {
+        "titulo": "BBBBBBB",
+        "docente": "CCCCC",
+        "periodo": "2019–2024",
+        "agencia": "FAPESP",
+        "processo": "2022/02922-1",
+        "natureza": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
+        "valor": "R$ 174.353,54 + Quota de Bolsa Orçamentária (Mestrado: 2, IC: 8)",
+        "associados": "Alessandro Pinzani (UFSC), Leonardo Jorge da Hora Pereira (UFBA)",
+        "resumo": "O projeto investiga a pobreza como objeto da filosofia social, partindo da pergunta: em quais sentidos a pobreza, como experiência social negativa e multidimensional, pode contribuir para a crítica social? A pesquisa se organiza em quatro momentos: (1) análise da filosofia social, (2) estudo de teorias da pobreza, (3) investigação de abordagens das ciências sociais sobre grupos em privação, (4) síntese filosófica dos resultados para responder à questão central.",
+        "apoioCentro": [
+          "Indicação institucional do CPPS como centro associado",
+          "Divulgação em canais institucionais",
+          "Organização de atividades de extensão e eventos vinculados ao projeto"
+        ]
+      },
+      {
+        "titulo": "CCCCCCC",
+        "docente": "AAAA",
+        "periodo": "2022–2024",
+        "agencia": "FAPESP",
+        "processo": "2022/02922-1",
+        "natureza": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
+        "valor": "R$ 174.353,54 + Quota de Bolsa Orçamentária (Mestrado: 2, IC: 8)",
+        "associados": "Alessandro Pinzani (UFSC), Leonardo Jorge da Hora Pereira (UFBA)",
+        "resumo": "O projeto investiga a pobreza como objeto da filosofia social, partindo da pergunta: em quais sentidos a pobreza, como experiência social negativa e multidimensional, pode contribuir para a crítica social? A pesquisa se organiza em quatro momentos: (1) análise da filosofia social, (2) estudo de teorias da pobreza, (3) investigação de abordagens das ciências sociais sobre grupos em privação, (4) síntese filosófica dos resultados para responder à questão central.",
+        "apoioCentro": [
+          "Indicação institucional do CPPS como centro associado",
+          "Divulgação em canais institucionais",
+          "Organização de atividades de extensão e eventos vinculados ao projeto"
+        ]
+      }
+    ]
   },
   "cafe": {
     "titulo": "Café com Ciência",
