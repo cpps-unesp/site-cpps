@@ -202,7 +202,7 @@
         "status": "Em andamento",
         "agencia": "FAPESP",
         "processo": "24/03051-0",
-        "natureza": "",
+        "natureza": "Pesquisa",
         "valor": "676.415,98",
         "associados": [],
         "resumo": "O objetivo deste projeto é viabilizar um investimento na infraestrutura computacional do Instituto de Política Pública e Relações Internacionais (IPPRI/UNESP). O projeto propõe a aquisição de equipamentos com redundância, com alto desempenho (CPU e GPU) e capacidade de armazenamento escaláveis. Com esses recursos, será possível ampliar e abrir novos horizontes para coletar, processar, analisar e visualizar grandes volumes de dados. Além disso, o projeto busca promover a colaboração e o intercâmbio de conhecimento entre pesquisadores, ampliando o acesso e a disseminação das humanidades digitais não apenas no Estado de São Paulo, mas também em outras regiões. Em nosso comitê de usuários, além de representantes paulistas (INCT-INEU, UNESP, UNICAMP, UNIFESP), temos representantes da Universidade de Brasília (UnB) e da Universidade Federal de Uberlândia (UFU). A fundamentação deste pedido de aquisição de equipamento multiusuário é o avanço da infraestrutura de pesquisa nas humanidades, propiciando maior capacidade de processamento em CPU e GPU, armazenamento em rede, serviços e ambientes de análise e visualização de grandes bases de dados, permitindo o desenvolvimento de pesquisas mais complexas e inovadoras. Com isso, será possível ampliar os horizontes da área em um contexto em que as humanidades enfrentam um desafio crescente: o volume e a complexidade dos dados disponíveis. Dados textuais, audiovisuais, e de redes sociais se proliferam rapidamente, mas são difíceis de serem processados, analisados e interpretados pelo pesquisador sem o auxílio computacional adequado. (AU)",
@@ -259,8 +259,26 @@
     "episodios": [
       {
         "icone": "🎙️",
+        "titulo": "Episódio 5: Autocratização e Resiliência Democrática no Brasil (2019-2023)",
+        "descricao": "",
+        "materiais": [
+        { "nome": "PDF", "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt" },
+        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
+      ]
+      },
+        {
+        "icone": "🎙️",
+        "titulo": "Episódio 4: O Brasil e a Governança Global de Inteligência Artificial",
+        "descricao": "",
+        "materiais": [
+        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
+        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
+      ]
+      },
+      {
+        "icone": "🎙️",
         "titulo": "Episódio 3: Filosofia e Sociedade",
-        "descricao": "Uma conversa sobre os impactos da filosofia na sociedade contemporânea.",
+        "descricao": "",
         "materiais": [
         { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
         { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
@@ -269,7 +287,7 @@
       {
         "icone": "🎙️",
         "titulo": "Episódio 2: Ética na Pesquisa",
-        "descricao": "Debatendo os desafios éticos enfrentados pelos pesquisadores na atualidade.",
+        "descricao": "",
         "materiais": [
         { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
         { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
@@ -277,8 +295,8 @@
       },
       {
         "icone": "🎙️",
-        "titulo": "Episódio 1: Democracia e Participação",
-        "descricao": "Explorando a importância da participação popular em regimes democráticos.",
+        "titulo": "Episódio 1: O novo Governo Trump e suas repercussões para o Brasil: geopolítica, democracia, economia e mudanças climáticas",
+        "descricao": "",
         "materiais": [
         { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
         { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
