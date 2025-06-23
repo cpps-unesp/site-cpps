@@ -194,6 +194,20 @@
         "resumo": "Problematiza como a história do Brasil foi, em grande parte, construída como uma história da expansão paulista. O projeto analisa a 'bandeirologia' na primeira metade do século XX, investigando como se formulou um saber que definiu São Paulo e o 'paulista' como centrais, construindo uma retórica sobre as habilidades especiais deste povo e território.",
         "apoioCentro": []
       },
+       {
+        "titulo": "EMU: Aquisição de equipamentos com redundância, bom desempenho (CPU e GPU) e armazenamento escalável para as Humanidades Digitais",
+        "docente": "Marcelo Passini Mariano",
+        "periodo": "09/2024 - 08/2027",
+        "departamento": "Departamento de Relações Internacionais",
+        "status": "Em andamento",
+        "agencia": "FAPESP",
+        "processo": "24/03051-0",
+        "natureza": "",
+        "valor": "676.415,98",
+        "associados": [],
+        "resumo": "O objetivo deste projeto é viabilizar um investimento na infraestrutura computacional do Instituto de Política Pública e Relações Internacionais (IPPRI/UNESP). O projeto propõe a aquisição de equipamentos com redundância, com alto desempenho (CPU e GPU) e capacidade de armazenamento escaláveis. Com esses recursos, será possível ampliar e abrir novos horizontes para coletar, processar, analisar e visualizar grandes volumes de dados. Além disso, o projeto busca promover a colaboração e o intercâmbio de conhecimento entre pesquisadores, ampliando o acesso e a disseminação das humanidades digitais não apenas no Estado de São Paulo, mas também em outras regiões. Em nosso comitê de usuários, além de representantes paulistas (INCT-INEU, UNESP, UNICAMP, UNIFESP), temos representantes da Universidade de Brasília (UnB) e da Universidade Federal de Uberlândia (UFU). A fundamentação deste pedido de aquisição de equipamento multiusuário é o avanço da infraestrutura de pesquisa nas humanidades, propiciando maior capacidade de processamento em CPU e GPU, armazenamento em rede, serviços e ambientes de análise e visualização de grandes bases de dados, permitindo o desenvolvimento de pesquisas mais complexas e inovadoras. Com isso, será possível ampliar os horizontes da área em um contexto em que as humanidades enfrentam um desafio crescente: o volume e a complexidade dos dados disponíveis. Dados textuais, audiovisuais, e de redes sociais se proliferam rapidamente, mas são difíceis de serem processados, analisados e interpretados pelo pesquisador sem o auxílio computacional adequado. (AU)",
+        "apoioCentro": []
+      },
       {
         "titulo": "Monitoramento e avaliação da política externa brasileira: uma proposta preliminar para uma rotina geral",
         "docente": "Marcelo Passini Mariano",
