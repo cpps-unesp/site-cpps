@@ -241,22 +241,34 @@
   },
   "cafe": {
     "titulo": "Café com Ciência",
-    "descricao": "O Café com Ciência é uma iniciativa de divulgação científica promovida pelo NÉFiTs, com episódios que discutem temas relevantes nas ciências humanas.",
+    "descricao": "O Café com Ciência é uma iniciativa voltada a debater temas da agenda de pesquisa dos pesquisadores do Centro de Pesquisa Política e Social",
     "episodios": [
       {
         "icone": "🎙️",
-        "titulo": "Episódio 1: Filosofia e Sociedade",
-        "descricao": "Uma conversa sobre os impactos da filosofia na sociedade contemporânea."
+        "titulo": "Episódio 3: Filosofia e Sociedade",
+        "descricao": "Uma conversa sobre os impactos da filosofia na sociedade contemporânea.",
+        "materiais": [
+        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
+        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
+      ]
       },
       {
         "icone": "🎙️",
         "titulo": "Episódio 2: Ética na Pesquisa",
-        "descricao": "Debatendo os desafios éticos enfrentados pelos pesquisadores na atualidade."
+        "descricao": "Debatendo os desafios éticos enfrentados pelos pesquisadores na atualidade.",
+        "materiais": [
+        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
+        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
+      ]
       },
       {
         "icone": "🎙️",
-        "titulo": "Episódio 3: Democracia e Participação",
-        "descricao": "Explorando a importância da participação popular em regimes democráticos."
+        "titulo": "Episódio 1: Democracia e Participação",
+        "descricao": "Explorando a importância da participação popular em regimes democráticos.",
+        "materiais": [
+        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
+        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
+      ]
       }
     ]
   },

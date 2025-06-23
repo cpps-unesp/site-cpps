@@ -1,6 +1,5 @@
 ---
 const { cafe } = Astro.props;
-// cafe = { titulo: string, descricao: string, episodios: [{ icone, titulo, descricao }] }
 ---
 
 <section class="mt-16 space-y-16">
@@ -15,6 +14,21 @@ const { cafe } = Astro.props;
         <div class="text-4xl text-primary">{episodio.icone}</div>
         <h3 class="text-lg font-bold">{episodio.titulo}</h3>
         <p class="text-sm text-base-content">{episodio.descricao}</p>
+
+        {Array.isArray(episodio.materiais) && episodio.materiais.length > 0 && (
+          <div class="flex flex-wrap gap-2 mt-2">
+            {episodio.materiais.map((mat) => (
+              <a
+                href={mat.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="border border-base-content text-xs font-bold px-3 py-1 rounded hover:bg-base-200 transition-colors uppercase"
+              >
+                {mat.nome}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     ))}
   </div>
