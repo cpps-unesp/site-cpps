@@ -260,15 +260,24 @@
       {
         "icone": "🎙️",
         "titulo": "Episódio 5: Autocratização e Resiliência Democrática no Brasil (2019-2023)",
-        "descricao": "",
+        "descricao": "O encontro forneceu um panorama abrangente sobre os desafios da governança da IA, com um foco especial no complexo papel do Brasil nesse cenário global.",
         "materiais": [
-        { "nome": "PDF", "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt" },
-        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
+        { "nome": "PDF", "url": "" },
+        { "nome": "HTML", "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt" }
       ]
       },
         {
         "icone": "🎙️",
         "titulo": "Episódio 4: O Brasil e a Governança Global de Inteligência Artificial",
+        "descricao": "A reunião abordou a complexidade da governança da inteligência artificial no cenário global, destacando os desafios e o posicionamento do Brasil como um grande consumidor e ator com histórico de influência regulatória, mas que enfrenta a difícil questão de como equilibrar dependência tecnológica, desenvolvimento e soberania em um campo de rápida evolução e concentração de poder.",
+        "materiais": [
+        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
+        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
+      ]
+      },
+      {
+        "icone": "🎙️",
+        "titulo": "Episódio 3: Discussão para articulação entre os professores sobre possibilidades de pesquisa",
         "descricao": "",
         "materiais": [
         { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
@@ -277,17 +286,8 @@
       },
       {
         "icone": "🎙️",
-        "titulo": "Episódio 3: Filosofia e Sociedade",
-        "descricao": "",
-        "materiais": [
-        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
-        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
-      ]
-      },
-      {
-        "icone": "🎙️",
-        "titulo": "Episódio 2: Ética na Pesquisa",
-        "descricao": "",
+        "titulo": "Episódio 2: A COP 30 e a Transição Energética Justa",
+        "descricao": "O encontro propôs uma análise crítica da COP e da transição energética, defendendo a necessidade de uma abordagem mais justa, inclusiva e decolonial, que enfrente as desigualdades históricas e estruturais em vez de apenas focar em soluções técnicas e mercantis.",
         "materiais": [
         { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
         { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
