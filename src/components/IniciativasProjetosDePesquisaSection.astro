@@ -216,51 +216,38 @@ const agenciaInicial = agenciaParam || "";
 
   function renderProject(p, index) {
     const id = `extra-info-${index}`;
+    const mostrar = p.mostrar || [];
 
-    const temExtras =
-      p.publico_alvo ||
-      p.resultados ||
-      p.links ||
-      p.processo ||
-      p.natureza ||
-      p.valor ||
-      p.associados ||
-      p.apoioCentro;
+    function mostrarCampo(campo) {
+      return mostrar.length === 0 || mostrar.includes(campo);
+    }
 
     return `
-    <article class="card bg-base-100 shadow border border-base-300 transition-all duration-300">
-      <div class="card-body">
-        <h2 class="card-title text-primary">${escapeHtml(p.titulo)}</h2>
-        <p><strong>Docente responsável:</strong> ${escapeHtml(p.docente)}</p>
-        <p class="text-sm text-base-content/70">Departamento: ${escapeHtml(p.departamento || "")}</p>
-        <p><strong>Agência:</strong> ${escapeHtml(p.agencia)} | <strong>Período:</strong> ${escapeHtml(p.periodo)}</p>
-
-        <p class="mt-2 text-base-content/80">
-          <strong>Resumo:</strong> ${escapeHtml(p.resumo || "")}
-        </p>
-
-        <div id="${id}" class="hidden mt-2 space-y-2 text-base-content/80">
-          ${p.publico_alvo ? `<p><strong>Público-alvo:</strong> ${escapeHtml(p.publico_alvo)}</p>` : ""}
-          ${p.resultados ? `<p><strong>Resultados esperados:</strong> ${escapeHtml(p.resultados)}</p>` : ""}
-          ${p.links ? `<p><strong>Links:</strong> <a href="${escapeHtml(p.links)}" target="_blank" class="link link-primary">${escapeHtml(p.links)}</a></p>` : ""}
-          ${p.processo ? `<p><strong>Nº do Processo:</strong> ${escapeHtml(p.processo)}</p>` : ""}
-          ${p.natureza ? `<p><strong>Natureza:</strong> ${escapeHtml(p.natureza)}</p>` : ""}
-          ${p.valor ? `<p><strong>Valor Financiado:</strong> ${escapeHtml(p.valor)}</p>` : ""}
-          ${p.associados ? `<p><strong>Pesquisadores Associados:</strong> ${escapeHtml(p.associados)}</p>` : ""}
+      <article class="card bg-base-100 shadow border border-base-300">
+        <div class="card-body">
+          <h2 class="card-title text-primary">${escapeHtml(p.titulo)}</h2>
+          ${mostrarCampo("docente") ? `<p><strong>Docente:</strong> ${escapeHtml(p.docente)}</p>` : ""}
+          ${mostrarCampo("departamento") ? `<p><strong>Departamento:</strong> ${escapeHtml(p.departamento)}</p>` : ""}
+          ${mostrarCampo("associados") && p.associados ? `<p><strong>Pesquisadores Associados:</strong> ${escapeHtml(Array.isArray(p.associados) ? p.associados.join(", ") : p.associados)}</p>` : ""}
+          ${mostrarCampo("status") ? `<p><strong>Status:</strong> ${escapeHtml(p.status)}</p>` : ""}
+          ${mostrarCampo("periodo") ? `<p><strong>Período:</strong> ${escapeHtml(p.periodo)}</p>` : ""}
+          ${mostrarCampo("agencia") ? `<p><strong>Agência:</strong> ${escapeHtml(p.agencia)}</p>` : ""}
+          ${mostrarCampo("processo") ? `<p><strong>Processo:</strong> ${escapeHtml(p.processo)}</p>` : ""}
+          ${mostrarCampo("resumo") ? `<p class="mt-2 text-base-content/80"><strong>Resumo:</strong> ${escapeHtml(p.resumo)}</p>` : ""}
           ${
-            Array.isArray(p.apoioCentro) && p.apoioCentro.length > 0
-              ? `<div><strong>Apoio do CPPS:</strong><ul class="list-disc ml-6">${p.apoioCentro.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>`
+            p.publico_alvo || p.resultados || p.links
+              ? `
+            <button class="btn btn-sm btn-link" onclick="toggleExtra('${id}', this)">Mostrar mais</button>
+            <div id="${id}" class="hidden mt-2">
+              ${p.publico_alvo ? `<p><strong>Público-alvo:</strong> ${escapeHtml(p.publico_alvo)}</p>` : ""}
+              ${p.resultados ? `<p><strong>Resultados:</strong> ${escapeHtml(p.resultados)}</p>` : ""}
+              ${p.links ? `<p><strong>Links:</strong> <a href="${p.links}" target="_blank" class="link">${escapeHtml(p.links)}</a></p>` : ""}
+            </div>`
               : ""
           }
         </div>
-
-        ${
-          temExtras
-            ? `<button class="btn btn-sm btn-link text-primary-content px-0" onclick="toggleExtra('${id}', this)">Mostrar mais</button>`
-            : ""
-        }
-      </div>
-    </article>`;
+      </article>
+    `;
   }
 
   function renderProjects() {
@@ -338,8 +325,9 @@ const agenciaInicial = agenciaParam || "";
       "filtro-docente",
       "filtro-inicio",
       "filtro-fim",
-      "filtro-status",,
-      "filtro-departamento"
+      "filtro-status",
+      ,
+      "filtro-departamento",
     ].forEach((id) => {
       document.getElementById(id)?.addEventListener("input", renderProjects);
     });
