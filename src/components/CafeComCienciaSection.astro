@@ -11,7 +11,13 @@ const { cafe } = Astro.props;
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
     {cafe.episodios.map((episodio) => (
       <div class="bg-base-100 rounded-xl shadow-md p-6 flex flex-col space-y-4 hover:shadow-lg transition-shadow">
-        <div class="text-4xl text-primary">{episodio.icone}</div>
+        <div class="flex justify-center">
+          <img
+            src="/imagens/logos/logo-unesp-mapa.svg"
+            alt="Logo UNESP Mapa"
+            class="h-16 w-16 object-contain"
+          />
+        </div>
         <h3 class="text-lg font-bold">{episodio.titulo}</h3>
         <p class="text-sm text-base-content">{episodio.descricao}</p>
 
