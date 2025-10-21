@@ -17,9 +17,10 @@ import IniciativasProjetosDeDadosSection from "../../components/IniciativasProje
 import IniciativasProjetosDePesquisaSection from "../../components/IniciativasProjetosDePesquisaSection.astro";
 
 import NoticiaPage from "../../components/NoticiaPage.astro";
-import { routeTranslations } from "../../i18n/routes";
+import routeTranslations from "../../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import type { SupportedLang } from "../../types/lang";
+import { getTranslations } from "../../utils/i18n";
 
 // ✅ Exporta os caminhos possíveis para páginas estáticas
 export async function getStaticPaths() {
@@ -76,9 +77,8 @@ const slugPath = Array.isArray(slugParam)
   : (slugParam ?? "");
 const slugArray = slugPath.split("/");
 
-const locale = await import(`../../i18n/locales/${currentLang}.json`);
-const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } =
-  locale.default;
+const locale = getTranslations(currentLang);
+const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } = locale;
 
 const noticiasPrefix = routeTranslations["noticias"][currentLang];
 const isNoticia = slugPath.startsWith(`${noticiasPrefix}/`);
@@ -105,7 +105,7 @@ if (!membroSelecionado) {
 let Content = null;
 if (membroSelecionado) {
   const renderResult = await membroSelecionado.render();
-  Content = renderResult.default ?? renderResult.Content;
+  Content = renderResult.Content;
 }
 
 function findOriginalKey(

@@ -1,4 +1,4 @@
-import routesJson from './routes';
+import { routeTranslations as routesJson } from './routes';
 import type { SupportedLang } from '../types/lang';
 
 export interface Langs {

@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import NoticiasSection from '../../components/NoticiasSection.astro';
 import { getCollection } from 'astro:content';
+import { getTranslations } from '../../utils/i18n';
+import type { SupportedLang } from '../../types/lang';
 
 export function getStaticPaths() {
   return [
@@ -11,7 +13,8 @@ export function getStaticPaths() {
   ];
 }
 
-const currentLang = (Astro.params.lang ?? "pt") as "pt" | "en" | "es";
+const currentLang = (Astro.params.lang ?? "pt") as SupportedLang;
+const locale = getTranslations(currentLang);
 
 const allNoticias = await getCollection('noticias');
 
@@ -20,6 +23,6 @@ const noticias = allNoticias
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());  // ✅ Ordenado por data desc.
 ---
 
-<BaseLayout lang={currentLang} titulo="Notícias" descricao="" texts={{}}>
+<BaseLayout lang={currentLang} titulo={locale.titulo} descricao={locale.descricao} texts={locale.texts}>
   <NoticiasSection noticias={noticias} lang={currentLang} />
 </BaseLayout>

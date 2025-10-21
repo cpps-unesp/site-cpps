@@ -1,108 +1,266 @@
 {
+  "titulo": "UNESP Franca | Center for Political and Social Research",
+  "descricao": "Center for Political and Social Research of the São Paulo State University (UNESP), Franca campus",
+  "texts": {
+    "languageUnavailable": "Not available",
+    "notFound": "Page not found",
+    "buttonPersonalPage": "Personal Page",
+    "header": {
+      "home": "Home",
+      "institucional": "Institutional",
+      "sobre": "About",
+      "equipe": "Team",
+      "documentos": "Documents",
+      "iniciativas": "Initiatives",
+      "projetos": "Projects",
+      "cafe": "Coffee with Science",
+      "publicacoes": "Publications",
+      "oficinas": "Workshops",
+      "materialDeApoio": "Support Material",
+      "solucoesTecnologicas": "Technological Solutions",
+      "parcerias": "Partnerships and Cooperation",
+      "planejamento": "Planning",
+      "noticias": "News",
+      "projetosDePesquisa": "Research Projects",
+      "projetosDeDados": "Data Projects",
+      "buscar": "Search"
+    }
+  },
+  "hero": {
+    "title": "Center for Political<br class='hidden sm:inline' /> and Social Research",
+    "description": "Supports the execution of research at the <span class='text-primary font-semibold bg-white px-1 rounded'>Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the city of Franca/SP.",
+    "button": {
+      "url": "/en/institucional/sobre",
+      "text": "Learn more"
+    }
+  },
   "iniciativas": {
-  "publicacoes": "Publications",
-  "materialDeApoio": "Support Material",
-  "oficinas": "Workshops and Trainings",
-  "projetos": "Projects",
-  "solucoesTecnologicas": "Technological Solutions",
-  "cafeComCiencia": "Coffee with Science"
-},
+    "publicacoes": "Publications",
+    "materialDeApoio": "Support Material",
+    "oficinas": "Workshops and Training",
+    "projetos": "Projects",
+    "solucoesTecnologicas": "Technological Solutions",
+    "cafeComCiencia": "Coffee with Science",
+    "projetosDePesquisa": "Research Projects",
+    "descricaoProjetosDePesquisa": "Projects developed by professors and associates of CPPS, with support from funding agencies.",
+    "ordenarPor": "Sort by",
+    "porTitulo": "Title",
+    "porDocente": "Professor",
+    "porPeriodo": "Period",
+    "projetosLista": [
+      {
+        "id": "ruptura-metabolica-crise-capital",
+        "departamento": "Education, Social Sciences and Public Policies",
+        "status": "In progress",
+        "resumo": "The project investigates poverty as an object of social philosophy, starting from the question: in what ways can poverty, as a negative and multidimensional social experience, contribute to social critique? The research is organized into four moments: (1) analysis of social philosophy, (2) study of poverty theories, (3) investigation of social sciences approaches to groups in deprivation, (4) philosophical synthesis of the results to answer the central question.",
+        "apoioCentro": [
+          "Institutional endorsement of CPPS as an associated center",
+          "Dissemination through institutional channels",
+          "Organization of extension activities and events linked to the project"
+        ]
+      },
+      {
+        "id": "critica-pobreza-filosofia-social",
+        "departamento": "Department of Education, Social Sciences and Public Policies",
+        "status": "In progress",
+        "resumo": "The project investigates poverty as an object of social philosophy, questioning how this negative and multidimensional experience can contribute to social critique. The research is organized into four stages: analysis of social philosophy, study of poverty theories, investigation of social sciences approaches, and finally, a philosophical synthesis to answer the central question."
+      },
+      {
+        "id": "crise-democracia-arranjos-juridicos",
+        "departamento": "Department of Public Law",
+        "status": "In progress",
+        "resumo": "Investigates how Brazilian legal-institutional arrangements, in correlation with political and socioeconomic factors, explain the country's democratic crisis. The objectives include mapping the bibliographic production on the subject, critically analyzing national legal arrangements, and comparing them with those of other countries (Chile, USA, UK) to formulate hypotheses about the specificities of the Brazilian crisis."
+      },
+      {
+        "id": "crises-democracia-brasileira-pos-2013",
+        "departamento": "Department of Public Law",
+        "status": "Completed",
+        "resumo": "Analyzes the limits and adequacy of the concept of 'crisis' to describe the Brazilian political regime since 2013. The research seeks to organize the debate, map the use of the concept in legal and political literature, and confront the theoretical analysis with a study of the institutional responses of the National Congress to the supposed crisis."
+      },
+      {
+        "id": "em-costas-negras-nucleo-pesquisa",
+        "departamento": "Department of History",
+        "status": "In progress",
+        "resumo": "Aims to create a research center on African and Afro-Brazilian history and culture in the northeast of São Paulo state. The main objective is to organize the bibliographic and documentary collection donated by historian Manolo Garcia Florentino, involving the cleaning, cataloging, and storage of over 2,000 volumes to make them accessible for research."
+      },
+      {
+        "id": "politica-outros-meios-mobilizacao-juridica",
+        "departamento": "Department of Education, Social Sciences and Public Policies",
+        "status": "Completed",
+        "resumo": "Investigates the mobilization of law as a strategy for political struggle in Brazil and Latin America over the last three decades. The project seeks to understand why courts have become a strategic path, the nature of conflicts brought to justice, the legal frameworks used, and the effects of mobilization and counter-mobilization generated."
+      },
+      {
+        "id": "feminist-judgments-projects",
+        "departamento": "Department of Public Law",
+        "status": "Completed",
+        "resumo": "Inspired by international projects, the Brazilian project 'Rewriting Judicial Decisions from Feminist Perspectives' brings together a network of over 60 academics and jurists to rewrite significant judicial decisions from the perspective of feminist and anti-racist methodologies. The goal is to strengthen feminist legal critique and analyze its potential impact on judicial decisions."
+      },
+      {
+        "id": "crise-democratica-sistema-presidencialista",
+        "departamento": "Department of Public Law",
+        "status": "In progress",
+        "resumo": "Seeks to understand the global democratic crisis from the perspective of Constitutional Law, mapping the debate and systematizing the production on the topic. The project investigates the impact of populism on Brazilian presidentialism and the dynamics between the powers, questioning the possibility of transformations in the system of government, such as the adoption of semi-presidentialism."
+      },
+      {
+        "id": "historia-primeira-metade-seculo-xx",
+        "departamento": "Department of History",
+        "status": "In progress",
+        "resumo": "Problematizes how the history of Brazil has largely been constructed as a history of São Paulo's expansion. The project analyzes 'bandeirologia' in the first half of the 20th century, investigating how a body of knowledge was formulated that defined São Paulo and the 'paulista' as central, constructing a rhetoric about the special abilities of this people and territory."
+      },
+      {
+        "id": "emu-equipamentos-humanidades-digitais",
+        "departamento": "Department of International Relations",
+        "status": "In progress",
+        "resumo": "The objective of this project is to enable an investment in the computational infrastructure of the Institute of Public Policy and International Relations (IPPRI/UNESP). The project proposes the acquisition of equipment with redundancy, high performance (CPU and GPU), and scalable storage capacity. With these resources, it will be possible to expand and open new horizons for collecting, processing, analyzing, and visualizing large volumes of data. Additionally, the project aims to promote collaboration and knowledge exchange among researchers, expanding access and dissemination of digital humanities not only in the State of São Paulo but also in other regions. Our user committee includes representatives from São Paulo (INCT-INEU, UNESP, UNICAMP, UNIFESP), as well as from the University of Brasília (UnB) and the Federal University of Uberlândia (UFU). The rationale for this multi-user equipment acquisition request is the advancement of research infrastructure in the humanities, providing greater processing capacity in CPU and GPU, network storage, services, and environments for analyzing and visualizing large databases, allowing for the development of more complex and innovative research. This will broaden the horizons of the field in a context where the humanities face a growing challenge: the volume and complexity of available data. Textual, audiovisual, and social media data proliferate rapidly but are difficult for researchers to process, analyze, and interpret without adequate computational assistance."
+      },
+      {
+        "id": "monitoramento-politica-externa-brasileira",
+        "departamento": "Department of International Relations",
+        "status": "In progress",
+        "resumo": "Aims to develop a set of monitoring and evaluation tools applicable to any Brazilian foreign policy strategy. The intention is to create a common routine to compare results of past policies and evaluate future ones, filling a gap in Foreign Policy Analysis and promoting accountability to society."
+      },
+      {
+        "id": "newpereubra-ue-brasil",
+        "departamento": "Department of International Relations",
+        "status": "Completed",
+        "resumo": "This Jean Monnet Module aims to teach Brazilian students about the concepts, policies, and global role of the European Union, focusing on the EU-Brazil relationship. The project addresses five areas: the EU as a global actor, democracy and human rights, energy and sustainable development, trade and investment, and regional security, combining theoretical and applied knowledge."
+      },
+      {
+        "id": "consorcio-nordeste-desenvolvimento-sustentavel",
+        "departamento": "Department of International Relations",
+        "status": "In progress",
+        "resumo": "This project analyzes the Northeast Consortium with a critical focus on the concept of 'sustainable development' that guides its actions. The research seeks to identify whether the adopted conception aligns with traditional economic growth or a transition to an ecologically just society, analyzing the Consortium's projects based on data and interviews."
+      }
+    ]
+  },
+  "cafe": {
+    "titulo": "Coffee with Science",
+    "descricao": "Coffee with Science is an initiative aimed at discussing themes from the research agenda of the researchers at the Center for Political and Social Research.",
+    "episodios": [
+      {
+        "id": "ep5-autocratizacao-resiliencia",
+        "titulo": "Episode 5: Autocratization and Democratic Resilience in Brazil (2019-2023)",
+        "descricao": "The meeting provided a comprehensive overview of the challenges of AI governance, with a special focus on Brazil's complex role in this global scenario."
+      },
+      {
+        "id": "ep4-brasil-governanca-ia",
+        "titulo": "Episode 4: Brazil and the Global Governance of Artificial Intelligence",
+        "descricao": "The meeting addressed the complexity of artificial intelligence governance on the global stage, highlighting the challenges and Brazil's position as a major consumer and actor with a history of regulatory influence, but which faces the difficult question of how to balance technological dependence, development, and sovereignty in a rapidly evolving field with a high concentration of power."
+      },
+      {
+        "id": "ep3-articulacao-pesquisa",
+        "titulo": "Episode 3: Discussion for articulation among professors about research possibilities"
+      },
+      {
+        "id": "ep2-cop30-transicao-energetica",
+        "titulo": "Episode 2: COP 30 and the Just Energy Transition",
+        "descricao": "The meeting proposed a critical analysis of the COP and the energy transition, advocating for a more just, inclusive, and decolonial approach that confronts historical and structural inequalities instead of just focusing on technical and market-based solutions."
+      },
+      {
+        "id": "ep1-novo-governo-trump",
+        "titulo": "Episode 1: The new Trump Administration and its repercussions for Brazil: geopolitics, democracy, economy, and climate change"
+      }
+    ]
+  },
+  "documentos": {
+    "titulo": "Documents, Reports, and Related Items",
+    "grupos": [
+      {
+        "id": "resolucao-unesp-19-2025",
+        "titulo": "UNESP RESOLUTION No. 19, OF MAY 15, 2025",
+        "descricao": "Formalization of the creation of the Center for Political and Social Research through a resolution from the UNESP rectory published in the Official Gazette of the State of São Paulo."
+      },
+      {
+        "id": "regimento-cpps",
+        "titulo": "Bylaws",
+        "descricao": "This document establishes the internal rules and operating procedures for the Center for Political and Social Research."
+      },
+      {
+        "id": "plano-inicial-gestao",
+        "titulo": "Initial Management and Goals Plan",
+        "descricao": "Outlines a strategic and progressive timeline for the next eight semesters, directly integrating the guidelines established in the center's internal bylaws."
+      },
+      {
+        "id": "proposta-criacao",
+        "titulo": "Creation Proposal",
+        "descricao": "Provides for the creation, organization, and functioning of the Center for Political and Social Research."
+      },
+      {
+        "id": "parecer-manifestacao-departamentos",
+        "titulo": "Opinion and Statement from the Departments",
+        "descricao": "Evaluation and endorsement from the six departments of the Faculty of Human and Social Sciences at UNESP regarding the creation of the Interdepartmental Research Center."
+      },
+      {
+        "id": "resolucao-unesp-19-2020",
+        "titulo": "UNESP RESOLUTION No. 19, OF APRIL 8, 2020",
+        "descricao": "Provides for the creation, organization, functioning, and closure of Research Centers."
+      }
+    ]
+  },
   "sobre": {
     "quem-somos": {
-      "titulo": "Center for Political and Social Research",
-      "reverse": false,
+      "titulo": "The Center for Political and Social Research",
       "texto": [
         {
-          "conteudo": "Somos um Centro de Pesquisa, modalidade de [Centro Interdepartamental](https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2019&dataDocumento=28/02/2019), da Universidade Estadual Paulista (UNESP) localizado na cidade de Franca. Reunimos os pesquisadores dos seis departamentos da [Faculdade de Ciências Humanas e Sociais (FCHS)](https://www.franca.unesp.br/).",
-          "check": false
+          "conteudo": "We are a Research Center, under the [Interdepartmental Center](https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020) modality, of the São Paulo State University (UNESP) located in the city of Franca. We bring together researchers from the six departments of the [Faculty of Human and Social Sciences (FCHS)](https://www.franca.unesp.br/)."
         },
         {
-          "conteudo": "Buscamos coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo.",
-          "check": false
+          "conteudo": "We seek to coordinate and promote collaboration among various existing research initiatives, transcending the conventional boundaries of academic disciplines. Such a structure fosters a more integrated analysis of social and political phenomena, enhancing the ability to understand and respond to the complexities of the contemporary scenario."
         }
       ],
       "departamentos": [
-        "Departamento de Direito Privado, de Processo Civil e do Trabalho",
-        "Departamento de Direito Público",
-        "Departamento de Educação, Ciências Sociais e Políticas Públicas",
-        "Departamento de Relações Internacionais",
-        "Departamento de História",
-        "Departamento de Serviço Social"
-      ],
-      "imagem": [
-        "/imagens/campus/entrada-unesp-franca.jpg",
-        "/imagens/campus/entrada-unesp-franca.jpg"
+        "Department of Private Law, Civil Procedure and Labor Law",
+        "Department of Public Law",
+        "Department of Education, Social Sciences and Public Policies",
+        "Department of International Relations",
+        "Department of History",
+        "Department of Social Work"
       ]
     },
     "objetivos": {
-      "titulo": "Objetivos",
-      "reverse": true,
+      "titulo": "Objectives",
       "texto": [
         {
-          "conteudo": "Fomentar a integração do conhecimento produzido em diversas áreas acadêmicas, oferecendo uma visão mais abrangente e detalhada dos processos sociais e políticos",
-          "check": true
+          "conteudo": "To foster the integration of knowledge produced in various academic areas, offering a more comprehensive and detailed view of social and political processes."
         },
         {
-          "conteudo": "Para isso, o Centro busca promover uma colaboração intensa entre os pesquisadores e fará uso de metodologias avançadas e infraestrutura de pesquisa adequada, que facilitem análises interdisciplinares. Essa abordagem visa ampliar a capacidade analítica e propositiva da universidade, contribuindo para o avanço do conhecimento acadêmico e a elaboração de políticas públicas bem fundamentadas e alicerçadas em evidências científicas.",
-          "check": false
+          "conteudo": "To achieve this, the Center aims to promote intense collaboration among researchers and will use advanced methodologies and adequate research infrastructure to facilitate interdisciplinary analyses. This approach aims to expand the university's analytical and propositional capacity, contributing to the advancement of academic knowledge and the development of well-founded, evidence-based public policies."
         },
         {
-          "conteudo": "Disseminar a utilização de ferramentas, técnicas e métodos das Humanidades Digitais e Ciências Sociais Computacionais na análise dos dados produzidos e avaliados pelas pesquisas, alinhando-se às boas práticas da Ciência Aberta.",
-          "check": true
+          "conteudo": "To disseminate the use of tools, techniques, and methods from the Digital Humanities and Computational Social Sciences in the analysis of data produced and evaluated by research, aligning with the best practices of Open Science."
         },
         {
-          "conteudo": "Para isso, o Centro procura oferecer infraestrutura computacional adequada e uma gestão eficiente de dados, assegurando sua acessibilidade, reutilização e preservação a longo prazo, ao mesmo tempo em que fomenta a inovação metodológica.",
-          "check": false
+          "conteudo": "To this end, the Center seeks to provide adequate computational infrastructure and efficient data management, ensuring its accessibility, reusability, and long-term preservation, while fostering methodological innovation."
         }
-      ],
-      "imagem": [
-        "/imagens/campus/entrada-unesp-franca.jpg",
-        "/imagens/campus/entrada-unesp-franca.jpg"
       ]
     },
     "objetivosEspecificos": {
-      "titulo": "Objetivos Específicos",
-      "reverse": false,
+      "titulo": "Specific Objectives",
       "texto": [
         {
-          "conteudo": "**Realização e organização de eventos acadêmicos**: organizar uma variedade de atividades acadêmicas, incluindo pesquisas, cursos, conferências, colóquios, programas e seminários, promovendo a integração entre diferentes instâncias acadêmicas e administrativas da UNESP.",
-          "check": true
+          "conteudo": "**Organization of academic events**: Organize a variety of academic activities, including research, courses, conferences, colloquia, programs, and seminars, promoting integration among different academic and administrative bodies of UNESP."
         },
         {
-          "conteudo": "**Formação, aperfeiçoamento e incentivo à participação em pesquisa**: promover a formação e o aperfeiçoamento de pesquisadores, incentivando a participação ativa de acadêmicos e colaboradores de diversas instâncias em pesquisas realizadas pela FCHS.",
-          "check": true
+          "conteudo": "**Training, development, and encouragement of research participation**: Promote the training and development of researchers, encouraging the active participation of academics and collaborators from various instances in research conducted by FCHS."
         },
         {
-          "conteudo": "**Estímulo à colaboração internacional, intercâmbio e cooperação**: facilitar a colaboração internacional e estabelecer parcerias estratégicas para expandir as oportunidades de pesquisa conjunta e atividades de extensão. Utilizar essas colaborações para disseminar novas ideias e perspectivas, estimulando o debate intelectual e a inovação. Além disso, promover o intercâmbio e a cooperação para superar barreiras geográficas, fomentando um ambiente de pesquisa colaborativo e inclusivo.",
-          "check": true
+          "conteudo": "**Stimulation of international collaboration, exchange, and cooperation**: Facilitate international collaboration and establish strategic partnerships to expand opportunities for joint research and extension activities. Use these collaborations to disseminate new ideas and perspectives, stimulating intellectual debate and innovation. Furthermore, promote exchange and cooperation to overcome geographical barriers, fostering a collaborative and inclusive research environment."
         },
         {
-          "conteudo": "**Publicação e disseminação de pesquisas**: promover a publicação e a disseminação de pesquisas, aumentando a acessibilidade e o impacto global dos estudos realizados.",
-          "check": true
+          "conteudo": "**Publication and dissemination of research**: Promote the publication and dissemination of research, increasing the accessibility and global impact of the studies conducted."
         },
         {
-          "conteudo": "**Suporte a atividades acadêmicas com infraestrutura computacional**: propiciar espaços físicos e virtuais que permitam a realização de atividades de ensino, pesquisa e extensão, especialmente aquelas que exigem intensa utilização de infraestrutura computacional.",
-          "check": true
+          "conteudo": "**Support for academic activities with computational infrastructure**: Provide physical and virtual spaces that allow for teaching, research, and extension activities, especially those requiring intensive use of computational infrastructure."
         },
         {
-          "conteudo": "**Desenvolvimento e adaptação de ferramentas para pesquisa**: estimular a criação e adaptação de ferramentas que facilitam a análise de grandes volumes de dados, possibilitando estudos mais profundos sobre cultura, política e sociedade.",
-          "check": true
+          "conteudo": "**Development and adaptation of research tools**: Encourage the creation and adaptation of tools that facilitate the analysis of large volumes of data, enabling deeper studies on culture, politics, and society."
         },
         {
-          "conteudo": "**Capacitação em humanidades digitais**: promover o treinamento de discentes e docentes no uso de novos instrumentos de coleta, organização, armazenamento, análise e divulgação de dados, orientado pela lógica da ciência e dados abertos.",
-          "check": true
+          "conteudo": "**Training in digital humanities**: Promote the training of students and faculty in the use of new instruments for data collection, organization, storage, analysis, and dissemination, guided by the logic of open science and open data."
         },
         {
-          "conteudo": "**Gestão de dados de pesquisa**: implementar práticas de gestão de dados para assegurar a acessibilidade, reutilização e preservação a longo prazo dos dados de pesquisa, fortalecendo a integridade e sustentabilidade dos projetos acadêmicos.",
-          "check": true
+          "conteudo": "**Research data management**: Implement data management practices to ensure the accessibility, reusability, and long-term preservation of research data, strengthening the integrity and sustainability of academic projects."
         }
-      ],
-      "imagem": [
-        "/imagens/campus/entrada-unesp-franca.jpg",
-        "/imagens/campus/entrada-unesp-franca.jpg",
-        "/imagens/campus/entrada-unesp-franca.jpg",
-        "/imagens/campus/entrada-unesp-franca.jpg",
-        "/imagens/campus/entrada-unesp-franca.jpg"
       ]
     }
   },
@@ -114,462 +272,161 @@
     "categorias": {
       "Coordenação": [
         {
-          "nome": "Murilo Gaspardo",
-          "cargo": "Coordenação",
-          "descricao": "Responsável pela supervisão geral do projeto",
-          "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
-          "prioridade": "",
-          "status": "ativo",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/7249928800890408",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "linkedin",
-              "url": "https://www.linkedin.com/in/murilo-gaspardo-01080b94/",
-              "icone": "/imagens/logos/linkedin_icon.svg"
-            }
-          ]
+          "id": "fernanda-mello-santanna",
+          "cargo": "General Coordinator",
+          "descricao": "Responsible for the overall supervision of the project."
         },
         {
-          "nome": "Marcelo Passini Mariano",
-          "cargo": "Coordenação",
-          "descricao": "Responsável pela supervisão geral do projeto.",
-          "foto": "/imagens/equipe/Marcelo_Mariano.jpg",
-          "prioridade": "",
-          "status": "ativo",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/3505849964932313",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            }
-          ]
+          "id": "marcelo-passini-mariano",
+          "cargo": "Leader",
+          "descricao": "Responsible for the overall supervision of the project."
         },
         {
-          "nome": "Thais Amoroso Paschoal",
-          "cargo": "Coordenação",
-          "descricao": "Responsável pela supervisão geral do projeto.",
-          "foto": "/imagens/equipe/Thais_Amoroso.jpg",
-          "prioridade": "",
-          "status": "ativo",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/1531037509340384",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "linkedin",
-              "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
-              "icone": "/imagens/logos/linkedin_icon.svg"
-            }
-          ]
+          "id": "thais-amoroso-paschoal",
+          "cargo": "Deputy Leader",
+          "descricao": "Responsible for the overall supervision of the project."
         }
       ],
       "Pesquisadores": [
         {
-          "nome": "João Souza",
-          "cargo": "Pesquisador",
-          "descricao": "Atua na área de política internacional.",
-          "foto": "/imagens/equipe/joao_souza.jpg",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/1531037509340384",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "linkedin",
-              "url": "https://www.linkedin.com/in/tha%C3%ADs-a-paschoal-1b0a3060/",
-              "icone": "/imagens/logos/linkedin_icon.svg"
-            }
-          ]
+          "id": "murilo-gaspardo",
+          "cargo": "Researcher",
+          "descricao": ""
         },
         {
-          "nome": "Joana D'Arc",
-          "cargo": "Pesquisadora Associada",
-          "descricao": "Especialista em ciência política comparada.",
-          "foto": "/imagens/equipe/joana_darc.jpg",
-          "prioridade": "",
-          "status": "inativo",
-          "contribuicao": "Liderou o projeto de cooperação internacional entre 2018 e 2020.",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/123456789",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            }
-          ]
+          "id": "agnaldo-sousa-barbosa",
+          "cargo": "Associate Professor",
+          "descricao": "Department of Education, Social Sciences and Public Policies. Undergraduate Law Program — responsible for the courses 'General and Legal Sociology' and 'Social Issues and Public Policies'. Permanent faculty member of the Graduate Program in Planning and Analysis of Public Policies and the Graduate Program in Social Work at UNESP. Collaborating faculty member of the Graduate Program in Law at UNESP."
+        },
+        {
+          "id": "almir-mantovani",
+          "cargo": "Professor",
+          "descricao": "Department of Education, Social Sciences and Public Policies. Undergraduate Law Program — responsible for the courses on legal research methodology and scientific research methodology. Undergraduate International Relations Program - responsible for the course 'quantitative methods in international relations'. Permanent faculty member at the Franca Campus of the Graduate Program in Planning and Analysis of Public Policies at UNESP."
+        },
+        {
+          "id": "ana-gabriela-mendes-braga",
+          "cargo": "Professor",
+          "descricao": "Department of Public Law. Undergraduate Law Program — responsible for the courses of Criminal Law I and II and Criminal Procedure IV. Permanent faculty member of the Graduate Program in Law at UNESP."
+        },
+        {
+          "id": "bruno-bastos-oliveira",
+          "cargo": "Professor",
+          "descricao": "Department of Public Law. Undergraduate Law Program — responsible for the courses of Tax and Financial Law. Permanent faculty member of the Graduate Program in Law at UNESP."
+        },
+        {
+          "id": "edvania-angela-souza",
+          "cargo": "Professor",
+          "descricao": "Department of Social Work. Undergraduate Social Work Program — responsible for the courses Social Work and Social Legislation I and II, Educative Process in Social Work (PESS), Supervised Internship, Final Paper (TCC), and occasional electives. Permanent faculty member of the Graduate Program in Social Work at UNESP and Collaborating Professor of the Graduate Program in Social Work and Social Policy at UNIFESP-BS."
+        },
+        {
+          "id": "fernanda-oliveira-sarreta",
+          "cargo": "Associate Professor",
+          "descricao": "Department of Social Work. Undergraduate Social Work Program — responsible for the courses on Theoretical and Methodological Foundations of Social Work VII and VIII. Permanent faculty member of the Graduate Program in Social Work at UNESP."
+        },
+        {
+          "id": "frederico-daia-firmiano",
+          "cargo": "Professor",
+          "descricao": "Department of Education, Social Sciences and Public Policies. Works in the Undergraduate Social Work Program — responsible for the courses Sociological Foundations I and II. Permanent faculty member of the Graduate Program in Planning and Analysis of Public Policies at UNESP."
+        },
+        {
+          "id": "helio-alexandre-silva",
+          "cargo": "Professor",
+          "descricao": "Department of Education, Social Sciences and Public Policies. Undergraduate International Relations Program — responsible for the courses on Ethics and Philosophy of Human Sciences. Permanent faculty member of the Graduate Program in Planning and Analysis of Public Policies and the Graduate Program in Philosophy at UNESP."
+        },
+        {
+          "id": "jose-duarte-neto",
+          "cargo": "Professor",
+          "descricao": "Department of Public Law. Undergraduate Law Program — responsible for the courses Constitutional Law I and II in the Law Program at FCHS - UNESP - Franca Campus. Permanent faculty member of the Graduate Program in Law at UNESP."
+        },
+        {
+          "id": "karina-anhezini-araujo",
+          "cargo": "Professor",
+          "descricao": "Department of History. Undergraduate History Program — responsible for the courses on Methodology of History and History of Brazilian Historiography. Permanent faculty member of the Graduate Program in History at UNESP."
+        },
+        {
+          "id": "luciana-lopes-canavez",
+          "cargo": "Professor",
+          "descricao": "Department of Private Law, Civil Procedure and Labor Law. Undergraduate Law Program — responsible for the courses on Civil Law and Intellectual Property Law. Permanent faculty member of the Graduate Program in Law at UNESP."
+        },
+        {
+          "id": "marilia-carolina-pimenta",
+          "cargo": "Professor",
+          "descricao": "Department of International Relations. Undergraduate International Relations Program — responsible for the courses Introduction to International Relations and International Security. Permanent faculty member of the Interinstitutional Graduate Program (UNESP, UNICAMP, and PUC-SP) in International Relations San Tiago Dantas."
+        },
+        {
+          "id": "ricardo-alexandre-ferreira",
+          "cargo": "Associate Professor",
+          "descricao": "Department of History. Undergraduate History Program, responsible for the set of courses: Modern History I and II. Permanent faculty member of the Graduate Program in History at UNESP."
+        },
+        {
+          "id": "regina-claudia-laisner",
+          "cargo": "Professor",
+          "descricao": "Department of International Relations. Undergraduate International Relations Program — responsible for the courses Political and Economic Formation of Brazil and Political Theory. Permanent faculty member of the Graduate Program in Law at UNESP."
         }
       ],
       "Estagiários": [
         {
-          "nome": "Ligia Simplicio",
-          "cargo": "Estagiária Remunerada (Serviço Social)",
-          "descricao": "Graduanda em Serviço Social na Unesp Franca e Membro ativo do CPPS",
-          "foto": "/imagens/equipe/ligia_simplicio.jpeg",
-          "prioridade": "",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/9979622141210229",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "instagram",
-              "url": "https://www.instagram.com/ligia.simplicio",
-              "icone": "/imagens/logos/instagram_icon_cinza.svg"
-            }
-          ]
+          "id": "ligia-simplicio",
+          "cargo": "Paid Intern (Social Work)",
+          "descricao": "Undergraduate student in Social Work at Unesp Franca and active member of CPPS."
         },
         {
-          "nome": "João Pedro Dias Vidal",
-          "cargo": "Estagiário Remunerado (Direito)",
-          "descricao": "Graduando em Direito na Unesp Franca e Membro ativo do CPPS",
-          "foto": "/imagens/equipe/Joao_Vidal.jpg",
-          "prioridade": "",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
-              "icone": "/imagens/logos/linkedin_icon2.svg"
-            },
-            {
-              "tipo": "instagram",
-              "url": "https://www.instagram.com/_vidaljp/",
-              "icone": "/imagens/logos/instagram_icon_cinza.svg"
-            }
-          ]
+          "id": "joao-pedro-vidal",
+          "cargo": "Paid Intern (Law)",
+          "descricao": "Undergraduate student in Law at Unesp Franca and active member of CPPS."
         },
         {
-          "nome": "Caio Tomaz Palombo",
-          "cargo": "Estagiário Remunerado (História)",
-          "descricao": "Graduando em história na Unesp Franca e Membro ativo do CPPS",
-          "foto": "/imagens/equipe/caio_tomaz.png",
-          "prioridade": "",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "https://www.linkedin.com/in/caio-t-palomvo2664/",
-              "icone": "/imagens/logos/linkedin_icon2.svg"
-            },
-            {
-              "tipo": "instagram",
-              "url": "https://www.instagram.com/Caio_2664/",
-              "icone": "/imagens/logos/instagram_icon_cinza.svg"
-            }
-          ]
+          "id": "caio-tomaz-palombo",
+          "cargo": "Paid Intern (History)",
+          "descricao": "Undergraduate student in History at Unesp Franca and active member of CPPS."
         },
         {
-          "nome": "Mavi Silva",
-          "cargo": "Estagiário Remunerado (Relações Internacionais)",
-          "descricao": "Graduando em Relações Internacionais na Unesp Franca e Membro ativo do CPPS",
-          "foto": "/imagens/equipe/00-person.svg",
-          "prioridade": "",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "",
-              "icone": "/imagens/logos/linkedin_icon2.svg"
-            },
-            {
-              "tipo": "instagram",
-              "url": "",
-              "icone": "/imagens/logos/instagram_icon_cinza.svg"
-            }
-          ]
+          "id": "mavi-silva",
+          "cargo": "Paid Intern (International Relations)",
+          "descricao": "Undergraduate student in International Relations at Unesp Franca and active member of CPPS."
+        },
+        {
+          "id": "breno-andreazza",
+          "cargo": "Paid Intern (International Relations)",
+          "descricao": "Undergraduate student in International Relations at Unesp Franca.",
+          "contribuicao": "Assisted in the CPPS transition."
         }
       ]
     }
   },
-  "titulo": "UNESP Franca | Center for Political and Social Research",
-  "descricao": "Center for Political and Social Research of the São Paulo State University (UNESP), Franca campus",
-  "texts": {
-    "languageUnavailable": "Não disponível",
-    "notFound": "Página não encontrada",
-    "buttonPersonalPage": "Personal page",
-    "header": {
-      "home": "Home",
-      "institucional": "Institutional",
-      "sobre": "About",
-      "equipe": "Team",
-      "documentos": "Documents",
-      "iniciativas": "Iniciativas",
-      "projetos": "Projetos",
-      "cafe": "Café com Ciência",
-      "planejamento": "Planejamento",
-      "noticias": "Notícias",
-      "buscar": "Buscar"
-    }
-  },
-  "hero": {
-    "title": "Center for Political<br class='hidden sm:inline' /> and Social Research",
-    "description": "Supports the execution of research at the <span class='text-primary font-semibold bg-white px-1 rounded'>Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the city of Franca/SP.",
-    "button": {
-      "url": "/institutional/about",
-      "text": "About us"
-    },
-    "link": "/imagens/campus/entrada-unesp-franca.jpg"
-  },
-  "documentos": {
-    "titulo": "Documents",
-    "descricao": "Institutional and administrative documents of the Research Center.",
-    "grupos": [
-      {
-        "titulo": "UNESP RESOLUTION No. 19, MAY 15, 2025",
-        "descricao": "Formal establishment of the Political and Social Research Center through the UNESP Rector's Office resolution published in the Official Gazette of the State of São Paulo.",
-        "arquivos": [
-          {
-            "nome": "UNESP RESOLUTION No. 19, 2025",
-            "formatos": [
-              {
-                "tipo": "PDF",
-                "url": "https://drive.google.com/file/d/1uLEUk7i2xj8ADrjMvDLLh5iwRLstwWXZ/view?usp=sharing"
-              },
-              {
-                "tipo": "HTML",
-                "url": "https://drive.google.com/file/d/1uLEUk7i2xj8ADrjMvDLLh5iwRLstwWXZ/view?usp=sharing"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "titulo": "Bylaws",
-        "descricao": "Internal bylaws of the Political and Social Research Center.",
-        "arquivos": [
-          {
-            "nome": "Bylaws",
-            "formatos": [
-              {
-                "tipo": "PDF",
-                "url": "https://drive.google.com/file/d/1lKnNg6OCtkgyQVEC3DPfPBcK9Cw3Rt_d/view?usp=sharing"
-              },
-              {
-                "tipo": "HTML",
-                "url": "https://drive.google.com/file/d/1lKnNg6OCtkgyQVEC3DPfPBcK9Cw3Rt_d/view?usp=sharing"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "titulo": "Initial Management and Goals Plan",
-        "descricao": "Outlines a strategic and progressive schedule for the next eight semesters, directly integrating the guidelines established in the internal bylaws.",
-        "arquivos": [
-          {
-            "nome": "Initial Management Plan",
-            "formatos": [
-              {
-                "tipo": "PDF",
-                "url": "https://drive.google.com/file/d/1qD8-n3zIJ9xYWvVJ0087-2PrbqboQUUj/view?usp=sharing"
-              },
-              {
-                "tipo": "HTML",
-                "url": "https://drive.google.com/file/d/1qD8-n3zIJ9xYWvVJ0087-2PrbqboQUUj/view?usp=sharing"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "titulo": "Creation Proposal",
-        "descricao": "Details the creation, organization, and operation of the Research Center.",
-        "arquivos": [
-          {
-            "nome": "Creation Proposal",
-            "formatos": [
-              {
-                "tipo": "PDF",
-                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
-              },
-              {
-                "tipo": "HTML",
-                "url": "https://drive.google.com/file/d/17c0Jfcr7Xlh46GPXukEq62imZeIYNmeK/view?usp=sharing"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "titulo": "Departments' Opinion and Statement",
-        "descricao": "Evaluation and endorsement by the six departments of the Faculty of Human and Social Sciences of UNESP regarding the Center's creation.",
-        "arquivos": [
-          {
-            "nome": "Departments' Statement",
-            "formatos": [
-              {
-                "tipo": "PDF",
-                "url": "https://drive.google.com/file/d/1IqJ54KQibJ_UkHgE60BHqdtwtSac6UmF/view?usp=sharing"
-              },
-              {
-                "tipo": "HTML",
-                "url": "https://drive.google.com/file/d/1IqJ54KQibJ_UkHgE60BHqdtwtSac6UmF/view?usp=sharing"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "titulo": "UNESP RESOLUTION No. 19, APRIL 8, 2020",
-        "descricao": "Establishes the creation, organization, and operation of Research Centers.",
-        "arquivos": [
-          {
-            "nome": "UNESP RESOLUTION No. 19, 2020",
-            "formatos": [
-              {
-                "tipo": "HTML",
-                "url": "https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  "cafe": {
-    "titulo": "Café com Ciência",
-    "descricao": "O Café com Ciência é uma iniciativa de divulgação científica promovida pelo NÉFiTs, com episódios que discutem temas relevantes nas ciências humanas.",
-    "episodios": [
-      {
-        "icone": "🎙️",
-        "titulo": "Episódio 1: Filosofia e Sociedade",
-        "descricao": "Uma conversa sobre os impactos da filosofia na sociedade contemporânea."
-      },
-      {
-        "icone": "🎙️",
-        "titulo": "Episódio 2: Ética na Pesquisa",
-        "descricao": "Debatendo os desafios éticos enfrentados pelos pesquisadores na atualidade."
-      },
-      {
-        "icone": "🎙️",
-        "titulo": "Episódio 3: Democracia e Participação",
-        "descricao": "Explorando a importância da participação popular em regimes democráticos."
-      }
-    ]
-  },
   "initiatives": {
-    "title": "Iniciativas",
-    "descricao": "Conheça nossas principais iniciativas...",
+    "label": "Initiatives",
+    "title": "Discover the Center's initiatives",
     "items": [
       {
-        "icon": "🧪",
-        "title": "Projeto X",
-        "description": "Descrição do projeto"
+        "id": "cafe-com-ciencia",
+        "title": "Coffee with Science",
+        "description": "Monthly seminar aimed at discussing themes related to the research agendas of the faculty at FCHS/UNESP/Franca."
       },
       {
-        "icon": "🧪",
-        "title": "Projeto X",
-        "description": "Descrição do projeto"
-      }
-    ]
-  },
-  "atividadesPesquisa": {
-    "title": "Atividades de Pesquisa",
-    "description": "Descrição das atividades de pesquisa.",
-    "items": [
-      {
-        "icon": "✅",
-        "title": "Pesquisa A",
-        "description": "Descrição da pesquisa A"
-      }
-    ]
-  },
-  "produtos": {
-    "title": "Produtos",
-    "description": "Descrição dos produtos.",
-    "items": [
-      {
-        "icon": "📥",
-        "title": "Produto 1",
-        "description": "Descrição do produto"
+        "id": "projetos-de-dados",
+        "title": "Data Projects",
+        "description": "Data projects are initiatives that aim to collect, process, analyze, and, when possible, make available relevant data for research."
       },
       {
-        "icon": "📥",
-        "title": "Produto 1",
-        "description": "Descrição do produto"
+        "id": "auxilio-a-pesquisa",
+        "title": "Research Support",
+        "description": "Support for the preparation and execution of research projects."
       },
       {
-        "icon": "📥",
-        "title": "Produto 1",
-        "description": "Descrição do produto"
+        "id": "material-de-apoio",
+        "title": "Support Material",
+        "description": "Conducting workshops, creating support materials, and offering courses that encourage and assist in the better incorporation of technological tools in research activities."
       },
       {
-        "icon": "📥",
-        "title": "Produto 1",
-        "description": "Descrição do produto"
-      }
-    ]
-  },
-  "faqs": {
-    "title": "Perguntas Frequentes",
-    "items": [
-      {
-        "question": "Pergunta 1",
-        "answer": "Resposta da pergunta"
-      }
-    ]
-  },
-  "projetos": {
-    "titulo": "Nossos Projetos",
-    "lista": [
-      {
-        "icone": "🎓",
-        "titulo": "Projeto Educacional",
-        "descricao": "Aprimorando a criação de conteúdos instrucionais e materiais educacionais engajadores."
+        "id": "solucoes-tecnologicas",
+        "title": "Technological Solutions",
+        "description": "Promote better use of computational resources, as well as the implementation and development of software and services for research."
       },
       {
-        "icone": "🏠",
-        "titulo": "Design de Interiores",
-        "descricao": "Criando espaços funcionais e visualmente atraentes para uso residencial e comercial."
-      },
-      {
-        "icone": "📷",
-        "titulo": "Fotografia",
-        "descricao": "Facilitando a narrativa visual para fotógrafos profissionais e entusiastas."
-      },
-      {
-        "icone": "🛒",
-        "titulo": "E-commerce",
-        "descricao": "Garantindo presença dinâmica para exibir produtos de forma eficaz, ideal para startups."
-      },
-      {
-        "icone": "📝",
-        "titulo": "Blog",
-        "descricao": "Capacitando a apresentação eficaz de conteúdos para escritores, com foco em tipografia."
-      },
-      {
-        "icone": "🏢",
-        "titulo": "Negócios",
-        "descricao": "Oferecendo opções visuais refinadas para fortalecer a presença de marcas profissionais."
-      }
-    ]
-  },
-  "widgets": {
-    "title": "Widgets",
-    "items": [
-      {
-        "icon": "🖼️",
-        "title": "Widget 1",
-        "description": "Descrição do widget"
-      },
-      {
-        "icon": "🖼️",
-        "title": "Widget 1",
-        "description": "Descrição do widget"
-      },
-      {
-        "icon": "🖼️",
-        "title": "Widget 1",
-        "description": "Descrição do widget"
-      },
-      {
-        "icon": "🖼️",
-        "title": "Widget 1",
-        "description": "Descrição do widget"
+        "id": "cooperacao-e-parceiras",
+        "title": "Cooperation and Partnerships",
+        "description": "Support for scientific cooperation and the establishment of national and international partnerships aimed at the development of research."
       }
     ]
   }

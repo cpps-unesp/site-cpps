@@ -1,16 +1,17 @@
 ---
 import NoticiasListPage from '../../components/NoticiasListPage.astro';
-import { routeTranslations } from '../../i18n/routes';
+import routeTranslations from '../../i18n/routeTranslations';
+import type { SupportedLang } from '../../types/lang';
 
 
 export function getStaticPaths() {
-  const langs = ["pt", "en", "es"];
+  const langs: SupportedLang[] = ["pt", "en", "es"];
   return langs.map(lang => ({
     params: { lang, list: routeTranslations['noticias'][lang] }
   }));
 }
 
-const currentLang = (Astro.params.lang ?? 'pt') as 'pt' | 'en' | 'es';
+const currentLang = (Astro.params.lang ?? 'pt') as SupportedLang;
 const list = Astro.params.list;
 
 const isNoticiasList = list === routeTranslations['noticias'][currentLang];

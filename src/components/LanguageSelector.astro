@@ -1,9 +1,11 @@
 ---
-import { routeTranslations } from "../i18n/routes";
+import routeTranslations from "../i18n/routeTranslations";
 import { getTranslatedPath } from "../utils/getTranslatedPath";
 import type { SupportedLang } from "../i18n/routeTranslations";
 import { getCollection } from "astro:content";
-import IconLang from "../icons/iconLang.astro"; 
+import IconLang from "../icons/iconLang.astro";
+import { getTranslations } from "../utils/i18n";
+
 const { lang = "pt" } = Astro.props;
 
 const languages: { code: SupportedLang; label: string }[] = [
@@ -13,9 +15,9 @@ const languages: { code: SupportedLang; label: string }[] = [
 ];
 
 const translations: Record<SupportedLang, any> = {
-  pt: (await import(`../i18n/locales/pt.json`)).default,
-  en: (await import(`../i18n/locales/en.json`)).default,
-  es: (await import(`../i18n/locales/es.json`)).default,
+  pt: getTranslations("pt"),
+  en: getTranslations("en"),
+  es: getTranslations("es"),
 };
 
 const pathParts = Astro.url.pathname.split("/").filter(Boolean);

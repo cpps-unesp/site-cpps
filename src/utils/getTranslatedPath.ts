@@ -1,4 +1,4 @@
-import { routeTranslations } from '../i18n/routes';
+import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../i18n/routeTranslations';
 
 /**
