@@ -29,6 +29,10 @@ export default defineConfig({
         {
           label: "Projetos",
           items: [
+            {
+              label: "Introdução",
+              slug: "docs/projetos", // src/content/docs/docs/index.mdx
+            },
             // --- DADOS ---
             {
               label: "Dados",
@@ -52,7 +56,123 @@ export default defineConfig({
                     // etc.
                   ],
                 },
-
+                {
+                  label: "NewsCloud",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/newscloud",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
+                 {
+                  label: "DiáriosBR",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/diariosbr",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
+                 {
+                  label: "FullText",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/fulltext",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
+                 {
+                  label: "Mercodocs",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/mercodocs",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
+                 {
+                  label: "TweePlantA",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/tweeplanta",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
+                 {
+                  label: "Acervo Redalint",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/acervorodalint",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
+                 {
+                  label: "IRjournals BR",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/irjournals",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
+                 {
+                  label: "GovLatinAmerica",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/govlatinamerica",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
+                 {
+                  label: "Intert e Relações Internacionais",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/dados/interteri",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
                 {
                   label: "ThesisBR",
                   items: [
@@ -92,6 +212,20 @@ export default defineConfig({
               label: "Extensão",
               autogenerate: { directory: "docs/projetos/extensao" },
             },
+             // --------- POD-RI ----------
+                {
+                  label: "POD-RI",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/extensao/podri",
+                    },
+                    //depois adiciona:
+                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
+                    // etc.
+                  ],
+                },
           ],
         },
       ],
