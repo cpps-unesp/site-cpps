@@ -21,7 +21,7 @@ export default defineConfig({
           items: [
             {
               label: "Introdução",
-              slug: "docs", // src/content/docs/docs/index.mdx
+              slug: "docs", 
             },
           ],
         },
@@ -31,7 +31,7 @@ export default defineConfig({
           items: [
             {
               label: "Introdução",
-              slug: "docs/projetos", // src/content/docs/docs/index.mdx
+              slug: "docs/projetos", 
             },
             // --- DADOS ---
             {
@@ -39,7 +39,7 @@ export default defineConfig({
               items: [
                 {
                   label: "Visão geral",
-                  slug: "docs/projetos/dados",   // src/content/docs/projetos/dados/index.mdx
+                  slug: "docs/projetos/dados",
                 },
 
                 // --------- HEMEROTECA PEB ----------
@@ -50,11 +50,20 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/hemeroteca-peb",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/hemeroteca-peb/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/hemeroteca-peb/atividades",
+                    },
+                    {
+                      label: "Documentação",
+                      slug: "docs/projetos/dados/hemeroteca-peb/documentacao",
+                    },
                   ],
+                  
                 },
                 {
                   label: "NewsCloud",
@@ -63,10 +72,6 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/newscloud",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                  {
@@ -76,10 +81,6 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/diariosbr",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                  {
@@ -89,10 +90,6 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/fulltext",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                  {
@@ -102,10 +99,6 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/mercodocs",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                  {
@@ -115,10 +108,6 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/tweeplanta",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                  {
@@ -128,10 +117,6 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/acervorodalint",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                  {
@@ -141,10 +126,6 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/irjournals",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                  {
@@ -154,10 +135,6 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/govlatinamerica",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                  {
@@ -167,19 +144,14 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/dados/interteri",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
                 {
                   label: "ThesisBR",
                   items: [
-            
                     {
                       label: "Conheça o projeto",
-                      link: "https://cpps-unesp.github.io/thesisbr/", //URL real aqui
+                      link: "https://cpps-unesp.github.io/thesisbr/", 
                     },
                   ],
                 },
@@ -198,21 +170,138 @@ export default defineConfig({
                   label: "Trilha de Dados",
                   slug: "docs/projetos/ensino/trilha-de-dados",
                 },
+                {
+                  label: "Trilhas de Fundamentos de Tecnologias Digitais",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/ensino/tfdt",
+                    },
+                  ],
+                },
+                {
+                  label: "Tecnologias Digitais",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais",
+                    },
+                  ],
+                },
+                {
+                  label: "Processar imagens que contém texto",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/ensino/processarimagens",
+                    },
+                  ],
+                },
+                {
+                  label: "Acesso Remoto",
+                  items: [
+                    {
+                      label: "Introdução",
+                      slug: "docs/projetos/ensino/acessoremoto",
+                    },
+                  ],
+                },
+                {
+                  label: "Recoll",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/ensino/recoll",
+                    },
+                  ],
+                },
+                {
+                  label: "Filezilla",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/ensino/filezilla",
+                    },
+                  ],
+                },
+                {
+                  label: "Material Bibliográfico",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/ensino/materialbibliografico",
+                    },
+                  ],
+                },
+                {
+                  label: "Curso: Governança da Internet",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/ensino/curso",
+                    },
+                  ],
+                },
               ],
             },
 
             // --- SISTEMAS ---
             {
               label: "Sistemas",
-              autogenerate: { directory: "docs/projetos/sistemas" },
-            },
+              items: [
+                {
+                  label: "Websites e Redes",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/sistemas/websites",
+                    },
+                  ],
+                },
+                {
+                  label: "Infraestrutura Computacional",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/sistemas/infraestrutura",
+                    },
+                  ],
+                },
+                {
+                  label: "Cadernos LabRI/UNESP",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/sistemas/cadernoslabri",
+                    },
+                  ],
+                },
+                {
+                  label: "Sistema de Confecção de Certificados",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/sistemas/sistemacertificados",
+                    },
+                  ],
+                },
+                {
+                  label: "Sistema de OCR Automático",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/sistemas/ocr",
+                    },
+                  ],
+                },
+              ], 
+            }, 
 
             // --- EXTENSÃO ---
             {
               label: "Extensão",
-              autogenerate: { directory: "docs/projetos/extensao" },
-            },
-             // --------- POD-RI ----------
+              items: [
+                // --------- POD-RI ----------
                 {
                   label: "POD-RI",
                   items: [
@@ -220,14 +309,40 @@ export default defineConfig({
                       label: "Apresentação",
                       slug: "docs/projetos/extensao/podri",
                     },
-                    //depois adiciona:
-                    // { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
-                    // { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades-realizadas" },
-                    // etc.
                   ],
                 },
-          ],
-        },
+                {
+                  label: "Conhecer Para Acolher",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/extensao/conhecerparaacolher",
+                    },
+                  ],
+                },
+                {
+                  label: "Cidades Saudáveis e Sustentáveis",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/extensao/cidadessaudaveis",
+                    },
+                  ],
+                },
+                {
+                  label: "As Relações Internacionais e o Novo Coronavírus",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      slug: "docs/projetos/extensao/ricoronavirus",
+                    },
+                  ],
+                },
+              ], 
+            }, // Fim de Extensão
+             
+          ], // Fim de items (Projetos)
+        }, // Fim de Projetos
       ],
     }),
     pagefind(),

@@ -5,7 +5,24 @@ description: "Visão geral dos projetos de dados do CPPS."
 
 # Projetos de Dados
 
-Nesta seção estão os principais projetos de dados do CPPS:
+Abaixo estão expostos os projetos nos quais o LabRI participa, assim como informações essenciais sobre cada iniciativa.
 
-- [ThesisBR](./thesisbr)
-- [Hemeroteca PEB](./hemeroteca-peb)
+Os projetos do LabRI são divididos conforme seus objetivos. São eles:
+
+## Principais Iniciativas
+
+- **[ThesisBR](./thesisbr)**
+- **[Hemeroteca PEB](./hemeroteca-peb)**
+- **[NewsCloud](./newscloud)**
+- **[DiáriosBR](./diariosbr)**
+- **[FullText](./fulltext)**
+- **[Mercodocs](./mercodocs)**
+- **[TweePlantA](./tweeplanta)**
+- **[Acervo Redalint](./acervo-redalint)**
+- **[IRjournals BR](./irjournalsbr)**
+- **[GovLatinAmerica](./govlatinamerica)**
+- **[Internet e Relações Internacionais](./interteri)**
+
+---
+
+> **Nota:** Clique nos nomes acima para acessar a apresentação e os dados de cada projeto.
