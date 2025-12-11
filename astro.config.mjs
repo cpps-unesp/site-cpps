@@ -41,8 +41,6 @@ export default defineConfig({
                   label: "Visão geral",
                   slug: "docs/projetos/dados",
                 },
-
-                // --------- HEMEROTECA PEB ----------
                 {
                   label: "Hemeroteca PEB",
                   items: [
@@ -60,10 +58,27 @@ export default defineConfig({
                     },
                     {
                       label: "Documentação",
-                      slug: "docs/projetos/dados/hemeroteca-peb/documentacao",
+                      // Removemos o 'slug' direto e criamos uma lista de 'items'
+                      items: [
+                        {
+                          label: "Introdução",
+                          slug: "docs/projetos/dados/hemeroteca-peb/documentacao/introducao",
+                        },
+                        {
+                          label: "Arquivo JSON",
+                          slug: "docs/projetos/dados/hemeroteca-peb/documentacao/arquivo-json",
+                        },
+                        {
+                          label: "Temas",
+                          slug: "docs/projetos/dados/hemeroteca-peb/documentacao/temas",
+                        },
+                      ],
+                    },
+                    {
+                      label: "Como citar Hemeroteca PEB",
+                      slug: "docs/projetos/dados/hemeroteca-peb/como-citar",
                     },
                   ],
-                  
                 },
                 {
                   label: "NewsCloud",
