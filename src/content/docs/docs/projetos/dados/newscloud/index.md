@@ -1,11 +1,41 @@
 ---
-title: "Projetos de Dados"
-description: "Visão geral dos projetos de dados do CPPS."
+title: "Apresentação News Cloud"
+description: "Visão geral e objetivos do projeto NewsCloud."
+sidebar:
+  order: 1
 ---
 
-# Projetos de Dados
+## Apresentação
 
-Nesta seção estão os principais projetos de dados do CPPS:
+<img src="/newscloud/newscloud-logo.svg" alt="Logo NewsCloud" width="250" style="display: block; margin: 30px auto;">
 
-- [ThesisBR](./thesisbr)
-- [Hemeroteca PEB](./hemeroteca-peb)
+<div style="text-align: justify;">
+
+Uma importante fonte para pesquisa acadêmica são as notícias veiculadas pelos jornais impressos. Nesses veículos de comunicação, além de informações nacionais e internacionais relevantes, são encontrados opiniões de importantes atores políticos.
+
+Porém, o conjunto de informações de cada jornal se encontram em bases de dados distintas sem um mecanismo que viabilize uma busca agregada; a indexação integral dos dados vinculados apresenta limitações que dificultam a pesquisa avançada (utilização de operadores booleanos) através da busca por palavras-chaves, especialmente, quando selecionamos um período temporal longo e abarcamos o grande volume de informação; as informações veiculadas em formato textual não estão estruturadas, isso dificulta o cruzamento de metadados importantes (título, autor, caderno, entre outros).
+
+Devido a isso, o objetivo geral desse projeto é coletar, indexar, tratar e estruturar as informações veiculadas por jornais impressos.
+
+Mais especificamente, o projeto **NewsCloud** visa:
+
+*   Coletar integralmente os jornais impressos selecionados, realizando o devido tratamento das informações veiculadas para uma melhor utilização dos dados para pesquisas acadêmicas;
+*   Subsidiar pesquisas acadêmicas que utilizam jornais impressos como fontes de informação ou objeto de estudo;
+*   Fornecer um instrumento básico para análise das informações veiculadas;
+*   Indicar possibilidades e instrumentos que auxiliem análises mais detalhadas das informações veiculadas.
+
+</div>
+
+---
+
+### Repositório
+
+Para acessar o repositório do projeto, **[clique aqui](https://gitlab.com/cpps-unesp/projeto/newscloud)**.
+
+<br>
+<br>
+
+---
+<p style="font-size: 0.9em; color: gray;">
+  Last updated on 10/15/2025 by Rafael de Almeida
+</p>

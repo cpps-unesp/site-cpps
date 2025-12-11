@@ -41,6 +41,7 @@ export default defineConfig({
                   label: "Visão geral",
                   slug: "docs/projetos/dados",
                 },
+                // --- HEMEROTECA PEB ---
                 {
                   label: "Hemeroteca PEB",
                   items: [
@@ -58,7 +59,6 @@ export default defineConfig({
                     },
                     {
                       label: "Documentação",
-                      // Removemos o 'slug' direto e criamos uma lista de 'items'
                       items: [
                         {
                           label: "Introdução",
@@ -80,12 +80,62 @@ export default defineConfig({
                     },
                   ],
                 },
+                // --- NEWSCLOUD (ATUALIZADO AQUI) ---
                 {
                   label: "NewsCloud",
                   items: [
                     {
                       label: "Apresentação",
                       slug: "docs/projetos/dados/newscloud",
+                    },
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/newscloud/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/newscloud/atividades",
+                    },
+                    {
+                      label: "Informações de Coleta",
+                      slug: "docs/projetos/dados/newscloud/informacoes",
+                    },
+                    {
+                      label: "Documentação",
+                      items: [
+                        {
+                          label: "Introdução",
+                          slug: "docs/projetos/dados/newscloud/documentacao/introducao",
+                        },
+                        {
+                          label: "Elementos do Banco de Dados",
+                          slug: "docs/projetos/dados/newscloud/documentacao/elementos-bd",
+                        },
+                        {
+                          label: "Elementos Peru",
+                          slug: "docs/projetos/dados/newscloud/documentacao/elementos-peru",
+                        },
+                        {
+                          label: "Elementos Equador",
+                          slug: "docs/projetos/dados/newscloud/documentacao/equador",
+                        },
+                        {
+                          label: "Elementos Colômbia",
+                          slug: "docs/projetos/dados/newscloud/documentacao/colombia",
+                        },
+                        {
+                          label: "Elementos Brasil",
+                          slug: "docs/projetos/dados/newscloud/documentacao/brasil",
+                        },
+                        {
+                          label: "Fluxograma",
+                          slug: "docs/projetos/dados/newscloud/documentacao/fluxograma",
+                        },
+                      ],
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/newscloud/como-citar",
                     },
                   ],
                 },
