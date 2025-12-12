@@ -1,11 +1,58 @@
 ---
-title: "Projetos de Dados"
-description: "Visão geral dos projetos de dados do CPPS."
+title: "Elementos Colômbia"
+description: "Detalhamento dos elementos coletados nos jornais da Colômbia."
+sidebar:
+  order: 5
 ---
 
-# Projetos de Dados
+Esta seção detalha quais elementos foram extraídos em cada etapa da coleta para os jornais da Colômbia.
 
-Nesta seção estão os principais projetos de dados do CPPS:
+## Jornais Coletados
+*   **Hoy Diario Del Magdalena**
+*   **El Espectador**
 
-- [ThesisBR](./thesisbr)
-- [Hemeroteca PEB](./hemeroteca-peb)
+---
+
+## Tabela de Elementos
+
+A tabela abaixo indica a disponibilidade dos dados nas diferentes fases de coleta (`Coleta 01` | str | ✔️ | |
+| `data_atualizado` | list | | ✔️ |
+| `horario_atualizado` | list | | ✔️ |
+| `link` | str | ✔️ | |
+| `link_archive` | str | | |
+| `data_archive` | str | | |
+| `horario_archive` | str | | |
+| `local` | list |` e `Coleta 02`).
+
+| Elemento | Tipo | Coleta 01 | Coleta 02 |
+| :--- | :--- | :---: | :---: |
+| `origem` | str | ✔️ | |
+| `classificado` | list | ✔️ | |
+| `sigla` | str | ✔️ | |
+| `país` | str | ✔️ | |
+| `categoria` | list | ✔️ | |
+| `autoria` | list | | ✔️ | | |
+| `tags` | list | | |
+| `paragrafos` | list | | ✔️ |
+| `dir_bd` | str | ✔️ | |
+| `dir_arquivo` | str | | |
+| `codigo_bd` | str | ✔️ | |
+| `imagens` | list | | |
+| `nome_arquivo` | str | | ✔️ |
+| `extra_01` | - | - | - |
+| `extra_02` | - | - | - |
+| `titulo` | str | ✔️ | |
+| `subtitulo` | str | | ✔️ |
+| `data` | str | ✔️ | |
+| `horario` | str | ✔️ | |
+| `data_atualizado` | list | | ✔️ |
+| `horario_atual
+| `extra_03` | - | - | - |
+
+<br>
+<br>
+
+---
+<p style="font-size: 0.9em; color: gray;">
+  Last updated on 10/15/2025 by Rafael de Almeida
+</p>

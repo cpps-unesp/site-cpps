@@ -139,12 +139,51 @@ export default defineConfig({
                     },
                   ],
                 },
-                 {
+                 // --- DIÁRIOS BR (ATUALIZADO) ---
+                {
                   label: "DiáriosBR",
                   items: [
                     {
                       label: "Apresentação",
                       slug: "docs/projetos/dados/diariosbr",
+                    },
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/diariosbr/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/diariosbr/atividades",
+                    },
+                    {
+                      label: "Documentação",
+                      items: [
+                        {
+                          label: "Introdução",
+                          slug: "docs/projetos/dados/diariosbr/documentacao/introducao",
+                        },
+                        {
+                          label: "Dados e Metadados",
+                          slug: "docs/projetos/dados/diariosbr/documentacao/dados",
+                        },
+                        {
+                          label: "Localização e Conteúdo",
+                          slug: "docs/projetos/dados/diariosbr/documentacao/localizacao",
+                        },
+                        {
+                          label: "Banco de Termos",
+                          slug: "docs/projetos/dados/diariosbr/documentacao/banco",
+                        },
+                        {
+                          label: "Fluxograma",
+                          slug: "docs/projetos/dados/diariosbr/documentacao/fluxograma",
+                        },
+                        
+                      ],
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/diariosbr/como-citar",
                     },
                   ],
                 },
