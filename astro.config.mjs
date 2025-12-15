@@ -187,57 +187,233 @@ export default defineConfig({
                     },
                   ],
                 },
-                 {
+                // --- FULLTEXT (ATUALIZADO) ---
+                {
                   label: "FullText",
                   items: [
                     {
                       label: "Apresentação",
                       slug: "docs/projetos/dados/fulltext",
                     },
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/fulltext/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/fulltext/atividades",
+                    },
+                    {
+                      label: "Identidade Visual",
+                      slug: "docs/projetos/dados/fulltext/identidade-visual",
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/fulltext/citar",
+                    },
                   ],
                 },
-                 {
+                // --- MERCODOCS ---
+                {
                   label: "Mercodocs",
                   items: [
                     {
                       label: "Apresentação",
+                      // Aponta para o index.md
                       slug: "docs/projetos/dados/mercodocs",
+                    },
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/mercodocs/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/mercodocs/atividades",
+                    },
+                    {
+                      label: "Documentação",
+                      slug: "docs/projetos/dados/mercodocs/documentacao",
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/mercodocs/como-citar",
                     },
                   ],
                 },
-                 {
-                  label: "TweePlantA",
+                {
+                  label: "TweePiNa",
                   items: [
                     {
                       label: "Apresentação",
                       slug: "docs/projetos/dados/tweeplanta",
                     },
-                  ],
-                },
-                 {
-                  label: "Acervo Redalint",
-                  items: [
                     {
-                      label: "Apresentação",
-                      slug: "docs/projetos/dados/acervorodalint",
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/tweeplanta/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/tweeplanta/atividades",
+                    },
+                    {
+                      label: "Documentação",
+                      // autogenerate: false, // Caso precise desativar a geração automática
+                      collapsed: false, // Define se o menu começa aberto ou fechado
+                      items: [
+                        {
+                          label: "Introdução",
+                          slug: "docs/projetos/dados/tweeplanta/infos/intro",
+                        },
+                        {
+                          label: "Script com Caminhos Absolutos",
+                          slug: "docs/projetos/dados/tweeplanta/infos/script",
+                        },
+                        {
+                          label: "Variáveis",
+                          slug: "docs/projetos/dados/tweeplanta/infos/variaveis",
+                        },
+                        {
+                          label: "Fluxograma",
+                          slug: "docs/projetos/dados/tweeplanta/infos/fluxograma",
+                        },
+                        {
+                          label: "Identificação de Status",
+                          slug: "docs/projetos/dados/tweeplanta/infos/identificacao",
+                        },
+                        {
+                          label: "Projetos Semelhantes",
+                          slug: "docs/projetos/dados/tweeplanta/infos/projetos",
+                        },
+                        {
+                          label: "Bibliotecas",
+                          slug: "docs/projetos/dados/tweeplanta/infos/biblioteca",
+                        },
+                      ],
+                    },
+                    {
+                      label: "Identidade Visual",
+                      slug: "docs/projetos/dados/tweeplanta/identidade-visual",
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/tweeplanta/citar",
                     },
                   ],
                 },
-                 {
-                  label: "IRjournals BR",
+                {
+                  label: "Acervo Rodalint",
+                  items: [
+                    {
+                      label: "Apresentação",
+                      // Aponta para o index.md
+                      slug: "docs/projetos/dados/acervorodalint",
+                    },
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/acervorodalint/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/acervorodalint/atividades",
+                    },
+                    {
+                      label: "Documentação",
+                      slug: "docs/projetos/dados/acervorodalint/documentacao",
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/acervorodalint/citar",
+                    },
+                  ],
+                },
+                {
+                  label: "IRJournalsBR",
                   items: [
                     {
                       label: "Apresentação",
                       slug: "docs/projetos/dados/irjournals",
                     },
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/irjournals/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/irjournals/atividades",
+                    },
+                    {
+                      label: "Documentação",
+                      collapsed: false,
+                      items: [
+                        {
+                          label: "Introdução",
+                          slug: "docs/projetos/dados/irjournals/documentacao/introducao",
+                        },
+                        {
+                          label: "Metadados",
+                          slug: "docs/projetos/dados/irjournals/documentacao/metadados",
+                        },
+                        {
+                          label: "Código das Revistas",
+                          slug: "docs/projetos/dados/irjournals/documentacao/revistas",
+                        },
+                        {
+                          label: "Diretório Local",
+                          slug: "docs/projetos/dados/irjournals/documentacao/loca",
+                        },
+                        {
+                          label: "Pastas",
+                          slug: "docs/projetos/dados/irjournals/documentacao/pastas",
+                        },
+                        {
+                          label: "Arquivos de Controle",
+                          slug: "docs/projetos/dados/irjournals/documentacao/arquivos",
+                        },
+                      ],
+                    },
+                    {
+                      label: "Identidade Visual",
+                      // Atenção: Seu arquivo parece estar nomeado como 'identidade.md.md' na imagem.
+                      // Se for isso mesmo, o slug pode variar, mas geralmente o Astro limpa para:
+                      slug: "docs/projetos/dados/irjournals/identidade", 
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/irjournals/citar",
+                    },
                   ],
                 },
-                 {
+                {
                   label: "GovLatinAmerica",
                   items: [
                     {
                       label: "Apresentação",
+                      // Aponta para o index.md
                       slug: "docs/projetos/dados/govlatinamerica",
+                    },
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/govlatinamerica/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/govlatinamerica/atividades",
+                    },
+                    {
+                      label: "Dados",
+                      slug: "docs/projetos/dados/govlatinamerica/dados",
+                    },
+                    {
+                      label: "Documentação",
+                      slug: "docs/projetos/dados/govlatinamerica/documentacao",
+                    },
+                    {
+                      label: "Identidade Visual",
+                      slug: "docs/projetos/dados/govlatinamerica/identidade",
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/govlatinamerica/citar",
                     },
                   ],
                 },

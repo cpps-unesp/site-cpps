@@ -1,11 +1,13 @@
 ---
-title: "Projetos de Dados"
-description: "Visão geral dos projetos de dados do CPPS."
+id: info
+title: Apresentação MercoDocs
+sidebar_label: Apresentação
 ---
 
-# Projetos de Dados
+<center>
+    <img src="/img/projetos/dados/mercodocs/mercodocs.svg" alt="centered image" width="200" height="300" />
+</center>
 
-Nesta seção estão os principais projetos de dados do CPPS:
+O Mercosul possui uma gama extensa e variada de documentação oficial e pública. Apesar disso, encontramos vários problemas que dificultam a adequada utilização deste material. Dentre destes problemas, podemos destacar: a plataforma que disponibiliza os documentos não indexada integralmente os arquivos; alguns metadados que apresentam inconsistência; muitos documentos estão em formato de imagem (tiff) ou em pdf não pesquisável, sendo necessário a realização de OCR para uma melhor utilização dos arquivos neste estado. A partir deste cenário, o projeto **MercoDocs** objetiva auxiliar na coleta, tratamento e melhor disponibilização da documentação pública do Mercosul. 
 
-- [ThesisBR](./thesisbr)
-- [Hemeroteca PEB](./hemeroteca-peb)
+Para acessar o *repositório* do projeto, [clique aqui](https://gitlab.com/unesp-labri/projeto/mercodocs)

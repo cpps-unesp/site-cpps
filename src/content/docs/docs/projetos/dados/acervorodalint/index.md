@@ -1,11 +1,17 @@
 ---
-title: "Projetos de Dados"
-description: "Visão geral dos projetos de dados do CPPS."
+id: info
+title: Apresentação Acervo Redalint
+sidebar_label: Apresentação
 ---
 
-# Projetos de Dados
+<div align="center">
+  <img src="/imagens/logos/redalint.png" alt="centered image" />
+</div>
 
-Nesta seção estão os principais projetos de dados do CPPS:
+A produção científica de acesso aberto sobre a internacionalização da educação superior na América Latina se encontra dispersa em variados portais, há certa inconsistência nos metadados destas publicações e a indexação integral deste material é rara. A partir deste diagnóstico, o **Acervo Redalint** surgiu com o objetivo de reunir em uma plataforma a produção científica sobre esta temática fornecendo metadados consistentes e a indexação integral do conteúdo disponível.
 
-- [ThesisBR](./thesisbr)
-- [Hemeroteca PEB](./hemeroteca-peb)
+✅ Para acessar a *plataforma* do acervo, [clique aqui](https://acervo.redalint.org/).
+
+✅ Para acessar o *repositório* do projeto, [clique aqui](https://gitlab.com/unesp-labri/projeto/acervo-redalint).
+
+✅ Para acessar a pasta do *google drive*, [clique aqui](https://drive.google.com/drive/u/0/folders/1npycu_yv0hd-nuASxNJuH1oVXsMbo49F).
