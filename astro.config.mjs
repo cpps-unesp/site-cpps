@@ -417,12 +417,29 @@ export default defineConfig({
                     },
                   ],
                 },
-                 {
-                  label: "Intert e Relações Internacionais",
+                {
+                  label: "Internet e Relações Internacionais",
                   items: [
                     {
                       label: "Apresentação",
-                      slug: "docs/projetos/dados/interteri",
+                      // Aponta para o index.md dentro da nova pasta internetri
+                      slug: "docs/projetos/dados/internetri",
+                    },
+                    {
+                      label: "Equipe",
+                      slug: "docs/projetos/dados/internetri/equipe",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/dados/internetri/atividades",
+                    },
+                    {
+                      label: "Documentação",
+                      slug: "docs/projetos/dados/internetri/documentacao",
+                    },
+                    {
+                      label: "Como citar",
+                      slug: "docs/projetos/dados/internetri/citar",
                     },
                   ],
                 },
@@ -446,25 +463,111 @@ export default defineConfig({
                   label: "Visão geral",
                   slug: "docs/projetos/ensino",
                 },
+                // --- TFDT (Trilhas de Fundamentos) - CORRIGIDO ---
                 {
-                  label: "Trilha de Dados",
-                  slug: "docs/projetos/ensino/trilha-de-dados",
-                },
-                {
-                  label: "Trilhas de Fundamentos de Tecnologias Digitais",
+                  label: "Trilhas de Fundamentos (TFDT)",
                   items: [
                     {
-                      label: "Apresentação",
-                      slug: "docs/projetos/ensino/tfdt",
+                      label: "Ambiente de Desenvolvimento",
+                      items: [
+                        {
+                          label: "Introdução",
+                          slug: "docs/projetos/ensino/tfdt/ambiente/01-intro",
+                        },
+                        // SUBPASTA MARKDOWN
+                        {
+                          label: "Markdown",
+                          items: [
+                            {
+                              label: "01 - Noções Gerais",
+                              slug: "docs/projetos/ensino/tfdt/ambiente/markdown/01-nocoes-gerais",
+                            },
+                            {
+                              label: "02 - Sintaxe",
+                              slug: "docs/projetos/ensino/tfdt/ambiente/markdown/02-sintaxe",
+                            },
+                            {
+                              label: "03 - Criar GitHub Profile",
+                              slug: "docs/projetos/ensino/tfdt/ambiente/markdown/03-criar-github-profile",
+                            },
+                          ],
+                        },
+                        // SUBPASTA VERSIONAMENTO
+                        {
+                          label: "Versionamento",
+                          items: [
+                            { label: "01a - Noções Gerais", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/01a-nocoes_gerais" },
+                            { label: "02a - Dinâmica Versionamento", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/02a-dinamica_versionamento" },
+                            { label: "03a - Tipos Licenças", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/03a-tipos_licencas" },
+                            { label: "03b - Criar Repositório", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/03b-criar_repositorio" },
+                            { label: "03c - Acessar Repositório", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/03c-acessar_repositorio" },
+                            { label: "04a - Git Básico", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/04a-git_basico" },
+                            { label: "05b - Acesso SSH", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/05b-acesso-ssh" },
+                            { label: "05c - Integrar Branches", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/05c-integrar-branches" },
+                          ],
+                        },
+                        // ARQUIVOS SOLTOS NA PASTA AMBIENTE
+                        {
+                          label: "04 - Comandos Linux",
+                          slug: "docs/projetos/ensino/tfdt/ambiente/04-comandos-linux",
+                        },
+                        {
+                          label: "05 - Editor de Código",
+                          slug: "docs/projetos/ensino/tfdt/ambiente/05-editor-codigo",
+                        },
+                        {
+                          label: "06 - Ambiente Virtual",
+                          slug: "docs/projetos/ensino/tfdt/ambiente/06-ambiente-virtual",
+                        },
+                        {
+                          label: "07 - Certificação",
+                          slug: "docs/projetos/ensino/tfdt/ambiente/07-certificacao",
+                        },
+                      ],
                     },
                   ],
                 },
+                // --- TECNOLOGIAS DIGITAIS ---
                 {
                   label: "Tecnologias Digitais",
                   items: [
+                    // Arquivos soltos na raiz da pasta
                     {
                       label: "Apresentação",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/intro",
+                    },
+                    {
+                      label: "Identidade Visual",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/id-visual",
+                    },
+                    // Pastas (Apontando para o arquivo intro.md dentro de cada uma)
+                    {
+                      label: "Anotações",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/anotacoes/intro",
+                    },
+                    {
+                      label: "Áudio",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/audio/intro",
+                    },
+                    {
+                      label: "Buscadores",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/buscadores/intro",
+                    },
+                    {
+                      label: "Conhecimentos",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/conhecimentos/intro",
+                    },
+                    {
+                      label: "Edição de Texto",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/edicao-texto/intro",
+                    },
+                    {
+                      label: "Google Docs",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/google-docs/intro",
+                    },
+                    {
+                      label: "Mapas Mentais",
+                      slug: "docs/projetos/ensino/tecnologiasdigitais/mapas-mentais/intro",
                     },
                   ],
                 },
@@ -477,12 +580,29 @@ export default defineConfig({
                     },
                   ],
                 },
+                // --- ACESSO REMOTO 
                 {
                   label: "Acesso Remoto",
                   items: [
                     {
                       label: "Introdução",
-                      slug: "docs/projetos/ensino/acessoremoto",
+                      slug: "docs/projetos/ensino/acessoremoto", // Aponta para index.md
+                    },
+                    {
+                      label: "Explicação",
+                      slug: "docs/projetos/ensino/acessoremoto/explicar",
+                    },
+                    {
+                      label: "Instruções",
+                      slug: "docs/projetos/ensino/acessoremoto/instruir",
+                    },
+                    {
+                      label: "Solicitar Acesso",
+                      slug: "docs/projetos/ensino/acessoremoto/solicitar-acesso",
+                    },
+                    {
+                      label: "Tutoriais",
+                      slug: "docs/projetos/ensino/acessoremoto/tutoriais",
                     },
                   ],
                 },
