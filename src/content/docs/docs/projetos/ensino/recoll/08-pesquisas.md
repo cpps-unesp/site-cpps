@@ -1,0 +1,53 @@
+---
+id: pesquisas
+title: Pesquisas no Recoll Search Desktop
+sidebar_label: Pesquisas no Recoll Search Desktop
+---
+
+### Utilização de operadores booleanos
+
+Para realizar pesquisas mais avançadas e deste modo aprimorar a filtragem e seleção dos arquivos disponíveis no Recoll, é necessário a utilização dos chamados **operadores booleanos (AND, OR, NOT)** e de alguns outros parâmetros voltados à filtragem de dados.
+
+![Imagem: exemplo de operadores booleanos](https://i.imgur.com/vBuRqBP.jpg)
+
+#### Termos Booleanos
+
+|Exemplo|Explicação|
+|-------|----------|
+|`Brasil AND Mercosul`|O programa irá retornar resultados que contenham necessariamente as palavras “Brasil” e “Mercosul”|
+|`Brasil OR Mercosul`|Poderá retornar as três opções: “Brasil” sozinho, “Mercosul” sozinho, ou “Brasil” e “Mercosul” no mesmo documento.|
+|`Brasil -Argentina`|Só serão mostrados resultados com “Brasil” mas que não possuam o termo “Argentina” |
+|`“Brasil” AND (“Coreia do Sul” OR “ONU”)` ou `“Brasil” AND “Coreia do Sul” OR “ONU”`|Essas duas expressões são equivalentes. Recomenda-se a utilização dos parênteses para deixar a construção da expressão mais clara. Além disso, cabe ressaltar que o OR tem prioridade em relação ao AND. Essa expressão irá retornar arquivos que contenham necessariamente a palavra Brasil e a palavra ONU ou Coreia do Sul.|
+|`dir:/caminho/desejado`|Restringir a pesquisa do índice externo a uma pasta específica.|
+|`filename: 2018` ou `filename: 2018-01-01/2022-01-01`|Restringe a pesquisa a partir de um termo que aparece o nome do arquivo. Útil se os arquivos seguem algum padrão de nomeação ou se possuem data em seu nome. Por exemplo, os PDFs das revistas brasileiras de Relações Internacionais disponíveis no LabRI, possuem sua data de publicação no nome do arquivo, sendo possível filtrar os PDFs utilizando o operador _filename_.|
+|`date: 2018` ou `date: 2018-01-01/2022-01-01`|Caso, os arquivos possuam os metadados de data. É possível filtrá-los pelo operador _date_.|
+
+### Utilização do dir
+
+##### Passo 1 
+
+Selecionar índice externo que se deseja pesquisar;
+
+##### Passo 2
+
+Realizar uma busca geral no índice;
+
+##### Passo 3 
+
+A partir do retorno da busca realizada, copie o endereço do diretório de algum arquivo retornado na busca; 
+
+##### Passo 4 
+
+Digite na busca “dir:” e cole o endereço copiado na caixa de busca do Recoll, apague o nome do arquivo, digite o termo desejado (Exemplo “Brasil AND Mercosul”):
+
+**Copiar**: `/media/hdvm07/bd/00002-002/jornal-esp/2021/07/08/geral,bolsonaro-e-fernandez-duelam-na-abertura-da-cupula-do-mercosul-e-escancaram-divergencias-no-bloco,70003772654.html`
+
+**Ajustar para**: 
+`dir:/media/hdvm07/bd/00002-002/jornal-esp/2021/07/08 Brasil AND Mercosul`
+
+### Autoria
+
+- [Rafael de Almeida](https://gitlab.com/unesp-labri/sites/labri/-/commits/main/website/docs/projetos/ensino/trilha-dados/recoll?author=rafaelrdealmeida)
+- [Júlia Silveira](https://gitlab.com/unesp-labri/sites/labri/-/commits/main/website/docs/projetos/ensino/trilha-dados/recoll?author=Júlia%20Silveira)
+- [Cintia Paulena Di Iorio](https://gitlab.com/unesp-labri/sites/labri/-/commits/main/website/docs/projetos/ensino/trilha-dados/recoll?author=cintia.iorio)
+- [Ver todas as autorias](https://gitlab.com/unesp-labri/sites/labri/-/commits/main/website/docs/projetos/ensino/trilha-dados/recoll)

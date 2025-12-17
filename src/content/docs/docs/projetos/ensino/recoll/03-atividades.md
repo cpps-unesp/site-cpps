@@ -1,12 +1,11 @@
 ---
-id: info
-title: Apresentação Recoll
-sidebar_label: Apresentação
+id: atividades
+title: Atividades Realizadas Recoll 
+sidebar_label: Atividades Realizadas
 ---
 
-:::tip
-Esta página visa conceituar e explicar de forma clara e objetiva a função do Recoll e suas funcionalidades.
-:::
+|Data|Atividades Realizadas|Presentes| 
+|---|---|---|
 
 ### Autoria
 

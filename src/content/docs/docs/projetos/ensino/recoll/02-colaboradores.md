@@ -1,12 +1,10 @@
 ---
-id: info
-title: Apresentação Recoll
-sidebar_label: Apresentação
+id: colaboradores
+title: Colaboradores Recoll 
+sidebar_label: Colaboradores
 ---
 
-:::tip
-Esta página visa conceituar e explicar de forma clara e objetiva a função do Recoll e suas funcionalidades.
-:::
+## Colaboradores do Projeto
 
 ### Autoria
 

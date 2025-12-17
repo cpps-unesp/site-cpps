@@ -580,6 +580,45 @@ export default defineConfig({
                     },
                   ],
                 },
+                {
+                  label: "Processar imagens que contém texto",
+                  items: [
+                    {
+                      label: "Introdução",
+                      // O erro estava aqui: precisa apontar para '01-intro'
+                      slug: "docs/projetos/ensino/processarimagens",
+                    },
+                    {
+                      label: "Formatos",
+                      slug: "docs/projetos/ensino/processarimagens/02-formatos",
+                    },
+                    {
+                      label: "OCR",
+                      slug: "docs/projetos/ensino/processarimagens/03-ocr",
+                    },
+                    {
+                      label: "Scanners",
+                      items: [
+                        {
+                          label: "Avision",
+                          slug: "docs/projetos/ensino/processarimagens/scanners/avision",
+                        },
+                        {
+                          label: "HP LaserJet",
+                          slug: "docs/projetos/ensino/processarimagens/scanners/hp-laserjet",
+                        },
+                        {
+                          label: "Plustek 3000",
+                          slug: "docs/projetos/ensino/processarimagens/scanners/plustek-3800",
+                        },
+                        {
+                          label: "Plustek PS286",
+                          slug: "docs/projetos/ensino/processarimagens/scanners/plustek-ps286",
+                        },
+                      ],
+                    },
+                  ],
+                },
                 // --- ACESSO REMOTO 
                 {
                   label: "Acesso Remoto",
@@ -606,30 +645,80 @@ export default defineConfig({
                     },
                   ],
                 },
+                // --- RECOLL  ---
                 {
                   label: "Recoll",
                   items: [
                     {
                       label: "Apresentação",
+                      // Aponta para o index.md
                       slug: "docs/projetos/ensino/recoll",
+                    },
+                    {
+                      label: "Colaboradores",
+                      slug: "docs/projetos/ensino/recoll/02-colaboradores",
+                    },
+                    {
+                      label: "Atividades Realizadas",
+                      slug: "docs/projetos/ensino/recoll/03-atividades",
+                    },
+                    {
+                      label: "Documentação",
+                      slug: "docs/projetos/ensino/recoll/04-doc",
+                    },
+                    {
+                      label: "Conceitos",
+                      slug: "docs/projetos/ensino/recoll/05-conceitos",
+                    },
+                    {
+                      label: "Configurando",
+                      slug: "docs/projetos/ensino/recoll/06-configurando",
+                    },
+                    {
+                      label: "Utilizando",
+                      slug: "docs/projetos/ensino/recoll/07-utilizando",
+                    },
+                    {
+                      label: "Pesquisas",
+                      slug: "docs/projetos/ensino/recoll/08-pesquisas",
                     },
                   ],
                 },
+                // --- FILEZILLA (ATUALIZADO) ---
                 {
-                  label: "Filezilla",
+                  label: "FileZilla",
                   items: [
                     {
                       label: "Apresentação",
+                      // Aponta para o index.md
                       slug: "docs/projetos/ensino/filezilla",
+                    },
+                    {
+                      label: "Configuração",
+                      slug: "docs/projetos/ensino/filezilla/configuracao",
                     },
                   ],
                 },
+                // --- MATERIAL BIBLIOGRÁFICO (ATUALIZADO) ---
                 {
                   label: "Material Bibliográfico",
                   items: [
                     {
                       label: "Apresentação",
+                      // Aponta para o index.md
                       slug: "docs/projetos/ensino/materialbibliografico",
+                    },
+                    {
+                      label: "Clássicos IPRI",
+                      slug: "docs/projetos/ensino/materialbibliografico/classicos-ipri",
+                    },
+                    {
+                      label: "Dicas Base de Dados",
+                      slug: "docs/projetos/ensino/materialbibliografico/dicas-base-de-dados",
+                    },
+                    {
+                      label: "Mapas",
+                      slug: "docs/projetos/ensino/materialbibliografico/mapas",
                     },
                   ],
                 },
@@ -667,12 +756,77 @@ export default defineConfig({
                     },
                   ],
                 },
+               // --- CADERNOS LABRI/UNESP (ATUALIZADO) ---
                 {
                   label: "Cadernos LabRI/UNESP",
                   items: [
                     {
                       label: "Apresentação",
-                      slug: "docs/projetos/sistemas/cadernoslabri",
+                      slug: "docs/projetos/sistemas/cadernoslabri", // Aponta para index.md
+                    },
+                    {
+                      label: "01 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/01-cadernos",
+                    },
+                    {
+                      label: "02 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/02-cadernos",
+                    },
+                    {
+                      label: "02 - Próximos Passos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/02-proximos",
+                    },
+                    {
+                      label: "03 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/03-cadernos",
+                    },
+                    {
+                      label: "03 - Comandos Linux",
+                      slug: "docs/projetos/sistemas/cadernoslabri/03-comandos-linux",
+                    },
+                    {
+                      label: "04 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/04-cadernos",
+                    },
+                    {
+                      label: "04 - Editor de Código",
+                      slug: "docs/projetos/sistemas/cadernoslabri/04-editor-codigo",
+                    },
+                    {
+                      label: "05 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/05-cadernos",
+                    },
+                    {
+                      label: "05 - Versionamento",
+                      slug: "docs/projetos/sistemas/cadernoslabri/05-versionamento",
+                    },
+                    {
+                      label: "06 - Ambiente Virtual",
+                      slug: "docs/projetos/sistemas/cadernoslabri/06-ambiente-virtual",
+                    },
+                    {
+                      label: "07 - Ambiente Virtual Windows",
+                      slug: "docs/projetos/sistemas/cadernoslabri/07-ambiente-virtual-windows",
+                    },
+                    {
+                      label: "07 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/07-cadernos",
+                    },
+                    {
+                      label: "07 - Tipos de Dados Básicos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/07-tipos-dados-basicos",
+                    },
+                    {
+                      label: "08 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/08-cadernos",
+                    },
+                    {
+                      label: "09 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/09-cadernos",
+                    },
+                    {
+                      label: "10 - Cadernos",
+                      slug: "docs/projetos/sistemas/cadernoslabri/10-cadernos",
                     },
                   ],
                 },
