@@ -741,18 +741,174 @@ export default defineConfig({
                 {
                   label: "Websites e Redes",
                   items: [
+                    // Arquivos soltos na raiz da pasta websites
                     {
-                      label: "Apresentação",
-                      slug: "docs/projetos/sistemas/websites",
+                      label: "01 - Introdução",
+                      slug: "docs/projetos/sistemas/websites/01-intro-md", // Nota: Na imagem parece ter um erro de digitação no arquivo "01-intro.md.md"
+                    },
+                    {
+                      label: "02 - Atividades",
+                      slug: "docs/projetos/sistemas/websites/02-atividades",
+                    },
+
+                    // Pasta EDITAR
+                    {
+                      label: "Editar",
+                      collapsed: true,
+                      items: [
+                        { label: "01 - Acessar", slug: "docs/projetos/sistemas/websites/editar/01-acessar" },
+                        { label: "02 - Editar Páginas", slug: "docs/projetos/sistemas/websites/editar/02-editar-paginas" },
+                        { label: "02 - Estrutura", slug: "docs/projetos/sistemas/websites/editar/02-estrutura" },
+                        { label: "03 - Equipe", slug: "docs/projetos/sistemas/websites/editar/03-equipe" },
+                        { label: "04 - Arquivos MD", slug: "docs/projetos/sistemas/websites/editar/04-arquivos-md" },
+                        { label: "05 - Docusaurus", slug: "docs/projetos/sistemas/websites/editar/05-docusaurus" },
+                        { label: "06 - Sidebar", slug: "docs/projetos/sistemas/websites/editar/06-sidebar" },
+                        { label: "07 - Infos Estáticas", slug: "docs/projetos/sistemas/websites/editar/07-infos-estaticas" },
+                        { label: "08 - Cadernos", slug: "docs/projetos/sistemas/websites/editar/08-cadernos" },
+                        { label: "09 - Páginas JS", slug: "docs/projetos/sistemas/websites/editar/09-paginas-js" }, // Mantive o erro de digitação 'pagiunas' no slug para funcionar o link
+                        { label: "GEPDAI", slug: "docs/projetos/sistemas/websites/editar/gepdai" },
+                      ],
+                    },
+
+                    // Pasta MARKDOWN
+                    {
+                      label: "Markdown",
+                      items: [
+                        { label: "01 - Geral", slug: "docs/projetos/sistemas/websites/markdown/01-geral" },
+                        { label: "02 - Específico", slug: "docs/projetos/sistemas/websites/markdown/02-especifico" },
+                      ],
                     },
                   ],
                 },
                 {
                   label: "Infraestrutura Computacional",
+                  collapsed: true, // Sugestão: deixe colapsado pois é muito grande
                   items: [
                     {
                       label: "Apresentação",
                       slug: "docs/projetos/sistemas/infraestrutura",
+                    },
+                    // --- INFRA AS CODE ---
+                    {
+                      label: "Infra as Code",
+                      items: [
+                        {
+                          label: "Ansible",
+                          items: [
+                             { label: "01 - Ansible", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/ansible/01-ansible" },
+                             { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/ansible/apoio" },
+                          ]
+                        },
+                        {
+                          label: "Terraform",
+                          items: [
+                             { label: "02 - Terraform", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/terraform/02-terraform" },
+                             { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/terraform/apoio" },
+                          ]
+                        },
+                      ],
+                    },
+                    // --- INFRA LABRI UNESP ---
+                    {
+                      label: "Infra LabRI/Unesp",
+                      items: [
+                        {
+                          label: "BIOS",
+                          collapsed: true,
+                          items: [
+                            { label: "01 - Dell", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/01-dell" },
+                            { label: "02 - IBM", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/02-ibm" },
+                            { label: "03 - Ryzen", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/03-ryzen" },
+                            { label: "04 - 118", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/04-118" },
+                            { label: "05 - 119", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/5-119" },
+                            { label: "06 - HP ML30 Gen9", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/06-hp-ml30-gen9" },
+                            { label: "07 - 123", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/07-123" },
+                            { label: "08 - Itautec", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/08-itautec" },
+                            { label: "BIOS Geral", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios" },
+                          ]
+                        },
+                        { label: "Dualboot", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/dualboot" },
+                        { label: "Equipamentos", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/equipslabri" },
+                        { label: "Scanners", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/scanners" },
+                      ]
+                    },
+                    // --- INFRA IPRI UNESP ---
+                    {
+                        label: "Infra IPRI/Unesp",
+                        items: [
+                            { label: "Fapesp", slug: "docs/projetos/sistemas/infraestrutura/infraipriunesp/fapesp" },
+                        ]
+                    },
+                    // --- LINUX ---
+                    {
+                      label: "Linux",
+                      collapsed: true,
+                      items: [
+                        { label: "03 - Tela Preta", slug: "docs/projetos/sistemas/infraestrutura/linux/03-tela-preta" },
+                        { label: "04 - Acesso Remoto", slug: "docs/projetos/sistemas/infraestrutura/linux/04-acesso-remoto" },
+                        { label: "Alterar Nome PC", slug: "docs/projetos/sistemas/infraestrutura/linux/alterar-nome-pc" },
+                        { label: "Atualizar", slug: "docs/projetos/sistemas/infraestrutura/linux/atualizar" },
+                        { label: "Formatar HD", slug: "docs/projetos/sistemas/infraestrutura/linux/formatar-hd" },
+                        { label: "Info Hardware", slug: "docs/projetos/sistemas/infraestrutura/linux/info-hardware" },
+                        { label: "Initramfs Boot", slug: "docs/projetos/sistemas/infraestrutura/linux/initrafms-boot" },
+                        { label: "Lock Screen", slug: "docs/projetos/sistemas/infraestrutura/linux/lock-screen" },
+                        { label: "Rede (Rein-network)", slug: "docs/projetos/sistemas/infraestrutura/linux/rein-network" },
+                        { label: "Reparar FSCK", slug: "docs/projetos/sistemas/infraestrutura/linux/reparar-fsck" },
+                        { label: "Resolução de Erros", slug: "docs/projetos/sistemas/infraestrutura/linux/resolucao-erros" },
+                        { label: "Senha Root", slug: "docs/projetos/sistemas/infraestrutura/linux/senha-root" },
+                        { label: "Tutorial Pendrive", slug: "docs/projetos/sistemas/infraestrutura/linux/tutorial-pendrive" },
+                        { label: "Ubuntu Initramfs", slug: "docs/projetos/sistemas/infraestrutura/linux/ubuntu-initrafms" },
+                        { label: "Usuários", slug: "docs/projetos/sistemas/infraestrutura/linux/usuarios" },
+                        { label: "Ventoy", slug: "docs/projetos/sistemas/infraestrutura/linux/ventoy" },
+                        { label: "Verificar Linux", slug: "docs/projetos/sistemas/infraestrutura/linux/verificar-linux" },
+                      ]
+                    },
+                    // --- REDES ---
+                    {
+                      label: "Redes",
+                      collapsed: true,
+                      items: [
+                        {
+                            label: "Container",
+                            items: [
+                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/container/01-intro" },
+                                { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/container/apoio" },
+                            ]
+                        },
+                        {
+                            label: "Firewall",
+                            items: [
+                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/firewall/01-intro" },
+                                { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/firewall/apoio" },
+                            ]
+                        },
+                        {
+                            label: "Kubernetes",
+                            items: [
+                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/kubernetes/01-intro" },
+                                { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/kubernetes/apoio" },
+                            ]
+                        },
+                        {
+                            label: "Proxmox",
+                            items: [
+                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/01-intro" },
+                                { label: "02 - Instalação", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/02-intalacao" },
+                                { label: "06 - ZFS", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/06-zfs" },
+                                { label: "Storage", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/storage" },
+                                { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/apoio" },
+                            ]
+                        },
+                        {
+                            label: "Rancher",
+                            items: [
+                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/rancher/01-intro" },
+                                { label: "Google Authenticator", slug: "docs/projetos/sistemas/infraestrutura/redes/google-authenticador" },
+                                { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/rancher/apoio" },
+                            ]
+                        },
+                        { label: "Atividades", slug: "docs/projetos/sistemas/infraestrutura/atividades" },
+                      ]
                     },
                   ],
                 },

@@ -1,11 +1,7 @@
 ---
-title: "Projetos de Dados"
-description: "Visão geral dos projetos de dados do CPPS."
+id: intro
+title: Introdução
+sidebar_label: Introdução
 ---
 
-# Projetos de Dados
-
-Nesta seção estão os principais projetos de dados do CPPS:
-
-- [ThesisBR](./thesisbr)
-- [Hemeroteca PEB](./hemeroteca-peb)
+EM CONSTRUÇÃO

@@ -1,0 +1,9 @@
+---
+id: senha-root
+title: Recuperar senha de root do Linux
+sidebar_label: Recuperar senha de root do Linux
+---
+
+### Material de Apoio
+
+- [Recuperar senha de root do Linux](https://archive.is/8A2vF)
