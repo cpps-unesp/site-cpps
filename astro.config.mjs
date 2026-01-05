@@ -1011,40 +1011,40 @@ export default defineConfig({
             {
               label: "Extensão",
               items: [
-                // --------- POD-RI ----------
-                {
-                  label: "POD-RI",
-                  items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/extensao/podri",
-                    },
-                  ],
+                 {
+                  label: "POD-RI ↗", // Adicionei a setinha para indicar que sai do site
+                  link: "https://labriunesp.org/pod-ri",
+                  attrs: { target: "_blank" }, // Isso faz abrir em nova aba
                 },
                 {
-                  label: "Conhecer Para Acolher",
-                  items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/extensao/conhecerparaacolher",
-                    },
-                  ],
+                  label: "Conhecer Para Acolher ↗",
+                  link: "https://labriunesp.org/conhecer-para-acolher",
+                  attrs: { target: "_blank" },
                 },
                 {
-                  label: "Cidades Saudáveis e Sustentáveis",
-                  items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/extensao/cidadessaudaveis",
-                    },
-                  ],
+                  label: "Cidades Saudáveis e Sustentáveis ↗",
+                  link: "https://labriunesp.org/cidades-sustentaveis",
+                  attrs: { target: "_blank" },
                 },
-                {
+                 {
                   label: "As Relações Internacionais e o Novo Coronavírus",
                   items: [
                     {
                       label: "Apresentação",
+                      // Aponta para o index.md
                       slug: "docs/projetos/extensao/ricoronavirus",
+                    },
+                    {
+                      label: "Grupos de Trabalho",
+                      slug: "docs/projetos/extensao/ricoronavirus/02-grupos-trabalho",
+                    },
+                    {
+                      label: "Postagens",
+                      slug: "docs/projetos/extensao/ricoronavirus/04-postagens",
+                    },
+                    {
+                      label: "Identidade Visual",
+                      slug: "docs/projetos/extensao/ricoronavirus/05-id-visual",
                     },
                   ],
                 },

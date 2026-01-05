@@ -1,11 +1,11 @@
 ---
-title: "Projetos de Dados"
-description: "Visão geral dos projetos de dados do CPPS."
+id: intro
+title: Apresentação Pandemia e as Relações Internacionais
+sidebar_label: Apresentação
 ---
 
-# Projetos de Dados
+<center>
+    <img src="" alt="centered image" width="500" height="500" />
+</center>
 
-Nesta seção estão os principais projetos de dados do CPPS:
-
-- [ThesisBR](./thesisbr)
-- [Hemeroteca PEB](./hemeroteca-peb)
+O projeto "As Relações Internacionais e o Novo Coronavírus" surgiu a partir da iniciativa do Laboratório de Relações Internacionais (LabRI) da UNESP Franca. O projeto contou com a participação de vários docentes e discentes da universidade e tinha como principal objetivo produzir conteúdos sobre a pandemia de COVID-19 sob a perspectiva das Relações Internacionais.
