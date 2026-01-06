@@ -13,7 +13,7 @@ Aqui você irá aprender a como criar um perfil no GitHub. Isso é importante po
 1. Crie uma conta no Github
 2. Crie um repositório com nome **idêntico** ao seu nome de usuário e torne ele público. Selecione a opção "Add a README file" e, em "Choose a license", selecione "MIT License". Como abaixo:
 
-![github1](/img/projetos/ensino/trilha-dados/github1.jpg)
+![github1](/imagens/img-geral/github1.jpg)
 
 Observação: Na imagem o nome do repositório está diferente do nome de usuário. Não cometa esse erro. 😉
 
@@ -24,7 +24,7 @@ Observação: Na imagem o nome do repositório está diferente do nome de usuár
 
    a. Clique em **Start the generador**, uma paleta de cores aleatórias surgirá na página. Passe o mouse em cima das cores e repare que cada uma delas possui um menu próprio, você pode alterar o tom de uma cor clicando em: 
 
-![github2](/img/projetos/ensino/trilha-dados/github2.png)
+![github2](/imagens/img-geral/github2.png)
 
    b. Esse menu permite que você deslize as cores na paleta, copie o código de uma cor, favorite, etc. O ícone de cadeado fixa a cor em questão na sua paleta. Aperte a barra de espaço do seu teclado para alterar as cores da paleta que não estiverem travadas (cadeado)
 
@@ -45,7 +45,7 @@ Observação: Na imagem o nome do repositório está diferente do nome de usuár
 6. Entre no seu perfil do github e olhe para o canto superior direito. Uma mensagem deve aparecer para anexar o seu repositório como capa do seu perfil.
 7. Quando você acessar o repositório essa mensagem deve aparecer:
 
-![github3](/img/projetos/ensino/trilha-dados/github3.png)
+![github3](/imagens/img-geral/github3.png)
 
 ### Exemplos de perfis
 

@@ -3,10 +3,7 @@ id: index
 title: Apresentação TweePInA
 sidebar_label: Apresentação
 ---
-
-<center>
-    <img src="/img/projetos/dados/tweepina/tweepina.svg" alt="centered image" width="200" height="300" />
-</center>
+<img src="/imagens/logos/tweepina.svg" alt="Logo Mercodocs" width="200" style="display: block; margin: 0 auto;">
 
 
 O Twitter é uma das principais redes sociais da atualidade, sendo muito utilizado por autoridades e instituições públicas que são objetos de estudo de várias pesquisas acadêmicas. Porém, ter acesso a série histórica de tweets dessas autoridades e instituições muitas vezes é difícil. Além disso, muitos tweets acabam sendo deletados, não estando disponíveis em arquivos e/ou repositórios públicos. Devido a isso, o objetivo geral do projeto **Tweets from Public institutions and Authorities** (TweePInA) é reunir tweets de autoridades e instituições públicas com especial destaque ao Brasil e organismos internacionais. 

@@ -3,10 +3,7 @@ id: info
 title: Apresentação MercoDocs
 sidebar_label: Apresentação
 ---
-
-<center>
-    <img src="/img/projetos/dados/mercodocs/mercodocs.svg" alt="centered image" width="200" height="300" />
-</center>
+<img src="/imagens/logos/mercodocs.png" alt="Logo Mercodocs" width="200" style="display: block; margin: 0 auto;">
 
 O Mercosul possui uma gama extensa e variada de documentação oficial e pública. Apesar disso, encontramos vários problemas que dificultam a adequada utilização deste material. Dentre destes problemas, podemos destacar: a plataforma que disponibiliza os documentos não indexada integralmente os arquivos; alguns metadados que apresentam inconsistência; muitos documentos estão em formato de imagem (tiff) ou em pdf não pesquisável, sendo necessário a realização de OCR para uma melhor utilização dos arquivos neste estado. A partir deste cenário, o projeto **MercoDocs** objetiva auxiliar na coleta, tratamento e melhor disponibilização da documentação pública do Mercosul. 
 

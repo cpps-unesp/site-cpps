@@ -1,0 +1,56 @@
+---
+id: p04-01-booleanos
+title: Booleanos
+sidebar_label: Booleanos
+---
+
+
+
+
+
+- Avaliar se uma expressão é `True` ou `False` pode ajudar no controle de fluxo
+
+### Veracidade
+
+|tipo                       |veracidade                                                         |
+|---------------------------|-------------------------------------------------------------------|
+|`int`                      |`0` é `False`, todoso os demais (incluindo os negativos) são `True`|
+|`list`,`tuple`,`set`,`dict`| se vazios são `False`, se contiverem items são `True` |
+|`None`                     | `False`                                               |
+
+
+-Se você quiser testar suas suposições sobre uma expressão que retorna `True` ou `False`, você pode passá-lo para o construtor para booleios: `bool(expression)`
+
+
+### Comparações
+
+|Operador|Significado|
+|--------|-----------|
+|`<`|Menor que|
+|`<=`|Menor ou igual que |
+|`>`|Maior que |
+|`>=`|Maior ou igual que|
+|`==`|Igual a|
+|`!=`|Diferente de|
+|`is`| identidade do objeto|
+|`is not`|identidade do objeto|
+
+
+- Normalmente, `is` e `is not` são utilizados em conjunto com `None`, `True` ou `False`
+
+
+### operadores booleanos
+
+| Operador| Resultado|
+|----------|---------|
+|`x or y`|se x é falso, então y, do contrário x|
+|`x and y`|se x é falso, então x, do contrário y|
+|`not x`|se x é falso, então True, caso contrário False|
+
+
+- Lembre-se disso: `or` e `and` retorna um de seus operandos, em vez de `True` ou `False`
+
+
+
+
+

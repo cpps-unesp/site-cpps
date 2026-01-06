@@ -16,13 +16,13 @@ Essa página tem como função explicar o processo de digitalização e edição
 
 1. Após abrir o programa, clique em "Adicionar" e selecione a pasta onde o livro escaneado está armazenado. Note que ela deve estar no ambiente virtual. Na seleção "Ordenar", selecione a melhor opção para deixar as páginas em ordem, geralmente será "Crescente" ou "Numérico".
 
-![krename1](/img/projetos/ensino/krename1.png)
+![krename1](/imagens/img-geral/krename1.png)
 
 2. Vá direto para a aba "4. Nome do arquivo", você não precisará alterar as abas 2 e 3. Em "Prefixo", coloque Número. Mantenha "Sufixo" em branco, "Nome do arquivo", coloque "nome personalizado" e "Extensão" coloque "Usar extensão original". As configurações estão ilustradas na imagem abaixo.
 
 3. Em "Número de dígitos", coloque sempre um número que faça com que as últimas páginas continuem com um zero na frente. Portanto, se o livro tiver entre 100 e 1000 páginas, o número de dígitos será 4. Dessa forma, para um livro de 254 páginas:
 
-![krename2](/img/projetos/ensino/krename2.png)
+![krename2](/imagens/img-geral/krename2.png)
 
 4. Feito esse processo, clique em Concluir e aguarde o carregamento. Após, os arquivos estarão renomeados e prontos para serem tratados no ScanTailor na ordem certa das páginas.
 
@@ -36,7 +36,7 @@ flatpak run com.github._4lex4.ScanTailor-Advanced
 
 - Selecione a pasta onde se encontram os arquivos digitalizados. Repare que será criado uma pasta chamada “out” onde ficarão salvos os arquivos editados pelo ScanTailor.
 
-![scantailor1](/img/projetos/ensino/scantailor1.png)
+![scantailor1](/imagens/img-geral/scantailor1.png)
 
 - Aqui, na maioria das vezes não é necessário configurar nada, o programa já entende o que deve ser feito, apenas clique no “play” de cada etapa e aguarde os respectivos carregamentos. Ao final, não é necessário salvar o projeto, os arquivos são salvos automaticamente.
 

@@ -462,68 +462,172 @@ export default defineConfig({
                 {
                   label: "Visão geral",
                   slug: "docs/projetos/ensino",
-                },
-                // --- TFDT (Trilhas de Fundamentos) - CORRIGIDO ---
+                },// --- TRILHA DE DADOS - PYTHON (COMPLETO) ---
                 {
-                  label: "Trilhas de Fundamentos (TFDT)",
+                  label: "Trilhas de Dados - Python",
                   items: [
                     {
-                      label: "Ambiente de Desenvolvimento",
+                      label: "Comece por aqui",
+                      slug: "docs/projetos/ensino/tfdt", // Aponta para index.md na raiz do tfdt
+                    },
+                    {
+                      label: "Paradas",
                       items: [
+                        // --- 1. AMBIENTE DE TRABALHO ---
                         {
-                          label: "Introdução",
-                          slug: "docs/projetos/ensino/tfdt/ambiente/01-intro",
-                        },
-                        // SUBPASTA MARKDOWN
-                        {
-                          label: "Markdown",
+                          label: "Ambiente de Trabalho",
                           items: [
+                            { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/01-intro" },
                             {
-                              label: "01 - Noções Gerais",
-                              slug: "docs/projetos/ensino/tfdt/ambiente/markdown/01-nocoes-gerais",
+                              label: "Markdown",
+                              items: [
+                                { label: "Noções Gerais", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/01-nocoes-gerais" },
+                                { label: "Sintaxe", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/02-sintaxe" },
+                                { label: "Criar GitHub Profile", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/03-criar-github-profile" },
+                              ]
                             },
                             {
-                              label: "02 - Sintaxe",
-                              slug: "docs/projetos/ensino/tfdt/ambiente/markdown/02-sintaxe",
+                              label: "Versionamento",
+                              items: [
+                                { label: "Noções Gerais", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/01a-nocoes_gerais" },
+                                { label: "Dinâmica", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/02a-dinamica_versionamento" },
+                                {
+                                  label: "Repositório",
+                                  items: [
+                                    { label: "Tipos Licenças", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03a-tipos_licencas" },
+                                    { label: "Criar Repositório", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03b-criar_repositorio" },
+                                    { label: "Acessar Repositório", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03c-acessar_repositorio" },
+                                  ]
+                                },
+                                {
+                                  label: "Utilizando Git",
+                                  items: [
+                                    { label: "Git Básico", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/04a-git_basico" },
+                                    {
+                                      label: "Indo Além",
+                                      items: [
+                                        { label: "Acesso SSH", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/indo-alem/05b-acesso-ssh" },
+                                        { label: "Integrar Branches", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/indo-alem/05c-integrar-branches" },
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
                             },
-                            {
-                              label: "03 - Criar GitHub Profile",
-                              slug: "docs/projetos/ensino/tfdt/ambiente/markdown/03-criar-github-profile",
-                            },
-                          ],
+                            { label: "Comandos Linux", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/04-comandos-linux" },
+                            { label: "Editor de Código", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/05-editor-codigo" },
+                            { label: "Ambiente Virtual", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/06-ambiente-virtual" },
+                            { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/07-certificacao" },
+                          ]
                         },
-                        // SUBPASTA VERSIONAMENTO
+
+                        // --- 2. FUNDAMENTOS PYTHON ---
                         {
-                          label: "Versionamento",
+                          label: "Fundamentos Python",
                           items: [
-                            { label: "01a - Noções Gerais", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/01a-nocoes_gerais" },
-                            { label: "02a - Dinâmica Versionamento", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/02a-dinamica_versionamento" },
-                            { label: "03a - Tipos Licenças", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/03a-tipos_licencas" },
-                            { label: "03b - Criar Repositório", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/03b-criar_repositorio" },
-                            { label: "03c - Acessar Repositório", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/03c-acessar_repositorio" },
-                            { label: "04a - Git Básico", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/04a-git_basico" },
-                            { label: "05b - Acesso SSH", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/05b-acesso-ssh" },
-                            { label: "05c - Integrar Branches", slug: "docs/projetos/ensino/tfdt/ambiente/versionamento/05c-integrar-branches" },
-                          ],
+                            { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/01-intro" },
+                            {
+                              label: "Básico 01",
+                              items: [
+                                { label: "Zen do Python", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/zen-do-python" },
+                                {
+                                  label: "Tipos Básicos",
+                                  items: [
+                                    { label: "Variáveis e Números", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/variaveis-numeros" },
+                                    { label: "Strings", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/strings" },
+                                    { label: "Conversão de Tipos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/conversao-de-tipos" },
+                                    { label: "Operadores", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/operadores" },
+                                  ]
+                                },
+                                { label: "Função", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/funcao" },
+                                { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/certificacao" },
+                              ]
+                            },
+                            {
+                              label: "Básico 02",
+                              items: [
+                                {
+                                  label: "Controle de Fluxo",
+                                  items: [
+                                    { label: "Booleanos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/controle-fluxo/booleanos" },
+                                    { label: "Declaração e Controle", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/controle-fluxo/declaracao-controle" },
+                                  ]
+                                },
+                                {
+                                  label: "Tipos Avançados",
+                                  items: [
+                                    { label: "Listas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/listas" },
+                                    { label: "Dicionários", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/dicionarios" },
+                                    { label: "Conjuntos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/conjuntos" },
+                                  ]
+                                },
+                                { label: "Mutabilidade", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/mutabilidade" },
+                              ]
+                            },
+                            {
+                              label: "Básico 03",
+                              items: [
+                                { label: "Arquivos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/arquivos" },
+                                { label: "Bibliotecas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/bibliotecas" },
+                                { label: "Diretórios", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/diretorios" },
+                                { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/certificacao" },
+                              ]
+                            },
+                            {
+                              label: "Intermediário",
+                              items: [
+                                { label: "Objetos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/objetos" },
+                                { label: "Listas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/listas" },
+                                { label: "Itertools", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/itertools" },
+                                { label: "Encode", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/encode" },
+                                { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/certificacao" },
+                              ]
+                            }
+                          ]
                         },
-                        // ARQUIVOS SOLTOS NA PASTA AMBIENTE
+
+                        // --- 3. ANÁLISE DE DADOS ---
                         {
-                          label: "04 - Comandos Linux",
-                          slug: "docs/projetos/ensino/tfdt/ambiente/04-comandos-linux",
+                          label: "Análise de Dados",
+                          items: [
+                            { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/00-intro" },
+                            { label: "Conceitos Básicos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-00-conceitos-basicos" },
+                            { label: "Pandas: Series e DataFrame", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-01-pandas-series-e-dataframe" },
+                            { label: "Propriedades Básicas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-02-propriedades-basicas" },
+                            { label: "Consulta e Modificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-03-consulta-e-modificacao" },
+                            { label: "Trabalhando com Arquivos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-04-trabalhando-com-arquivos" },
+                            { label: "Gerar Gráficos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/02-gerar-graficos" },
+                            { label: "Combinando Dataframes", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/03-combinando-dataframes" },
+                            { label: "Tratamento de Dados", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/04-tratamento-de-dados" },
+                          ]
                         },
+
+                        // --- 4. COLETA DE DADOS ---
                         {
-                          label: "05 - Editor de Código",
-                          slug: "docs/projetos/ensino/tfdt/ambiente/05-editor-codigo",
+                          label: "Coleta de Dados",
+                          slug: "docs/projetos/ensino/tfdt/trilha/paradas/coleta-dados/intro",
                         },
+
+                        // --- 5. BANCO DE DADOS ---
                         {
-                          label: "06 - Ambiente Virtual",
-                          slug: "docs/projetos/ensino/tfdt/ambiente/06-ambiente-virtual",
+                          label: "Banco de Dados",
+                          slug: "docs/projetos/ensino/tfdt/trilha/paradas/banco-dados/intro",
                         },
+
+                        // --- 6. MÉTODOS QUANTITATIVOS ---
                         {
-                          label: "07 - Certificação",
-                          slug: "docs/projetos/ensino/tfdt/ambiente/07-certificacao",
+                          label: "Métodos Quantitativos",
+                          slug: "docs/projetos/ensino/tfdt/trilha/paradas/metodos-quanti/intro",
                         },
                       ],
+                    },
+                    {
+                      label: "Indicações",
+                      slug: "docs/projetos/ensino/tfdt/indicacoes",
+                    },
+                    {
+                      label: "Identidade Visual",
+                      slug: "docs/projetos/ensino/tfdt/id-visual",
                     },
                   ],
                 },
