@@ -1,4 +1,4 @@
-// @ts-check
+
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import pagefind from "astro-pagefind";
@@ -80,7 +80,7 @@ export default defineConfig({
                     },
                   ],
                 },
-                // --- NEWSCLOUD (ATUALIZADO AQUI) ---
+                // --- NEWSCLOUD ---
                 {
                   label: "NewsCloud",
                   items: [
@@ -139,7 +139,7 @@ export default defineConfig({
                     },
                   ],
                 },
-                 // --- DIÁRIOS BR (ATUALIZADO) ---
+                 // --- DIÁRIOS BR ---
                 {
                   label: "DiáriosBR",
                   items: [
@@ -187,7 +187,7 @@ export default defineConfig({
                     },
                   ],
                 },
-                // --- FULLTEXT (ATUALIZADO) ---
+                // --- FULLTEXT ---
                 {
                   label: "FullText",
                   items: [
@@ -219,7 +219,6 @@ export default defineConfig({
                   items: [
                     {
                       label: "Apresentação",
-                      // Aponta para o index.md
                       slug: "docs/projetos/dados/mercodocs",
                     },
                     {
@@ -257,8 +256,7 @@ export default defineConfig({
                     },
                     {
                       label: "Documentação",
-                      // autogenerate: false, // Caso precise desativar a geração automática
-                      collapsed: false, // Define se o menu começa aberto ou fechado
+                      collapsed: false,
                       items: [
                         {
                           label: "Introdução",
@@ -305,7 +303,6 @@ export default defineConfig({
                   items: [
                     {
                       label: "Apresentação",
-                      // Aponta para o index.md
                       slug: "docs/projetos/dados/acervorodalint",
                     },
                     {
@@ -373,9 +370,7 @@ export default defineConfig({
                     },
                     {
                       label: "Identidade Visual",
-                      // Atenção: Seu arquivo parece estar nomeado como 'identidade.md.md' na imagem.
-                      // Se for isso mesmo, o slug pode variar, mas geralmente o Astro limpa para:
-                      slug: "docs/projetos/dados/irjournals/identidade", 
+                      slug: "docs/projetos/dados/irjournals/identidade",
                     },
                     {
                       label: "Como citar",
@@ -388,7 +383,6 @@ export default defineConfig({
                   items: [
                     {
                       label: "Apresentação",
-                      // Aponta para o index.md
                       slug: "docs/projetos/dados/govlatinamerica",
                     },
                     {
@@ -422,7 +416,6 @@ export default defineConfig({
                   items: [
                     {
                       label: "Apresentação",
-                      // Aponta para o index.md dentro da nova pasta internetri
                       slug: "docs/projetos/dados/internetri",
                     },
                     {
@@ -462,180 +455,205 @@ export default defineConfig({
                 {
                   label: "Visão geral",
                   slug: "docs/projetos/ensino",
-                },// --- TRILHA DE DADOS - PYTHON (COMPLETO) ---
+                },
+                // --- TRILHA DE DADOS - PYTHON ---
                 {
-                  label: "Trilhas de Dados - Python",
+                  label: "Trilhas de Fundamentos de Tecnologias Digitais",
                   items: [
                     {
-                      label: "Comece por aqui",
-                      slug: "docs/projetos/ensino/tfdt", // Aponta para index.md na raiz do tfdt
-                    },
-                    {
-                      label: "Paradas",
+                      label: "Trilha de Dados - Python",
                       items: [
-                        // --- 1. AMBIENTE DE TRABALHO ---
+                        { label: "Comece por aqui", slug: "docs/projetos/ensino/tfdt" },
                         {
-                          label: "Ambiente de Trabalho",
+                          label: "Paradas",
                           items: [
-                            { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/01-intro" },
+                            // 1. AMBIENTE DE TRABALHO
                             {
-                              label: "Markdown",
+                              label: "Ambiente de Trabalho",
                               items: [
-                                { label: "Noções Gerais", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/01-nocoes-gerais" },
-                                { label: "Sintaxe", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/02-sintaxe" },
-                                { label: "Criar GitHub Profile", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/03-criar-github-profile" },
-                              ]
-                            },
-                            {
-                              label: "Versionamento",
-                              items: [
-                                { label: "Noções Gerais", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/01a-nocoes_gerais" },
-                                { label: "Dinâmica", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/02a-dinamica_versionamento" },
+                                { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/01-intro" },
                                 {
-                                  label: "Repositório",
+                                  label: "Markdown",
                                   items: [
-                                    { label: "Tipos Licenças", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03a-tipos_licencas" },
-                                    { label: "Criar Repositório", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03b-criar_repositorio" },
-                                    { label: "Acessar Repositório", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03c-acessar_repositorio" },
+                                    { label: "Noções Gerais", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/01-nocoes-gerais" },
+                                    { label: "Sintaxe", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/02-sintaxe" },
+                                    { label: "Criar GitHub Profile", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/markdown/03-criar-github-profile" },
                                   ]
                                 },
                                 {
-                                  label: "Utilizando Git",
+                                  label: "Versionamento",
                                   items: [
-                                    { label: "Git Básico", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/04a-git_basico" },
+                                      { label: "Noções Gerais", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/01a-nocoes_gerais" },
+                                      { label: "Dinâmica", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/02a-dinamica_versionamento" },
+                                      {
+                                        label: "Repositório",
+                                        items: [
+                                          { label: "Tipos Licenças", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03a-tipos_licencas" },
+                                          { label: "Criar Repositório", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03b-criar_repositorio" },
+                                          { label: "Acessar Repositório", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/repositorio/03c-acessar_repositorio" },
+                                        ]
+                                      },
+                                      {
+                                        label: "Utilizando o Git",
+                                        items: [
+                                          { label: "Git Básico", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/04a-git_basico" },
+                                          {
+                                            label: "Git - Indo Além",
+                                            items: [
+                                              { label: "Acesso SSH", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/indo-alem/05b-acesso-ssh" },
+                                              { label: "Integrar Branches", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/indo-alem/05c-integrar-branches" },
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                  ]
+                                },
+                                { label: "Comandos Linux", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/04-comandos-linux" },
+                                { label: "Editor de Código", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/05-editor-codigo" },
+                                { label: "Ambiente Virtual", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/06-ambiente-virtual" },
+                                { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/07-certificacao" },
+                              ]
+                            },
+                            // 2. FUNDAMENTOS PYTHON
+                            {
+                              label: "Fundamentos Python",
+                              items: [
+                                { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/01-intro" },
+                                {
+                                  label: "Básico 01",
+                                  items: [
+                                    { label: "Zen do Python", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/zen-do-python" },
                                     {
-                                      label: "Indo Além",
+                                      label: "Tipos Básicos",
                                       items: [
-                                        { label: "Acesso SSH", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/indo-alem/05b-acesso-ssh" },
-                                        { label: "Integrar Branches", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/indo-alem/05c-integrar-branches" },
+                                        { label: "Variáveis e Números", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/variaveis-numeros" },
+                                        { label: "Strings", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/strings" },
+                                        { label: "Conversão de Tipos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/conversao-de-tipos" },
+                                        { label: "Operadores", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/operadores" },
                                       ]
-                                    }
+                                    },
+                                    { label: "Função", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/funcao" },
+                                    { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/certificacao" },
+                                  ]
+                                },
+                                {
+                                  label: "Básico 02",
+                                  items: [
+                                    {
+                                      label: "Controle de Fluxo",
+                                      items: [
+                                        { label: "Booleanos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/controle-fluxo/booleanos" },
+                                        { label: "Declaração e Controle", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/controle-fluxo/declaracao-controle" },
+                                      ]
+                                    },
+                                    {
+                                      label: "Tipos Avançados",
+                                      items: [
+                                        { label: "Listas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/listas" },
+                                        { label: "Dicionários", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/dicionarios" },
+                                        { label: "Conjuntos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/conjuntos" },
+                                      ]
+                                    },
+                                    { label: "Mutabilidade", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/mutabilidade" },
+                                  ]
+                                },
+                                {
+                                  label: "Básico 03",
+                                  items: [
+                                    { label: "Arquivos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/arquivos" },
+                                    { label: "Bibliotecas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/bibliotecas" },
+                                    { label: "Diretórios", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/diretorios" },
+                                    { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/certificacao" },
+                                  ]
+                                },
+                                {
+                                  label: "Intermediário",
+                                  items: [
+                                    { label: "Objetos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/objetos" },
+                                    { label: "Listas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/listas" },
+                                    { label: "Itertools", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/itertools" },
+                                    { label: "Encode", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/encode" },
+                                    { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/certificacao" },
                                   ]
                                 }
                               ]
                             },
-                            { label: "Comandos Linux", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/04-comandos-linux" },
-                            { label: "Editor de Código", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/05-editor-codigo" },
-                            { label: "Ambiente Virtual", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/06-ambiente-virtual" },
-                            { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/07-certificacao" },
-                          ]
-                        },
-
-                        // --- 2. FUNDAMENTOS PYTHON ---
-                        {
-                          label: "Fundamentos Python",
-                          items: [
-                            { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/01-intro" },
+                            // 3. ANÁLISE DE DADOS
                             {
-                              label: "Básico 01",
+                              label: "Análise de Dados",
                               items: [
-                                { label: "Zen do Python", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/zen-do-python" },
-                                {
-                                  label: "Tipos Básicos",
-                                  items: [
-                                    { label: "Variáveis e Números", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/variaveis-numeros" },
-                                    { label: "Strings", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/strings" },
-                                    { label: "Conversão de Tipos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/conversao-de-tipos" },
-                                    { label: "Operadores", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/tipos-basicos/operadores" },
-                                  ]
-                                },
-                                { label: "Função", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/funcao" },
-                                { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-01/certificacao" },
+                                { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/00-intro" },
+                                { label: "Conceitos Básicos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-00-conceitos-basicos" },
+                                { label: "Pandas: Series e DataFrame", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-01-pandas-series-e-dataframe" },
+                                { label: "Propriedades Básicas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-02-propriedades-basicas" },
+                                { label: "Consulta e Modificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-03-consulta-e-modificacao" },
+                                { label: "Trabalhando com Arquivos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-04-trabalhando-com-arquivos" },
+                                { label: "Gerar Gráficos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/02-gerar-graficos" },
+                                { label: "Combinando Dataframes", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/03-combinando-dataframes" },
+                                { label: "Tratamento de Dados", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/04-tratamento-de-dados" },
                               ]
                             },
+                            // 4. COLETA DE DADOS
                             {
-                              label: "Básico 02",
-                              items: [
-                                {
-                                  label: "Controle de Fluxo",
-                                  items: [
-                                    { label: "Booleanos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/controle-fluxo/booleanos" },
-                                    { label: "Declaração e Controle", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/controle-fluxo/declaracao-controle" },
-                                  ]
-                                },
-                                {
-                                  label: "Tipos Avançados",
-                                  items: [
-                                    { label: "Listas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/listas" },
-                                    { label: "Dicionários", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/dicionarios" },
-                                    { label: "Conjuntos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/tipos-avancados/conjuntos" },
-                                  ]
-                                },
-                                { label: "Mutabilidade", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-02/mutabilidade" },
-                              ]
+                              label: "Coleta de Dados",
+                              slug: "docs/projetos/ensino/tfdt/trilha/paradas/coleta-dados/intro",
                             },
+                            // 5. BANCO DE DADOS
                             {
-                              label: "Básico 03",
-                              items: [
-                                { label: "Arquivos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/arquivos" },
-                                { label: "Bibliotecas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/bibliotecas" },
-                                { label: "Diretórios", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/diretorios" },
-                                { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/basico-03/certificacao" },
-                              ]
+                              label: "Banco de Dados",
+                              slug: "docs/projetos/ensino/tfdt/trilha/paradas/banco-dados/intro",
                             },
+                            // 6. MÉTODOS QUANTITATIVOS
                             {
-                              label: "Intermediário",
-                              items: [
-                                { label: "Objetos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/objetos" },
-                                { label: "Listas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/listas" },
-                                { label: "Itertools", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/itertools" },
-                                { label: "Encode", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/encode" },
-                                { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/intermediario/certificacao" },
-                              ]
-                            }
-                          ]
+                              label: "Métodos Quantitativos",
+                              slug: "docs/projetos/ensino/tfdt/trilha/paradas/metodos-quanti/intro",
+                            },
+                          ],
                         },
-
-                        // --- 3. ANÁLISE DE DADOS ---
                         {
-                          label: "Análise de Dados",
-                          items: [
-                            { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/00-intro" },
-                            { label: "Conceitos Básicos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-00-conceitos-basicos" },
-                            { label: "Pandas: Series e DataFrame", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-01-pandas-series-e-dataframe" },
-                            { label: "Propriedades Básicas", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-02-propriedades-basicas" },
-                            { label: "Consulta e Modificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-03-consulta-e-modificacao" },
-                            { label: "Trabalhando com Arquivos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-04-trabalhando-com-arquivos" },
-                            { label: "Gerar Gráficos", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/02-gerar-graficos" },
-                            { label: "Combinando Dataframes", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/03-combinando-dataframes" },
-                            { label: "Tratamento de Dados", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/04-tratamento-de-dados" },
-                          ]
+                          label: "Indicações",
+                          slug: "docs/projetos/ensino/tfdt/indicacoes",
                         },
-
-                        // --- 4. COLETA DE DADOS ---
                         {
-                          label: "Coleta de Dados",
-                          slug: "docs/projetos/ensino/tfdt/trilha/paradas/coleta-dados/intro",
-                        },
-
-                        // --- 5. BANCO DE DADOS ---
-                        {
-                          label: "Banco de Dados",
-                          slug: "docs/projetos/ensino/tfdt/trilha/paradas/banco-dados/intro",
-                        },
-
-                        // --- 6. MÉTODOS QUANTITATIVOS ---
-                        {
-                          label: "Métodos Quantitativos",
-                          slug: "docs/projetos/ensino/tfdt/trilha/paradas/metodos-quanti/intro",
+                          label: "Identidade Visual",
+                          slug: "docs/projetos/ensino/tfdt/id-visual",
                         },
                       ],
                     },
-                    {
-                      label: "Indicações",
-                      slug: "docs/projetos/ensino/tfdt/indicacoes",
-                    },
-                    {
-                      label: "Identidade Visual",
-                      slug: "docs/projetos/ensino/tfdt/id-visual",
-                    },
-                  ],
-                },
+                    // --- TRILHA R---
+                  {
+                    label: "Trilha R",
+                    items: [
+                      { label: "Apresentação", slug: "/docs/projetos/ensino/tfdt/trilha/trilha-dados-r/01-intro" },
+                      { label: "Howto", slug: "/docs/projetos/ensino/tfdt/trilha/trilha-dados-r/02-howto" },
+                      { label: "codedoc", slug: "/docs/projetos/ensino/tfdt/trilha/trilha-dados-r/03-codedoc.md" },
+                    ],
+                  }, // 👈 FECHAMENTO CORRETO
+
+                  // --- TRILHA JS ---
+                  {
+                    label: "Trilha JS",
+                    items: [
+                      { label: "01 - Introdução", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/01-intro" },
+                      { label: "02 - HTML", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/02-html" },
+                      { label: "03 - CSS", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/03-css" },
+                      { label: "04 - JavaScript", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/04-js" },
+                      { label: "05 - Exercícios", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/05-exercicios-js" },
+                      { label: "06 - jQuery", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/06-jaquery" },
+                      { label: "07 - Bootstrap", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/07-bootstrap" },
+                      { label: "08 - Acessibilidade", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/08-acessibilidade-web" },
+                      { label: "09 - React", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/09-react" },
+                      { label: "10 - D3", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/10-d3" },
+                      { label: "11 - Node.js", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/11-nodejs" },
+                      { label: "12 - Sass", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/12-sass" },
+                    ],
+                  },
+
                 // --- TECNOLOGIAS DIGITAIS ---
                 {
                   label: "Tecnologias Digitais",
                   items: [
-                    // Arquivos soltos na raiz da pasta
+                    // Arquivos soltos na raiz da pasta websites
                     {
                       label: "Apresentação",
                       slug: "docs/projetos/ensino/tecnologiasdigitais/intro",
@@ -675,164 +693,72 @@ export default defineConfig({
                     },
                   ],
                 },
+                // --- PROCESSAR IMAGENS ---
                 {
                   label: "Processar imagens que contém texto",
                   items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/ensino/processarimagens",
-                    },
-                  ],
-                },
-                {
-                  label: "Processar imagens que contém texto",
-                  items: [
-                    {
-                      label: "Introdução",
-                      // O erro estava aqui: precisa apontar para '01-intro'
-                      slug: "docs/projetos/ensino/processarimagens",
-                    },
-                    {
-                      label: "Formatos",
-                      slug: "docs/projetos/ensino/processarimagens/02-formatos",
-                    },
-                    {
-                      label: "OCR",
-                      slug: "docs/projetos/ensino/processarimagens/03-ocr",
-                    },
+                    { label: "Introdução", slug: "docs/projetos/ensino/processarimagens" },
+                    { label: "Formatos", slug: "docs/projetos/ensino/processarimagens/02-formatos" },
+                    { label: "OCR", slug: "docs/projetos/ensino/processarimagens/03-ocr" },
                     {
                       label: "Scanners",
                       items: [
-                        {
-                          label: "Avision",
-                          slug: "docs/projetos/ensino/processarimagens/scanners/avision",
-                        },
-                        {
-                          label: "HP LaserJet",
-                          slug: "docs/projetos/ensino/processarimagens/scanners/hp-laserjet",
-                        },
-                        {
-                          label: "Plustek 3000",
-                          slug: "docs/projetos/ensino/processarimagens/scanners/plustek-3800",
-                        },
-                        {
-                          label: "Plustek PS286",
-                          slug: "docs/projetos/ensino/processarimagens/scanners/plustek-ps286",
-                        },
+                        { label: "Avision", slug: "docs/projetos/ensino/processarimagens/scanners/avision" },
+                        { label: "HP LaserJet", slug: "docs/projetos/ensino/processarimagens/scanners/hp-laserjet" },
+                        { label: "Plustek 3800", slug: "docs/projetos/ensino/processarimagens/scanners/plustek-3800" },
+                        { label: "Plustek PS286", slug: "docs/projetos/ensino/processarimagens/scanners/plustek-ps286" },
                       ],
                     },
                   ],
                 },
-                // --- ACESSO REMOTO 
+                // --- ACESSO REMOTO ---
                 {
                   label: "Acesso Remoto",
                   items: [
-                    {
-                      label: "Introdução",
-                      slug: "docs/projetos/ensino/acessoremoto", // Aponta para index.md
-                    },
-                    {
-                      label: "Explicação",
-                      slug: "docs/projetos/ensino/acessoremoto/explicar",
-                    },
-                    {
-                      label: "Instruções",
-                      slug: "docs/projetos/ensino/acessoremoto/instruir",
-                    },
-                    {
-                      label: "Solicitar Acesso",
-                      slug: "docs/projetos/ensino/acessoremoto/solicitar-acesso",
-                    },
-                    {
-                      label: "Tutoriais",
-                      slug: "docs/projetos/ensino/acessoremoto/tutoriais",
-                    },
+                    { label: "Introdução", slug: "docs/projetos/ensino/acessoremoto" },
+                    { label: "Explicação", slug: "docs/projetos/ensino/acessoremoto/explicar" },
+                    { label: "Instruções", slug: "docs/projetos/ensino/acessoremoto/instruir" },
+                    { label: "Solicitar Acesso", slug: "docs/projetos/ensino/acessoremoto/solicitar-acesso" },
+                    { label: "Tutoriais", slug: "docs/projetos/ensino/acessoremoto/tutoriais" },
                   ],
                 },
-                // --- RECOLL  ---
+                // --- RECOLL ---
                 {
                   label: "Recoll",
                   items: [
-                    {
-                      label: "Apresentação",
-                      // Aponta para o index.md
-                      slug: "docs/projetos/ensino/recoll",
-                    },
-                    {
-                      label: "Colaboradores",
-                      slug: "docs/projetos/ensino/recoll/02-colaboradores",
-                    },
-                    {
-                      label: "Atividades Realizadas",
-                      slug: "docs/projetos/ensino/recoll/03-atividades",
-                    },
-                    {
-                      label: "Documentação",
-                      slug: "docs/projetos/ensino/recoll/04-doc",
-                    },
-                    {
-                      label: "Conceitos",
-                      slug: "docs/projetos/ensino/recoll/05-conceitos",
-                    },
-                    {
-                      label: "Configurando",
-                      slug: "docs/projetos/ensino/recoll/06-configurando",
-                    },
-                    {
-                      label: "Utilizando",
-                      slug: "docs/projetos/ensino/recoll/07-utilizando",
-                    },
-                    {
-                      label: "Pesquisas",
-                      slug: "docs/projetos/ensino/recoll/08-pesquisas",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/ensino/recoll" },
+                    { label: "Colaboradores", slug: "docs/projetos/ensino/recoll/02-colaboradores" },
+                    { label: "Atividades Realizadas", slug: "docs/projetos/ensino/recoll/03-atividades" },
+                    { label: "Documentação", slug: "docs/projetos/ensino/recoll/04-doc" },
+                    { label: "Conceitos", slug: "docs/projetos/ensino/recoll/05-conceitos" },
+                    { label: "Configurando", slug: "docs/projetos/ensino/recoll/06-configurando" },
+                    { label: "Utilizando", slug: "docs/projetos/ensino/recoll/07-utilizando" },
+                    { label: "Pesquisas", slug: "docs/projetos/ensino/recoll/08-pesquisas" },
                   ],
                 },
-                // --- FILEZILLA (ATUALIZADO) ---
+                // --- FILEZILLA ---
                 {
                   label: "FileZilla",
                   items: [
-                    {
-                      label: "Apresentação",
-                      // Aponta para o index.md
-                      slug: "docs/projetos/ensino/filezilla",
-                    },
-                    {
-                      label: "Configuração",
-                      slug: "docs/projetos/ensino/filezilla/configuracao",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/ensino/filezilla" },
+                    { label: "Configuração", slug: "docs/projetos/ensino/filezilla/configuracao" },
                   ],
                 },
-                // --- MATERIAL BIBLIOGRÁFICO (ATUALIZADO) ---
+                // --- MATERIAL BIBLIOGRÁFICO ---
                 {
                   label: "Material Bibliográfico",
                   items: [
-                    {
-                      label: "Apresentação",
-                      // Aponta para o index.md
-                      slug: "docs/projetos/ensino/materialbibliografico",
-                    },
-                    {
-                      label: "Clássicos IPRI",
-                      slug: "docs/projetos/ensino/materialbibliografico/classicos-ipri",
-                    },
-                    {
-                      label: "Dicas Base de Dados",
-                      slug: "docs/projetos/ensino/materialbibliografico/dicas-base-de-dados",
-                    },
-                    {
-                      label: "Mapas",
-                      slug: "docs/projetos/ensino/materialbibliografico/mapas",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/ensino/materialbibliografico" },
+                    { label: "Clássicos IPRI", slug: "docs/projetos/ensino/materialbibliografico/classicos-ipri" },
+                    { label: "Dicas Base de Dados", slug: "docs/projetos/ensino/materialbibliografico/dicas-base-de-dados" },
+                    { label: "Mapas", slug: "docs/projetos/ensino/materialbibliografico/mapas" },
                   ],
                 },
+                // --- CURSO ---
                 {
                   label: "Curso: Governança da Internet",
                   items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/ensino/curso",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/ensino/curso" },
                   ],
                 },
               ],
@@ -845,17 +771,8 @@ export default defineConfig({
                 {
                   label: "Websites e Redes",
                   items: [
-                    // Arquivos soltos na raiz da pasta websites
-                    {
-                      label: "01 - Introdução",
-                      slug: "docs/projetos/sistemas/websites/01-intro-md", // Nota: Na imagem parece ter um erro de digitação no arquivo "01-intro.md.md"
-                    },
-                    {
-                      label: "02 - Atividades",
-                      slug: "docs/projetos/sistemas/websites/02-atividades",
-                    },
-
-                    // Pasta EDITAR
+                    { label: "01 - Introdução", slug: "docs/projetos/sistemas/websites/01-intro-md" },
+                    { label: "02 - Atividades", slug: "docs/projetos/sistemas/websites/02-atividades" },
                     {
                       label: "Editar",
                       collapsed: true,
@@ -869,12 +786,10 @@ export default defineConfig({
                         { label: "06 - Sidebar", slug: "docs/projetos/sistemas/websites/editar/06-sidebar" },
                         { label: "07 - Infos Estáticas", slug: "docs/projetos/sistemas/websites/editar/07-infos-estaticas" },
                         { label: "08 - Cadernos", slug: "docs/projetos/sistemas/websites/editar/08-cadernos" },
-                        { label: "09 - Páginas JS", slug: "docs/projetos/sistemas/websites/editar/09-paginas-js" }, // Mantive o erro de digitação 'pagiunas' no slug para funcionar o link
+                        { label: "09 - Páginas JS", slug: "docs/projetos/sistemas/websites/editar/09-paginas-js" },
                         { label: "GEPDAI", slug: "docs/projetos/sistemas/websites/editar/gepdai" },
                       ],
                     },
-
-                    // Pasta MARKDOWN
                     {
                       label: "Markdown",
                       items: [
@@ -886,13 +801,9 @@ export default defineConfig({
                 },
                 {
                   label: "Infraestrutura Computacional",
-                  collapsed: true, // Sugestão: deixe colapsado pois é muito grande
+                  collapsed: true,
                   items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/sistemas/infraestrutura",
-                    },
-                    // --- INFRA AS CODE ---
+                    { label: "Apresentação", slug: "docs/projetos/sistemas/infraestrutura" },
                     {
                       label: "Infra as Code",
                       items: [
@@ -912,7 +823,6 @@ export default defineConfig({
                         },
                       ],
                     },
-                    // --- INFRA LABRI UNESP ---
                     {
                       label: "Infra LabRI/Unesp",
                       items: [
@@ -936,14 +846,12 @@ export default defineConfig({
                         { label: "Scanners", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/scanners" },
                       ]
                     },
-                    // --- INFRA IPRI UNESP ---
                     {
                         label: "Infra IPRI/Unesp",
                         items: [
                             { label: "Fapesp", slug: "docs/projetos/sistemas/infraestrutura/infraipriunesp/fapesp" },
                         ]
                     },
-                    // --- LINUX ---
                     {
                       label: "Linux",
                       collapsed: true,
@@ -967,7 +875,6 @@ export default defineConfig({
                         { label: "Verificar Linux", slug: "docs/projetos/sistemas/infraestrutura/linux/verificar-linux" },
                       ]
                     },
-                    // --- REDES ---
                     {
                       label: "Redes",
                       collapsed: true,
@@ -1016,109 +923,52 @@ export default defineConfig({
                     },
                   ],
                 },
-               // --- CADERNOS LABRI/UNESP (ATUALIZADO) ---
+                // --- CADERNOS LABRI ---
                 {
                   label: "Cadernos LabRI/UNESP",
                   items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/sistemas/cadernoslabri", // Aponta para index.md
-                    },
-                    {
-                      label: "01 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/01-cadernos",
-                    },
-                    {
-                      label: "02 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/02-cadernos",
-                    },
-                    {
-                      label: "02 - Próximos Passos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/02-proximos",
-                    },
-                    {
-                      label: "03 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/03-cadernos",
-                    },
-                    {
-                      label: "03 - Comandos Linux",
-                      slug: "docs/projetos/sistemas/cadernoslabri/03-comandos-linux",
-                    },
-                    {
-                      label: "04 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/04-cadernos",
-                    },
-                    {
-                      label: "04 - Editor de Código",
-                      slug: "docs/projetos/sistemas/cadernoslabri/04-editor-codigo",
-                    },
-                    {
-                      label: "05 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/05-cadernos",
-                    },
-                    {
-                      label: "05 - Versionamento",
-                      slug: "docs/projetos/sistemas/cadernoslabri/05-versionamento",
-                    },
-                    {
-                      label: "06 - Ambiente Virtual",
-                      slug: "docs/projetos/sistemas/cadernoslabri/06-ambiente-virtual",
-                    },
-                    {
-                      label: "07 - Ambiente Virtual Windows",
-                      slug: "docs/projetos/sistemas/cadernoslabri/07-ambiente-virtual-windows",
-                    },
-                    {
-                      label: "07 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/07-cadernos",
-                    },
-                    {
-                      label: "07 - Tipos de Dados Básicos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/07-tipos-dados-basicos",
-                    },
-                    {
-                      label: "08 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/08-cadernos",
-                    },
-                    {
-                      label: "09 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/09-cadernos",
-                    },
-                    {
-                      label: "10 - Cadernos",
-                      slug: "docs/projetos/sistemas/cadernoslabri/10-cadernos",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/sistemas/cadernoslabri" },
+                    { label: "01 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/01-cadernos" },
+                    { label: "02 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/02-cadernos" },
+                    { label: "02 - Próximos Passos", slug: "docs/projetos/sistemas/cadernoslabri/02-proximos" },
+                    { label: "03 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/03-cadernos" },
+                    { label: "03 - Comandos Linux", slug: "docs/projetos/sistemas/cadernoslabri/03-comandos-linux" },
+                    { label: "04 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/04-cadernos" },
+                    { label: "04 - Editor de Código", slug: "docs/projetos/sistemas/cadernoslabri/04-editor-codigo" },
+                    { label: "05 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/05-cadernos" },
+                    { label: "05 - Versionamento", slug: "docs/projetos/sistemas/cadernoslabri/05-versionamento" },
+                    { label: "06 - Ambiente Virtual", slug: "docs/projetos/sistemas/cadernoslabri/06-ambiente-virtual" },
+                    { label: "07 - Ambiente Virtual Windows", slug: "docs/projetos/sistemas/cadernoslabri/07-ambiente-virtual-windows" },
+                    { label: "07 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/07-cadernos" },
+                    { label: "07 - Tipos de Dados Básicos", slug: "docs/projetos/sistemas/cadernoslabri/07-tipos-dados-basicos" },
+                    { label: "08 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/08-cadernos" },
+                    { label: "09 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/09-cadernos" },
+                    { label: "10 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/10-cadernos" },
                   ],
                 },
                 {
                   label: "Sistema de Confecção de Certificados",
                   items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/sistemas/sistemacertificados",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/sistemas/sistemacertificados" },
                   ],
                 },
                 {
                   label: "Sistema de OCR Automático",
                   items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/sistemas/ocr",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/sistemas/ocr" },
                   ],
                 },
-              ], 
-            }, 
+              ],
+            },
 
             // --- EXTENSÃO ---
             {
               label: "Extensão",
               items: [
                  {
-                  label: "POD-RI ↗", // Adicionei a setinha para indicar que sai do site
+                  label: "POD-RI ↗",
                   link: "https://labriunesp.org/pod-ri",
-                  attrs: { target: "_blank" }, // Isso faz abrir em nova aba
+                  attrs: { target: "_blank" },
                 },
                 {
                   label: "Conhecer Para Acolher ↗",
@@ -1133,33 +983,19 @@ export default defineConfig({
                  {
                   label: "As Relações Internacionais e o Novo Coronavírus",
                   items: [
-                    {
-                      label: "Apresentação",
-                      // Aponta para o index.md
-                      slug: "docs/projetos/extensao/ricoronavirus",
-                    },
-                    {
-                      label: "Grupos de Trabalho",
-                      slug: "docs/projetos/extensao/ricoronavirus/02-grupos-trabalho",
-                    },
-                    {
-                      label: "Postagens",
-                      slug: "docs/projetos/extensao/ricoronavirus/04-postagens",
-                    },
-                    {
-                      label: "Identidade Visual",
-                      slug: "docs/projetos/extensao/ricoronavirus/05-id-visual",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/extensao/ricoronavirus" },
+                    { label: "Grupos de Trabalho", slug: "docs/projetos/extensao/ricoronavirus/02-grupos-trabalho" },
+                    { label: "Postagens", slug: "docs/projetos/extensao/ricoronavirus/04-postagens" },
+                    { label: "Identidade Visual", slug: "docs/projetos/extensao/ricoronavirus/05-id-visual" },
                   ],
                 },
-              ], 
+              ],
             }, // Fim de Extensão
-             
           ], // Fim de items (Projetos)
         }, // Fim de Projetos
-      ],
-    }),
+      ], // Fim de sidebar
+    }), // Fim de starlight
     pagefind(),
     mdx(),
-  ],
-});
+  ], // Fim de integrations
+}); // Fim de defineConfig
