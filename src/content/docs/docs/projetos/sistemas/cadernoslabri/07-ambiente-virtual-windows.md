@@ -11,7 +11,7 @@ No sistema operacional Windows, o anaconda é instalado por padrão de uma manei
 Diferentemente do Linux, a instalação do Anaconda cria um terminal separado, chamado 'Conda Powershell', e que deve ser executado separadamente para ser utilizado.
 
 Para maior conveniência, é possivel integrar o anaconda ao terminal do Windows, como mostrado na imagem à seguir: 
-![#miniconda-powershell](/img/projetos/sistemas/cadernos-labri/miniconda_powershell.png)
+![#miniconda-powershell](/imagens/img-geral/miniconda_powershell.png)
 
 Ensinaremos como fazer isto neste tutorial.
 Tutorial original de como adicionar anaconda ao Terminal do Windows se encontra [neste link](https://medium.com/@shouke.wei/windows-python-developers-had-better-setup-earlier-iv-add-anaconda-powershell-on-windows-8942dd9cc1a) .
@@ -30,7 +30,7 @@ Segue o passo a passo
 - Clique em `Propriedades`
 - Copie o caminho da caixa de texto `Alvo`
 
-![Fig.1. Search the path of Anaconda PowerShell Prompt](/img/projetos/sistemas/cadernos-labri/anaconda_atalho.gif)
+![Fig.1. Search the path of Anaconda PowerShell Prompt](/imagens/img-geral/anaconda_atalho.gif)
 
 #### Passo 2: Editar o alvo
 Cole o sequinte texto em algum editor de texto:
@@ -56,18 +56,18 @@ powershell.exe -ExecutionPolicy ByPass -NoExit -Command & %USERPROFILE%\anaconda
 %USERPROFILE%\anaconda3\Menu\anaconda-navigator.ico
 ```
 
-![Fig. 2. Path of Anaconda Navigator Icon](/img/projetos/sistemas/cadernos-labri/icone_anaconda_navigator.gif)
+![Fig. 2. Path of Anaconda Navigator Icon](/imagens/img-geral/icone_anaconda_navigator.gif)
 
 #### Passo 4: Abra as configurações do Windows Terminal
 - Abra o Windows Terminal
 - Clique na seta para baixo e selecione "Configurações
 
-![Fig.3. Go to setting of the Windows Terminal](/img/projetos/sistemas/cadernos-labri/wt_config.png)
+![Fig.3. Go to setting of the Windows Terminal](/imagens/img-geral/wt_config.png)
 #### Passo 5. Abra o arquivo JSON do terminal
 - Vá para o último item do menu da esquerda
 - Selecione a opção para abrir o arquivo JSON
 
-![Fig.4. Open JSON File of Windows Terminal](/img/projetos/sistemas/json_wt.png)
+![Fig.4. Open JSON File of Windows Terminal](/imagens/img-geral/json_wt.png)
 
 #### Passo 6. Copie o código do cmd.exe e modifique-o
 Copie o Código da seção contendo `cmd.exe`, que deve parecer com o seguinte

@@ -1,4 +1,3 @@
-
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import pagefind from "astro-pagefind";
@@ -45,39 +44,18 @@ export default defineConfig({
                 {
                   label: "Hemeroteca PEB",
                   items: [
-                    {
-                      label: "Apresentação",
-                      slug: "docs/projetos/dados/hemeroteca-peb",
-                    },
-                    {
-                      label: "Equipe",
-                      slug: "docs/projetos/dados/hemeroteca-peb/equipe",
-                    },
-                    {
-                      label: "Atividades Realizadas",
-                      slug: "docs/projetos/dados/hemeroteca-peb/atividades",
-                    },
+                    { label: "Apresentação", slug: "docs/projetos/dados/hemeroteca-peb" },
+                    { label: "Equipe", slug: "docs/projetos/dados/hemeroteca-peb/equipe" },
+                    { label: "Atividades Realizadas", slug: "docs/projetos/dados/hemeroteca-peb/atividades" },
                     {
                       label: "Documentação",
                       items: [
-                        {
-                          label: "Introdução",
-                          slug: "docs/projetos/dados/hemeroteca-peb/documentacao/introducao",
-                        },
-                        {
-                          label: "Arquivo JSON",
-                          slug: "docs/projetos/dados/hemeroteca-peb/documentacao/arquivo-json",
-                        },
-                        {
-                          label: "Temas",
-                          slug: "docs/projetos/dados/hemeroteca-peb/documentacao/temas",
-                        },
+                        { label: "Introdução", slug: "docs/projetos/dados/hemeroteca-peb/documentacao/introducao" },
+                        { label: "Arquivo JSON", slug: "docs/projetos/dados/hemeroteca-peb/documentacao/arquivo-json" },
+                        { label: "Temas", slug: "docs/projetos/dados/hemeroteca-peb/documentacao/temas" },
                       ],
                     },
-                    {
-                      label: "Como citar Hemeroteca PEB",
-                      slug: "docs/projetos/dados/hemeroteca-peb/como-citar",
-                    },
+                    { label: "Como citar Hemeroteca PEB", slug: "docs/projetos/dados/hemeroteca-peb/como-citar" },
                   ],
                 },
                 // --- NEWSCLOUD ---
@@ -456,7 +434,6 @@ export default defineConfig({
                   label: "Visão geral",
                   slug: "docs/projetos/ensino",
                 },
-                // --- TRILHA DE DADOS - PYTHON ---
                 {
                   label: "Trilhas de Fundamentos de Tecnologias Digitais",
                   items: [
@@ -467,7 +444,6 @@ export default defineConfig({
                         {
                           label: "Paradas",
                           items: [
-                            // 1. AMBIENTE DE TRABALHO
                             {
                               label: "Ambiente de Trabalho",
                               items: [
@@ -514,7 +490,6 @@ export default defineConfig({
                                 { label: "Certificação", slug: "docs/projetos/ensino/tfdt/trilha/paradas/ambiente/07-certificacao" },
                               ]
                             },
-                            // 2. FUNDAMENTOS PYTHON
                             {
                               label: "Fundamentos Python",
                               items: [
@@ -578,7 +553,6 @@ export default defineConfig({
                                 }
                               ]
                             },
-                            // 3. ANÁLISE DE DADOS
                             {
                               label: "Análise de Dados",
                               items: [
@@ -593,109 +567,67 @@ export default defineConfig({
                                 { label: "Tratamento de Dados", slug: "docs/projetos/ensino/tfdt/trilha/paradas/analise-dados/04-tratamento-de-dados" },
                               ]
                             },
-                            // 4. COLETA DE DADOS
                             {
                               label: "Coleta de Dados",
                               slug: "docs/projetos/ensino/tfdt/trilha/paradas/coleta-dados/intro",
                             },
-                            // 5. BANCO DE DADOS
                             {
                               label: "Banco de Dados",
                               slug: "docs/projetos/ensino/tfdt/trilha/paradas/banco-dados/intro",
                             },
-                            // 6. MÉTODOS QUANTITATIVOS
                             {
                               label: "Métodos Quantitativos",
                               slug: "docs/projetos/ensino/tfdt/trilha/paradas/metodos-quanti/intro",
                             },
                           ],
                         },
-                        {
-                          label: "Indicações",
-                          slug: "docs/projetos/ensino/tfdt/indicacoes",
-                        },
-                        {
-                          label: "Identidade Visual",
-                          slug: "docs/projetos/ensino/tfdt/id-visual",
-                        },
+                        { label: "Indicações", slug: "docs/projetos/ensino/tfdt/indicacoes" },
+                        { label: "Identidade Visual", slug: "docs/projetos/ensino/tfdt/id-visual" },
                       ],
                     },
-                    // --- TRILHA R---
-                  {
-                    label: "Trilha R",
-                    items: [
-                      { label: "Apresentação", slug: "/docs/projetos/ensino/tfdt/trilha/trilha-dados-r/01-intro" },
-                      { label: "Howto", slug: "/docs/projetos/ensino/tfdt/trilha/trilha-dados-r/02-howto" },
-                      { label: "codedoc", slug: "/docs/projetos/ensino/tfdt/trilha/trilha-dados-r/03-codedoc.md" },
-                    ],
-                  }, // 👈 FECHAMENTO CORRETO
-
-                  // --- TRILHA JS ---
-                  {
-                    label: "Trilha JS",
-                    items: [
-                      { label: "01 - Introdução", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/01-intro" },
-                      { label: "02 - HTML", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/02-html" },
-                      { label: "03 - CSS", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/03-css" },
-                      { label: "04 - JavaScript", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/04-js" },
-                      { label: "05 - Exercícios", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/05-exercicios-js" },
-                      { label: "06 - jQuery", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/06-jaquery" },
-                      { label: "07 - Bootstrap", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/07-bootstrap" },
-                      { label: "08 - Acessibilidade", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/08-acessibilidade-web" },
-                      { label: "09 - React", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/09-react" },
-                      { label: "10 - D3", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/10-d3" },
-                      { label: "11 - Node.js", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/11-nodejs" },
-                      { label: "12 - Sass", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/12-sass" },
-                    ],
-                  },
-
-                // --- TECNOLOGIAS DIGITAIS ---
-                {
-                  label: "Tecnologias Digitais",
-                  items: [
-                    // Arquivos soltos na raiz da pasta websites
                     {
-                      label: "Apresentação",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/intro",
+                      label: "Trilha R",
+                      items: [
+                        { label: "Apresentação", slug: "docs/projetos/ensino/tfdt/trilha/trilha-dados-r/01-intro" },
+                        { label: "Howto", slug: "docs/projetos/ensino/tfdt/trilha/trilha-dados-r/02-howto" },
+                        { label: "codedoc", slug: "docs/projetos/ensino/tfdt/trilha/trilha-dados-r/03-codedoc" },
+                      ],
                     },
                     {
-                      label: "Identidade Visual",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/id-visual",
-                    },
-                    // Pastas (Apontando para o arquivo intro.md dentro de cada uma)
-                    {
-                      label: "Anotações",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/anotacoes/intro",
-                    },
-                    {
-                      label: "Áudio",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/audio/intro",
-                    },
-                    {
-                      label: "Buscadores",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/buscadores/intro",
-                    },
-                    {
-                      label: "Conhecimentos",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/conhecimentos/intro",
-                    },
-                    {
-                      label: "Edição de Texto",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/edicao-texto/intro",
-                    },
-                    {
-                      label: "Google Docs",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/google-docs/intro",
-                    },
-                    {
-                      label: "Mapas Mentais",
-                      slug: "docs/projetos/ensino/tecnologiasdigitais/mapas-mentais/intro",
+                      label: "Trilha JS",
+                      items: [
+                        { label: "Introdução", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/01-intro" },
+                        { label: "HTML", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/02-html" },
+                        { label: "CSS", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/03-css" },
+                        { label: "JavaScript", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/04-js" },
+                        { label: "Exercícios", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/05-exercicios-js" }, 
+                        { label: "jQuery", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/06-jaquery" },
+                        { label: "Bootstrap", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/07-bootstrap" },
+                        { label: "Acessibilidade", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/08-acessibilidade-web" }, 
+                        { label: "React", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/09-react" },
+                        { label: "D3", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/10-d3" },
+                        { label: "Node.js", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/11-nodejs" },
+                        { label: "Sass", slug: "docs/projetos/ensino/tfdt/trilha/trilha-js/12-sass" },
+                      ],
                     },
                   ],
                 },
-                // --- PROCESSAR IMAGENS ---
                 {
-                  label: "Processar imagens que contém texto",
+                  label: "Tecnologias Digitais",
+                  items: [
+                    { label: "Apresentação", slug: "docs/projetos/ensino/tecnologiasdigitais/intro" },
+                    { label: "Identidade Visual", slug: "docs/projetos/ensino/tecnologiasdigitais/id-visual" },
+                    { label: "Anotações", slug: "docs/projetos/ensino/tecnologiasdigitais/anotacoes/intro" },
+                    { label: "Áudio", slug: "docs/projetos/ensino/tecnologiasdigitais/audio/intro" },
+                    { label: "Buscadores", slug: "docs/projetos/ensino/tecnologiasdigitais/buscadores/intro" },
+                    { label: "Conhecimentos", slug: "docs/projetos/ensino/tecnologiasdigitais/conhecimentos/intro" },
+                    { label: "Edição de Texto", slug: "docs/projetos/ensino/tecnologiasdigitais/edicao-texto/intro" },
+                    { label: "Google Docs", slug: "docs/projetos/ensino/tecnologiasdigitais/google-docs/intro" },
+                    { label: "Mapas Mentais", slug: "docs/projetos/ensino/tecnologiasdigitais/mapas-mentais/intro" },
+                  ],
+                },
+                {
+                  label: "Processar imagens",
                   items: [
                     { label: "Introdução", slug: "docs/projetos/ensino/processarimagens" },
                     { label: "Formatos", slug: "docs/projetos/ensino/processarimagens/02-formatos" },
@@ -711,7 +643,6 @@ export default defineConfig({
                     },
                   ],
                 },
-                // --- ACESSO REMOTO ---
                 {
                   label: "Acesso Remoto",
                   items: [
@@ -722,7 +653,6 @@ export default defineConfig({
                     { label: "Tutoriais", slug: "docs/projetos/ensino/acessoremoto/tutoriais" },
                   ],
                 },
-                // --- RECOLL ---
                 {
                   label: "Recoll",
                   items: [
@@ -736,7 +666,6 @@ export default defineConfig({
                     { label: "Pesquisas", slug: "docs/projetos/ensino/recoll/08-pesquisas" },
                   ],
                 },
-                // --- FILEZILLA ---
                 {
                   label: "FileZilla",
                   items: [
@@ -744,7 +673,6 @@ export default defineConfig({
                     { label: "Configuração", slug: "docs/projetos/ensino/filezilla/configuracao" },
                   ],
                 },
-                // --- MATERIAL BIBLIOGRÁFICO ---
                 {
                   label: "Material Bibliográfico",
                   items: [
@@ -754,9 +682,8 @@ export default defineConfig({
                     { label: "Mapas", slug: "docs/projetos/ensino/materialbibliografico/mapas" },
                   ],
                 },
-                // --- CURSO ---
                 {
-                  label: "Curso: Governança da Internet",
+                  label: "Curso: Governança",
                   items: [
                     { label: "Apresentação", slug: "docs/projetos/ensino/curso" },
                   ],
@@ -771,30 +698,30 @@ export default defineConfig({
                 {
                   label: "Websites e Redes",
                   items: [
-                    { label: "01 - Introdução", slug: "docs/projetos/sistemas/websites/01-intro-md" },
-                    { label: "02 - Atividades", slug: "docs/projetos/sistemas/websites/02-atividades" },
+                    { label: "Introdução", slug: "docs/projetos/sistemas/websites/01-intro-md" },
+                    { label: "Atividades", slug: "docs/projetos/sistemas/websites/02-atividades" },
                     {
                       label: "Editar",
                       collapsed: true,
                       items: [
-                        { label: "01 - Acessar", slug: "docs/projetos/sistemas/websites/editar/01-acessar" },
-                        { label: "02 - Editar Páginas", slug: "docs/projetos/sistemas/websites/editar/02-editar-paginas" },
-                        { label: "02 - Estrutura", slug: "docs/projetos/sistemas/websites/editar/02-estrutura" },
-                        { label: "03 - Equipe", slug: "docs/projetos/sistemas/websites/editar/03-equipe" },
-                        { label: "04 - Arquivos MD", slug: "docs/projetos/sistemas/websites/editar/04-arquivos-md" },
-                        { label: "05 - Docusaurus", slug: "docs/projetos/sistemas/websites/editar/05-docusaurus" },
-                        { label: "06 - Sidebar", slug: "docs/projetos/sistemas/websites/editar/06-sidebar" },
-                        { label: "07 - Infos Estáticas", slug: "docs/projetos/sistemas/websites/editar/07-infos-estaticas" },
-                        { label: "08 - Cadernos", slug: "docs/projetos/sistemas/websites/editar/08-cadernos" },
-                        { label: "09 - Páginas JS", slug: "docs/projetos/sistemas/websites/editar/09-paginas-js" },
+                        { label: "Acessar", slug: "docs/projetos/sistemas/websites/editar/01-acessar" },
+                        { label: "Editar Páginas", slug: "docs/projetos/sistemas/websites/editar/02-editar-paginas" },
+                        { label: "Estrutura", slug: "docs/projetos/sistemas/websites/editar/02-estrutura" },
+                        { label: "Equipe", slug: "docs/projetos/sistemas/websites/editar/03-equipe" },
+                        { label: "Arquivos MD", slug: "docs/projetos/sistemas/websites/editar/04-arquivos-md" },
+                        { label: "Docusaurus", slug: "docs/projetos/sistemas/websites/editar/05-docusaurus" },
+                        { label: "Sidebar", slug: "docs/projetos/sistemas/websites/editar/06-sidebar" },
+                        { label: "Infos Estáticas", slug: "docs/projetos/sistemas/websites/editar/07-infos-estaticas" },
+                        { label: "Cadernos", slug: "docs/projetos/sistemas/websites/editar/08-cadernos" },
+                        { label: "Páginas JS", slug: "docs/projetos/sistemas/websites/editar/09-paginas-js" },
                         { label: "GEPDAI", slug: "docs/projetos/sistemas/websites/editar/gepdai" },
                       ],
                     },
                     {
                       label: "Markdown",
                       items: [
-                        { label: "01 - Geral", slug: "docs/projetos/sistemas/websites/markdown/01-geral" },
-                        { label: "02 - Específico", slug: "docs/projetos/sistemas/websites/markdown/02-especifico" },
+                        { label: "Geral", slug: "docs/projetos/sistemas/websites/markdown/01-geral" },
+                        { label: "Específico", slug: "docs/projetos/sistemas/websites/markdown/02-especifico" },
                       ],
                     },
                   ],
@@ -810,14 +737,14 @@ export default defineConfig({
                         {
                           label: "Ansible",
                           items: [
-                             { label: "01 - Ansible", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/ansible/01-ansible" },
+                             { label: "Ansible", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/ansible/01-ansible" },
                              { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/ansible/apoio" },
                           ]
                         },
                         {
                           label: "Terraform",
                           items: [
-                             { label: "02 - Terraform", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/terraform/02-terraform" },
+                             { label: "Terraform", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/terraform/02-terraform" },
                              { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/infra-as-code/terraform/apoio" },
                           ]
                         },
@@ -830,14 +757,14 @@ export default defineConfig({
                           label: "BIOS",
                           collapsed: true,
                           items: [
-                            { label: "01 - Dell", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/01-dell" },
-                            { label: "02 - IBM", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/02-ibm" },
-                            { label: "03 - Ryzen", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/03-ryzen" },
-                            { label: "04 - 118", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/04-118" },
-                            { label: "05 - 119", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/5-119" },
-                            { label: "06 - HP ML30 Gen9", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/06-hp-ml30-gen9" },
-                            { label: "07 - 123", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/07-123" },
-                            { label: "08 - Itautec", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/08-itautec" },
+                            { label: "Dell", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/01-dell" },
+                            { label: "IBM", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/02-ibm" },
+                            { label: "Ryzen", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/03-ryzen" },
+                            { label: "118", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/04-118" },
+                            { label: "119", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/5-119" },
+                            { label: "HP ML30 Gen9", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/06-hp-ml30-gen9" },
+                            { label: "123", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/07-123" },
+                            { label: "Itautec", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios/08-itautec" },
                             { label: "BIOS Geral", slug: "docs/projetos/sistemas/infraestrutura/infra-labriunesp/bios" },
                           ]
                         },
@@ -856,15 +783,15 @@ export default defineConfig({
                       label: "Linux",
                       collapsed: true,
                       items: [
-                        { label: "03 - Tela Preta", slug: "docs/projetos/sistemas/infraestrutura/linux/03-tela-preta" },
-                        { label: "04 - Acesso Remoto", slug: "docs/projetos/sistemas/infraestrutura/linux/04-acesso-remoto" },
+                        { label: "Tela Preta", slug: "docs/projetos/sistemas/infraestrutura/linux/03-tela-preta" },
+                        { label: "Acesso Remoto", slug: "docs/projetos/sistemas/infraestrutura/linux/04-acesso-remoto" },
                         { label: "Alterar Nome PC", slug: "docs/projetos/sistemas/infraestrutura/linux/alterar-nome-pc" },
                         { label: "Atualizar", slug: "docs/projetos/sistemas/infraestrutura/linux/atualizar" },
                         { label: "Formatar HD", slug: "docs/projetos/sistemas/infraestrutura/linux/formatar-hd" },
                         { label: "Info Hardware", slug: "docs/projetos/sistemas/infraestrutura/linux/info-hardware" },
                         { label: "Initramfs Boot", slug: "docs/projetos/sistemas/infraestrutura/linux/initrafms-boot" },
                         { label: "Lock Screen", slug: "docs/projetos/sistemas/infraestrutura/linux/lock-screen" },
-                        { label: "Rede (Rein-network)", slug: "docs/projetos/sistemas/infraestrutura/linux/rein-network" },
+                        { label: "Rede", slug: "docs/projetos/sistemas/infraestrutura/linux/rein-network" },
                         { label: "Reparar FSCK", slug: "docs/projetos/sistemas/infraestrutura/linux/reparar-fsck" },
                         { label: "Resolução de Erros", slug: "docs/projetos/sistemas/infraestrutura/linux/resolucao-erros" },
                         { label: "Senha Root", slug: "docs/projetos/sistemas/infraestrutura/linux/senha-root" },
@@ -882,30 +809,30 @@ export default defineConfig({
                         {
                             label: "Container",
                             items: [
-                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/container/01-intro" },
+                                { label: "Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/container/01-intro" },
                                 { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/container/apoio" },
                             ]
                         },
                         {
                             label: "Firewall",
                             items: [
-                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/firewall/01-intro" },
+                                { label: "Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/firewall/01-intro" },
                                 { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/firewall/apoio" },
                             ]
                         },
                         {
                             label: "Kubernetes",
                             items: [
-                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/kubernetes/01-intro" },
+                                { label: "Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/kubernetes/01-intro" },
                                 { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/kubernetes/apoio" },
                             ]
                         },
                         {
                             label: "Proxmox",
                             items: [
-                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/01-intro" },
-                                { label: "02 - Instalação", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/02-intalacao" },
-                                { label: "06 - ZFS", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/06-zfs" },
+                                { label: "Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/01-intro" },
+                                { label: "Instalação", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/02-intalacao" },
+                                { label: "ZFS", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/06-zfs" },
                                 { label: "Storage", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/storage" },
                                 { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/proxmox/apoio" },
                             ]
@@ -913,7 +840,7 @@ export default defineConfig({
                         {
                             label: "Rancher",
                             items: [
-                                { label: "01 - Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/rancher/01-intro" },
+                                { label: "Intro", slug: "docs/projetos/sistemas/infraestrutura/redes/rancher/01-intro" },
                                 { label: "Google Authenticator", slug: "docs/projetos/sistemas/infraestrutura/redes/google-authenticador" },
                                 { label: "Apoio", slug: "docs/projetos/sistemas/infraestrutura/redes/rancher/apoio" },
                             ]
@@ -923,37 +850,36 @@ export default defineConfig({
                     },
                   ],
                 },
-                // --- CADERNOS LABRI ---
                 {
                   label: "Cadernos LabRI/UNESP",
                   items: [
                     { label: "Apresentação", slug: "docs/projetos/sistemas/cadernoslabri" },
-                    { label: "01 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/01-cadernos" },
-                    { label: "02 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/02-cadernos" },
-                    { label: "02 - Próximos Passos", slug: "docs/projetos/sistemas/cadernoslabri/02-proximos" },
-                    { label: "03 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/03-cadernos" },
-                    { label: "03 - Comandos Linux", slug: "docs/projetos/sistemas/cadernoslabri/03-comandos-linux" },
-                    { label: "04 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/04-cadernos" },
-                    { label: "04 - Editor de Código", slug: "docs/projetos/sistemas/cadernoslabri/04-editor-codigo" },
-                    { label: "05 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/05-cadernos" },
-                    { label: "05 - Versionamento", slug: "docs/projetos/sistemas/cadernoslabri/05-versionamento" },
-                    { label: "06 - Ambiente Virtual", slug: "docs/projetos/sistemas/cadernoslabri/06-ambiente-virtual" },
-                    { label: "07 - Ambiente Virtual Windows", slug: "docs/projetos/sistemas/cadernoslabri/07-ambiente-virtual-windows" },
-                    { label: "07 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/07-cadernos" },
-                    { label: "07 - Tipos de Dados Básicos", slug: "docs/projetos/sistemas/cadernoslabri/07-tipos-dados-basicos" },
-                    { label: "08 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/08-cadernos" },
-                    { label: "09 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/09-cadernos" },
-                    { label: "10 - Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/10-cadernos" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/01-cadernos" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/02-cadernos" },
+                    { label: "Próximos Passos", slug: "docs/projetos/sistemas/cadernoslabri/02-proximos" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/03-cadernos" },
+                    { label: "Comandos Linux", slug: "docs/projetos/sistemas/cadernoslabri/03-comandos-linux" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/04-cadernos" },
+                    { label: "Editor de Código", slug: "docs/projetos/sistemas/cadernoslabri/04-editor-codigo" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/05-cadernos" },
+                    { label: "Versionamento", slug: "docs/projetos/sistemas/cadernoslabri/05-versionamento" },
+                    { label: "Ambiente Virtual", slug: "docs/projetos/sistemas/cadernoslabri/06-ambiente-virtual" },
+                    { label: "Ambiente Virtual Windows", slug: "docs/projetos/sistemas/cadernoslabri/07-ambiente-virtual-windows" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/07-cadernos" },
+                    { label: "Tipos de Dados Básicos", slug: "docs/projetos/sistemas/cadernoslabri/07-tipos-dados-basicos" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/08-cadernos" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/09-cadernos" },
+                    { label: "Cadernos", slug: "docs/projetos/sistemas/cadernoslabri/10-cadernos" },
                   ],
                 },
                 {
-                  label: "Sistema de Confecção de Certificados",
+                  label: "Confecção de Certificados",
                   items: [
                     { label: "Apresentação", slug: "docs/projetos/sistemas/sistemacertificados" },
                   ],
                 },
                 {
-                  label: "Sistema de OCR Automático",
+                  label: "OCR Automático",
                   items: [
                     { label: "Apresentação", slug: "docs/projetos/sistemas/ocr" },
                   ],
@@ -976,21 +902,21 @@ export default defineConfig({
                   attrs: { target: "_blank" },
                 },
                 {
-                  label: "Cidades Saudáveis e Sustentáveis ↗",
+                  label: "Cidades Saudáveis ↗",
                   link: "https://labriunesp.org/cidades-sustentaveis",
                   attrs: { target: "_blank" },
                 },
                  {
-                  label: "As Relações Internacionais e o Novo Coronavírus",
+                  label: "RI e Coronavírus",
                   items: [
-                    { label: "Apresentação", slug: "docs/projetos/extensao/ricoronavirus" },
-                    { label: "Grupos de Trabalho", slug: "docs/projetos/extensao/ricoronavirus/02-grupos-trabalho" },
-                    { label: "Postagens", slug: "docs/projetos/extensao/ricoronavirus/04-postagens" },
-                    { label: "Identidade Visual", slug: "docs/projetos/extensao/ricoronavirus/05-id-visual" },
+                    { label: "Apresentação", slug: "docs/docs/projetos/extensao/ricoronavirus/01-intro" },
+                    { label: "Grupos de Trabalho", slug: "docs/docs/projetos/extensao/ricoronavirus/02-grupos-trabalho" },
+                    { label: "Postagens", slug: "docs/docs/projetos/extensao/ricoronavirus/04-postagens" },
+                    { label: "Identidade Visual", slug: "docs/docs/projetos/extensao/ricoronavirus/05-id-visual" },
                   ],
                 },
               ],
-            }, // Fim de Extensão
+            },
           ], // Fim de items (Projetos)
         }, // Fim de Projetos
       ], // Fim de sidebar

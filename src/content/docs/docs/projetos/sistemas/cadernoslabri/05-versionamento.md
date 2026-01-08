@@ -48,9 +48,7 @@ Para entender melhor as semelhas e diferenças entre *Github* e *Gitlab*, [cliqu
 
 Após concedido acesso da sua conta *GitLab* aos repositórios do LabRI/UNESP, é necessário clonar os arquivos e pastas no seu computador. A clonagem pode ser efetuada através de 2 métodos. Ao acessar o link do [repositório no GitLab](https://gitlab.com/unesp-labri/sites/labri) é possível encontrar no canto *superior direito* da tela o botão denominado "Clone", para efetuar a clonagem via SSH e HTTPS.
 
-<div align="center">
-  <img src="/img/projetos/sistemas/cadernos-labri/readme.jpg" />
-</div>
+![readme](/imagens/img-geral/readme.jpg)
 
 -----
 

@@ -18,7 +18,7 @@ sidebar_label: Tutorial
 - Note que aqui colocamos algumas variáveis, como `<<nome>>`, `<<nome_do_evento>>`, `<<data>>` e `<<ch>>`. É importante que essas variáveis estejam entre os sinais de `<<>>`, pois é assim que o Autocrat irá "ler" as informações da planilha e convertê-las para o certificado.
 - Guarde o local onde você salvou esse certificado, recomenda-se que crie uma pasta no Google Drive exclusiva para o processo como um todo.
 
-> *(Imagem pendente: certificado1)*
+![certificado 1](/imagens/img-geral/certificado1.png)
 
 2. Agora, usando o Formulários, crie um formulário padrão, onde você irá requisitar as informações dos participantes/de quem vai ter seus dados inseridos no certificado.
 - O mais importante nesta parte é solicitar o e-mail, através das configurações → coletar e-mail.
@@ -31,29 +31,29 @@ sidebar_label: Tutorial
 - **IMPORTANTE**: Na primeira linha, escreva as informações exatamente iguais as que no certificado modelo estão colocadas entre `<<>>`. Por exemplo, se no certificado modelo está escrito `<<nome>>`, na primeira linha escreva "nome", sem os sinais. E assim com todas as informações. Não precisam estar em uma ordem exata de colunas.
 - Na primeira linha podem existir mais informações além daquelas colocadas no certificado. Lembre-se de adicionar uma coluna para e-mail também na primeira linha. Ela não entrará no certificado mas servirá para o envio automático deles.
 
-> *(Imagem pendente: certificado2)*
+![certificado 2](/imagens/img-geral/certificado2.png)
 
 4. A seguir, utilizaremos o serviço do Autocrat. Na planilha, vá em Extensões > Complementos > Instalar complementos e procure por Autocrat.
 - Para abrir o Autocrat vá em Extensões > Autocrat > Open. Clique em "New Job" e escolha um nome para o processo. Pode ser um nome genérico, ele não será contabilizado no certificado.
 - Na etapa 2, selecione no Google Drive o modelo de certificado que você criou anteriormente.
 
-> *(Imagem pendente: certificado3)*
+![certificado 3](/imagens/img-geral/certificado3.png)
 
 - A etapa 3 é onde as informações do certificado serão conectadas às informações da planilha. Em "Merge tab", coloque página 1, em "Header row" coloque 1 e "First data row" coloque 2. Coloque as informações da coluna de acordo com as informações do certificado.
 
-> *(Imagem pendente: certificado4)*
+![certificado 4](/imagens/img-geral/certificado4.png)
 
 - Na etapa 4, escolha o nome do arquivo do certificado, uma dica é utilizar o campo nome da planilha, sendo "Certificado - `<<nome>>`". Dessa forma, todos os certificados serão salvos com o nome de cada participante do evento.
 - Em Type escolha PDF e selecione a opção "Multiple output mode (classic mode)" 
 
-> *(Imagem pendente: certificado5)*
+![certificado 5](/imagens/img-geral/certificado5.png)
 
 - Na etapa 5, selecione a pasta onde os certificados salvos serão gerados.
 - A etapa 6 e 7 podem ser desviadas. São opcionais.
 
 - A etapa 8 serve para caso você queira enviar os certificados para os participantes automaticamente após serem gerados. Se não, na opção de "Share doc" apenas selecione "No". Se sim, selecione "Yes" e preencha a caixa de email com os emaisl dos participantes, assunto e corpo do texto.
 
-> *(Imagem pendente: certificado6)*
+![certificado 6](/imagens/img-geral/certificado6.png)
 
 - Na etapa 9 selecione "No" em ambais as caixas e clique em "SAVE"
 
