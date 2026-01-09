@@ -4,13 +4,13 @@ title: Plustek Opticbook 3800
 sidebar_label: Plustek Opticbook 3800
 ---
 
-![opticbook1](/img/projetos/sistemas/opticbook1.jpeg)
+![opticbook1](/imagens/img-geral/opticbook1.jpeg)
 
-![opticbook2](/img/projetos/sistemas/opticbook2.jpeg)
+![opticbook2](/imagens/img-geral/opticbook2.jpeg)
 
 - Programa correspondente:
 
-![opticbook3](/img/projetos/sistemas/opticbook3.png)
+![opticbook3](/imagens/img-geral/opticbook3.png)
 
 - Com o programa aberto algumas opções são possível. Você deve deixar a opção “ Formato do Arquivo” em Uncompressed Aldus Pasta de destino coloque a pasta para o local em que as imagens serão salvas após o processo de digitalização. 
 

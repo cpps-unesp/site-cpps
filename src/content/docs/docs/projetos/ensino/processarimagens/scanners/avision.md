@@ -4,9 +4,9 @@ title: AVISION
 sidebar_label: AVISION
 ---
 
-![avision1](/img/projetos/sistemas/avision1.jpeg)
+![avision1](/imagens/img-geral/avision1.jpeg)
 
-![avision2](/img/projetos/sistemas/avision2.jpeg)
+![avision2](/imagens/img-geral/avision2.jpeg)
 
 ### Configurações da digitalização
 

@@ -11,11 +11,11 @@ Esta página visa instruir sobre o uso do programa "Ventoy" para tornar um pendr
 
 2. Após o download, clique com o botão direito no arquivo baixado e clique em "Extrair aqui". Plugue o pendrive em seu computador. Entre na nova pasta criada e execute o arquivo de nome "VentoyGUI.x86_64"
 
-![ventoy1](/img/projetos/sistemas/ventoy1.png)
+![ventoy1](/imagens/img-geral/ventoy1.png)
 
 3. Selecione o pendrive desejado e clique em "Install". Certifique-se de que este é o pendrive desejado, pois o Ventoy apagará todos os arquivos contidos nele.
 
-![ventoy2](/img/projetos/sistemas/ventoy2.png)
+![ventoy2](/imagens/img-geral/ventoy2.png)
 
 4. Perceba que o nome do pendrive mudou para Ventoy. Agora, é possível baixar um arquivo .ISO e somente copiar de uma pasta e colar no pendrive para fazer o boot. Escolha o sistema operacional desejado e passe para o pendrive.
 
@@ -23,15 +23,15 @@ Esta página visa instruir sobre o uso do programa "Ventoy" para tornar um pendr
 
 6. Na caixa de busca, digite "Secure boot" e clique na primeira opção.
 
-![ventoy3](/img/projetos/sistemas/ventoy3.jpeg)
+![ventoy3](/imagens/img-geral/ventoy3.jpeg)
 
 7. Arraste a página para baixo e procure pela opção "Secure Boot" e "Enable Secure Boot". Desabilite-a como na imagem abaixo. Após, clique em "Apply Changes" e em "Yes.
 
-![ventoy4](/img/projetos/sistemas/ventoy4.jpeg)
+![ventoy4](/imagens/img-geral/ventoy4.jpeg)
 
 8. Feito isso, agora é necessário configurar a BIOS para inicializar o computador pelo pendrive. No menu lateral esquerdo, clique em "Boot Configuration". Na lista, clique nas setas até o pendrive ser a primeira opção.
 
-![bios1](/img/projetos/sistemas/bios1.jpeg)
+![bios1](/imagens/img-geral/bios1.jpeg)
 
 9. Clique em "Apply Changes", "Yes" e em "Exit". O computador irá inicializar pelo pendrive Ventoy. Agora é só escolher o sistema operacional desejado e dar início a formatação.
 

@@ -72,6 +72,5 @@ Foi realizada a compra de equipamentos novos e atualização em dois servidores 
 
 Abaixo colocamos o desenho final da sala de situação pesquisa avançada:
 
-![sala](/img/projetos/sistemas/sala.png)
-
+![sala](/imagens/img-geral/sala.png)
 [Informações em docs](https://docs.google.com/document/d/1gEEQGRWy6xD1-UpPemb-gLnFM098ZouTlzCeYmAH5PM/edit#heading=h.4gron4gegyak)

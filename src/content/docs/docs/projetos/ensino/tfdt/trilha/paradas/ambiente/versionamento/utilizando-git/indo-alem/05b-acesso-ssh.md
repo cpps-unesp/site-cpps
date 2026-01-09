@@ -35,7 +35,7 @@ cat ~/.ssh/id_rsa.pub
 
 Mantenha copiada a chave gerada, assim como mostra o print. 
 
-![tutorial_ssh_1](/img/projetos/ensino/versionamento/tutorial_ssh_1.jpeg)
+![tutorial_ssh_1](/imagens/img-geral/tutorial_ssh_1.jpeg)
 
 
 ## GitLab
@@ -44,17 +44,17 @@ Em seguida, acesse o GitLab pela sua conta e clique em preferências.
 
 <div style={{textAlign: 'center'}}>
 
-![image](/img/projetos/ensino/versionamento/tutorial_ssh_2.jpeg)
+![image](/imagens/img-geral/tutorial_ssh_2.jpeg)
 
 </div>
 
 Clique em SSH Keys, cole sua chave e adicione para salvar.
 
-![tutorial_ssh_3](/img/projetos/ensino/versionamento/tutorial_ssh_3.jpeg)
+![tutorial_ssh_3](/imagens/img-geral/ventoy3.jpeg)
 
 Após salvar sua chave, é preciso clonar novamente o repositório excluído. Para isso, vá na pasta raíz de seu repositório no GitLab e copie o link para clone pelo ssh, como mostra a imagem. 
 
-![tutorial_ssh_4](/img/projetos/ensino/versionamento/tutorial_ssh_4.jpeg)
+![tutorial_ssh_4](/imagens/img-geral/ventoy4.jpeg)
 
 
 ## Terminal 
@@ -75,7 +75,7 @@ git clone <link do repositório>
 
 <div style={{textAlign: 'center'}}>
 
-![image](/img/projetos/ensino/versionamento/tutorial_ssh_5.jpeg)
+![image](/imagens/img-geral/tutorial_ssh_5.jpeg)
 
 </div>
 
@@ -85,7 +85,7 @@ Entre no repositório clonado e digite `code .` para abrir o VSCode.
 
 <div style={{textAlign: 'center'}}>
 
-![image](/img/projetos/ensino/versionamento/tutorial_ssh_6.jpeg)
+![image](/imagens/img-geral/tutorial_ssh_6.jpeg)
 
 </div>
 

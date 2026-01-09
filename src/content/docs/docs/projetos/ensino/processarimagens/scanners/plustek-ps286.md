@@ -4,11 +4,11 @@ title: Plustek  SmartOffice PS286 Plus
 sidebar_label: Plustek  SmartOffice PS286 Plus
 ---
 
-![smartoffice](/img/projetos/sistemas/smartoffice.jpeg)
+![smartoffice](/imagens/img-geral/smartoffice.jpeg)
 
 - Programa correspondente:
 
-![smartoffice2](/img/projetos/sistemas/smartoffice2.png)
+![smartoffice2](/imagens/img-geral/smartoffice2.png)
 
 - Na opção “ Pasta de Destino “ você decidirá para onde as imagens serão enviadas após a digitalização.
 
@@ -22,4 +22,4 @@ sidebar_label: Plustek  SmartOffice PS286 Plus
 
 - Após o scaneamento de uma folha ser completado você poderá colocar quantas outras folhas quiser, o scaneamento continuará de forma automática, lembre, entretanto, que você tem apenas 20 segundos para colocar outra folha.
 
-![smartoffice3](/img/projetos/sistemas/smartoffice3.png)
+![smartoffice3](/imagens/img-geral/smartoffice3.png)
