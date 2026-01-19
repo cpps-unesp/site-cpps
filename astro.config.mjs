@@ -39,6 +39,10 @@ export default defineConfig({
               label: "Emprestimo",
               slug: "docs/emprestimo",
             },
+            {
+              label: "Contatos",
+              slug: "docs/contato",
+            },
           ],
         },
       ],
