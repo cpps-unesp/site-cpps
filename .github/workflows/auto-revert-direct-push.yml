@@ -96,7 +96,7 @@ jobs:
             const count = process.env.COMMIT_COUNT;
             const message = process.env.COMMIT_MESSAGE;
             const body = [
-              `Direct push to **main** detected. A revert PR was opened and set to auto-merge.`,
+              `Direct push to **main** detected. A revert PR was opened and requires manual approval.`,
               '',
               `- Actor: @${actor}`,
               `- Commit count: ${count}`,
