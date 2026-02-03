@@ -96,7 +96,6 @@ if (!originalKey && currentPath) {
           <li>
             <a
               href={disabled ? undefined : href}
-              data-lang-switch={l.code}
               class={`hover:bg-base-200 ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
               aria-disabled={disabled}
             >
@@ -109,14 +108,3 @@ if (!originalKey && currentPath) {
     }
   </ul>
 </div>
-
-<script>
-  document.querySelectorAll('[data-lang-switch]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const lang = (link as HTMLElement).dataset.langSwitch;
-      if (lang) {
-        document.cookie = `lang=${lang}; path=/; max-age=31536000; SameSite=Lax`;
-      }
-    });
-  });
-</script>

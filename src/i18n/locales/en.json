@@ -4,8 +4,6 @@
   "texts": {
     "languageUnavailable": "Not available",
     "notFound": "Page not found",
-    "notFoundDescription": "The page you are looking for does not exist or has been moved.",
-    "backToHome": "Back to home",
     "buttonPersonalPage": "Personal Page",
     "header": {
       "home": "Home",
