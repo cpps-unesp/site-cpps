@@ -3,6 +3,12 @@ name: Dependabot Close Superseded
 on:
   pull_request:
     types: [opened, reopened, synchronize]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "Dependabot PR number to evaluate"
+        required: true
+        type: string
 
 permissions:
   pull-requests: write
@@ -16,7 +22,14 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const current = context.payload.pull_request;
+            const prNumberInput = context.payload.inputs?.pr_number;
+            const current = prNumberInput
+              ? (await github.rest.pulls.get({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  pull_number: Number(prNumberInput),
+                })).data
+              : context.payload.pull_request;
             const title = current.title || '';
             const match = title.match(/^Bump\s+(.+?)\s+from\s+(.+?)\s+to\s+(.+)$/i);
             if (!match) {
