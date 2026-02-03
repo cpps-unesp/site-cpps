@@ -10,18 +10,7 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: "https://cpps.franca.unesp.br",
   output: 'server',
-  adapter: cloudflare({
-    routes: {
-      extend: {
-        // Não precisa adicionar rotas extras - a página catch-all já cobre tudo
-        exclude: [
-          { pattern: '/pt/*' },
-          { pattern: '/en/*' },
-          { pattern: '/es/*' },
-        ]
-      }
-    }
-  }),
+  adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
   },
