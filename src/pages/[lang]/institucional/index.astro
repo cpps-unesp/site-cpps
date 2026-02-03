@@ -1,9 +1,0 @@
----
-// Redireciona /pt/institucional/ → /pt/institucional/sobre/
-export const prerender = true;
-
-export function getStaticPaths() {
-  return [{ params: { lang: 'pt' } }];
-}
----
-<meta http-equiv="refresh" content="0; url=/pt/institucional/sobre/" />
