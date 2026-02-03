@@ -4,6 +4,8 @@
   "texts": {
     "languageUnavailable": "No disponible",
     "notFound": "Página no encontrada",
+    "notFoundDescription": "La página que buscas no existe o ha sido movida.",
+    "backToHome": "Volver al inicio",
     "buttonPersonalPage": "Pág. Personal",
     "header": {
       "home": "Inicio",
