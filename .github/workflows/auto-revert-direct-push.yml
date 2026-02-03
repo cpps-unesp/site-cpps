@@ -94,8 +94,8 @@ jobs:
           script: |
             const sha = context.sha;
             const actor = context.actor;
-            const count = steps.inspect.outputs.commit_count;
-            const message = steps.inspect.outputs.message;
+            const count = process.env.COMMIT_COUNT;
+            const message = process.env.COMMIT_MESSAGE;
             const body = [
               `Direct push to **main** detected. A revert PR was opened and set to auto-merge.`,
               '',
@@ -110,3 +110,6 @@ jobs:
               commit_sha: sha,
               body,
             });
+        env:
+          COMMIT_COUNT: ${{ steps.inspect.outputs.commit_count }}
+          COMMIT_MESSAGE: ${{ steps.inspect.outputs.message }}
