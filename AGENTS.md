@@ -14,6 +14,7 @@
 - Preview build: `npm run preview`
 - Astro CLI: `npm run astro`
  - Single test: not available (no test runner configured)
+ - CI check (PRs): `npm run build`
 
 ### Lint / Format / Test
 - `package.json` does **not** define `lint`, `format`, or `test` scripts.
@@ -123,6 +124,8 @@
 - Update i18n route mappings when new localized routes are added.
 - When adding new pages, consider the `[lang]` route structure.
 - Avoid large refactors unless requested.
+- Main is protected by CI/merge guard workflows; merge via PR with green checks.
+- Without GitHub branch protection, direct pushes are discouraged but not technically blocked.
 
 ## When in Doubt
 - Follow patterns from nearby files.

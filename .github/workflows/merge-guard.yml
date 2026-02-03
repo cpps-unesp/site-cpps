@@ -1,0 +1,36 @@
+name: Merge Guard
+
+on:
+  pull_request:
+
+permissions:
+  checks: read
+  pull-requests: read
+
+jobs:
+  validate:
+    if: github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ensure CI build passed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const headSha = context.payload.pull_request.head.sha;
+            const { data } = await github.rest.checks.listForRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: headSha,
+              filter: 'latest',
+              per_page: 100,
+            });
+
+            const buildCheck = data.check_runs.find((run) => run.name === 'build');
+            if (!buildCheck) {
+              core.setFailed('CI build check not found.');
+              return;
+            }
+
+            if (buildCheck.conclusion !== 'success') {
+              core.setFailed(`CI build check status is ${buildCheck.conclusion}.`);
+            }
