@@ -62,3 +62,29 @@ jobs:
           git revert --no-commit HEAD~${COUNT}..HEAD
           git commit -m "[auto-revert] Revert direct push to main"
           git push
+
+      - name: Notify auto-revert
+        if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const sha = context.sha;
+            const actor = context.actor;
+            const message = steps.inspect.outputs.message;
+            const count = steps.inspect.outputs.commit_count;
+            const title = `[auto-revert] Direct push reverted (${sha.slice(0, 7)})`;
+            const body = [
+              `Direct push to **main** was reverted automatically.`,
+              '',
+              `- Actor: @${actor}`,
+              `- Head SHA: ${sha}`,
+              `- Commit count: ${count}`,
+              `- Head commit message: ${message || '(empty)'}`,
+            ].join('\n');
+
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title,
+              body,
+            });
