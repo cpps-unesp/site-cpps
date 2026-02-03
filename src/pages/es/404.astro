@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import NotFoundContent from "../../components/NotFoundContent.astro";
+import { getTranslations } from "../../utils/i18n";
+
+export const prerender = true;
+
+const lang = "es";
+const t = getTranslations(lang);
+---
+
+<BaseLayout>
+  <NotFoundContent lang={lang} texts={t.texts} />
+</BaseLayout>

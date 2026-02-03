@@ -1,0 +1,31 @@
+---
+import type { Language } from "../utils/i18n";
+
+interface Props {
+  lang: Language;
+  texts: {
+    notFound: string;
+    notFoundDescription: string;
+    backToHome: string;
+  };
+}
+
+const { lang, texts } = Astro.props;
+---
+
+<section class="min-h-[60vh] flex items-center justify-center px-4">
+  <div class="text-center max-w-lg">
+    <h1 class="text-8xl font-heading font-bold text-primary mb-4">404</h1>
+    <h2 class="text-3xl font-heading font-semibold mb-4">{texts.notFound}</h2>
+    <p class="text-lg text-base-content/70 mb-8">
+      {texts.notFoundDescription}
+    </p>
+    <a
+      href={`/${lang}/`}
+      class="btn btn-primary btn-lg"
+    >
+      <i class="fa-solid fa-house mr-2"></i>
+      {texts.backToHome}
+    </a>
+  </div>
+</section>

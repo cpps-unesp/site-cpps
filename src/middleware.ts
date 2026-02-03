@@ -45,8 +45,8 @@ export const onRequest = defineMiddleware(async ({ request, redirect, url, cooki
     return next();
   }
   
-  // 3. Ignora rotas especiais (pagefind, _astro, docs do Starlight, etc)
-  if (path.startsWith('/_') || path.startsWith('/pagefind') || path.startsWith('/docs')) {
+  // 3. Ignora rotas especiais (pagefind, _astro, docs do Starlight, 404, etc)
+  if (path.startsWith('/_') || path.startsWith('/pagefind') || path.startsWith('/docs') || path === '/404' || path === '/404/') {
     return next();
   }
   
