@@ -1,11 +1,39 @@
 ---
 // Esta página catch-all lida com rotas sem idioma e redireciona para a versão correta
-// O middleware cuida da lógica de detecção de idioma
 
 export const prerender = false; // Precisa ser SSR para acessar headers/cookies
 
 const SUPPORTED_LANGS = ['pt', 'en', 'es'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
+
+/**
+ * Faz parsing do header Accept-Language e retorna o idioma preferido
+ * Exemplo: "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7" → "pt"
+ */
+function parseAcceptLanguage(header: string): Lang {
+  if (!header) return 'pt';
+  
+  // Parse cada idioma com sua prioridade
+  const languages = header.split(',').map(part => {
+    const [lang, qPart] = part.trim().split(';');
+    const q = qPart ? parseFloat(qPart.replace('q=', '')) : 1.0;
+    // Extrai apenas o código do idioma (pt-BR → pt, en-US → en)
+    const langCode = lang.split('-')[0].toLowerCase();
+    return { lang: langCode, q };
+  });
+  
+  // Ordena por prioridade (maior q primeiro)
+  languages.sort((a, b) => b.q - a.q);
+  
+  // Retorna o primeiro idioma suportado
+  for (const { lang } of languages) {
+    if (lang === 'pt' || lang === 'en' || lang === 'es') {
+      return lang as Lang;
+    }
+  }
+  
+  return 'pt'; // fallback
+}
 
 const path = Astro.params.path ?? '';
 
@@ -19,12 +47,7 @@ if (cookieLang && SUPPORTED_LANGS.includes(cookieLang as Lang)) {
 } else {
   // Senão, detecta do navegador
   const acceptLang = Astro.request.headers.get('accept-language') ?? '';
-  
-  if (acceptLang.match(/^es\b|,\s*es\b/i)) {
-    lang = 'es';
-  } else if (acceptLang.match(/^en\b|,\s*en\b/i)) {
-    lang = 'en';
-  }
+  lang = parseAcceptLanguage(acceptLang);
 }
 
 // Redireciona para URL com idioma

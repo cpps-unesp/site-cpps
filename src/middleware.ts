@@ -3,6 +3,35 @@ import { defineMiddleware } from 'astro:middleware';
 const SUPPORTED_LANGS = ['pt', 'en', 'es'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
 
+/**
+ * Faz parsing do header Accept-Language e retorna o idioma preferido
+ * Exemplo: "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7" → "pt"
+ */
+function parseAcceptLanguage(header: string): Lang {
+  if (!header) return 'pt';
+  
+  // Parse cada idioma com sua prioridade
+  const languages = header.split(',').map(part => {
+    const [lang, qPart] = part.trim().split(';');
+    const q = qPart ? parseFloat(qPart.replace('q=', '')) : 1.0;
+    // Extrai apenas o código do idioma (pt-BR → pt, en-US → en)
+    const langCode = lang.split('-')[0].toLowerCase();
+    return { lang: langCode, q };
+  });
+  
+  // Ordena por prioridade (maior q primeiro)
+  languages.sort((a, b) => b.q - a.q);
+  
+  // Retorna o primeiro idioma suportado
+  for (const { lang } of languages) {
+    if (lang === 'pt' || lang === 'en' || lang === 'es') {
+      return lang as Lang;
+    }
+  }
+  
+  return 'pt'; // fallback
+}
+
 export const onRequest = defineMiddleware(async ({ request, redirect, url, cookies }, next) => {
   const path = url.pathname;
   
@@ -29,17 +58,9 @@ export const onRequest = defineMiddleware(async ({ request, redirect, url, cooki
   if (cookieLang && SUPPORTED_LANGS.includes(cookieLang as Lang)) {
     lang = cookieLang as Lang;
   } else {
-    // 4b. Senão, detecta do navegador
+    // 4b. Senão, detecta do navegador com parsing correto
     const acceptLang = request.headers.get('accept-language') ?? '';
-    
-    // Verifica espanhol primeiro (es, es-ES, es-MX, etc)
-    if (acceptLang.match(/^es\b|,\s*es\b/i)) {
-      lang = 'es';
-    // Verifica inglês (en, en-US, en-GB, etc)
-    } else if (acceptLang.match(/^en\b|,\s*en\b/i)) {
-      lang = 'en';
-    }
-    // pt é fallback padrão
+    lang = parseAcceptLanguage(acceptLang);
   }
   
   // 5. Redireciona para URL com idioma
