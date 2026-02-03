@@ -13,11 +13,11 @@ export default defineConfig({
   adapter: cloudflare({
     routes: {
       extend: {
-        include: [
-          { pattern: '/' },                    // raiz
-          { pattern: '/institucional/*' },     // rotas sem idioma
-          { pattern: '/iniciativas/*' },
-          { pattern: '/noticias/*' },
+        // Não precisa adicionar rotas extras - a página catch-all já cobre tudo
+        exclude: [
+          { pattern: '/pt/*' },
+          { pattern: '/en/*' },
+          { pattern: '/es/*' },
         ]
       }
     }
