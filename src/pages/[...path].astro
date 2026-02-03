@@ -1,17 +1,8 @@
 ---
 // Esta página catch-all lida com rotas sem idioma e redireciona para a versão correta
-// Se a URL já tem idioma (ex: /pt/pagina-inexistente), retorna 404
+// Se a URL já tem idioma (ex: /pt/pagina-inexistente), reescreve para a página 404
 
 export const prerender = false; // Precisa ser SSR para acessar headers/cookies
-
-import { getTranslations, type Language } from "../utils/i18n";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import AlternarTema from "../components/AlterarTema.astro";
-import SearchModal from "../components/SearchModal.astro";
-import BackToTop from "../components/BackToTop.astro";
-
-import "../styles/global.css";
 
 const SUPPORTED_LANGS = ['pt', 'en', 'es'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
@@ -21,133 +12,47 @@ const pathSegments = path.split('/');
 const firstSegment = pathSegments[0];
 
 // Se a URL já começa com um idioma válido, significa que a página não existe
-// Nesse caso, renderiza a página 404 em vez de redirecionar (evita loop infinito)
-const isLangRoute = SUPPORTED_LANGS.includes(firstSegment as Lang);
-
-if (isLangRoute) {
-  // Retorna 404 com o idioma da URL
-  Astro.response.status = 404;
-  Astro.response.statusText = 'Not Found';
+// Nesse caso, reescreve para a página 404
+if (SUPPORTED_LANGS.includes(firstSegment as Lang)) {
+  return Astro.rewrite('/404');
 }
 
 /**
  * Faz parsing do header Accept-Language e retorna o idioma preferido
- * Exemplo: "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7" → "pt"
  */
 function parseAcceptLanguage(header: string): Lang {
   if (!header) return 'pt';
   
-  // Parse cada idioma com sua prioridade
   const languages = header.split(',').map(part => {
     const [lang, qPart] = part.trim().split(';');
     const q = qPart ? parseFloat(qPart.replace('q=', '')) : 1.0;
-    // Extrai apenas o código do idioma (pt-BR → pt, en-US → en)
     const langCode = lang.split('-')[0].toLowerCase();
     return { lang: langCode, q };
   });
   
-  // Ordena por prioridade (maior q primeiro)
   languages.sort((a, b) => b.q - a.q);
   
-  // Retorna o primeiro idioma suportado
   for (const { lang } of languages) {
     if (lang === 'pt' || lang === 'en' || lang === 'es') {
       return lang as Lang;
     }
   }
   
-  return 'pt'; // fallback
+  return 'pt';
 }
 
 // Determina idioma preferido
-let lang: Lang = 'pt'; // fallback
+let lang: Lang = 'pt';
 
-if (isLangRoute) {
-  // Usa o idioma da URL
-  lang = firstSegment as Lang;
+const cookieLang = Astro.cookies.get('lang')?.value;
+if (cookieLang && SUPPORTED_LANGS.includes(cookieLang as Lang)) {
+  lang = cookieLang as Lang;
 } else {
-  // Primeiro verifica cookie
-  const cookieLang = Astro.cookies.get('lang')?.value;
-  if (cookieLang && SUPPORTED_LANGS.includes(cookieLang as Lang)) {
-    lang = cookieLang as Lang;
-  } else {
-    // Senão, detecta do navegador
-    const acceptLang = Astro.request.headers.get('accept-language') ?? '';
-    lang = parseAcceptLanguage(acceptLang);
-  }
-  
-  // Redireciona para URL com idioma
-  const newPath = `/${lang}/${path}`;
-  return Astro.redirect(newPath, 301);
+  const acceptLang = Astro.request.headers.get('accept-language') ?? '';
+  lang = parseAcceptLanguage(acceptLang);
 }
 
-// Se chegou aqui, é uma rota com idioma que não existe - mostra 404
-const t = getTranslations(lang as Language);
-const titulo = t.titulo;
-const descricao = t.descricao;
-const texts = t.texts;
-const identidade = t.identidade;
+// Redireciona para URL com idioma
+const newPath = `/${lang}/${path}`;
+return Astro.redirect(newPath, 301);
 ---
-
-<html lang={lang} dir="ltr" data-theme="cpps">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{texts.notFound} | {titulo}</title>
-    <link rel="icon" href="/imagens/logos/cpps/favicon.ico" />
-    <meta name="description" content={descricao} />
-    <meta name="robots" content="noindex, follow" />
-
-    <!-- Performance com fontes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-    <!-- Academicons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-    />
-  </head>
-
-  <body class="bg-base-100 text-base-content">
-    <Header lang={lang} texts={texts} identidade={identidade}>
-      <AlternarTema />
-    </Header>
-
-    <main class="pt-8 flex-1">
-      <section class="min-h-[60vh] flex items-center justify-center px-4">
-        <div class="text-center max-w-lg">
-          <h1 class="text-8xl font-heading font-bold text-primary mb-4">404</h1>
-          <h2 class="text-3xl font-heading font-semibold mb-4">{texts.notFound}</h2>
-          <p class="text-lg text-base-content/70 mb-8">
-            {texts.notFoundDescription}
-          </p>
-          <a
-            href={`/${lang}/`}
-            class="btn btn-primary btn-lg"
-          >
-            <i class="fa-solid fa-house mr-2"></i>
-            {texts.backToHome}
-          </a>
-        </div>
-      </section>
-    </main>
-    
-    <Footer lang={lang} texts={texts} />
-    <BackToTop lang={lang} />
-    <SearchModal texts={texts} />
-    <script type="module" src="/scripts/themeSwitcher.js"></script>
-  </body>
-</html>
