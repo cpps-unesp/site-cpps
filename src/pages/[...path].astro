@@ -1,10 +1,21 @@
 ---
 // Esta página catch-all lida com rotas sem idioma e redireciona para a versão correta
+// Se a URL já tem idioma (ex: /pt/pagina-inexistente), retorna 404
 
 export const prerender = false; // Precisa ser SSR para acessar headers/cookies
 
 const SUPPORTED_LANGS = ['pt', 'en', 'es'] as const;
 type Lang = typeof SUPPORTED_LANGS[number];
+
+const path = Astro.params.path ?? '';
+const pathSegments = path.split('/');
+const firstSegment = pathSegments[0];
+
+// Se a URL já começa com um idioma válido, significa que a página não existe
+// Nesse caso, retorna 404 em vez de redirecionar (evita loop infinito)
+if (SUPPORTED_LANGS.includes(firstSegment as Lang)) {
+  return Astro.redirect(`/404`, 302);
+}
 
 /**
  * Faz parsing do header Accept-Language e retorna o idioma preferido
@@ -34,8 +45,6 @@ function parseAcceptLanguage(header: string): Lang {
   
   return 'pt'; // fallback
 }
-
-const path = Astro.params.path ?? '';
 
 // Determina idioma preferido
 let lang: Lang = 'pt'; // fallback
