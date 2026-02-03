@@ -1,0 +1,9 @@
+---
+// Redireciona /es/iniciativas/ → /es/iniciativas/proyectos/
+export const prerender = true;
+
+export function getStaticPaths() {
+  return [{ params: { lang: 'es' } }];
+}
+---
+<meta http-equiv="refresh" content="0; url=/es/iniciativas/proyectos/" />
