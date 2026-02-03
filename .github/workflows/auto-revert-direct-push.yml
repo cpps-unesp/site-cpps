@@ -7,7 +7,7 @@ on:
 
 permissions:
   contents: write
-  pull-requests: read
+  pull-requests: write
 
 jobs:
   revert:
@@ -48,6 +48,8 @@ jobs:
       - name: Checkout
         if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Configure git
         if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
@@ -55,36 +57,30 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Revert direct push
+      - name: Prepare revert branch
         if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
         run: |
           COUNT=${{ steps.inspect.outputs.commit_count }}
+          BRANCH="auto-revert/${{ github.sha }}"
+          git checkout -b "$BRANCH"
           git revert --no-commit HEAD~${COUNT}..HEAD
           git commit -m "[auto-revert] Revert direct push to main"
-          git push
+          git push origin "$BRANCH"
 
-      - name: Notify auto-revert
+      - name: Open revert PR
         if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const sha = context.sha;
-            const actor = context.actor;
-            const message = steps.inspect.outputs.message;
-            const count = steps.inspect.outputs.commit_count;
-            const title = `[auto-revert] Direct push reverted (${sha.slice(0, 7)})`;
-            const body = [
-              `Direct push to **main** was reverted automatically.`,
-              '',
-              `- Actor: @${actor}`,
-              `- Head SHA: ${sha}`,
-              `- Commit count: ${count}`,
-              `- Head commit message: ${message || '(empty)'}`,
-            ].join('\n');
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="auto-revert/${{ github.sha }}"
+          TITLE="[auto-revert] Revert direct push to main"
+          BODY=$(cat <<'EOF'
+          Direct push to **main** detected and reverted via PR.
 
-            await github.rest.issues.create({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              title,
-              body,
-            });
+          - Actor: @${{ github.actor }}
+          - Head SHA: ${{ github.sha }}
+          - Commit count: ${{ steps.inspect.outputs.commit_count }}
+          - Head commit message: ${{ steps.inspect.outputs.message }}
+          EOF
+          )
+          gh pr create --title "$TITLE" --body "$BODY" --head "$BRANCH" --base "main"
