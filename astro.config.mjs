@@ -17,5 +17,6 @@ export default defineConfig({
 
   integrations: [starlight({
       title: 'Documentação CPPS',
+      disable404Route: true,
     }), pagefind(), mdx()],
 });
