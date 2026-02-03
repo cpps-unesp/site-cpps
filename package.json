@@ -20,6 +20,6 @@
     "theme-change": "^2.5.0"
   },
   "devDependencies": {
-    "pagefind": "^1.3.0"
+    "pagefind": "^1.4.0"
   }
 }
