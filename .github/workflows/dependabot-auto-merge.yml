@@ -31,7 +31,7 @@ jobs:
         if: >-
           (steps.metadata.outputs.update-type == 'version-update:semver-minor' ||
           steps.metadata.outputs.update-type == 'version-update:semver-patch') &&
-          steps.metadata.outputs.dependency-type == 'direct'
+          startsWith(steps.metadata.outputs.dependency-type, 'direct')
         uses: peter-evans/enable-pull-request-automerge@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
