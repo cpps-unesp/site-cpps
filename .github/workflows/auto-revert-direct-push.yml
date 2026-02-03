@@ -84,9 +84,8 @@ jobs:
           - Head commit message: ${{ steps.inspect.outputs.message }}
           EOF
           )
-          PR_NUMBER=$(gh pr create --title "$TITLE" --body "$BODY" --head "$BRANCH" --base "main" --json number --jq '.number')
-          gh pr edit "$PR_NUMBER" --add-label "auto-revert"
-          gh pr merge "$PR_NUMBER" --squash --auto --delete-branch
+          PR_URL=$(gh pr create --title "$TITLE" --body "$BODY" --head "$BRANCH" --base "main" --label "auto-revert")
+          gh pr merge "$PR_URL" --squash --auto --delete-branch
 
       - name: Comment on commit
         if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
