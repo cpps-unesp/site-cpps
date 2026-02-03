@@ -13,15 +13,13 @@
 - Production build: `npm run build` (Astro build + Pagefind index)
 - Preview build: `npm run preview`
 - Astro CLI: `npm run astro`
+ - Single test: not available (no test runner configured)
 
 ### Lint / Format / Test
 - `package.json` does **not** define `lint`, `format`, or `test` scripts.
 - README mentions `npm run lint` and `npm run format`, but they are not wired.
 - There is no test runner configured.
 
-### Single Test
-- Not available (no tests configured).
-- If you add a test runner, document the exact single-test command here.
 
 ## Repository Structure
 - `src/pages/`: page routes, with localized routes under `src/pages/[lang]/`.
@@ -91,11 +89,16 @@
   - Base font: `Montserrat`.
   - Headings: `Bebas Neue`.
 - Use theme tokens (primary/secondary/accent/neutral) rather than hard-coded colors.
+- Keep custom CSS changes localized in `src/styles/global.css`.
 
 ## Markdown / MDX
 - Prefer Markdown for content; keep structure simple and consistent.
 - Follow README templates for `membros` and `noticias` entries.
 - Use `lang` frontmatter consistently and ensure correct locale in filename.
+
+### Frontmatter (quick reference)
+- `noticias`: `title`, `date`, `resumo`, `image`, `lang` (optional `tags`).
+- `membros`: `title`, `lang`, `cargo` (optional `foto`, `contribuicao`, `redes`).
 
 ## Routing & Slugs
 - Route translations are keyed by the base path string.
@@ -107,8 +110,7 @@
 - Pagefind indexes are generated during `npm run build`.
 
 ## Known Gaps / TODO (for maintainers)
-- No linting or formatting scripts configured.
-- No test runner configured.
+- No lint/format/test scripts configured.
 - If you add tooling, update `package.json` and this file.
 
 ## Cursor/Copilot Rules
