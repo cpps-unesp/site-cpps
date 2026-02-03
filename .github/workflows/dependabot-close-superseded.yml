@@ -15,7 +15,7 @@ permissions:
 
 jobs:
   close-superseded:
-    if: github.actor == 'dependabot[bot]'
+    if: github.actor == 'dependabot[bot]' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Close older Dependabot PRs
