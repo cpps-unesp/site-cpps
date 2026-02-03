@@ -1,13 +1,5 @@
 ---
-export function getStaticPaths() {
-  return [
-    { params: { lang: 'pt' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'es' } }
-  ];
-}
-
-const { lang } = Astro.params;
+const { texts } = Astro.props;
 import Search from "astro-pagefind/components/Search";
 ---
 
@@ -21,7 +13,7 @@ import Search from "astro-pagefind/components/Search";
     <!-- ✅ Botão de fechar "X" -->
     <label for="search-modal" class="absolute top-3 right-3 cursor-pointer text-lg font-bold">✖</label>
 
-    <h3 id="search-title" class="font-bold text-lg mb-4 text-primary">Buscar</h3>
+    <h3 id="search-title" class="font-bold text-lg mb-4 text-primary">{texts.header.buscar}</h3>
 
     <!-- ✅ Componente de busca Pagefind mais translúcido -->
     <div class="search-wrapper">

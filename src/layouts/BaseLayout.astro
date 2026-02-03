@@ -1,12 +1,16 @@
 ---
-const {
-  children,
-  lang = "pt",
-  titulo = "CPPS | UNESP",
-  descricao = "Centro de Pesquisa Política e Social da Faculdade de Ciências Humanas e Sociais da Unesp, campus Franca",
-  texts = {},
-  identidade = {},
-} = Astro.props;
+import { getTranslations, type Language } from "../utils/i18n";
+import { getLangFromUrl } from "../utils/getLangFromUrl";
+
+const lang = getLangFromUrl(Astro.url) as Language;
+const t = getTranslations(lang);
+
+const { children } = Astro.props;
+
+const titulo = t.titulo;
+const descricao = t.descricao;
+const texts = t.texts;
+const identidade = t.identidade;
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -87,7 +91,7 @@ import "../styles/global.css";
     </main>
     <Footer lang={lang} texts={texts} />
     <BackToTop lang={lang} />
-    <SearchModal />
+    <SearchModal texts={texts} />
     <script type="module" src="/scripts/themeSwitcher.js"></script>
   </body>
 </html>

@@ -53,6 +53,7 @@
     "porPeriodo": "Período",
     "projetosLista": [
       {
+        "id": "ruptura-metabolica-crise-capital",
         "titulo": "Ruptura metabólica e crise estrutural do capital: o complexo minero-industrial em Minas Gerais e a tendência à eliminação das condições elementares da reprodução social",
         "docente": "Frederico Daia Firmiano",
         "periodo": "2023–2026",
@@ -68,11 +69,20 @@
           "Indicação institucional do CPPS como centro associado",
           "Divulgação em canais institucionais",
           "Organização de atividades de extensão e eventos vinculados ao projeto"
-          
         ],
-        "mostrar": ["resumo", "docente", "associados", "periodo", "agencia", "processo", "departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "associados",
+          "periodo",
+          "agencia",
+          "processo",
+          "departamento",
+          "status"
+        ]
       },
       {
+        "id": "critica-pobreza-filosofia-social",
         "titulo": "Crítica da pobreza como objeto da filosofia social",
         "docente": "Hélio Alexandre da Silva",
         "periodo": "2022-2024",
@@ -90,6 +100,7 @@
         "apoioCentro": []
       },
       {
+        "id": "crise-democracia-arranjos-juridicos",
         "titulo": "Crise da democracia e arranjos jurídico-institucionais: uma análise a partir das relações entre a política e o direito",
         "docente": "Murilo Gaspardo",
         "periodo": "2020-2024",
@@ -113,6 +124,7 @@
         "apoioCentro": []
       },
       {
+        "id": "crises-democracia-brasileira-pos-2013",
         "titulo": "Crises da democracia brasileira pós-2013: mapeamento conceitual e empírico a partir das conexões entre Direito e Política",
         "docente": "Murilo Gaspardo",
         "periodo": "2021-2023",
@@ -127,6 +139,7 @@
         "apoioCentro": []
       },
       {
+        "id": "em-costas-negras-nucleo-pesquisa",
         "titulo": "Em costas negras: núcleo de pesquisa em história e cultura africana e afro-brasileira da UNESP",
         "docente": "Ricardo Alexandre Ferreira",
         "periodo": "2023-2025",
@@ -139,9 +152,18 @@
         "associados": [],
         "resumo": "Visa criar um centro de pesquisa em história e cultura africana e afro-brasileira no nordeste paulista. O objetivo principal é organizar o acervo bibliográfico e documental doado pelo historiador Manolo Garcia Florentino, envolvendo a higienização, catalogação e acondicionamento de mais de 2.000 volumes para torná-los acessíveis à pesquisa.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo", "agencia", "processo", "departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "agencia",
+          "processo",
+          "departamento",
+          "status"
+        ]
       },
       {
+        "id": "politica-outros-meios-mobilizacao-juridica",
         "titulo": "A política por outros meios (?): a mobilização jurídica como estratégia para a conquista e efetivação de direitos no Brasil e na América Latina",
         "docente": "Agnaldo de Sousa Barbosa",
         "periodo": "2023-2025",
@@ -154,9 +176,16 @@
         "associados": [],
         "resumo": "Investiga a mobilização do direito como estratégia de luta política no Brasil e na América Latina nas últimas três décadas. O projeto busca compreender por que os tribunais se tornaram um caminho estratégico, a natureza dos conflitos levados à justiça, os enquadramentos legais utilizados e os efeitos de mobilização e contramobilização gerados.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo","departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "departamento",
+          "status"
+        ]
       },
       {
+        "id": "feminist-judgments-projects",
         "titulo": "Feminist Judgments Projects (Projetos de Julgamentos Feministas",
         "docente": "Ana Gabriela Mendes Braga",
         "periodo": "2021-2022",
@@ -169,9 +198,16 @@
         "associados": [],
         "resumo": "Inspirado em projetos internacionais, o projeto brasileiro 'Reescrevendo Decisões Judiciais em Perspectivas Feministas' reúne uma rede de mais de 60 acadêmicas e juristas para reescrever decisões judiciais significativas sob a ótica de metodologias feministas e antirracistas. O objetivo é fortalecer a crítica jurídica feminista e analisar seu impacto potencial nas decisões judiciais.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo","departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "departamento",
+          "status"
+        ]
       },
       {
+        "id": "crise-democratica-sistema-presidencialista",
         "titulo": "Crise Democrática e Sistema de Governo Presidencialista: estudo dos arranjos e da dinâmica entre poderes para uma reengenharia constitucional",
         "docente": "José Duarte Neto",
         "periodo": "2020 - Atual",
@@ -184,9 +220,16 @@
         "associados": [],
         "resumo": "Busca compreender a crise democrática global a partir do Direito Constitucional, mapeando o debate e sistematizando a produção sobre o tema. O projeto investiga o impacto do populismo no presidencialismo brasileiro e na dinâmica entre os poderes, questionando sobre a possibilidade de transformações no sistema de governo, como a adoção do semipresidencialismo.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo","departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "departamento",
+          "status"
+        ]
       },
       {
+        "id": "historia-primeira-metade-seculo-xx",
         "titulo": "História da primeira metade do século XX: a construção de outros sentidos para o passado da nação",
         "docente": "Karina Anhezini de Araújo",
         "periodo": "",
@@ -199,9 +242,16 @@
         "associados": [],
         "resumo": "Problematiza como a história do Brasil foi, em grande parte, construída como uma história da expansão paulista. O projeto analisa a 'bandeirologia' na primeira metade do século XX, investigando como se formulou um saber que definiu São Paulo e o 'paulista' como centrais, construindo uma retórica sobre as habilidades especiais deste povo e território.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo","departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "departamento",
+          "status"
+        ]
       },
-       {
+      {
+        "id": "emu-equipamentos-humanidades-digitais",
         "titulo": "EMU: Aquisição de equipamentos com redundância, bom desempenho (CPU e GPU) e armazenamento escalável para as Humanidades Digitais",
         "docente": "Marcelo Passini Mariano",
         "periodo": "09/2024 - 08/2027",
@@ -214,9 +264,18 @@
         "associados": [],
         "resumo": "O objetivo deste projeto é viabilizar um investimento na infraestrutura computacional do Instituto de Política Pública e Relações Internacionais (IPPRI/UNESP). O projeto propõe a aquisição de equipamentos com redundância, com alto desempenho (CPU e GPU) e capacidade de armazenamento escaláveis. Com esses recursos, será possível ampliar e abrir novos horizontes para coletar, processar, analisar e visualizar grandes volumes de dados. Além disso, o projeto busca promover a colaboração e o intercâmbio de conhecimento entre pesquisadores, ampliando o acesso e a disseminação das humanidades digitais não apenas no Estado de São Paulo, mas também em outras regiões. Em nosso comitê de usuários, além de representantes paulistas (INCT-INEU, UNESP, UNICAMP, UNIFESP), temos representantes da Universidade de Brasília (UnB) e da Universidade Federal de Uberlândia (UFU). A fundamentação deste pedido de aquisição de equipamento multiusuário é o avanço da infraestrutura de pesquisa nas humanidades, propiciando maior capacidade de processamento em CPU e GPU, armazenamento em rede, serviços e ambientes de análise e visualização de grandes bases de dados, permitindo o desenvolvimento de pesquisas mais complexas e inovadoras. Com isso, será possível ampliar os horizontes da área em um contexto em que as humanidades enfrentam um desafio crescente: o volume e a complexidade dos dados disponíveis. Dados textuais, audiovisuais, e de redes sociais se proliferam rapidamente, mas são difíceis de serem processados, analisados e interpretados pelo pesquisador sem o auxílio computacional adequado.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo", "agencia", "processo", "departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "agencia",
+          "processo",
+          "departamento",
+          "status"
+        ]
       },
       {
+        "id": "monitoramento-politica-externa-brasileira",
         "titulo": "Monitoramento e avaliação da política externa brasileira: uma proposta preliminar para uma rotina geral",
         "docente": "Marcelo Passini Mariano",
         "periodo": "2021 - 2025",
@@ -229,9 +288,16 @@
         "associados": [],
         "resumo": "Objetiva desenvolver um conjunto de instrumentos de monitoramento e avaliação aplicáveis a qualquer estratégia da política externa brasileira. A intenção é criar uma rotina comum para comparar resultados de políticas passadas e avaliar as futuras, preenchendo uma lacuna na Análise de Política Externa e promovendo a prestação de contas à sociedade.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo","departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "departamento",
+          "status"
+        ]
       },
       {
+        "id": "newpereubra-ue-brasil",
         "titulo": "NEWPEREUBRA — New Perspectives on European Union-Brazil Relations: Challenges and Opportunities",
         "docente": "Marília Carolina Barbosa de Souza Pimenta",
         "periodo": "2022 - 2025",
@@ -244,9 +310,16 @@
         "associados": [],
         "resumo": "Este Módulo Jean Monnet visa ensinar a estudantes brasileiros sobre os conceitos, políticas e o papel global da União Europeia, focando na relação UE-Brasil. O projeto aborda cinco áreas: UE como ator global, democracia e direitos humanos, energia e desenvolvimento sustentável, comércio e investimentos, e segurança regional, combinando conhecimento teórico e aplicado.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo","departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "departamento",
+          "status"
+        ]
       },
       {
+        "id": "consorcio-nordeste-desenvolvimento-sustentavel",
         "titulo": "Consórcio do Nordeste: desenvolvimento sustentável ou insustentável?",
         "docente": "Regina Cláudia Laisner",
         "periodo": "2023 - Atual",
@@ -259,59 +332,99 @@
         "associados": [],
         "resumo": "Este projeto analisa o Consórcio do Nordeste com foco crítico no conceito de 'desenvolvimento sustentável' que orienta suas ações. A pesquisa busca identificar se a concepção adotada se alinha ao crescimento econômico tradicional ou a uma transição para uma sociedade ecologicamente justa, analisando os projetos do Consórcio a partir de dados e entrevistas.",
         "apoioCentro": [],
-        "mostrar": ["resumo", "docente", "periodo","departamento", "status"]
+        "mostrar": [
+          "resumo",
+          "docente",
+          "periodo",
+          "departamento",
+          "status"
+        ]
       }
     ]
-
   },
   "cafe": {
     "titulo": "Café com Ciência",
     "descricao": "O Café com Ciência é uma iniciativa voltada a debater temas da agenda de pesquisa dos pesquisadores do Centro de Pesquisa Política e Social",
     "episodios": [
       {
+        "id": "ep5-autocratizacao-resiliencia",
         "icone": "🎙️",
         "titulo": "Episódio 5: Autocratização e Resiliência Democrática no Brasil (2019-2023)",
         "descricao": "O encontro forneceu um panorama abrangente sobre os desafios da governança da IA, com um foco especial no complexo papel do Brasil nesse cenário global.",
         "materiais": [
-        { "nome": "PDF", "url": "" },
-        { "nome": "HTML", "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt" }
-      ]
+          {
+            "nome": "PDF",
+            "url": ""
+          },
+          {
+            "nome": "HTML",
+            "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt"
+          }
+        ]
       },
-        {
+      {
+        "id": "ep4-brasil-governanca-ia",
         "icone": "🎙️",
         "titulo": "Episódio 4: O Brasil e a Governança Global de Inteligência Artificial",
         "descricao": "A reunião abordou a complexidade da governança da inteligência artificial no cenário global, destacando os desafios e o posicionamento do Brasil como um grande consumidor e ator com histórico de influência regulatória, mas que enfrenta a difícil questão de como equilibrar dependência tecnológica, desenvolvimento e soberania em um campo de rápida evolução e concentração de poder.",
         "materiais": [
-        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
-        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
-      ]
+          {
+            "nome": "PDF",
+            "url": "https://exemplo.com/ep1.pdf"
+          },
+          {
+            "nome": "HTML",
+            "url": "https://exemplo.com/ep1.html"
+          }
+        ]
       },
       {
+        "id": "ep3-articulacao-pesquisa",
         "icone": "🎙️",
         "titulo": "Episódio 3: Discussão para articulação entre os professores sobre possibilidades de pesquisa",
         "descricao": "",
         "materiais": [
-        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
-        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
-      ]
+          {
+            "nome": "PDF",
+            "url": "https://exemplo.com/ep1.pdf"
+          },
+          {
+            "nome": "HTML",
+            "url": "https://exemplo.com/ep1.html"
+          }
+        ]
       },
       {
+        "id": "ep2-cop30-transicao-energetica",
         "icone": "🎙️",
         "titulo": "Episódio 2: A COP 30 e a Transição Energética Justa",
         "descricao": "O encontro propôs uma análise crítica da COP e da transição energética, defendendo a necessidade de uma abordagem mais justa, inclusiva e decolonial, que enfrente as desigualdades históricas e estruturais em vez de apenas focar em soluções técnicas e mercantis.",
         "materiais": [
-        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
-        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
-      ]
+          {
+            "nome": "PDF",
+            "url": "https://exemplo.com/ep1.pdf"
+          },
+          {
+            "nome": "HTML",
+            "url": "https://exemplo.com/ep1.html"
+          }
+        ]
       },
       {
+        "id": "ep1-novo-governo-trump",
         "icone": "🎙️",
         "titulo": "Episódio 1: O novo Governo Trump e suas repercussões para o Brasil: geopolítica, democracia, economia e mudanças climáticas",
         "descricao": "",
         "materiais": [
-        { "nome": "PDF", "url": "https://exemplo.com/ep1.pdf" },
-        { "nome": "HTML", "url": "https://exemplo.com/ep1.html" }
-      ]
+          {
+            "nome": "PDF",
+            "url": "https://exemplo.com/ep1.pdf"
+          },
+          {
+            "nome": "HTML",
+            "url": "https://exemplo.com/ep1.html"
+          }
+        ]
       }
     ]
   },
@@ -320,6 +433,7 @@
     "descricao": "",
     "grupos": [
       {
+        "id": "resolucao-unesp-19-2025",
         "titulo": "RESOLUÇÃO UNESP No 19, DE 15 DE MAIO DE 2025",
         "descricao": "Formalização da criação do Centro de Pesquisa Política e Social através de resolução da reitoria da UNESP publicada no diário Oficial  do Estado de São Paulo",
         "arquivos": [
@@ -339,6 +453,7 @@
         ]
       },
       {
+        "id": "regimento-cpps",
         "titulo": "Regimento",
         "descricao": "Formalização da criação do Centro de Pesquisa Política e Social através de resolução da reitoria da UNESP publicada no diário Oficial  do Estado de São Paulo",
         "arquivos": [
@@ -358,6 +473,7 @@
         ]
       },
       {
+        "id": "plano-inicial-gestao",
         "titulo": "Plano Inicial de Gestão e Metas",
         "descricao": "Delineia um cronograma estratégico e progressivo para os próximos oito semestres, integrando diretamente as diretrizes estabelecidas no regimento interno do centro.",
         "arquivos": [
@@ -377,6 +493,7 @@
         ]
       },
       {
+        "id": "proposta-criacao",
         "titulo": "Proposta de Criação",
         "descricao": "Dispõe sobre a criação, a organização, o funcionamento do Centros de Pesquisa Política e Social",
         "arquivos": [
@@ -396,6 +513,7 @@
         ]
       },
       {
+        "id": "parecer-manifestacao-departamentos",
         "titulo": "Parecer e Manifestação dos Departamentos",
         "descricao": "Avaliação e subscrição dos seis departamentos da Faculdade de Ciências Humanas e Sociais da UNESP em relação a criação do Centro de Pesquisa Interdepartamental",
         "arquivos": [
@@ -415,6 +533,7 @@
         ]
       },
       {
+        "id": "resolucao-unesp-19-2020",
         "titulo": "RESOLUÇÃO UNESP Nº 19, DE 08 DE ABRIL DE 2020",
         "descricao": "Dispõe sobre a criação, a organização, o funcionamento e o encerramento de Centros de Pesquisa.",
         "arquivos": [
@@ -530,77 +649,6 @@
       ]
     }
   },
-  "objetivosGerais": {
-    "title": "Objetivos Gerais",
-    "description": "Nossos objetivos amplos e estratégicos.",
-    "image": "/imagens/campus/entrada-unesp-franca.jpg",
-    "reverse": false,
-    "activities": [
-      {
-        "icon": "🎯",
-        "title": "Desenvolver pesquisas interdisciplinares",
-        "description": "Foco em política, sociedade e ciência social aplicada."
-      },
-      {
-        "icon": "🎯",
-        "title": "Consolidar redes de pesquisa",
-        "description": "Incluindo parcerias regionais e internacionais."
-      }
-    ]
-  },
-  "objetivosEspecificos": {
-    "title": "Objetivos Específicos",
-    "description": "Metas práticas para alcançar os objetivos gerais.",
-    "image": "/imagens/campus/entrada-unesp-franca.jpg",
-    "reverse": true,
-    "activities": [
-      {
-        "icon": "✅",
-        "title": "Formação de estudantes",
-        "description": "Incluir estudantes em projetos e eventos científicos."
-      },
-      {
-        "icon": "✅",
-        "title": "Produção acadêmica",
-        "description": "Fomentar artigos, livros e apresentações em congressos."
-      }
-    ]
-  },
-  "projetos": {
-    "titulo": "Nossos Projetos",
-    "lista": [
-      {
-        "icone": "🎓",
-        "titulo": "Projeto Educacional",
-        "descricao": "Aprimorando a criação de conteúdos instrucionais e materiais educacionais engajadores."
-      },
-      {
-        "icone": "🏠",
-        "titulo": "Design de Interiores",
-        "descricao": "Criando espaços funcionais e visualmente atraentes para uso residencial e comercial."
-      },
-      {
-        "icone": "📷",
-        "titulo": "Fotografia",
-        "descricao": "Facilitando a narrativa visual para fotógrafos profissionais e entusiastas."
-      },
-      {
-        "icone": "🛒",
-        "titulo": "E-commerce",
-        "descricao": "Garantindo presença dinâmica para exibir produtos de forma eficaz, ideal para startups."
-      },
-      {
-        "icone": "📝",
-        "titulo": "Blog",
-        "descricao": "Capacitando a apresentação eficaz de conteúdos para escritores, com foco em tipografia."
-      },
-      {
-        "icone": "🏢",
-        "titulo": "Negócios",
-        "descricao": "Oferecendo opções visuais refinadas para fortalecer a presença de marcas profissionais."
-      }
-    ]
-  },
   "equipe": {
     "title": "Equipe",
     "intro": [
@@ -609,6 +657,7 @@
     "categorias": {
       "Coordenação": [
         {
+          "id": "fernanda-mello-santanna",
           "nome": " Fernanda Mello Sant’Anna",
           "cargo": "Coordenadora Geral",
           "descricao": "Responsável pela supervisão geral do projeto",
@@ -634,6 +683,7 @@
           ]
         },
         {
+          "id": "marcelo-passini-mariano",
           "nome": "Marcelo Passini Mariano",
           "cargo": "Líder",
           "descricao": "Responsável pela supervisão geral do projeto.",
@@ -654,6 +704,7 @@
           ]
         },
         {
+          "id": "thais-amoroso-paschoal",
           "nome": "Thais Amoroso Paschoal",
           "cargo": "Vice Líder",
           "descricao": "Responsável pela supervisão geral do projeto.",
@@ -681,6 +732,7 @@
       ],
       "Pesquisadores": [
         {
+          "id": "murilo-gaspardo",
           "nome": "Murilo Gaspardo",
           "cargo": "Pesquisador",
           "descricao": "",
@@ -706,6 +758,7 @@
           ]
         },
         {
+          "id": "agnaldo-sousa-barbosa",
           "nome": "Agnaldo de Sousa Barbosa",
           "cargo": "Professor Associado",
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Direito — responsável pelas disciplinas de “Sociologia Geral e Jurídica e Direito” e “Questão Social e Políticas Públicas\". Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas e do Programa de Pós-Graduação em Serviço Social da UNESP, Docente colaborador do Programa de Pós-Graduação em Direito da UNESP.",
@@ -726,6 +779,7 @@
           ]
         },
         {
+          "id": "almir-mantovani",
           "nome": "Almir Mantovani",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Direito — responsável pelas disciplinas de metodologia da pesquisa jurídica e metodologia da pesquisa científica. Curso de Graduação em Relações Internacionais - responsável pela disciplina “métodos quantitativos em relações internacionais”. Docente permanente Câmpus de Franca do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas da UNESP.",
@@ -746,6 +800,7 @@
           ]
         },
         {
+          "id": "ana-gabriela-mendes-braga",
           "nome": "Ana Gabriela Mendes Braga",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Penal I e II e Processo Penal IV. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
@@ -766,6 +821,7 @@
           ]
         },
         {
+          "id": "bruno-bastos-oliveira",
           "nome": "Bruno Bastos de Oliveira",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Tributário e Financeiro. Docente permanente do Programa de Pós-Graduação Direito da UNESP.",
@@ -786,6 +842,7 @@
           ]
         },
         {
+          "id": "edvania-angela-souza",
           "nome": "Edvânia Ângela de Souza",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas Serviço Social e Legislação Social I e II, Processo Educativo em Serviço Social (PESS), Estágio Supervisionado, Trabalho e Conclusão de Curso (TCC) e eventuais optativas. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP e Docente Colaboradora do Programa de Pós-Graduação em Serviço Social e Política Social da UNIFESP-BS.",
@@ -806,6 +863,7 @@
           ]
         },
         {
+          "id": "fernanda-oliveira-sarreta",
           "nome": "Fernanda de Oliveira Sarreta",
           "cargo": "Professora Associada",
           "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas de FTMSS Fundamentos Teóricos e Metodológicos do Serviço Social VII e VIII. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP.",
@@ -826,6 +884,7 @@
           ]
         },
         {
+          "id": "frederico-daia-firmiano",
           "nome": "Frederico Daia Firmiano",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Atua no Curso de Graduação em Serviço Social — responsável pelas disciplinas de Fundamentos Sociológicos 1 e II. Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas da UNESP.",
@@ -846,6 +905,7 @@
           ]
         },
         {
+          "id": "helio-alexandre-silva",
           "nome": "Hélio Alexandre da Silva",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Ética e Filosofia das Ciências Humanas. Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas e do Programa de Pós-graduação em Filosofia da UNESP.",
@@ -866,6 +926,7 @@
           ]
         },
         {
+          "id": "jose-duarte-neto",
           "nome": "José Duarte Neto",
           "cargo": "Professor Doutor",
           "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Constitucional II e II na Graduação do Curso de Direito da FCHS - UNESP - Câmpus de Franca. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
@@ -886,6 +947,7 @@
           ]
         },
         {
+          "id": "karina-anhezini-araujo",
           "nome": "Karina Anhezini de Araujo",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de História. Curso de Graduação em História — responsável pelas disciplinas de Metodologia da História e História da Historiografia Brasileira. Docente Permanente do Programa de Pós-Graduação em História da UNESP.",
@@ -906,6 +968,7 @@
           ]
         },
         {
+          "id": "luciana-lopes-canavez",
           "nome": "Luciana Lopes Canavez",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Direito Privado, Processo Civil e do Trabalho. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Civil e Direito da Propriedade Intelectual. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
@@ -926,6 +989,7 @@
           ]
         },
         {
+          "id": "marilia-carolina-pimenta",
           "nome": "Marília Carolina Barbosa de Souza Pimenta",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Relações Internacionais. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Introdução às Relações Internacionais e Segurança Internacional. Docente permanente do Programa Interinstitucional (UNESP, UNICAMP e PUC-SP) de Pós-graduação em Relações Internacionais San Tiago Dantas.",
@@ -946,6 +1010,7 @@
           ]
         },
         {
+          "id": "ricardo-alexandre-ferreira",
           "nome": "Ricardo Alexandre Ferreira",
           "cargo": "Professor Associado",
           "descricao": "Departamento de História. Curso de Graduação em História, responsável pelo conjunto de disciplinas: História Moderna I e II. Docente permanente do Programa de Pós-Graduação em História da UNESP.",
@@ -966,6 +1031,7 @@
           ]
         },
         {
+          "id": "regina-claudia-laisner",
           "nome": "Regina Cláudia Laisner",
           "cargo": "Professora Doutora",
           "descricao": "Departamento de Relações Internacionais. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Formação Política e Econômica do Brasil e Teoria Política. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
@@ -988,6 +1054,7 @@
       ],
       "Estagiários": [
         {
+          "id": "ligia-simplicio",
           "nome": "Ligia Simplicio",
           "cargo": "Estagiária Remunerada (Serviço Social)",
           "descricao": "Graduanda em Serviço Social na Unesp Franca e Membro ativo do CPPS",
@@ -1007,10 +1074,12 @@
           ]
         },
         {
+          "id": "joao-pedro-vidal",
           "nome": "João Pedro Dias Vidal",
           "cargo": "Estagiário Remunerado (Direito)",
           "descricao": "Graduando em Direito na Unesp Franca e Membro ativo do CPPS",
           "foto": "/imagens/equipe/Joao_Vidal.jpg",
+          "status": "inativo",
           "prioridade": "",
           "redes": [
             {
@@ -1026,6 +1095,7 @@
           ]
         },
         {
+          "id": "caio-tomaz-palombo",
           "nome": "Caio Tomaz Palombo",
           "cargo": "Estagiário Remunerado (História)",
           "descricao": "Graduando em história na Unesp Franca e Membro ativo do CPPS",
@@ -1045,6 +1115,7 @@
           ]
         },
         {
+          "id": "mavi-silva",
           "nome": "Mavi Silva",
           "cargo": "Estagiário Remunerado (Relações Internacionais)",
           "descricao": "Graduando em Relações Internacionais na Unesp Franca e Membro ativo do CPPS",
@@ -1064,6 +1135,7 @@
           ]
         },
         {
+          "id": "breno-andreazza",
           "nome": "Breno Andreazza",
           "cargo": "Estagiário Remunerada (Relações Internacionais)",
           "descricao": "Graduando em Relações Internacionais na Unesp Franca",
@@ -1076,87 +1148,12 @@
       ]
     }
   },
-  "initiatives2": {
-    "title": "Iniciativas",
-    "descricao": "Conheça as principais iniciativas",
-    "items": [
-      {
-        "icon": "💬",
-        "title": "Café com Ciência",
-        "description": "Seminário Mensal do Centro de Pesquisa Política e Social que busca debates temas relacionados as agendas de pesquisa de docentes da UNESP/Franca",
-        "url": "/iniciativas/cafe-com-ciencia"
-      },
-      {
-        "icon": "💡",
-        "title": "Dados Governamentais",
-        "description": "Descrição do projeto",
-        "url": "/projetos"
-      },
-      {
-        "icon": "💡",
-        "title": "Notícias de Jornais",
-        "description": "Descrição do projeto",
-        "url": "/projetos"
-      },
-      {
-        "icon": "💡",
-        "title": "Oficinas",
-        "description": "Descrição do projeto",
-        "url": "/projetos"
-      }
-    ]
-  },
-  "atividadesPesquisa": {
-    "title": "Atividades de Pesquisa",
-    "description": "Descrição das atividades de pesquisa.",
-    "items": [
-      {
-        "icon": "✅",
-        "title": "Pesquisa A",
-        "description": "Descrição da pesquisa A"
-      }
-    ]
-  },
-  "produtos": {
-    "title": "Produtos",
-    "description": "Descrição dos produtos.",
-    "items": [
-      {
-        "icon": "📥",
-        "title": "Produto 1",
-        "description": "Descrição do produto"
-      },
-      {
-        "icon": "📥",
-        "title": "Produto 1",
-        "description": "Descrição do produto"
-      },
-      {
-        "icon": "📥",
-        "title": "Produto 1",
-        "description": "Descrição do produto"
-      },
-      {
-        "icon": "📥",
-        "title": "Produto 1",
-        "description": "Descrição do produto"
-      }
-    ]
-  },
-  "faqs": {
-    "title": "Perguntas Frequentes",
-    "items": [
-      {
-        "question": "Pergunta 1",
-        "answer": "Resposta da pergunta"
-      }
-    ]
-  },
   "initiatives": {
     "label": "Iniciativas",
     "title": "Conheça as iniciativas do Centro",
     "items": [
       {
+        "id": "cafe-com-ciencia",
         "icon": "👥💬",
         "title": "Café com Ciência ",
         "tipo": "ciência",
@@ -1164,6 +1161,7 @@
         "description": "Seminário mensal voltado a debater temas relacionados a agendas de pesquisa dos docentes da FCHS/UNESP/Franca"
       },
       {
+        "id": "projetos-de-dados",
         "icon": "🗃️",
         "title": "Projetos de dados",
         "tipo": "dados",
@@ -1171,6 +1169,7 @@
         "description": "Os projetos de dados são iniciativas que visam coletar, tratar, analisar e, quando possível, disponibilizar dados relevantes para as pesquisas"
       },
       {
+        "id": "auxilio-a-pesquisa",
         "icon": "👩🏻‍💻",
         "title": "Auxílio à Pesquisa",
         "tipo": "Pesquisa",
@@ -1178,6 +1177,7 @@
         "description": "Apoio a preparação e execução de projetos de pesquisas"
       },
       {
+        "id": "material-de-apoio",
         "icon": "📚",
         "title": "Material de Apoio",
         "tipo": "apoio",
@@ -1185,6 +1185,7 @@
         "description": "Realização de oficinas, material de apoio e cursos que incentivem e auxiliem uma melhor incorporação de ferramentas tecnológicas nas atividades de pesquisa."
       },
       {
+        "id": "solucoes-tecnologicas",
         "icon": "⚙️",
         "title": "Soluções Tecnológicas",
         "tipo": "sistemas",
@@ -1192,6 +1193,7 @@
         "description": "Promover uma melhor utilização dos recursos computacionais, bem como a implementação e o desenvolvimento de software e serviços voltados para as pesquisas "
       },
       {
+        "id": "cooperacao-e-parceiras",
         "icon": "🫱🏽‍🫲🏼",
         "title": "Cooperação e Parceiras",
         "tipo": "apoio",

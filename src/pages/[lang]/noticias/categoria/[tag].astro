@@ -3,6 +3,8 @@ import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import NoticiasSection from '../../../../components/NoticiasSection.astro';
 import { getCollection } from 'astro:content';
 import slugify from "slugify";
+import { getTranslations } from '../../../../utils/i18n';
+import type { SupportedLang } from '../../../../types/lang';
 
 export async function getStaticPaths() {
   const langs = ["pt", "en", "es"];
@@ -22,8 +24,9 @@ export async function getStaticPaths() {
   });
 }
 
-const currentLang = (Astro.params.lang ?? "pt") as "pt" | "en" | "es";
+const currentLang = (Astro.params.lang ?? "pt") as SupportedLang;
 const currentTag = Astro.params.tag;
+const locale = getTranslations(currentLang);
 
 const allNoticias = await getCollection('noticias');
 
@@ -35,6 +38,6 @@ const noticias = allNoticias.filter(post =>
 );
 ---
 
-<BaseLayout lang={currentLang} titulo={`Categoria: ${currentTag}`} descricao="" texts={{}}>
+<BaseLayout lang={currentLang} titulo={`${locale.texts.header.noticias}: ${currentTag}`} descricao={locale.descricao} texts={locale.texts}>
   <NoticiasSection noticias={noticias} lang={currentLang} />
 </BaseLayout>

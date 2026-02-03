@@ -1,7 +1,7 @@
 ---
 import NoticiaPage from '../../../components/NoticiaPage.astro';
 import { getCollection } from 'astro:content';
-import { routeTranslations } from '../../../i18n/routes';
+import routeTranslations from '../../../i18n/routeTranslations';
 
 export async function getStaticPaths() {
   const langs = ["pt", "en", "es"];

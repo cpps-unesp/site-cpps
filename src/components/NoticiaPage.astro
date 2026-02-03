@@ -1,11 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getEntry } from 'astro:content';
-import { routeTranslations } from '../i18n/routes'; 
+import routeTranslations from '../i18n/routeTranslations';
+import type { SupportedLang } from '../types/lang';
+import { getTranslations } from '../utils/i18n';
 
-const { lang, slug } = Astro.props;
+const { lang, slug } = Astro.props as { lang: SupportedLang; slug: string };
+const locale = getTranslations(lang);
 
-const post = await getEntry('noticias', slug.replace(`${routeTranslations['noticias'][lang]}/`, ''));
+const noticiasRoute = routeTranslations['noticias'][lang as SupportedLang];
+const post = await getEntry('noticias', slug.replace(`${noticiasRoute}/`, ''));
 
 if (!post) throw new Error(`Notícia não encontrada: ${slug}`);
 
@@ -13,7 +17,7 @@ const { title, date, image } = post.data;
 const { Content } = await post.render();
 ---
 
-<BaseLayout lang={lang} titulo={title} descricao="" texts={{}}>
+<BaseLayout lang={lang} titulo={title} descricao={locale.descricao} texts={locale.texts}>
   <article class="prose max-w-3xl mx-auto py-10">
     <h1>{title}</h1>
     <p class="text-sm text-gray-500">{new Date(date).toLocaleDateString()}</p>

@@ -5,6 +5,8 @@ import AtividadesSection from "../../components/AtividadesSection.astro";
 import ProdutosSection from "../../components/ProdutosSection.astro";
 import FAQSection from "../../components/FAQSection.astro";
 import Initiatives from "../../components/Initiatives.astro";
+import { getTranslations } from "../../utils/i18n";
+import type { SupportedLang } from "../../types/lang";
 
 export function getStaticPaths() {
   return [
@@ -14,14 +16,14 @@ export function getStaticPaths() {
   ];
 }
 
-const currentLang = Astro.params.lang ?? "pt";
+const currentLang = (Astro.params.lang ?? "pt") as SupportedLang;
 
 const allowedLangs = ["pt", "en", "es"];
 if (!allowedLangs.includes(currentLang)) {
   return Astro.redirect("/pt/");
 }
 
-const locale = await import(`../../i18n/locales/${currentLang}.json`);
+const locale = getTranslations(currentLang);
 
 const {
   hero,
@@ -33,13 +35,13 @@ const {
   produtos,
   faqs,
   imagens,
-} = locale.default;
+} = locale;
 ---
 
-<BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={locale.default.texts}
-  identidade={locale.default.identidade}>
-  <Hero heroData={locale.default} />
-  <!-- <Initiatives initiatives={locale.default.initiatives} />
+<BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={locale.texts}
+  identidade={locale.identidade}>
+  <Hero heroData={locale} />
+  <!-- <Initiatives initiatives={locale.initiatives} />
 
   <section class="mt-16">
     <h2 class="text-center text-3xl font-extrabold mb-4">
@@ -70,5 +72,5 @@ const {
     image={hero.link}
     produtos={produtos.items}
   />
-  <FAQSection faqs={locale.default.faqs.items} /> -->
+  <FAQSection faqs={locale.faqs.items} /> -->
 </BaseLayout>
