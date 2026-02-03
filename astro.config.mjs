@@ -4,11 +4,13 @@ import tailwindcss from "@tailwindcss/vite";
 import pagefind from "astro-pagefind";
 import starlight from "@astrojs/starlight";
 import mdx from '@astrojs/mdx';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://cpps-unesp.github.io",
-  output: 'static',
+  site: "https://cpps.franca.unesp.br",
+  output: 'server',
+  adapter: cloudflare(),
   vite: {
     plugins: [tailwindcss()],
   },
