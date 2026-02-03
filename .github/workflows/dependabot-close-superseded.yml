@@ -1,4 +1,4 @@
-name: Dependabot Close Superseded
+name: "Dependabot: Close Superseded"
 
 on:
   pull_request:
@@ -14,7 +14,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  close-superseded:
+  dependabot-close-superseded:
     if: github.actor == 'dependabot[bot]' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
