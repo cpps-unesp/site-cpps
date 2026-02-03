@@ -83,4 +83,5 @@ jobs:
           - Head commit message: ${{ steps.inspect.outputs.message }}
           EOF
           )
-          gh pr create --title "$TITLE" --body "$BODY" --head "$BRANCH" --base "main"
+          PR_NUMBER=$(gh pr create --title "$TITLE" --body "$BODY" --head "$BRANCH" --base "main" --json number --jq '.number')
+          gh pr merge "$PR_NUMBER" --squash --auto --delete-branch
