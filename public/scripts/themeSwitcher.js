@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2026-02-04
   // Escuta por mudanças no localStorage (ex: tema atualizado em outra aba)
   window.addEventListener('storage', (e) => {
     if (e.key === THEME_STORAGE_KEY) {
