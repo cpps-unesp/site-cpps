@@ -3,3 +3,6 @@ kv_namespaces = [
 ]
 compatibility_date = "2026-02-04"
 compatibility_flags = ["nodejs_compat"]
+
+[observability]
+enabled = true
