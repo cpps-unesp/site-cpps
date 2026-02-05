@@ -10,7 +10,7 @@ export default defineConfig({
   site: "https://cpps.franca.unesp.br",
   output: 'server',
   adapter: cloudflare({
-    imageService: 'compile',
+    imageService: 'passthrough',
   }),
   vite: {
     plugins: [tailwindcss()],
