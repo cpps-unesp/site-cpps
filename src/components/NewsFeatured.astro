@@ -1,7 +1,9 @@
 ---
 import slugify from "slugify";
+import { getTranslations } from "../utils/i18n";
 
 const { post, lang } = Astro.props;
+const locale = getTranslations(lang);
 const { title, resumo, image, tags, date, author } = post.data;
 const slug = `/${lang}/noticias/${post.slug}`;
 ---
@@ -39,7 +41,7 @@ const slug = `/${lang}/noticias/${post.slug}`;
         {author && (
           <>
             <span class="w-1 h-1 bg-current rounded-full"></span>
-            <span>Por {author}</span>
+            <span>{locale.noticias?.by || 'Por'} {author}</span>
           </>
         )}
       </div>

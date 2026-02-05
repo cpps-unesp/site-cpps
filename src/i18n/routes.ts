@@ -66,4 +66,9 @@ export const routeTranslations = {
     en: "news",
     es: "noticias",
   },
+  "publicacao": {
+    pt: "publicacoes",
+    en: "publications",
+    es: "publicaciones",
+  },
 } as const;

@@ -16,6 +16,22 @@ const noticias = defineCollection({
   }),
 });
 
+// ✅ Collection de publicações (Artigos, Análises, etc.)
+const publicacoes = defineCollection({
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    authors: z.array(z.string()),
+    summary: z.string(),
+    tags: z.array(z.string()).optional().default([]),
+    type: z.enum(['artigo', 'analise', 'material-didatico', 'texto-curto', 'texto-longo']),
+    lang: z.enum(['pt', 'en', 'es']),
+    image: z.string().optional(),
+    featured: z.boolean().optional().default(false),
+    pdf_url: z.string().optional(),
+  }),
+});
+
 // ✅ Collection de membros (com slug baseado no nome do arquivo)
 const membros = defineCollection({
   type: 'content',
@@ -53,6 +69,7 @@ const docs = defineCollection({
 // ✅ Exportando as collections
 export const collections = {
   noticias,
+  publicacoes,
   docs,
   membros,
 };

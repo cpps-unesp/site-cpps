@@ -2,8 +2,10 @@
 import { getCollection } from 'astro:content';
 import NoticiaCard from './NoticiaCard.astro';
 import routeTranslations from '../i18n/routeTranslations';
+import { getTranslations } from '../utils/i18n';
 
 const { lang, title } = Astro.props;
+const locale = getTranslations(lang);
 
 const allNoticias = await getCollection('noticias');
 const recentNoticias = allNoticias
@@ -20,11 +22,11 @@ const noticiasPath = routeTranslations['noticias'][lang as keyof typeof routeTra
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-end mb-10">
       <div>
-        <h2 class="text-4xl font-bold text-primary mb-2">{title || 'Últimas Notícias'}</h2>
+        <h2 class="text-4xl font-bold text-primary mb-2">{title || locale.noticias?.recent || 'Últimas Notícias'}</h2>
         <div class="w-20 h-1.5 bg-primary"></div>
       </div>
       <a href={`/${lang}/${noticiasPath}`} class="btn btn-primary btn-outline">
-        Ver Todas
+        {locale.noticias?.allNews || 'Ver Todas'}
       </a>
     </div>
 

@@ -49,7 +49,7 @@ if (tag) {
       <div class="lg:col-span-2">
         <NewsGrid noticias={displayedNoticias} lang={lang} />
         {displayedNoticias.length === 0 && (
-           <p class="text-center py-10 opacity-50">Nenhuma notícia encontrada nesta categoria.</p>
+           <p class="text-center py-10 opacity-50">{locale.noticias?.noResults || 'Nenhuma notícia encontrada nesta categoria.'}</p>
         )}
       </div>
 

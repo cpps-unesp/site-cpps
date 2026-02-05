@@ -20,6 +20,9 @@ import IniciativasProjetosDePesquisaSection from "../../components/IniciativasPr
 
 import NoticiaPage from "../../components/NoticiaPage.astro";
 import NoticiasListPage from "../../components/NoticiasListPage.astro";
+import PublicationListPage from "../../components/PublicationListPage.astro";
+import PublicationPage from "../../components/PublicationPage.astro";
+
 import routeTranslations from "../../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import type { SupportedLang } from "../../types/lang";
@@ -55,6 +58,20 @@ export async function getStaticPaths() {
       params: {
         lang,
         slug: `${prefix}/${noticia.slug}`,
+      },
+    });
+  }
+
+  // Publicações individuais
+  const allPublicacoes = await getCollection("publicacoes");
+  for (const pub of allPublicacoes) {
+    const lang = pub.data.lang as SupportedLang;
+    const prefix = routeTranslations["publicacao"][lang];
+    const slugValue = pub.slug || pub.id.replace(/\.[^/.]+$/, "");
+    paths.push({
+      params: {
+        lang,
+        slug: `${prefix}/${slugValue}`,
       },
     });
   }
@@ -107,6 +124,9 @@ const isNoticiasList = slugPath === noticiasPrefix;
 const isNoticiasCategory = slugPath.startsWith(`${noticiasPrefix}/categoria/`);
 const isNoticia = slugPath.startsWith(`${noticiasPrefix}/`) && !isNoticiasList && !isNoticiasCategory;
 
+const publicacoesPrefix = routeTranslations["publicacao"][currentLang];
+const isPublication = slugPath.startsWith(`${publicacoesPrefix}/`);
+
 const allMembros = await getCollection("membros");
 function getSlugFromEntry(entry: any) {
   const fileName = entry.id.split("/").pop() ?? "";
@@ -151,6 +171,8 @@ const originalKey = findOriginalKey(slugPath, currentLang);
     <NoticiasListPage lang={currentLang} tag={isNoticiasCategory ? slugPath.split('/').pop() : undefined} />
   ) : isNoticia ? (
     <NoticiaPage lang={currentLang} slug={slugPath} />
+  ) : isPublication ? (
+    <PublicationPage lang={currentLang} slug={slugPath.replace(`${publicacoesPrefix}/`, '')} />
   ) : membroSelecionado ? (
     <BaseLayout
       lang={currentLang}
@@ -203,7 +225,7 @@ const originalKey = findOriginalKey(slugPath, currentLang);
           case "iniciativas/cafe-com-ciencia":
             return <CafeComCienciaSection cafe={cafe} />;
           case "iniciativas/publicacoes":
-            return <IniciativasPublicacoesSection texts={texts} />;
+            return <PublicationListPage lang={currentLang} />;
           case "iniciativas/material-de-apoio":
             return <IniciativasMaterialApoioSection texts={texts} />;
           case "iniciativas/oficinas":

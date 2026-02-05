@@ -51,9 +51,9 @@ const { Content } = await post.render();
 
           <div class="flex items-center gap-4 py-6 border-y border-base-200 text-sm">
             <div class="flex flex-col">
-              {author && <span class="font-bold text-base-content">Por {author}</span>}
+              {author && <span class="font-bold text-base-content">{locale.noticias?.by || 'Por'} {author}</span>}
               <span class="text-base-content/60">
-                Publicado em {new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+                {locale.publicacoes?.publishedIn || 'Publicado em'} {new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
               </span>
             </div>
           </div>
@@ -75,7 +75,7 @@ const { Content } = await post.render();
 
         <footer class="mt-12 pt-8 border-t border-base-200">
           <div class="flex flex-wrap gap-2">
-            <span class="text-sm font-bold mr-2 self-center uppercase tracking-wider opacity-50">Tags:</span>
+            <span class="text-sm font-bold mr-2 self-center uppercase tracking-wider opacity-50">{locale.noticias?.tags || 'Tags'}:</span>
             {tags.map((tag: string) => (
               <a
                 href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}

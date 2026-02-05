@@ -1,7 +1,9 @@
 ---
 import slugify from "slugify";
+import { getTranslations } from "../utils/i18n";
 
-const { noticias, lang, texts } = Astro.props;
+const { noticias, lang } = Astro.props;
+const locale = getTranslations(lang);
 
 // Get all unique tags
 const allTags = [...new Set(noticias.flatMap((post: any) => post.data.tags || []))].sort();
@@ -14,11 +16,11 @@ const recentPosts = noticias.slice(0, 5);
   <!-- Search Widget -->
   <div class="bg-base-100 p-6 rounded-xl shadow-sm border border-base-200">
     <h3 class="text-xl font-bold mb-4 text-primary border-b-2 border-primary pb-2 inline-block">
-      {texts.header.buscar || 'Buscar'}
+      {locale.texts.header?.buscar || 'Buscar'}
     </h3>
     <div class="relative mt-2">
       <label for="search-modal" class="flex items-center w-full px-4 py-2 bg-base-200 rounded-lg cursor-pointer hover:bg-base-300 transition-colors">
-        <span class="text-base-content opacity-60">Pesquisar notícias...</span>
+        <span class="text-base-content opacity-60">{locale.noticias?.search || 'Pesquisar notícias...'}</span>
         <span class="ml-auto">🔍</span>
       </label>
     </div>
@@ -27,7 +29,7 @@ const recentPosts = noticias.slice(0, 5);
   <!-- Categories/Tags Widget -->
   <div class="bg-base-100 p-6 rounded-xl shadow-sm border border-base-200">
     <h3 class="text-xl font-bold mb-4 text-primary border-b-2 border-primary pb-2 inline-block">
-      Categorias
+      {locale.noticias?.categories || 'Categorias'}
     </h3>
     <div class="flex flex-wrap gap-2 mt-2">
       {allTags.map(tag => (
@@ -44,7 +46,7 @@ const recentPosts = noticias.slice(0, 5);
   <!-- Recent Posts Widget -->
   <div class="bg-base-100 p-6 rounded-xl shadow-sm border border-base-200">
     <h3 class="text-xl font-bold mb-4 text-primary border-b-2 border-primary pb-2 inline-block">
-      Mais Recentes
+      {locale.noticias?.recent || 'Mais Recentes'}
     </h3>
     <div class="space-y-4 mt-2">
       {recentPosts.map((post: any) => (

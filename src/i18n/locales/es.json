@@ -28,6 +28,17 @@
       "buscar": "Buscar"
     }
   },
+  "noticias": {
+    "categories": "Categorías",
+    "recent": "Más Recientes",
+    "by": "Por",
+    "tags": "Tags",
+    "readMore": "Leer más",
+    "search": "Buscar noticias...",
+    "noResults": "No se encontraron noticias.",
+    "allNews": "Todas las noticias",
+    "featured": "Destacado"
+  },
   "hero": {
     "title": "Centro de Investigación<br class='hidden sm:inline' /> Política y Social",
     "description": "Apoya la ejecución de investigaciones en la <span class='text-primary font-semibold bg-white px-1 rounded'>Facultad de Ciencias Humanas y Sociales (FCHS) de la Universidad Estadual Paulista (UNESP)</span>, ubicada en la ciudad de Franca/SP.",
@@ -35,6 +46,27 @@
       "url": "/es/institucional/sobre",
       "text": "Saber más"
     }
+  },
+  "publicacoes": {
+    "types": {
+      "artigo": "Artículo",
+      "analise": "Análisis",
+      "material-didatico": "Material Didáctico",
+      "texto-curto": "Texto Corto",
+      "texto-longo": "Texto Largo"
+    },
+    "search": "Buscar publicaciones...",
+    "filterByType": "Filtrar por tipo",
+    "allTypes": "Todos los tipos",
+    "filterByAuthor": "Filtrar por autor",
+    "authors": "Autores",
+    "keywords": "Palabras clave",
+    "readMore": "Leer más",
+    "date": "Fecha",
+    "publishedIn": "Publicado en",
+    "noResults": "No se encontraron publicaciones.",
+    "featured": "Destacado",
+    "downloadPdf": "Descargar PDF"
   },
   "iniciativas": {
     "publicacoes": "Publicaciones",
