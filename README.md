@@ -188,8 +188,6 @@ Centro de Pesquisa Política e Social - UNESP Franca
 - [@JuliaSilveira](https://github.com/rikamishiro) - identidade visual (2025)
 - [@ligiadlsimplicio](https://github.com/ligiadlsimplicio) - inclusão das informações inciais no site (2025)
 
-  `teste revert`
-
 ---
 
 Desenvolvido com ❤️ pela equipe do CPPS - UNESP Franca
