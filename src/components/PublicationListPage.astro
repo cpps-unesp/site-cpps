@@ -107,12 +107,19 @@ const publicationTypes = [
     const urlParams = new URLSearchParams(window.location.search);
     const tagParam = urlParams.get('tag');
     const authorParam = urlParams.get('author');
+    const typeParam = urlParams.get('type');
 
     if (tagParam && searchInput) {
       searchInput.value = tagParam;
     }
     if (authorParam && authorInput) {
       authorInput.value = authorParam;
+    }
+    if (typeParam && typeFilter) {
+      const optionExists = Array.from(typeFilter.options).some(option => option.value === typeParam);
+      if (optionExists) {
+        typeFilter.value = typeParam;
+      }
     }
 
     function filter() {
@@ -159,7 +166,7 @@ const publicationTypes = [
     typeFilter?.addEventListener('change', filter);
     authorInput?.addEventListener('input', filter);
 
-    if (tagParam || authorParam) {
+    if (tagParam || authorParam || typeParam) {
       filter();
     }
   }

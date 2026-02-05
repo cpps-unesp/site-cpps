@@ -35,9 +35,12 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
   <article class="container mx-auto px-4 py-16 max-w-4xl">
     <header class="mb-12 border-b border-gray-100 pb-12">
       <div class="flex items-center gap-4 mb-6">
-        <span class="bg-primary/10 text-primary text-xs font-black uppercase px-3 py-1 rounded border border-primary/20">
+        <a
+          href={`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`}
+          class="bg-primary/10 text-primary text-xs font-black uppercase px-3 py-1 rounded border border-primary/20 hover:bg-primary/20 transition-colors"
+        >
           {typeLabel}
-        </span>
+        </a>
         <span class="text-gray-400 text-sm">{formattedDate}</span>
       </div>
 

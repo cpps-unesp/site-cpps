@@ -36,7 +36,12 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
         <span class="bg-primary text-white text-xs font-black uppercase px-3 py-1 rounded-full">
           {locale.publicacoes.featured}
         </span>
-        <span class="text-gray-500 text-xs font-bold uppercase tracking-widest">{typeLabel}</span>
+        <a
+          href={`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`}
+          class="text-gray-500 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors"
+        >
+          {typeLabel}
+        </a>
       </div>
 
       <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6 leading-tight publication-featured-title">
