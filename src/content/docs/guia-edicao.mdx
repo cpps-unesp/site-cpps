@@ -1,171 +1,175 @@
 ---
-title: "Guia Completo de Edição da Documentação"
-description: "Um manual prático para estudantes e estagiários sobre como gerenciar e enriquecer o conteúdo técnico do CPPS."
+title: "Guia Completo de Gestão da Documentação"
+description: "Aprenda a gerenciar menus, criar novas páginas e utilizar componentes profissionais na documentação do CPPS."
 ---
 
-Bem-vindo ao centro de documentação do CPPS! Este guia foi criado para garantir que qualquer membro da equipe, mesmo aqueles em seu primeiro contato com desenvolvimento web, possa contribuir de forma eficaz.
-
----
-
-## 🏗️ Estrutura do Sistema
-
-Nossa documentação não usa ferramentas externas pesadas. Ela é **nativa**, construída sobre o **Astro.js**. Isso garante que ela seja incrivelmente rápida e tenha a mesma cara do nosso site oficial.
-
-### Onde ficam os arquivos?
-Todos os textos que você vê nesta área estão em:
-`src/content/docs/`
-
-Os nomes das pastas e arquivos definem o endereço da página. Por exemplo:
-`src/content/docs/projetos/dados/meu-projeto.mdx` vira `site.com/docs/projetos/dados/meu-projeto`
+Este guia foi desenvolvido para capacitar estudantes e estagiários a gerenciarem a base de conhecimento do CPPS com autonomia e qualidade técnica.
 
 ---
 
-## 🚀 Passo a Passo: Criando sua Primeira Página
+## 🏗️ Estrutura de Arquivos e Pastas
+
+Nossa documentação é baseada em **Coleções de Conteúdo**. Isso significa que a organização das pastas em seu computador define a organização do site.
+
+- **Localização principal**: `src/content/docs/`
+- **Pastas sugeridas**:
+  - `/projetos/dados/`: Documentação técnica de datasets.
+  - `/projetos/ensino/`: Trilhas, cursos e manuais de treinamento.
+  - `/projetos/sistemas/`: Infraestrutura, servidores e desenvolvimento.
+
+---
+
+## 📂 Gerenciando Menus (Sidebar)
+
+Diferente de sistemas automáticos, nós temos um controle refinado sobre o que aparece no menu lateral esquerdo.
+
+### Como adicionar um link ao menu:
+1. Abra o arquivo `src/config/docs.ts`.
+2. Localize a constante `sidebar`.
+3. Adicione um novo objeto seguindo este padrão:
+
+```typescript
+{
+  label: "Nome que aparece no site",
+  url: "/docs/caminho-do-arquivo"
+}
+```
+
+### Criando Submenus (Grupos Colapsáveis)
+Você pode aninhar itens para criar menus que abrem e fecham verticalmente:
+
+```typescript
+{
+  label: "Meu Projeto",
+  items: [
+    { label: "Introdução", url: "/docs/meu-projeto" },
+    { label: "Configuração", url: "/docs/meu-projeto/config" },
+  ]
+}
+```
+
+<Notice type="info">
+  **Menu Inteligente**: O sistema detecta automaticamente se o usuário está em uma página de um grupo e mantém esse menu aberto para facilitar a navegação.
+</Notice>
+
+---
+
+## 📄 Criando e Editando Páginas
 
 <Steps>
 
 ### Criar o arquivo
-Crie um arquivo com a extensão `.mdx` dentro da pasta apropriada em `src/content/docs/`.
+Crie um arquivo com a extensão `.mdx` dentro de `src/content/docs/`.
+*Dica: Use sempre letras minúsculas e hífens em vez de espaços.*
 
-### Adicionar o Cabeçalho (Frontmatter)
-Todo documento precisa de um bloco inicial entre traços `---`. Isso define o título e a descrição que aparecem para o usuário e para o Google.
+### Configurar o Frontmatter
+No topo do arquivo, defina o título e descrição:
 
 ```markdown
 ---
-title: "Manual do Servidor Linux"
-description: "Como realizar a manutenção básica dos servidores do Lantri."
+title: "Nome da Página"
+description: "Resumo do conteúdo"
 ---
 ```
 
-### Escrever o Conteúdo
-Abaixo do segundo `---`, você pode escrever livremente usando Markdown.
-
-### Atualizar o Menu (Opcional)
-Se você quer que seu link apareça na barra lateral esquerda, peça ao líder técnico para adicioná-lo no arquivo `src/config/docs.ts`.
+### Usar Componentes
+Importe e use os componentes listados abaixo para dar um visual profissional ao seu texto.
 
 </Steps>
 
 ---
 
-## 🎨 Componentes Especiais (MDX)
-
-Além do Markdown padrão, você pode usar "super-poderes" chamados componentes. Basta usá-los como se fossem tags HTML.
+## 🎨 Componentes MDX (Sua Caixa de Ferramentas)
 
 ### 1. Caixas de Aviso (Notice)
-Use para chamar a atenção para detalhes importantes.
+Use para destacar informações cruciais.
 
 <Notice type="info">
-  **Informação**: Use para contextos gerais e explicações.
+  **Padrão**: Use para informações gerais.
 </Notice>
 
 <Notice type="tip">
-  **Dica**: "Atalho: Use `Ctrl + S` para salvar rápido!"
+  **Dica**: Use para atalhos e boas práticas.
 </Notice>
 
 <Notice type="warning">
-  **Aviso**: "Não delete arquivos sem fazer backup!"
+  **Aviso**: Use para alertas que requerem atenção.
 </Notice>
 
 <Notice type="danger">
-  **Cuidado**: "Ações irreversíveis!"
+  **Perigo**: Use para ações que podem causar perda de dados.
 </Notice>
 
 ---
 
-### 2. Cards de Conteúdo
-Ótimos para resumir tópicos ou criar grids de funcionalidades.
+### 2. Cards e Grades (CardGrid)
+Ideal para listar módulos ou seções de um projeto.
 
 <CardGrid columns={2}>
-  <Card title="Markdown" icon="📝">
-    Sintaxe simples para formatar textos rapidamente.
+  <Card title="Recurso A" icon="📁">
+    Descrição curta do recurso.
   </Card>
-  <Card title="Componentes Astro" icon="🚀">
-    Flexibilidade total para criar layouts complexos.
+  <Card title="Recurso B" icon="🌐">
+    Descrição curta do recurso.
   </Card>
 </CardGrid>
 
 ---
 
 ### 3. Links em Destaque (LinkCard)
-Para guiar o usuário para a próxima leitura.
+Para sugerir a próxima leitura.
 
 <LinkCard
-  title="Bases de Dados"
-  href="/docs/projetos/dados"
-  description="Explore nossos acervos de pesquisa."
-  icon="📂"
+  title="Infraestrutura Linux"
+  href="/docs/projetos/sistemas/infraestrutura"
+  description="Saiba como configuramos nossos servidores."
+  icon="🐧"
 />
 
 ---
 
-## 🖼️ Imagens e Layout
+## 🖼️ Imagens e Layout Profissional
 
-O posicionamento correto de imagens torna a leitura menos cansativa. Oferecemos classes prontas para isso:
+O posicionamento correto das imagens melhora muito a experiência de leitura.
 
-| Alinhamento | Como usar | Resultado |
+### Classes de Posicionamento
+
+| Classe | Como aplicar | Resultado |
 | :--- | :--- | :--- |
-| **Esquerda** | `class="img-left"` | O texto flui pelo lado direito da imagem. |
-| **Direita** | `class="img-right"` | O texto flui pelo lado esquerdo da imagem. |
-| **Centro** | `class="img-center"` | A imagem fica isolada no centro da tela. |
+| `img-left` | `<img src="..." class="img-left" />` | Texto flui à direita. |
+| `img-right` | `<img src="..." class="img-right" />` | Texto flui à esquerda. |
+| `img-center` | `<img src="..." class="img-center" />` | Imagem centralizada e isolada. |
 
-**Exemplo prático:**
-
-```html
-<img src="/imagens/exemplo.png" class="img-right" width="300" />
-
-Este parágrafo ficará ao lado da imagem. É excelente para manuais que precisam
-mostrar um print de tela enquanto explicam o passo a passo.
-```
-
----
-
-## ↕️ Blocos que "Encolhem" (Accordions)
-
-Perfeito para detalhes técnicos que nem todos precisam ler.
-
-<details>
-<summary>💻 Detalhes da Configuração de Rede (Clique para expandir)</summary>
-
-- **IP**: 192.168.1.100
-- **Gateway**: 192.168.1.1
-- **DNS**: 8.8.8.8
-
-*Apenas para administradores do sistema.*
-</details>
-
----
-
-## 🧑‍💻 Blocos de Código
-
-Nós suportamos realce de sintaxe para quase todas as linguagens:
-
-```python
-def saudar():
-    print("Olá, pesquisador do CPPS!")
-
-saudar()
-```
-
----
-
-<Notice type="tip" title="Tutorial Recomendado">
-  Se você é novo no Astro, recomendamos fortemente o [Tutorial Oficial do Astro](https://docs.astro.build/pt-br/tutorial/0-introduction/) para entender os conceitos de componentes e coleções.
+<Notice type="tip">
+  Ao usar `img-left` ou `img-right`, certifique-se de que o parágrafo de texto seja longo o suficiente para contornar a imagem.
 </Notice>
 
 ---
 
-## 🔍 Dúvidas Frequentes
+## ↔️ Sidebars Colapsáveis (Novo!)
 
-### Posso usar HTML puro?
-Sim! O MDX aceita tags HTML como `<div>`, `<span>`, `<img>`, etc.
-
-### Como coloco um vídeo?
-Você pode colar o código de *embed* do YouTube diretamente no arquivo `.mdx`.
+Nossa interface permite agora:
+1. **Colapso Vertical**: Clique nas setas ao lado dos nomes dos grupos no menu esquerdo para expandir/recolher sub-pastas.
+2. **Colapso Horizontal**: No computador, clique nas setas cinzas (`<<` ou `>>`) nas laterais para esconder os menus e ganhar espaço total para o texto.
 
 ---
 
-<div class="bg-base-200 p-8 rounded-3xl text-center border border-base-300">
-  <h3 class="mini-titulo text-2xl mb-4">Pronto para começar?</h3>
-  <p class="mb-6">Crie seu primeiro arquivo e contribua com o conhecimento do centro!</p>
-  <a href="/docs" class="btn btn-primary">Voltar para a Home da Docs</a>
+## 🧑‍💻 Exemplo de Código
+
+Sempre use blocos de código para comandos de terminal ou scripts:
+
+```bash
+# Para rodar o site localmente:
+npm run dev
+```
+
+---
+
+<div class="bg-primary/10 p-12 rounded-[3rem] text-center border-2 border-primary/20 mt-16">
+  <h3 class="titulo text-3xl mb-4 text-primary">Dúvidas Técnicas?</h3>
+  <p class="paragrafo mx-auto mb-8">Consulte o repositório no GitHub ou fale com o desenvolvedor responsável.</p>
+  <div class="flex flex-wrap justify-center gap-4">
+    <a href="/docs" class="btn btn-primary">Voltar para Início</a>
+    <a href="https://github.com/cpps-unesp/site-cpps" target="_blank" class="btn btn-outline">GitHub do Projeto</a>
+  </div>
 </div>

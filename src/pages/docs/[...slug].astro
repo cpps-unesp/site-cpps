@@ -32,64 +32,158 @@ const currentPath = Astro.url.pathname;
 ---
 
 <BaseLayout titulo={entry.data.title} descricao={entry.data.description}>
-  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-8 lg:gap-12">
+  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 py-12">
 
-    <!-- 🔹 Navegação Lateral (Sidebar) -->
-    <aside class="w-full lg:w-72 flex-shrink-0">
-        <nav class="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-base-300">
-            <h3 class="font-bold text-lg mb-6 text-primary flex items-center gap-2">
-                <i class="fa-solid fa-book-open text-sm"></i>
-                Documentação
-            </h3>
-            <DocsSidebar items={sidebar} currentPath={currentPath} />
-        </nav>
-    </aside>
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 relative" id="docs-container">
 
-    <!-- 🔹 Conteúdo Principal -->
-    <main class="flex-1 min-w-0">
-      <div class="max-w-4xl mx-auto">
-        <Breadcrumbs currentPath={currentPath} />
+        <!-- 🔹 Navegação Lateral Esquerda (Sidebar) -->
+        <aside id="left-sidebar" class="w-full lg:w-72 flex-shrink-0 transition-all duration-300 overflow-hidden">
+            <div class="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-base-300">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-bold text-lg text-primary flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-sm"></i>
+                        Documentação
+                    </h3>
+                    <!-- Botão para encolher (apenas desktop) -->
+                    <button id="toggle-left" class="hidden lg:flex btn btn-ghost btn-xs opacity-50 hover:opacity-100" title="Encolher menu">
+                        <i class="fa-solid fa-angles-left"></i>
+                    </button>
+                </div>
+                <DocsSidebar items={sidebar} currentPath={currentPath} />
+            </div>
+        </aside>
 
-        <article class="prose prose-lg max-w-none dark:prose-invert">
-          <header class="mb-12 not-prose">
-            <h1 class="titulo text-4xl sm:text-5xl mb-4 font-black">{entry.data.title}</h1>
-            {entry.data.description && (
-                <p class="text-xl text-base-content/60 leading-relaxed border-l-4 border-primary/20 pl-6 italic">
-                    {entry.data.description}
-                </p>
-            )}
-            <div class="divider mt-8"></div>
-          </header>
+        <!-- Botão para expandir menu esquerdo (inicialmente oculto) -->
+        <button id="expand-left" class="hidden fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-base-200 border border-l-0 border-base-300 p-2 rounded-r-xl shadow-lg hover:bg-primary hover:text-white transition-all duration-300 group" title="Expandir menu">
+            <i class="fa-solid fa-angles-right group-hover:translate-x-1 transition-transform"></i>
+        </button>
 
-          <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
-        </article>
+        <!-- 🔹 Conteúdo Principal -->
+        <main class="flex-1 min-w-0 transition-all duration-300">
+          <div class="max-w-4xl mx-auto relative">
+            <Breadcrumbs currentPath={currentPath} />
 
-        <Pagination currentPath={currentPath} />
+            <article class="prose prose-lg max-w-none dark:prose-invert">
+              <header class="mb-12 not-prose">
+                <h1 class="titulo text-4xl sm:text-5xl mb-4 font-black">{entry.data.title}</h1>
+                {entry.data.description && (
+                    <p class="text-xl text-base-content/60 leading-relaxed border-l-4 border-primary/20 pl-6 italic">
+                        {entry.data.description}
+                    </p>
+                )}
+                <div class="divider mt-8"></div>
+              </header>
 
-        <footer class="mt-16 pt-8 border-t border-base-300 text-sm text-base-content/50 flex justify-between items-center">
-            <span>© {new Date().getFullYear()} CPPS - UNESP</span>
-            <a href="https://github.com/cpps-unesp/site-cpps" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2">
-                <i class="fa-brands fa-github"></i>
-                Editar no GitHub
-            </a>
-        </footer>
-      </div>
-    </main>
+              <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
+            </article>
 
-    <!-- 🔹 Tabela de Conteúdo (ToC) -->
-    <TableOfContents headings={headings} />
+            <Pagination currentPath={currentPath} />
 
+            <footer class="mt-16 pt-8 border-t border-base-300 text-sm text-base-content/50 flex justify-between items-center">
+                <span>© {new Date().getFullYear()} CPPS - UNESP</span>
+                <a href="https://github.com/cpps-unesp/site-cpps" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2">
+                    <i class="fa-brands fa-github"></i>
+                    Editar no GitHub
+                </a>
+            </footer>
+          </div>
+        </main>
+
+        <!-- 🔹 Tabela de Conteúdo Direita (ToC) -->
+        <aside id="right-sidebar" class="hidden xl:block w-64 flex-shrink-0 transition-all duration-300 overflow-hidden">
+            <div class="sticky top-24">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-xs uppercase tracking-widest text-base-content/40">
+                        Nesta página
+                    </h3>
+                    <button id="toggle-right" class="btn btn-ghost btn-xs opacity-50 hover:opacity-100" title="Encolher índice">
+                        <i class="fa-solid fa-angles-right"></i>
+                    </button>
+                </div>
+                <TableOfContents headings={headings} />
+            </div>
+        </aside>
+
+        <!-- Botão para expandir índice direito (inicialmente oculto) -->
+        <button id="expand-right" class="hidden fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-base-200 border border-r-0 border-base-300 p-2 rounded-l-xl shadow-lg hover:bg-primary hover:text-white transition-all duration-300 group" title="Expandir índice">
+            <i class="fa-solid fa-angles-left group-hover:-translate-x-1 transition-transform"></i>
+        </button>
+
+    </div>
   </div>
 </BaseLayout>
 
+<script is:inline>
+    // Gerenciamento dos Sidebars (Toggle Horizontal)
+    const leftSidebar = document.getElementById('left-sidebar');
+    const rightSidebar = document.getElementById('right-sidebar');
+    const toggleLeft = document.getElementById('toggle-left');
+    const toggleRight = document.getElementById('toggle-right');
+    const expandLeft = document.getElementById('expand-left');
+    const expandRight = document.getElementById('expand-right');
+
+    if (toggleLeft && expandLeft) {
+        toggleLeft.addEventListener('click', () => {
+            leftSidebar.classList.add('lg:w-0', 'opacity-0', 'pointer-events-none');
+            expandLeft.classList.remove('hidden');
+        });
+        expandLeft.addEventListener('click', () => {
+            leftSidebar.classList.remove('lg:w-0', 'opacity-0', 'pointer-events-none');
+            expandLeft.classList.add('hidden');
+        });
+    }
+
+    if (toggleRight && expandRight) {
+        toggleRight.addEventListener('click', () => {
+            rightSidebar.classList.add('xl:w-0', 'opacity-0', 'pointer-events-none');
+            expandRight.classList.remove('hidden');
+        });
+        expandRight.addEventListener('click', () => {
+            rightSidebar.classList.remove('xl:w-0', 'opacity-0', 'pointer-events-none');
+            expandRight.classList.add('hidden');
+        });
+    }
+
+    // Gerenciamento de links do ToC (Ativação por scroll)
+    const observerOptions = {
+        rootMargin: '-100px 0px -70%',
+        threshold: 1.0
+    };
+
+    const tocLinks = document.querySelectorAll('#right-sidebar a');
+    const sections = Array.from(tocLinks).map(link => {
+        const id = link.getAttribute('href').substring(1);
+        return document.getElementById(id);
+    }).filter(Boolean);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                tocLinks.forEach(link => {
+                    link.classList.remove('text-primary', 'font-bold');
+                    if (link.getAttribute('href') === `#${entry.target.id}`) {
+                        link.classList.add('text-primary', 'font-bold');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+</script>
+
 <style is:global>
-    /* Suaviza o scroll ao clicar nos links do ToC */
     html {
         scroll-behavior: smooth;
     }
-
-    /* Ajuste de scroll-margin para compensar o header fixo */
     [id] {
         scroll-margin-top: 7rem;
+    }
+    /* Estilização básica para o ToC quando encolhido */
+    #right-sidebar.xl\:w-0, #left-sidebar.lg\:w-0 {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 </style>
