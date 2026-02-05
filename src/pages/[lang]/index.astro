@@ -43,29 +43,13 @@ const {
 <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={locale.texts}
   identidade={locale.identidade}>
   <Hero heroData={locale} />
-  <!-- <Initiatives initiatives={locale.initiatives} />
-
-  <section class="mt-16">
-    <h2 class="text-center text-3xl font-extrabold mb-4">
-      {atividadesPesquisa.title}
-    </h2>
-    <p class="text-center text-xl text-base-content mb-10 max-w-2xl mx-auto">
-      {atividadesPesquisa.descricao}
-    </p>
-  </section> 
+  <Initiatives initiatives={locale.initiatives} />
 
    <AtividadesSection
     title={atividadesPesquisa.title}
     description={atividadesPesquisa.description}
     image={hero.link}
     activities={atividadesPesquisa.items}
-  />
-  <AtividadesSection
-    title={atividadesPesquisa.title}
-    description={atividadesPesquisa.description}
-    image={hero.link}
-    activities={atividadesPesquisa.items}
-    reverse={true}
   />
 
   <ProdutosSection
@@ -74,5 +58,5 @@ const {
     image={hero.link}
     produtos={produtos.items}
   />
-  <FAQSection faqs={locale.faqs.items} /> -->
+  <FAQSection faqs={locale.faqs.items} />
 </BaseLayout>

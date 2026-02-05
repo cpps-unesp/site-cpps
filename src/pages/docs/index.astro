@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout titulo="Documentação" descricao="Documentação do CPPS">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-12">
+    <h1 class="titulo text-5xl mb-8 text-primary">Documentação</h1>
+    <p class="paragrafo mb-12 text-xl">
+      Bem-vindo à central de documentação do CPPS. Aqui você encontrará guias técnicos, informações sobre projetos de dados, infraestrutura e muito mais.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition">
+        <div class="card-body">
+          <h2 class="card-title mini-titulo text-2xl">Dados</h2>
+          <p>Documentação dos projetos de coleta e processamento de dados (Hemeroteca, NewsCloud, etc).</p>
+          <div class="card-actions justify-end mt-4">
+            <a href="/docs/projetos/dados" class="btn btn-primary btn-sm">Ver Documentos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition">
+        <div class="card-body">
+          <h2 class="card-title mini-titulo text-2xl">Sistemas</h2>
+          <p>Guias sobre desenvolvimento de websites, redes e ferramentas internas.</p>
+          <div class="card-actions justify-end mt-4">
+            <a href="/docs/projetos/sistemas/websites/01-intro-md" class="btn btn-primary btn-sm">Ver Documentos</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition">
+        <div class="card-body">
+          <h2 class="card-title mini-titulo text-2xl">Infraestrutura</h2>
+          <p>Configurações de servidores, Linux, Docker e orquestração.</p>
+          <div class="card-actions justify-end mt-4">
+            <a href="/docs/projetos/sistemas/infraestrutura" class="btn btn-primary btn-sm">Ver Documentos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

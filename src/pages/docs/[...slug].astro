@@ -1,0 +1,77 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+// Sidebar structure extracted from astro.config.mjs
+const sidebar = [
+    {
+        label: "Projetos",
+        items: [
+            { label: "Dados", items: [
+                { label: "Hemeroteca PEB", url: "/docs/projetos/dados/hemeroteca-peb" },
+                { label: "NewsCloud", url: "/docs/projetos/dados/newscloud" },
+                { label: "DiáriosBR", url: "/docs/projetos/dados/diariosbr" },
+            ]},
+            { label: "Sistemas", items: [
+                { label: "Websites", url: "/docs/projetos/sistemas/websites/01-intro-md" },
+                { label: "Infraestrutura", url: "/docs/projetos/sistemas/infraestrutura" },
+            ]},
+        ]
+    }
+];
+---
+
+<BaseLayout titulo={entry.data.title} descricao={entry.data.description}>
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-12">
+    <!-- Sidebar -->
+    <aside class="w-full lg:w-64 flex-shrink-0">
+        <nav class="sticky top-24">
+            <h3 class="font-bold text-lg mb-4 text-primary">Documentação</h3>
+            <ul class="space-y-4">
+                {sidebar.map(section => (
+                    <li>
+                        <span class="font-semibold text-sm uppercase tracking-wider text-base-content/50">{section.label}</span>
+                        <ul class="mt-2 ml-2 space-y-2 border-l border-base-300 pl-4">
+                            {section.items.map(item => (
+                                <li>
+                                    <span class="text-sm font-medium">{item.label}</span>
+                                    <ul class="mt-1 space-y-1">
+                                        {item.items.map(subItem => (
+                                            <li>
+                                                <a href={subItem.url} class={`text-sm hover:text-primary transition ${Astro.url.pathname === subItem.url ? 'text-primary font-bold' : 'text-base-content/70'}`}>
+                                                    {subItem.label}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </li>
+                            ))}
+                        </ul>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <article class="prose prose-lg max-w-none flex-1 dark:prose-invert">
+      <header class="mb-8 not-prose">
+        <h1 class="titulo text-4xl mb-2">{entry.data.title}</h1>
+        {entry.data.description && <p class="text-xl text-base-content/70 italic">{entry.data.description}</p>}
+        <div class="divider"></div>
+      </header>
+      <Content />
+    </article>
+  </div>
+</BaseLayout>

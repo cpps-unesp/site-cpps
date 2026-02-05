@@ -5,12 +5,20 @@ import { getLangFromUrl } from "../utils/getLangFromUrl";
 const lang = getLangFromUrl(Astro.url) as Language;
 const t = getTranslations(lang);
 
-const { children } = Astro.props;
+interface Props {
+  titulo?: string;
+  descricao?: string;
+  texts?: any;
+  identidade?: any;
+  lang?: string;
+}
 
-const titulo = t.titulo;
-const descricao = t.descricao;
-const texts = t.texts;
-const identidade = t.identidade;
+const {
+  titulo = t.titulo,
+  descricao = t.descricao,
+  texts = t.texts,
+  identidade = t.identidade
+} = Astro.props;
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -21,7 +29,7 @@ import BackToTop from "../components/BackToTop.astro";
 import "../styles/global.css";
 ---
 
-<html lang={lang} dir="ltr" data-theme="cpps">
+<html lang={lang} dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,6 +87,18 @@ import "../styles/global.css";
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
     />
+    <script is:inline>
+      (function() {
+        const THEME_STORAGE_KEY = 'theme';
+        const DEFAULT_THEME_CHOICE = 'system';
+        const storedChoice = localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME_CHOICE;
+        let themeToApply = storedChoice;
+        if (storedChoice === 'system') {
+          themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', themeToApply);
+      })();
+    </script>
   </head>
 
   <body class="bg-base-100 text-base-content">

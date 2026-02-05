@@ -1,0 +1,17 @@
+---
+id: intro
+title: Documentação IRJournalsBR
+sidebar_label: Introdução
+---
+
+### Repositório
+
+O codigo do projeto IRJournalsBR está dividido em cinco repositórios
+
+| Responsabilidade          | endereço do repositório               |
+|-----------------|-------------------------------|
+|Coletar Metadados|[IRjournalsBr](https://github.com/pedrodrocha/irjournalsbr)|
+|Coletar PDFs|[IRarticlesBr](https://github.com/pedrodrocha/irarticlesbr)|
+|Vincular Metadadados e PDFs (XMP) |[IRindexBr](https://github.com/pedrodrocha/irindexbr)|
+|RecollWeb|IRjournalsBr_recollweb (fork)|
+|Extrair referências dos PDFs|[parse-xml](https://gitlab.com/unesp-labri/projeto/irjournalsbr-parse-xml)|

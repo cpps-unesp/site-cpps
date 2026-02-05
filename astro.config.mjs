@@ -2,7 +2,6 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 import pagefind from "astro-pagefind";
-import starlight from "@astrojs/starlight";
 import mdx from '@astrojs/mdx';
 import cloudflare from '@astrojs/cloudflare';
 
@@ -17,8 +16,5 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [starlight({
-      title: 'Documentação CPPS',
-      disable404Route: true,
-    }), pagefind(), mdx()],
+  integrations: [pagefind(), mdx()],
 });

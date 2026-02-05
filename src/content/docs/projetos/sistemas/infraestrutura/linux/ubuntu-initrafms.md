@@ -1,0 +1,9 @@
+---
+id: ubuntu-initrafms
+title: Como iniciar o Ubuntu pelo initrafms
+sidebar_label: Como iniciar o Ubuntu pelo initrafms
+---
+
+### Material de apoio
+
+- [How Do I Start Ubuntu From Initramfs?](https://linuxhint.com/fix-initramfs-ubuntu/)

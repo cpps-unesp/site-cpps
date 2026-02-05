@@ -1,0 +1,18 @@
+---
+id: mapas
+title: Sugestões de Mapas
+sidebar_label: Sugestões de Mapas
+---
+
+:::tip
+A internet é uma ótima aliada para quaisquer tipos de pesquisa, não seria diferente quando trata-se de procurar por mapas. Dessa forma, abaixo estão listados alguns websites interessantes para sua pesquisa:
+:::
+
+|Fonte|Link|
+|---|---|
+|IBGE - Mapas do Mundo| [clique aqui](https://atlasescolar.ibge.gov.br/mapas-atlas/mapas-do-mundo/divisoes-politicas-e-regionais.html)
+|Central Intelligence Agency (CIA) - World and Regional Maps| [clique aqui](https://www.cia.gov/the-world-factbook/maps/world-regional/)
+|United Nations - Map of the World| [clique aqui](https://www.un.org/geospatial/content/map-world)
+|Library of Congress - Search Maps| [clique aqui](https://www.loc.gov/maps)
+|UCLA Library - Search Maps| [clique aqui](https://guides.library.ucla.edu/maps)
+|Library of Congress - Maps that Changed the World| [clique aqui](https://www.loc.gov/ghe/cascade/index.html?appid=ddf9824ff56b4fb6a0f3e11515716738&bookmark=150%20AD)

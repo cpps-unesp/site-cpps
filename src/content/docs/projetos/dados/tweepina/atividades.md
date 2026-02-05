@@ -1,0 +1,22 @@
+---
+id: atividades
+title: Atividades Realizadas TweePInA
+sidebar_label: Atividades Realizadas
+---
+
+## Atividades Realizadas
+
+|Data|Atividades Realizadas|Participantes|
+|---|---|---|
+|08/10/2021| xx ||
+|24/09/2021|Início da implementação do armazenamento dos dados||
+|17/09/2021|Implementando o controle da data do último tweet coletado, tanto na primeira coleta quanto no update||
+|10/09/2021|Continuidade no trabalho em torno do update da coleta de perfis||
+|03/09/2021|Trabalho em torno do update de coleta||
+|27/08/2021|Avanços no trabalho de atualizaçao da coleta de perfis ja coletados||
+|20/08/2021|Ajustes na estrutra de pastas; trabalhando com update das informaçoes de perfis já coletados||
+|13/08/2021|Migração do ambiente virtual `PyEnv` para o `Conda` e início do ajuste da função de update-profile||
+|06/08/2021|Ajuste no timezone para UTC e início da construção da funcionalidade de atualização de informações de perfis já coletados||
+|30/07/2021|Viabilizar adaptação de perfis já atualizados e habilitar coleta tanto pelo id quando pelo username||
+|23/07/2021|Término do tratamento de erros; <br/> Início da estruturação da coleta de perfis que já se encontram na base de dados||
+|16/07/2021|Tratamento de erro quando a API não retorna o autor_ID ou username||
