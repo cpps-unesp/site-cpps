@@ -15,6 +15,7 @@ export const sidebar: SidebarItem[] = [
   },
   {
     label: "Projetos de Dados",
+    collapsed: true,
     items: [
       { label: "Visão Geral", url: "/docs/projetos/dados" },
       {
@@ -38,6 +39,7 @@ export const sidebar: SidebarItem[] = [
   },
   {
     label: "Ensino",
+    collapsed: true,
     items: [
       { label: "Visão Geral", url: "/docs/projetos/ensino" },
       {
