@@ -14,20 +14,28 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
-// Sidebar structure extracted from astro.config.mjs
+// Sidebar structure
 const sidebar = [
     {
-        label: "Projetos",
+        label: "Geral",
         items: [
-            { label: "Dados", items: [
-                { label: "Hemeroteca PEB", url: "/docs/projetos/dados/hemeroteca-peb" },
-                { label: "NewsCloud", url: "/docs/projetos/dados/newscloud" },
-                { label: "DiáriosBR", url: "/docs/projetos/dados/diariosbr" },
-            ]},
-            { label: "Sistemas", items: [
-                { label: "Websites", url: "/docs/projetos/sistemas/websites/01-intro-md" },
-                { label: "Infraestrutura", url: "/docs/projetos/sistemas/infraestrutura" },
-            ]},
+            { label: "Introdução", url: "/docs" },
+            { label: "Guia de Edição", url: "/docs/guia-edicao" },
+        ]
+    },
+    {
+        label: "Dados",
+        items: [
+            { label: "Hemeroteca PEB", url: "/docs/projetos/dados/hemeroteca-peb" },
+            { label: "NewsCloud", url: "/docs/projetos/dados/newscloud" },
+            { label: "DiáriosBR", url: "/docs/projetos/dados/diariosbr" },
+        ]
+    },
+    {
+        label: "Sistemas",
+        items: [
+            { label: "Websites", url: "/docs/projetos/sistemas/websites/01-intro-md" },
+            { label: "Infraestrutura", url: "/docs/projetos/sistemas/infraestrutura" },
         ]
     }
 ];
@@ -39,23 +47,16 @@ const sidebar = [
     <aside class="w-full lg:w-64 flex-shrink-0">
         <nav class="sticky top-24">
             <h3 class="font-bold text-lg mb-4 text-primary">Documentação</h3>
-            <ul class="space-y-4">
+            <ul class="space-y-6">
                 {sidebar.map(section => (
                     <li>
-                        <span class="font-semibold text-sm uppercase tracking-wider text-base-content/50">{section.label}</span>
-                        <ul class="mt-2 ml-2 space-y-2 border-l border-base-300 pl-4">
+                        <span class="font-semibold text-xs uppercase tracking-widest text-base-content/40 mb-2 block">{section.label}</span>
+                        <ul class="space-y-2 border-l border-base-300 pl-4 ml-1">
                             {section.items.map(item => (
                                 <li>
-                                    <span class="text-sm font-medium">{item.label}</span>
-                                    <ul class="mt-1 space-y-1">
-                                        {item.items.map(subItem => (
-                                            <li>
-                                                <a href={subItem.url} class={`text-sm hover:text-primary transition ${Astro.url.pathname === subItem.url ? 'text-primary font-bold' : 'text-base-content/70'}`}>
-                                                    {subItem.label}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
+                                    <a href={item.url} class={`text-sm hover:text-primary transition block ${Astro.url.pathname === item.url ? 'text-primary font-bold' : 'text-base-content/70'}`}>
+                                        {item.label}
+                                    </a>
                                 </li>
                             ))}
                         </ul>
