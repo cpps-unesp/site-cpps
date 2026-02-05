@@ -3,6 +3,13 @@ export const prerender = true;
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
+// Componentes customizados para o MDX
+import Notice from '../../components/docs/Notice.astro';
+import Card from '../../components/docs/Card.astro';
+import CardGrid from '../../components/docs/CardGrid.astro';
+import LinkCard from '../../components/docs/LinkCard.astro';
+import Steps from '../../components/docs/Steps.astro';
+
 export async function getStaticPaths() {
   const docs = await getCollection('docs');
   return docs.map((entry) => ({
@@ -73,7 +80,7 @@ const sidebar = [
         {entry.data.description && <p class="text-xl text-base-content/70 italic">{entry.data.description}</p>}
         <div class="divider"></div>
       </header>
-      <Content />
+      <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
     </article>
   </div>
 </BaseLayout>

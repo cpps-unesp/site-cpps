@@ -1,0 +1,168 @@
+---
+title: "Guia de Edição da Documentação"
+description: "Aprenda como adicionar, editar e customizar as páginas de documentação do CPPS."
+---
+
+Bem-vindo ao guia oficial de edição! Este material foi preparado para estudantes e estagiários que colaboram com o CPPS. Aqui você aprenderá desde o básico até o uso de componentes avançados para criar uma documentação rica e profissional.
+
+<Notice type="info">
+  Esta documentação é gerada nativamente pelo **Astro**. Isso significa que você tem o poder do Markdown aliado à flexibilidade de componentes interativos.
+</Notice>
+
+---
+
+## 🚀 Começo Rápido
+
+<Steps>
+
+### Localização dos Arquivos
+Todos os arquivos de documentação estão localizados na pasta `src/content/docs/`. A estrutura de subpastas (ex: `projetos/dados/`) define automaticamente o endereço (URL) da página no site.
+
+### Criação e Edição
+Para editar, basta abrir o arquivo `.md` ou `.mdx` correspondente. Para criar um novo, adicione um arquivo com a extensão `.mdx` na pasta desejada.
+
+### Configuração Inicial (Frontmatter)
+Todo arquivo deve começar com um bloco de configuração chamado **Frontmatter**:
+
+```markdown
+---
+title: "Título da sua Página"
+description: "Uma breve descrição do conteúdo"
+---
+```
+
+</Steps>
+
+---
+
+## 📝 Markdown Básico
+
+Você pode usar toda a sintaxe padrão do Markdown:
+
+- **Negrito**: `**texto**`
+- *Itálico*: `*texto*`
+- [Links](https://cpps.franca.unesp.br)
+- Listas numeradas e com marcadores.
+- Tabelas e blocos de código.
+
+### Blocos de Código
+Use crases triplas para destacar códigos:
+
+```javascript
+// Exemplo de código
+const saudacao = "Olá CPPS!";
+console.log(saudacao);
+```
+
+---
+
+## 🎨 Customização Avançada
+
+Como usamos **MDX**, você pode utilizar componentes especiais diretamente no seu texto para destacar informações.
+
+### 1. Caixas de Destaque (Notice)
+Use para avisos, dicas ou informações importantes.
+
+<Notice type="tip" title="Dica de Ouro">
+  Use caixas de dica para destacar atalhos ou boas práticas!
+</Notice>
+
+<Notice type="warning">
+  Tome cuidado ao editar arquivos de configuração do servidor.
+</Notice>
+
+<Notice type="danger">
+  Nunca compartilhe senhas ou chaves de API nos arquivos Markdown.
+</Notice>
+
+### 2. Cards e Grids
+Perfeitos para listar funcionalidades ou sub-seções.
+
+<CardGrid columns={2}>
+  <Card title="Dados" icon="📊">
+    Documentação sobre bancos de dados e coleta.
+  </Card>
+  <Card title="Sistemas" icon="💻">
+    Informações sobre servidores e infraestrutura.
+  </Card>
+</CardGrid>
+
+### 3. Link Cards
+Cards que levam o usuário para outra página.
+
+<LinkCard
+  title="Ir para a Home da Docs"
+  href="/docs"
+  description="Volte para a página principal de documentação."
+  icon="🏠"
+/>
+
+---
+
+## 🖼️ Imagens e Posicionamento
+
+Para adicionar imagens, você pode usar a sintaxe padrão ou HTML para ter mais controle de posicionamento.
+
+### Alinhamento com Classes CSS
+
+Disponibilizamos classes utilitárias para você posicionar suas imagens:
+
+| Classe | Efeito |
+| :--- | :--- |
+| `img-left` | Imagem à esquerda com texto fluindo ao redor. |
+| `img-right` | Imagem à direita com texto fluindo ao redor. |
+| `img-center` | Imagem centralizada ocupando sua própria linha. |
+
+**Exemplo de uso:**
+
+```html
+<img src="/imagens/logo.png" class="img-right" width="200" />
+Este texto ficará à esquerda da imagem, fluindo naturalmente conforme o conteúdo aumenta...
+```
+
+---
+
+## ↕️ Blocos Expansíveis (Acordeões)
+
+Para conteúdos muito longos ou detalhes técnicos opcionais, use a tag HTML `<details>`:
+
+<details>
+<summary>Clique para ver detalhes técnicos</summary>
+
+Aqui você pode colocar tabelas longas, logs de erro ou instruções que nem todo mundo precisa ler de primeira.
+
+- Detalhe 1
+- Detalhe 2
+</details>
+
+---
+
+## 🛠️ Como usar Componentes Astro
+
+Se você precisar de algo ainda mais customizado, pode criar um componente em `src/components/` e importá-lo no seu arquivo MDX:
+
+```mdx
+---
+title: Minha Página
+---
+import MeuComponente from '../../components/MeuComponente.astro';
+
+<MeuComponente />
+```
+
+---
+
+## 📂 Estrutura e Funcionalidades
+
+Baseado na arquitetura do Astro, nosso sistema de documentação oferece:
+
+- **Roteamento Baseado em Arquivos**: A estrutura de pastas em `src/content/docs` é refletida na URL.
+- **Renderização Híbrida**: O conteúdo é estático por padrão, garantindo alta performance.
+- **Coleções de Conteúdo**: Usamos `defineCollection` no arquivo `src/content/config.ts` para validar os dados das páginas.
+- **Componentes Reutilizáveis**: Todos os componentes listados acima estão disponíveis globalmente nas páginas de documentação.
+
+---
+
+<Notice type="info">
+  **Dúvidas?** Procure o líder técnico ou consulte a documentação oficial do [Astro](https://docs.astro.build).
+</Notice>

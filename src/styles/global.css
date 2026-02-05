@@ -88,3 +88,43 @@ h1, h2, h3, .titulo {
 .paragrafo a:hover {
   color: #2197C5;
 }
+
+/* Utilitários para Markdown/MDX */
+.img-left {
+  @apply float-left mr-6 mb-4 rounded-lg shadow-md;
+}
+.img-right {
+  @apply float-right ml-6 mb-4 rounded-lg shadow-md;
+}
+.img-center {
+  @apply block mx-auto my-8 rounded-lg shadow-lg;
+}
+
+/* Ajustes para o prose (Tailwind Typography) */
+.prose pre {
+  background-color: var(--color-neutral) !important;
+  color: var(--color-neutral-content) !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.prose code {
+  background-color: var(--color-base-300) !important;
+  color: var(--color-primary) !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: 0.25rem !important;
+  font-weight: 500 !important;
+}
+
+.prose code::before, .prose code::after {
+  content: "" !important;
+}
+
+.prose blockquote {
+  border-left-color: var(--color-primary) !important;
+  background-color: color-mix(in srgb, var(--color-primary), transparent 95%) !important;
+  padding: 0.25rem 1.5rem !important;
+  font-style: italic !important;
+  border-top-right-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
+}
