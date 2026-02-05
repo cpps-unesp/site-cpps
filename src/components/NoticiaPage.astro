@@ -73,7 +73,7 @@ const { Content } = await post.render();
           <Content />
         </div>
 
-        <div class="article-tags mt-12 pt-8 border-t border-base-200">
+        <footer class="mt-12 pt-8 border-t border-base-200">
           <div class="flex flex-wrap gap-2">
             <span class="text-sm font-bold mr-2 self-center uppercase tracking-wider opacity-50">{locale.noticias?.tags || 'Tags'}:</span>
             {tags.map((tag: string) => (
@@ -85,7 +85,7 @@ const { Content } = await post.render();
               </a>
             ))}
           </div>
-        </div>
+        </footer>
       </article>
 
       <!-- Sidebar -->
