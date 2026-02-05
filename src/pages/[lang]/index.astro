@@ -45,18 +45,23 @@ const {
   <Hero heroData={locale} />
   <Initiatives initiatives={locale.initiatives} />
 
-   <AtividadesSection
-    title={atividadesPesquisa.title}
-    description={atividadesPesquisa.description}
-    image={hero.link}
-    activities={atividadesPesquisa.items}
-  />
+  {atividadesPesquisa && (
+    <AtividadesSection
+      title={atividadesPesquisa.title}
+      description={atividadesPesquisa.description}
+      image={hero.link}
+      activities={atividadesPesquisa.items}
+    />
+  )}
 
-  <ProdutosSection
-    title={produtos.title}
-    description={produtos.description}
-    image={hero.link}
-    produtos={produtos.items}
-  />
-  <FAQSection faqs={locale.faqs.items} />
+  {produtos && (
+    <ProdutosSection
+      title={produtos.title}
+      description={produtos.description}
+      image={hero.link}
+      produtos={produtos.items}
+    />
+  )}
+
+  {locale.faqs && <FAQSection faqs={locale.faqs.items} />}
 </BaseLayout>
