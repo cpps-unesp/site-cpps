@@ -51,7 +51,18 @@ const authorsList = data.authors.join(", ");
   </h3>
 
   <p class="text-sm font-medium text-gray-700 mb-4">
-    <span class="text-gray-500 font-normal">{locale.publicacoes.authors}:</span> {authorsList}
+    <span class="text-gray-500 font-normal">{locale.publicacoes.authors}:</span>
+    {data.authors.map((author: string, index: number) => (
+      <>
+        <a
+          href={`/${lang}/publicacoes?author=${encodeURIComponent(author)}`}
+          class="hover:text-primary hover:underline transition-colors"
+        >
+          {author}
+        </a>
+        {index < data.authors.length - 1 ? ', ' : ''}
+      </>
+    ))}
   </p>
 
   <p class="text-gray-600 text-sm line-clamp-3 mb-6 flex-grow">

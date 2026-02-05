@@ -1,5 +1,4 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
 import PublicationCard from './PublicationCard.astro';
 import PublicationFeatured from './PublicationFeatured.astro';
 import { getCollection } from 'astro:content';
@@ -26,8 +25,7 @@ const publicationTypes = [
 ];
 ---
 
-<BaseLayout lang={lang} titulo={locale.texts.header.publicacoes} descricao={locale.descricao} texts={locale.texts} identidade={locale.identidade}>
-  <main class="container mx-auto px-4 py-16">
+<section class="container mx-auto px-4 py-16">
     <header class="mb-12">
       <h1 class="text-5xl font-black text-gray-900 mb-4 italic uppercase tracking-tighter">
         {locale.texts.header.publicacoes}
@@ -95,8 +93,7 @@ const publicationTypes = [
     <div id="no-results" class="hidden text-center py-20">
       <p class="text-xl text-gray-400 font-bold italic">{locale.publicacoes.noResults}</p>
     </div>
-  </main>
-</BaseLayout>
+  </section>
 
 <script>
   function setupFilters() {
@@ -106,6 +103,17 @@ const publicationTypes = [
     const cards = document.querySelectorAll('.publication-card');
     const featuredSection = document.getElementById('featured-section');
     const noResults = document.getElementById('no-results');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const tagParam = urlParams.get('tag');
+    const authorParam = urlParams.get('author');
+
+    if (tagParam && searchInput) {
+      searchInput.value = tagParam;
+    }
+    if (authorParam && authorInput) {
+      authorInput.value = authorParam;
+    }
 
     function filter() {
       const searchValue = searchInput.value.toLowerCase();
@@ -132,14 +140,12 @@ const publicationTypes = [
         }
       });
 
-      // Esconde o destaque se houver qualquer filtro ativo para não confundir
       if (searchValue || typeValue !== 'all' || authorValue) {
         if (featuredSection) featuredSection.style.display = 'none';
       } else {
         if (featuredSection) featuredSection.style.display = 'block';
       }
 
-      // Mostra mensagem se não houver resultados
       if (noResults) {
         if (visibleCount === 0) {
           noResults.classList.remove('hidden');
@@ -152,9 +158,12 @@ const publicationTypes = [
     searchInput?.addEventListener('input', filter);
     typeFilter?.addEventListener('change', filter);
     authorInput?.addEventListener('input', filter);
+
+    if (tagParam || authorParam) {
+      filter();
+    }
   }
 
-  // Rodar no load e em transições de página
   setupFilters();
   document.addEventListener('astro:after-swap', setupFilters);
 </script>

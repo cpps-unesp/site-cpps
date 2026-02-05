@@ -53,8 +53,13 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
 
           <div class="flex flex-wrap gap-2 mb-8">
             <span class="text-xs font-black uppercase text-gray-400 w-full mb-1 tracking-widest">{locale.publicacoes.keywords}</span>
-            {data.tags.map(tag => (
-              <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded">#{tag}</span>
+            {data.tags.map((tag: string) => (
+              <a
+                href={`/${lang}/publicacoes?tag=${encodeURIComponent(tag)}`}
+                class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded hover:bg-primary hover:text-white transition-colors"
+              >
+                #{tag}
+              </a>
             ))}
           </div>
         </div>
@@ -62,8 +67,15 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
         <div class="bg-gray-50 p-6 rounded-xl h-fit border border-gray-100">
           <h3 class="text-xs font-black uppercase text-gray-400 mb-4 tracking-widest">{locale.publicacoes.authors}</h3>
           <ul class="space-y-3">
-            {data.authors.map(author => (
-              <li class="text-sm font-bold text-gray-900">{author}</li>
+            {data.authors.map((author: string) => (
+              <li>
+                <a
+                  href={`/${lang}/publicacoes?author=${encodeURIComponent(author)}`}
+                  class="text-sm font-bold text-gray-900 hover:text-primary hover:underline transition-colors"
+                >
+                  {author}
+                </a>
+              </li>
             ))}
           </ul>
 
