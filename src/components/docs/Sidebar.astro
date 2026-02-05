@@ -11,9 +11,14 @@ const { items, currentPath, level = 0 } = Astro.props;
 
 function isActive(url?: string) {
   if (!url) return false;
+  if (url.startsWith('http')) return false;
   const normalizedUrl = url.replace(/\/$/, "");
   const normalizedPath = currentPath.replace(/\/$/, "");
   return normalizedPath === normalizedUrl;
+}
+
+function isExternal(url?: string) {
+  return url?.startsWith('http');
 }
 
 function hasActiveChild(item: SidebarItem): boolean {
@@ -34,11 +39,14 @@ function hasActiveChild(item: SidebarItem): boolean {
             {item.url ? (
                <a
                 href={item.url}
-                class={`text-sm transition-colors hover:text-primary ${
+                target={isExternal(item.url) ? "_blank" : undefined}
+                rel={isExternal(item.url) ? "noopener noreferrer" : undefined}
+                class={`text-sm transition-colors hover:text-primary flex items-center gap-1 ${
                   isActive(item.url) ? 'text-primary font-bold active' : 'text-base-content/70'
                 }`}
               >
                 {item.label}
+                {isExternal(item.url) && <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50"></i>}
               </a>
             ) : (
               <span class={`text-sm font-semibold ${level === 0 ? 'uppercase tracking-wider text-base-content/40' : 'text-base-content/70'}`}>
@@ -57,13 +65,16 @@ function hasActiveChild(item: SidebarItem): boolean {
         item.url ? (
           <a
             href={item.url}
-            class={`block py-1.5 px-2 rounded-lg text-sm transition-colors hover:bg-base-200 hover:text-primary ${
+            target={isExternal(item.url) ? "_blank" : undefined}
+            rel={isExternal(item.url) ? "noopener noreferrer" : undefined}
+            class={`flex items-center justify-between py-1.5 px-2 rounded-lg text-sm transition-colors hover:bg-base-200 hover:text-primary ${
               isActive(item.url)
                 ? 'bg-primary/10 text-primary font-bold active'
                 : 'text-base-content/70'
             }`}
           >
             {item.label}
+            {isExternal(item.url) && <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50"></i>}
           </a>
         ) : (
           <span class={`block py-1.5 px-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 ${level === 0 ? 'mt-4 first:mt-0' : ''}`}>

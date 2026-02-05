@@ -51,6 +51,13 @@ export const sidebar: SidebarItem[] = [
     ],
   },
   {
+    label: "Recursos Externos",
+    items: [
+      { label: "Lantri Hub", url: "https://lantri.org" },
+      { label: "GitHub Org", url: "https://github.com/cpps-unesp" },
+    ]
+  },
+  {
     label: "Sistemas",
     items: [
       {
