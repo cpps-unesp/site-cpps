@@ -19,16 +19,19 @@ import IniciativasProjetosDeDadosSection from "../../components/IniciativasProje
 import IniciativasProjetosDePesquisaSection from "../../components/IniciativasProjetosDePesquisaSection.astro";
 
 import NoticiaPage from "../../components/NoticiaPage.astro";
+import NoticiasListPage from "../../components/NoticiasListPage.astro";
 import routeTranslations from "../../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import type { SupportedLang } from "../../types/lang";
 import { getTranslations } from "../../utils/i18n";
+import slugify from "slugify";
 
 // ✅ Exporta os caminhos possíveis para páginas estáticas
 export async function getStaticPaths() {
   const langs: SupportedLang[] = ["pt", "en", "es"];
   const paths = [];
 
+  // Páginas institucionais e outras do routeTranslations
   for (const [key, traducoes] of Object.entries(routeTranslations)) {
     for (const lang of langs) {
       const slugValue = traducoes[lang];
@@ -43,6 +46,7 @@ export async function getStaticPaths() {
     }
   }
 
+  // Notícias individuais
   const allNoticias = await getCollection("noticias");
   for (const noticia of allNoticias) {
     const lang = noticia.data.lang as SupportedLang;
@@ -55,6 +59,22 @@ export async function getStaticPaths() {
     });
   }
 
+  // Categorias de notícias
+  const tags = [...new Set(allNoticias.flatMap(n => n.data.tags || []))];
+  for (const lang of langs) {
+    const prefix = routeTranslations["noticias"][lang];
+    for (const tag of tags) {
+      const tagSlug = slugify(tag, { lower: true, strict: true });
+      paths.push({
+        params: {
+          lang,
+          slug: `${prefix}/categoria/${tagSlug}`,
+        },
+      });
+    }
+  }
+
+  // Membros
   const allMembros = await getCollection("membros");
   for (const membro of allMembros) {
     const fileName = membro.id.split("/").pop() ?? "";
@@ -83,8 +103,9 @@ const locale = getTranslations(currentLang);
 const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } = locale;
 
 const noticiasPrefix = routeTranslations["noticias"][currentLang];
-const isNoticia = slugPath.startsWith(`${noticiasPrefix}/`);
-const allNoticias = isNoticia ? await getCollection("noticias") : [];
+const isNoticiasList = slugPath === noticiasPrefix;
+const isNoticiasCategory = slugPath.startsWith(`${noticiasPrefix}/categoria/`);
+const isNoticia = slugPath.startsWith(`${noticiasPrefix}/`) && !isNoticiasList && !isNoticiasCategory;
 
 const allMembros = await getCollection("membros");
 function getSlugFromEntry(entry: any) {
@@ -126,7 +147,9 @@ const originalKey = findOriginalKey(slugPath, currentLang);
 ---
 
 {
-  isNoticia ? (
+  isNoticiasList || isNoticiasCategory ? (
+    <NoticiasListPage lang={currentLang} tag={isNoticiasCategory ? slugPath.split('/').pop() : undefined} />
+  ) : isNoticia ? (
     <NoticiaPage lang={currentLang} slug={slugPath} />
   ) : membroSelecionado ? (
     <BaseLayout

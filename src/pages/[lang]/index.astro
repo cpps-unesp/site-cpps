@@ -3,6 +3,7 @@ export const prerender = true;
 
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
+import NewsHomeSection from "../../components/NewsHomeSection.astro";
 import AtividadesSection from "../../components/AtividadesSection.astro";
 import ProdutosSection from "../../components/ProdutosSection.astro";
 import FAQSection from "../../components/FAQSection.astro";
@@ -43,6 +44,9 @@ const {
 <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={locale.texts}
   identidade={locale.identidade}>
   <Hero heroData={locale} />
+
+  <NewsHomeSection lang={currentLang} title={locale.texts.header.noticias} />
+
   <!-- <Initiatives initiatives={locale.initiatives} />
 
   <section class="mt-16">

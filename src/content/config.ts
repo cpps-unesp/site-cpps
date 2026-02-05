@@ -1,7 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { docsLoader } from '@astrojs/starlight/loaders';
 import { docsSchema } from '@astrojs/starlight/schema';
-import slugify from 'slugify';
 
 // ✅ Collection de notícias
 const noticias = defineCollection({
@@ -12,13 +11,9 @@ const noticias = defineCollection({
     image: z.string(),
     tags: z.array(z.string()).optional().default([]),
     lang: z.enum(['pt', 'en', 'es']),
-  }).transform((data) => ({
-    ...data,
-    slug: slugify(`${data.date.toISOString().split('T')[0]}-${data.title}`, {
-      lower: true,
-      strict: true,
-    }),
-  })),
+    featured: z.boolean().optional().default(false),
+    author: z.string().optional(),
+  }),
 });
 
 // ✅ Collection de membros (com slug baseado no nome do arquivo)
