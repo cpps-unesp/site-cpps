@@ -1,53 +1,93 @@
 ---
 export const prerender = true;
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import LinkCard from '../../components/docs/LinkCard.astro';
+import CardGrid from '../../components/docs/CardGrid.astro';
+import Notice from '../../components/docs/Notice.astro';
 ---
 
-<BaseLayout titulo="Documentação" descricao="Documentação do CPPS">
-  <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-12">
-    <h1 class="titulo text-5xl mb-8 text-primary">Documentação</h1>
-    <p class="paragrafo mb-12 text-xl">
-      Bem-vindo à central de documentação do CPPS. Aqui você encontrará guias técnicos, informações sobre projetos de dados, infraestrutura e muito mais.
-    </p>
+<BaseLayout titulo="Central de Documentação" descricao="Aprenda a utilizar as ferramentas, acessar dados e contribuir com o CPPS.">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition">
-        <div class="card-body">
-          <h2 class="card-title mini-titulo text-2xl">Dados</h2>
-          <p>Documentação dos projetos de coleta e processamento de dados (Hemeroteca, NewsCloud, etc).</p>
-          <div class="card-actions justify-end mt-4">
-            <a href="/docs/projetos/dados" class="btn btn-primary btn-sm">Ver Documentos</a>
-          </div>
-        </div>
-      </div>
+    <header class="mb-16 text-center max-w-3xl mx-auto">
+        <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Bem-vindo</span>
+        <h1 class="titulo text-5xl sm:text-7xl mb-6 font-black">Documentação CPPS</h1>
+        <p class="paragrafo text-xl sm:text-2xl text-base-content/70 mx-auto">
+            Seu guia completo para infraestrutura, trilhas de ensino e projetos de dados do Centro de Pesquisa Política e Social.
+        </p>
+    </header>
 
-      <div class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition">
-        <div class="card-body">
-          <h2 class="card-title mini-titulo text-2xl">Sistemas</h2>
-          <p>Guias sobre desenvolvimento de websites, redes e ferramentas internas.</p>
-          <div class="card-actions justify-end mt-4">
-            <a href="/docs/projetos/sistemas/websites/01-intro-md" class="btn btn-primary btn-sm">Ver Documentos</a>
-          </div>
-        </div>
-      </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
-      <div class="card bg-base-200 border border-base-300 shadow-sm hover:shadow-md transition">
-        <div class="card-body">
-          <h2 class="card-title mini-titulo text-2xl">Infraestrutura</h2>
-          <p>Configurações de servidores, Linux, Docker e orquestração.</p>
-          <div class="card-actions justify-end mt-4">
-            <a href="/docs/projetos/sistemas/infraestrutura" class="btn btn-primary btn-sm">Ver Documentos</a>
-          </div>
-        </div>
-      </div>
-    </div>
+        <section class="lg:col-span-2 space-y-12">
+            <div>
+                <h2 class="mini-titulo text-3xl mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-rocket text-primary text-2xl"></i>
+                    Primeiros Passos
+                </h2>
+                <CardGrid columns={2}>
+                    <LinkCard
+                        title="Introdução ao Centro"
+                        href="/docs"
+                        description="Conheça a missão e a estrutura organizacional do CPPS."
+                        icon="🏢"
+                    />
+                    <LinkCard
+                        title="Guia de Edição"
+                        href="/docs/guia-edicao"
+                        description="Aprenda como adicionar e editar esta documentação."
+                        icon="✍️"
+                    />
+                </CardGrid>
+            </div>
 
-    <div class="mt-16 bg-primary/5 p-8 rounded-2xl border border-primary/20">
-      <h2 class="mini-titulo text-3xl mb-4">Quer contribuir?</h2>
-      <p class="paragrafo mb-6">
-        Saiba como adicionar novos documentos ou editar os existentes para manter nossa documentação sempre atualizada.
-      </p>
-      <a href="/docs/guia-edicao" class="btn btn-outline btn-primary">Ver Guia de Edição</a>
+            <div>
+                <h2 class="mini-titulo text-3xl mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-database text-primary text-2xl"></i>
+                    Recursos Técnicos
+                </h2>
+                <CardGrid columns={2}>
+                    <LinkCard
+                        title="Bases de Dados"
+                        href="/docs/projetos/dados"
+                        description="Hemeroteca PEB, NewsCloud e outros acervos digitais."
+                        icon="📊"
+                    />
+                    <LinkCard
+                        title="Infraestrutura Linux"
+                        href="/docs/projetos/sistemas/infraestrutura"
+                        description="Configurações de servidores e guias de administração."
+                        icon="🐧"
+                    />
+                </CardGrid>
+            </div>
+
+            <Notice type="tip" title="Precisa de Ajuda?">
+                Caso não encontre o que procura, você pode utilizar a busca global do site (ícone de lupa no cabeçalho) ou entrar em contato com a equipe técnica.
+            </Notice>
+        </section>
+
+        <aside class="space-y-8">
+            <div class="bg-base-200 rounded-3xl p-8 border border-base-300">
+                <h3 class="font-bold text-xl mb-4">Acesso Rápido</h3>
+                <ul class="space-y-3">
+                    <li><a href="/docs/projetos/dados/hemeroteca-peb" class="link link-hover text-sm">Hemeroteca PEB</a></li>
+                    <li><a href="/docs/projetos/ensino/tfdt" class="link link-hover text-sm">Trilha de Dados (Python)</a></li>
+                    <li><a href="/docs/projetos/sistemas/websites/01-intro-md" class="link link-hover text-sm">Edição de Websites</a></li>
+                    <li><a href="/docs/projetos/sistemas/infraestrutura/linux/atualizar" class="link link-hover text-sm">Manual de Servidores</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-primary/5 rounded-3xl p-8 border border-primary/20">
+                <h3 class="font-bold text-xl mb-4 text-primary">Comunidade</h3>
+                <p class="text-sm mb-4 opacity-80">Participe do desenvolvimento do CPPS colaborando no nosso GitHub.</p>
+                <a href="https://github.com/cpps-unesp" target="_blank" class="btn btn-primary btn-block btn-sm">
+                    <i class="fa-brands fa-github mr-2"></i>
+                    GitHub Org
+                </a>
+            </div>
+        </aside>
+
     </div>
   </div>
 </BaseLayout>

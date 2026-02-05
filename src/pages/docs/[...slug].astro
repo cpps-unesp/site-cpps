@@ -10,6 +10,14 @@ import CardGrid from '../../components/docs/CardGrid.astro';
 import LinkCard from '../../components/docs/LinkCard.astro';
 import Steps from '../../components/docs/Steps.astro';
 
+// Componentes de estrutura da documentação
+import DocsSidebar from '../../components/docs/Sidebar.astro';
+import TableOfContents from '../../components/docs/TableOfContents.astro';
+import Breadcrumbs from '../../components/docs/Breadcrumbs.astro';
+import Pagination from '../../components/docs/Pagination.astro';
+
+import { sidebar } from '../../config/docs';
+
 export async function getStaticPaths() {
   const docs = await getCollection('docs');
   return docs.map((entry) => ({
@@ -19,68 +27,69 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { Content } = await render(entry);
-
-// Sidebar structure
-const sidebar = [
-    {
-        label: "Geral",
-        items: [
-            { label: "Introdução", url: "/docs" },
-            { label: "Guia de Edição", url: "/docs/guia-edicao" },
-        ]
-    },
-    {
-        label: "Dados",
-        items: [
-            { label: "Hemeroteca PEB", url: "/docs/projetos/dados/hemeroteca-peb" },
-            { label: "NewsCloud", url: "/docs/projetos/dados/newscloud" },
-            { label: "DiáriosBR", url: "/docs/projetos/dados/diariosbr" },
-        ]
-    },
-    {
-        label: "Sistemas",
-        items: [
-            { label: "Websites", url: "/docs/projetos/sistemas/websites/01-intro-md" },
-            { label: "Infraestrutura", url: "/docs/projetos/sistemas/infraestrutura" },
-        ]
-    }
-];
+const { Content, headings } = await render(entry);
+const currentPath = Astro.url.pathname;
 ---
 
 <BaseLayout titulo={entry.data.title} descricao={entry.data.description}>
-  <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-12">
-    <!-- Sidebar -->
-    <aside class="w-full lg:w-64 flex-shrink-0">
-        <nav class="sticky top-24">
-            <h3 class="font-bold text-lg mb-4 text-primary">Documentação</h3>
-            <ul class="space-y-6">
-                {sidebar.map(section => (
-                    <li>
-                        <span class="font-semibold text-xs uppercase tracking-widest text-base-content/40 mb-2 block">{section.label}</span>
-                        <ul class="space-y-2 border-l border-base-300 pl-4 ml-1">
-                            {section.items.map(item => (
-                                <li>
-                                    <a href={item.url} class={`text-sm hover:text-primary transition block ${Astro.url.pathname === item.url ? 'text-primary font-bold' : 'text-base-content/70'}`}>
-                                        {item.label}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
-                    </li>
-                ))}
-            </ul>
+  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-8 lg:gap-12">
+
+    <!-- 🔹 Navegação Lateral (Sidebar) -->
+    <aside class="w-full lg:w-72 flex-shrink-0">
+        <nav class="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-base-300">
+            <h3 class="font-bold text-lg mb-6 text-primary flex items-center gap-2">
+                <i class="fa-solid fa-book-open text-sm"></i>
+                Documentação
+            </h3>
+            <DocsSidebar items={sidebar} currentPath={currentPath} />
         </nav>
     </aside>
 
-    <!-- Main Content -->
-    <article class="prose prose-lg max-w-none flex-1 dark:prose-invert">
-      <header class="mb-8 not-prose">
-        <h1 class="titulo text-4xl mb-2">{entry.data.title}</h1>
-        {entry.data.description && <p class="text-xl text-base-content/70 italic">{entry.data.description}</p>}
-        <div class="divider"></div>
-      </header>
-      <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
-    </article>
+    <!-- 🔹 Conteúdo Principal -->
+    <main class="flex-1 min-w-0">
+      <div class="max-w-4xl mx-auto">
+        <Breadcrumbs currentPath={currentPath} />
+
+        <article class="prose prose-lg max-w-none dark:prose-invert">
+          <header class="mb-12 not-prose">
+            <h1 class="titulo text-4xl sm:text-5xl mb-4 font-black">{entry.data.title}</h1>
+            {entry.data.description && (
+                <p class="text-xl text-base-content/60 leading-relaxed border-l-4 border-primary/20 pl-6 italic">
+                    {entry.data.description}
+                </p>
+            )}
+            <div class="divider mt-8"></div>
+          </header>
+
+          <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
+        </article>
+
+        <Pagination currentPath={currentPath} />
+
+        <footer class="mt-16 pt-8 border-t border-base-300 text-sm text-base-content/50 flex justify-between items-center">
+            <span>© {new Date().getFullYear()} CPPS - UNESP</span>
+            <a href="https://github.com/cpps-unesp/site-cpps" target="_blank" class="hover:text-primary transition-colors flex items-center gap-2">
+                <i class="fa-brands fa-github"></i>
+                Editar no GitHub
+            </a>
+        </footer>
+      </div>
+    </main>
+
+    <!-- 🔹 Tabela de Conteúdo (ToC) -->
+    <TableOfContents headings={headings} />
+
   </div>
 </BaseLayout>
+
+<style is:global>
+    /* Suaviza o scroll ao clicar nos links do ToC */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Ajuste de scroll-margin para compensar o header fixo */
+    [id] {
+        scroll-margin-top: 7rem;
+    }
+</style>
