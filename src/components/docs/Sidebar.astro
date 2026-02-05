@@ -34,7 +34,7 @@ function hasActiveChild(item: SidebarItem): boolean {
   {items.map((item) => (
     <li>
       {item.items && item.items.length > 0 ? (
-        <details open={hasActiveChild(item) || !item.collapsed} class="group/details">
+        <details open={hasActiveChild(item) || item.collapsed === false} class="group/details">
           <summary class="flex items-center justify-between py-1.5 px-2 rounded-lg cursor-pointer hover:bg-base-200 transition-colors list-none [&::-webkit-details-marker]:hidden">
             {item.url ? (
                <a

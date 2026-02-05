@@ -49,20 +49,22 @@ Você pode aninhar itens para criar menus que abrem e fecham verticalmente:
 ```
 
 ### Controlando o Colapso Inicial
-Você pode escolher se um grupo de links deve começar aberto ou fechado usando a propriedade `collapsed`:
+Por padrão, o sistema utiliza **Navegação Inteligente**: apenas o grupo que contém a página atual fica aberto. Todos os outros grupos começam fechados para manter o visual limpo.
+
+Se você deseja que um grupo específico fique **sempre aberto** (mesmo quando o usuário não está nele), use `collapsed: false`:
 
 ```typescript
 {
-  label: "Manual Avançado",
-  collapsed: true, // Começará fechado
+  label: "Recursos Essenciais",
+  collapsed: false, // Ficará sempre aberto por padrão
   items: [
-    { label: "Tópico 1", url: "/docs/topico-1" },
+    { label: "Link Vital", url: "/docs/vital" },
   ]
 }
 ```
 
 <Notice type="info">
-  **Menu Inteligente**: Mesmo que você defina `collapsed: true`, o sistema **abrirá automaticamente** o menu se o usuário estiver navegando em uma página que pertence àquele grupo. Isso garante que o usuário nunca se perca.
+  **Abertura Automática**: O sistema sempre expandirá automaticamente qualquer grupo se o usuário estiver em uma página que pertença a ele.
 </Notice>
 
 ### Links Externos no Menu
