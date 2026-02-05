@@ -31,6 +31,23 @@ const publicationTypes = [
         {locale.texts.header.publicacoes}
       </h1>
       <div class="w-24 h-2 bg-primary"></div>
+
+      <div class="mt-6 flex flex-wrap items-center gap-2">
+        <a
+          href={`/${lang}/publicacoes`}
+          class="text-xs font-bold uppercase px-3 py-1 rounded-full border border-gray-200 text-gray-500 hover:text-primary hover:border-primary transition-colors"
+        >
+          {locale.publicacoes.allTypes}
+        </a>
+        {publicationTypes.map((type) => (
+          <a
+            href={`/${lang}/publicacoes?type=${encodeURIComponent(type)}`}
+            class="text-xs font-bold uppercase px-3 py-1 rounded-full border border-gray-200 text-gray-600 hover:text-primary hover:border-primary transition-colors"
+          >
+            {locale.publicacoes.types[type]}
+          </a>
+        ))}
+      </div>
     </header>
 
     {featuredPublication && (
