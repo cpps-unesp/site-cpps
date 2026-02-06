@@ -3,6 +3,9 @@ name: "Dependabot: Close Superseded"
 on:
   pull_request_target:
     types: [opened, reopened, synchronize]
+    # Só executa em PRs do dependabot
+    branches-ignore:
+      - 'auto-revert/**'
   workflow_dispatch:
     inputs:
       pr_number:
@@ -15,6 +18,7 @@ permissions:
 
 jobs:
   dependabot-close-superseded:
+    # Early exit se não for dependabot ou dispatch manual
     if: github.actor == 'dependabot[bot]' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
