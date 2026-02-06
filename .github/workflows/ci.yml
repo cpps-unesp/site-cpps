@@ -37,7 +37,13 @@ jobs:
 
       - name: Detect scripts
         id: scripts
-        run: node -e "const s=require('./package.json').scripts||{}; const fs=require('fs'); fs.appendFileSync(process.env.GITHUB_OUTPUT, `has_lint=${!!s.lint}\nhas_format=${!!s.format}\n`);"
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const s = require('./package.json').scripts || {};
+          const output = `has_lint=${Boolean(s.lint)}\nhas_format=${Boolean(s.format)}\n`;
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, output);
+          NODE
 
       - name: Lint (if configured)
         if: steps.scripts.outputs.has_lint == 'true'
