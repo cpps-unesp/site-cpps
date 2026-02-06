@@ -19,12 +19,9 @@ import Pagination from '../../../components/atividades/Pagination.astro';
 import GitHubEditLink from '../../../components/GitHubEditLink.astro';
 
 import { sidebar } from '../../../config/atividades';
-import type { SupportedLang } from '../../../types/lang';
-
-const supportedLangs: SupportedLang[] = ['pt', 'en', 'es'];
-
 export async function getStaticPaths() {
   const atividades = await getCollection('atividades');
+  const supportedLangs = ['pt', 'en', 'es'];
   return atividades.flatMap((entry) =>
     supportedLangs.map((lang) => ({
       params: { lang, slug: entry.slug },
