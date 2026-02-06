@@ -1,4 +1,6 @@
 ---
+import { getTranslatedPath } from "../utils/getTranslatedPath";
+
 interface Props {
   heroData: any;
   lang?: string;
@@ -64,8 +66,10 @@ const { heroData, lang = "pt" } = Astro.props;
                   const url = heroData.hero.button.url || '';
                   if (url.startsWith('http://') || url.startsWith('https://')) return url;
                   if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
-                  if (url.startsWith('/')) return `/${lang}${url}`;
-                  return `/${lang}/${url}`;
+                  const normalized = url.startsWith('/') ? url.slice(1) : url;
+                  const translated = getTranslatedPath(normalized as any, lang as any);
+                  const path = translated.startsWith('/') ? translated : `/${translated}`;
+                  return `/${lang}${path}`;
                 })()}
                 class="btn btn-primary px-6 py-3 text-lg shadow-lg whitespace-nowrap"
                 style="color: white;"

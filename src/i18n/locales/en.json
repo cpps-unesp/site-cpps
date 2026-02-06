@@ -45,7 +45,7 @@
     "title": "Center for Political<br class='hidden sm:inline' /> and Social Research",
     "description": "Supports the execution of research at the <span class='text-primary font-semibold bg-white px-1 rounded'>Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the city of Franca/SP.",
     "button": {
-      "url": "/institucional/sobre",
+      "url": "institucional/sobre",
       "text": "Learn more"
     }
   },
