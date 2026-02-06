@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "lts/*"
           cache: npm
 
       - name: Cache build artifacts
@@ -59,7 +59,7 @@ jobs:
       - name: CI summary
         run: |
           echo "## CI summary" >> $GITHUB_STEP_SUMMARY
-          echo "- Node: 20" >> $GITHUB_STEP_SUMMARY
+          echo "- Node: lts/*" >> $GITHUB_STEP_SUMMARY
           echo "- Cache hit: ${{ steps.cache-build.outputs.cache-hit }}" >> $GITHUB_STEP_SUMMARY
 
   audit:
@@ -72,7 +72,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: "lts/*"
           cache: npm
 
       - name: Install dependencies
