@@ -65,7 +65,7 @@ Breve descrição
 - Lembre-se de observar a estrutura do arquivo *02-equipe.md*, geralmente está divido em "Coordernadores" e "Colaboradores" (ativos e inativos)
 
 ```
-### [Nome do Membro](/docs/equipe#nome-exemplo) 
+### [Nome do Membro](/atividades/equipe#nome-exemplo) 
 
 <img className="img-equipe-foto" src="/imagens/logos/logo-cpps-unesp.png"/> 
 
@@ -87,11 +87,11 @@ Breve descrição
 
 ## Adicionar foto
 
-- Para aprender a adicionar imagens, [clique aqui](/docs/projetos/sistemas/site/markdown/geral)
+- Para aprender a adicionar imagens, [clique aqui](/atividades/projetos/sistemas/site/markdown/geral)
 - Dê preferência a imagens no **formato** *jpg* ou até *png*, com proporção de um quadrado de lados iguais (evita que a imagem fique distorcida)
 - O **padrão** a ser adotado ao nomear os arquivos deve ser *nome-sobrenome.jpg*
 - As **imagens** da equipe do LabRI e dos membros dos projetos deverão sempre sempre estar localizadas em *website>static>img>equipe*
 - Os **icones** das redes sociais da equipe e do projeto estão localizados em *website>static>img>social*
-- Para saber mais sobre informações estáticas do site do LabRI/UNESP [clique aqui](/docs/projetos/sistemas/site/editar/static#static)
+- Para saber mais sobre informações estáticas do site do LabRI/UNESP [clique aqui](/atividades/projetos/sistemas/site/editar/static#static)
 
 -----

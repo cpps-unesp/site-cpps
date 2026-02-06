@@ -50,6 +50,6 @@ Esta página tem como objetivo indicar como editar os textos que serão publicad
 
 - O arquivo PDF/EPUB é gerado por um script a parte
 
-- Para saber mais sobre informações estáticas, [clique aqui](/docs/projetos/sistemas/site/editar/static)
+- Para saber mais sobre informações estáticas, [clique aqui](/atividades/projetos/sistemas/site/editar/static)
 
 ------

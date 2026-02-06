@@ -23,12 +23,12 @@ Esta página reúne as trilhas de dados que o LabRI/UNESP tem desenvolvido trein
 
 Abaixo indicamos as paradas da trilha de dados que utiliza primordialmente a linguagem Python:
 
-- __*[Ambiente de Trabalho](/docs/projetos/ensino/trilha-dados/ambiente/intro)*__
-- __*[Fundamentos de algoritmos e programação](/docs/projetos/ensino/trilha-dados/linguagens/python/intro)*__
-- __*[Coleta de dados](/docs/projetos/ensino/trilha-dados/coleta-dados/intro)*__
-- __*[Análise de dados](/docs/projetos/ensino/trilha-dados/analise-dados/intro)*__
-- __*[Banco de dados](/docs/projetos/ensino/trilha-dados/banco-dados/intro)*__
-- __*[Métodos Quantitativos](/docs/projetos/ensino/trilha-dados/metodos-quanti/intro)*__
+- __*[Ambiente de Trabalho](/atividades/projetos/ensino/trilha-dados/ambiente/intro)*__
+- __*[Fundamentos de algoritmos e programação](/atividades/projetos/ensino/trilha-dados/linguagens/python/intro)*__
+- __*[Coleta de dados](/atividades/projetos/ensino/trilha-dados/coleta-dados/intro)*__
+- __*[Análise de dados](/atividades/projetos/ensino/trilha-dados/analise-dados/intro)*__
+- __*[Banco de dados](/atividades/projetos/ensino/trilha-dados/banco-dados/intro)*__
+- __*[Métodos Quantitativos](/atividades/projetos/ensino/trilha-dados/metodos-quanti/intro)*__
 
 
 ### Autoria

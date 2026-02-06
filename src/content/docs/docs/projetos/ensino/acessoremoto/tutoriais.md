@@ -9,9 +9,9 @@ Esta página que reúne informações sobre o acesso a estação remota de traba
 
 Aqui você encontra:
 
-- [Explicações Gerais sobre uma estação remota de trabalho](/docs/projetos/ensino/acesso-remoto/explicar)
-- [Aspectos relacionados a solicitação de acesso](/docs/projetos/ensino/acesso-remoto/solicitar-acesso)
-- [Instruções para a realização do acesso](/docs/projetos/ensino/acesso-remoto/instrucao-inicial)
+- [Explicações Gerais sobre uma estação remota de trabalho](/atividades/projetos/ensino/acesso-remoto/explicar)
+- [Aspectos relacionados a solicitação de acesso](/atividades/projetos/ensino/acesso-remoto/solicitar-acesso)
+- [Instruções para a realização do acesso](/atividades/projetos/ensino/acesso-remoto/instrucao-inicial)
 
 # Autoria
 

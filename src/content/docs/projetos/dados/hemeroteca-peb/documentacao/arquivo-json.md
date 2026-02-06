@@ -31,7 +31,7 @@ Abaixo, está uma tabela explicando o conteúdo presente nos metadados que comp�
 
 ### Notas sobre os campos:
 
-1.  **Temas:** As notícias da hemeroteca estão instruídos em 12 temas. Para mais detalhes veja o item [Temas da hemeroteca](/docs/projetos/dados/hemeroteca-peb/documentacao/temas).
+1.  **Temas:** As notícias da hemeroteca estão instruídos em 12 temas. Para mais detalhes veja o item [Temas da hemeroteca](/atividades/projetos/dados/hemeroteca-peb/documentacao/temas).
 2.  **Datas:** A ausência do dia e/ou do mês e/ou do ano é representada pelo número zero (0). Por exemplo, uma notícia que tenha apenas ano será tratada como `00/00/2006`.
 3.  **Campos "NA":** As chaves de `paragrafos` e `autoria` apresentam como valores "NA", pois a identificação da autoria e a extração dos parágrafos não foram realizadas nesta etapa.
 

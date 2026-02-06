@@ -21,8 +21,8 @@ Encontre tutoriais específicos em outras páginas do site LabRI
 
 | Tecnologia                       | Link da Página                                                        |
 | -------------------------------- | --------------------------------------------------------------------- |
-| Conhecimentos Básicos            | [Acesse aqui](/docs/projetos/ensino/tec-digitais/conhecimentos/intro) |
-| Tecnologias para Anotações       | [Acesse aqui](/docs/projetos/ensino/tec-digitais/anotacoes/intro)     |
-| Tecnologias para Edição de texto | [Acesse aqui](/docs/projetos/ensino/tec-digitais/edicao-texto/intro)  |
-| Pesquisa em Buscadores           | [Acesse aqui](/docs/projetos/ensino/tec-digitais/buscadores/intro)    |
-| Áudio                            | [Acesse aqui](/docs/projetos/ensino/tec-digitais/audio/intro)         |
+| Conhecimentos Básicos            | [Acesse aqui](/atividades/projetos/ensino/tec-digitais/conhecimentos/intro) |
+| Tecnologias para Anotações       | [Acesse aqui](/atividades/projetos/ensino/tec-digitais/anotacoes/intro)     |
+| Tecnologias para Edição de texto | [Acesse aqui](/atividades/projetos/ensino/tec-digitais/edicao-texto/intro)  |
+| Pesquisa em Buscadores           | [Acesse aqui](/atividades/projetos/ensino/tec-digitais/buscadores/intro)    |
+| Áudio                            | [Acesse aqui](/atividades/projetos/ensino/tec-digitais/audio/intro)         |

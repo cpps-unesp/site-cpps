@@ -13,7 +13,7 @@ O estudante terá contato com bibliotecas[^1] como pandas, numpy, ploty
 
 ## Pré requisitos
 
-- [Treinamento de Preparação de Ambiente de Trabalho](/docs/projetos/ensino/trilha-dados/ambiente/intro)
+- [Treinamento de Preparação de Ambiente de Trabalho](/atividades/projetos/ensino/trilha-dados/ambiente/intro)
 
 
 ## Tópicos do treinamento

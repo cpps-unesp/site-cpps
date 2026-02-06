@@ -5,8 +5,8 @@ interface Props {
 
 const { currentPath } = Astro.props;
 
-// Remove /docs/ do início e quebra em partes
-const parts = currentPath.replace(/^\/docs\/?/, "").split("/").filter(Boolean);
+// Remove /atividades/ do início e quebra em partes
+const parts = currentPath.replace(/^\/atividades\/?/, "").split("/").filter(Boolean);
 
 function formatLabel(str: string) {
   return str.replace(/-/g, " ").replace(/\b\w/g, (l) => l.toUpperCase());
@@ -15,7 +15,7 @@ function formatLabel(str: string) {
 
 <nav class="text-xs mb-6 text-base-content/50 uppercase tracking-widest overflow-x-auto whitespace-nowrap scrollbar-hide">
   <ul class="flex items-center gap-2">
-    <li><a href="/docs" class="hover:text-primary transition">Docs</a></li>
+    <li><a href="/atividades" class="hover:text-primary transition">Atividades</a></li>
     {parts.map((part, index) => (
       <li class="flex items-center gap-2">
         <span>/</span>
