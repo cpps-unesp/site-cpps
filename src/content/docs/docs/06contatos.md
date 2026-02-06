@@ -1,7 +1,7 @@
 ---
 title: Contatos - Setores UNESP
 description: Vários contatos de diferentes departamentos da UNESP
-slug: docs/contato
+slug: contato
 ---
 
 ## Contatos do Setores e departamentos da UNESP-Franca

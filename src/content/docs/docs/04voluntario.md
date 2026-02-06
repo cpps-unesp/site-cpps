@@ -2,7 +2,7 @@
 id: estagio-voluntario
 title: Seja um estagiário no LabRI/UNESP
 sidebar_label: Estágio voluntário
-slug: docs/voluntario
+slug: voluntario
 ---
 
 Como estagiário voluntário você pode colaborar em diversas frentes, sendo elas:

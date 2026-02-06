@@ -1,7 +1,7 @@
 ---
 title: Atendimento e Suporte aos docentes e discentes
 description: Aqui está todas as informações para supoprte à comunidade acadêmica
-slug: docs/atendimento
+slug: atendimento
 ---
 
 ####  Veja abaixo as maneiras de entrar em contato com a equipe do LabRI/UNESP:  
@@ -81,7 +81,6 @@ Nos horários indicados abaixo, os colaboradores estão disponíveis na sala vir
 
 - Reuniões de treinamento 
     - São encontros em que os colaboradores são introduzidos ao funcionamento geral do LabRI/UNESP, à dinâmica de algum projeto integrado específico ou é realizado alguma oficina voltada ao aprendizado de alguma tecnologia digital.
-
 
 
 

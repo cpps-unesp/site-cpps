@@ -1,4 +1,6 @@
 import { defineCollection, z } from 'astro:content';
+import { docsLoader } from '@astrojs/starlight/loaders';
+import { docsSchema } from '@astrojs/starlight/schema';
 import slugify from 'slugify';
 
 // ✅ Collection de notícias
@@ -73,12 +75,8 @@ const membros = defineCollection({
 
 // ✅ Collection de documentação
 const docs = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string().optional().default('Documentação'),
-    description: z.string().optional(),
-    sidebar_label: z.string().optional(),
-  }).passthrough(),
+  loader: docsLoader(),
+  schema: docsSchema(),
 });
 
 // ✅ Exportando as collections

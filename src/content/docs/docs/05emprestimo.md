@@ -1,7 +1,7 @@
 ---
 title: Empréstimos de materiais
 description: Como funciona o emprestimo de materiais
-slug: docs/emprestimo
+slug: emprestimo
 ---
 
 Alguns equipamentos do LabRI/UNESP estão disponíveis para empréstimo. Figuram entre eles câmeras, microfones, tripés, headsets, caixas de som, entre outros.

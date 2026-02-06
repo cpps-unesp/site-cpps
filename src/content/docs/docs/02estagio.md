@@ -1,7 +1,7 @@
 ---
 title: Estágio
 description: informações sobre o ingresso o estágio pelo cengtro de pesquisa 
-slug: docs/estagio
+slug: estagio
 ---
 
 ### Oportunidades de Estágio
@@ -20,4 +20,3 @@ Também incentivamos o [Estágio Voluntário](/docs/geral/info/estagio-voluntari
 Os estagiários voluntários que quiserem concorrer ao Estágio Remunerado terão um bônus de pontuação ao concorrerem ao edital (os detalhes serão apresentados no mesmo).
 
 Mais informações sobre o Estágio no LabRI, entre em contato conosco pelo nosso e-mail: unesplabri@gmail.com
-

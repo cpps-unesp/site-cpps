@@ -1,7 +1,7 @@
 ---
 title: Oportunidade de Estágio
 description: Explicação sobre as vagas e as oportunidades
-slug: docs/processo
+slug: processo
 ---
 
 ### Oportunidades de Estágio
@@ -20,4 +20,3 @@ Também incentivamos o [Estágio Voluntário](/docs/geral/info/estagio-voluntari
 Os estagiários voluntários que quiserem concorrer ao Estágio Remunerado terão um bônus de pontuação ao concorrerem ao edital (os detalhes serão apresentados no mesmo).
 
 Mais informações sobre o Estágio no LabRI, entre em contato conosco pelo nosso e-mail: unesplabri@gmail.com
-
