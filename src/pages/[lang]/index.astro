@@ -6,7 +6,6 @@ import Hero from "../../components/Hero.astro";
 import AtividadesSection from "../../components/AtividadesSection.astro";
 import ProdutosSection from "../../components/ProdutosSection.astro";
 import FAQSection from "../../components/FAQSection.astro";
-import Initiatives from "../../components/Initiatives.astro";
 import { getTranslations } from "../../utils/i18n";
 import type { SupportedLang } from "../../types/lang";
 
@@ -41,38 +40,27 @@ const {
 ---
 
 <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={locale.texts}
-  identidade={locale.identidade}>
-  <Hero heroData={locale} />
-  <!-- <Initiatives initiatives={locale.initiatives} />
+  identidade={locale.identidade} githubPath="src/pages/[lang]/index.astro">
+  <Hero heroData={locale} lang={currentLang} />
 
-  <section class="mt-16">
-    <h2 class="text-center text-3xl font-extrabold mb-4">
-      {atividadesPesquisa.title}
-    </h2>
-    <p class="text-center text-xl text-base-content mb-10 max-w-2xl mx-auto">
-      {atividadesPesquisa.descricao}
-    </p>
-  </section> 
+  {atividadesPesquisa && (
+    <AtividadesSection
+      id="atividades"
+      title={atividadesPesquisa.title}
+      description={atividadesPesquisa.description}
+      image={hero.link}
+      activities={atividadesPesquisa.items}
+    />
+  )}
 
-   <AtividadesSection
-    title={atividadesPesquisa.title}
-    description={atividadesPesquisa.description}
-    image={hero.link}
-    activities={atividadesPesquisa.items}
-  />
-  <AtividadesSection
-    title={atividadesPesquisa.title}
-    description={atividadesPesquisa.description}
-    image={hero.link}
-    activities={atividadesPesquisa.items}
-    reverse={true}
-  />
+  {produtos && (
+    <ProdutosSection
+      title={produtos.title}
+      description={produtos.description}
+      image={hero.link}
+      produtos={produtos.items}
+    />
+  )}
 
-  <ProdutosSection
-    title={produtos.title}
-    description={produtos.description}
-    image={hero.link}
-    produtos={produtos.items}
-  />
-  <FAQSection faqs={locale.faqs.items} /> -->
+  {locale.faqs && <FAQSection faqs={locale.faqs.items} />}
 </BaseLayout>

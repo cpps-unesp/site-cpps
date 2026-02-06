@@ -1,24 +1,53 @@
 ---
-const { title, resumo, image, tags, slug, lang } = Astro.props;
 import slugify from "slugify";
+
+const { title, resumo, image, tags, slug, lang, date, author } = Astro.props;
 ---
 
-<div class="bg-base-100 rounded-xl shadow-md p-4 flex flex-col space-y-2 hover:shadow-lg transition-shadow">
-  <div class="flex gap-2">
-    {tags.map(tag => (
-      <a 
-        href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`} 
-        class="badge badge-neutral text-xs"
-      >
-        {tag}
+<article class="bg-base-100 rounded-2xl shadow-md overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 group h-full border border-base-200">
+  <a href={slug} class="relative block overflow-hidden aspect-video">
+    <img
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+  </a>
+
+  <div class="p-6 flex flex-col flex-1">
+    <div class="flex flex-wrap gap-2 mb-4">
+      {tags.map((tag: string) => (
+        <a
+          href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+          class="text-[10px] font-bold uppercase tracking-widest text-primary hover:underline"
+        >
+          {tag}
+        </a>
+      ))}
+    </div>
+
+    <h3 class="text-xl font-bold text-base-content mb-3 group-hover:text-primary transition-colors line-clamp-2">
+      <a href={slug}>{title}</a>
+    </h3>
+
+    <p class="text-base-content/70 text-sm mb-6 line-clamp-3 flex-1">
+      {resumo}
+    </p>
+
+    <div class="pt-4 border-t border-base-100 flex items-center justify-between text-xs text-base-content/60">
+      <span>
+        {new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
+        {author && (
+          <>
+            <span class="mx-2">•</span>
+            <span>{author}</span>
+          </>
+        )}
+      </span>
+      <a href={slug} class="text-primary font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
+        {lang === 'en' ? 'Read more' : (lang === 'es' ? 'Leer mas' : 'Leia mais')}
+        <i class="fa-solid fa-arrow-right text-xs"></i>
       </a>
-    ))}
+    </div>
   </div>
-  
-  <img src={image} alt={title} class="rounded-lg h-48 w-full object-cover" />
-
-  <h3 class="text-lg font-bold text-primary">{title}</h3>
-  <p class="text-sm">{resumo}</p>
-
-  <a href={slug} class="text-sm text-primary underline">Leia mais</a>
-</div>
+</article>

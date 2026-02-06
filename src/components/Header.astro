@@ -39,6 +39,18 @@ const h = texts.header ?? {};
           </a>
         </li>
 
+        <li>
+          <a class="hover:text-primary transition" href={`/${lang}/atividades`}>
+            {h.atividades}
+          </a>
+        </li>
+
+        <li>
+          <a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>
+            {h.noticias}
+          </a>
+        </li>
+
         <!-- Institucional -->
         <li class="dropdown dropdown-hover group">
           <label tabindex="0" class="flex items-center cursor-pointer hover:text-primary transition">
@@ -64,12 +76,8 @@ const h = texts.header ?? {};
           </label>
           <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-64">
             <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>{h.cafe}</a></li>
-            <!-- <li><a href={`/${lang}/${getTranslatedPath("iniciativas/publicacoes", lang)}`}>{h.publicacoes}</a></li>
-            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/material-de-apoio", lang)}`}>{h.materialDeApoio}</a></li>
-            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/oficinas", lang)}`}>{h.oficinas}</a></li> -->
+            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/publicacoes", lang)}`}>{h.publicacoes}</a></li>
             <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>{h.projetos}</a></li>
-             <!-- <li><a href={`/${lang}/${getTranslatedPath("iniciativas/parcerias", lang)}`}>{h.parcerias}</a></li>
-            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/solucoes-tecnologicas", lang)}`}>{h.solucoesTecnologicas}</a></li> -->
           </ul>
         </li>
 
@@ -84,7 +92,8 @@ const h = texts.header ?? {};
 
       <!-- 🔹 DIREITA: Logos -->
       <div class="hidden lg:flex items-center gap-3">
-        <img id="logo-unesp" src="/imagens/logos/logo-unesp02/AV01A.svg" alt="Logo UNESP" class="h-16 w-auto" />
+        <img src="/imagens/logos/logo-unesp02/AV01A.svg" alt="Logo UNESP" class="h-16 w-auto logo-unesp-light" />
+        <img src="/imagens/logos/logo-unesp03/AV01F.svg" alt="Logo UNESP" class="h-16 w-auto logo-unesp-dark" />
         <img src="/imagens/logos/cpps/circulos_grade_01.svg" alt="Círculos decorativos" class="h-16 w-auto" />
       </div>
 
@@ -102,6 +111,8 @@ const h = texts.header ?? {};
     <div id="menu-mobile" class="lg:hidden hidden mt-2">
       <ul class="flex flex-col gap-2 text-base font-semibold">
         <li><a href={`/${lang}/`}>{h.home}</a></li>
+        <li><a href={`/${lang}/atividades`}>{h.atividades}</a></li>
+        <li><a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>{h.noticias}</a></li>
         <li>
           <details>
             <summary class="cursor-pointer">{h.institucional}</summary>
@@ -117,12 +128,8 @@ const h = texts.header ?? {};
             <summary class="cursor-pointer">{h.iniciativas}</summary>
             <ul>
               <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>{h.cafe}</a></li>
-              <!-- <li><a href={`/${lang}/${getTranslatedPath("iniciativas/publicacoes", lang)}`}>{h.publicacoes}</a></li>
-              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/material-de-apoio", lang)}`}>{h.materialDeApoio}</a></li>
-              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/oficinas", lang)}`}>{h.oficinas}</a></li> -->
+              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/publicacoes", lang)}`}>{h.publicacoes}</a></li>
               <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>{h.projetos}</a></li>
-              <!-- <li><a href={`/${lang}/${getTranslatedPath("iniciativas/parcerias", lang)}`}>{h.parcerias}</a></li>
-              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/solucoes-tecnologicas", lang)}`}>{h.solucoesTecnologicas}</a></li> -->
             </ul>
           </details>
         </li>
@@ -137,23 +144,10 @@ const h = texts.header ?? {};
     </div>
   </div>
 
-  <!-- 🔹 Script para troca de logo UNESP no dark mode -->
-  <script is:inline>
-    document.addEventListener("DOMContentLoaded", () => {
-      const atualizarLogo = () => {
-        const logo = document.getElementById("logo-unesp");
-        const tema = document.documentElement.getAttribute("data-theme");
-        const src =
-          tema === "dark"
-            ? "/imagens/logos/logo-unesp03/AV01F.svg"
-            : "/imagens/logos/logo-unesp02/AV01A.svg";
-        if (logo) logo.src = src;
-      };
-      atualizarLogo();
-      new MutationObserver(atualizarLogo).observe(document.documentElement, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
-    });
-  </script>
 </nav>
+
+<style>
+  .logo-unesp-dark { display: none; }
+  :global([data-theme='dark']) .logo-unesp-light { display: none; }
+  :global([data-theme='dark']) .logo-unesp-dark { display: block; }
+</style>

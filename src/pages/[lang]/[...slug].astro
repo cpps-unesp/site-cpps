@@ -19,16 +19,21 @@ import IniciativasProjetosDeDadosSection from "../../components/IniciativasProje
 import IniciativasProjetosDePesquisaSection from "../../components/IniciativasProjetosDePesquisaSection.astro";
 
 import NoticiaPage from "../../components/NoticiaPage.astro";
+import NoticiasListPage from "../../components/NoticiasListPage.astro";
+import PublicationListPage from "../../components/PublicationListPage.astro";
+import PublicationPage from "../../components/PublicationPage.astro";
 import routeTranslations from "../../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import type { SupportedLang } from "../../types/lang";
 import { getTranslations } from "../../utils/i18n";
+import slugify from "slugify";
 
 // ✅ Exporta os caminhos possíveis para páginas estáticas
 export async function getStaticPaths() {
   const langs: SupportedLang[] = ["pt", "en", "es"];
   const paths = [];
 
+  // Páginas institucionais e outras do routeTranslations
   for (const [key, traducoes] of Object.entries(routeTranslations)) {
     for (const lang of langs) {
       const slugValue = traducoes[lang];
@@ -43,6 +48,7 @@ export async function getStaticPaths() {
     }
   }
 
+  // Notícias individuais
   const allNoticias = await getCollection("noticias");
   for (const noticia of allNoticias) {
     const lang = noticia.data.lang as SupportedLang;
@@ -55,6 +61,36 @@ export async function getStaticPaths() {
     });
   }
 
+  // Publicações individuais
+  const allPublicacoes = await getCollection("publicacoes");
+  for (const pub of allPublicacoes) {
+    const lang = pub.data.lang as SupportedLang;
+    const prefix = routeTranslations["publicacao"][lang];
+    const slugValue = pub.slug || pub.id.replace(/\.[^/.]+$/, "");
+    paths.push({
+      params: {
+        lang,
+        slug: `${prefix}/${slugValue}`,
+      },
+    });
+  }
+
+  // Categorias de notícias
+  const tags = [...new Set(allNoticias.flatMap(n => n.data.tags || []))];
+  for (const lang of langs) {
+    const prefix = routeTranslations["noticias"][lang];
+    for (const tag of tags) {
+      const tagSlug = slugify(tag, { lower: true, strict: true });
+      paths.push({
+        params: {
+          lang,
+          slug: `${prefix}/categoria/${tagSlug}`,
+        },
+      });
+    }
+  }
+
+  // Membros
   const allMembros = await getCollection("membros");
   for (const membro of allMembros) {
     const fileName = membro.id.split("/").pop() ?? "";
@@ -83,8 +119,12 @@ const locale = getTranslations(currentLang);
 const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } = locale;
 
 const noticiasPrefix = routeTranslations["noticias"][currentLang];
-const isNoticia = slugPath.startsWith(`${noticiasPrefix}/`);
-const allNoticias = isNoticia ? await getCollection("noticias") : [];
+const isNoticiasList = slugPath === noticiasPrefix;
+const isNoticiasCategory = slugPath.startsWith(`${noticiasPrefix}/categoria/`);
+const isNoticia = slugPath.startsWith(`${noticiasPrefix}/`) && !isNoticiasList && !isNoticiasCategory;
+
+const publicacoesPrefix = routeTranslations["publicacao"][currentLang];
+const isPublication = slugPath.startsWith(`${publicacoesPrefix}/`);
 
 const allMembros = await getCollection("membros");
 function getSlugFromEntry(entry: any) {
@@ -126,14 +166,19 @@ const originalKey = findOriginalKey(slugPath, currentLang);
 ---
 
 {
-  isNoticia ? (
+  isNoticiasList || isNoticiasCategory ? (
+    <NoticiasListPage lang={currentLang} tag={isNoticiasCategory ? slugPath.split('/').pop() : undefined} />
+  ) : isNoticia ? (
     <NoticiaPage lang={currentLang} slug={slugPath} />
+  ) : isPublication ? (
+    <PublicationPage lang={currentLang} slug={slugPath.replace(`${publicacoesPrefix}/`, '')} />
   ) : membroSelecionado ? (
     <BaseLayout
       lang={currentLang}
       titulo={membroSelecionado.data.title}
       descricao={membroSelecionado.data.cargo ?? ""}
       texts={texts}
+      githubPath={`src/content/membros/${membroSelecionado.id}`}
     >
       <article class="max-w-3xl mx-auto pt-16 pb-10 text-center">
         <img
@@ -161,9 +206,10 @@ const originalKey = findOriginalKey(slugPath, currentLang);
   ) : (
     <BaseLayout
       lang={currentLang}
-      titulo={titulo}
+      titulo={originalKey === "noticias" ? (texts.noticias?.title ?? "Notícias") : titulo}
       descricao={descricao}
       texts={texts}
+      githubPath="src/pages/[lang]/[...slug].astro"
     >
       <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
 
@@ -174,13 +220,16 @@ const originalKey = findOriginalKey(slugPath, currentLang);
           case "institucional/sobre":
             return <SobreSection blocos={sobre} />;
           case "institucional/documentos":
-            return <DocumentosSection documentos={documentos} />;
+            return <DocumentosSection documentos={documentos} lang={currentLang} />;
+          case "noticias":
+            return <NoticiasListPage lang={currentLang} />;
 
           // Iniciativas
           case "iniciativas/cafe-com-ciencia":
-            return <CafeComCienciaSection cafe={cafe} />;
+            return <CafeComCienciaSection cafe={cafe} lang={currentLang} />;
           case "iniciativas/publicacoes":
-            return <IniciativasPublicacoesSection texts={texts} />;
+          case "publicacao":
+            return <PublicationListPage lang={currentLang} />;
           case "iniciativas/material-de-apoio":
             return <IniciativasMaterialApoioSection texts={texts} />;
           case "iniciativas/oficinas":

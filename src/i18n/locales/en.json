@@ -7,12 +7,14 @@
     "notFoundDescription": "The page you are looking for does not exist or has been moved.",
     "backToHome": "Back to home",
     "buttonPersonalPage": "Personal Page",
+    "editOnGithub": "Edit page",
     "header": {
       "home": "Home",
       "institucional": "Institutional",
       "sobre": "About",
       "equipe": "Team",
       "documentos": "Documents",
+      "atividades": "Activities",
       "iniciativas": "Initiatives",
       "projetos": "Projects",
       "cafe": "Coffee with Science",
@@ -28,13 +30,45 @@
       "buscar": "Search"
     }
   },
+  "noticias": {
+    "categories": "Categories",
+    "recent": "Most Recent",
+    "by": "By",
+    "tags": "Tags",
+    "readMore": "Read more",
+    "search": "Search news...",
+    "noResults": "No news found.",
+    "allNews": "All news",
+    "featured": "Featured"
+  },
   "hero": {
     "title": "Center for Political<br class='hidden sm:inline' /> and Social Research",
     "description": "Supports the execution of research at the <span class='text-primary font-semibold bg-white px-1 rounded'>Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the city of Franca/SP.",
     "button": {
-      "url": "/en/institucional/sobre",
+      "url": "institucional/sobre",
       "text": "Learn more"
     }
+  },
+  "publicacoes": {
+    "types": {
+      "artigo": "Article",
+      "analise": "Analysis",
+      "material-didatico": "Didactic Material",
+      "texto-curto": "Short Text",
+      "texto-longo": "Long Text"
+    },
+    "search": "Search publications...",
+    "filterByType": "Filter by type",
+    "allTypes": "All types",
+    "filterByAuthor": "Filter by author",
+    "authors": "Authors",
+    "keywords": "Keywords",
+    "readMore": "Read more",
+    "date": "Date",
+    "publishedIn": "Published in",
+    "noResults": "No publications found.",
+    "featured": "Featured",
+    "downloadPdf": "Download PDF"
   },
   "iniciativas": {
     "publicacoes": "Publications",

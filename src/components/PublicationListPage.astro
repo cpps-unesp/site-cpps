@@ -1,0 +1,198 @@
+---
+import PublicationCard from './PublicationCard.astro';
+import PublicationFeatured from './PublicationFeatured.astro';
+import { getCollection } from 'astro:content';
+import { getTranslations } from '../utils/i18n';
+import type { SupportedLang } from '../types/lang';
+
+interface Props {
+  lang: SupportedLang;
+}
+
+const { lang } = Astro.props;
+const locale = getTranslations(lang);
+
+const allPublications = await getCollection('publicacoes');
+const langPublications = allPublications
+  .filter(p => p.data.lang === lang)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const featuredPublication = langPublications.find(p => p.data.featured) || langPublications[0];
+const regularPublications = langPublications.filter(p => p.id !== featuredPublication?.id);
+
+const publicationTypes = [
+  'artigo', 'analise', 'material-didatico', 'texto-curto', 'texto-longo'
+];
+---
+
+<section class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
+    <header class="mb-12 text-center md:text-left">
+      <h1 class="titulo text-5xl sm:text-7xl text-primary mb-6">
+        {locale.texts.header.publicacoes}
+      </h1>
+      <div class="w-24 h-1.5 bg-primary/20 mx-auto md:mx-0"></div>
+
+      <div class="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3">
+        <a
+          href={`/${lang}/publicacoes`}
+          class="text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-base-300 hover:border-primary hover:text-primary transition-all bg-base-100 shadow-sm"
+        >
+          {locale.publicacoes.allTypes}
+        </a>
+        {publicationTypes.map((type) => (
+          <a
+            href={`/${lang}/publicacoes?type=${encodeURIComponent(type)}`}
+            class="text-[10px] font-bold uppercase tracking-widest px-4 py-2 rounded-full border border-base-300 hover:border-primary hover:text-primary transition-all bg-base-100 shadow-sm"
+          >
+            {locale.publicacoes.types[type]}
+          </a>
+        ))}
+      </div>
+    </header>
+
+    {featuredPublication && (
+      <div id="featured-section">
+         <PublicationFeatured publication={featuredPublication} lang={lang} />
+      </div>
+    )}
+
+    <!-- Filtros -->
+    <section class="bg-base-200/50 border border-base-300 rounded-3xl p-8 mb-16 shadow-inner">
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Busca -->
+        <div>
+          <label class="block text-[10px] font-black uppercase text-base-content/40 mb-3 tracking-widest pl-1">{locale.publicacoes.search}</label>
+          <div class="relative">
+            <input
+              type="text"
+              id="search-input"
+              placeholder={locale.publicacoes.search}
+              class="w-full pl-12 pr-4 py-3 bg-base-100 border border-base-300 rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all shadow-sm"
+            />
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-base-content/30"></i>
+          </div>
+        </div>
+
+        <!-- Tipo -->
+        <div>
+          <label class="block text-[10px] font-black uppercase text-base-content/40 mb-3 tracking-widest pl-1">{locale.publicacoes.filterByType}</label>
+          <div class="relative">
+            <select id="type-filter" class="w-full px-4 py-3 bg-base-100 border border-base-300 rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all appearance-none shadow-sm cursor-pointer">
+              <option value="all">{locale.publicacoes.allTypes}</option>
+              {publicationTypes.map(type => (
+                <option value={type}>{locale.publicacoes.types[type]}</option>
+              ))}
+            </select>
+            <i class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-base-content/30 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <!-- Autor -->
+        <div>
+          <label class="block text-[10px] font-black uppercase text-base-content/40 mb-3 tracking-widest pl-1">{locale.publicacoes.filterByAuthor}</label>
+          <div class="relative">
+            <input
+              type="text"
+              id="author-input"
+              placeholder={locale.publicacoes.authors}
+              class="w-full pl-12 pr-4 py-3 bg-base-100 border border-base-300 rounded-xl focus:ring-4 focus:ring-primary/10 focus:border-primary outline-none transition-all shadow-sm"
+            />
+            <i class="fa-solid fa-user absolute left-4 top-1/2 -translate-y-1/2 text-base-content/30"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lista -->
+    <div id="publications-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {regularPublications.map(pub => (
+        <PublicationCard publication={pub} lang={lang} />
+      ))}
+    </div>
+
+    <!-- Mensagem de Sem Resultados -->
+    <div id="no-results" class="hidden text-center py-24 bg-base-200/30 rounded-3xl border-2 border-dashed border-base-300">
+      <i class="fa-solid fa-file-circle-xmark text-5xl text-base-content/20 mb-4 block"></i>
+      <p class="text-xl text-base-content/50 font-bold italic">{locale.publicacoes.noResults}</p>
+    </div>
+  </section>
+
+<script>
+  function setupFilters() {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const typeFilter = document.getElementById('type-filter') as HTMLSelectElement;
+    const authorInput = document.getElementById('author-input') as HTMLInputElement;
+    const cards = document.querySelectorAll('.publication-card');
+    const featuredSection = document.getElementById('featured-section');
+    const noResults = document.getElementById('no-results');
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const tagParam = urlParams.get('tag');
+    const authorParam = urlParams.get('author');
+    const typeParam = urlParams.get('type');
+
+    if (tagParam && searchInput) {
+      searchInput.value = tagParam;
+    }
+    if (authorParam && authorInput) {
+      authorInput.value = authorParam;
+    }
+    if (typeParam && typeFilter) {
+      const optionExists = Array.from(typeFilter.options).some(option => option.value === typeParam);
+      if (optionExists) {
+        typeFilter.value = typeParam;
+      }
+    }
+
+    function filter() {
+      const searchValue = searchInput.value.toLowerCase();
+      const typeValue = typeFilter.value;
+      const authorValue = authorInput.value.toLowerCase();
+
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const element = card as HTMLElement;
+        const title = element.dataset.title || '';
+        const type = element.dataset.type || '';
+        const authors = element.dataset.authors || '';
+
+        const matchesSearch = title.includes(searchValue);
+        const matchesType = typeValue === 'all' || type === typeValue;
+        const matchesAuthor = authors.includes(authorValue);
+
+        if (matchesSearch && matchesType && matchesAuthor) {
+          element.style.display = 'flex';
+          visibleCount++;
+        } else {
+          element.style.display = 'none';
+        }
+      });
+
+      if (searchValue || typeValue !== 'all' || authorValue) {
+        if (featuredSection) featuredSection.style.display = 'none';
+      } else {
+        if (featuredSection) featuredSection.style.display = 'block';
+      }
+
+      if (noResults) {
+        if (visibleCount === 0) {
+          noResults.classList.remove('hidden');
+        } else {
+          noResults.classList.add('hidden');
+        }
+      }
+    }
+
+    searchInput?.addEventListener('input', filter);
+    typeFilter?.addEventListener('change', filter);
+    authorInput?.addEventListener('input', filter);
+
+    if (tagParam || authorParam || typeParam) {
+      filter();
+    }
+  }
+
+  setupFilters();
+  document.addEventListener('astro:after-swap', setupFilters);
+</script>

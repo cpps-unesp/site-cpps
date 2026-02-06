@@ -1,0 +1,214 @@
+---
+title: "Guia Completo de Gestão da Documentação"
+description: "Aprenda a gerenciar menus, criar novas páginas e utilizar componentes profissionais na documentação do CPPS."
+---
+
+Este guia foi desenvolvido para capacitar estudantes e estagiários a gerenciarem a base de conhecimento do CPPS com autonomia e qualidade técnica.
+
+---
+
+## 🏗️ Estrutura de Arquivos e Pastas
+
+Nossa documentação é baseada em **Coleções de Conteúdo**. Isso significa que a organização das pastas em seu computador define a organização do site.
+
+- **Localização principal**: `src/content/atividades/`
+- **Pastas sugeridas**:
+  - `/projetos/dados/`: Documentação técnica de datasets.
+  - `/projetos/ensino/`: Trilhas, cursos e manuais de treinamento.
+  - `/projetos/sistemas/`: Infraestrutura, servidores e desenvolvimento.
+
+---
+
+## 📂 Gerenciando Menus (Sidebar)
+
+Diferente de sistemas automáticos, nós temos um controle refinado sobre o que aparece no menu lateral esquerdo.
+
+### Como adicionar um link ao menu:
+1. Abra o arquivo `src/config/atividades.ts`.
+2. Localize a constante `sidebar`.
+3. Adicione um novo objeto seguindo este padrão:
+
+```typescript
+{
+  label: "Nome que aparece no site",
+  url: "/atividades/caminho-do-arquivo"
+}
+```
+
+### Criando Submenus (Grupos Colapsáveis)
+Você pode aninhar itens para criar menus que abrem e fecham verticalmente:
+
+```typescript
+{
+  label: "Meu Projeto",
+  items: [
+    { label: "Introdução", url: "/atividades/meu-projeto" },
+    { label: "Configuração", url: "/atividades/meu-projeto/config" },
+  ]
+}
+```
+
+### Controlando o Colapso Inicial
+Por padrão, o sistema utiliza **Navegação Inteligente**: apenas o grupo que contém a página atual fica aberto. Todos os outros grupos começam fechados para manter o visual limpo.
+
+Se você deseja que um grupo específico fique **sempre aberto** (mesmo quando o usuário não está nele), use `collapsed: false`:
+
+```typescript
+{
+  label: "Recursos Essenciais",
+  collapsed: false, // Ficará sempre aberto por padrão
+  items: [
+    { label: "Link Vital", url: "/atividades/vital" },
+  ]
+}
+```
+
+<Notice type="info">
+  **Abertura Automática**: O sistema sempre expandirá automaticamente qualquer grupo se o usuário estiver em uma página que pertença a ele.
+</Notice>
+
+### Links Externos no Menu
+Você também pode adicionar links para sites externos ou outras ferramentas diretamente no menu:
+
+```typescript
+{
+  label: "Repositório Org ↗",
+  url: "https://github.com/cpps-unesp"
+}
+```
+
+O sistema identificará automaticamente que é um link externo, adicionará um ícone de "saída" e fará com que o link abra em uma nova aba.
+
+---
+
+## 📄 Criando e Editando Páginas
+
+<Steps>
+
+### Criar o arquivo
+Crie um arquivo com a extensão `.mdx` dentro de `src/content/atividades/`.
+*Dica: Use sempre letras minúsculas e hífens em vez de espaços.*
+
+### Configurar o Frontmatter
+No topo do arquivo, defina o título e descrição:
+
+```markdown
+---
+title: "Nome da Página"
+description: "Resumo do conteúdo"
+---
+```
+
+### Usar Componentes
+Importe e use os componentes listados abaixo para dar um visual profissional ao seu texto.
+
+</Steps>
+
+---
+
+## 🎨 Componentes MDX (Sua Caixa de Ferramentas)
+
+### 1. Caixas de Aviso (Notice)
+Use para destacar informações cruciais.
+
+<Notice type="info">
+  **Padrão**: Use para informações gerais.
+</Notice>
+
+<Notice type="tip">
+  **Dica**: Use para atalhos e boas práticas.
+</Notice>
+
+<Notice type="warning">
+  **Aviso**: Use para alertas que requerem atenção.
+</Notice>
+
+<Notice type="danger">
+  **Perigo**: Use para ações que podem causar perda de dados.
+</Notice>
+
+---
+
+### 2. Cards e Grades (CardGrid)
+Ideal para listar módulos ou seções de um projeto.
+
+<CardGrid columns={2}>
+  <Card title="Recurso A" icon="📁">
+    Descrição curta do recurso.
+  </Card>
+  <Card title="Recurso B" icon="🌐">
+    Descrição curta do recurso.
+  </Card>
+</CardGrid>
+
+---
+
+### 3. Links em Destaque (LinkCard)
+Para sugerir a próxima leitura.
+
+<LinkCard
+  title="Infraestrutura Linux"
+  href="/atividades/projetos/sistemas/infraestrutura"
+  description="Saiba como configuramos nossos servidores."
+  icon="🐧"
+/>
+
+---
+
+## 🖼️ Imagens e Layout Profissional
+
+O posicionamento correto das imagens melhora muito a experiência de leitura.
+
+### Classes de Posicionamento
+
+| Classe | Como aplicar | Resultado |
+| :--- | :--- | :--- |
+| `img-left` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-left" />` | Texto flui à direita. |
+| `img-right` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-right" />` | Texto flui à esquerda. |
+| `img-center` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-center" />` | Imagem centralizada e isolada. |
+
+<Notice type="tip">
+  Ao usar `img-left` ou `img-right`, certifique-se de que o parágrafo de texto seja longo o suficiente para contornar a imagem.
+</Notice>
+
+---
+
+## ↔️ Sidebars Colapsáveis (Novo!)
+
+Nossa interface permite agora:
+1. **Colapso Vertical**: Clique nas setas ao lado dos nomes dos grupos no menu esquerdo para expandir/recolher sub-pastas.
+2. **Colapso Horizontal**: No computador, clique nas setas cinzas (`<<` ou `>>`) nas laterais para esconder os menus e ganhar espaço total para o texto.
+
+---
+
+## 🧑‍💻 Exemplo de Código
+
+Sempre use blocos de código para comandos de terminal ou scripts:
+
+```bash
+# Para rodar o site localmente:
+npm run dev
+```
+
+---
+
+## 🛠️ Contribuindo e Editando via GitHub
+
+Para facilitar a colaboração, todas as páginas do site (incluindo as de documentação e as páginas institucionais) possuem um link direto para edição no GitHub.
+
+### Como funciona:
+1. No final de cada página, você encontrará o link **"Editar a página"**.
+2. Ao clicar, você será direcionado diretamente para o arquivo fonte correspondente no repositório.
+3. Se você tiver permissão, poderá editar o arquivo via interface web do GitHub ou clonar o repositório para fazer alterações locais.
+4. Após salvar suas alterações, o sistema de CI/CD (Cloudflare Pages) fará o build e o deploy automático em poucos minutos.
+
+---
+
+<div class="bg-primary/10 p-12 rounded-[3rem] text-center border-2 border-primary/20 mt-16">
+  <h3 class="titulo text-3xl mb-4 text-primary">Dúvidas Técnicas?</h3>
+  <p class="paragrafo mx-auto mb-8">Consulte o repositório no GitHub ou fale com o desenvolvedor responsável.</p>
+  <div class="flex flex-wrap justify-center gap-4">
+    <a href="/atividades" class="btn btn-primary">Voltar para Início</a>
+    <a href="https://github.com/cpps-unesp/site-cpps" target="_blank" class="btn btn-outline">GitHub do Projeto</a>
+  </div>
+</div>

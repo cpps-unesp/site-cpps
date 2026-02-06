@@ -1,22 +1,61 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import NoticiasSection from './NoticiasSection.astro';
+import NewsFeatured from './NewsFeatured.astro';
+import NewsGrid from './NewsGrid.astro';
+import NewsSidebar from './NewsSidebar.astro';
 import { getCollection } from 'astro:content';
 import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
+import slugify from 'slugify';
 
-const { lang } = Astro.props as { lang: SupportedLang };
+const { lang, tag = null } = Astro.props as { lang: SupportedLang; tag?: string | null };
 const locale = getTranslations(lang);
 
 const allNoticias = await getCollection('noticias');
 
-const noticias = allNoticias
+const langNoticias = allNoticias
   .filter(post => post.data.lang === lang)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
-const tituloPagina = locale.texts.header.noticias || 'Notícias';
+let displayedNoticias = langNoticias;
+let featuredPost = null;
+let titlePage = locale.texts.header.noticias || 'Notícias';
+
+if (tag) {
+  displayedNoticias = langNoticias.filter(post =>
+    post.data.tags?.some(t => slugify(t, { lower: true, strict: true }) === tag)
+  );
+  const actualTagName = displayedNoticias[0]?.data.tags.find(t => slugify(t, { lower: true, strict: true }) === tag) || tag;
+  titlePage = `${titlePage}: ${actualTagName}`;
+} else {
+  // Logic for featured post only on main news page
+  featuredPost = langNoticias.find(post => post.data.featured) || langNoticias[0];
+  displayedNoticias = langNoticias.filter(post => post.id !== featuredPost?.id);
+}
 ---
 
-<BaseLayout lang={lang} titulo={tituloPagina} descricao={locale.descricao} texts={locale.texts}>
-  <NoticiasSection noticias={noticias} lang={lang} />
+<BaseLayout lang={lang} titulo={titlePage} descricao={locale.descricao} texts={locale.texts} identidade={locale.identidade}>
+  <main class="container mx-auto px-4 py-12">
+    <header class="mb-12">
+      <h1 class="text-5xl font-bold text-primary mb-4">{titlePage}</h1>
+      <div class="w-20 h-1.5 bg-primary"></div>
+    </header>
+
+    {featuredPost && (
+      <NewsFeatured post={featuredPost} lang={lang} />
+    )}
+
+    <div class="grid lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2">
+        <NewsGrid noticias={displayedNoticias} lang={lang} />
+        {displayedNoticias.length === 0 && (
+           <p class="text-center py-10 opacity-50">{locale.noticias?.noResults || 'Nenhuma notícia encontrada nesta categoria.'}</p>
+        )}
+      </div>
+
+      <div>
+        <NewsSidebar noticias={langNoticias} lang={lang} texts={locale.texts} />
+      </div>
+    </div>
+  </main>
 </BaseLayout>

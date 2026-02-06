@@ -1,5 +1,35 @@
 ---
-const { documentos } = Astro.props;
+type DocumentoFormato = {
+  tipo: string;
+  url: string;
+};
+
+type DocumentoArquivo = {
+  nome: string;
+  formatos: DocumentoFormato[];
+};
+
+type DocumentoGrupo = {
+  titulo: string;
+  descricao: string;
+  arquivos: DocumentoArquivo[];
+};
+
+type DocumentosData = {
+  titulo: string;
+  descricao: string;
+  grupos: DocumentoGrupo[];
+};
+
+const { documentos, lang } = Astro.props as { documentos: DocumentosData; lang?: string };
+
+function buildUrl(url?: string) {
+  if (!url || url.startsWith('http')) return url;
+  if (!lang) return url;
+  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
+  if (url.startsWith('/')) return `/${lang}${url}`;
+  return `/${lang}/${url}`;
+}
 ---
 
 <section class="mt-16 mb-32 space-y-12 px-4 md:px-8 lg:px-16 max-w-7xl mx-auto">
@@ -8,23 +38,21 @@ const { documentos } = Astro.props;
 
     <div class="flex flex-wrap justify-center gap-10">
         {
-            documentos.grupos.map((grupo, i) => (
+            documentos.grupos.map((grupo: DocumentoGrupo) => (
                 <div
                     class="bg-base-100 rounded-xl shadow-md p-8 flex flex-col gap-4 w-[28rem]"
-                    key={i}
                 >
                     <h2 class="text-2xl font-semibold mb-2">{grupo.titulo}</h2>
                     <p class="paragrafo text-sm">{grupo.descricao}</p>
 
                     <ul class="mt-4 space-y-3">
-                        {grupo.arquivos.map((arquivo, j) => (
-                            <li key={j}>
+                        {grupo.arquivos.map((arquivo: DocumentoArquivo) => (
+                            <li>
                                 <div class="font-semibold">{arquivo.nome}</div>
                                 <div class="flex flex-wrap gap-2 mt-1">
-                                    {arquivo.formatos.map((formato, k) => (
+                                    {arquivo.formatos.map((formato: DocumentoFormato) => (
                                         <a
-                                            key={k}
-                                            href={formato.url}
+                                            href={buildUrl(formato.url)}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             class="btn btn-sm btn-outline"

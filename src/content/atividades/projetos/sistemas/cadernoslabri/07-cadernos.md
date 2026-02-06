@@ -1,0 +1,5 @@
+---
+id: publi07
+title: Publicação 7
+sidebar_label: Publicação 7
+---

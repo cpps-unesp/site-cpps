@@ -1,0 +1,29 @@
+Arquivos com placeholder de imagem (logo oficial) em substituicao a links quebrados:
+
+- src/content/atividades/guia-edicao.mdx
+- src/content/atividades/projetos/dados/govlatinamerica/equipe.md
+- src/content/atividades/projetos/dados/internet-ri/equipe.md
+- src/content/atividades/projetos/ensino/assinatura.md
+- src/content/atividades/projetos/ensino/iniciativas.md
+- src/content/atividades/projetos/ensino/tecnologiasdigitais/index.md
+- src/content/atividades/projetos/ensino/tfdt/trilha/trilha-js/02-html.md
+- src/content/atividades/projetos/ensino/tfdt/trilha/trilha-js/03-css.md
+- src/content/atividades/projetos/sistemas/infraestrutura/infra-labriunesp/bios.md
+- src/content/atividades/projetos/sistemas/infraestrutura/infra-labriunesp/bios/01-dell.md
+- src/content/atividades/projetos/sistemas/infraestrutura/infra-labriunesp/bios/02-ibm.md
+- src/content/atividades/projetos/sistemas/infraestrutura/infra-labriunesp/bios/03-ryzen.md
+- src/content/atividades/projetos/sistemas/infraestrutura/infra-labriunesp/bios/04-118.md
+- src/content/atividades/projetos/sistemas/infraestrutura/infra-labriunesp/bios/06-hp-ml30-gen9.md
+- src/content/atividades/projetos/sistemas/infraestrutura/infra-labriunesp/bios/08-itautec.md
+- src/content/atividades/projetos/sistemas/infraestrutura/infra-labriunesp/bios/5-119.md
+- src/content/atividades/projetos/sistemas/infraestrutura/linux/04-acesso-remoto.md
+- src/content/atividades/projetos/sistemas/websites/editar/01-acessar.md
+- src/content/atividades/projetos/sistemas/websites/editar/03-equipe.md
+- src/content/atividades/projetos/sistemas/websites/editar/05-docusaurus.md
+- src/content/atividades/projetos/sistemas/websites/editar/06-sidebar.md
+- src/content/atividades/projetos/sistemas/websites/editar/07-infos-estaticas.md
+- src/content/atividades/projetos/sistemas/websites/editar/08-cadernos.md
+- src/content/atividades/projetos/sistemas/websites/editar/09-paginas-js.md
+- src/content/atividades/projetos/sistemas/websites/markdown/01-geral.md
+
+Total: 25

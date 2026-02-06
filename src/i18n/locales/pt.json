@@ -10,12 +10,14 @@
     "notFoundDescription": "A página que você procura não existe ou foi movida.",
     "backToHome": "Voltar para a página inicial",
     "buttonPersonalPage": "Pág. Pessoal",
+    "editOnGithub": "Editar a página",
     "header": {
       "home": "Home",
       "institucional": "Institucional",
       "sobre": "Sobre",
       "equipe": "Equipe",
       "documentos": "Documentos",
+      "atividades": "Atividades",
       "iniciativas": "Iniciativas",
       "projetos": "Projetos",
       "cafe": "Café com Ciência",
@@ -31,14 +33,46 @@
       "buscar": "Buscar"
     }
   },
+  "noticias": {
+    "categories": "Categorias",
+    "recent": "Mais Recentes",
+    "by": "Por",
+    "tags": "Tags",
+    "readMore": "Ler mais",
+    "search": "Pesquisar notícias...",
+    "noResults": "Nenhuma notícia encontrada.",
+    "allNews": "Todas as notícias",
+    "featured": "Destaque"
+  },
   "hero": {
     "title": "Centro de Pesquisa<br class='hidden sm:inline' /> Política e Social",
     "description": "Apoia a execução de pesquisas na <span class='text-primary font-semibold bg-white px-1 rounded'>Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)</span>, localizado no município de Franca/SP.",
     "button": {
-      "url": "/institucional/sobre",
+      "url": "institucional/sobre",
       "text": "Saiba mais"
     },
     "link": "/imagens/campus/entrada-unesp-franca.jpg"
+  },
+  "publicacoes": {
+    "types": {
+      "artigo": "Artigo",
+      "analise": "Análise",
+      "material-didatico": "Material Didático",
+      "texto-curto": "Texto Curto",
+      "texto-longo": "Texto Longo"
+    },
+    "search": "Pesquisar publicações...",
+    "filterByType": "Filtrar por tipo",
+    "allTypes": "Todos os tipos",
+    "filterByAuthor": "Filtrar por autor",
+    "authors": "Autores",
+    "keywords": "Palavras-chave",
+    "readMore": "Ler mais",
+    "date": "Data",
+    "publishedIn": "Publicado em",
+    "noResults": "Nenhuma publicação encontrada.",
+    "featured": "Destaque",
+    "downloadPdf": "Baixar PDF"
   },
   "iniciativas": {
     "publicacoes": "Publicações",

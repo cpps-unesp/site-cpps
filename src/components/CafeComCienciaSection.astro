@@ -1,5 +1,30 @@
 ---
-const { cafe } = Astro.props;
+type CafeMaterial = {
+  nome: string;
+  url: string;
+};
+
+type CafeEpisodio = {
+  titulo: string;
+  descricao: string;
+  materiais?: CafeMaterial[];
+};
+
+type CafeData = {
+  titulo: string;
+  descricao: string;
+  episodios: CafeEpisodio[];
+};
+
+const { cafe, lang } = Astro.props as { cafe: CafeData; lang?: string };
+
+function buildUrl(url?: string) {
+  if (!url || url.startsWith('http')) return url;
+  if (!lang) return url;
+  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
+  if (url.startsWith('/')) return `/${lang}${url}`;
+  return `/${lang}/${url}`;
+}
 ---
 
 <section class="mt-16 space-y-16">
@@ -9,7 +34,7 @@ const { cafe } = Astro.props;
   </div>
 
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {cafe.episodios.map((episodio) => (
+    {cafe.episodios.map((episodio: CafeEpisodio) => (
       <div class="bg-base-100 rounded-xl shadow-md p-6 flex flex-col space-y-4 hover:shadow-lg transition-shadow">
         <div class="flex justify-center">
           <img
@@ -23,9 +48,9 @@ const { cafe } = Astro.props;
 
         {Array.isArray(episodio.materiais) && episodio.materiais.length > 0 && (
           <div class="flex flex-wrap gap-2 mt-2">
-            {episodio.materiais.map((mat) => (
+            {episodio.materiais.map((mat: CafeMaterial) => (
               <a
-                href={mat.url}
+                href={buildUrl(mat.url)}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="border border-base-content text-xs font-bold px-3 py-1 rounded hover:bg-base-200 transition-colors uppercase"

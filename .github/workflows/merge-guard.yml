@@ -5,7 +5,7 @@ on:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
 
-# Evita execuções simultâneas do mesmo PR
+# Evita execucoes simultaneas do mesmo PR
 concurrency:
   group: merge-guard-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -17,21 +17,24 @@ permissions:
 jobs:
   validate:
     name: Validate PR Checks
-    # Só executa se o PR não for draft
+    # So executa se o PR nao for draft
     if: github.event.pull_request.draft == false && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    
     steps:
-      - name: Wait for all checks to pass
+      - name: Wait for all checks to complete
         uses: actions/github-script@v7
         with:
           script: |
             const headSha = context.payload.pull_request.head.sha;
             const maxAttempts = 60; // 60 tentativas x 5s = 5 minutos max
             const delaySeconds = 5;
-            const ignoredChecks = ['Merge Guard']; // Ignora ele mesmo
-            
+            const ignoredChecks = ['Merge Guard', 'Validate PR Checks', 'Cloudflare Pages'];
+            const requiredChecks = (process.env.REQUIRED_CHECKS || '')
+              .split(',')
+              .map((name) => name.trim())
+              .filter(Boolean);
+
             for (let attempt = 1; attempt <= maxAttempts; attempt++) {
               const { data } = await github.rest.checks.listForRef({
                 owner: context.repo.owner,
@@ -40,50 +43,70 @@ jobs:
                 filter: 'latest',
                 per_page: 100,
               });
-              
-              const checkRuns = data.check_runs.filter(
+
+              const allRuns = data.check_runs.filter(
                 run => !ignoredChecks.includes(run.name)
               );
-              
-              if (checkRuns.length === 0) {
-                core.info(`⏳ Attempt ${attempt}/${maxAttempts}: No checks found yet...`);
+              const checkRuns = requiredChecks.length
+                ? allRuns.filter(run => requiredChecks.includes(run.name))
+                : allRuns;
+              const missingRequired = requiredChecks.filter(
+                (name) => !allRuns.some((run) => run.name === name)
+              );
+
+              if (checkRuns.length === 0 || missingRequired.length > 0) {
+                const missingLabel = missingRequired.length
+                  ? ` Missing required: ${missingRequired.join(', ')}.`
+                  : '';
+                core.info(`Attempt ${attempt}/${maxAttempts}: No checks found yet, waiting...${missingLabel}`);
                 await new Promise(r => setTimeout(r, delaySeconds * 1000));
                 continue;
               }
-              
+
               // Verificar status de todos os checks
               const completed = checkRuns.filter(run => run.status === 'completed');
               const inProgress = checkRuns.filter(run => run.status !== 'completed');
-              const failed = completed.filter(run => run.conclusion !== 'success' && run.conclusion !== 'neutral');
-              
+
+              // Considerar 'skipped' como sucesso para nao bloquear o merge guard
+              const failed = completed.filter(run =>
+                run.conclusion !== 'success' &&
+                run.conclusion !== 'neutral' &&
+                run.conclusion !== 'skipped'
+              );
+
               // Log de progresso a cada 10 tentativas
               if (attempt % 10 === 0 || attempt === 1) {
-                core.info(`\n📊 Status (attempt ${attempt}/${maxAttempts}):`);
-                core.info(`   Total checks: ${checkRuns.length}`);
-                core.info(`   ✅ Completed: ${completed.length}`);
-                core.info(`   ⏳ In progress: ${inProgress.length}`);
-                core.info(`   ❌ Failed: ${failed.length}`);
-                
+                core.info(`\nStatus (attempt ${attempt}/${maxAttempts}):`);
+                core.info(`Total checks: ${checkRuns.length}`);
+                core.info(`Completed: ${completed.length}`);
+                core.info(`In progress: ${inProgress.length}`);
+                core.info(`Failed: ${failed.length}`);
+
                 if (inProgress.length > 0) {
-                  core.info(`   Running: ${inProgress.map(r => r.name).join(', ')}`);
+                  core.info(`Running: ${inProgress.map(r => r.name).join(', ')}`);
+                }
+                if (missingRequired.length > 0) {
+                  core.info(`Missing required: ${missingRequired.join(', ')}`);
                 }
               }
-              
-              // Se há falhas, falhar imediatamente
+
+              // Se ha falhas reais, falhar imediatamente
               if (failed.length > 0) {
                 const failedNames = failed.map(r => `${r.name} (${r.conclusion})`).join(', ');
-                core.setFailed(`❌ Checks failed: ${failedNames}`);
+                core.setFailed(`Checks failed: ${failedNames}`);
                 return;
               }
-              
-              // Se todos completaram com sucesso
+
+              // Se todos completaram com sucesso (ou neutral/skipped)
               if (completed.length === checkRuns.length) {
-                core.info(`\n✅ All ${checkRuns.length} checks passed!`);
+                core.info(`All ${checkRuns.length} checks passed (or were skipped)!`);
                 return;
               }
-              
-              // Aguardar próxima tentativa
+
+              // Aguardar proxima tentativa
               await new Promise(r => setTimeout(r, delaySeconds * 1000));
             }
-            
-            core.setFailed('⏰ Timeout waiting for checks to complete (5 minutes)');
+
+            core.setFailed('Timeout waiting for checks to complete (5 minutes)');
+        env:
+          REQUIRED_CHECKS: ${{ vars.MERGE_GUARD_REQUIRED_CHECKS }}

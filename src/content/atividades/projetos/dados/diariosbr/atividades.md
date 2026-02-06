@@ -1,0 +1,72 @@
+---
+title: "Atividades Realizadas"
+description: "Histórico detalhado das atividades do projeto DiáriosBR."
+sidebar:
+  order: 3
+---
+
+Confira abaixo o registro completo das atividades de desenvolvimento, coleta e manutenção do projeto **DiáriosBR**.
+
+## Histórico de Atividades
+
+| Data | Atividades Realizadas | Participantes |
+| :--- | :--- | :--- |
+| 09/03/2023 | Planejamento para o primeiro semestre de 2023; inicio da indexação dos pdfs | Bruno, João Mateus e Rafael |
+| 14/12/2022 | Inclusão de São José da Boa vista e Ituverava; inicio coleta Orlândia | João Mateus e Rafael |
+| 06/12/2022 | Inicio da coleta de Buritizal e estruturação da tabela dos municípios do projeto | João Mateus, Bruno Tebet e Rafael |
+| 08/11/2022 | Inicio da coleta do segundo conjunto de cidades | João Mateus, Maria Eduarda e Rafael |
+| 01/11/2022 | Revisão e reestruturação do readme e da documentação | Maria Eduarda e Rafael |
+| 25/10/2022 | Extração dos metadados do segundo conjunto de municípios | João Mateus, Maria Eduarda e Rafael |
+| 14/10/2022 | Inicio da extração do segundo conjunto de cidades | João Mateus, Bruno, Vitório e Rafael |
+| 04/10/2022 | Estruturação da coleta do segundo conjunto de municípios | Vitório, Rafael, Bruno e João Mateus |
+| 27/09/2022 | Inicio da coleta do segundo grupo de municípios | João Mateus e Rafael |
+| 16/09/2022 | Inserção da extensão do coleta pdf, apontamento da quantidade de página de cada município, ajuste no update para upsert e inicio da coleta das cinco primeiras cidades | João Mateus, Rafael e Vitório |
+| 10/08/2022 | Coleta dos PDFs a partir das informações do banco json | Mateus, Rafael, Júlia, Bruno |
+| 02/08/2022 | Ajuste no script acessar_pagina_selenium e início da montagem do fluxograma | Mateus, Rafael, Júlia e Vitório |
+| 05/07/2022 | Estruturação do script info_geral para acessar as informações gerais de cada município | João Mateus, Rafael, Júlia e Bruno |
+| 30/06/2022 | Criação de json com informações gerais dos municípios a partir do código do ibge | João Mateus, Rafael, Júlia |
+| 28/06/2022 | Definição da utilização dos códigos dos municípios do ibge; criação da função codigo_ibge; criação das variáveis de ambiente | Rafael, Júlia |
+| 21/06/2022 | Estruturação das variáveis de ambiente e informações gerais de cada município coletado | João M., Rafael, Júlia e Bruno |
+| 14/06/2022 | Ajustes dos metadados coletados: numero da edição, categoria (ordinário e extraordinário); inserção de novos metadados (origem_lower e cod_tom_serpro) | Júlia e Rafael |
+| 07/06/2022 | Reestruturação do código em que utilizamos o selenium para a coleta | Bruno, João M., Júlia e Rafael |
+| 21/05/2022 | Reestruturação do código de coleta - utilizar funções comuns para várias cidades | Rafael, Júlia, Bruno |
+| 10/05/2022 | Ituverava - ajustes json e começando a coletar códigos das cidades | Rafael, Júlia |
+| 02/05/2022 | Ajustes Selenium e organização das publicações | Rafael, Júlia, João Ferreira, Bruno, Vitório |
+| 12/04/2022 | Revisão e Reestruturação do código de coleta | Rafael, Júlia, João Ferreira, Bruno |
+| 05/04/2022 | Orlândia - Inicio de ajuste das variáveis entre todas as cidades | Rafael, Júlia, Vitório, João Ferreira, Bruno |
+| 05/04/2022 | Ituverava - Ajustes nos metadados e estruturação para coletar os arquivos pdf | Rafael, Júlia, Vitório, João Ferreira, Bruno |
+| 30/03/2022 | Orlândia - Início da documentação da coleta e da estruturação final para coleta completa | Vitório, Rafael, Júlia |
+| 23/03/2022 | SJoaquimdaBarra - Reestruturação do código e inicio da coleta dos metadados | Rafael, Julia |
+| 16/03/2022 | Miguelópolis - Extração do numero da edição, data e pdf | João M., Rafael, Vitório, Julia |
+| 09/03/2022 | Miguelópolis - inicio da extração da coleta de dados | João M., Rafael, Vitorio, Julia, Thiago, Bruno |
+| 16/02/2022 | Ituverava - Criação do banco json e início da coleta dos pdfs | Bruno, Rafael, João M., Thiago, Vitório |
+| 09/02/2022 | Ituverava- Finalização das extrações e inicio da inclusão dos dados no banco | Bruno, Rafael, João M., Julia, Vitório |
+| 02/02/2022 | Igarapava - inicio da coleta | Thiago, Bruno, Rafael, João M., Julia |
+| 26/01/2022 | Ituverava - extração do link do pdf, data e número de edição | Rafael, Bruno, João M. |
+| 19/01/2022 | Ituverava - busca por todos os arquivos concluída | Rafael, Júlia, João M., Bruno, Vitório |
+| 12/01/2022 | Ituverava - início da coleta | Rafael, Júlia, João M., Bruno |
+| 08/12/2021 | Apresentando primeiros passos para novos membros | Rafael, Júlia, Vitório, João F., João, Bruno |
+| 01/12/2021 | S.J.Barra - Inicio da coleta dos metadados | Rafael, Júlia, Vitório, João Ferreira, Bruno |
+| 01/12/2021 | Orlândia - Resolução do problema de encoding; Inicio da coleta dos pdfs | Rafael, Júlia, Vitório, João Ferreira, Bruno |
+| 24/11/2021 | Orlândia - Inserção dos metadados em um banco json | Rafael, Júlia, Vitório, João Ferreira |
+| 17/11/2021 | Orlândia - Tratamento dos dados extraídos da pagina html do diário de Orlândia para inserção num banco json | Rafael, Júlia, Vitório |
+| 10/11/2021 | S.J.Barra - resolvendo problema de DOM | Rafael, Júlia |
+| 03/11/2021 | Orlândia - padronizando os nomes dos arquivos pdfs | Vitório, Rafael, Júlia |
+| 27/10/2021 | Orlândia - Coleta dos dados resolvida; lidando com a falta de padronização dos nomes dos arquivos | Vitório, Rafael |
+| 20/10/2021 | Continuidade da coleta de São Joaquim da Barra | Júlia, Rafael |
+| 06/10/2021 | Início da coleta DO Legislativo do Estado de São Paulo (anterior à 06/2017) | - |
+| 29/09/2021 | Início da coleta de Orlândia | - |
+| 22/09/2021 | Início da coleta de Ituverava | - |
+| 15/09/2021 | Revisão do banco de termos | - |
+| 08/09/2021 | Início da coleta de São Joaquim da Barra | - |
+| 25/08/2021 | Instalação das bibliotecas de Python para a realização da coleta e instruções iniciais | - |
+| 18/08/2021 | Criação do documento de "como utilizar" no site aberto e criação do ambiente virtual conda | - |
+| 28/07/2021 | Entendimento da indexação do recoll | - |
+| 21/07/2021 | Organização da documentação e início do entendimento de indexação do recoll | - |
+
+<br>
+
+---
+<p style="font-size: 0.9em; color: gray;">
+  Last updated on 10/15/2025 by Rafael de Almeida
+</p>

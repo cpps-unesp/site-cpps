@@ -12,6 +12,7 @@
   --color-secondary: #347D9B;
   --color-accent: #2197C5;
   --color-neutral: #2E3F46;
+  --color-neutral-content: #ffffff;
   --color-base-100: #ffffff;
   --color-base-content: #2E3F46;
 }
@@ -21,7 +22,8 @@
   --color-primary: #00ACF0;
   --color-secondary: #347D9B;
   --color-accent: #2197C5;
-  --color-neutral: #557480;
+  --color-neutral: #111827;
+  --color-neutral-content: #f3f4f6;
   --color-base-100: #1F2937;
   --color-base-content: #f3f4f6;
 }
@@ -47,28 +49,31 @@ body > *:last-child {
 }
 
 /* Títulos */
-h1, h2, h3, .titulo {
+h1, h2, h3, h4, .titulo {
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  font-weight: normal;
 }
 
 .titulo {
-  font-weight: normal;
-  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
 }
 
 .mini-titulo {
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-weight: normal;
-  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
 .subtitulo {
-  font-size: 18px;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-base-content);
+  opacity: 0.8;
 }
 
 /* Parágrafos */
@@ -87,4 +92,91 @@ h1, h2, h3, .titulo {
 
 .paragrafo a:hover {
   color: #2197C5;
+}
+
+/* Utilitários para Markdown/MDX */
+.img-left {
+  @apply float-left mr-6 mb-4 rounded-lg shadow-md;
+}
+.img-right {
+  @apply float-right ml-6 mb-4 rounded-lg shadow-md;
+}
+.img-center {
+  @apply block mx-auto my-8 rounded-lg shadow-lg;
+}
+
+/* Ajustes para o prose (Tailwind Typography) */
+.prose h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem) !important;
+  margin-bottom: 2rem !important;
+  line-height: 1.1 !important;
+}
+
+.prose h2 {
+  font-size: clamp(2rem, 5vw, 2.8rem) !important;
+  margin-top: 3.5rem !important;
+  margin-bottom: 1.5rem !important;
+  color: var(--color-primary) !important;
+  border-bottom: 2px solid color-mix(in srgb, var(--color-primary), transparent 85%);
+  padding-bottom: 0.5rem;
+  font-weight: 800 !important;
+}
+
+.prose h3 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.prose p {
+  font-size: 1.125rem !important;
+  line-height: 1.8 !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.prose pre {
+  background-color: #0d1117 !important; /* Sempre escuro para melhor contraste de sintaxe */
+  color: #e6edf3 !important;
+  padding: 1.5rem !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para linhas ou blocos grifados (highlighted) */
+.prose .highlighted {
+  display: block;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+  border-left: 4px solid var(--color-primary);
+  background-color: rgba(0, 172, 240, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.prose code {
+  background-color: color-mix(in srgb, var(--color-primary), transparent 90%) !important;
+  color: var(--color-secondary) !important;
+  font-weight: 700 !important;
+  font-size: 0.85em !important;
+  padding: 0.2rem 0.4rem !important;
+  border-radius: 0.375rem !important;
+}
+
+:global([data-theme='dark']) .prose code {
+  color: var(--color-primary) !important;
+}
+
+.prose code::before, .prose code::after {
+  content: "" !important;
+}
+
+.prose blockquote {
+  border-left-color: var(--color-primary) !important;
+  background-color: color-mix(in srgb, var(--color-primary), transparent 95%) !important;
+  padding: 0.25rem 1.5rem !important;
+  font-style: italic !important;
+  border-top-right-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
 }

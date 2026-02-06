@@ -1,0 +1,88 @@
+---
+id: bibliotecas
+title: Documentação TweePInA
+sidebar_label: Bibliotecas
+---
+
+## Bibliotecas Utilizadas
+
+  - python
+  - flatten-dict
+  - python-dotenv
+  - tinydb
+  - requests
+  - [gspread](https://docs.gspread.org/en/latest/)
+  - pandas
+
+
+## Problemas no ambiente virtual
+
+ Caso a criação do ambiente virtual conda não ocorra com sucesso realize  os procedimentos indicados abaixo
+
+
+ ### Apagar pasta
+
+ Apague a subpasta chamada `env` deve estar dentro da pasta geral do repositório do projeto
+
+ ### Editar o arquivo `environnment.yml`
+
+Deixe o arquivo `environnment.yml` como indicado abaixo:
+
+```
+name: env_tweepina
+channels:
+  - conda-forge
+dependencies:
+  - python
+
+```
+
+### Crie o ambiente virtual
+
+
+Pelo terminal entre na pasta principal/geral do projeto, em que se encontra o arquivo `environnment.yml` e rode o comando abaixo
+
+
+
+```
+conda env create -f environnment.yml
+
+```
+
+### Ative o ambiente virtual
+
+
+```
+conda activate env_tweepina
+
+```
+
+
+### Adicionar bibliotecas
+
+Deixe o arquivo `environnment.yml` como indicado abaixo:
+
+
+```
+name: env_tweepina
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - flatten-dict
+  - python-dotenv
+  - tinydb
+  - requests
+  - gspread
+  - numpy
+  - pandas
+
+```
+
+### Atualizar o ambiente virtual
+
+
+```
+conda env update
+
+```
