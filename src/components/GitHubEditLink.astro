@@ -10,7 +10,13 @@ const editLabel = texts.editOnGithub || (lang === 'en' ? 'Edit this page on GitH
 
 if (!githubPath) return null;
 
-const url = `https://github.com/cpps-unesp/site-cpps/blob/main/${githubPath}`;
+// Encode path segments to handle brackets and other special characters in filenames (like [lang]/[...slug].astro)
+const encodedPath = githubPath
+  .split('/')
+  .map(segment => encodeURIComponent(segment))
+  .join('/');
+
+const url = `https://github.com/cpps-unesp/site-cpps/blob/main/${encodedPath}`;
 ---
 
 <a

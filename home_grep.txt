@@ -1,2 +1,0 @@
-src/content/docs/projetos/extensao/pod-ri/01-intro.md:<img src="/home/cpps_ligiasimplicio/codigo/site-cpps/public/imagens/img-geral/pod-ri.svg" alt="Logo DiáriosBR" width="250" style="display: block; margin: 30px auto;">
-src/content/docs/projetos/ensino/tfdt/trilha/paradas/ambiente/versionamento/utilizando-git/indo-alem/05b-acesso-ssh.md:E, a partir da raiz do seu usuário (/home/nome_usuário), digite o comando abaixo para visualizar e copiar sua chave SSH pública.
