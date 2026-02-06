@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations } from '../utils/i18n';
+import type { SupportedLang } from '../types/lang';
+import { getCollection, render } from 'astro:content';
+
+interface Props {
+  lang: SupportedLang;
+  slug: string;
+}
+
+const { lang, slug } = Astro.props;
+const locale = getTranslations(lang);
+
+const allPublications = await getCollection('publicacoes');
+const publication = allPublications.find(p => p.slug === slug || p.id === slug || p.id === `${slug}.md` || p.id === `${slug}.mdx`);
+
+if (!publication) {
+  return Astro.redirect(`/${lang}/404`);
+}
+
+const { data } = publication;
+const { Content } = await render(publication);
+
+const typeLabel = locale.publicacoes.types[data.type] || data.type;
+
+const formattedDate = new Intl.DateTimeFormat(lang, {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+}).format(data.date);
+---
+
+<BaseLayout lang={lang} titulo={data.title} descricao={data.summary} texts={locale.texts} identidade={locale.identidade}>
+  <article class="container mx-auto px-4 py-16 max-w-4xl">
+    <header class="mb-12 border-b border-gray-100 pb-12">
+      <div class="flex items-center gap-4 mb-6">
+        <a
+          href={`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`}
+          class="bg-primary/10 text-primary text-xs font-black uppercase px-3 py-1 rounded border border-primary/20 hover:bg-primary/20 transition-colors"
+        >
+          {typeLabel}
+        </a>
+        <span class="text-gray-400 text-sm">{formattedDate}</span>
+      </div>
+
+      <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-8 leading-tight italic tracking-tighter publication-title">
+        {data.title}
+      </h1>
+
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="md:col-span-3">
+           <p class="text-xl text-gray-600 leading-relaxed font-medium italic mb-8">
+            {data.summary}
+          </p>
+
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="text-xs font-black uppercase text-gray-400 w-full mb-1 tracking-widest">{locale.publicacoes.keywords}</span>
+            {data.tags.map((tag: string) => (
+              <a
+                href={`/${lang}/publicacoes?tag=${encodeURIComponent(tag)}`}
+                class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded hover:bg-primary hover:text-white transition-colors"
+              >
+                #{tag}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="bg-gray-50 p-6 rounded-xl h-fit border border-gray-100">
+          <h3 class="text-xs font-black uppercase text-gray-400 mb-4 tracking-widest">{locale.publicacoes.authors}</h3>
+          <ul class="space-y-3">
+            {data.authors.map((author: string) => (
+              <li>
+                <a
+                  href={`/${lang}/publicacoes?author=${encodeURIComponent(author)}`}
+                  class="text-sm font-bold text-gray-900 hover:text-primary hover:underline transition-colors"
+                >
+                  {author}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          {data.pdf_url && (
+            <div class="mt-8 pt-6 border-t border-gray-200">
+              <a href={data.pdf_url} target="_blank" class="flex items-center justify-center gap-2 bg-red-600 text-white py-3 rounded-lg font-bold text-sm hover:bg-red-700 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+                {locale.publicacoes.downloadPdf}
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+
+    <div class="prose prose-lg max-w-none prose-headings:font-black prose-headings:italic prose-headings:tracking-tighter prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-primary prose-a:font-bold hover:prose-a:underline">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .publication-title {
+    font-family: 'Montserrat', sans-serif !important;
+    text-transform: none !important;
+  }
+</style>

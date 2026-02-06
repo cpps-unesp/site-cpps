@@ -40,8 +40,12 @@ const h = texts.header ?? {};
         </li>
 
         <li>
-          <a class="hover:text-primary transition" href="/docs">
-            Docs
+          <a class="hover:text-primary transition" href="/docs">Docs</a>
+        </li>
+
+        <li>
+          <a class="hover:text-primary transition" href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>
+            {h.noticias}
           </a>
         </li>
 
@@ -70,6 +74,7 @@ const h = texts.header ?? {};
           </label>
           <ul class="dropdown-content menu p-2 shadow bg-base-100 text-base-content rounded-sm w-64">
             <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>{h.cafe}</a></li>
+            <li><a href={`/${lang}/${getTranslatedPath("iniciativas/publicacoes", lang)}`}>{h.publicacoes}</a></li>
             <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>{h.projetos}</a></li>
           </ul>
         </li>
@@ -105,6 +110,7 @@ const h = texts.header ?? {};
       <ul class="flex flex-col gap-2 text-base font-semibold">
         <li><a href={`/${lang}/`}>{h.home}</a></li>
         <li><a href="/docs">Docs</a></li>
+        <li><a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>{h.noticias}</a></li>
         <li>
           <details>
             <summary class="cursor-pointer">{h.institucional}</summary>
@@ -120,6 +126,7 @@ const h = texts.header ?? {};
             <summary class="cursor-pointer">{h.iniciativas}</summary>
             <ul>
               <li><a href={`/${lang}/${getTranslatedPath("iniciativas/cafe-com-ciencia", lang)}`}>{h.cafe}</a></li>
+              <li><a href={`/${lang}/${getTranslatedPath("iniciativas/publicacoes", lang)}`}>{h.publicacoes}</a></li>
               <li><a href={`/${lang}/${getTranslatedPath("iniciativas/projetos", lang)}`}>{h.projetos}</a></li>
             </ul>
           </details>

@@ -69,7 +69,7 @@
 ## Content Collections (Astro)
 - `noticias` collection:
   - Required: `title`, `date`, `resumo`, `image`, `lang`.
-  - Optional: `tags` (defaults to `[]`).
+  - Optional: `tags` (defaults to `[]`), `author`, `featured` (defaults to `false`).
   - Slug derived from `date + title` via `slugify`.
 - `membros` collection:
   - Required: `title`, `lang`, `cargo`.
@@ -98,7 +98,7 @@
 - Use `lang` frontmatter consistently and ensure correct locale in filename.
 
 ### Frontmatter (quick reference)
-- `noticias`: `title`, `date`, `resumo`, `image`, `lang` (optional `tags`).
+- `noticias`: `title`, `date`, `resumo`, `image`, `lang` (optional `tags`, `author`, `featured`).
 - `membros`: `title`, `lang`, `cargo` (optional `foto`, `contribuicao`, `redes`).
 
 ## Routing & Slugs
