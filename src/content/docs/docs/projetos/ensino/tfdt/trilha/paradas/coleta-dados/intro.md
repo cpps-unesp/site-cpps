@@ -1,0 +1,67 @@
+---
+id: intro
+title: Apresentação
+sidebar_label: Apresentação
+---
+
+:::tip
+Esta parada da Trilha de Dados trata da coleta de dados utilizando da liguagem de programação python. 
+
+O estudante terá contato com bibliotecas[^1] como beautifulsoap, scrapy, selenium e tinyDB
+:::
+
+
+## Pré requisitos
+
+- [Treinamento de Preparação de Ambiente de Trabalho](/docs/projetos/ensino/trilha-dados/ambiente/intro)
+
+
+## Tópicos do treinamento
+
+
+- Tópico 01 - Conceitos iniciais
+  - Fontes de pesquisa
+  - HTML e CSS
+  - 
+
+- Tópico 02 - Extração de informações
+  - 
+
+- Tópico 03 - Tratamento de dados
+
+- Tópico 04 - Armazenamento de dados
+
+
+## Certificação 
+
+- [Formulário Treinamento de coleta de dados com python](https://forms.gle/joyj6KrdG1Sv3hTT7)
+
+
+[^1]: [EXPLICAR O QUE UMA BIBLIOTECA]
+
+
+
+
+
+
+
+
+
+
+
+
+### Material de apoio
+
+- [How to parse XML sitemaps using Python](https://practicaldatascience.co.uk/data-science/how-to-parse-xml-sitemaps-using-python)
+- [Intro to Beautiful Soup](https://programminghistorian.org/en/lessons/intro-to-beautiful-soup)
+- [Beautiful Soup: Build a Web Scraper With Python](https://realpython.com/beautiful-soup-web-scraper-python/)
+- [How to scrape websites with Python and BeautifulSoup](https://www.freecodecamp.org/news/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe/)
+- [Parsing tables and XML with Beautiful Soup 4](https://pythonprogramming.net/tables-xml-scraping-parsing-beautiful-soup-tutorial/)
+- [Find all URLs of a website in a few seconds - Python](https://primates.dev/find-all-urls-of-a-website-in-a-few-seconds-python/)
+
+### Autoria
+
+- [Rafael de Almeida](https://gitlab.com/unesp-labri/sites/labri/-/commits/main/website/docs/projetos/ensino/trilha-dados/coleta-dados?author=rafaelrdealmeida)
+- [Ver todos os autores](https://gitlab.com/unesp-labri/sites/labri/-/commits/main/website/docs/projetos/ensino/trilha-dados/coleta-dados)
+
+

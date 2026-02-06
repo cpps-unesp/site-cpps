@@ -1,0 +1,52 @@
+---
+id: p03-04-dicionarios
+title: Dicionários
+sidebar_label: Dicionários
+---
+
+- [Link - Replit](https://replit.com/@fparon/tipos-avancados#dicionarios.py)
+
+- Os dicionários são um tipo útil que nos permite armazenar nossos dados em pares de chave e valor. Os próprios dicionários são mutáveis , mas as chaves de dicionário só podem ser tipos imutáveis
+
+- Usamos dicionários quando queremos acessar rapidamente dados adicionais associados a uma determinada chave. Uma ótima aplicação prática para dicionários é a memorização. Digamos que você queira economizar capacidade de computação e armazenar o resultado de uma função chamada com argumentos específicos. Os argumentos podem ser a chave, com o resultado armazenado como o valor. Na próxima vez que alguém chamar sua função, você pode verificar seu dicionário para ver se a resposta foi pré-calculada.
+
+- Procurar uma chave em um grande dicionário é extremamente rápido. Ao contrário das listas, não precisamos verificar cada item para ver se há uma correspondência.
+
+
+|Estrutura de dados `dict`||
+|------------------|-------|
+|uso| Use para armazenar dados em pares de chave e valor. As chaves usadas devem ser tipos de dados imutáveis |
+|criação| `dict()` ou `{}` (cria lista vazia) `{key01: valor01, key02: valor02 }` para varios items|
+|métodos de buscar| `key in meu_dicionario`|
+|métodos comuns| `meu_dicionario[key]` para obter o valor da `key` e lançar um `KeyError` se a `key` não estiver no dicionário. Use `meu_dicionario.get(key)` para falhar silenciosamente se a `key` não estiver dentro `meu_dicionario`. `meu_dicionario.items()`para todas as chaves, pares de valores, `meu_dicionario.keys()` para todas as chaves e `meu_dicionario.values()` para todos os valores. |
+|ordem preservada?| Não, items não podem ser acessados por indice, apenas por chave|
+|mutável?| Sim, é possivel adicionar ou remover items|
+|pode ser reordenado?| Não, por que `dict` não tem indices, apenas chaves|
+
+|Ação|Método|retorno|possivel erro|
+|-----|-----|-----|-----|
+|remove todos os itens de um dicionário|`meu_dicionario.clear()`|||
+|copia o dicionário original e os novos elementos colocados no novo dicionário não são acrescidos no original|`meu_dicionario.copy()`|||
+|cria um novo dicionário a partir da sequência de elementos fornecidos|`meu_dicionario.fromkeys(sequencia[, valor])`|||
+|retorna o valor da chave especificada|`meu_dicionario.get('key')`|||
+|exibe os itens de um dicionário, sendo que eles são exibidos em uma lista e cada par chave-valor são elementos de uma tupla|`meu_dicionario.items()`|||
+|exibe uma lista de todas as chaves do dicionário|`meu_dicionario.keys()`|||
+|remove e retorna o último par de elementos inserido no dicionário| `meu_dicionario.popitem()`|||
+|retorna o valor de uma chave ou insere a chave com o valor no dicionário|`meu_dicionario.setdefault('key')`|||
+|remove e retorna um elemento de um dicionário com a chave fornecida|`meu_dicionario.pop('key')`|||
+|retorna todos os "values" do dicionário|`meu_dicionario.values()`|||
+|adiciona o elemento (chave-valor) se a chave não estiver no dicionário. Se achar, atualiza o dicionário|`meu_dicionario.update()`|||
+
+
+- Qualquer tipo de objeto, mutável ou imutável, pode ser usado como um valor, mas, assim como sets, os dictionários só podem usar tipos imutáveis ​​como chaves. Isso significa que você pode usar int, strou até mesmo tuplecomo uma chave, mas não uma set, listou outra dictionary.
+
+- Nosso `dict` contém áres `key`, `value`. Como um `dict` não possue indices, não podemos acessar os itens nele por posição. Em vez disso, para acessar os itens nela, usamos a `meu_dicionario[key]`.
+
+
+- Se quisermos fornecer um valor padrão se a chave estiver ausente, também passamos um argumento opcional para o `my_dict.get(key)` como: `my_dict.get(key, default_val)`
+
+- Se você tentar colocar uma chave em um dicionário que já está lá, você acabará substituindo-a. Para evitar erros sutis, você pode verificar se uma determinada chave está em um dicionário com a `in` palavra - chave
+
+- Assim como com `list` e `set`, você pode atualizar os itens de um dicionário com os itens de outro dicionário.
+
+- Um cenário incrivelmente útil para dicionários é armazenar os valores em uma `list` ou outra sequência

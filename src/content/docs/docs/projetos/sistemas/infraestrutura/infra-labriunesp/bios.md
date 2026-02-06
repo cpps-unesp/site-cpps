@@ -1,0 +1,18 @@
+---
+id: bios
+title: Configurações da BIOS
+sidebar_label: Configurações da BIOS
+---
+
+- Para acessar a BIOS dos PCs Dell do LabRI/UNESP, ligue o computador e aperte consecutivamente a tecla F2.
+
+### Inicializar o computador por um pendrive
+
+1. Com o computador desligado, plugue o pendrive. Ligue-o e acesse a BIOS.
+
+2. Clique em Boot Configuration. Na lista, clique nas setas até o pendrive ser a primeira opção.
+![bios1](/img/projetos/sistemas/bios1.jpeg)
+
+3. Clique em "Apply Changes" e "Exit". O computador irá iniciar pelo pendrive.
+
+- [How to set VT(Virtualization Technology) in BIOS - Asus ryzen](https://www.asus.com/support/FAQ/1045141/)

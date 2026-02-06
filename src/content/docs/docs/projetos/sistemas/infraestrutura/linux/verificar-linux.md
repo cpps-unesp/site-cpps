@@ -1,0 +1,9 @@
+---
+id: verificar-linux
+title: Verificação da versão Linux em uso
+sidebar_label: Verificação da versão Linux em uso
+---
+
+### Material de apoio
+
+- [Como descobrir qual a versão do linux que você está usando](https://www.edivaldobrito.com.br/como-descobrir-qual-a-versao-do-linux-voce-esta-usando/)

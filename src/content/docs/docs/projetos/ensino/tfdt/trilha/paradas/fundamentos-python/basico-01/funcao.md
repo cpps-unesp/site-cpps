@@ -1,0 +1,124 @@
+---
+id: p02-01-funcoes
+title: Funções
+sidebar_label: Funções
+---
+
+- `import`
+- `if __name__ == "__main__":`
+
+- [Link](https://replit.com/@fparon/funcao) do Replit
+
+### O que é uma função
+
+- Em linhas gerais, uma função é um bloco de código organizado e reutilizável que realiza uma sequência de instruções
+- O Python possui algumas funções prontas (built-in): `print()`, `input()`, `type()`, entre outras. Mas também podemos criar nossas próprias funções.
+
+### Características das funções
+
+- Possuem um nome 
+- Possuem parâmetros (os nomes dados aos atributos de uma função)
+- Recebem argumentos (valores que passam pela função)
+- Possuem um corpo
+- Possuem `docstrings` (opcional)
+- Retornam algo (opcional)
+- Somente são executadas quando são chamadas 
+
+
+### Definindo uma função 
+
+```py
+
+def nome_da_funcao(parametros): 
+    '''docstrings'''
+    <sequencia de instrucoes> 
+
+```
+
+- O bloco da função começa com a palavra-chave `def` seguido pelo `nome_da_funcao` e os `()`, os dois pontos marcam o final do cabeçalho da função.
+- A `docstring` é usada para descrever o que a função realiza. Ela é muito importante para a documentação do código criado
+
+```py
+
+def cumprimento():
+  print('olá')
+
+cumprimento()
+
+def soma(a, b):
+  x = a + b 
+  print(f'a soma é {x}')
+
+soma(1, 1)
+
+# a ordem dos parâmetros importa
+def soma(a, b=1):
+  x = a + b 
+  print(f'a soma é {x}')
+
+soma(1)
+soma(b = 10, a = 10)
+
+
+# a palavra-chave return indica o que será retornado quando a função for chamada; se o return não for colocado e a função for chamada, será retornado um 'None'
+def soma(a, b):
+  x = a + b 
+  return x
+
+n1 = int(input('insira o primeiro número: ' ))
+n2 = int(input('insira o segundo número: ' ))
+resultado = soma(n1, n2)
+print(f'a soma é: {resultado}')
+```
+
+### Importando módulos 
+
+- Link do [Replit](https://replit.com/@fparon/modulos#main.py)
+
+- Módulos são programas que podem ser reaproveitados em outros _scripts_.
+
+```py
+
+import nome_modulo
+from nome_modulo import funcao_do_modulo
+
+```
+
+
+### `if __name__ == "__main__":`
+
+- A ideia, neste primeiro momento, é entender para que serve, e não como funciona.
+- Objetiva viabilizar a importação de funções entre _scripts_ diferentes. 
+- Visa organizar o código em funções menores que são chamadas por uma função "principal". Normalmente tal função é chamada de `main`.
+
+```py
+
+def main():
+  '''função principal responsável por chamar as demais funções do script e/ou executar o código''' 
+  <sequencia de instrucoes> 
+
+#declaração das demais funções
+def nome_da_funcao(parametros): 
+    '''docstrings'''
+    <sequencia de instrucoes> 
+
+#início da execução do script
+if __name__ == "__main__":
+  main()
+
+```
+
+### `__init__.py`
+
+### Avaliar
+
+- https://www.pythonprogressivo.net/2018/07/Return-Funcao-Python-Como-Retornar-Valor-em-Funcoes.html
+
+- http://devfuria.com.br/python/modulos-pacotes/
+
+- http://devfuria.com.br/python/entenda-__name__-__main__/
+
+- http://fabiomascarenhas.github.io/mab225/12modulos.pdf
+
+- https://stackoverflow.com/questions/419163/what-does-if-name-main-do
+
