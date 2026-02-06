@@ -1,7 +1,7 @@
 name: Relatar erro em pagina
 description: Informe um problema encontrado no site
 title: "[Erro na pagina]: "
-labels: ["bug", "site"]
+labels: ["report-error"]
 body:
   - type: markdown
     attributes:
@@ -24,3 +24,18 @@ body:
       description: Explique o que esta errado.
     validations:
       required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: O que era esperado?
+      description: Diga qual seria o resultado correto.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Como reproduzir?
+      description: Passo a passo para chegar ao erro.
+      placeholder: "1. ...\n2. ...\n3. ..."
