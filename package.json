@@ -22,7 +22,8 @@
   },
   "devDependencies": {
     "@astrojs/cloudflare": "^12.6.12",
+    "miniflare": "^4.20260205.0",
     "pagefind": "^1.4.0",
-    "wrangler": "^3.78.0"
+    "wrangler": "^4.63.0"
   }
 }
