@@ -5,7 +5,7 @@ import IconSystem from "../icons/IconThemeSystem.astro"; // Ícone para a opçã
 import ThemeIcon from "../components/ThemeIcon.astro"; // Componente que mostra o ícone dinâmico (sol/lua)
 ---
 
-<div class="dropdown dropdown-hover dropdown-end w-full md:w-auto">
+<div class="dropdown dropdown-hover dropdown-end w-full md:w-auto group">
   <label
     tabindex="0"
     class="flex items-center gap-1 cursor-pointer hover:text-primary text-base-content"
@@ -46,3 +46,51 @@ import ThemeIcon from "../components/ThemeIcon.astro"; // Componente que mostra 
     </li>
   </ul>
 </div>
+
+<script is:inline>
+  const themeKey = 'theme';
+  const themeOptions = document.querySelectorAll('[data-set-theme]');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  function resolveSystemTheme() {
+    return prefersDark.matches ? 'dark' : 'light';
+  }
+
+  function applyTheme(theme) {
+    const resolved = theme === 'system' ? resolveSystemTheme() : theme;
+    document.documentElement.setAttribute('data-theme', resolved);
+  }
+
+  function setActive(theme) {
+    themeOptions.forEach((el) => {
+      const activeClass = el.getAttribute('data-act-class') || '';
+      activeClass.split(' ').filter(Boolean).forEach((cls) => el.classList.remove(cls));
+      if (el.getAttribute('data-set-theme') === theme) {
+        activeClass.split(' ').filter(Boolean).forEach((cls) => el.classList.add(cls));
+      }
+    });
+  }
+
+  function initTheme() {
+    const stored = localStorage.getItem(themeKey) || 'system';
+    applyTheme(stored);
+    setActive(stored);
+  }
+
+  themeOptions.forEach((el) => {
+    el.addEventListener('click', (event) => {
+      event.preventDefault();
+      const theme = el.getAttribute('data-set-theme') || 'system';
+      localStorage.setItem(themeKey, theme);
+      applyTheme(theme);
+      setActive(theme);
+    });
+  });
+
+  prefersDark.addEventListener('change', () => {
+    const stored = localStorage.getItem(themeKey) || 'system';
+    if (stored === 'system') applyTheme('system');
+  });
+
+  initTheme();
+</script>
