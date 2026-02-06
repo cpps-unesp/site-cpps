@@ -12,11 +12,11 @@ Esta página tem como objetivo fornecer instruções de modificação para os ar
 
 - Para alterar o menu pricipal, localizado no canto superior da pagina inicial do LabRI, selecione a pasta *website* e abra o arquivo *docusaurus.config.js*.
 
-![docusaurus](/imagens/img-geral/exemplo.png)
+![docusaurus](/imagens/logos/logo-cpps-unesp.png)
 
 - Utilize o comando CTRL+F para pesquisar “navbar” no código. Os itens dentro do componente **items:** representam cada botão do menu inicial do LabRI.
 
-![navbar](/imagens/img-geral/exemplo.png)
+![navbar](/imagens/logos/logo-cpps-unesp.png)
 
 - No exemplo utilizado, iremos adicionar botão “notícias” no menu superior. O arquivo *.md* (*markdown*) referente a página “noticias” já está criado e localizado na pasta em *website>noticias*.
 
@@ -28,7 +28,7 @@ Esta página tem como objetivo fornecer instruções de modificação para os ar
     - “*position”* indica a posição do botão, no caso os outros botões do menu estão localizados na margem direita
     - “*id*” se refere a identificação da pagina no *markdown*
 
-![noticias](/imagens/img-geral/exemplo.png)
+![noticias](/imagens/logos/logo-cpps-unesp.png)
 
 ------
 
@@ -36,6 +36,6 @@ Esta página tem como objetivo fornecer instruções de modificação para os ar
 
 - Caso queira alterar as **redes sociais** do LabRI no final da página, utilize o comando CTRL+F e pesquise "Redes Sociais" em *docusaurus.js*.
 
-![redes sociais](/imagens/img-geral/exemplo.png)
+![redes sociais](/imagens/logos/logo-cpps-unesp.png)
 
 ------

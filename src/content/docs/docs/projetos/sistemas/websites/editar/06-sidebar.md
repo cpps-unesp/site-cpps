@@ -12,17 +12,17 @@ Esta página tem como objetivo fornecer instruções de modificação para os ar
 
 - Para editar o menu lateral das páginas do LabRI procure o arquivo *sidebar.js* localizado na pasta *website/sidebar.js*
 
-![sidebar](/imagens/img-geral/exemplo.png)
+![sidebar](/imagens/logos/logo-cpps-unesp.png)
 
 - Utilize o comando CTRL+F para buscar dentro do arquivo *sidebar.js* a página que deseja alterar o menu lateral. 
 
-![info](/imagens/img-geral/exemplo.png)
+![info](/imagens/logos/logo-cpps-unesp.png)
 
 - Os objetos contidos na função *module.export* representam o menu lateral de uma página especifica. O exemplo utilizado neste tutorial será da página de [atendimentos](https://labriunesp.org/docs/atendimento/) do site do LabRI, representado por "*info*" na função.
 
 - Caso queira alterar algum botão, utilize a estrutura da foto anterior, adicionando o endereço da página do markdown de referencia. Este endereço deve estar localizado no inicio de todo arquivo *.md* com o nome "*slug*"
 
-![slug](/imagens/img-geral/exemplo.png)
+![slug](/imagens/logos/logo-cpps-unesp.png)
 
 - O nome que será mostrado para o botão do menu lateral deverá ser colocado em "*sidebar_label*". 
 
@@ -34,6 +34,6 @@ Esta página tem como objetivo fornecer instruções de modificação para os ar
 
 Caso deseje adicionar um que botão redirecione o usuário para outro local do site do LabRI/UNESP (ou até outro site da web) utilize a mesma estrutura de "Equipe" no exemplo, alterando o **tipo** para *link*.
 
-![equipe](/imagens/img-geral/exemplo.png)
+![equipe](/imagens/logos/logo-cpps-unesp.png)
 
 ------

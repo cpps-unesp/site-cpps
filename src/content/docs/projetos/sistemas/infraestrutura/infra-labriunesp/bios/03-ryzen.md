@@ -21,17 +21,17 @@ Base Board Information
 
 1. Na BIOS, no menu lateral inferior direito intitulado "Boot Priority", clique em "Boot Menu". Ou simplesmente aperte F8.
 
-![ryzen1](/imagens/img-geral/exemplo.png)
+![ryzen1](/imagens/logos/logo-cpps-unesp.png)
 
 2. Na tela de Boot Menu, clique no USB plugado. O computador irá realizar a inicialização pelo pendrive.
 
-![ryzen2](/imagens/img-geral/exemplo.png)
+![ryzen2](/imagens/logos/logo-cpps-unesp.png)
 
 ### Como habilitar Power On/Wake On Lan
 
 1. Na BIOS, no menu superior clique em Advanced Mode > APM Configuration
 
-![ryzen3](/imagens/img-geral/exemplo.png)
+![ryzen3](/imagens/logos/logo-cpps-unesp.png)
 
 2. Coloque a opção "Power On By PCI-E" em "Enable"
 
@@ -39,8 +39,8 @@ Base Board Information
 
 1. Na BIOS, clique em Advanced Mode > CPU Configuration
 
-![ryzen4](/imagens/img-geral/exemplo.png)
+![ryzen4](/imagens/logos/logo-cpps-unesp.png)
 
 2. Coloque a opção "SVM Mode" em "Enable"
 
-![ryzen5](/imagens/img-geral/exemplo.png)
+![ryzen5](/imagens/logos/logo-cpps-unesp.png)

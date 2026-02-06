@@ -16,11 +16,11 @@ Esta página tem como objetivo indicar onde se localizam as informações estát
 
 - A data descrita no nome do arquivo deve seguir o formato ANO-MÊS-DIA
 
-![arquivos](/imagens/img-geral/exemplo.png)
+![arquivos](/imagens/logos/logo-cpps-unesp.png)
 
 - Para adicionar **imagens** (logos, fotos e ícones) entre na pasta "website>static>img" e se atente para as subpastas
 
-![img](/imagens/img-geral/exemplo.png)
+![img](/imagens/logos/logo-cpps-unesp.png)
 
 - As fotos da equipe de colaboradores e estagiários do LabRI/UNESP estão localizadas na pasta "equipe" sempre seguindo o padrão *NOME-SOBRENOME.jpg*
 

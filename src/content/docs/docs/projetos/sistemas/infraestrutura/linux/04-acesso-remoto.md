@@ -46,7 +46,7 @@ pwd
 cd
 ```
 
-![terminal_comando_local](/imagens/img-geral/exemplo.png)
+![terminal_comando_local](/imagens/logos/logo-cpps-unesp.png)
 
 
 ### Gerar chave privada e pública ssh  
@@ -85,11 +85,11 @@ ssh-copy-id <user>@<host> password:
 - Ao terminar de configurar o Acesso Remoto pelo X2Go, é necessário deixá-lo funcional 
 - Para isso, realize o acesso e adicione os atalhos "Google Chrome" e "Recoll" na área de trabalho, como mostram as imagens abaixo
 
-![print_1_x2go](/imagens/img-geral/exemplo.png)
+![print_1_x2go](/imagens/logos/logo-cpps-unesp.png)
 
-![print_2_x2go](/imagens/img-geral/exemplo.png)
+![print_2_x2go](/imagens/logos/logo-cpps-unesp.png)
 
-![print_3_x2go](/imagens/img-geral/exemplo.png)
+![print_3_x2go](/imagens/logos/logo-cpps-unesp.png)
 
 
 

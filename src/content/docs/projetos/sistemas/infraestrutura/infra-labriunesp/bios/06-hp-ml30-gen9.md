@@ -34,6 +34,6 @@ Documentação oficial:
 
 1. No menu, com as setas do teclado, dê Enter em "Boot Menu".
 
-![121](/imagens/img-geral/exemplo.png)
+![121](/imagens/logos/logo-cpps-unesp.png)
 
 2. Selecione o pendrive previamente plugado.

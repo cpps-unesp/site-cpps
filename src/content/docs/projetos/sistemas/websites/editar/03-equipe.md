@@ -15,7 +15,7 @@ Esta página indica como o editar a pagina de equipe do site do LabRI/UNESP.
 ```
 ## Nome do membro
 
-<img className="img-equipe-foto" src="/imagens/img-geral/exemplo.png"/>
+<img className="img-equipe-foto" src="/imagens/logos/logo-cpps-unesp.png"/>
 
 <div className="img-equipe-redes">
 <a href="https://www.linkedin.com/in/exemplo"> <img className="img-icon-redes" src="/imagens/logos/linkedin.svg"/> </a>
@@ -40,7 +40,7 @@ Breve descrição
 ```
 ## Nome exemplo
 
-<img className="img-equipe-foto" src="/imagens/img-geral/exemplo.png"/>
+<img className="img-equipe-foto" src="/imagens/logos/logo-cpps-unesp.png"/>
 
 <div className="img-equipe-redes">
 <a href="https://www.linkedin.com/in/exemplo/"> <img className="img-icon-redes" src="/imagens/logos/linkedin.svg"/> </a>
@@ -67,7 +67,7 @@ Breve descrição
 ```
 ### [Nome do Membro](/docs/equipe#nome-exemplo)
 
-<img className="img-equipe-foto" src="/imagens/img-geral/exemplo.png"/>
+<img className="img-equipe-foto" src="/imagens/logos/logo-cpps-unesp.png"/>
 
 <div className="img-equipe-redes">
 <a href="http://lattes.cnpq.br/exemplo"> <img className="img-icon-redes" src="/imagens/logos/lattes.png" /> </a>

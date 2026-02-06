@@ -21,15 +21,15 @@ Base Board Information
 
 1. Na BIOS, com as setas do teclado, vá em "Boot" no menu superior.
 
-![itautec1](/imagens/img-geral/exemplo.png)
+![itautec1](/imagens/logos/logo-cpps-unesp.png)
 
 2. No menu "Boot", entre em "Hard Disk Drives" e, com a tecla de "+", coloque o pendrive em primeiro.
 
-![itautec2](/imagens/img-geral/exemplo.png)
+![itautec2](/imagens/logos/logo-cpps-unesp.png)
 
 3. Agora, dê "Esc" para voltar ao menu "Boot" e entre em "Boot Device Priority". Selecione a opção "Hard Disk".
 
-![itautec3](/imagens/img-geral/exemplo.png)
+![itautec3](/imagens/logos/logo-cpps-unesp.png)
 
 4. Pressione F10 para salvar, sair da BIOS e iniciar o computador pelo pendrive.
 
@@ -37,20 +37,20 @@ Base Board Information
 
 1. Na BIOS, vá no menu Advanced > Onboard Device Configuration. Habilite a opção "Onboard LAN"
 
-![itautec4](/imagens/img-geral/exemplo.png)
+![itautec4](/imagens/logos/logo-cpps-unesp.png)
 
 ### Como habilitar Power On
 
 1. Na BIOS, vá no menu Power >  APM Configuration
 
-![itautec5](/imagens/img-geral/exemplo.png)
+![itautec5](/imagens/logos/logo-cpps-unesp.png)
 
 2. Deixe a opção "Restore on AC Power Loss" em "Power On"
 
-![itautec6](/imagens/img-geral/exemplo.png)
+![itautec6](/imagens/logos/logo-cpps-unesp.png)
 
 ### Como habilitar virtualização
 
 1. Vá no menu Advanced > CPU Configuration e deixe "AMD Virtualization" em "Enable"
 
-![itautec7](/imagens/img-geral/exemplo.png)
+![itautec7](/imagens/logos/logo-cpps-unesp.png)

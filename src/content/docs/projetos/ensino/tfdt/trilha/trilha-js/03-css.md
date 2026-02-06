@@ -211,7 +211,7 @@ Para estilizar propriedade mais específicas basta utilizar a tag "id" no códig
 
 ```
 <figure>
-    <img src="/imagens/img-geral/exemplo.png" alt="Imagem" id="nome-imagem">
+    <img src="/imagens/logos/logo-cpps-unesp.png" alt="Imagem" id="nome-imagem">
 </figure>
 ```
 
