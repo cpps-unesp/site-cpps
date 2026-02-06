@@ -1,0 +1,41 @@
+---
+id: formatar-hd
+title: Formatação de HDs
+sidebar_label: Formatação de HDs
+---
+
+## Identificar HD
+
+```
+lsblk ou fdisk -l
+```
+
+## Particionar o HD que será adicionado
+
+```
+sudo cfdisk /dev/sdc
+```
+
+## Formatar hd para ext4
+
+```
+sudo mkfs.ext4 /dev/sdc1
+sudo umount /dev/sdc1
+```
+
+## Criar diretorio de apontamento
+
+```
+sudo mkdir /media/hdvm12
+```
+## Montagem na inicialização do sistema
+
+```
+blkid
+
+echo "UUID=40a445a9-eac6-48c6-b019-96ef1446e491 /media/hdvm12 ext4 errors=remount-ro 0 1" >> /etc/fstab
+
+sudo mount /hdreal02
+
+sudo chmod 777 /caminho/de/montagem/do/hd
+```

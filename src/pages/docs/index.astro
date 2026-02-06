@@ -1,0 +1,96 @@
+---
+export const prerender = true;
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LinkCard from '../../components/docs/LinkCard.astro';
+import CardGrid from '../../components/docs/CardGrid.astro';
+import Notice from '../../components/docs/Notice.astro';
+---
+
+<BaseLayout
+  titulo="Central de Documentação"
+  descricao="Aprenda a utilizar as ferramentas, acessar dados e contribuir com o CPPS."
+  githubPath="src/pages/docs/index.astro"
+>
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
+
+    <header class="mb-16 text-center max-w-3xl mx-auto">
+        <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Central de Conhecimento</span>
+        <h1 class="titulo text-5xl sm:text-7xl mb-6 font-black">Documentação CPPS</h1>
+        <p class="paragrafo text-xl sm:text-2xl text-base-content/70 mx-auto">
+            Explore nossos manuais técnicos, trilhas de ensino e documentações de projetos.
+        </p>
+    </header>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+
+        <section class="lg:col-span-2 space-y-12">
+            <div>
+                <h2 class="mini-titulo text-3xl mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-star text-primary text-2xl"></i>
+                    Essencial
+                </h2>
+                <CardGrid columns={2}>
+                    <LinkCard
+                        title="Guia de Edição"
+                        href="/docs/guia-edicao"
+                        description="Aprenda a criar e editar páginas usando Markdown e componentes."
+                        icon="✍️"
+                    />
+                    <LinkCard
+                        title="Trilha de Dados"
+                        href="/docs/projetos/ensino/tfdt"
+                        description="Nossa trilha completa de fundamentos de tecnologia."
+                        icon="🐍"
+                    />
+                </CardGrid>
+            </div>
+
+            <div>
+                <h2 class="mini-titulo text-3xl mb-6 flex items-center gap-3">
+                    <i class="fa-solid fa-microchip text-primary text-2xl"></i>
+                    Sistemas e Dados
+                </h2>
+                <CardGrid columns={2}>
+                    <LinkCard
+                        title="Acervos de Dados"
+                        href="/docs/projetos/dados"
+                        description="Documentação técnica sobre a Hemeroteca e NewsCloud."
+                        icon="📊"
+                    />
+                    <LinkCard
+                        title="Infraestrutura"
+                        href="/docs/projetos/sistemas/infraestrutura"
+                        description="Configurações de servidores, redes e automação."
+                        icon="⚙️"
+                    />
+                </CardGrid>
+            </div>
+
+            <Notice type="info" title="Interface Renovada">
+                Agora você pode colapsar as barras laterais clicando nas setas para focar totalmente na leitura.
+            </Notice>
+        </section>
+
+        <aside class="space-y-8">
+            <div class="bg-base-200 rounded-3xl p-8 border border-base-300">
+                <h3 class="font-bold text-xl mb-4 italic text-primary">Navegação Rápida</h3>
+                <ul class="menu menu-compact bg-transparent p-0">
+                    <li><a href="/docs/projetos/dados/hemeroteca-peb" class="py-2">Hemeroteca PEB</a></li>
+                    <li><a href="/docs/projetos/sistemas/websites/01-intro-md" class="py-2">Edição de Websites</a></li>
+                    <li><a href="/docs/projetos/sistemas/infraestrutura/linux/atualizar" class="py-2">Servidores Linux</a></li>
+                </ul>
+            </div>
+
+            <div class="bg-primary/5 rounded-3xl p-8 border border-primary/20">
+                <h3 class="font-bold text-xl mb-4 text-primary">Repositório Org</h3>
+                <p class="text-sm mb-4 opacity-80 italic">Contribua com código e documentação no nosso GitHub oficial.</p>
+                <a href="https://github.com/cpps-unesp" target="_blank" class="btn btn-primary btn-block">
+                    <i class="fa-brands fa-github mr-2"></i>
+                    Acessar GitHub
+                </a>
+            </div>
+        </aside>
+
+    </div>
+  </div>
+</BaseLayout>

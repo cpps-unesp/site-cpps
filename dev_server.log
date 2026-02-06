@@ -1,0 +1,167 @@
+
+> site-cpps@0.0.1 dev
+> astro dev
+
+09:04:03 [@astrojs/cloudflare] Enabling sessions with Cloudflare KV with the "SESSION" KV binding.
+09:04:03 [@astrojs/cloudflare] If you see the error "Invalid binding `SESSION`" in your build output, you need to add the binding to your wrangler config file.
+09:04:03 [WARN] [pagefind] Output type `server` does not produce static *.html pages in its output and thus will not work with astro-pagefind integration.
+09:04:06 [types] Generated 5ms
+
+Auto-generating collections for folders in "src/content/" that are not defined as collections.
+This is deprecated, so you should define these collections yourself in "src/content.config.ts".
+The following collections have been auto-generated: publicacoes
+
+09:04:07 [content] Syncing content
+09:04:08 [content] Synced content
+
+ astro  v5.17.1 ready in 8495 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+09:04:08 watching for file changes...
+/*! 🌼 daisyUI 5.5.18 */
+09:04:14 [200] /pt/ 815ms
+09:04:18 [200] /pt/noticias 525ms
+09:04:18 [WARN] [router] A `getStaticPaths()` route pattern was matched, but no matching static path was found for requested path `/images/noticias/experiencia-sussex.jpg`.
+
+Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
+09:04:18 [404] /images/noticias/experiencia-sussex.jpg 23ms
+09:04:18 [WARN] [router] A `getStaticPaths()` route pattern was matched, but no matching static path was found for requested path `/images/noticias/experiencia-sussex.jpg`.
+
+Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
+09:04:18 [404] /images/noticias/experiencia-sussex.jpg 11ms
+09:04:18 [WARN] [router] A `getStaticPaths()` route pattern was matched, but no matching static path was found for requested path `/images/noticias/experiencia-sussex.jpg`.
+
+Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
+09:04:18 [404] /images/noticias/experiencia-sussex.jpg 13ms
+09:04:20 [200] /pt/noticias/experiencia-sussex 41ms
+09:04:20 [WARN] [router] A `getStaticPaths()` route pattern was matched, but no matching static path was found for requested path `/images/noticias/experiencia-sussex.jpg`.
+
+Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
+09:04:21 [404] /images/noticias/experiencia-sussex.jpg 14ms
+09:04:21 [WARN] [router] A `getStaticPaths()` route pattern was matched, but no matching static path was found for requested path `/images/noticias/experiencia-sussex.jpg`.
+
+Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
+09:04:21 [404] /images/noticias/experiencia-sussex.jpg 12ms
+09:04:23 [200] /docs 11ms
+09:11:05 [200] /pt 15ms
+09:11:07 [200] /pt/noticias 11ms
+09:11:07 [WARN] [router] A `getStaticPaths()` route pattern was matched, but no matching static path was found for requested path `/images/noticias/experiencia-sussex.jpg`.
+
+Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
+09:11:07 [404] /images/noticias/experiencia-sussex.jpg 12ms
+09:11:07 [WARN] [router] A `getStaticPaths()` route pattern was matched, but no matching static path was found for requested path `/images/noticias/experiencia-sussex.jpg`.
+
+Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
+09:11:07 [404] /images/noticias/experiencia-sussex.jpg 11ms
+09:11:07 [WARN] [router] A `getStaticPaths()` route pattern was matched, but no matching static path was found for requested path `/images/noticias/experiencia-sussex.jpg`.
+
+Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
+09:11:07 [404] /images/noticias/experiencia-sussex.jpg 9ms
+09:17:13 [watch] src/pages/[lang]/[...slug].astro
+09:17:13 [watch] src/pages/[lang]/[...slug].astro
+09:17:27 [watch] src/pages/[lang]/noticias/categoria/[tag].astro
+09:17:27 [watch] src/pages/[lang]/noticias/categoria/[tag].astro
+09:22:04 [watch] build_output.txt
+09:22:04 [watch] build_output.txt
+09:22:04 [watch] build_output.txt
+09:22:04 [watch] build_output.txt
+09:22:07 [watch] build_output.txt
+09:22:07 [watch] build_output.txt
+09:22:07 [watch] build_output.txt
+09:22:07 [watch] build_output.txt
+09:22:07 [watch] build_output.txt
+09:22:07 [watch] build_output.txt
+09:22:07 [watch] build_output.txt
+09:22:07 [watch] build_output.txt
+09:22:09 [watch] build_output.txt
+09:22:09 [watch] build_output.txt
+09:22:09 [watch] build_output.txt
+09:22:09 [watch] build_output.txt
+09:22:09 [watch] build_output.txt
+09:22:09 [watch] build_output.txt
+09:22:11 [watch] build_output.txt
+09:22:11 [watch] build_output.txt
+09:22:11 [watch] build_output.txt
+09:22:11 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:12 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:13 [watch] build_output.txt
+09:22:16 [watch] build_output.txt
+09:22:16 [watch] build_output.txt
+09:22:16 [watch] build_output.txt
+09:22:16 [watch] build_output.txt
+09:22:16 [watch] build_output.txt
+09:22:16 [watch] build_output.txt
+09:22:18 [watch] build_output.txt
+09:22:18 [watch] build_output.txt
+09:22:18 [watch] build_output.txt
+09:22:18 [watch] build_output.txt
+09:23:24 [watch] src/pages/[lang]/[list].astro
+09:23:24 [watch] src/pages/[lang]/[list].astro
+09:23:24 [watch] src/pages/[lang]/tes.astro
+09:23:24 [watch] src/pages/[lang]/tes.astro

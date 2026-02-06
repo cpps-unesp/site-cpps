@@ -12,6 +12,7 @@
   --color-secondary: #347D9B;
   --color-accent: #2197C5;
   --color-neutral: #2E3F46;
+  --color-neutral-content: #ffffff;
   --color-base-100: #ffffff;
   --color-base-content: #2E3F46;
 }
@@ -21,7 +22,8 @@
   --color-primary: #00ACF0;
   --color-secondary: #347D9B;
   --color-accent: #2197C5;
-  --color-neutral: #557480;
+  --color-neutral: #111827;
+  --color-neutral-content: #f3f4f6;
   --color-base-100: #1F2937;
   --color-base-content: #f3f4f6;
 }
@@ -87,4 +89,64 @@ h1, h2, h3, .titulo {
 
 .paragrafo a:hover {
   color: #2197C5;
+}
+
+/* Utilitários para Markdown/MDX */
+.img-left {
+  @apply float-left mr-6 mb-4 rounded-lg shadow-md;
+}
+.img-right {
+  @apply float-right ml-6 mb-4 rounded-lg shadow-md;
+}
+.img-center {
+  @apply block mx-auto my-8 rounded-lg shadow-lg;
+}
+
+/* Ajustes para o prose (Tailwind Typography) */
+.prose h2 {
+  font-size: 1.875rem !important; /* 30px */
+  margin-top: 2.5rem !important;
+  margin-bottom: 1.25rem !important;
+  color: var(--color-primary) !important;
+}
+
+.prose pre {
+  background-color: #1a202c !important; /* Sempre escuro para melhor contraste de sintaxe */
+  color: #e2e8f0 !important;
+  padding: 1.25rem !important;
+  border-radius: 0.75rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Estilo para linhas ou blocos grifados (highlighted) */
+.prose .highlighted {
+  background-color: rgba(255, 255, 255, 0.1);
+  display: block;
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+  border-left: 4px solid var(--color-primary);
+}
+
+.prose code {
+  background-color: var(--color-base-300) !important;
+  color: var(--color-primary) !important;
+  padding: 0.125rem 0.375rem !important;
+  border-radius: 0.4rem !important;
+  font-weight: 600 !important;
+  font-size: 0.9em !important;
+}
+
+.prose code::before, .prose code::after {
+  content: "" !important;
+}
+
+.prose blockquote {
+  border-left-color: var(--color-primary) !important;
+  background-color: color-mix(in srgb, var(--color-primary), transparent 95%) !important;
+  padding: 0.25rem 1.5rem !important;
+  font-style: italic !important;
+  border-top-right-radius: 0.5rem !important;
+  border-bottom-right-radius: 0.5rem !important;
 }

@@ -1,0 +1,50 @@
+---
+import slugify from "slugify";
+import { getTranslations } from "../utils/i18n";
+
+const { post, lang } = Astro.props;
+const locale = getTranslations(lang);
+const { title, resumo, image, tags, date, author } = post.data;
+const slug = `/${lang}/noticias/${post.slug}`;
+---
+
+<div class="relative group overflow-hidden rounded-2xl bg-base-100 shadow-xl mb-12">
+  <div class="grid md:grid-cols-2 gap-0">
+    <div class="relative overflow-hidden h-64 md:h-auto">
+      <img
+        src={image}
+        alt={title}
+        class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+      />
+    </div>
+    <div class="p-8 md:p-12 flex flex-col justify-center bg-primary text-primary-content">
+      <div class="flex flex-wrap gap-2 mb-4">
+        {tags.map((tag: string) => (
+          <span class="text-xs font-bold uppercase tracking-wider bg-white/20 px-2 py-1 rounded">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <a href={slug} class="hover:underline">
+        <h2 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+          {title}
+        </h2>
+      </a>
+
+      <p class="text-lg mb-6 opacity-90 line-clamp-3">
+        {resumo}
+      </p>
+
+      <div class="flex items-center text-sm font-medium opacity-80 gap-4">
+        <span>{new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : lang === 'en' ? 'en-US' : 'es-ES')}</span>
+        {author && (
+          <>
+            <span class="w-1 h-1 bg-current rounded-full"></span>
+            <span>{locale.noticias?.by || 'Por'} {author}</span>
+          </>
+        )}
+      </div>
+    </div>
+  </div>
+</div>

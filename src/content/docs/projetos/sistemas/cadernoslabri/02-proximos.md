@@ -1,0 +1,10 @@
+---
+id: proximos
+title: Próximas publicações
+sidebar_label: Próximas publicações
+---
+
+## Conteúdo em construção
+
+- [Próximas Publicações](https://docs.google.com/spreadsheets/d/1DqhU_UmOaU-VH9QMR3x9lR6-W2ZQhneAvS9WyioxsDQ/edit#gid=0)
+- como editar os cadernos (markdown e pdf)

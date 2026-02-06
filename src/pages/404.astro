@@ -38,7 +38,7 @@ const texts = t.texts;
 const identidade = t.identidade;
 ---
 
-<html lang={lang} dir="ltr" data-theme="cpps">
+<html lang={lang} dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -68,6 +68,18 @@ const identidade = t.identidade;
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
     />
+    <script is:inline>
+      (function() {
+        const THEME_STORAGE_KEY = 'theme';
+        const DEFAULT_THEME_CHOICE = 'system';
+        const storedChoice = localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME_CHOICE;
+        let themeToApply = storedChoice;
+        if (storedChoice === 'system') {
+          themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', themeToApply);
+      })();
+    </script>
   </head>
 
   <body class="bg-base-100 text-base-content">
@@ -75,7 +87,7 @@ const identidade = t.identidade;
       <AlternarTema />
     </Header>
 
-    <main class="pt-8 flex-1">
+    <main class="pt-24 flex-1">
       <section class="min-h-[60vh] flex items-center justify-center px-4">
         <div class="text-center max-w-lg">
           <h1 class="text-8xl font-heading font-bold text-primary mb-4">404</h1>
@@ -94,7 +106,7 @@ const identidade = t.identidade;
       </section>
     </main>
     
-    <Footer lang={lang} texts={texts} />
+    <Footer lang={lang} texts={texts} githubPath="src/pages/404.astro" />
     <BackToTop lang={lang} />
     <SearchModal texts={texts} />
     <script type="module" src="/scripts/themeSwitcher.js"></script>

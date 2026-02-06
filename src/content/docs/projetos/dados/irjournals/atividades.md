@@ -1,0 +1,117 @@
+---
+id: atividades
+title: Atividades Realizadas IRJournalsBR
+sidebar_label: Atividades Realizadas
+---
+
+## ATIVIDADES REALIZADAS
+
+|DATA| Atividade realizada|Participantes|
+|-----|-----| -----|
+|04/03/2022|Finalização do sync xmp-medadados; ajustes logs pdf-continua; ajustes pdf_url metadados e recoleta dos metadados da oikos | Pedro Rocha, Rafael de Almeida|
+|21/01/2022| config. cron, Renviron, update coleta monções (metadados); integração pdf-metadados (xmp) | Pedro Rocha, Rafael de Almeida |
+| 17/12/2021|  Migração do repositório de coleta (pdfs e metadados); configuração cron|Rafael Almeida, Pedro Rocha|
+| 10/12/2021| Atualização de coleta de todos os pdf e metadados (menos monções - site fora do ar); inclusão de metadados nos pdfs (finalização das var de ambiente) |Rafael Almeida, Pedro Rocha|
+| 03/12/2021| Atualização de pdfs (Estudos, OIKOS e BJLAS) e metadados (RBPI, Estudos, Oikos, BJLAS, Coint - 2006-2021); finalização da estrutura para escalar a inclusão dos metadados nos pdfs (xmp); estruturação de variaveis de ambiente | Rafael Almeida, Pedro Rocha|
+|26/09/2021|Vinculação dos metadados aos PDFs dos artigos (XMP)|
+|09/08/2021| coleta metadados contexto internacional; coleta pdf RBPI (falta metadados); <br/> resolvendo nomeação arquivos pdf de publicações continuas |
+
+
+## Próximas atividades
+
+- [x] Testar inclusão de metadados nos pdfs de mais de uma revista
+
+- [x] Definir procedimento de atualização da inclusão dos metadados em pdfs recem coletados
+
+- [x] Atualização coleta Monções (metadados)
+
+- [x] Definir Variável de ambiente R Lang
+
+- [x] Config. Cron
+
+- [x] Atualização coleta Monções (PDFs)
+
+- [x] Ajustar funções Monções (irindexbr)
+
+- [x] finalizar ajustades no sync xmp-metadados
+
+- [ ] App RecollWeb
+
+- [ ] Estruturar repositorios github
+
+- [ ] Revisar e ajustar documentação
+
+- [ ] Depositar no zenodo
+
+- [ ] Artigo relacionado ao projeto
+
+
+## Iniciativas de divulgação do projeto
+
+- Evento inaugural
+
+## Iniciativas de suporte ao projeto
+
+- Financiamento coletivo (?)
+- Oferecer serviços (?)
+
+## Futuras funcionalidades
+
+- [ ] Ajustar Pacote (fundir IRarticlesBR e IRjournalsBR)
+
+- [ ] Integrar com grobid (extração de referências e corpo do texto)
+
+- [ ] Converter para XML
+
+- [ ] Disponibilizar pacote no conda e no CRAN
+
+
+## Melhoras no pipeline
+
+- [ ] Centralizar logs
+
+- [ ] Automatizar pipeline e adicionar testes
+
+
+### Revistas coletadas
+
+|Nome da Revista|Sigla Revista|XMP|origem|Periodicidade|
+|----|----------|------|---|
+|Austral|`austral`| :heavy_check_mark: |OJSv2| não-continua |
+|Brazilian Journal of International Relations|`bjir`|  :heavy_check_mark: |OJSv3| não-continua |
+|Brazilian Journal of Latin American Studies|`bjlas-prolam`| :heavy_check_mark: | OJSv3| não-continua |
+| Carta Internacional|`carta-inter`|  :heavy_check_mark: |OJSv3|continua |
+|Conjuntura Austral|`conj_austral`| :heavy_check_mark: |OJSv2| não-continua |
+|Conjuntura Global|`conj_glob`|  :heavy_check_mark: |OJSv2| continua |
+|Conjuntura Internacional|`conj_inter`|  :heavy_check_mark: |OJSv3| não-continua |
+|Contexto Internacional|`contexto_inter`|  :heavy_check_mark: |scielo| não-continua |
+|Estudos Internacionais|`estudos-inter`|  :heavy_check_mark: |OJSv3| não-continua |
+|Meridiano 47|`meridiano`| :heavy_check_mark: |OJSv3| continua |
+|Monções|`moncoes`|  :heavy_check_mark: |OJSv3| não-continua |
+|Mural Internacional|`mural_inter`| :heavy_check_mark:|OJSv2| continua |
+|Oikos|`oikos`|:heavy_check_mark: | OJSv2| não-continua |
+|Revista Brasileira de Estudos de Defesa|`rbed`| :heavy_check_mark: |OJSv2| não-continua |
+|Revista Brasileira de Política Internacional|`rbpi`|  :heavy_check_mark: |scielo| continua |
+
+
+### Metadados de cada artigo das revistas
+
+A definição dos nomes das variáveis dos metadados segue os padrões estabelecidos pelo "Rótulos de campo da Principal Coleção do Web of Science" [clique aqui](https://archive.is/5stfq) para mais detalhes
+
+|variável| significado|
+|--------|------------|
+|AU|autor|
+|OG|instituição|
+|TI|titulo|
+|AB|resumo|
+|DE|palavras chaves|
+|CR|referencias citadas|
+|BP_EP|pagina inicial e pagina final|
+|PY|ano|
+|IS|issue|
+|LA|lingua|
+|DI|Identificador de Objeto Digital (DOI)|
+|SO|nome revista|
+|SN|ISSN da revista|
+|URL|endereço web da pagina html|
+|PDFURL|endereço web do pdf|
