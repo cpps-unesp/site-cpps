@@ -41,7 +41,7 @@ const {
 
 <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={locale.texts}
   identidade={locale.identidade} githubPath="src/pages/[lang]/index.astro">
-  <Hero heroData={locale} />
+  <Hero heroData={locale} lang={currentLang} />
 
   {atividadesPesquisa && (
     <AtividadesSection
