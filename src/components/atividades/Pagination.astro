@@ -1,0 +1,47 @@
+---
+import { sidebar, type SidebarItem } from '../../config/atividades';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+// Função para achatar o sidebar para facilitar a navegação
+function flattenSidebar(items: SidebarItem[]): { label: string; url: string }[] {
+  return items.reduce((acc, item) => {
+    if (item.url) {
+      acc.push({ label: item.label, url: item.url });
+    }
+    if (item.items) {
+      acc.push(...flattenSidebar(item.items));
+    }
+    return acc;
+  }, [] as { label: string; url: string }[]);
+}
+
+const flatItems = flattenSidebar(sidebar);
+const normalizedPath = currentPath.replace(/\/$/, "");
+const currentIndex = flatItems.findIndex(item => item.url.replace(/\/$/, "") === normalizedPath);
+
+const prev = currentIndex > 0 ? flatItems[currentIndex - 1] : null;
+const next = currentIndex < flatItems.length - 1 ? flatItems[currentIndex + 1] : null;
+---
+
+{(prev || next) && (
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-16 pt-8 border-t border-base-300">
+    {prev ? (
+      <a href={prev.url} class="group flex flex-col gap-2 p-4 rounded-xl border border-base-300 hover:border-primary transition-all text-left">
+        <span class="text-xs text-base-content/50 uppercase tracking-widest group-hover:text-primary">Anterior</span>
+        <span class="text-lg font-bold group-hover:text-primary transition-colors">← {prev.label}</span>
+      </a>
+    ) : <div></div>}
+
+    {next && (
+      <a href={next.url} class="group flex flex-col gap-2 p-4 rounded-xl border border-base-300 hover:border-primary transition-all text-right">
+        <span class="text-xs text-base-content/50 uppercase tracking-widest group-hover:text-primary">Próximo</span>
+        <span class="text-lg font-bold group-hover:text-primary transition-colors">{next.label} →</span>
+      </a>
+    )}
+  </div>
+)}

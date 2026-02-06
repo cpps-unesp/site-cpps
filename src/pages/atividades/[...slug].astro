@@ -4,24 +4,24 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // Componentes customizados para o MDX
-import Notice from '../../components/docs/Notice.astro';
-import Card from '../../components/docs/Card.astro';
-import CardGrid from '../../components/docs/CardGrid.astro';
-import LinkCard from '../../components/docs/LinkCard.astro';
-import Steps from '../../components/docs/Steps.astro';
+import Notice from '../../components/atividades/Notice.astro';
+import Card from '../../components/atividades/Card.astro';
+import CardGrid from '../../components/atividades/CardGrid.astro';
+import LinkCard from '../../components/atividades/LinkCard.astro';
+import Steps from '../../components/atividades/Steps.astro';
 
 // Componentes de estrutura da documentacao
-import DocsSidebar from '../../components/docs/Sidebar.astro';
-import TableOfContents from '../../components/docs/TableOfContents.astro';
-import Breadcrumbs from '../../components/docs/Breadcrumbs.astro';
-import Pagination from '../../components/docs/Pagination.astro';
+import DocsSidebar from '../../components/atividades/Sidebar.astro';
+import TableOfContents from '../../components/atividades/TableOfContents.astro';
+import Breadcrumbs from '../../components/atividades/Breadcrumbs.astro';
+import Pagination from '../../components/atividades/Pagination.astro';
 import GitHubEditLink from '../../components/GitHubEditLink.astro';
 
-import { sidebar } from '../../config/docs';
+import { sidebar } from '../../config/atividades';
 
 export async function getStaticPaths() {
-  const docs = await getCollection('docs');
-  return docs.map((entry) => ({
+  const atividades = await getCollection('atividades');
+  return atividades.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry },
   }));
@@ -35,7 +35,7 @@ const currentPath = Astro.url.pathname;
 <BaseLayout
   titulo={entry.data.title}
   descricao={entry.data.description}
-  githubPath={`src/content/docs/${entry.id}`}
+  githubPath={`src/content/atividades/${entry.id}`}
 >
   <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pt-6 pb-12 lg:pt-10">
 
@@ -52,7 +52,7 @@ const currentPath = Astro.url.pathname;
         </button>
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 relative" id="docs-container">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 relative" id="atividades-container">
 
         <!-- 🔹 Backdrop para mobile -->
         <div id="mobile-backdrop" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity duration-300 opacity-0"></div>

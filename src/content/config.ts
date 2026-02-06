@@ -71,11 +71,11 @@ const membros = defineCollection({
     }),
 });
 
-// ✅ Collection de documentação
-const docs = defineCollection({
+// ✅ Collection de atividades
+const atividades = defineCollection({
   type: 'content',
   schema: z.object({
-    title: z.string().optional().default('Documentação'),
+    title: z.string().optional().default('Atividades'),
     description: z.string().optional(),
     sidebar_label: z.string().optional(),
   }).passthrough(),
@@ -85,6 +85,6 @@ const docs = defineCollection({
 export const collections = {
   noticias,
   publicacoes,
-  docs,
+  atividades,
   membros,
 };

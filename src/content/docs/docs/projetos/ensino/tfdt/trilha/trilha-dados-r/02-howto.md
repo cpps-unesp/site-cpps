@@ -1,5 +1,0 @@
----
-id: howto
-title: Sobre a Linguagem R
-sidebar_label: Sobre R
----
