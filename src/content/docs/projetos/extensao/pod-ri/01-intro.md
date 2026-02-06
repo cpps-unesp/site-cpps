@@ -2,7 +2,7 @@
 title: Apresentação Pod-RI
 ---
 
-<img src="/home/cpps_ligiasimplicio/codigo/site-cpps/public/imagens/img-geral/pod-ri.svg" alt="Logo DiáriosBR" width="250" style="display: block; margin: 30px auto;">
+<img src="/imagens/img-geral/pod-ri.svg" alt="Logo DiáriosBR" width="250" style="display: block; margin: 30px auto;">
 
 
 

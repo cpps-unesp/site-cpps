@@ -138,7 +138,7 @@ sidebar:
 <div style="text-align: center; margin-top: 50px; margin-bottom: 50px;">
   <h3 style="margin-bottom: 5px;">Lucas VidoS</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
-  <img src="/public/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
   <div style="display: flex; justify-content: center; gap: 15px; align-items: center;">
     <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn">
       <img src="/imagens/logos/linkedin.svg" width="40" alt="LinkedIn">

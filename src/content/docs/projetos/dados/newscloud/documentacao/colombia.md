@@ -15,14 +15,7 @@ Esta seção detalha quais elementos foram extraídos em cada etapa da coleta pa
 
 ## Tabela de Elementos
 
-A tabela abaixo indica a disponibilidade dos dados nas diferentes fases de coleta (`Coleta 01` | str | ✔️ | |
-| `data_atualizado` | list | | ✔️ |
-| `horario_atualizado` | list | | ✔️ |
-| `link` | str | ✔️ | |
-| `link_archive` | str | | |
-| `data_archive` | str | | |
-| `horario_archive` | str | | |
-| `local` | list |` e `Coleta 02`).
+A tabela abaixo indica a disponibilidade dos dados nas diferentes fases de coleta (`Coleta 01` e `Coleta 02`).
 
 | Elemento | Tipo | Coleta 01 | Coleta 02 |
 | :--- | :--- | :---: | :---: |
@@ -31,7 +24,7 @@ A tabela abaixo indica a disponibilidade dos dados nas diferentes fases de colet
 | `sigla` | str | ✔️ | |
 | `país` | str | ✔️ | |
 | `categoria` | list | ✔️ | |
-| `autoria` | list | | ✔️ | | |
+| `autoria` | list | | ✔️ |
 | `tags` | list | | |
 | `paragrafos` | list | | ✔️ |
 | `dir_bd` | str | ✔️ | |
@@ -39,14 +32,19 @@ A tabela abaixo indica a disponibilidade dos dados nas diferentes fases de colet
 | `codigo_bd` | str | ✔️ | |
 | `imagens` | list | | |
 | `nome_arquivo` | str | | ✔️ |
-| `extra_01` | - | - | - |
-| `extra_02` | - | - | - |
 | `titulo` | str | ✔️ | |
 | `subtitulo` | str | | ✔️ |
 | `data` | str | ✔️ | |
 | `horario` | str | ✔️ | |
 | `data_atualizado` | list | | ✔️ |
-| `horario_atual
+| `horario_atualizado` | list | | ✔️ |
+| `link` | str | ✔️ | |
+| `link_archive` | str | | |
+| `data_archive` | str | | |
+| `horario_archive` | str | | |
+| `local` | list | | |
+| `extra_01` | - | - | - |
+| `extra_02` | - | - | - |
 | `extra_03` | - | - | - |
 
 <br>

@@ -13,17 +13,5 @@ const editLabel = texts.editOnGithub || (lang === 'en' ? 'Edit this page on GitH
 <footer class="bg-[#2E3F46] text-white p-8 mt-auto" data-pagefind-ignore>
   <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
     <p>&copy; {currentYear} CPPS - Centro de Pesquisa Política e Social</p>
-
-    {githubPath && (
-      <a
-        href={`https://github.com/cpps-unesp/site-cpps/blob/main/${githubPath}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="flex items-center gap-2 hover:text-primary transition-colors text-sm"
-      >
-        <i class="fa-brands fa-github text-lg"></i>
-        {editLabel}
-      </a>
-    )}
   </div>
 </footer>

@@ -19,7 +19,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Marcelo Mariano</h3>
   <p style="margin-top: 0; color: gray;"><em>(Coordenador)</em></p>
 
-  <img src="/public/newscloud/marcelo.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/marcelo.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="http://lattes.cnpq.br/3505849964932313" target="_blank" title="Currículo Lattes">
@@ -47,7 +47,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Rafael de Almeida</h3>
   <p style="margin-top: 0; color: gray;"><em>2020 - atual</em></p>
 
-  <img src="/public/newscloud/rafael.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/rafael.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="http://lattes.cnpq.br/5174307461578307" target="_blank" title="Currículo Lattes">
@@ -66,7 +66,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">João Lucas Motta</h3>
   <p style="margin-top: 0; color: gray;"><em>2021 - atual</em></p>
 
-  <img src="/public/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/jlmotta" target="_blank" title="LinkedIn">
@@ -85,7 +85,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Artur Damiano Dantas</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
 
-  <img src="/public/newscloud/artur-damiano.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/artur-damiano.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/artur-dantas" target="_blank" title="LinkedIn">
@@ -104,7 +104,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Bruna Domingues</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
 
-  <img src="/public/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn">
@@ -123,7 +123,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Henédio Bernardino Pedrosa Neto</h3>
   <p style="margin-top: 0; color: gray;"><em>2023 - atual</em></p>
 
-  <img src="/public/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/henedio-neto-616706268/" target="_blank" title="LinkedIn">
@@ -145,7 +145,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Ana Beatriz Mação de Barros Ferreira</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
 
-  <img src="/public/newscloud/ana-beatriz-macao.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/ana-beatriz-macao.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/ana-beatriz-m-de-b-ferreira-44456b245" target="_blank" title="LinkedIn">
@@ -164,7 +164,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Rebeca dos Santos Tosta</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
 
-  <img src="/public/newscloud/rebeca-tosta.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/rebeca-tosta.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/rebeca-dos-santos-tosta-206672247" target="_blank" title="LinkedIn">
@@ -193,7 +193,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Gustavo Castejon de Oliveira</h3>
   <p style="margin-top: 0; color: gray;"><em>2022</em></p>
 
-  <img src="/public/newscloud/gustavo-castejon.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/gustavo-castejon.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/gustavo-castejon/" target="_blank" title="LinkedIn">
@@ -212,7 +212,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Cintia Paulena Di Iorio</h3>
   <p style="margin-top: 0; color: gray;"><em>2021 - 2022</em></p>
 
-  <img src="/public/newscloud/cintia.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/cintia.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/cíntia-di-iório-999138150/" target="_blank" title="LinkedIn">
@@ -231,7 +231,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Pedro Henrique Campagna</h3>
   <p style="margin-top: 0; color: gray;"><em>2020 - 2021</em></p>
 
-  <img src="/public/newscloud/pedro.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/pedro.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/pedrohcmds/" target="_blank" title="LinkedIn">
@@ -250,7 +250,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Júlia Silveira</h3>
   <p style="margin-top: 0; color: gray;"><em>2021 - 2022</em></p>
 
-  <img src="/public/newscloud/julia.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/julia.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/julia-silveira23/" target="_blank" title="LinkedIn">
@@ -269,7 +269,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Treyce Annunciado</h3>
   <p style="margin-top: 0; color: gray;"><em>2022</em></p>
 
-  <img src="/public/newscloud/treyce-annunciado.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/treyce-annunciado.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/treyce-h-r-annunciado-459680125/" target="_blank" title="LinkedIn">

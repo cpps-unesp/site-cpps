@@ -15,6 +15,7 @@ import DocsSidebar from '../../components/docs/Sidebar.astro';
 import TableOfContents from '../../components/docs/TableOfContents.astro';
 import Breadcrumbs from '../../components/docs/Breadcrumbs.astro';
 import Pagination from '../../components/docs/Pagination.astro';
+import GitHubEditLink from '../../components/GitHubEditLink.astro';
 
 import { sidebar } from '../../config/docs';
 
@@ -108,7 +109,7 @@ const currentPath = Astro.url.pathname;
 
             <Pagination currentPath={currentPath} />
 
-            <footer class="mt-16 pt-8 border-t border-base-300 text-sm text-base-content/50 flex justify-between items-center">
+            <footer class="mt-8 pt-8 border-t border-base-300 text-sm text-base-content/50 flex justify-between items-center">
                 <span>© {new Date().getFullYear()} CPPS - UNESP</span>
             </footer>
           </div>
