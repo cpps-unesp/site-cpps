@@ -1,5 +1,13 @@
 ---
 export const prerender = true;
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const docs = await getCollection('docs');
+  return docs.map((entry) => ({
+    params: { slug: entry.slug },
+  }));
+}
 
 const { slug } = Astro.params;
 const slugPath = Array.isArray(slug) ? slug.join('/') : slug;
