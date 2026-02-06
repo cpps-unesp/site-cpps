@@ -1,6 +1,18 @@
 ---
+type InitiativeItem = {
+  link?: string;
+  tipo?: string;
+  icon?: string;
+  title?: string;
+  description?: string;
+};
+
 const { initiatives, lang = "pt" } = Astro.props;
-const { label, title = "Most used initiatives", items = [] } = initiatives ?? {};
+const { label, title = "Most used initiatives", items = [] } = (initiatives ?? {}) as {
+  label?: string;
+  title?: string;
+  items?: InitiativeItem[];
+};
 ---
 
 <div class="bg-base-100 py-16">
@@ -12,9 +24,15 @@ const { label, title = "Most used initiatives", items = [] } = initiatives ?? {}
     <h2 class="titulo text-center text-primary mb-4">{title}</h2>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {items.map((initiative) => (
+      {items.map((initiative: InitiativeItem) => (
         <a
-          href={`/${lang}${initiative.link}`}
+          href={(() => {
+            const url = initiative.link || '';
+            if (url.startsWith('http://') || url.startsWith('https://')) return url;
+            if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
+            if (url.startsWith('/')) return `/${lang}${url}`;
+            return `/${lang}/${url}`;
+          })()}
           class="relative block card bg-base-200 text-base-content shadow-md hover:shadow-lg transition-shadow rounded-xl p-6 space-y-3 hover:bg-base-300"
         >
           <!-- Tag no canto superior direito -->
