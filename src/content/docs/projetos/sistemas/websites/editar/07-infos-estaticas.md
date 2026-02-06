@@ -16,11 +16,11 @@ Esta página tem como objetivo indicar onde se localizam as informações estát
 
 - A data descrita no nome do arquivo deve seguir o formato ANO-MÊS-DIA
 
-![arquivos](/img/projetos/sistemas/web-redes/readme19.jpg)
+![arquivos](/imagens/img-geral/exemplo.png)
 
 - Para adicionar **imagens** (logos, fotos e ícones) entre na pasta "website>static>img" e se atente para as subpastas
 
-![img](/img/projetos/sistemas/web-redes/readme20.jpg)
+![img](/imagens/img-geral/exemplo.png)
 
 - As fotos da equipe de colaboradores e estagiários do LabRI/UNESP estão localizadas na pasta "equipe" sempre seguindo o padrão *NOME-SOBRENOME.jpg*
 

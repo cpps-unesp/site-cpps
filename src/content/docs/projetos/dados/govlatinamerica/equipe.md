@@ -177,7 +177,7 @@ sidebar:
       <img src="/imagens/logos/instagram_icon_vermelha.svg" width="40" alt="Instagram">
     </a>
     <a href="https://gitlab.com/r.s.tosta" target="_blank" title="GitLab">
-      <img src="/imagens/logos/gitlab.png" width="40" alt="GitLab">
+      <img src="/imagens/img-geral/exemplo.png" width="40" alt="GitLab">
     </a>
   </div>
 </div>

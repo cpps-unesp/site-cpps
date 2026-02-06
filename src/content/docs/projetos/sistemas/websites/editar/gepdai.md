@@ -148,9 +148,9 @@ Procure a `const faixa_01` (pode dar um ``ctrl + f`) ou `const faixa_02`. Cada b
     linkRedeSocial: "INSIRA AQUI O LINK DO LATTES",
     linkRedeSocial2: ""INSIRA AQUI O LINK DO LINKEDIN",
     descricao: "INSIRA A DESCRIÇÃO AQUI",
-    path_imgLogoRedeSocial: "/img/social/lattes.png",
+    path_imgLogoRedeSocial: "/imagens/logos/lattes.png",
     path_imgFoto: "/img/gepdai/icon2.png",
-    path_imgLogoRedeSocial2: "/img/social/linkedin.png"
+    path_imgLogoRedeSocial2: "/imagens/logos/linkedin.svg"
 
     },
 

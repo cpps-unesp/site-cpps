@@ -19,7 +19,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Marcelo Mariano</h3>
   <p style="margin-top: 0; color: gray;"><em>(Coordenador)</em></p>
   
-  <img src="/public/newscloud/marcelo.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/marcelo.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="http://lattes.cnpq.br/3505849964932313" target="_blank" title="Currículo Lattes">
@@ -38,7 +38,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Jaqueline Trevisan Pigatto</h3>
   <p style="margin-top: 0; color: gray;"><em>(Coordenadora)</em></p>
   
-  <img src="/public/newscloud/jaqueline-trevisan.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/jaqueline-trevisan.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="http://lattes.cnpq.br/8846306750388567" target="_blank" title="Currículo Lattes">
@@ -57,7 +57,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Mark W. Datysgeld</h3>
   <p style="margin-top: 0; color: gray;"><em>(Coordenador)</em></p>
   
-  <img src="/public/newscloud/mark.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/mark.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="http://lattes.cnpq.br/3852934444356699" target="_blank" title="Currículo Lattes">
@@ -80,7 +80,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Rafael de Almeida</h3>
   <p style="margin-top: 0; color: gray;"><em>2020 - atual</em></p>
   
-  <img src="/public/newscloud/rafael.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/rafael.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="http://lattes.cnpq.br/5174307461578307" target="_blank" title="Currículo Lattes">
@@ -99,7 +99,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Isadora Figueredo Capelli</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/isadora-capelli/" target="_blank" title="LinkedIn">
@@ -118,7 +118,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Giovanna Solaemen Chagas</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/newscloud/giovanna-chagas.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/giovanna-chagas.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/giovanna-solaemen-chagas-23b6b9249/" target="_blank" title="LinkedIn">
@@ -137,7 +137,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Isabella Pereira Toledo</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/newscloud/isabella-toledo.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/isabella-toledo.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn">
@@ -156,7 +156,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Maria Izabel Soares de Lisboa</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/newscloud/maria-izabel.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/maria-izabel.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/maria-izabel-soares-de-lisboa-718487206/" target="_blank" title="LinkedIn">
@@ -175,7 +175,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Rafaela Mazzonetto</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/imagens/logos/logo-labriunesp.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn">
@@ -194,7 +194,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Ícaro Busch Molon Rigo</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/newscloud/icaro-rigo.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/icaro-rigo.jpg" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn">
@@ -213,7 +213,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Melissa de Lucena e Nakajo</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/newscloud/melissa-lucena.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/melissa-lucena.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/" target="_blank" title="LinkedIn">
@@ -232,7 +232,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Laura Gabrieli Pereira da Silva</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/newscloud/laura-gabrieli.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/laura-gabrieli.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="http://lattes.cnpq.br/3485490157023331" target="_blank" title="Currículo Lattes">
@@ -251,7 +251,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Angelo Rocha Paschoaleto</h3>
   <p style="margin-top: 0; color: gray;"><em>2022 - atual</em></p>
   
-  <img src="/public/newscloud/angelo-rocha.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/angelo-rocha.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/angelo-rocha-paschoaleto-87867b4b/" target="_blank" title="LinkedIn">
@@ -259,7 +259,7 @@ sidebar:
     </a>
     <!-- Ícone do Twitter (X) - Se tiver na pasta, troque o nome do arquivo -->
     <a href="https://twitter.com/arpaschoaleto" target="_blank" title="Twitter">
-      <img src="/imagens/logos/twitter_icon.svg" width="40" alt="Twitter">
+      <img src="/imagens/img-geral/exemplo.png" width="40" alt="Twitter">
     </a>
   </div>
 </div>
@@ -271,7 +271,7 @@ sidebar:
   <h3 style="margin-bottom: 5px;">Ana Beatriz Mação de Barros Ferreira</h3>
   <p style="margin-top: 0; color: gray;"><em>2023 - atual</em></p>
   
-  <img src="/public/newscloud/ana-beatriz-macao.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
+  <img src="/newscloud/ana-beatriz-macao.png" width="150" height="150" style="border-radius: 50%; object-fit: cover; margin: 15px auto; display: block;">
 
   <div style="display: flex; justify-content: center; gap: 15px; font-size: 18px; flex-wrap: wrap;">
     <a href="https://www.linkedin.com/in/ana-beatriz-m-de-b-ferreira-44456b245" target="_blank" title="LinkedIn">

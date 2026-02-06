@@ -11,7 +11,7 @@ sidebar_label: Configurações da BIOS
 1. Com o computador desligado, plugue o pendrive. Ligue-o e acesse a BIOS.
 
 2. Clique em Boot Configuration. Na lista, clique nas setas até o pendrive ser a primeira opção.
-![bios1](/img/projetos/sistemas/bios1.jpeg)
+![bios1](/imagens/img-geral/exemplo.png)
 
 3. Clique em "Apply Changes" e "Exit". O computador irá iniciar pelo pendrive.
 

@@ -51,7 +51,7 @@ Para inserir uma imagem qualquer no site, tenha ela salva nos seus documentos. E
 Agora, sua imagem está salva no diretório do site. Para inseri-la na página, utilize o seguinte código:
 
 ```
-![Título](/img/nome-do-arquivo.formato)
+![Título](/imagens/img-geral/exemplo.png)
 ```
 
 No título, você pode colocar qualquer coisa, é só para razões de controle.

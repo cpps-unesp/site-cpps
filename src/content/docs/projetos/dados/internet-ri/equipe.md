@@ -259,7 +259,7 @@ sidebar:
     </a>
     <!-- Ícone do Twitter (X) - Se tiver na pasta, troque o nome do arquivo -->
     <a href="https://twitter.com/arpaschoaleto" target="_blank" title="Twitter">
-      <img src="/imagens/logos/twitter_icon.svg" width="40" alt="Twitter">
+      <img src="/imagens/img-geral/exemplo.png" width="40" alt="Twitter">
     </a>
   </div>
 </div>

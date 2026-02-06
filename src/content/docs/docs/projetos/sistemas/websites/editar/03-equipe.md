@@ -15,12 +15,12 @@ Esta página indica como o editar a pagina de equipe do site do LabRI/UNESP.
 ```
 ## Nome do membro
 
-<img className="img-equipe-foto" src="/img/equipe/exemplo.jpg"/>
+<img className="img-equipe-foto" src="/imagens/img-geral/exemplo.png"/>
 
 <div className="img-equipe-redes">
-<a href="https://www.linkedin.com/in/exemplo"> <img className="img-icon-redes" src="/img/social/linkedin.png"/> </a>
+<a href="https://www.linkedin.com/in/exemplo"> <img className="img-icon-redes" src="/imagens/logos/linkedin.svg"/> </a>
 
-<a href="https://www.instagram.com/exemplo/"> <img className="img-icon-redes" src="/img/social/instagram.png" /> </a>
+<a href="https://www.instagram.com/exemplo/"> <img className="img-icon-redes" src="/imagens/logos/instagram.png" /> </a>
 
 </div>
 
@@ -40,11 +40,11 @@ Breve descrição
 ```
 ## Nome exemplo
 
-<img className="img-equipe-foto" src="/img/equipe/nome-exemplo.png"/> 
+<img className="img-equipe-foto" src="/imagens/img-geral/exemplo.png"/> 
 
 <div className="img-equipe-redes">
-<a href="https://www.linkedin.com/in/exemplo/"> <img className="img-icon-redes" src="/img/social/linkedin.png"/> </a>
-<a href="http://lattes.cnpq.br/exemplo"> <img className="img-icon-redes" src="/img/social/lattes.png"/> </a>
+<a href="https://www.linkedin.com/in/exemplo/"> <img className="img-icon-redes" src="/imagens/logos/linkedin.svg"/> </a>
+<a href="http://lattes.cnpq.br/exemplo"> <img className="img-icon-redes" src="/imagens/logos/lattes.png"/> </a>
 
 </div>
 
@@ -67,12 +67,12 @@ Breve descrição
 ```
 ### [Nome do Membro](/docs/equipe#nome-exemplo) 
 
-<img className="img-equipe-foto" src="/img/equipe/exemplo.png"/> 
+<img className="img-equipe-foto" src="/imagens/img-geral/exemplo.png"/> 
 
 <div className="img-equipe-redes">
-<a href="http://lattes.cnpq.br/exemplo"> <img className="img-icon-redes" src="/img/social/lattes.png" /> </a>
+<a href="http://lattes.cnpq.br/exemplo"> <img className="img-icon-redes" src="/imagens/logos/lattes.png" /> </a>
 
-<a href="https://www.linkedin.com/exemplo"> <img className="img-icon-redes" src="/img/social/linkedin.png"/> </a>
+<a href="https://www.linkedin.com/exemplo"> <img className="img-icon-redes" src="/imagens/logos/linkedin.svg"/> </a>
 
 </div>
 

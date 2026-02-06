@@ -20,11 +20,11 @@ Abaixo está um passo a passo de como obter a assinatura eletrônica no site do 
 
 **4.** Nesta página, abaixo, há o passo a passo para assinatura eletrônica. Clique no link disponível na Etapa 1 e, na nova página, escolha o arquivo que deseja assinar, nos formatos disponibilizados pelo site.
 
-![assinatura1](/img/projetos/ensino/assinatura1.png)
+![assinatura1](/imagens/img-geral/exemplo.png)
 
 **5.** Escolha o local da assinatura no documento, clique em “Assinar digitalmente” para validar a assinatura e avance para a próxima etapa.
 
-![assinatura2](/img/projetos/ensino/assinatura2.png)
+![assinatura2](/imagens/img-geral/exemplo.png)
 
 **6.** Na próxima etapa, na janela dos Provedores de Assinatura, clique em "usar gov.br". Em seguida, insira o código enviado para o seu celular.
 

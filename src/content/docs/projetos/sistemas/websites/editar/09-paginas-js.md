@@ -23,7 +23,7 @@ Além disso, este tutorial vai te ensinar a editar as páginas próprias de grup
 
 - Todos os elementos da [página inicial](https://labriunesp.org) do LabRI/UNESP estão descritos em *index.js*
 
-![pages](/img/projetos/sistemas/web-redes/readme24.jpg)
+![pages](/imagens/img-geral/exemplo.png)
 
 - Para alterar informações da página inicial é só utilizar o comando **CTRL+F** em *index.js* e pesquisar a constante que deseja modificar
 
@@ -54,7 +54,7 @@ Além disso, este tutorial vai te ensinar a editar as páginas próprias de grup
     - **suporte**
     - **equipe**
 
-![pages](/img/projetos/sistemas/web-redes/readme25.jpg)
+![pages](/imagens/img-geral/exemplo.png)
 
 - Utilize o comando **CTRL+F** para pesquisar "const" + o nome do objeto que deseja alterar e modifique as informações necessárias, lembrando sempre de analisar os exemplos já contidos no código
 

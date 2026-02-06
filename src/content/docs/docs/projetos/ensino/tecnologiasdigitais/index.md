@@ -4,7 +4,7 @@ title: Tecnologias Digitais
 sidebar_label: Tecnologias Digitais
 ---
 <center>
-    <img src="/img/projetos/ensino/tec-digitais/logo-tec-digitais.svg" alt="centered image" width="250" height="200" />
+    <img src="/imagens/img-geral/exemplo.png" alt="centered image" width="250" height="200" />
 </center>
 
 :::tip

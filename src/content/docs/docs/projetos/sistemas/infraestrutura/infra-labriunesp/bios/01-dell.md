@@ -20,7 +20,7 @@ System Information
 1. Com o computador desligado, plugue o pendrive. Ligue-o e acesse a BIOS.
 
 2. Clique em Boot Configuration. Na lista, clique nas setas até o pendrive ser a primeira opção.
-![bios1](/img/projetos/sistemas/bios1.jpeg)
+![bios1](/imagens/img-geral/exemplo.png)
 
 3. Clique em "Apply Changes" e "Exit". O computador irá iniciar pelo pendrive.
 
@@ -28,11 +28,11 @@ System Information
 
 1. No menu lateral da BIOS, clique em "Power"
 
-![menu-lateral-dell](/img/projetos/sistemas/Menu-lateral-dell.jpeg)
+![menu-lateral-dell](/imagens/img-geral/exemplo.png)
 
 2. Selecione a opção "Power On"
 
-![power-on-dell](/img/projetos/sistemas/power-on-dell.jpeg)
+![power-on-dell](/imagens/img-geral/exemplo.png)
 
 ### Como habilitar Wake On Lan
 
@@ -40,7 +40,7 @@ System Information
 
 2. Selecione a opção "Lan or WLAN"
 
-![lan-dell](/img/projetos/sistemas/lan-dell.jpeg)
+![lan-dell](/imagens/img-geral/exemplo.png)
 
 ### Como habilitar virtualização
 
@@ -48,4 +48,4 @@ System Information
 
 2. Habilite a primeira opção para "on"
 
-![virtualization-dell](/img/projetos/sistemas/virtualization-dell.jpeg)
+![virtualization-dell](/imagens/img-geral/exemplo.png)

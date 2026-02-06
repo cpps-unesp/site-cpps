@@ -16,7 +16,7 @@ Esta página tem como objetivo indicar como editar os textos que serão publicad
 
 - A data descrita no nome do arquivo deve seguir o formato ANO-MÊS-DIA
 
-![cadernos](/img/projetos/sistemas/web-redes/readme21.jpg)
+![cadernos](/imagens/img-geral/exemplo.png)
 
 ------
 
@@ -28,7 +28,7 @@ Esta página tem como objetivo indicar como editar os textos que serão publicad
 
 - Os *metadados* da publicação dos cadernos do LabRI/UNESP ficam sempre no inicio do arquivo Markdown, entre hífens
 
-![metadados](/img/projetos/sistemas/web-redes/readme22.jpg)
+![metadados](/imagens/img-geral/exemplo.png)
 
 - *Slug* indica a URL da publicação
 
@@ -46,7 +46,7 @@ Esta página tem como objetivo indicar como editar os textos que serão publicad
 
 - *Download_pdf* indica o local para download do PDF, ou seja, uma informação estática que deverá estar localizada em **website>static>arquivos**
 
-![exemplo](/img/projetos/sistemas/web-redes/readme23.jpg)
+![exemplo](/imagens/img-geral/exemplo.png)
 
 - O arquivo PDF/EPUB é gerado por um script a parte
 

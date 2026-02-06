@@ -270,7 +270,7 @@ Para inserir uma imagem é necessário que ela esteja em uma pasta img dentro da
 ```
 <body>
 <figure>
-<img src="img/caminho-pasta.svg">
+<img src="/imagens/img-geral/exemplo.png">
 </figure>
 </body>
 ```
@@ -280,7 +280,7 @@ Para inserir legenda da imagem basta utilizar a tag "figcaption"
 ```
 <body>
 <figure>
-<img src="img/caminho-pasta.svg">
+<img src="/imagens/img-geral/exemplo.png">
 <figcaption>Legenda da imagem</figcaption>
 </figure>
 </body>

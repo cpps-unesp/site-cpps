@@ -29,13 +29,13 @@ Base Board Information
 
 1. Plugue o pendrive com o sistema operacional desejado no computador. Tire da tomada e coloque novamente e o computador deverá ligar automaticamente. Nessa tela, aperte F1 para acessar o Setup.
 
-![ibm1](/img/projetos/sistemas/ibm1.jpeg)
+![ibm1](/imagens/img-geral/exemplo.png)
 
 ### Como modificar prioridade de boot
 
 2. Com as setas do teclado, vá em "Boot Manager" e dê Enter. Logo depois, em "Boot from File" e selecione o pendrive plugado.
 
-![ibm2](/img/projetos/sistemas/ibm2.jpeg)
+![ibm2](/imagens/img-geral/exemplo.png)
 
 ### Como habilitar Wake On Lan
 
@@ -53,4 +53,4 @@ Base Board Information
 
 2. Agora, o processo é parecido com uma ligeira diferença: Com as setas do teclado, vá em "Start Options", acima de "Boot Manager" e selecione "USB Storage".
 
-![ibm3](/img/projetos/sistemas/ibm3.jpeg)
+![ibm3](/imagens/img-geral/exemplo.png)

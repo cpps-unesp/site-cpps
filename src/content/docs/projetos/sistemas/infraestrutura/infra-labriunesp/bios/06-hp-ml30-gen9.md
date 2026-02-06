@@ -34,6 +34,6 @@ Documentação oficial:
 
 1. No menu, com as setas do teclado, dê Enter em "Boot Menu".
 
-![121](/img/projetos/sistemas/121.jpeg)
+![121](/imagens/img-geral/exemplo.png)
 
 2. Selecione o pendrive previamente plugado.
