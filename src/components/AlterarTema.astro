@@ -5,7 +5,7 @@ import IconSystem from "../icons/IconThemeSystem.astro"; // Ícone para a opçã
 import ThemeIcon from "../components/ThemeIcon.astro"; // Componente que mostra o ícone dinâmico (sol/lua)
 ---
 
-<div class="dropdown dropdown-hover dropdown-end w-full md:w-auto">
+<div class="dropdown dropdown-hover dropdown-end w-full md:w-auto group">
   <label
     tabindex="0"
     class="flex items-center gap-1 cursor-pointer hover:text-primary text-base-content"
@@ -48,7 +48,7 @@ import ThemeIcon from "../components/ThemeIcon.astro"; // Componente que mostra 
 </div>
 
 <script is:inline>
-  const themeKey = 'cpps-theme';
+  const themeKey = 'theme';
   const themeOptions = document.querySelectorAll('[data-set-theme]');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
