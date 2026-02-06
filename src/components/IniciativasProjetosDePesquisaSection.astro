@@ -222,6 +222,14 @@ const agenciaInicial = agenciaParam || "";
       return mostrar.length === 0 || mostrar.includes(campo);
     }
 
+    const temExtras =
+      (mostrarCampo("publico_alvo") && p.publico_alvo) ||
+      (mostrarCampo("resultados") && p.resultados) ||
+      (mostrarCampo("links") && p.links) ||
+      (mostrarCampo("natureza") && p.natureza) ||
+      (mostrarCampo("valor") && p.valor) ||
+      (mostrarCampo("apoioCentro") && Array.isArray(p.apoioCentro) && p.apoioCentro.length > 0);
+
     return `
       <article class="card bg-base-100 shadow border border-base-300">
         <div class="card-body">
@@ -235,13 +243,20 @@ const agenciaInicial = agenciaParam || "";
           ${mostrarCampo("processo") ? `<p><strong>Processo:</strong> ${escapeHtml(p.processo)}</p>` : ""}
           ${mostrarCampo("resumo") ? `<p class="mt-2 text-base-content/80"><strong>Resumo:</strong> ${escapeHtml(p.resumo)}</p>` : ""}
           ${
-            p.publico_alvo || p.resultados || p.links
+            temExtras
               ? `
             <button class="btn btn-sm btn-link" onclick="toggleExtra('${id}', this)">Mostrar mais</button>
             <div id="${id}" class="hidden mt-2">
-              ${p.publico_alvo ? `<p><strong>Público-alvo:</strong> ${escapeHtml(p.publico_alvo)}</p>` : ""}
-              ${p.resultados ? `<p><strong>Resultados:</strong> ${escapeHtml(p.resultados)}</p>` : ""}
-              ${p.links ? `<p><strong>Links:</strong> <a href="${p.links}" target="_blank" class="link">${escapeHtml(p.links)}</a></p>` : ""}
+              ${mostrarCampo("publico_alvo") && p.publico_alvo ? `<p><strong>Público-alvo:</strong> ${escapeHtml(p.publico_alvo)}</p>` : ""}
+              ${mostrarCampo("resultados") && p.resultados ? `<p><strong>Resultados:</strong> ${escapeHtml(p.resultados)}</p>` : ""}
+              ${mostrarCampo("links") && p.links ? `<p><strong>Links:</strong> <a href="${p.links}" target="_blank" class="link">${escapeHtml(p.links)}</a></p>` : ""}
+              ${mostrarCampo("natureza") && p.natureza ? `<p><strong>Natureza:</strong> ${escapeHtml(p.natureza)}</p>` : ""}
+              ${mostrarCampo("valor") && p.valor ? `<p><strong>Valor Financiado:</strong> ${escapeHtml(p.valor)}</p>` : ""}
+              ${
+                mostrarCampo("apoioCentro") && Array.isArray(p.apoioCentro) && p.apoioCentro.length > 0
+                  ? `<div><strong>Apoio do CPPS:</strong><ul class="list-disc ml-6">${p.apoioCentro.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul></div>`
+                  : ""
+              }
             </div>`
               : ""
           }
@@ -326,7 +341,6 @@ const agenciaInicial = agenciaParam || "";
       "filtro-inicio",
       "filtro-fim",
       "filtro-status",
-      ,
       "filtro-departamento",
     ].forEach((id) => {
       document.getElementById(id)?.addEventListener("input", renderProjects);

@@ -245,6 +245,26 @@ const originalKey = findOriginalKey(slugPath, currentLang);
           case "iniciativas/solucoes-tecnologicas":
             return <IniciativasSolucoesTecnologicasSection texts={texts} />;
 
+          // Iniciativas
+          case "iniciativas/cafe-com-ciencia":
+            return <CafeComCienciaSection cafe={cafe} />;
+          case "iniciativas/publicacoes":
+            return <IniciativasPublicacoesSection texts={texts} />;
+          case "iniciativas/material-de-apoio":
+            return <IniciativasMaterialApoioSection texts={texts} />;
+          case "iniciativas/oficinas":
+            return <IniciativasOficinasSection texts={texts} />;
+          case "iniciativas/projetos":
+            return <IniciativasProjetosSection texts={texts} />;
+          case "iniciativas/projetos-de-pesquisa":
+            return <IniciativasProjetosDePesquisaSection texts={texts} projetos={iniciativas.projetosLista} iniciativas={iniciativas}/>;
+          case "iniciativas/projetos-de-dados":
+            return <IniciativasProjetosDeDadosSection texts={texts} />;
+          case "iniciativas/parcerias":
+            return <IniciativasParceiriasSection texts={texts} />;
+          case "iniciativas/solucoes-tecnologicas":
+            return <IniciativasSolucoesTecnologicasSection texts={texts} />;
+
           default:
             return (
               <>
