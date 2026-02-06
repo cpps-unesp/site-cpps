@@ -1,0 +1,27 @@
+---
+export interface Props {
+  owner: string;
+  repo: string;
+  template?: string;
+  text?: string;
+  class?: string;
+}
+
+const {
+  owner,
+  repo,
+  template = 'report-page-error.yml',
+  text = 'Reportar erro',
+  class: className = 'btn btn-xs btn-outline',
+} = Astro.props;
+
+const currentUrl = Astro.url.href;
+const issueUrl =
+  `https://github.com/${owner}/${repo}/issues/new` +
+  `?template=${encodeURIComponent(template)}` +
+  `&url=${encodeURIComponent(currentUrl)}`;
+---
+
+<a href={issueUrl} target="_blank" rel="noopener noreferrer" class={className}>
+  {text}
+</a>

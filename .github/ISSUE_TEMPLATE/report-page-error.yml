@@ -1,0 +1,26 @@
+name: Relatar erro em pagina
+description: Informe um problema encontrado no site
+title: "[Erro na pagina]: "
+labels: ["bug", "site"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por nos ajudar a melhorar o site!
+
+  - type: input
+    id: url
+    attributes:
+      label: URL da pagina
+      description: Link da pagina onde voce encontrou o problema
+      placeholder: https://...
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descricao do problema
+      description: Explique o que esta errado.
+    validations:
+      required: true
