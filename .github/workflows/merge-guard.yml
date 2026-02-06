@@ -1,3 +1,5 @@
+name: Merge Guard
+
 on:
   pull_request:
     branches: [main]
@@ -28,6 +30,10 @@ jobs:
             const maxAttempts = 60; // 60 tentativas x 5s = 5 minutos max
             const delaySeconds = 5;
             const ignoredChecks = ['Merge Guard', 'Validate PR Checks', 'Cloudflare Pages'];
+            const requiredChecks = (process.env.REQUIRED_CHECKS || '')
+              .split(',')
+              .map((name) => name.trim())
+              .filter(Boolean);
 
             for (let attempt = 1; attempt <= maxAttempts; attempt++) {
               const { data } = await github.rest.checks.listForRef({
@@ -38,12 +44,21 @@ jobs:
                 per_page: 100,
               });
 
-              const checkRuns = data.check_runs.filter(
+              const allRuns = data.check_runs.filter(
                 run => !ignoredChecks.includes(run.name)
               );
+              const checkRuns = requiredChecks.length
+                ? allRuns.filter(run => requiredChecks.includes(run.name))
+                : allRuns;
+              const missingRequired = requiredChecks.filter(
+                (name) => !allRuns.some((run) => run.name === name)
+              );
 
-              if (checkRuns.length === 0) {
-                core.info(`Attempt ${attempt}/${maxAttempts}: No checks found yet, waiting...`);
+              if (checkRuns.length === 0 || missingRequired.length > 0) {
+                const missingLabel = missingRequired.length
+                  ? ` Missing required: ${missingRequired.join(', ')}.`
+                  : '';
+                core.info(`Attempt ${attempt}/${maxAttempts}: No checks found yet, waiting...${missingLabel}`);
                 await new Promise(r => setTimeout(r, delaySeconds * 1000));
                 continue;
               }
@@ -70,6 +85,9 @@ jobs:
                 if (inProgress.length > 0) {
                   core.info(`Running: ${inProgress.map(r => r.name).join(', ')}`);
                 }
+                if (missingRequired.length > 0) {
+                  core.info(`Missing required: ${missingRequired.join(', ')}`);
+                }
               }
 
               // Se ha falhas reais, falhar imediatamente
@@ -90,3 +108,5 @@ jobs:
             }
 
             core.setFailed('Timeout waiting for checks to complete (5 minutes)');
+        env:
+          REQUIRED_CHECKS: ${{ vars.MERGE_GUARD_REQUIRED_CHECKS }}
