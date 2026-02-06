@@ -40,7 +40,7 @@ const h = texts.header ?? {};
         </li>
 
         <li>
-          <a class="hover:text-primary transition" href="/atividades">
+          <a class="hover:text-primary transition" href={`/${lang}/atividades`}>
             {h.atividades}
           </a>
         </li>
@@ -111,7 +111,7 @@ const h = texts.header ?? {};
     <div id="menu-mobile" class="lg:hidden hidden mt-2">
       <ul class="flex flex-col gap-2 text-base font-semibold">
         <li><a href={`/${lang}/`}>{h.home}</a></li>
-        <li><a href="/atividades">{h.atividades}</a></li>
+        <li><a href={`/${lang}/atividades`}>{h.atividades}</a></li>
         <li><a href={`/${lang}/${getTranslatedPath("noticias", lang)}`}>{h.noticias}</a></li>
         <li>
           <details>

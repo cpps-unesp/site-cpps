@@ -5,14 +5,23 @@ interface Props {
   items: SidebarItem[];
   currentPath: string;
   level?: number;
+  lang?: string;
 }
 
-const { items, currentPath, level = 0 } = Astro.props;
+const { items, currentPath, level = 0, lang } = Astro.props;
+
+function buildUrl(url?: string) {
+  if (!url || url.startsWith('http')) return url;
+  if (!lang) return url;
+  if (url.startsWith(`/${lang}/`)) return url;
+  return `/${lang}${url}`;
+}
 
 function isActive(url?: string) {
   if (!url) return false;
   if (url.startsWith('http')) return false;
-  const normalizedUrl = url.replace(/\/$/, "");
+  const resolvedUrl = buildUrl(url) ?? url;
+  const normalizedUrl = resolvedUrl.replace(/\/$/, "");
   const normalizedPath = currentPath.replace(/\/$/, "");
   return normalizedPath === normalizedUrl;
 }
@@ -38,7 +47,7 @@ function hasActiveChild(item: SidebarItem): boolean {
           <summary class="flex items-center justify-between py-1.5 px-2 rounded-lg cursor-pointer hover:bg-base-200 transition-colors list-none [&::-webkit-details-marker]:hidden">
             {item.url ? (
                <a
-                href={item.url}
+                href={buildUrl(item.url)}
                 target={isExternal(item.url) ? "_blank" : undefined}
                 rel={isExternal(item.url) ? "noopener noreferrer" : undefined}
                 class={`text-sm transition-colors hover:text-primary flex items-center gap-1 ${
@@ -64,7 +73,7 @@ function hasActiveChild(item: SidebarItem): boolean {
       ) : (
         item.url ? (
           <a
-            href={item.url}
+            href={buildUrl(item.url)}
             target={isExternal(item.url) ? "_blank" : undefined}
             rel={isExternal(item.url) ? "noopener noreferrer" : undefined}
             class={`flex items-center justify-between py-1.5 px-2 rounded-lg text-sm transition-colors hover:bg-base-200 hover:text-primary ${

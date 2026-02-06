@@ -1,17 +1,19 @@
 ---
 export const prerender = true;
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import LinkCard from '../../components/atividades/LinkCard.astro';
-import CardGrid from '../../components/atividades/CardGrid.astro';
-import Notice from '../../components/atividades/Notice.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LinkCard from '../../../components/atividades/LinkCard.astro';
+import CardGrid from '../../../components/atividades/CardGrid.astro';
+import Notice from '../../../components/atividades/Notice.astro';
+import { getLangFromUrl } from '../../../utils/getLangFromUrl';
 
-const basePath = '/atividades';
+const lang = getLangFromUrl(Astro.url);
+const basePath = `/${lang}/atividades`;
 ---
 
 <BaseLayout
   titulo="Atividades"
   descricao="Explore atividades, materiais e documentacoes do CPPS."
-  githubPath="src/pages/atividades/index.astro"
+  githubPath="src/pages/[lang]/atividades/index.astro"
 >
   <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
 

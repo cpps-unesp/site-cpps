@@ -1,0 +1,249 @@
+---
+export const prerender = true;
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getLangFromUrl } from '../../../utils/getLangFromUrl';
+
+// Componentes customizados para o MDX
+import Notice from '../../../components/atividades/Notice.astro';
+import Card from '../../../components/atividades/Card.astro';
+import CardGrid from '../../../components/atividades/CardGrid.astro';
+import LinkCard from '../../../components/atividades/LinkCard.astro';
+import Steps from '../../../components/atividades/Steps.astro';
+
+// Componentes de estrutura da documentacao
+import DocsSidebar from '../../../components/atividades/Sidebar.astro';
+import TableOfContents from '../../../components/atividades/TableOfContents.astro';
+import Breadcrumbs from '../../../components/atividades/Breadcrumbs.astro';
+import Pagination from '../../../components/atividades/Pagination.astro';
+import GitHubEditLink from '../../../components/GitHubEditLink.astro';
+
+import { sidebar } from '../../../config/atividades';
+import type { SupportedLang } from '../../../types/lang';
+
+const supportedLangs: SupportedLang[] = ['pt', 'en', 'es'];
+
+export async function getStaticPaths() {
+  const atividades = await getCollection('atividades');
+  return atividades.flatMap((entry) =>
+    supportedLangs.map((lang) => ({
+      params: { lang, slug: entry.slug },
+      props: { entry },
+    }))
+  );
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await render(entry);
+const currentPath = Astro.url.pathname;
+const lang = getLangFromUrl(Astro.url);
+---
+
+<BaseLayout
+  titulo={entry.data.title}
+  descricao={entry.data.description}
+  githubPath={`src/content/atividades/${entry.id}`}
+>
+  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pt-6 pb-12 lg:pt-10">
+
+    <!-- 🔹 Botoes de Menu Mobile (visiveis apenas em mobile) -->
+    <div class="lg:hidden flex items-center gap-2 mb-6 pb-4 border-b border-base-300 sticky top-20 bg-base-100/80 backdrop-blur-md z-30">
+        <button id="mobile-menu-left-trigger" class="btn btn-ghost btn-sm flex items-center gap-2">
+            <i class="fa-solid fa-bars"></i>
+            <span class="text-sm font-medium">Menu</span>
+        </button>
+        <div class="flex-1"></div>
+        <button id="mobile-menu-right-trigger" class="btn btn-ghost btn-sm flex items-center gap-2">
+            <span class="text-sm font-medium">Nesta pagina</span>
+            <i class="fa-solid fa-list"></i>
+        </button>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 relative" id="atividades-container">
+
+        <!-- 🔹 Backdrop para mobile -->
+        <div id="mobile-backdrop" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity duration-300 opacity-0"></div>
+
+        <!-- 🔹 Navegacao Lateral Esquerda (Sidebar) -->
+        <aside id="left-sidebar" class="w-full lg:w-72 flex-shrink-0 transition-all duration-300 overflow-hidden
+               fixed lg:static inset-y-0 left-0 z-50 bg-base-100 lg:bg-transparent
+               transform -translate-x-full lg:translate-x-0
+               p-4 lg:p-0 shadow-2xl lg:shadow-none">
+            <div class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-4 scrollbar-thin scrollbar-thumb-base-300 h-full lg:h-auto flex flex-col">
+                <div class="flex items-center justify-between mb-6 lg:mb-6">
+                    <h3 class="font-bold text-lg text-primary flex items-center gap-2">
+                        <i class="fa-solid fa-book-open text-sm"></i>
+                        Atividades
+                    </h3>
+                    <!-- Botao fechar (apenas mobile) -->
+                    <button id="mobile-close-left" class="lg:hidden btn btn-ghost btn-sm btn-circle">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <!-- Botao para encolher (apenas desktop) -->
+                    <button id="toggle-left" class="hidden lg:flex btn btn-ghost btn-xs opacity-50 hover:opacity-100" title="Encolher menu">
+                        <i class="fa-solid fa-angles-left"></i>
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto lg:overflow-visible">
+                    <DocsSidebar items={sidebar} currentPath={currentPath} lang={lang} />
+                </div>
+            </div>
+        </aside>
+
+        <!-- Botao para expandir menu esquerdo (inicialmente oculto, apenas desktop) -->
+        <button id="expand-left" class="hidden fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-base-200 border border-l-0 border-base-300 p-2 rounded-r-xl shadow-lg hover:bg-primary hover:text-white transition-all duration-300 group" title="Expandir menu">
+            <i class="fa-solid fa-angles-right group-hover:translate-x-1 transition-transform"></i>
+        </button>
+
+        <!-- 🔹 Conteudo Principal -->
+        <div class="flex-1 min-w-0 transition-all duration-300">
+          <div class="max-w-4xl mx-auto relative">
+            <Breadcrumbs currentPath={currentPath} lang={lang} />
+
+            <article class="prose prose-lg max-w-none dark:prose-invert">
+              <header class="mb-12 not-prose">
+                <h1 class="titulo text-4xl sm:text-5xl mb-4 font-black">{entry.data.title}</h1>
+                {entry.data.description && (
+                    <p class="text-xl text-base-content/60 leading-relaxed border-l-4 border-primary/20 pl-6 italic">
+                        {entry.data.description}
+                    </p>
+                )}
+                <div class="divider mt-8"></div>
+              </header>
+
+              <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
+            </article>
+
+            <Pagination currentPath={currentPath} />
+
+          </div>
+        </div>
+
+        <!-- 🔹 Tabela de Conteudo Direita (ToC) -->
+        <aside id="right-sidebar" class="hidden xl:block w-64 flex-shrink-0 transition-all duration-300 overflow-hidden
+               fixed xl:static inset-y-0 right-0 z-50 bg-base-100 xl:bg-transparent
+               transform translate-x-full xl:translate-x-0
+               p-4 xl:p-0 shadow-2xl xl:shadow-none">
+            <div class="xl:sticky xl:top-24 h-full xl:h-auto flex flex-col">
+                <div class="flex items-center justify-between mb-4 xl:mb-4">
+                    <h3 class="font-bold text-xs uppercase tracking-widest text-base-content/40">
+                        Nesta pagina
+                    </h3>
+                    <!-- Botao fechar (apenas mobile) -->
+                    <button id="mobile-close-right" class="xl:hidden btn btn-ghost btn-sm btn-circle">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <!-- Botao para encolher (apenas desktop) -->
+                    <button id="toggle-right" class="hidden xl:flex btn btn-ghost btn-xs opacity-50 hover:opacity-100" title="Encolher indice">
+                        <i class="fa-solid fa-angles-right"></i>
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto xl:overflow-visible">
+                    <TableOfContents headings={headings} />
+                </div>
+            </div>
+        </aside>
+
+        <!-- Botao para expandir indice direito (inicialmente oculto, apenas desktop) -->
+        <button id="expand-right" class="hidden fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-base-200 border border-r-0 border-base-300 p-2 rounded-l-xl shadow-lg hover:bg-primary hover:text-white transition-all duration-300 group" title="Expandir indice">
+            <i class="fa-solid fa-angles-left group-hover:-translate-x-1 transition-transform"></i>
+        </button>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+    // Gerenciamento dos Sidebars (Toggle Horizontal)
+    const leftSidebar = document.getElementById('left-sidebar');
+    const rightSidebar = document.getElementById('right-sidebar');
+    const toggleLeft = document.getElementById('toggle-left');
+    const toggleRight = document.getElementById('toggle-right');
+    const expandLeft = document.getElementById('expand-left');
+    const expandRight = document.getElementById('expand-right');
+
+    // Elementos mobile
+    const mobileMenuLeftTrigger = document.getElementById('mobile-menu-left-trigger');
+    const mobileMenuRightTrigger = document.getElementById('mobile-menu-right-trigger');
+    const mobileCloseLeft = document.getElementById('mobile-close-left');
+    const mobileCloseRight = document.getElementById('mobile-close-right');
+    const mobileBackdrop = document.getElementById('mobile-backdrop');
+
+    // Funcoes para abrir/fechar drawers mobile
+    function openLeftDrawer() {
+        leftSidebar.classList.remove('-translate-x-full');
+        leftSidebar.classList.add('translate-x-0');
+        mobileBackdrop.classList.remove('hidden');
+        // Trigger reflow para animacao funcionar
+        void mobileBackdrop.offsetWidth;
+        mobileBackdrop.classList.remove('opacity-0');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLeftDrawer() {
+        leftSidebar.classList.add('-translate-x-full');
+        leftSidebar.classList.remove('translate-x-0');
+        mobileBackdrop.classList.add('opacity-0');
+        setTimeout(() => {
+            mobileBackdrop.classList.add('hidden');
+        }, 300);
+        document.body.style.overflow = '';
+    }
+
+    function openRightDrawer() {
+        rightSidebar.classList.remove('hidden');
+        // Trigger reflow
+        void rightSidebar.offsetWidth;
+        rightSidebar.classList.remove('translate-x-full');
+        rightSidebar.classList.add('translate-x-0');
+        mobileBackdrop.classList.remove('hidden');
+        void mobileBackdrop.offsetWidth;
+        mobileBackdrop.classList.remove('opacity-0');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeRightDrawer() {
+        rightSidebar.classList.add('translate-x-full');
+        rightSidebar.classList.remove('translate-x-0');
+        mobileBackdrop.classList.add('opacity-0');
+        setTimeout(() => {
+            mobileBackdrop.classList.add('hidden');
+        }, 300);
+        document.body.style.overflow = '';
+    }
+
+    // Eventos mobile
+    mobileMenuLeftTrigger?.addEventListener('click', openLeftDrawer);
+    mobileCloseLeft?.addEventListener('click', closeLeftDrawer);
+    mobileMenuRightTrigger?.addEventListener('click', openRightDrawer);
+    mobileCloseRight?.addEventListener('click', closeRightDrawer);
+    mobileBackdrop?.addEventListener('click', () => {
+        closeLeftDrawer();
+        closeRightDrawer();
+    });
+
+    // Toggle desktop
+    toggleLeft?.addEventListener('click', () => {
+        leftSidebar.classList.add('lg:w-12');
+        leftSidebar.classList.remove('lg:w-72');
+        expandLeft.classList.remove('hidden');
+    });
+
+    expandLeft?.addEventListener('click', () => {
+        leftSidebar.classList.add('lg:w-72');
+        leftSidebar.classList.remove('lg:w-12');
+        expandLeft.classList.add('hidden');
+    });
+
+    toggleRight?.addEventListener('click', () => {
+        rightSidebar.classList.add('xl:w-10');
+        rightSidebar.classList.remove('xl:w-64');
+        expandRight.classList.remove('hidden');
+    });
+
+    expandRight?.addEventListener('click', () => {
+        rightSidebar.classList.add('xl:w-64');
+        rightSidebar.classList.remove('xl:w-10');
+        expandRight.classList.add('hidden');
+    });
+</script>
