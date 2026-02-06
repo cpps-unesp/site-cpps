@@ -1,0 +1,30 @@
+---
+interface Props {
+  githubPath?: string;
+  lang?: string;
+  texts?: any;
+}
+
+const { githubPath, lang = 'pt', texts = {} } = Astro.props;
+const editLabel = texts.editOnGithub || (lang === 'en' ? 'Edit this page on GitHub' : (lang === 'es' ? 'Editar esta página en GitHub' : 'Editar esta página no GitHub'));
+
+if (!githubPath) return null;
+
+// Encode path segments to handle brackets and other special characters in filenames (like [lang]/[...slug].astro)
+const encodedPath = githubPath
+  .split('/')
+  .map(segment => encodeURIComponent(segment))
+  .join('/');
+
+const url = `https://github.com/cpps-unesp/site-cpps/blob/main/${encodedPath}`;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="flex items-center gap-2 hover:text-primary transition-colors text-sm font-medium py-4 border-t border-base-300 mt-8"
+>
+  <i class="fa-brands fa-github text-lg"></i>
+  <span>{editLabel}</span>
+</a>

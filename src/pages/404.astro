@@ -2,7 +2,7 @@
 import { getTranslations, type Language } from "../utils/i18n";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import AlternarTema from "../components/AlterarTema.astro";
+import GitHubEditLink from "../components/GitHubEditLink.astro";
 import SearchModal from "../components/SearchModal.astro";
 import BackToTop from "../components/BackToTop.astro";
 
@@ -83,11 +83,9 @@ const identidade = t.identidade;
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <Header lang={lang} texts={texts} identidade={identidade}>
-      <AlternarTema />
-    </Header>
+    <Header lang={lang} texts={texts} identidade={identidade} />
 
-    <main class="pt-8 flex-1">
+    <main class="pt-24 flex-1">
       <section class="min-h-[60vh] flex items-center justify-center px-4">
         <div class="text-center max-w-lg">
           <h1 class="text-8xl font-heading font-bold text-primary mb-4">404</h1>
@@ -102,6 +100,10 @@ const identidade = t.identidade;
             <i class="fa-solid fa-house mr-2"></i>
             {texts.backToHome}
           </a>
+
+          <div class="mt-12 text-left">
+            <GitHubEditLink githubPath="src/pages/404.astro" lang={lang} texts={texts} />
+          </div>
         </div>
       </section>
     </main>

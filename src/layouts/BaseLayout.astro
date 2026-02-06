@@ -11,18 +11,20 @@ interface Props {
   texts?: any;
   identidade?: any;
   lang?: string;
+  githubPath?: string;
 }
 
 const {
   titulo = t.titulo,
   descricao = t.descricao,
   texts = t.texts,
-  identidade = t.identidade
+  identidade = t.identidade,
+  githubPath
 } = Astro.props;
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import AlternarTema from "../components/AlterarTema.astro";
+import GitHubEditLink from "../components/GitHubEditLink.astro";
 import SearchModal from "../components/SearchModal.astro";
 import BackToTop from "../components/BackToTop.astro";
 
@@ -102,14 +104,17 @@ import "../styles/global.css";
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <Header lang={lang} texts={texts} identidade={identidade}>
-      <AlternarTema />
-    </Header>
+    <Header lang={lang} texts={texts} identidade={identidade} />
 
-    <main class="pt-8 flex-1" data-pagefind-body>
+    <main class="pt-24 flex-1" data-pagefind-body>
       <slot />
+      {githubPath && (
+        <div class="max-w-screen-2xl mx-auto px-4 md:px-8">
+           <GitHubEditLink githubPath={githubPath} lang={lang} texts={texts} />
+        </div>
+      )}
     </main>
-    <Footer lang={lang} texts={texts} />
+    <Footer lang={lang} texts={texts} githubPath={githubPath} />
     <BackToTop lang={lang} />
     <SearchModal texts={texts} />
     <script type="module" src="/scripts/themeSwitcher.js"></script>

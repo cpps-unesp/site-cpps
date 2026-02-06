@@ -17,12 +17,12 @@ A BIOS foi atualizada para [U23_2.82_04_04_2019](https://support.hpe.com/connect
 
 Mensagem do boot do server:
 
-- [[Firmware Bug]: The BIOS Has Corrupted Hw-PMU Resources](https://support.hpe.com/hpesc/public/docDisplay?docId=emr_na-c03265132)
+- [[Firmware Bug]: The BIOS Has Corrupted Hw-PMU Resources](https://support.hpe.com/hpesc/docDisplay?docId=emr_na-c03265132)
 
 
 Documentação oficial:
 
-- [HPE ProLiant Gen9 Servers - Download Drivers, Firmware, Software, Utilities, Documentation and Guides](https://support.hpe.com/hpesc/public/docDisplay?docId=sf000044077en_us&docLocale=en_US)
+- [HPE ProLiant Gen9 Servers - Download Drivers, Firmware, Software, Utilities, Documentation and Guides](https://support.hpe.com/hpesc/docDisplay?docId=sf000044077en_us&docLocale=en_US)
 
 
 

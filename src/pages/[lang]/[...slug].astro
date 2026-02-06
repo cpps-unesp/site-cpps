@@ -22,7 +22,6 @@ import NoticiaPage from "../../components/NoticiaPage.astro";
 import NoticiasListPage from "../../components/NoticiasListPage.astro";
 import PublicationListPage from "../../components/PublicationListPage.astro";
 import PublicationPage from "../../components/PublicationPage.astro";
-
 import routeTranslations from "../../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import type { SupportedLang } from "../../types/lang";
@@ -179,6 +178,7 @@ const originalKey = findOriginalKey(slugPath, currentLang);
       titulo={membroSelecionado.data.title}
       descricao={membroSelecionado.data.cargo ?? ""}
       texts={texts}
+      githubPath={`src/content/membros/${membroSelecionado.id}`}
     >
       <article class="max-w-3xl mx-auto pt-16 pb-10 text-center">
         <img
@@ -206,9 +206,10 @@ const originalKey = findOriginalKey(slugPath, currentLang);
   ) : (
     <BaseLayout
       lang={currentLang}
-      titulo={titulo}
+      titulo={originalKey === "noticias" ? (texts.noticias?.title ?? "Notícias") : titulo}
       descricao={descricao}
       texts={texts}
+      githubPath="src/pages/[lang]/[...slug].astro"
     >
       <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
 
@@ -220,6 +221,8 @@ const originalKey = findOriginalKey(slugPath, currentLang);
             return <SobreSection blocos={sobre} />;
           case "institucional/documentos":
             return <DocumentosSection documentos={documentos} />;
+          case "noticias":
+            return <NoticiasListPage lang={currentLang} />;
 
           // Iniciativas
           case "iniciativas/cafe-com-ciencia":

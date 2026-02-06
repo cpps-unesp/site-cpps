@@ -42,7 +42,7 @@ const {
 ---
 
 <BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={locale.texts}
-  identidade={locale.identidade}>
+  identidade={locale.identidade} githubPath="src/pages/[lang]/index.astro">
   <Hero heroData={locale} />
   <NewsHomeSection lang={currentLang} title={locale.texts.header.noticias} />
   <Initiatives initiatives={locale.initiatives} />

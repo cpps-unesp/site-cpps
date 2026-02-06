@@ -1,11 +1,9 @@
-name: Merge Guard
-
 on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened, ready_for_review]
 
-# Evita execuções simultâneas do mesmo PR
+# Evita execucoes simultaneas do mesmo PR
 concurrency:
   group: merge-guard-${{ github.event.pull_request.number }}
   cancel-in-progress: true
@@ -17,7 +15,7 @@ permissions:
 jobs:
   validate:
     name: Validate PR Checks
-    # Só executa se o PR não for draft
+    # So executa se o PR nao for draft
     if: github.event.pull_request.draft == false && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -45,7 +43,7 @@ jobs:
               );
 
               if (checkRuns.length === 0) {
-                core.info(`⏳ Attempt ${attempt}/${maxAttempts}: No checks found yet...`);
+                core.info(`Attempt ${attempt}/${maxAttempts}: No checks found yet, waiting...`);
                 await new Promise(r => setTimeout(r, delaySeconds * 1000));
                 continue;
               }
@@ -54,7 +52,7 @@ jobs:
               const completed = checkRuns.filter(run => run.status === 'completed');
               const inProgress = checkRuns.filter(run => run.status !== 'completed');
 
-              // Considerar 'skipped' como sucesso para não bloquear o merge guard
+              // Considerar 'skipped' como sucesso para nao bloquear o merge guard
               const failed = completed.filter(run =>
                 run.conclusion !== 'success' &&
                 run.conclusion !== 'neutral' &&
@@ -63,32 +61,32 @@ jobs:
 
               // Log de progresso a cada 10 tentativas
               if (attempt % 10 === 0 || attempt === 1) {
-                core.info(`\n📊 Status (attempt ${attempt}/${maxAttempts}):`);
-                core.info(`   Total checks: ${checkRuns.length}`);
-                core.info(`   ✅ Completed: ${completed.length}`);
-                core.info(`   ⏳ In progress: ${inProgress.length}`);
-                core.info(`   ❌ Failed: ${failed.length}`);
+                core.info(`\nStatus (attempt ${attempt}/${maxAttempts}):`);
+                core.info(`Total checks: ${checkRuns.length}`);
+                core.info(`Completed: ${completed.length}`);
+                core.info(`In progress: ${inProgress.length}`);
+                core.info(`Failed: ${failed.length}`);
 
                 if (inProgress.length > 0) {
-                  core.info(`   Running: ${inProgress.map(r => r.name).join(', ')}`);
+                  core.info(`Running: ${inProgress.map(r => r.name).join(', ')}`);
                 }
               }
 
-              // Se há falhas reais, falhar imediatamente
+              // Se ha falhas reais, falhar imediatamente
               if (failed.length > 0) {
                 const failedNames = failed.map(r => `${r.name} (${r.conclusion})`).join(', ');
-                core.setFailed(`❌ Checks failed: ${failedNames}`);
+                core.setFailed(`Checks failed: ${failedNames}`);
                 return;
               }
 
               // Se todos completaram com sucesso (ou neutral/skipped)
               if (completed.length === checkRuns.length) {
-                core.info(`\n✅ All ${checkRuns.length} checks passed (or were skipped)!`);
+                core.info(`All ${checkRuns.length} checks passed (or were skipped)!`);
                 return;
               }
 
-              // Aguardar próxima tentativa
+              // Aguardar proxima tentativa
               await new Promise(r => setTimeout(r, delaySeconds * 1000));
             }
 
-            core.setFailed('⏰ Timeout waiting for checks to complete (5 minutes)');
+            core.setFailed('Timeout waiting for checks to complete (5 minutes)');
