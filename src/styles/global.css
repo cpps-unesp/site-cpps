@@ -49,28 +49,31 @@ body > *:last-child {
 }
 
 /* Títulos */
-h1, h2, h3, .titulo {
+h1, h2, h3, h4, .titulo {
   font-family: "Bebas Neue", sans-serif;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  font-weight: normal;
 }
 
 .titulo {
-  font-weight: normal;
-  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
 }
 
 .mini-titulo {
-  font-family: "Bebas Neue", sans-serif;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  font-weight: normal;
-  font-size: clamp(1.8rem, 2.5vw, 2.5rem);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  margin-bottom: 1rem;
 }
 
 .subtitulo {
-  font-size: 18px;
+  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-base-content);
+  opacity: 0.8;
 }
 
 /* Parágrafos */
@@ -103,11 +106,31 @@ h1, h2, h3, .titulo {
 }
 
 /* Ajustes para o prose (Tailwind Typography) */
+.prose h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem) !important;
+  margin-bottom: 2rem !important;
+  line-height: 1.1 !important;
+}
+
 .prose h2 {
-  font-size: 1.875rem !important; /* 30px */
-  margin-top: 2.5rem !important;
-  margin-bottom: 1.25rem !important;
+  font-size: clamp(1.8rem, 4vw, 2.4rem) !important;
+  margin-top: 3rem !important;
+  margin-bottom: 1.5rem !important;
   color: var(--color-primary) !important;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-primary), transparent 80%);
+  padding-bottom: 0.5rem;
+}
+
+.prose h3 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem) !important;
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+}
+
+.prose p {
+  font-size: 1.125rem !important;
+  line-height: 1.8 !important;
+  margin-bottom: 1.5rem !important;
 }
 
 .prose pre {
@@ -122,20 +145,19 @@ h1, h2, h3, .titulo {
 
 /* Estilo para linhas ou blocos grifados (highlighted) */
 .prose .highlighted {
-  background-color: rgba(255, 255, 255, 0.1);
   display: block;
   margin: 0 -1.25rem;
   padding: 0 1.25rem;
   border-left: 4px solid var(--color-primary);
+  color: var(--color-primary); /* Destaque por cor de texto em vez de fundo */
 }
 
 .prose code {
-  background-color: var(--color-base-300) !important;
+  background-color: transparent !important;
   color: var(--color-primary) !important;
-  padding: 0.125rem 0.375rem !important;
-  border-radius: 0.4rem !important;
   font-weight: 600 !important;
-  font-size: 0.9em !important;
+  font-size: 0.95em !important;
+  padding: 0 !important;
 }
 
 .prose code::before, .prose code::after {

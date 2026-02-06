@@ -36,10 +36,10 @@ const currentPath = Astro.url.pathname;
   descricao={entry.data.description}
   githubPath={`src/content/docs/${entry.id}`}
 >
-  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 py-12">
+  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pt-6 pb-12 lg:pt-10">
 
     <!-- 🔹 Botões de Menu Mobile (visíveis apenas em mobile) -->
-    <div class="lg:hidden flex items-center gap-2 mb-6 pb-4 border-b border-base-300">
+    <div class="lg:hidden flex items-center gap-2 mb-6 pb-4 border-b border-base-300 sticky top-20 bg-base-100/80 backdrop-blur-md z-30">
         <button id="mobile-menu-left-trigger" class="btn btn-ghost btn-sm flex items-center gap-2">
             <i class="fa-solid fa-bars"></i>
             <span class="text-sm font-medium">Menu</span>
@@ -61,7 +61,7 @@ const currentPath = Astro.url.pathname;
                fixed lg:static inset-y-0 left-0 z-50 bg-base-100 lg:bg-transparent
                transform -translate-x-full lg:translate-x-0
                p-4 lg:p-0 shadow-2xl lg:shadow-none">
-            <div class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-4 scrollbar-thin scrollbar-thumb-base-300 h-full lg:h-auto flex flex-col">
+            <div class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-4 scrollbar-thin scrollbar-thumb-base-300 h-full lg:h-auto flex flex-col">
                 <div class="flex items-center justify-between mb-6 lg:mb-6">
                     <h3 class="font-bold text-lg text-primary flex items-center gap-2">
                         <i class="fa-solid fa-book-open text-sm"></i>

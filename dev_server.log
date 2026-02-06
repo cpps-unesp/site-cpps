@@ -165,3 +165,11 @@ Possible dynamic routes being matched: src/pages/[lang]/[...slug].astro.
 09:23:24 [watch] src/pages/[lang]/[list].astro
 09:23:24 [watch] src/pages/[lang]/tes.astro
 09:23:24 [watch] src/pages/[lang]/tes.astro
+09:58:57 [watch] src/layouts/BaseLayout.astro
+09:58:57 [watch] src/layouts/BaseLayout.astro
+09:59:03 [watch] src/pages/docs/[...slug].astro
+10:00:29 [watch] /src/styles/global.css
+10:01:40 [watch] /src/styles/global.css
+10:12:41 [watch] /src/styles/global.css
+10:19:55 [watch] build_output.txt
+10:19:55 [watch] build_output.txt
