@@ -5,81 +5,110 @@ on:
     branches:
       - main
 
-concurrency:
-  group: auto-revert-${{ github.sha }}
-  cancel-in-progress: false
-
 permissions:
   contents: write
   pull-requests: write
+  issues: write
 
 jobs:
   revert:
-    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[auto-revert]')
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 2
-    
     steps:
+      - name: Inspect push
+        id: inspect
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const sha = context.sha;
+            const msg = context.payload.head_commit?.message || '';
+            const commitCount = Math.max(context.payload.commits?.length || 1, 1);
+
+            const { data: pulls } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner,
+              repo,
+              commit_sha: sha,
+            });
+
+            const isPrMerge = pulls.length > 0;
+
+            core.setOutput('is_pr_merge', isPrMerge ? 'true' : 'false');
+            core.setOutput('message', msg);
+            core.setOutput('commit_count', String(commitCount));
+
+      - name: Skip PR merges
+        if: steps.inspect.outputs.is_pr_merge == 'true'
+        run: echo "Push came from a PR merge. Skipping auto-revert."
+
+      - name: Skip auto-revert commits
+        if: contains(steps.inspect.outputs.message, '[auto-revert]')
+        run: echo "Auto-revert commit detected. Skipping."
+
       - name: Checkout
+        if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
         uses: actions/checkout@v4
         with:
-          fetch-depth: 2
-          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
-      - name: Fast check and revert
-        id: revert
+      - name: Configure git
+        if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Prepare revert branch
+        if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
+        run: |
+          COUNT=${{ steps.inspect.outputs.commit_count }}
+          BRANCH="auto-revert/${{ github.sha }}"
+          git checkout -b "$BRANCH"
+          git revert --no-commit HEAD~${COUNT}..HEAD
+          git commit -m "[auto-revert] Revert direct push to main"
+          git push origin "$BRANCH"
+
+      - name: Open revert PR
+        if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="auto-revert/${{ github.sha }}"
+          TITLE="[auto-revert] Revert direct push to main"
+          BODY=$(cat <<'EOF'
+          Direct push to **main** detected and reverted via PR.
+
+          - Actor: @${{ github.actor }}
+          - Head SHA: ${{ github.sha }}
+          - Commit count: ${{ steps.inspect.outputs.commit_count }}
+          - Head commit message: ${{ steps.inspect.outputs.message }}
+          EOF
+          )
+          gh pr create --title "$TITLE" --body "$BODY" --head "$BRANCH" --base "main" --label "auto-revert"
+
+      - name: Comment on commit
+        if: steps.inspect.outputs.is_pr_merge != 'true' && !contains(steps.inspect.outputs.message, '[auto-revert]')
         uses: actions/github-script@v7
         with:
           script: |
             const sha = context.sha;
-            const { data: pulls } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+            const actor = context.actor;
+            const count = process.env.COMMIT_COUNT;
+            const message = process.env.COMMIT_MESSAGE;
+            const body = [
+              `Direct push to **main** detected. A revert PR was opened and requires manual approval.`,
+              '',
+              `- Actor: @${actor}`,
+              `- Commit count: ${count}`,
+              `- Head commit message: ${message || '(empty)'}`,
+            ].join('\n');
+
+            await github.rest.repos.createCommitComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
               commit_sha: sha,
+              body,
             });
-            
-            if (pulls.length > 0) {
-              console.log('Push veio de PR merge');
-              core.setOutput('skip', 'true');
-              return;
-            }
-            
-            console.log('Direct push detectado');
-            core.setOutput('skip', 'false');
-            core.setOutput('sha', sha);
-            core.setOutput('actor', context.actor);
-            core.setOutput('message', context.payload.head_commit?.message || '');
-            core.setOutput('count', String(Math.max(context.payload.commits?.length || 1, 1)));
-
-      - name: Execute revert
-        if: steps.revert.outputs.skip == 'false'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          SHA="${{ steps.revert.outputs.sha }}"
-          ACTOR="${{ steps.revert.outputs.actor }}"
-          MESSAGE="${{ steps.revert.outputs.message }}"
-          COUNT="${{ steps.revert.outputs.count }}"
-          
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          
-          BRANCH="auto-revert/${SHA:0:7}"
-          git checkout -b "$BRANCH"
-          git revert --no-commit HEAD~${COUNT}..HEAD
-          git commit -m "[auto-revert] Revert direct push to main" -m "Original: ${SHA}" -m "Author: ${ACTOR}"
-          git push origin "$BRANCH"
-          
-          gh pr create --title "[auto-revert] Revert direct push to main" --body "Direct push detectado. Commit: ${SHA}, Author: ${ACTOR}" --head "$BRANCH" --base "main" --label "auto-revert"
-
-      - name: Comment on commit
-        if: steps.revert.outputs.skip == 'false'
-        uses: actions/github-script@v7
-        with:
-          script: |
-            github.rest.repos.createCommitComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              commit_sha: '${{ steps.revert.outputs.sha }}',
-              body: 'Direct push detectado. Revert automatico criado.',
-            });
+          COMMIT_COUNT: ${{ steps.inspect.outputs.commit_count }}
+          COMMIT_MESSAGE: ${{ steps.inspect.outputs.message }}
