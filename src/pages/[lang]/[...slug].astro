@@ -220,13 +220,13 @@ const originalKey = findOriginalKey(slugPath, currentLang);
           case "institucional/sobre":
             return <SobreSection blocos={sobre} />;
           case "institucional/documentos":
-            return <DocumentosSection documentos={documentos} />;
+            return <DocumentosSection documentos={documentos} lang={currentLang} />;
           case "noticias":
             return <NoticiasListPage lang={currentLang} />;
 
           // Iniciativas
           case "iniciativas/cafe-com-ciencia":
-            return <CafeComCienciaSection cafe={cafe} />;
+            return <CafeComCienciaSection cafe={cafe} lang={currentLang} />;
           case "iniciativas/publicacoes":
           case "publicacao":
             return <PublicationListPage lang={currentLang} />;
