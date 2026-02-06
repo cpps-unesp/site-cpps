@@ -923,6 +923,35 @@ export default defineConfig({
             },
           ], // Fim de items (Projetos)
         }, // Fim de Projetos
+        {
+          label: "Informações",
+          items: [
+            {
+              label: "Atendimento",
+              slug: "docs/atendimento",
+            },
+            {
+              label: "Estágio",
+              slug: "docs/estagio",
+            },
+            {
+              label: "Processo",
+              slug: "docs/processo",
+            },
+            {
+              label: "Estágio Voluntário",
+              slug: "docs/voluntario",
+            },
+            {
+              label: "Emprestimo",
+              slug: "docs/emprestimo",
+            },
+            {
+              label: "Contatos",
+              slug: "docs/contato",
+            },
+          ],
+        },
       ], // Fim de sidebar
     }), // Fim de starlight
   ], // Fim de integrations
