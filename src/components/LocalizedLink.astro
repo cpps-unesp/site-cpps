@@ -1,0 +1,33 @@
+---
+import { getLangFromUrl } from "../utils/getLangFromUrl";
+
+interface Props {
+  href: string;
+  class?: string;
+  [key: string]: any;
+}
+
+const { href, class: className, ...rest } = Astro.props;
+const currentLang = getLangFromUrl(Astro.url);
+
+let localizedHref = href;
+
+// Se for um link interno e não começar com um idioma suportado
+if (href.startsWith('/') && !href.startsWith('http') && !/^\/(pt|en|es)(\/|$)/.test(href)) {
+  localizedHref = `/${currentLang}${href.startsWith('/') ? '' : '/'}${href}`;
+
+  // Evita duplicação de slash se o href original já começava com /
+  if (href === '/') {
+    localizedHref = `/${currentLang}/`;
+  } else {
+    localizedHref = `/${currentLang}${href}`;
+  }
+}
+
+// Limpeza de barras duplas (ex: /pt//noticias -> /pt/noticias)
+localizedHref = localizedHref.replace(/\/+/g, '/');
+---
+
+<a href={localizedHref} class={className} {...rest}>
+  <slot />
+</a>

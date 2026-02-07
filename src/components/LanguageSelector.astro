@@ -90,6 +90,8 @@ if (!originalKey && currentPath) {
             disabled = true;
             labelExtra = ` (${translations[l.code]?.texts?.languageUnavailable ?? "Not available"})`;
           }
+        } else if (currentPath) {
+          href = `/${l.code}/${currentPath}`;
         }
 
         return (
