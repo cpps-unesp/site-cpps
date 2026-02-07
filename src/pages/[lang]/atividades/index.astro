@@ -4,18 +4,16 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LinkCard from '../../../components/atividades/LinkCard.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
-import { getLangFromUrl } from '../../../utils/getLangFromUrl';
-import type { SupportedLang } from '../../../types/lang';
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'pt' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'es' } },
+    { params: { lang: "pt" } },
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
   ];
 }
 
-const lang = getLangFromUrl(Astro.url) as SupportedLang;
+const { lang = "pt" } = Astro.params;
 const basePath = `/${lang}/atividades`;
 ---
 
@@ -23,9 +21,9 @@ const basePath = `/${lang}/atividades`;
   titulo="Atividades"
   descricao="Explore atividades, materiais e documentacoes do CPPS."
   githubPath="src/pages/[lang]/atividades/index.astro"
+  lang={lang}
 >
   <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
-
     <header class="mb-16 text-center max-w-3xl mx-auto">
         <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Central de Atividades</span>
         <h1 class="titulo text-5xl sm:text-7xl mb-6 font-black">Atividades CPPS</h1>
@@ -35,7 +33,6 @@ const basePath = `/${lang}/atividades`;
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-
         <section class="lg:col-span-2 space-y-12">
             <div>
                 <h2 class="mini-titulo text-3xl mb-6 flex items-center gap-3">
@@ -103,7 +100,6 @@ const basePath = `/${lang}/atividades`;
                 </a>
             </div>
         </aside>
-
     </div>
   </div>
 </BaseLayout>
