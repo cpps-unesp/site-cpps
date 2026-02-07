@@ -28,7 +28,7 @@ function findOriginalKey(path: string) {
     Object.keys(routeTranslations) as Array<keyof typeof routeTranslations>
   ).find((key) => Object.values(routeTranslations[key]).includes(path));
 }
-const originalKey = findOriginalKey(currentPath);
+const originalKey = findOriginalKey(currentPath); console.log("Path:", currentPath, "Key:", originalKey);
 
 let membroBaseSlug: string | null = null;
 let membrosPorIdioma: Record<SupportedLang, boolean> = {
@@ -90,6 +90,8 @@ if (!originalKey && currentPath) {
             disabled = true;
             labelExtra = ` (${translations[l.code]?.texts?.languageUnavailable ?? "Not available"})`;
           }
+        } else if (currentPath) {
+          href = `/${l.code}/${currentPath}`;
         }
 
         return (
