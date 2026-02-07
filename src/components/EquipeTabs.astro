@@ -66,8 +66,12 @@ const categoriasTodas = Array.from(
       tab.addEventListener("click", () => {
         const alvo = tab.getAttribute("data-tab");
 
-        tabs.forEach((t) => t.classList.remove("tab-active"));
+        tabs.forEach((t) => {
+          t.classList.remove("tab-active");
+          t.setAttribute("aria-selected", "false");
+        });
         tab.classList.add("tab-active");
+        tab.setAttribute("aria-selected", "true");
 
         secoes.forEach((sec) => {
           sec.style.display =
@@ -85,12 +89,12 @@ const categoriasTodas = Array.from(
   });
 </script>
 
-<div class="tabs tabs-boxed justify-center mb-10">
-  <button class="tab tab-active" data-tab="todos">Todos</button>
+<div class="tabs tabs-boxed justify-center mb-10" role="tablist" aria-label="Categorias da Equipe">
+  <button class="tab tab-active" data-tab="todos" role="tab" aria-selected="true">Todos</button>
   {ativos.map(([categoria]) => (
-    <button class="tab" data-tab={categoria}>{categoria}</button>
+    <button class="tab" data-tab={categoria} role="tab" aria-selected="false">{categoria}</button>
   ))}
-  <button class="tab" data-tab="inativos">Já passaram por aqui</button>
+  <button class="tab" data-tab="inativos" role="tab" aria-selected="false">Já passaram por aqui</button>
 </div>
 
 {ativos.map(([categoria, membros]) => (
