@@ -12,6 +12,7 @@ interface Props {
   identidade?: any;
   lang?: string;
   githubPath?: string;
+  fullBleed?: boolean;
 }
 
 const {
@@ -19,7 +20,8 @@ const {
   descricao = t.descricao,
   texts = t.texts,
   identidade = t.identidade,
-  githubPath
+  githubPath,
+  fullBleed = false,
 } = Astro.props;
 
 import Header from "../components/Header.astro";
@@ -106,7 +108,7 @@ import "../styles/global.css";
   <body class="bg-base-100 text-base-content">
     <Header lang={lang} texts={texts} identidade={identidade} />
 
-    <main class="pt-24 flex-1" data-pagefind-body>
+    <main class={`${fullBleed ? "" : "pt-24 md:pt-28"} flex-1`} data-pagefind-body>
       <slot />
       {githubPath && (
         <div class="max-w-screen-2xl mx-auto px-4 md:px-8">
