@@ -1,23 +1,23 @@
 ---
 export const prerender = true;
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 // Componentes customizados para o MDX
-import Notice from '../../components/atividades/Notice.astro';
-import Card from '../../components/atividades/Card.astro';
-import CardGrid from '../../components/atividades/CardGrid.astro';
-import LinkCard from '../../components/atividades/LinkCard.astro';
-import Steps from '../../components/atividades/Steps.astro';
+import Notice from '../../../components/atividades/Notice.astro';
+import Card from '../../../components/atividades/Card.astro';
+import CardGrid from '../../../components/atividades/CardGrid.astro';
+import LinkCard from '../../../components/atividades/LinkCard.astro';
+import Steps from '../../../components/atividades/Steps.astro';
 
 // Componentes de estrutura da documentacao
-import DocsSidebar from '../../components/atividades/Sidebar.astro';
-import TableOfContents from '../../components/atividades/TableOfContents.astro';
-import Breadcrumbs from '../../components/atividades/Breadcrumbs.astro';
-import Pagination from '../../components/atividades/Pagination.astro';
-import GitHubEditLink from '../../components/GitHubEditLink.astro';
+import DocsSidebar from '../../../components/atividades/Sidebar.astro';
+import TableOfContents from '../../../components/atividades/TableOfContents.astro';
+import Breadcrumbs from '../../../components/atividades/Breadcrumbs.astro';
+import Pagination from '../../../components/atividades/Pagination.astro';
+import GitHubEditLink from '../../../components/GitHubEditLink.astro';
 
-import { sidebar } from '../../config/atividades';
+import { sidebar } from '../../../config/atividades';
 
 export async function getStaticPaths() {
   const atividades = await getCollection('atividades');

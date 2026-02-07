@@ -22,6 +22,7 @@ import NoticiaPage from "../../components/NoticiaPage.astro";
 import NoticiasListPage from "../../components/NoticiasListPage.astro";
 import PublicationListPage from "../../components/PublicationListPage.astro";
 import PublicationPage from "../../components/PublicationPage.astro";
+import TranslationWarning from "../../components/TranslationWarning.astro";
 import routeTranslations from "../../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import type { SupportedLang } from "../../types/lang";
@@ -48,31 +49,28 @@ export async function getStaticPaths() {
     }
   }
 
-  // Notícias individuais
+  // Notícias individuais (todos os idiomas para permitir fallback)
   const allNoticias = await getCollection("noticias");
-  for (const noticia of allNoticias) {
-    const lang = noticia.data.lang as SupportedLang;
-    const prefix = routeTranslations["noticias"][lang];
-    paths.push({
-      params: {
-        lang,
-        slug: `${prefix}/${noticia.slug}`,
-      },
-    });
+  const uniqueNoticiasSlugs = [...new Set(allNoticias.map(n => n.slug))];
+  for (const slug of uniqueNoticiasSlugs) {
+    for (const lang of langs) {
+      const prefix = routeTranslations["noticias"][lang];
+      paths.push({
+        params: { lang, slug: `${prefix}/${slug}` },
+      });
+    }
   }
 
-  // Publicações individuais
+  // Publicações individuais (todos os idiomas para permitir fallback)
   const allPublicacoes = await getCollection("publicacoes");
-  for (const pub of allPublicacoes) {
-    const lang = pub.data.lang as SupportedLang;
-    const prefix = routeTranslations["publicacao"][lang];
-    const slugValue = pub.slug || pub.id.replace(/\.[^/.]+$/, "");
-    paths.push({
-      params: {
-        lang,
-        slug: `${prefix}/${slugValue}`,
-      },
-    });
+  const uniquePubSlugs = [...new Set(allPublicacoes.map(p => p.slug || p.id.replace(/\.[^/.]+$/, "")))];
+  for (const slugValue of uniquePubSlugs) {
+    for (const lang of langs) {
+      const prefix = routeTranslations["publicacao"][lang];
+      paths.push({
+        params: { lang, slug: `${prefix}/${slugValue}` },
+      });
+    }
   }
 
   // Categorias de notícias
@@ -90,17 +88,19 @@ export async function getStaticPaths() {
     }
   }
 
-  // Membros
+  // Membros (todos os idiomas para permitir fallback)
   const allMembros = await getCollection("membros");
-  for (const membro of allMembros) {
-    const fileName = membro.id.split("/").pop() ?? "";
-    const slugWithoutLang = fileName.replace(/\.(pt|en|es)\.mdx$/, "");
-    paths.push({
-      params: {
-        lang: membro.data.lang,
-        slug: slugWithoutLang,
-      },
-    });
+  const uniqueMembroSlugs = [...new Set(allMembros.map(m => {
+    const fileName = m.id.split("/").pop() ?? "";
+    return fileName.replace(/\.(pt|en|es)\.mdx$/, "");
+  }))];
+
+  for (const slugWithoutLang of uniqueMembroSlugs) {
+    for (const lang of langs) {
+      paths.push({
+        params: { lang, slug: slugWithoutLang },
+      });
+    }
   }
 
   return paths;
@@ -132,15 +132,18 @@ function getSlugFromEntry(entry: any) {
   return fileName.replace(/\.(pt|en|es)\.mdx$/, "");
 }
 
-let membroSelecionado = allMembros.find(
-  (entry) =>
-    getSlugFromEntry(entry) === slugPath && entry.data.lang === currentLang,
+const membroEntries = allMembros.filter(
+  (entry) => getSlugFromEntry(entry) === slugPath
 );
 
-if (!membroSelecionado) {
-  membroSelecionado = allMembros.find(
-    (entry) => getSlugFromEntry(entry) === slugPath,
-  );
+const availableLangs = membroEntries.map(e => e.data.lang);
+const isTranslationMissing = membroEntries.length > 0 && !availableLangs.includes(currentLang);
+
+let membroSelecionado = membroEntries.find(e => e.data.lang === currentLang);
+
+if (!membroSelecionado && membroEntries.length > 0) {
+  // Fallback: prefer PT, then first available
+  membroSelecionado = membroEntries.find(e => e.data.lang === 'pt') || membroEntries[0];
 }
 
 // Renderiza o conteúdo do .mdx
@@ -180,6 +183,13 @@ const originalKey = findOriginalKey(slugPath, currentLang);
       texts={texts}
       githubPath={`src/content/membros/${membroSelecionado.id}`}
     >
+      {isTranslationMissing && (
+        <TranslationWarning
+          availableLangs={availableLangs}
+          currentLang={currentLang}
+          texts={texts}
+        />
+      )}
       <article class="max-w-3xl mx-auto pt-16 pb-10 text-center">
         <img
           src={membroSelecionado.data.foto}
