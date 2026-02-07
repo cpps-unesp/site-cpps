@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsSidebar from './NewsSidebar.astro';
-import TranslationWarning from './TranslationWarning.astro';
 import { getEntry, getCollection } from 'astro:content';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
@@ -12,23 +11,11 @@ const { lang, slug } = Astro.props as { lang: SupportedLang; slug: string };
 const locale = getTranslations(lang);
 
 const noticiasRoute = routeTranslations['noticias'][lang as SupportedLang];
-const rawSlug = slug.replace(`${noticiasRoute}/`, '');
-
-const allNoticias = await getCollection('noticias');
-const relatedPosts = allNoticias.filter(p => p.slug === rawSlug);
-
-const availableLangs = relatedPosts.map(p => p.data.lang);
-const isTranslationMissing = relatedPosts.length > 0 && !availableLangs.includes(lang);
-
-let post = relatedPosts.find(p => p.data.lang === lang);
-
-if (!post && relatedPosts.length > 0) {
-  // Fallback
-  post = relatedPosts.find(p => p.data.lang === 'pt') || relatedPosts[0];
-}
+const post = await getEntry('noticias', slug.replace(`${noticiasRoute}/`, ''));
 
 if (!post) throw new Error(`Notícia não encontrada: ${slug}`);
 
+const allNoticias = await getCollection('noticias');
 const langNoticias = allNoticias
   .filter(p => p.data.lang === lang)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
@@ -45,13 +32,6 @@ const { Content } = await post.render();
   identidade={locale.identidade}
   githubPath={`src/content/noticias/${post.id}`}
 >
-  {isTranslationMissing && (
-    <TranslationWarning
-      availableLangs={availableLangs}
-      currentLang={lang}
-      texts={locale.texts}
-    />
-  )}
   <main class="container mx-auto px-4 py-12">
     <div class="grid lg:grid-cols-3 gap-12">
       <!-- Article Content -->

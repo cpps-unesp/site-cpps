@@ -1,39 +1,35 @@
 ---
 export const prerender = true;
 import { getCollection, render } from 'astro:content';
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { getLangFromUrl } from '../../../utils/getLangFromUrl';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 // Componentes customizados para o MDX
-import Notice from '../../../components/atividades/Notice.astro';
-import Card from '../../../components/atividades/Card.astro';
-import CardGrid from '../../../components/atividades/CardGrid.astro';
-import LinkCard from '../../../components/atividades/LinkCard.astro';
-import Steps from '../../../components/atividades/Steps.astro';
+import Notice from '../../components/atividades/Notice.astro';
+import Card from '../../components/atividades/Card.astro';
+import CardGrid from '../../components/atividades/CardGrid.astro';
+import LinkCard from '../../components/atividades/LinkCard.astro';
+import Steps from '../../components/atividades/Steps.astro';
 
 // Componentes de estrutura da documentacao
-import DocsSidebar from '../../../components/atividades/Sidebar.astro';
-import TableOfContents from '../../../components/atividades/TableOfContents.astro';
-import Breadcrumbs from '../../../components/atividades/Breadcrumbs.astro';
-import Pagination from '../../../components/atividades/Pagination.astro';
-import GitHubEditLink from '../../../components/GitHubEditLink.astro';
+import DocsSidebar from '../../components/atividades/Sidebar.astro';
+import TableOfContents from '../../components/atividades/TableOfContents.astro';
+import Breadcrumbs from '../../components/atividades/Breadcrumbs.astro';
+import Pagination from '../../components/atividades/Pagination.astro';
+import GitHubEditLink from '../../components/GitHubEditLink.astro';
 
-import { sidebar } from '../../../config/atividades';
+import { sidebar } from '../../config/atividades';
+
 export async function getStaticPaths() {
   const atividades = await getCollection('atividades');
-  const supportedLangs = ['pt', 'en', 'es'];
-  return atividades.flatMap((entry) =>
-    supportedLangs.map((lang) => ({
-      params: { lang, slug: entry.slug },
-      props: { entry },
-    }))
-  );
+  return atividades.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
 }
 
 const { entry } = Astro.props;
 const { Content, headings } = await render(entry);
 const currentPath = Astro.url.pathname;
-const lang = getLangFromUrl(Astro.url);
 ---
 
 <BaseLayout
@@ -82,7 +78,7 @@ const lang = getLangFromUrl(Astro.url);
                     </button>
                 </div>
                 <div class="flex-1 overflow-y-auto lg:overflow-visible">
-                    <DocsSidebar items={sidebar} currentPath={currentPath} lang={lang} />
+                    <DocsSidebar items={sidebar} currentPath={currentPath} />
                 </div>
             </div>
         </aside>
@@ -95,7 +91,7 @@ const lang = getLangFromUrl(Astro.url);
         <!-- 🔹 Conteudo Principal -->
         <div class="flex-1 min-w-0 transition-all duration-300">
           <div class="max-w-4xl mx-auto relative">
-            <Breadcrumbs currentPath={currentPath} lang={lang} />
+            <Breadcrumbs currentPath={currentPath} />
 
             <article class="prose prose-lg max-w-none dark:prose-invert">
               <header class="mb-12 not-prose">
@@ -111,7 +107,7 @@ const lang = getLangFromUrl(Astro.url);
               <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
             </article>
 
-            <Pagination currentPath={currentPath} lang={lang} />
+            <Pagination currentPath={currentPath} />
 
           </div>
         </div>

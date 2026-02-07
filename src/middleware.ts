@@ -49,7 +49,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
       path.startsWith('/.well-known') ||
       path.startsWith('/pagefind') ||
       path.startsWith('/docs') ||
-      path.startsWith('/lang-report') ||
       path === '/404' ||
       path === '/404/'
     ) {

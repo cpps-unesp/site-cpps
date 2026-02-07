@@ -3,7 +3,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
 import { getCollection, render } from 'astro:content';
-import TranslationWarning from './TranslationWarning.astro';
 
 interface Props {
   lang: SupportedLang;
@@ -14,17 +13,7 @@ const { lang, slug } = Astro.props;
 const locale = getTranslations(lang);
 
 const allPublications = await getCollection('publicacoes');
-const relatedPubs = allPublications.filter(p => p.slug === slug || p.id === slug || p.id === `${slug}.md` || p.id === `${slug}.mdx`);
-
-const availableLangs = relatedPubs.map(p => p.data.lang);
-const isTranslationMissing = relatedPubs.length > 0 && !availableLangs.includes(lang);
-
-let publication = relatedPubs.find(p => p.data.lang === lang);
-
-if (!publication && relatedPubs.length > 0) {
-  // Fallback
-  publication = relatedPubs.find(p => p.data.lang === 'pt') || relatedPubs[0];
-}
+const publication = allPublications.find(p => p.slug === slug || p.id === slug || p.id === `${slug}.md` || p.id === `${slug}.mdx`);
 
 if (!publication) {
   return Astro.redirect(`/${lang}/404`);
@@ -50,13 +39,6 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
   identidade={locale.identidade}
   githubPath={`src/content/publicacoes/${publication.id}`}
 >
-  {isTranslationMissing && (
-    <TranslationWarning
-      availableLangs={availableLangs}
-      currentLang={lang}
-      texts={locale.texts}
-    />
-  )}
   <article class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
     <header class="mb-16 border-b border-base-200 pb-12">
       <div class="flex items-center gap-4 mb-6">
