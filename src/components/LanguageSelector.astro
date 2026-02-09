@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 import IconLang from "../icons/iconLang.astro";
 import { getTranslations } from "../utils/i18n";
 
-const { lang = "pt" } = Astro.props;
+const { lang = "pt" } = Astro.props as { lang?: SupportedLang };
 
 const languages: { code: SupportedLang; label: string }[] = [
   { code: "pt", label: "Português" },
@@ -23,12 +23,25 @@ const translations: Record<SupportedLang, any> = {
 const pathParts = Astro.url.pathname.split("/").filter(Boolean);
 const currentPath = pathParts.slice(1).join("/");
 
-function findOriginalKey(path: string) {
-  return (
-    Object.keys(routeTranslations) as Array<keyof typeof routeTranslations>
-  ).find((key) => Object.values(routeTranslations[key]).includes(path));
+function getRouteMatch(path: string, sourceLang: SupportedLang) {
+  const keys = Object.keys(routeTranslations) as Array<keyof typeof routeTranslations>;
+  let bestMatch:
+    | { key: keyof typeof routeTranslations; prefix: string; remainder: string }
+    | null = null;
+
+  for (const key of keys) {
+    const prefix = routeTranslations[key][sourceLang];
+    if (path === prefix || path.startsWith(`${prefix}/`)) {
+      const remainder = path.slice(prefix.length).replace(/^\//, "");
+      if (!bestMatch || prefix.length > bestMatch.prefix.length) {
+        bestMatch = { key, prefix, remainder };
+      }
+    }
+  }
+
+  return bestMatch;
 }
-const originalKey = findOriginalKey(currentPath); console.log("Path:", currentPath, "Key:", originalKey);
+const routeMatch = getRouteMatch(currentPath, lang);
 
 let membroBaseSlug: string | null = null;
 let membrosPorIdioma: Record<SupportedLang, boolean> = {
@@ -37,7 +50,7 @@ let membrosPorIdioma: Record<SupportedLang, boolean> = {
   es: false,
 };
 
-if (!originalKey && currentPath) {
+if (!routeMatch && currentPath) {
   const allMembros = await getCollection("membros");
 
   for (const membro of allMembros) {
@@ -81,9 +94,9 @@ if (!originalKey && currentPath) {
         let disabled = false;
         let labelExtra = "";
 
-        if (originalKey) {
-          const translatedPath = getTranslatedPath(originalKey, l.code);
-          href = `/${l.code}/${translatedPath}`;
+        if (routeMatch) {
+          const translatedPrefix = getTranslatedPath(routeMatch.key, l.code);
+          href = `/${l.code}/${translatedPrefix}${routeMatch.remainder ? `/${routeMatch.remainder}` : ""}`;
         } else if (membroBaseSlug) {
           href = `/${l.code}/${membroBaseSlug}`;
           if (!membrosPorIdioma[l.code]) {
