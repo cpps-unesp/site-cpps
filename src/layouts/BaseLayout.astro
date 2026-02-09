@@ -34,6 +34,7 @@ const pathname = Astro.url.pathname;
 const canonicalUrl = new URL(pathname || `/${lang}/`, Astro.site).toString();
 const pathParts = pathname.split('/').filter(Boolean);
 const hasLangInPath = isSupportedLang(pathParts[0] ?? '');
+const isLangHome = hasLangInPath && pathParts.length === 1;
 const alternateHrefs = (['pt', 'en', 'es'] as Language[]).map((targetLang) => {
   const localizedPath = hasLangInPath
     ? getLocalizedPathFromPathname(pathname, targetLang)
@@ -131,7 +132,7 @@ import "../styles/global.css";
   <body class="bg-base-100 text-base-content">
     <Header lang={lang} texts={pageTexts} identidade={pageIdentidade} />
 
-    <main class="pt-20 md:pt-24 flex-1" data-pagefind-body>
+    <main class:list={[isLangHome ? 'pt-0' : 'pt-20 md:pt-24', 'flex-1']} data-pagefind-body>
       <slot />
       {githubPath && (
         <div class="max-w-screen-2xl mx-auto px-4 md:px-8">
