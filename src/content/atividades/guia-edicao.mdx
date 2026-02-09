@@ -21,63 +21,51 @@ Nossa documentação é baseada em **Coleções de Conteúdo**. Isso significa q
 
 ## 📂 Gerenciando Menus (Sidebar)
 
-Diferente de sistemas automáticos, nós temos um controle refinado sobre o que aparece no menu lateral esquerdo.
+Agora o menu lateral de `/atividades` é gerado automaticamente pela estrutura dos arquivos em `src/content/atividades/`.
 
-### Como adicionar um link ao menu:
-1. Abra o arquivo `src/config/atividades.ts`.
-2. Localize a constante `sidebar`.
-3. Adicione um novo objeto seguindo este padrão:
+### Como inserir uma página no menu
+1. Crie o arquivo `.md` ou `.mdx` no local correto dentro de `src/content/atividades/`.
+2. Defina `title` no frontmatter.
+3. Salve e rode o site: a página será incluída automaticamente no menu lateral.
 
-```typescript
-{
-  label: "Nome que aparece no site",
-  url: "/atividades/caminho-do-arquivo"
-}
+Exemplo:
+
+```markdown
+---
+title: "Minha Nova Página"
+description: "Resumo do conteúdo"
+---
 ```
 
-### Criando Submenus (Grupos Colapsáveis)
-Você pode aninhar itens para criar menus que abrem e fecham verticalmente:
+### Como personalizar o nome exibido no menu
+Se quiser um rótulo diferente do `title`, use `sidebar_label` no frontmatter:
 
-```typescript
-{
-  label: "Meu Projeto",
-  items: [
-    { label: "Introdução", url: "/atividades/meu-projeto" },
-    { label: "Configuração", url: "/atividades/meu-projeto/config" },
-  ]
-}
+```markdown
+---
+title: "Introdução Técnica ao Projeto"
+sidebar_label: "Introdução"
+---
 ```
 
-### Controlando o Colapso Inicial
-Por padrão, o sistema utiliza **Navegação Inteligente**: apenas o grupo que contém a página atual fica aberto. Todos os outros grupos começam fechados para manter o visual limpo.
+### Como organizar submenus
+Os grupos e subgrupos são montados a partir das pastas.
 
-Se você deseja que um grupo específico fique **sempre aberto** (mesmo quando o usuário não está nele), use `collapsed: false`:
+Exemplo:
+- `src/content/atividades/projetos/dados/meu-projeto/index.md`
+- `src/content/atividades/projetos/dados/meu-projeto/equipe.md`
 
-```typescript
-{
-  label: "Recursos Essenciais",
-  collapsed: false, // Ficará sempre aberto por padrão
-  items: [
-    { label: "Link Vital", url: "/atividades/vital" },
-  ]
-}
-```
+Isso gera a navegação:
+- Projetos
+  - Dados
+    - Meu Projeto
+      - Equipe
 
 <Notice type="info">
-  **Abertura Automática**: O sistema sempre expandirá automaticamente qualquer grupo se o usuário estiver em uma página que pertença a ele.
+  **Navegação inteligente**: o grupo da página atual abre automaticamente no menu.
 </Notice>
 
-### Links Externos no Menu
-Você também pode adicionar links para sites externos ou outras ferramentas diretamente no menu:
-
-```typescript
-{
-  label: "Repositório Org ↗",
-  url: "https://github.com/cpps-unesp"
-}
-```
-
-O sistema identificará automaticamente que é um link externo, adicionará um ícone de "saída" e fará com que o link abra em uma nova aba.
+### Links externos no menu
+Os links externos continuam disponíveis (ex.: GitHub e Lantri Hub) e são mantidos pela configuração do sistema.
 
 ---
 

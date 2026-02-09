@@ -15,9 +15,9 @@ import DocsSidebar from '../../../components/atividades/Sidebar.astro';
 import TableOfContents from '../../../components/atividades/TableOfContents.astro';
 import Breadcrumbs from '../../../components/atividades/Breadcrumbs.astro';
 import Pagination from '../../../components/atividades/Pagination.astro';
-import GitHubEditLink from '../../../components/GitHubEditLink.astro';
 
-import { sidebar } from '../../../config/atividades';
+import { buildAtividadesSidebar } from '../../../utils/atividadesSidebar';
+import type { Language } from '../../../utils/i18n';
 
 export async function getStaticPaths() {
   const atividades = await getCollection('atividades');
@@ -32,9 +32,11 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const { lang } = Astro.params;
+const lang = (Astro.params.lang ?? 'pt') as Language;
 const { Content, headings } = await render(entry);
 const currentPath = Astro.url.pathname;
+const allAtividades = await getCollection('atividades');
+const sidebar = buildAtividadesSidebar(allAtividades);
 ---
 
 <BaseLayout
