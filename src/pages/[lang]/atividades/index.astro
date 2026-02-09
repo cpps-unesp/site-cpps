@@ -1,9 +1,12 @@
 ---
 export const prerender = true;
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LinkCard from '../../../components/atividades/LinkCard.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
+import { sidebar, type SidebarItem } from '../../../config/atividades';
+import type { Language } from '../../../utils/i18n';
 
 export function getStaticPaths() {
   return [
@@ -13,8 +16,36 @@ export function getStaticPaths() {
   ];
 }
 
-const { lang = "pt" } = Astro.params;
+const lang = (Astro.params.lang ?? 'pt') as Language;
 const basePath = `/${lang}/atividades`;
+
+const atividades = await getCollection('atividades');
+
+function normalizeAtividadesUrl(path: string): string {
+  const normalized = path.replace(/\/+$/, '');
+  return normalized.endsWith('/index') ? normalized.slice(0, -6) : normalized;
+}
+
+function flattenSidebarUrls(items: SidebarItem[]): string[] {
+  return items.flatMap((item) => {
+    const current = item.url && item.url.startsWith('/atividades') ? [normalizeAtividadesUrl(item.url)] : [];
+    const nested = item.items ? flattenSidebarUrls(item.items) : [];
+    return [...current, ...nested];
+  });
+}
+
+const sidebarUrls = new Set(flattenSidebarUrls(sidebar));
+
+const orphanActivityPages = atividades
+  .map((entry) => {
+    const routePath = normalizeAtividadesUrl(`/atividades/${entry.slug}`);
+    return {
+      routePath,
+      title: entry.data.title || entry.slug,
+    };
+  })
+  .filter((entry) => !sidebarUrls.has(entry.routePath))
+  .sort((a, b) => a.routePath.localeCompare(b.routePath, 'pt-BR'));
 ---
 
 <BaseLayout
@@ -79,6 +110,33 @@ const basePath = `/${lang}/atividades`;
             <Notice type="info" title="Interface Renovada">
                 Agora voce pode colapsar as barras laterais clicando nas setas para focar totalmente na leitura.
             </Notice>
+
+            <section class="rounded-3xl border border-base-300 bg-base-100 shadow-sm">
+                <div class="p-6 md:p-8">
+                    <h2 class="mini-titulo mb-3">Paginas de atividades fora do menu</h2>
+                    <p class="text-base-content/70 mb-4">
+                        Encontramos {orphanActivityPages.length} paginas que existem no conteudo, mas ainda nao aparecem no menu lateral.
+                    </p>
+                    <details class="collapse collapse-plus border border-base-300 bg-base-200/40">
+                        <summary class="collapse-title font-semibold">Ver lista completa</summary>
+                        <div class="collapse-content">
+                            <ul class="columns-1 sm:columns-2 gap-6 space-y-2 text-sm">
+                                {orphanActivityPages.map((page) => (
+                                    <li class="break-inside-avoid">
+                                        <a
+                                            href={`/${lang}${page.routePath}`}
+                                            class="link link-hover text-primary"
+                                            title={page.routePath}
+                                        >
+                                            {page.title}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </section>
         </section>
 
         <aside class="space-y-8">
