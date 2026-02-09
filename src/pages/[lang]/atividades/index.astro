@@ -5,8 +5,9 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LinkCard from '../../../components/atividades/LinkCard.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
-import { sidebar, type SidebarItem } from '../../../config/atividades';
 import type { Language } from '../../../utils/i18n';
+import { buildAtividadesSidebar } from '../../../utils/atividadesSidebar';
+import type { SidebarItem } from '../../../config/atividades';
 
 export function getStaticPaths() {
   return [
@@ -20,6 +21,7 @@ const lang = (Astro.params.lang ?? 'pt') as Language;
 const basePath = `/${lang}/atividades`;
 
 const atividades = await getCollection('atividades');
+const sidebar = buildAtividadesSidebar(atividades);
 
 function normalizeAtividadesUrl(path: string): string {
   const normalized = path.replace(/\/+$/, '');
@@ -114,27 +116,35 @@ const orphanActivityPages = atividades
             <section class="rounded-3xl border border-base-300 bg-base-100 shadow-sm">
                 <div class="p-6 md:p-8">
                     <h2 class="mini-titulo mb-3">Paginas de atividades fora do menu</h2>
-                    <p class="text-base-content/70 mb-4">
-                        Encontramos {orphanActivityPages.length} paginas que existem no conteudo, mas ainda nao aparecem no menu lateral.
-                    </p>
-                    <details class="collapse collapse-plus border border-base-300 bg-base-200/40">
-                        <summary class="collapse-title font-semibold">Ver lista completa</summary>
-                        <div class="collapse-content">
-                            <ul class="columns-1 sm:columns-2 gap-6 space-y-2 text-sm">
-                                {orphanActivityPages.map((page) => (
-                                    <li class="break-inside-avoid">
-                                        <a
-                                            href={`/${lang}${page.routePath}`}
-                                            class="link link-hover text-primary"
-                                            title={page.routePath}
-                                        >
-                                            {page.title}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    </details>
+                    {orphanActivityPages.length > 0 ? (
+                        <>
+                            <p class="text-base-content/70 mb-4">
+                                Encontramos {orphanActivityPages.length} paginas que existem no conteudo, mas ainda nao aparecem no menu lateral.
+                            </p>
+                            <details class="collapse collapse-plus border border-base-300 bg-base-200/40">
+                                <summary class="collapse-title font-semibold">Ver lista completa</summary>
+                                <div class="collapse-content">
+                                    <ul class="columns-1 sm:columns-2 gap-6 space-y-2 text-sm">
+                                        {orphanActivityPages.map((page) => (
+                                            <li class="break-inside-avoid">
+                                                <a
+                                                    href={`/${lang}${page.routePath}`}
+                                                    class="link link-hover text-primary"
+                                                    title={page.routePath}
+                                                >
+                                                    {page.title}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            </details>
+                        </>
+                    ) : (
+                        <p class="text-success font-medium">
+                            Todas as paginas de atividades ja estao representadas no menu lateral.
+                        </p>
+                    )}
                 </div>
             </section>
         </section>
