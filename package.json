@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && pagefind --site ./dist",
+    "typecheck": "tsc --noEmit",
+    "ci": "npm run typecheck && npm run build",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -21,9 +23,12 @@
     "theme-change": "^2.5.0"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.6",
     "@astrojs/cloudflare": "^12.6.12",
+    "@types/node": "^25.2.2",
     "miniflare": "^4.20260205.0",
     "pagefind": "^1.4.0",
+    "typescript": "^5.9.3",
     "wrangler": "^4.63.0"
   }
 }

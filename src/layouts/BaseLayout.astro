@@ -1,26 +1,55 @@
 ---
 import { getTranslations, type Language } from "../utils/i18n";
 import { getLangFromUrl } from "../utils/getLangFromUrl";
+import { getLocalizedPathFromPathname, isSupportedLang } from "../utils/i18nRouteMatch";
 
-const lang = getLangFromUrl(Astro.url) as Language;
-const t = getTranslations(lang);
+const urlLang = getLangFromUrl(Astro.url) as Language;
 
 interface Props {
   titulo?: string;
   descricao?: string;
   texts?: any;
   identidade?: any;
-  lang?: string;
+  lang?: Language;
   githubPath?: string;
 }
 
 const {
-  titulo = t.titulo,
-  descricao = t.descricao,
-  texts = t.texts,
-  identidade = t.identidade,
-  githubPath
-} = Astro.props;
+  lang: propLang,
+  texts,
+  identidade,
+  githubPath,
+  titulo,
+  descricao,
+} = Astro.props as Props;
+
+const lang = propLang ?? urlLang;
+const t = getTranslations(lang);
+const pageTexts = texts ?? t.texts;
+const pageIdentidade = identidade ?? t.identidade;
+const pageTitle = titulo ?? t.titulo;
+const pageDescription = descricao ?? t.descricao;
+
+const pathname = Astro.url.pathname;
+const canonicalUrl = new URL(pathname || `/${lang}/`, Astro.site).toString();
+const pathParts = pathname.split('/').filter(Boolean);
+const hasLangInPath = isSupportedLang(pathParts[0] ?? '');
+const isLangHome = hasLangInPath && pathParts.length === 1;
+const alternateHrefs = (['pt', 'en', 'es'] as Language[]).map((targetLang) => {
+  const localizedPath = hasLangInPath
+    ? getLocalizedPathFromPathname(pathname, targetLang)
+    : `/${targetLang}/`;
+
+  return {
+    lang: targetLang,
+    href: new URL(localizedPath, Astro.site).toString(),
+  };
+});
+
+const ogLocale = lang === 'pt' ? 'pt_BR' : lang === 'en' ? 'en_US' : 'es_ES';
+const ogAlternateLocales = alternateHrefs
+  .map(({ lang: localeLang }) => (localeLang === 'pt' ? 'pt_BR' : localeLang === 'en' ? 'en_US' : 'es_ES'))
+  .filter((locale) => locale !== ogLocale);
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -35,17 +64,18 @@ import "../styles/global.css";
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{titulo}</title>
+    <title>{pageTitle}</title>
     <link rel="icon" href="/imagens/logos/cpps/favicon.ico" />
-    <meta name="description" content={descricao} />
+    <meta name="description" content={pageDescription} />
     <meta name="robots" content="index, follow" />
 
     <!-- ✅ Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content={titulo} />
-    <meta property="og:description" content={descricao} />
-    <meta property="og:url" content={`https://cpps.franca.unesp.br/${lang}/`} />
-    <meta property="og:locale" content={lang} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:locale" content={ogLocale} />
+    {ogAlternateLocales.map((locale) => <meta property="og:locale:alternate" content={locale} />)}
     <meta
       property="og:image"
       content="https://cpps.franca.unesp.br/imagens/logos/cpps/logo-cpps-01_rev_1.png"
@@ -56,17 +86,18 @@ import "../styles/global.css";
 
     <!-- ✅ SEO multilíngue -->
     {
-      ["pt", "en", "es"].map((l) => (
+      alternateHrefs.map(({ lang: altLang, href }) => (
         <link
           rel="alternate"
-          hreflang={l}
-          href={`https://cpps.franca.unesp.br/${l}/`}
+          hreflang={altLang}
+          href={href}
         />
       ))
     }
+    <link rel="alternate" hreflang="x-default" href={alternateHrefs[0].href} />
 
     <!-- ✅ canonical -->
-    <link rel="canonical" href={`https://cpps.franca.unesp.br/${lang}/`} />
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- ✅ Performance com fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -84,11 +115,6 @@ import "../styles/global.css";
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <!-- Academicons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"
-    />
     <script is:inline>
       (function() {
         const THEME_STORAGE_KEY = 'theme';
@@ -104,19 +130,19 @@ import "../styles/global.css";
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <Header lang={lang} texts={texts} identidade={identidade} />
+    <Header lang={lang} texts={pageTexts} identidade={pageIdentidade} />
 
-    <main class="pt-24 flex-1" data-pagefind-body>
+    <main class:list={[isLangHome ? 'pt-0' : 'pt-20 md:pt-24', 'flex-1']} data-pagefind-body>
       <slot />
       {githubPath && (
         <div class="max-w-screen-2xl mx-auto px-4 md:px-8">
-           <GitHubEditLink githubPath={githubPath} lang={lang} texts={texts} />
+           <GitHubEditLink githubPath={githubPath} lang={lang} texts={pageTexts} />
         </div>
       )}
     </main>
-    <Footer lang={lang} texts={texts} githubPath={githubPath} />
+    <Footer lang={lang} texts={pageTexts} githubPath={githubPath} />
     <BackToTop lang={lang} />
-    <SearchModal texts={texts} />
+    <SearchModal texts={pageTexts} />
     <script type="module" src="/scripts/themeSwitcher.js"></script>
   </body>
 </html>

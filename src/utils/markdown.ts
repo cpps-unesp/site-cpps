@@ -12,5 +12,5 @@ renderer.link = function (token) {
 
 export function renderMarkdown(content: string | undefined | null): string {
   if (!content) return '';
-  return marked(content, { renderer });
+  return marked.parse(content, { renderer, async: false }) as string;
 }

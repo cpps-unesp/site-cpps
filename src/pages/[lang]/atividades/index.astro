@@ -1,44 +1,72 @@
 ---
 export const prerender = true;
+import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import LinkCard from '../../../components/atividades/LinkCard.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
-import { getLangFromUrl } from '../../../utils/getLangFromUrl';
-import type { SupportedLang } from '../../../types/lang';
+import { sidebar, type SidebarItem } from '../../../config/atividades';
+import type { Language } from '../../../utils/i18n';
 
 export function getStaticPaths() {
   return [
-    { params: { lang: 'pt' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'es' } },
+    { params: { lang: "pt" } },
+    { params: { lang: "en" } },
+    { params: { lang: "es" } },
   ];
 }
 
-const lang = getLangFromUrl(Astro.url) as SupportedLang;
+const lang = (Astro.params.lang ?? 'pt') as Language;
 const basePath = `/${lang}/atividades`;
+
+const atividades = await getCollection('atividades');
+
+function normalizeAtividadesUrl(path: string): string {
+  const normalized = path.replace(/\/+$/, '');
+  return normalized.endsWith('/index') ? normalized.slice(0, -6) : normalized;
+}
+
+function flattenSidebarUrls(items: SidebarItem[]): string[] {
+  return items.flatMap((item) => {
+    const current = item.url && item.url.startsWith('/atividades') ? [normalizeAtividadesUrl(item.url)] : [];
+    const nested = item.items ? flattenSidebarUrls(item.items) : [];
+    return [...current, ...nested];
+  });
+}
+
+const sidebarUrls = new Set(flattenSidebarUrls(sidebar));
+
+const orphanActivityPages = atividades
+  .map((entry) => {
+    const routePath = normalizeAtividadesUrl(`/atividades/${entry.slug}`);
+    return {
+      routePath,
+      title: entry.data.title || entry.slug,
+    };
+  })
+  .filter((entry) => !sidebarUrls.has(entry.routePath))
+  .sort((a, b) => a.routePath.localeCompare(b.routePath, 'pt-BR'));
 ---
 
 <BaseLayout
   titulo="Atividades"
   descricao="Explore atividades, materiais e documentacoes do CPPS."
   githubPath="src/pages/[lang]/atividades/index.astro"
+  lang={lang}
 >
-  <div class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
-
-    <header class="mb-16 text-center max-w-3xl mx-auto">
+  <div class="max-w-screen-xl mx-auto px-4 md:px-8 pt-8 pb-16 md:pt-12">
+    <header class="mb-12 md:mb-14 text-center max-w-3xl mx-auto">
         <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Central de Atividades</span>
-        <h1 class="titulo text-5xl sm:text-7xl mb-6 font-black">Atividades CPPS</h1>
-        <p class="paragrafo text-xl sm:text-2xl text-base-content/70 mx-auto">
+        <h1 class="titulo mb-5 font-black">Atividades CPPS</h1>
+        <p class="subtitulo text-base-content/70 mx-auto">
             Explore nossos materiais, trilhas de ensino e documentacoes de projetos.
         </p>
     </header>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-
         <section class="lg:col-span-2 space-y-12">
             <div>
-                <h2 class="mini-titulo text-3xl mb-6 flex items-center gap-3">
+                <h2 class="mini-titulo mb-6 flex items-center gap-3">
                     <i class="fa-solid fa-star text-primary text-2xl"></i>
                     Essencial
                 </h2>
@@ -59,7 +87,7 @@ const basePath = `/${lang}/atividades`;
             </div>
 
             <div>
-                <h2 class="mini-titulo text-3xl mb-6 flex items-center gap-3">
+                <h2 class="mini-titulo mb-6 flex items-center gap-3">
                     <i class="fa-solid fa-microchip text-primary text-2xl"></i>
                     Sistemas e Dados
                 </h2>
@@ -82,6 +110,33 @@ const basePath = `/${lang}/atividades`;
             <Notice type="info" title="Interface Renovada">
                 Agora voce pode colapsar as barras laterais clicando nas setas para focar totalmente na leitura.
             </Notice>
+
+            <section class="rounded-3xl border border-base-300 bg-base-100 shadow-sm">
+                <div class="p-6 md:p-8">
+                    <h2 class="mini-titulo mb-3">Paginas de atividades fora do menu</h2>
+                    <p class="text-base-content/70 mb-4">
+                        Encontramos {orphanActivityPages.length} paginas que existem no conteudo, mas ainda nao aparecem no menu lateral.
+                    </p>
+                    <details class="collapse collapse-plus border border-base-300 bg-base-200/40">
+                        <summary class="collapse-title font-semibold">Ver lista completa</summary>
+                        <div class="collapse-content">
+                            <ul class="columns-1 sm:columns-2 gap-6 space-y-2 text-sm">
+                                {orphanActivityPages.map((page) => (
+                                    <li class="break-inside-avoid">
+                                        <a
+                                            href={`/${lang}${page.routePath}`}
+                                            class="link link-hover text-primary"
+                                            title={page.routePath}
+                                        >
+                                            {page.title}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </details>
+                </div>
+            </section>
         </section>
 
         <aside class="space-y-8">
@@ -103,7 +158,6 @@ const basePath = `/${lang}/atividades`;
                 </a>
             </div>
         </aside>
-
     </div>
   </div>
 </BaseLayout>

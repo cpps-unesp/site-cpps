@@ -1,12 +1,12 @@
 ---
-import routeTranslations from "../i18n/routeTranslations";
 import { getTranslatedPath } from "../utils/getTranslatedPath";
 import type { SupportedLang } from "../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import IconLang from "../icons/iconLang.astro";
 import { getTranslations } from "../utils/i18n";
+import { getRouteMatch } from "../utils/i18nRouteMatch";
 
-const { lang = "pt" } = Astro.props;
+const { lang = "pt" } = Astro.props as { lang?: SupportedLang };
 
 const languages: { code: SupportedLang; label: string }[] = [
   { code: "pt", label: "Português" },
@@ -23,12 +23,7 @@ const translations: Record<SupportedLang, any> = {
 const pathParts = Astro.url.pathname.split("/").filter(Boolean);
 const currentPath = pathParts.slice(1).join("/");
 
-function findOriginalKey(path: string) {
-  return (
-    Object.keys(routeTranslations) as Array<keyof typeof routeTranslations>
-  ).find((key) => Object.values(routeTranslations[key]).includes(path));
-}
-const originalKey = findOriginalKey(currentPath);
+const routeMatch = getRouteMatch(currentPath, lang);
 
 let membroBaseSlug: string | null = null;
 let membrosPorIdioma: Record<SupportedLang, boolean> = {
@@ -37,7 +32,7 @@ let membrosPorIdioma: Record<SupportedLang, boolean> = {
   es: false,
 };
 
-if (!originalKey && currentPath) {
+if (!routeMatch && currentPath) {
   const allMembros = await getCollection("membros");
 
   for (const membro of allMembros) {
@@ -81,15 +76,17 @@ if (!originalKey && currentPath) {
         let disabled = false;
         let labelExtra = "";
 
-        if (originalKey) {
-          const translatedPath = getTranslatedPath(originalKey, l.code);
-          href = `/${l.code}/${translatedPath}`;
+        if (routeMatch) {
+          const translatedPrefix = getTranslatedPath(routeMatch.key, l.code);
+          href = `/${l.code}/${translatedPrefix}${routeMatch.remainder ? `/${routeMatch.remainder}` : ""}`;
         } else if (membroBaseSlug) {
           href = `/${l.code}/${membroBaseSlug}`;
           if (!membrosPorIdioma[l.code]) {
             disabled = true;
             labelExtra = ` (${translations[l.code]?.texts?.languageUnavailable ?? "Not available"})`;
           }
+        } else if (currentPath) {
+          href = `/${l.code}/${currentPath}`;
         }
 
         return (

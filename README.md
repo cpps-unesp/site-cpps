@@ -57,7 +57,7 @@ cpps-unesp/
 │   ├── imagens/        # Imagens do site
 │   └── scripts/        # Scripts do cliente
 ├── astro.config.mjs    # Configuração do Astro
-├── tailwind.config.mjs # Configuração do Tailwind
+├── src/styles/global.css # Configuração do Tailwind + DaisyUI
 └── package.json
 ```
 
@@ -139,12 +139,10 @@ A busca é implementada com Pagefind e indexa automaticamente todo o conteúdo d
 npm run dev           # Servidor de desenvolvimento
 
 # Build
+npm run typecheck     # Verificação de tipos (Astro + TS)
 npm run build         # Build de produção
 npm run preview       # Preview do build
-
-# Linting
-npm run lint          # Verifica erros de código
-npm run format        # Formata o código
+npm run ci            # Typecheck + build (pipeline local)
 ```
 
 ## 🚀 Deploy
@@ -191,4 +189,3 @@ Centro de Pesquisa Política e Social - UNESP Franca
 ---
 
 Desenvolvido com ❤️ pela equipe do CPPS - UNESP Franca
-

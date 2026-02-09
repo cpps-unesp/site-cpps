@@ -3,12 +3,6 @@ const { textos, iniciativas, projetos = [] } = Astro.props;
 
 const projetosData = iniciativas?.projetosLista || projetos || [];
 
-console.log("Total de projetos:", projetosData.length);
-console.log(
-  "Estrutura do primeiro projeto:",
-  Object.keys(projetosData[0] || {}),
-);
-
 const url = new URL(Astro.request.url);
 const ordemValida = ["titulo", "docente", "periodo"];
 const ordemParam = url.searchParams.get("ordem") ?? "";

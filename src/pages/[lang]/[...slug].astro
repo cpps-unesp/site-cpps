@@ -22,86 +22,45 @@ import NoticiaPage from "../../components/NoticiaPage.astro";
 import NoticiasListPage from "../../components/NoticiasListPage.astro";
 import PublicationListPage from "../../components/PublicationListPage.astro";
 import PublicationPage from "../../components/PublicationPage.astro";
+import TranslationWarning from "../../components/TranslationWarning.astro";
 import routeTranslations from "../../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import type { SupportedLang } from "../../types/lang";
 import { getTranslations } from "../../utils/i18n";
-import slugify from "slugify";
+import {
+  buildLocalizedContentPaths,
+  buildMembroPaths,
+  buildNewsCategoryPaths,
+  buildRouteTranslationPaths,
+  findOriginalKey,
+  getMembroSlugFromEntryId,
+} from "../../utils/catchAllRouting";
 
 // ✅ Exporta os caminhos possíveis para páginas estáticas
 export async function getStaticPaths() {
   const langs: SupportedLang[] = ["pt", "en", "es"];
-  const paths = [];
+  const paths = buildRouteTranslationPaths(langs);
 
-  // Páginas institucionais e outras do routeTranslations
-  for (const [key, traducoes] of Object.entries(routeTranslations)) {
-    for (const lang of langs) {
-      const slugValue = traducoes[lang];
-      if (typeof slugValue === "string") {
-        paths.push({
-          params: {
-            lang,
-            slug: slugValue,
-          },
-        });
-      }
-    }
-  }
-
-  // Notícias individuais
+  // Notícias individuais (todos os idiomas para permitir fallback)
   const allNoticias = await getCollection("noticias");
-  for (const noticia of allNoticias) {
-    const lang = noticia.data.lang as SupportedLang;
-    const prefix = routeTranslations["noticias"][lang];
-    paths.push({
-      params: {
-        lang,
-        slug: `${prefix}/${noticia.slug}`,
-      },
-    });
-  }
+  const uniqueNoticiasSlugs = [...new Set(allNoticias.map((n) => n.slug))];
+  paths.push(...buildLocalizedContentPaths(langs, "noticias", uniqueNoticiasSlugs));
 
-  // Publicações individuais
+  // Publicações individuais (todos os idiomas para permitir fallback)
   const allPublicacoes = await getCollection("publicacoes");
-  for (const pub of allPublicacoes) {
-    const lang = pub.data.lang as SupportedLang;
-    const prefix = routeTranslations["publicacao"][lang];
-    const slugValue = pub.slug || pub.id.replace(/\.[^/.]+$/, "");
-    paths.push({
-      params: {
-        lang,
-        slug: `${prefix}/${slugValue}`,
-      },
-    });
-  }
+  const uniquePubSlugs = [
+    ...new Set(allPublicacoes.map((p) => p.slug || p.id.replace(/\.[^/.]+$/, ""))),
+  ];
+  paths.push(...buildLocalizedContentPaths(langs, "publicacao", uniquePubSlugs));
 
   // Categorias de notícias
-  const tags = [...new Set(allNoticias.flatMap(n => n.data.tags || []))];
-  for (const lang of langs) {
-    const prefix = routeTranslations["noticias"][lang];
-    for (const tag of tags) {
-      const tagSlug = slugify(tag, { lower: true, strict: true });
-      paths.push({
-        params: {
-          lang,
-          slug: `${prefix}/categoria/${tagSlug}`,
-        },
-      });
-    }
-  }
+  const tags = [...new Set(allNoticias.flatMap((n) => n.data.tags || []))];
+  paths.push(...buildNewsCategoryPaths(langs, tags));
 
-  // Membros
+  // Membros (todos os idiomas para permitir fallback)
   const allMembros = await getCollection("membros");
-  for (const membro of allMembros) {
-    const fileName = membro.id.split("/").pop() ?? "";
-    const slugWithoutLang = fileName.replace(/\.(pt|en|es)\.mdx$/, "");
-    paths.push({
-      params: {
-        lang: membro.data.lang,
-        slug: slugWithoutLang,
-      },
-    });
-  }
+  const uniqueMembroSlugs = [...new Set(allMembros.map((m) => getMembroSlugFromEntryId(m.id)))];
+  paths.push(...buildMembroPaths(langs, uniqueMembroSlugs));
 
   return paths;
 }
@@ -127,20 +86,17 @@ const publicacoesPrefix = routeTranslations["publicacao"][currentLang];
 const isPublication = slugPath.startsWith(`${publicacoesPrefix}/`);
 
 const allMembros = await getCollection("membros");
-function getSlugFromEntry(entry: any) {
-  const fileName = entry.id.split("/").pop() ?? "";
-  return fileName.replace(/\.(pt|en|es)\.mdx$/, "");
-}
-
-let membroSelecionado = allMembros.find(
-  (entry) =>
-    getSlugFromEntry(entry) === slugPath && entry.data.lang === currentLang,
+const membroEntries = allMembros.filter(
+  (entry) => getMembroSlugFromEntryId(entry.id) === slugPath
 );
 
-if (!membroSelecionado) {
-  membroSelecionado = allMembros.find(
-    (entry) => getSlugFromEntry(entry) === slugPath,
-  );
+const availableLangs = membroEntries.map(e => e.data.lang);
+const isTranslationMissing = membroEntries.length > 0 && !availableLangs.includes(currentLang);
+
+let membroSelecionado = membroEntries.find(e => e.data.lang === currentLang);
+
+if (!membroSelecionado && membroEntries.length > 0) {
+  membroSelecionado = membroEntries.find(e => e.data.lang === 'pt') || membroEntries[0];
 }
 
 // Renderiza o conteúdo do .mdx
@@ -148,18 +104,6 @@ let Content = null;
 if (membroSelecionado) {
   const renderResult = await membroSelecionado.render();
   Content = renderResult.Content;
-}
-
-function findOriginalKey(
-  translatedSlug: string,
-  lang: SupportedLang,
-): string | null {
-  for (const [key, translations] of Object.entries(routeTranslations)) {
-    if (translations[lang] === translatedSlug) {
-      return key;
-    }
-  }
-  return null;
 }
 
 const originalKey = findOriginalKey(slugPath, currentLang);
@@ -180,6 +124,13 @@ const originalKey = findOriginalKey(slugPath, currentLang);
       texts={texts}
       githubPath={`src/content/membros/${membroSelecionado.id}`}
     >
+      {isTranslationMissing && (
+        <TranslationWarning
+          availableLangs={availableLangs}
+          currentLang={currentLang}
+          texts={texts}
+        />
+      )}
       <article class="max-w-3xl mx-auto pt-16 pb-10 text-center">
         <img
           src={membroSelecionado.data.foto}
