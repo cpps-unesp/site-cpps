@@ -1,10 +1,10 @@
 ---
-import routeTranslations from "../i18n/routeTranslations";
 import { getTranslatedPath } from "../utils/getTranslatedPath";
 import type { SupportedLang } from "../i18n/routeTranslations";
 import { getCollection } from "astro:content";
 import IconLang from "../icons/iconLang.astro";
 import { getTranslations } from "../utils/i18n";
+import { getRouteMatch } from "../utils/i18nRouteMatch";
 
 const { lang = "pt" } = Astro.props as { lang?: SupportedLang };
 
@@ -23,24 +23,6 @@ const translations: Record<SupportedLang, any> = {
 const pathParts = Astro.url.pathname.split("/").filter(Boolean);
 const currentPath = pathParts.slice(1).join("/");
 
-function getRouteMatch(path: string, sourceLang: SupportedLang) {
-  const keys = Object.keys(routeTranslations) as Array<keyof typeof routeTranslations>;
-  let bestMatch:
-    | { key: keyof typeof routeTranslations; prefix: string; remainder: string }
-    | null = null;
-
-  for (const key of keys) {
-    const prefix = routeTranslations[key][sourceLang];
-    if (path === prefix || path.startsWith(`${prefix}/`)) {
-      const remainder = path.slice(prefix.length).replace(/^\//, "");
-      if (!bestMatch || prefix.length > bestMatch.prefix.length) {
-        bestMatch = { key, prefix, remainder };
-      }
-    }
-  }
-
-  return bestMatch;
-}
 const routeMatch = getRouteMatch(currentPath, lang);
 
 let membroBaseSlug: string | null = null;

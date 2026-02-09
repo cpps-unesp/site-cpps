@@ -4,6 +4,8 @@ const { tipo, url, tamanho = "text-lg" } = Astro.props;
 
 // Normaliza o nome para facilitar comparações
 const tipoNormalizado = tipo.toLowerCase();
+
+const iconSizeClass = tamanho === 'text-xl' ? 'w-6 h-6' : 'w-5 h-5';
 ---
 
 <a
@@ -17,9 +19,19 @@ const tipoNormalizado = tipo.toLowerCase();
     tipoNormalizado === "linkedin" ? (
       <i class={`fab fa-linkedin ${tamanho}`}></i>
     ) : tipoNormalizado === "lattes" ? (
-      <i class={`ai ai-lattes ${tamanho}`}></i>
+      <img
+        src="/imagens/logos/lattes_icon.svg"
+        alt="Lattes"
+        class={`${iconSizeClass} object-contain`}
+        loading="lazy"
+      />
     ) : tipoNormalizado === "orcid" ? (
-      <i class={`ai ai-orcid ${tamanho}`}></i>
+      <img
+        src="/imagens/logos/orcid.png"
+        alt="ORCID"
+        class={`${iconSizeClass} object-contain`}
+        loading="lazy"
+      />
     ) : tipoNormalizado === "portal-docente-unesp" ? (
       <img
         src="/imagens/logos/logo-unesp-mapa.svg"

@@ -1,7 +1,6 @@
 ---
-import routeTranslations from '../i18n/routeTranslations';
-import { getTranslatedPath } from '../utils/getTranslatedPath';
 import type { SupportedLang } from '../i18n/routeTranslations';
+import { translatePathBetweenLangs } from '../utils/i18nRouteMatch';
 
 interface Props {
   availableLangs: string[];
@@ -28,31 +27,8 @@ const availableInText = currentLang === 'en' ? 'This page is available in:' :
 const sourceLang = (['pt', 'en', 'es'].includes(currentLang) ? currentLang : 'pt') as SupportedLang;
 const currentPath = Astro.url.pathname.split('/').filter(Boolean).slice(1).join('/');
 
-function getRouteMatch(path: string, lang: SupportedLang) {
-  const keys = Object.keys(routeTranslations) as Array<keyof typeof routeTranslations>;
-  let bestMatch:
-    | { key: keyof typeof routeTranslations; prefix: string; remainder: string }
-    | null = null;
-
-  for (const key of keys) {
-    const prefix = routeTranslations[key][lang];
-    if (path === prefix || path.startsWith(`${prefix}/`)) {
-      const remainder = path.slice(prefix.length).replace(/^\//, '');
-      if (!bestMatch || prefix.length > bestMatch.prefix.length) {
-        bestMatch = { key, prefix, remainder };
-      }
-    }
-  }
-
-  return bestMatch;
-}
-
 function getPathForLanguage(targetLang: SupportedLang): string {
-  const match = getRouteMatch(currentPath, sourceLang);
-  if (!match) return currentPath;
-
-  const translatedPrefix = getTranslatedPath(match.key, targetLang);
-  return `${translatedPrefix}${match.remainder ? `/${match.remainder}` : ''}`;
+  return translatePathBetweenLangs(currentPath, sourceLang, targetLang);
 }
 ---
 
