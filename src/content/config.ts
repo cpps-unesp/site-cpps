@@ -78,6 +78,8 @@ const atividades = defineCollection({
     title: z.string().optional().default('Atividades'),
     description: z.string().optional(),
     sidebar_label: z.string().optional(),
+    sidebar_section: z.enum(['geral']).optional(),
+    sidebar_order: z.number().int().optional(),
   }).passthrough(),
 });
 

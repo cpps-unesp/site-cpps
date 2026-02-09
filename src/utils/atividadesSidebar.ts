@@ -72,13 +72,25 @@ function nodeToSidebarItems(node: SidebarNode): SidebarItem[] {
 
 export function buildAtividadesSidebar(entries: AtividadeEntry[]): SidebarItem[] {
   const root = createNode('Atividades');
+  const geralCustomItems: Array<{ label: string; url: string; order: number }> = [];
 
   for (const entry of entries) {
     const segments = entry.slug.split('/').filter(Boolean);
     const pagePath = normalizePath(`/atividades/${entry.slug}`);
     const pageLabel = entry.data.sidebar_label || entry.data.title || titleFromSegment(segments[segments.length - 1] || 'pagina');
+    const sidebarSection = entry.data.sidebar_section;
+    const sidebarOrder = entry.data.sidebar_order ?? 9999;
 
     if (segments.length === 0) continue;
+
+    if (sidebarSection === 'geral') {
+      geralCustomItems.push({
+        label: pageLabel,
+        url: pagePath,
+        order: sidebarOrder,
+      });
+      continue;
+    }
 
     let currentNode = root;
     let currentPath = '/atividades';
@@ -113,11 +125,17 @@ export function buildAtividadesSidebar(entries: AtividadeEntry[]): SidebarItem[]
   }
 
   const generatedItems = nodeToSidebarItems(root);
+  const geralItems = [
+    { label: 'Introducao', url: '/atividades' },
+    ...geralCustomItems
+      .sort((a, b) => (a.order - b.order) || a.label.localeCompare(b.label, 'pt-BR'))
+      .map(({ label, url }) => ({ label, url })),
+  ].filter((item, index, items) => items.findIndex((candidate) => candidate.url === item.url) === index);
 
   return [
     {
       label: 'Geral',
-      items: [{ label: 'Introducao', url: '/atividades' }],
+      items: geralItems,
     },
     ...generatedItems,
     externalResources,

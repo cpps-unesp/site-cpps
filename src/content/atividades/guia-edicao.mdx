@@ -1,6 +1,9 @@
 ---
 title: "Guia Completo de Gestão da Documentação"
 description: "Aprenda a gerenciar menus, criar novas páginas e utilizar componentes profissionais na documentação do CPPS."
+sidebar_section: "geral"
+sidebar_order: 1
+sidebar_label: "Guia de Edição"
 ---
 
 Este guia foi desenvolvido para capacitar estudantes e estagiários a gerenciarem a base de conhecimento do CPPS com autonomia e qualidade técnica.
@@ -46,6 +49,20 @@ title: "Introdução Técnica ao Projeto"
 sidebar_label: "Introdução"
 ---
 ```
+
+### Como decidir o que aparece em **Geral**
+Para colocar uma página na seção **Geral**, use:
+
+```markdown
+---
+title: "Guia de Atendimento"
+sidebar_section: "geral"
+sidebar_order: 20
+---
+```
+
+- `sidebar_section: "geral"` envia a página para o grupo **Geral**.
+- `sidebar_order` controla a ordem (número menor aparece antes).
 
 ### Como organizar submenus
 Os grupos e subgrupos são montados a partir das pastas.
