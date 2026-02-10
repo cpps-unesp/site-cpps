@@ -1,0 +1,26 @@
+---
+title: Traducoes
+description: Como manter textos e rotas nos idiomas pt, en e es.
+sidebar_order: 5
+---
+
+O site suporta tres idiomas: `pt`, `en`, `es`.
+
+## Onde editar traducoes
+
+- Textos: `src/i18n/locales/`
+- Rotas traduzidas: `src/i18n/routes.ts`
+- Conteudo por idioma: `src/content/`
+
+## Passo a passo
+
+1. Atualize textos no arquivo do idioma.
+2. Se necessario, adicione ou ajuste a rota traduzida.
+3. Crie/atualize o conteudo no idioma correspondente.
+4. Rode `npm run dev` para revisar navegacao e textos.
+
+## Checklist rapido
+
+- Chaves iguais entre `pt.json`, `en.json` e `es.json`.
+- Rotas com traducoes consistentes em `src/i18n/routes.ts`.
+- Paginas importantes com conteudo nos tres idiomas quando aplicavel.

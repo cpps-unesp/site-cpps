@@ -1,0 +1,40 @@
+---
+title: Editar site
+description: Guia central para editar conteudo do site do CPPS com editor de codigo.
+sidebar_section: geral
+sidebar_order: 1
+sidebar_label: Inicio
+---
+
+Esta area centraliza os guias de edicao do site.
+
+## Como usar esta area
+
+1. Abra o menu lateral e escolha o tema que voce quer editar.
+2. Siga o passo a passo da pagina (noticias, publicacoes, equipe ou traducoes).
+3. Edite os arquivos no repositorio e rode `npm run dev` para validar localmente.
+4. Quando terminar, rode `npm run build` antes de abrir PR.
+
+> Escopo atual: edicao por codigo no repositorio.
+>
+> Escopo futuro: adicionar fluxos com Strapi e Notion.
+
+## Trilhas disponiveis
+
+- `Noticias`: criar e atualizar materias em `src/content/noticias/`.
+- `Publicacoes`: cadastrar publicacoes em `src/content/publicacoes/`.
+- `Membros da equipe`: adicionar perfis em `src/content/membros/`.
+- `Traducoes`: manter textos em `src/i18n/locales/` e rotas em `src/i18n/routes.ts`.
+
+## Fluxo recomendado
+
+```bash
+npm install
+npm run dev
+```
+
+No final da edicao:
+
+```bash
+npm run build
+```

@@ -19,7 +19,7 @@ Site institucional do Centro de Pesquisa Política e Social da Faculdade de Ciê
 - Node.js 18+ 
 - npm ou yarn
 
-## 🔧 Instalação
+## ⚡ Início rápido
 
 ```bash
 # Clone o repositório
@@ -29,11 +29,22 @@ cd cpps-unesp
 # Instale as dependências
 npm install
 
-# Inicie o servidor de desenvolvimento
+# Inicie o servidor de desenvolvimento local
 npm run dev
 ```
 
 O site estará disponível em `http://localhost:4321`
+
+### Simulação Cloudflare (opcional)
+
+Para simular o runtime de Pages Functions localmente:
+
+```bash
+npm run build
+npx wrangler pages dev
+```
+
+Use esse fluxo apenas quando precisar validar comportamento específico de Cloudflare. Para desenvolvimento diário, prefira `npm run dev`.
 
 ## 📁 Estrutura do Projeto
 
@@ -64,65 +75,19 @@ cpps-unesp/
 ## 🌐 Internacionalização
 
 O site suporta 3 idiomas:
-- 🇧🇷 Português (pt)
-- 🇺🇸 Inglês (en) 
-- 🇪🇸 Espanhol (es)
+- Português (pt)
+- Inglês (en) 
+- Espanhol (es)
 
-### Adicionando traduções
+## ✍️ Editar site
 
-1. Edite os arquivos em `src/i18n/locales/`
-2. Adicione rotas traduzidas em `src/i18n/routes.ts`
-3. Crie conteúdo específico por idioma em `src/content/`
+A documentacao editorial foi centralizada em:
 
-## 👥 Gerenciando Membros da Equipe
+- `/pt/editar-site`
+- `/en/editar-site`
+- `/es/editar-site`
 
-### Adicionando um novo membro
-
-1. Crie um arquivo MDX em `src/content/membros/`:
-   ```
-   nome-do-membro.pt.mdx  # Versão em português
-   nome-do-membro.en.mdx  # Versão em inglês (opcional)
-   nome-do-membro.es.mdx  # Versão em espanhol (opcional)
-   ```
-
-2. Use o seguinte template:
-   ```mdx
-   ---
-   title: "Nome do Membro"
-   lang: "pt"
-   foto: "/imagens/equipe/foto.jpg"
-   cargo: "Cargo do Membro"
-   redes:
-     - tipo: "lattes"
-       url: "http://lattes.cnpq.br/..."
-       icone: "/imagens/logos/lattes_icon.svg"
-   contribuicao: "Descrição opcional"
-   ---
-
-   # Biografia
-
-   Texto da biografia...
-   ```
-
-3. Adicione o membro no arquivo de equipe em `src/i18n/locales/pt.json`
-
-## 📰 Gerenciando Notícias
-
-### Criando uma notícia
-
-1. Adicione um arquivo em `src/content/noticias/`:
-   ```markdown
-   ---
-   title: "Título da Notícia"
-   date: 2024-01-15
-   resumo: "Resumo breve da notícia"
-   tags: ["tag1", "tag2"]
-   image: "/images/noticias/imagem.jpg"
-   lang: "pt"
-   ---
-
-   Conteúdo da notícia...
-   ```
+Nessa secao voce encontra guias para noticias, publicacoes, membros da equipe e traducoes.
 
 ## 🎨 Temas
 
@@ -145,6 +110,14 @@ npm run preview       # Preview do build
 npm run ci            # Typecheck + build (pipeline local)
 ```
 
+## 🛠️ Troubleshooting
+
+### `The Workers runtime failed to start`
+
+- Se esse erro aparecer no `wrangler pages dev`, continue o desenvolvimento com `npm run dev`.
+- Para testar Cloudflare local, rode `npm run build` antes de `npx wrangler pages dev`.
+- Em caso de falhas locais persistentes do Wrangler, use CI/deploy para validar o ambiente Cloudflare.
+
 ## 🚀 Deploy
 
 ### Build para produção
@@ -157,9 +130,27 @@ Os arquivos estáticos serão gerados em `./dist/`
 
 ### Configurações importantes
 
+- O projeto usa `output: 'server'` com `@astrojs/cloudflare` para execução no runtime do Cloudflare.
 - Atualize a URL base em `astro.config.mjs`
 - Configure o sitemap em `pages/sitemap.xml.ts`
 - Ajuste as meta tags em `layouts/BaseLayout.astro`
+
+### Cloudflare KV para sessões (`SESSION`)
+
+Antes do deploy em produção, crie os namespaces KV e atualize `wrangler.jsonc`:
+
+```bash
+# namespace de produção
+npx wrangler kv namespace create SESSION
+
+# namespace de preview
+npx wrangler kv namespace create SESSION --preview
+```
+
+Depois, copie os IDs retornados para:
+
+- `kv_namespaces[0].id` em `wrangler.jsonc`
+- `kv_namespaces[0].preview_id` em `wrangler.jsonc`
 
 ## 🤝 Contribuindo
 

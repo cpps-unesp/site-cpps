@@ -1,0 +1,49 @@
+---
+title: Noticias
+description: Como criar, editar e organizar noticias do site.
+sidebar_order: 2
+---
+
+As noticias ficam em `src/content/noticias/`.
+
+## Como criar uma nova noticia
+
+1. Crie um arquivo `.md` com nome curto e descritivo.
+2. Preencha o frontmatter.
+3. Escreva o conteudo em Markdown abaixo do frontmatter.
+
+Exemplo:
+
+```markdown
+---
+title: "Titulo da Noticia"
+date: 2024-03-20
+resumo: "Uma breve descricao para listagem."
+tags: ["Categoria 1", "Categoria 2"]
+image: "/imagens/noticias/sua-imagem.jpg"
+lang: "pt"
+author: "Nome do Autor"
+featured: false
+---
+```
+
+## Campos
+
+- `title`: titulo principal da noticia.
+- `date`: data no formato `AAAA-MM-DD`.
+- `resumo`: texto curto exibido nas listagens.
+- `tags`: categorias da materia.
+- `image`: caminho da imagem de destaque em `public/imagens/noticias/`.
+- `lang`: idioma (`pt`, `en`, `es`).
+- `author`: opcional.
+- `featured`: destaque principal da pagina de noticias.
+
+## Idiomas
+
+Para aparecer em mais de um idioma, crie um arquivo por idioma.
+
+## Boas praticas editoriais
+
+- Use titulos claros e diretos.
+- Use imagens de boa qualidade.
+- Mantenha tags consistentes para facilitar filtros.
