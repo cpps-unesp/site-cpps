@@ -114,6 +114,18 @@ const editarSite = defineCollection({
     .passthrough(),
 });
 
+// ✅ Collection de editar-site
+const editarSite = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().optional().default('Editar site'),
+    description: z.string().optional(),
+    sidebar_label: z.string().optional(),
+    sidebar_section: z.enum(['geral']).optional(),
+    sidebar_order: z.number().int().optional(),
+  }).passthrough(),
+});
+
 // ✅ Exportando as collections
 export const collections = {
   noticias,
