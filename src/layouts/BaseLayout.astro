@@ -8,7 +8,9 @@ const urlLang = getLangFromUrl(Astro.url) as Language;
 interface Props {
   titulo?: string;
   descricao?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   texts?: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   identidade?: any;
   lang?: Language;
   githubPath?: string;

@@ -1,9 +1,10 @@
 ---
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  publication: any;
+  publication: CollectionEntry<'publicacoes'>;
   lang: SupportedLang;
 }
 

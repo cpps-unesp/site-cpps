@@ -14,6 +14,7 @@ const languages: { code: SupportedLang; label: string }[] = [
   { code: 'es', label: 'Español' },
 ];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const translations: Record<SupportedLang, any> = {
   pt: getTranslations('pt'),
   en: getTranslations('en'),
