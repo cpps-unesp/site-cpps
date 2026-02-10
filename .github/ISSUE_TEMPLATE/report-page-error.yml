@@ -1,7 +1,7 @@
 name: Relatar erro em pagina
 description: Informe um problema encontrado no site
-title: "[Erro na pagina]: "
-labels: ["report-error"]
+title: '[Erro na pagina]: '
+labels: ['report-error']
 body:
   - type: markdown
     attributes:

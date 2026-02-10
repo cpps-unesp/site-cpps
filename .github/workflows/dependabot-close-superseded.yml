@@ -1,4 +1,4 @@
-name: "Dependabot: Close Superseded"
+name: 'Dependabot: Close Superseded'
 
 on:
   pull_request_target:
@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       pr_number:
-        description: "Dependabot PR number to evaluate"
+        description: 'Dependabot PR number to evaluate'
         required: true
         type: string
 
