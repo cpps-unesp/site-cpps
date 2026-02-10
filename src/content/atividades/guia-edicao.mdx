@@ -26,6 +26,35 @@ Nossa documentação é baseada em **Coleções de Conteúdo**. Isso significa q
 
 Agora o menu lateral de `/atividades` é gerado automaticamente pela estrutura dos arquivos em `src/content/atividades/`.
 
+### Estrutura generica (reutilizavel)
+
+O projeto agora possui uma base de documentacao reutilizavel para outras areas do site, alem de `/atividades`.
+
+- **Nucleo compartilhado**:
+  - `src/utils/docsSidebar.ts`
+  - `src/components/docs/Sidebar.astro`
+  - `src/components/docs/Breadcrumbs.astro`
+  - `src/components/docs/TableOfContents.astro`
+  - `src/components/docs/Pagination.astro`
+
+- **Secoes que ja usam essa base**:
+  - `atividades` (conteudo em `src/content/atividades/`)
+  - `atendimento` (conteudo em `src/content/atendimento/`)
+
+### Rotas traduzidas de atendimento
+
+A secao de atendimento usa traducao por idioma definida em `src/i18n/routes.ts`:
+
+- `pt`: `/pt/atendimento`
+- `en`: `/en/help-desk`
+- `es`: `/es/mesa-de-ayuda`
+
+O arquivo principal atual de atendimento e `src/content/atendimento/index.mdx`.
+
+<Notice type="tip">
+  Sempre que criar uma nova secao de documentacao, prefira reutilizar os componentes em `src/components/docs/` e o builder em `src/utils/docsSidebar.ts` em vez de duplicar codigo.
+</Notice>
+
 ### Como inserir uma página no menu
 1. Crie o arquivo `.md` ou `.mdx` no local correto dentro de `src/content/atividades/`.
 2. Defina `title` no frontmatter.
