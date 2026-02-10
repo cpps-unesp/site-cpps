@@ -1,19 +1,6 @@
 ---
-interface Props {
-  githubPath?: string;
-  lang?: string;
-  texts?: any;
-}
-
-const { githubPath, lang = 'pt', texts = {} } = Astro.props;
+---
 const currentYear = new Date().getFullYear();
-const editLabel =
-  texts.editOnGithub ||
-  (lang === 'en'
-    ? 'Edit this page on GitHub'
-    : lang === 'es'
-      ? 'Editar esta página en GitHub'
-      : 'Editar esta página no GitHub');
 ---
 
 <footer class="mt-auto bg-[#2E3F46] p-8 text-white" data-pagefind-ignore>

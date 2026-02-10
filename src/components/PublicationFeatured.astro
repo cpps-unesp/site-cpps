@@ -12,11 +12,6 @@ const { data, slug } = publication;
 const locale = getTranslations(lang);
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
-
-const formattedDate = new Intl.DateTimeFormat(lang, {
-  year: 'numeric',
-  month: 'long',
-}).format(data.date);
 ---
 
 <section class="mb-16 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm">

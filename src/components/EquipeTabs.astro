@@ -23,14 +23,12 @@ const props = Astro.props as {
   ativos?: Array<[string, Membro[]]>;
   inativos?: Membro[];
   lang?: string;
-  layout?: string;
   texts?: Record<string, string>;
 };
 
 const ativos = props.ativos ?? [];
 const inativos = props.inativos ?? [];
 const lang = props.lang ?? 'pt';
-const layout = props.layout ?? 'pesquisador';
 const texts = props.texts ?? {};
 
 const membrosCollection = await getCollection('membros');
@@ -51,13 +49,6 @@ const membrosDisponiveis = new Set(
 function getSlug(membro: Membro): string {
   return membro.slug?.trim() || membro.nome.toLowerCase().replace(/\s+/g, '-');
 }
-
-const categoriasTodas = Array.from(
-  new Set([
-    ...ativos.map(([cat]) => cat),
-    ...Object.keys(Object.fromEntries(ativos.concat([['inativos', inativos]]))),
-  ])
-);
 ---
 
 <script type="module" is:inline>

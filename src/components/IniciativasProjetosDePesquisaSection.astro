@@ -1,5 +1,5 @@
 ---
-const { textos, iniciativas, projetos = [] } = Astro.props;
+const { iniciativas, projetos = [] } = Astro.props;
 
 const projetosData = iniciativas?.projetosLista || projetos || [];
 
@@ -109,11 +109,10 @@ const agenciaInicial = agenciaParam || '';
   </div>
 </section>
 
-<script is:inline define:vars={{ projetosData, ordemInicial, agenciaInicial }}>
+<script is:inline define:vars={{ projetosData, ordemInicial }}>
   const allProjects = projetosData || [];
   let currentSort = ordemInicial || 'titulo';
   let currentOrder = 'asc';
-  const currentFilter = agenciaInicial || '';
 
   function escapeHtml(text) {
     if (!text) return '';
