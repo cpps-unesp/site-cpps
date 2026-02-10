@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && pagefind --site ./dist",
-    "typecheck": "tsc --noEmit",
-    "ci": "npm run typecheck && npm run build",
     "preview": "astro preview",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "ci": "astro sync && npm run typecheck && npm run lint && npm run build",
     "astro": "astro"
   },
   "dependencies": {
@@ -26,9 +28,15 @@
     "@astrojs/check": "^0.9.2",
     "@astrojs/cloudflare": "^12.6.5",
     "@types/node": "^25.2.2",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
     "miniflare": "^4.20260210.0",
     "pagefind": "^1.4.0",
+    "prettier": "^3.8.1",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^5.9.3",
+    "typescript-eslint": "^8.55.0",
     "wrangler": "^4.64.0"
   }
 }

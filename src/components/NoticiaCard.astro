@@ -1,51 +1,85 @@
 ---
-import slugify from "slugify";
+import slugify from 'slugify';
+import pt from '../i18n/locales/pt.json';
+import en from '../i18n/locales/en.json';
+import es from '../i18n/locales/es.json';
+
+interface Props {
+  title: string;
+  resumo: string;
+  image: string;
+  tags: string[];
+  slug: string;
+  lang: 'pt' | 'en' | 'es';
+  date: string | Date;
+  author?: string;
+  featured?: boolean;
+}
 
 const { title, resumo, image, tags, slug, lang, date, author } = Astro.props;
+
+const translations = { pt, en, es };
+const t = translations[lang] || translations.pt;
 ---
 
-<article class="bg-base-100 rounded-2xl shadow-md overflow-hidden flex flex-col hover:shadow-xl transition-all duration-300 group h-full border border-base-200">
-  <a href={slug} class="relative block overflow-hidden aspect-video">
+<article
+  class="bg-base-100 group border-base-200 flex h-full flex-col overflow-hidden rounded-2xl border shadow-md transition-all duration-300 hover:shadow-xl"
+>
+  <a href={slug} class="relative block aspect-video overflow-hidden">
     <img
       src={image}
       alt={title}
-      class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+      class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
     />
-    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+    >
+    </div>
   </a>
 
-  <div class="p-6 flex flex-col flex-1">
-    <div class="flex flex-wrap gap-2 mb-4">
-      {tags.map((tag: string) => (
-        <a
-          href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
-          class="text-[10px] font-bold uppercase tracking-widest text-primary hover:underline"
-        >
-          {tag}
-        </a>
-      ))}
+  <div class="flex flex-1 flex-col p-6">
+    <div class="mb-4 flex flex-wrap gap-2">
+      {
+        tags.map((tag: string) => (
+          <a
+            href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+            class="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline"
+          >
+            {tag}
+          </a>
+        ))
+      }
     </div>
 
-    <h3 class="text-xl font-bold text-base-content mb-3 group-hover:text-primary transition-colors line-clamp-2">
+    <h3
+      class="text-base-content group-hover:text-primary mb-3 line-clamp-2 text-xl font-bold transition-colors"
+    >
       <a href={slug}>{title}</a>
     </h3>
 
-    <p class="text-base-content/70 text-sm mb-6 line-clamp-3 flex-1">
+    <p class="text-base-content/70 mb-6 line-clamp-3 flex-1 text-sm">
       {resumo}
     </p>
 
-    <div class="pt-4 border-t border-base-100 flex items-center justify-between text-xs text-base-content/60">
+    <div
+      class="border-base-100 text-base-content/60 flex items-center justify-between border-t pt-4 text-xs"
+    >
       <span>
         {new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
-        {author && (
-          <>
-            <span class="mx-2">•</span>
-            <span>{author}</span>
-          </>
-        )}
+        {
+          author && (
+            <>
+              <span class="mx-2">•</span>
+              <span>{author}</span>
+            </>
+          )
+        }
       </span>
-      <a href={slug} class="text-primary font-bold text-sm inline-flex items-center gap-2 hover:gap-3 transition-all">
-        {lang === 'en' ? 'Read more' : (lang === 'es' ? 'Leer mas' : 'Leia mais')}
+      <a
+        href={slug}
+        class="text-primary inline-flex items-center gap-2 text-sm font-bold transition-all hover:gap-3"
+      >
+        {t.noticias.readMore}
         <i class="fa-solid fa-arrow-right text-xs"></i>
       </a>
     </div>

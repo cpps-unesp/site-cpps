@@ -1,22 +1,32 @@
 ---
 // src/components/TextoComCheck.astro
-import CheckIcon from "../icons/CheckIcon.astro";
-import { renderMarkdown } from "../utils/markdown";
+import CheckIcon from '../icons/CheckIcon.astro';
+import { renderMarkdown } from '../utils/markdown';
+
+interface Props {
+  texto: {
+    check: boolean;
+    conteudo: string;
+  }[];
+}
 
 const { texto } = Astro.props;
 ---
 
-{texto.map((par, idx) => (
-  <div class="flex items-start mb-4" key={idx}>    {par.check ? (
-      <div class="mt-1 mr-3 flex-shrink-0">
-        <CheckIcon size={24} color="#22c55e" />
+{
+  texto.map((par) => (
+    <div class="mb-4 flex items-start">
+      {par.check ? (
+        <div class="mt-1 mr-3 flex-shrink-0">
+          <CheckIcon size={24} color="#22c55e" />
+        </div>
+      ) : (
+        <div class="mr-3 w-[24px] flex-shrink-0" />
+      )}
+      <div class="paragrafo text-justify hyphens-auto">
+        {/* eslint-disable-next-line astro/no-set-html-directive */}
+        <Fragment set:html={renderMarkdown(par.conteudo)} />
       </div>
-    ) : (
-      <div class="w-[24px] mr-3 flex-shrink-0"></div>  <!-- reserva o espaço vazio do ícone -->
-    )}
-    <div
-      class="paragrafo text-justify hyphens-auto"
-      set:html={renderMarkdown(par.conteudo)}
-    />
-  </div>
-))}
+    </div>
+  ))
+}

@@ -1,6 +1,6 @@
 ---
-title: "Apresentação News Cloud"
-description: "Visão geral e objetivos do projeto NewsCloud."
+title: 'Apresentação News Cloud'
+description: 'Visão geral e objetivos do projeto NewsCloud.'
 sidebar:
   order: 1
 ---
@@ -19,10 +19,10 @@ Devido a isso, o objetivo geral desse projeto é coletar, indexar, tratar e estr
 
 Mais especificamente, o projeto **NewsCloud** visa:
 
-*   Coletar integralmente os jornais impressos selecionados, realizando o devido tratamento das informações veiculadas para uma melhor utilização dos dados para pesquisas acadêmicas;
-*   Subsidiar pesquisas acadêmicas que utilizam jornais impressos como fontes de informação ou objeto de estudo;
-*   Fornecer um instrumento básico para análise das informações veiculadas;
-*   Indicar possibilidades e instrumentos que auxiliem análises mais detalhadas das informações veiculadas.
+- Coletar integralmente os jornais impressos selecionados, realizando o devido tratamento das informações veiculadas para uma melhor utilização dos dados para pesquisas acadêmicas;
+- Subsidiar pesquisas acadêmicas que utilizam jornais impressos como fontes de informação ou objeto de estudo;
+- Fornecer um instrumento básico para análise das informações veiculadas;
+- Indicar possibilidades e instrumentos que auxiliem análises mais detalhadas das informações veiculadas.
 
 </div>
 
@@ -36,6 +36,7 @@ Para acessar o repositório do projeto, **[clique aqui](https://gitlab.com/cpps-
 <br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

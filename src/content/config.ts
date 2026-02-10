@@ -59,6 +59,7 @@ const membros = defineCollection({
         )
         .optional(),
     })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     .transform((data, ctx: any) => {
       const filePath = ctx?.meta?.fileURL?.pathname ?? '';
       const fileName = filePath.split('/').pop() ?? '';
@@ -74,37 +75,43 @@ const membros = defineCollection({
 // ✅ Collection de atividades
 const atividades = defineCollection({
   type: 'content',
-  schema: z.object({
-    title: z.string().optional().default('Atividades'),
-    description: z.string().optional(),
-    sidebar_label: z.string().optional(),
-    sidebar_section: z.enum(['geral']).optional(),
-    sidebar_order: z.number().int().optional(),
-  }).passthrough(),
+  schema: z
+    .object({
+      title: z.string().optional().default('Atividades'),
+      description: z.string().optional(),
+      sidebar_label: z.string().optional(),
+      sidebar_section: z.enum(['geral']).optional(),
+      sidebar_order: z.number().int().optional(),
+    })
+    .passthrough(),
 });
 
 // ✅ Collection de atendimento
 const atendimento = defineCollection({
   type: 'content',
-  schema: z.object({
-    title: z.string().optional().default('Atendimento'),
-    description: z.string().optional(),
-    sidebar_label: z.string().optional(),
-    sidebar_section: z.enum(['geral']).optional(),
-    sidebar_order: z.number().int().optional(),
-  }).passthrough(),
+  schema: z
+    .object({
+      title: z.string().optional().default('Atendimento'),
+      description: z.string().optional(),
+      sidebar_label: z.string().optional(),
+      sidebar_section: z.enum(['geral']).optional(),
+      sidebar_order: z.number().int().optional(),
+    })
+    .passthrough(),
 });
 
 // ✅ Collection de editar-site
 const editarSite = defineCollection({
   type: 'content',
-  schema: z.object({
-    title: z.string().optional().default('Editar site'),
-    description: z.string().optional(),
-    sidebar_label: z.string().optional(),
-    sidebar_section: z.enum(['geral']).optional(),
-    sidebar_order: z.number().int().optional(),
-  }).passthrough(),
+  schema: z
+    .object({
+      title: z.string().optional().default('Editar site'),
+      description: z.string().optional(),
+      sidebar_label: z.string().optional(),
+      sidebar_section: z.enum(['geral']).optional(),
+      sidebar_order: z.number().int().optional(),
+    })
+    .passthrough(),
 });
 
 // ✅ Exportando as collections

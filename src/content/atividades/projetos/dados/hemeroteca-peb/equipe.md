@@ -1,6 +1,6 @@
 ---
-title: "Equipe"
-description: "Conheça a equipe da Hemeroteca PEB."
+title: 'Equipe'
+description: 'Conheça a equipe da Hemeroteca PEB.'
 ---
 
 <div style="text-align: center; margin-bottom: 40px;">
@@ -49,7 +49,6 @@ Abaixo são indicadas as pessoas que contribuem com o projeto.
 </div>
 </div>
 
-
 <!-- SEÇÃO COLABORADORES -->
 <h2 style="text-align: center; margin-top: 80px; margin-bottom: 30px;">Colaboradores do Projeto</h2>
 
@@ -76,7 +75,6 @@ Abaixo são indicadas as pessoas que contribuem com o projeto.
 <a href="https://www.linkedin.com/" target="_blank" style="text-decoration: none;">💼 LinkedIn</a>
 </div>
 </div>
-
 
 <!-- SEÇÃO JÁ PASSARAM POR AQUI -->
 <h2 style="text-align: center; margin-top: 80px; margin-bottom: 30px;">Já passaram por aqui</h2>

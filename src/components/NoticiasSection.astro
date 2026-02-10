@@ -4,19 +4,21 @@ import NoticiaCard from './NoticiaCard.astro';
 const { noticias, lang } = Astro.props;
 ---
 
-<section class="max-w-screen-xl mx-auto px-4 md:px-8 py-12">
-  <h2 class="titulo text-center text-primary mb-12">Notícias</h2>
+<section class="mx-auto max-w-screen-xl px-4 py-12 md:px-8">
+  <h2 class="titulo text-primary mb-12 text-center">Notícias</h2>
 
   <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-    {noticias.map(post => (
-      <NoticiaCard 
-        title={post.data.title} 
-        resumo={post.data.resumo} 
-        image={post.data.image} 
-        tags={post.data.tags} 
-        slug={`/${lang}/noticias/${post.slug}`}
-        lang={lang}  
-      />
-    ))}
+    {
+      noticias.map((post) => (
+        <NoticiaCard
+          title={post.data.title}
+          resumo={post.data.resumo}
+          image={post.data.image}
+          tags={post.data.tags}
+          slug={`/${lang}/noticias/${post.slug}`}
+          lang={lang}
+        />
+      ))
+    }
   </div>
 </section>

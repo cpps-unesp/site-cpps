@@ -2,11 +2,13 @@
 // Exemplo base para um componente de seção em `src/components/IniciativasPublicacoesSection.astro`
 const { texts } = Astro.props;
 ---
-<section class="max-w-4xl mx-auto px-4 py-16 space-y-6">
-  <h1 class="text-3xl font-bold text-primary">
-    {texts?.iniciativas?.publicacoes ?? "Publicações"}
+
+<section class="mx-auto max-w-4xl space-y-6 px-4 py-16">
+  <h1 class="text-primary text-3xl font-bold">
+    {texts?.iniciativas?.publicacoes ?? 'Publicações'}
   </h1>
   <p class="text-base-content">
-    Aqui você poderá listar os Cadernos CPPS, destaques de produção dos pesquisadores, entre outros materiais de divulgação científica.
+    Aqui você poderá listar os Cadernos CPPS, destaques de produção dos pesquisadores, entre outros
+    materiais de divulgação científica.
   </p>
 </section>

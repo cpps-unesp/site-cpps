@@ -1,19 +1,21 @@
 ---
-import SectionPadrao from "./SectionPadrao.astro";
+import SectionPadrao from './SectionPadrao.astro';
 const { sobre, objetivosGerais, objetivosEspecificos } = Astro.props;
 ---
 
 <section class="mt-16 space-y-24 px-4 md:px-8 lg:px-16">
-
-  {Object.entries(sobre).map(([key, secao], index) => (
-    <SectionPadrao
-      titulo={secao.titulo}
-      texto={secao.texto}
-      imagem={secao.imagem}
-      departamentos={secao.departamentos}
-      reverse={secao.reverse ?? (index % 2 === 1)}
-    />
-  ))}
+  {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    Object.entries(sobre).map(([_key, secao]: [string, any], index) => (
+      <SectionPadrao
+        titulo={secao.titulo}
+        texto={secao.texto}
+        imagem={secao.imagem}
+        departamentos={secao.departamentos}
+        reverse={secao.reverse ?? index % 2 === 1}
+      />
+    ))
+  }
 
   <SectionPadrao
     titulo={objetivosGerais.titulo}
@@ -28,5 +30,4 @@ const { sobre, objetivosGerais, objetivosEspecificos } = Astro.props;
     imagem={objetivosEspecificos.imagem}
     reverse={objetivosEspecificos.reverse ?? false}
   />
-
 </section>

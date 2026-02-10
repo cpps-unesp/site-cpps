@@ -1,17 +1,21 @@
 ---
-const { lang = "pt", slugArray = [], texts = {} } = Astro.props;
+const { lang = 'pt', slugArray = [], texts = {} } = Astro.props;
 ---
 
-<nav class="text-sm breadcrumbs mb-4">
+<nav class="breadcrumbs mb-4 text-sm">
   <ul>
     <li><a href={`/${lang}/`}>{texts.breadcrumbHome}</a></li>
-    
-    {slugArray.map((part: string, index: number) => {
-      const href = `/${lang}/${slugArray.slice(0, index + 1).join('/')}`;
-      const label = part.charAt(0).toUpperCase() + part.slice(1);
-      return (
-        <li><a href={href}>{label}</a></li>
-      );
-    })}
+
+    {
+      slugArray.map((part: string, index: number) => {
+        const href = `/${lang}/${slugArray.slice(0, index + 1).join('/')}`;
+        const label = part.charAt(0).toUpperCase() + part.slice(1);
+        return (
+          <li>
+            <a href={href}>{label}</a>
+          </li>
+        );
+      })
+    }
   </ul>
 </nav>

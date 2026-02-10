@@ -1,6 +1,6 @@
 ---
-title: "Equipe NewsCloud"
-description: "Conheça a equipe do projeto NewsCloud."
+title: 'Equipe NewsCloud'
+description: 'Conheça a equipe do projeto NewsCloud.'
 sidebar:
   order: 2
 ---
@@ -65,7 +65,6 @@ sidebar:
     </a>
   </div>
 </div>
-
 
 <!-- ========================================== -->
 <!-- SEÇÃO COLABORADORES -->
@@ -138,7 +137,6 @@ sidebar:
   </div>
 </div>
 
-
 <!-- ========================================== -->
 <!-- SEÇÃO JÁ PASSARAM POR AQUI -->
 <!-- ========================================== -->
@@ -179,6 +177,7 @@ sidebar:
 <br><br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

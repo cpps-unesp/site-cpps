@@ -1,6 +1,6 @@
 ---
-title: "Equipe Internet e Relações Internacionais"
-description: "Conheça a equipe do projeto Internet e Relações Internacionais."
+title: 'Equipe Internet e Relações Internacionais'
+description: 'Conheça a equipe do projeto Internet e Relações Internacionais.'
 sidebar:
   order: 2
 ---
@@ -68,7 +68,6 @@ sidebar:
     </a>
   </div>
 </div>
-
 
 <!-- ========================================== -->
 <!-- SEÇÃO COLABORADORES -->
@@ -364,6 +363,7 @@ sidebar:
 <br><br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/16/2025 by Rafael de Almeida
 </p>

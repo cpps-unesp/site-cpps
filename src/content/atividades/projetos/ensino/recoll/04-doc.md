@@ -48,18 +48,16 @@ b) Substituir programas padrão pelos especificados abaixo:
 
 ##### Substituição de programa no Recoll:
 
-|Programa Padrão|Programa Especificado|
-|---------------|---------------------|
-|inode/directory|`pcmanfm %f`|
-|inode/directory/parentopen|`pcmanfm --select %(childurl) %f`|
-|text/html|`google-chrome %f`|
-|application/pdf|`okular %f`|
+| Programa Padrão            | Programa Especificado             |
+| -------------------------- | --------------------------------- |
+| inode/directory            | `pcmanfm %f`                      |
+| inode/directory/parentopen | `pcmanfm --select %(childurl) %f` |
+| text/html                  | `google-chrome %f`                |
+| application/pdf            | `okular %f`                       |
 
 Abaixo um exemplo da substituição do programa padrão pelo especificado:
 
 ![Passo 2 b](https://i.imgur.com/HcUugvn.gif)
-
-
 
 ## Utilizando o Recoll
 
@@ -95,15 +93,15 @@ Para realizar pesquisas mais avançadas e deste modo aprimorar a filtragem e sel
 
 #### Termos Booleanos
 
-|Exemplo|Explicação|
-|-------|----------|
-|`Brasil AND Mercosul`|O programa irá retornar resultados que contenham necessariamente as palavras “Brasil” e “Mercosul”|
-|`Brasil OR Mercosul`|Poderá retornar as três opções: “Brasil” sozinho, “Mercosul” sozinho, ou “Brasil” e “Mercosul” no mesmo documento.|
-|`Brasil -Argentina`|Só serão mostrados resultados com “Brasil” mas que não possuam o termo “Argentina” |
-|`“Brasil” AND (“Coreia do Sul” OR “ONU”)` ou `“Brasil” AND “Coreia do Sul” OR “ONU”`|Essas duas expressões são equivalentes. Recomenda-se a utilização dos parênteses para deixar a construção da expressão mais clara. Além disso, cabe ressaltar que o OR tem prioridade em relação ao AND. Essa expressão irá retornar arquivos que contenham necessariamente a palavra Brasil e a palavra ONU ou Coreia do Sul.|
-|`dir:/caminho/desejado`|Restringir a pesquisa do índice externo a uma pasta específica.|
-|`filename: 2018` ou `filename: 2018-01-01/2022-01-01`|Restringe a pesquisa a partir de um termo que aparece o nome do arquivo. Útil se os arquivos seguem algum padrão de nomeação ou se possuem data em seu nome. Por exemplo, os PDFs das revistas brasileiras de Relações Internacionais disponíveis no LabRI, possuem sua data de publicação no nome do arquivo, sendo possível filtrar os PDFs utilizando o operador _filename_.|
-|`date: 2018` ou `date: 2018-01-01/2022-01-01`|Caso, os arquivos possuam os metadados de data. É possível filtrá-los pelo operador _date_.|
+| Exemplo                                                                              | Explicação                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Brasil AND Mercosul`                                                                | O programa irá retornar resultados que contenham necessariamente as palavras “Brasil” e “Mercosul”                                                                                                                                                                                                                                                                              |
+| `Brasil OR Mercosul`                                                                 | Poderá retornar as três opções: “Brasil” sozinho, “Mercosul” sozinho, ou “Brasil” e “Mercosul” no mesmo documento.                                                                                                                                                                                                                                                              |
+| `Brasil -Argentina`                                                                  | Só serão mostrados resultados com “Brasil” mas que não possuam o termo “Argentina”                                                                                                                                                                                                                                                                                              |
+| `“Brasil” AND (“Coreia do Sul” OR “ONU”)` ou `“Brasil” AND “Coreia do Sul” OR “ONU”` | Essas duas expressões são equivalentes. Recomenda-se a utilização dos parênteses para deixar a construção da expressão mais clara. Além disso, cabe ressaltar que o OR tem prioridade em relação ao AND. Essa expressão irá retornar arquivos que contenham necessariamente a palavra Brasil e a palavra ONU ou Coreia do Sul.                                                  |
+| `dir:/caminho/desejado`                                                              | Restringir a pesquisa do índice externo a uma pasta específica.                                                                                                                                                                                                                                                                                                                 |
+| `filename: 2018` ou `filename: 2018-01-01/2022-01-01`                                | Restringe a pesquisa a partir de um termo que aparece o nome do arquivo. Útil se os arquivos seguem algum padrão de nomeação ou se possuem data em seu nome. Por exemplo, os PDFs das revistas brasileiras de Relações Internacionais disponíveis no LabRI, possuem sua data de publicação no nome do arquivo, sendo possível filtrar os PDFs utilizando o operador _filename_. |
+| `date: 2018` ou `date: 2018-01-01/2022-01-01`                                        | Caso, os arquivos possuam os metadados de data. É possível filtrá-los pelo operador _date_.                                                                                                                                                                                                                                                                                     |
 
 ### Utilização do dir
 

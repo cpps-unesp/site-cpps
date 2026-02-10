@@ -16,13 +16,13 @@ Exemplo:
 
 ```markdown
 ---
-title: "Titulo da Noticia"
+title: 'Titulo da Noticia'
 date: 2024-03-20
-resumo: "Uma breve descricao para listagem."
-tags: ["Categoria 1", "Categoria 2"]
-image: "/imagens/noticias/sua-imagem.jpg"
-lang: "pt"
-author: "Nome do Autor"
+resumo: 'Uma breve descricao para listagem.'
+tags: ['Categoria 1', 'Categoria 2']
+image: '/imagens/noticias/sua-imagem.jpg'
+lang: 'pt'
+author: 'Nome do Autor'
 featured: false
 ---
 ```
@@ -40,7 +40,18 @@ featured: false
 
 ## Idiomas
 
-Para aparecer em mais de um idioma, crie um arquivo por idioma.
+As noticias em diferentes idiomas sao independentes.
+
+Para publicar uma noticia em Ingles:
+
+1. Crie um novo arquivo (ex: `news-title.md`).
+2. Defina `lang: 'en'`.
+3. Escreva o conteudo em ingles.
+
+O sistema gera o link (URL) automaticamente baseado na Data + Titulo. Exemplo:
+
+- Titulo: "Nova Pesquisa" -> URL: `/pt/noticias/2024-03-20-nova-pesquisa`
+- Title: "New Research" -> URL: `/en/noticias/2024-03-20-new-research`
 
 ## Boas praticas editoriais
 

@@ -1,53 +1,41 @@
 ---
-const { textos, iniciativas, projetos = [] } = Astro.props;
+const { iniciativas, projetos = [] } = Astro.props;
 
 const projetosData = iniciativas?.projetosLista || projetos || [];
 
 const url = new URL(Astro.request.url);
-const ordemValida = ["titulo", "docente", "periodo"];
-const ordemParam = url.searchParams.get("ordem") ?? "";
-const agenciaParam = url.searchParams.get("agencia") ?? "";
+const ordemValida = ['titulo', 'docente', 'periodo'];
+const ordemParam = url.searchParams.get('ordem') ?? '';
 
-const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : "titulo";
-const agenciaInicial = agenciaParam || "";
+const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : 'titulo';
 ---
 
-<section class="max-w-5xl mx-auto px-4 py-16 space-y-8">
-  <div class="text-center mb-8">
-    <h1 class="text-4xl font-bold text-primary mb-4">
-      {iniciativas?.projetosDePesquisa ?? "Projetos de Pesquisa"}
+<section class="mx-auto max-w-5xl space-y-8 px-4 py-16">
+  <div class="mb-8 text-center">
+    <h1 class="text-primary mb-4 text-4xl font-bold">
+      {iniciativas?.projetosDePesquisa ?? 'Projetos de Pesquisa'}
     </h1>
-    <p class="text-lg text-base-content max-w-3xl mx-auto">
+    <p class="text-base-content mx-auto max-w-3xl text-lg">
       {
         iniciativas?.descricaoProjetosDePesquisa ??
-          "Projetos desenvolvidos por docentes e associados ao CPPS."
+          'Projetos desenvolvidos por docentes e associados ao CPPS.'
       }
     </p>
   </div>
 
-  <div
-    class="flex flex-wrap gap-4 items-center justify-start mb-4 p-4 bg-base-200 rounded-lg"
-  >
-    <span class="font-semibold text-base-content">
-      {iniciativas?.ordenarPor ?? "Ordenar por"}:
+  <div class="bg-base-200 mb-4 flex flex-wrap items-center justify-start gap-4 rounded-lg p-4">
+    <span class="text-base-content font-semibold">
+      {iniciativas?.ordenarPor ?? 'Ordenar por'}:
     </span>
     <div class="btn-group" id="ordenacao-botoes">
-      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('titulo')"
-        >Título</button
-      >
-      <button
-        class="btn btn-sm btn-outline"
-        onclick="ordenarProjetos('docente')">Docente</button
-      >
-      <button
-        class="btn btn-sm btn-outline"
-        onclick="ordenarProjetos('periodo')">Período</button
-      >
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('titulo')">Título</button>
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('docente')">Docente</button>
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('periodo')">Período</button>
     </div>
   </div>
 
-  <div class="md:flex md:items-start md:justify-between gap-6 mb-8">
-    <div class="w-full md:w-2/3 space-y-4">
+  <div class="mb-8 gap-6 md:flex md:items-start md:justify-between">
+    <div class="w-full space-y-4 md:w-2/3">
       <div class="md:flex md:gap-4">
         <label class="form-control md:w-1/2">
           <span class="label-text">Agência de Fomento</span>
@@ -69,14 +57,11 @@ const agenciaInicial = agenciaParam || "";
       <div class="md:flex md:gap-4">
         <label class="form-control md:w-1/2">
           <span class="label-text">Departamento</span>
-          <select
-            id="filtro-departamento"
-            class="select select-bordered select-sm"></select>
+          <select id="filtro-departamento" class="select select-bordered select-sm"></select>
         </label>
         <label class="form-control md:w-1/2">
           <span class="label-text">Status</span>
-          <select id="filtro-status" class="select select-bordered select-sm"
-          ></select>
+          <select id="filtro-status" class="select select-bordered select-sm"></select>
         </label>
         <div class="flex gap-4">
           <label class="form-control w-32">
@@ -102,7 +87,7 @@ const agenciaInicial = agenciaParam || "";
         </div>
       </div>
     </div>
-    <div class="stats shadow mt-6 md:mt-0 w-full md:w-1/3">
+    <div class="stats mt-6 w-full shadow md:mt-0 md:w-1/3">
       <div class="stat">
         <div class="stat-title">Total de Projetos</div>
         <div class="stat-value text-primary" id="project-counter">0</div>
@@ -110,90 +95,84 @@ const agenciaInicial = agenciaParam || "";
     </div>
   </div>
 
-  <span id="mensagem-periodo-invalido" class="text-error text-sm hidden">
+  <span id="mensagem-periodo-invalido" class="text-error hidden text-sm">
     Ano inicial não pode ser maior que o final.
   </span>
 
   <div id="lista-projetos" class="space-y-6"></div>
 
-  <div id="no-projects-message" class="hidden text-center py-12">
-    <div class="text-6xl mb-4">📂</div>
-    <p class="text-xl font-semibold">
-      Nenhum projeto encontrado com os filtros selecionados.
-    </p>
+  <div id="no-projects-message" class="hidden py-12 text-center">
+    <div class="mb-4 text-6xl">📂</div>
+    <p class="text-xl font-semibold">Nenhum projeto encontrado com os filtros selecionados.</p>
   </div>
 </section>
 
-<script is:inline define:vars={{ projetosData, ordemInicial, agenciaInicial }}>
-  let allProjects = projetosData || [];
-  let currentSort = ordemInicial || "titulo";
-  let currentOrder = "asc";
-  let currentFilter = agenciaInicial || "";
+<script is:inline define:vars={{ projetosData, ordemInicial }}>
+  const allProjects = projetosData || [];
+  let currentSort = ordemInicial || 'titulo';
+  let currentOrder = 'asc';
 
   function escapeHtml(text) {
-    if (!text) return "";
-    const div = document.createElement("div");
+    if (!text) return '';
+    const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
   }
 
   function preencherDepartamentosEStatus() {
-    const selectDep = document.getElementById("filtro-departamento");
-    const selectStatus = document.getElementById("filtro-status");
+    const selectDep = document.getElementById('filtro-departamento');
+    const selectStatus = document.getElementById('filtro-status');
     if (!selectDep || !selectStatus) return;
 
     const departamentos = [
       ...new Set(allProjects.map((p) => p.departamento).filter(Boolean)),
     ].sort();
-    const statusList = [
-      ...new Set(allProjects.map((p) => p.status).filter(Boolean)),
-    ].sort();
+    const statusList = [...new Set(allProjects.map((p) => p.status).filter(Boolean))].sort();
 
     selectDep.innerHTML =
       '<option value="">Todos</option>' +
-      departamentos.map((d) => `<option>${escapeHtml(d)}</option>`).join("");
+      departamentos.map((d) => `<option>${escapeHtml(d)}</option>`).join('');
     selectStatus.innerHTML =
       '<option value="">Todos</option>' +
-      statusList.map((s) => `<option>${escapeHtml(s)}</option>`).join("");
+      statusList.map((s) => `<option>${escapeHtml(s)}</option>`).join('');
   }
 
   function getPeriodoAno(periodo) {
-    const match = (periodo || "").match(/\d{4}/g);
+    const match = (periodo || '').match(/\d{4}/g);
     return match ? match.map(Number) : [];
   }
 
   function sortProjects(projects, ordem) {
     return [...projects].sort((a, b) => {
-      const valA = (a[ordem] ?? "").toString();
-      const valB = (b[ordem] ?? "").toString();
+      const valA = (a[ordem] ?? '').toString();
+      const valB = (b[ordem] ?? '').toString();
 
-      if (ordem === "periodo") {
+      if (ordem === 'periodo') {
         const anoA = getPeriodoAno(valA)[0] || 0;
         const anoB = getPeriodoAno(valB)[0] || 0;
-        return currentOrder === "asc" ? anoA - anoB : anoB - anoA;
+        return currentOrder === 'asc' ? anoA - anoB : anoB - anoA;
       }
 
-      return currentOrder === "asc"
-        ? valA.localeCompare(valB, "pt-BR")
-        : valB.localeCompare(valA, "pt-BR");
+      return currentOrder === 'asc'
+        ? valA.localeCompare(valB, 'pt-BR')
+        : valB.localeCompare(valA, 'pt-BR');
     });
   }
 
   function filterProjects(projects) {
-    const agencia = document.getElementById("filtro-agencia")?.value || "";
-    const docente = document.getElementById("filtro-docente")?.value || "";
-    const inicio = parseInt(document.getElementById("filtro-inicio")?.value);
-    const fim = parseInt(document.getElementById("filtro-fim")?.value);
-    const mensagem = document.getElementById("mensagem-periodo-invalido");
-    const status = document.getElementById("filtro-status")?.value || "";
-    const departamento =
-      document.getElementById("filtro-departamento")?.value || "";
+    const agencia = document.getElementById('filtro-agencia')?.value || '';
+    const docente = document.getElementById('filtro-docente')?.value || '';
+    const inicio = parseInt(document.getElementById('filtro-inicio')?.value);
+    const fim = parseInt(document.getElementById('filtro-fim')?.value);
+    const mensagem = document.getElementById('mensagem-periodo-invalido');
+    const status = document.getElementById('filtro-status')?.value || '';
+    const departamento = document.getElementById('filtro-departamento')?.value || '';
 
     if (inicio && fim && inicio > fim) {
-      mensagem.classList.remove("hidden");
+      mensagem.classList.remove('hidden');
       return [];
     } else {
-      mensagem.classList.add("hidden");
+      mensagem.classList.add('hidden');
     }
 
     return projects.filter((p) => {
@@ -220,24 +199,24 @@ const agenciaInicial = agenciaParam || "";
       <article class="card bg-base-100 shadow border border-base-300">
         <div class="card-body">
           <h2 class="card-title text-primary">${escapeHtml(p.titulo)}</h2>
-          ${mostrarCampo("docente") ? `<p><strong>Docente:</strong> ${escapeHtml(p.docente)}</p>` : ""}
-          ${mostrarCampo("departamento") ? `<p><strong>Departamento:</strong> ${escapeHtml(p.departamento)}</p>` : ""}
-          ${mostrarCampo("associados") && p.associados ? `<p><strong>Pesquisadores Associados:</strong> ${escapeHtml(Array.isArray(p.associados) ? p.associados.join(", ") : p.associados)}</p>` : ""}
-          ${mostrarCampo("status") ? `<p><strong>Status:</strong> ${escapeHtml(p.status)}</p>` : ""}
-          ${mostrarCampo("periodo") ? `<p><strong>Período:</strong> ${escapeHtml(p.periodo)}</p>` : ""}
-          ${mostrarCampo("agencia") ? `<p><strong>Agência:</strong> ${escapeHtml(p.agencia)}</p>` : ""}
-          ${mostrarCampo("processo") ? `<p><strong>Processo:</strong> ${escapeHtml(p.processo)}</p>` : ""}
-          ${mostrarCampo("resumo") ? `<p class="mt-2 text-base-content/80"><strong>Resumo:</strong> ${escapeHtml(p.resumo)}</p>` : ""}
+          ${mostrarCampo('docente') ? `<p><strong>Docente:</strong> ${escapeHtml(p.docente)}</p>` : ''}
+          ${mostrarCampo('departamento') ? `<p><strong>Departamento:</strong> ${escapeHtml(p.departamento)}</p>` : ''}
+          ${mostrarCampo('associados') && p.associados ? `<p><strong>Pesquisadores Associados:</strong> ${escapeHtml(Array.isArray(p.associados) ? p.associados.join(', ') : p.associados)}</p>` : ''}
+          ${mostrarCampo('status') ? `<p><strong>Status:</strong> ${escapeHtml(p.status)}</p>` : ''}
+          ${mostrarCampo('periodo') ? `<p><strong>Período:</strong> ${escapeHtml(p.periodo)}</p>` : ''}
+          ${mostrarCampo('agencia') ? `<p><strong>Agência:</strong> ${escapeHtml(p.agencia)}</p>` : ''}
+          ${mostrarCampo('processo') ? `<p><strong>Processo:</strong> ${escapeHtml(p.processo)}</p>` : ''}
+          ${mostrarCampo('resumo') ? `<p class="mt-2 text-base-content/80"><strong>Resumo:</strong> ${escapeHtml(p.resumo)}</p>` : ''}
           ${
             p.publico_alvo || p.resultados || p.links
               ? `
             <button class="btn btn-sm btn-link" onclick="toggleExtra('${id}', this)">Mostrar mais</button>
             <div id="${id}" class="hidden mt-2">
-              ${p.publico_alvo ? `<p><strong>Público-alvo:</strong> ${escapeHtml(p.publico_alvo)}</p>` : ""}
-              ${p.resultados ? `<p><strong>Resultados:</strong> ${escapeHtml(p.resultados)}</p>` : ""}
-              ${p.links ? `<p><strong>Links:</strong> <a href="${p.links}" target="_blank" class="link">${escapeHtml(p.links)}</a></p>` : ""}
+              ${p.publico_alvo ? `<p><strong>Público-alvo:</strong> ${escapeHtml(p.publico_alvo)}</p>` : ''}
+              ${p.resultados ? `<p><strong>Resultados:</strong> ${escapeHtml(p.resultados)}</p>` : ''}
+              ${p.links ? `<p><strong>Links:</strong> <a href="${p.links}" target="_blank" class="link">${escapeHtml(p.links)}</a></p>` : ''}
             </div>`
-              : ""
+              : ''
           }
         </div>
       </article>
@@ -245,23 +224,23 @@ const agenciaInicial = agenciaParam || "";
   }
 
   function renderProjects() {
-    const list = document.getElementById("lista-projetos");
-    const noResults = document.getElementById("no-projects-message");
+    const list = document.getElementById('lista-projetos');
+    const noResults = document.getElementById('no-projects-message');
     const filtered = filterProjects(allProjects);
     const sorted = sortProjects(filtered, currentSort);
 
-    list.innerHTML = sorted.map((p, i) => renderProject(p, i)).join("");
-    document.getElementById("project-counter").textContent = sorted.length;
-    noResults.classList.toggle("hidden", sorted.length > 0);
+    list.innerHTML = sorted.map((p, i) => renderProject(p, i)).join('');
+    document.getElementById('project-counter').textContent = sorted.length;
+    noResults.classList.toggle('hidden', sorted.length > 0);
     atualizarBotoes(currentSort, currentOrder);
   }
 
   function ordenarProjetos(criterio) {
     if (currentSort === criterio) {
-      currentOrder = currentOrder === "asc" ? "desc" : "asc";
+      currentOrder = currentOrder === 'asc' ? 'desc' : 'asc';
     } else {
       currentSort = criterio;
-      currentOrder = "asc";
+      currentOrder = 'asc';
     }
     renderProjects();
   }
@@ -272,58 +251,52 @@ const agenciaInicial = agenciaParam || "";
       desc: `<svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>`,
     };
 
-    document.querySelectorAll("#ordenacao-botoes button").forEach((btn) => {
-      const criterio = btn.getAttribute("onclick")?.match(/'([^']+)'/)?.[1];
+    document.querySelectorAll('#ordenacao-botoes button').forEach((btn) => {
+      const criterio = btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
       const label =
-        criterio === "titulo"
-          ? "Título"
-          : criterio === "docente"
-            ? "Docente"
-            : "Período";
+        criterio === 'titulo' ? 'Título' : criterio === 'docente' ? 'Docente' : 'Período';
 
       if (criterio === criterioAtivo) {
-        btn.className = "btn btn-sm btn-primary";
+        btn.className = 'btn btn-sm btn-primary';
         btn.innerHTML = `${label}${icones[ordemAtual]}`;
       } else {
-        btn.className = "btn btn-sm btn-outline";
+        btn.className = 'btn btn-sm btn-outline';
         btn.innerHTML = label;
       }
     });
   }
 
   function preencherDocentes() {
-    const select = document.getElementById("filtro-docente");
+    const select = document.getElementById('filtro-docente');
     if (!select) return;
-    const docentes = [
-      ...new Set(allProjects.map((p) => p.docente).filter(Boolean)),
-    ].sort();
+    const docentes = [...new Set(allProjects.map((p) => p.docente).filter(Boolean))].sort();
     select.innerHTML =
       '<option value="">Todos</option>' +
-      docentes.map((d) => `<option>${escapeHtml(d)}</option>`).join("");
+      docentes.map((d) => `<option>${escapeHtml(d)}</option>`).join('');
   }
 
   function toggleExtra(id, btn) {
     const el = document.getElementById(id);
     if (!el) return;
 
-    const expanded = !el.classList.contains("hidden");
-    el.classList.toggle("hidden");
-    btn.textContent = expanded ? "Mostrar mais" : "Mostrar menos";
+    const expanded = !el.classList.contains('hidden');
+    el.classList.toggle('hidden');
+    btn.textContent = expanded ? 'Mostrar mais' : 'Mostrar menos';
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener('DOMContentLoaded', () => {
     preencherDocentes();
     preencherDepartamentosEStatus();
     [
-      "filtro-agencia",
-      "filtro-docente",
-      "filtro-inicio",
-      "filtro-fim",
-      "filtro-status",
+      'filtro-agencia',
+      'filtro-docente',
+      'filtro-inicio',
+      'filtro-fim',
+      'filtro-status',
       ,
-      "filtro-departamento",
+      'filtro-departamento',
     ].forEach((id) => {
-      document.getElementById(id)?.addEventListener("input", renderProjects);
+      document.getElementById(id)?.addEventListener('input', renderProjects);
     });
     renderProjects();
   });

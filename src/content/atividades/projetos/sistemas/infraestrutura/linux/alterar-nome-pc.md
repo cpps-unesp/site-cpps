@@ -4,7 +4,6 @@ title: Alterar nome do computador
 sidebar_label: Alterar nome do computador
 ---
 
-
 ### Verificar nome atual
 
 ```

@@ -6,6 +6,6 @@ sidebar_label: Atividades Realizadas
 
 ## Atividades Realizadas
 
-|Data|Atividades Realizadas|Participantes|
-|---|---|---|
-|---|---|---|
+| Data | Atividades Realizadas | Participantes |
+| ---- | --------------------- | ------------- |
+| ---  | ---                   | ---           |

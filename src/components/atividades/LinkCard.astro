@@ -9,12 +9,17 @@ interface Props {
 const { title, href, description, icon } = Astro.props;
 ---
 
-<a href={href} class="card bg-base-200 border border-base-300 shadow-sm hover:border-primary/50 hover:bg-base-300 transition-all not-prose no-underline group">
+<a
+  href={href}
+  class="card bg-base-200 border-base-300 hover:border-primary/50 hover:bg-base-300 not-prose group border no-underline shadow-sm transition-all"
+>
   <div class="card-body p-6">
-    <h3 class="card-title text-lg flex items-center gap-2 group-hover:text-primary transition-colors">
+    <h3
+      class="card-title group-hover:text-primary flex items-center gap-2 text-lg transition-colors"
+    >
       {icon && <span>{icon}</span>}
       {title}
     </h3>
-    {description && <p class="text-sm text-base-content/70 mt-1">{description}</p>}
+    {description && <p class="text-base-content/70 mt-1 text-sm">{description}</p>}
   </div>
 </a>

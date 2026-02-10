@@ -4,8 +4,6 @@ title: Trabalhando com branches
 sidebar_label: Trabalhando com Branches
 ---
 
-
-
 ## Trabalhando com branches secundárias
 
 1 - Gerar uma nova branch para desenvolver uma tarefa
@@ -14,8 +12,8 @@ sidebar_label: Trabalhando com Branches
 git checkout –b feature # criando o branch de trabalho
 
 ```
-2 - Trazer as alterações na branch principal (main)
 
+2 - Trazer as alterações na branch principal (main)
 
 ```
 git checkout  <nome da branch secundaria> # se conectar na branch secundária
@@ -24,9 +22,7 @@ git rebase main
 
 ```
 
-
 3 - Levar as alterações da branch secundária para a branch principal (main)
-
 
 ```
 

@@ -6,21 +6,51 @@ sidebar_order: 5
 
 O site suporta tres idiomas: `pt`, `en`, `es`.
 
-## Onde editar traducoes
+## 1. Editando Textos (JSON)
 
-- Textos: `src/i18n/locales/`
-- Rotas traduzidas: `src/i18n/routes.ts`
-- Conteudo por idioma: `src/content/`
+Os arquivos `src/i18n/locales/*.json` contem os textos da interface (botoes, menus, rodape).
+Eles usam uma estrutura aninhada. Exemplo:
 
-## Passo a passo
+```json
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Sobre"
+  }
+}
+```
 
-1. Atualize textos no arquivo do idioma.
-2. Se necessario, adicione ou ajuste a rota traduzida.
-3. Crie/atualize o conteudo no idioma correspondente.
-4. Rode `npm run dev` para revisar navegacao e textos.
+<Notice type="danger">
+  Nao apague chaves existentes. Se voce apagar `"home": "Inicio"` do arquivo em PT, mas o codigo
+  ainda tentar usar `t.nav.home`, o site podera quebrar ou mostrar espaco em branco.
+</Notice>
 
-## Checklist rapido
+## 2. Editando Rotas
 
-- Chaves iguais entre `pt.json`, `en.json` e `es.json`.
-- Rotas com traducoes consistentes em `src/i18n/routes.ts`.
-- Paginas importantes com conteudo nos tres idiomas quando aplicavel.
+O arquivo `src/i18n/routes.ts` define como as URLs aparecem em cada lingua.
+Isso e importante para SEO (ex: `/sobre` em PT e `/about` em EN).
+
+Exemplo de como adicionar uma rota:
+
+```typescript
+export const routes = {
+  pt: {
+    sobre: 'sobre',
+    contato: 'contato',
+  },
+  en: {
+    sobre: 'about',
+    contato: 'contact',
+  },
+  es: {
+    sobre: 'acerca',
+    contato: 'contacto',
+  },
+};
+```
+
+## Checklist de Qualidade
+
+1. **Sincronia:** Adicionou uma chave no `pt.json`? Adicione tambem no `en.json` e `es.json`.
+2. **Formato:** Rode `npm run format` apos editar os JSONs para garantir que nao sobrou virgula errada.
+3. **Rotas:** Se criar uma pagina nova, lembre de adicionar a rota traduzida se quiser URL amigavel.

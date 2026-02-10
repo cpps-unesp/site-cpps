@@ -17,19 +17,18 @@ sidebar_label: Comece por aqui
 ### Objetivo
 
 - Ao final do seu estudo, queremos que você esteja inserido no tema, estando apto(a) para o uso da análise de dados tanto para um melhor aproveitamento na vida acadêmica quanto para vagas de estágio na área voltada às Relações Internacionais.
-Esta página reúne as trilhas de dados que o LabRI/UNESP tem desenvolvido treinamentos para as pessoas envolvidas em seus projetos.
+  Esta página reúne as trilhas de dados que o LabRI/UNESP tem desenvolvido treinamentos para as pessoas envolvidas em seus projetos.
 
 ### Trilha de dados com Python
 
 Abaixo indicamos as paradas da trilha de dados que utiliza primordialmente a linguagem Python:
 
-- __*[Ambiente de Trabalho](/atividades/projetos/ensino/trilha-dados/ambiente/intro)*__
-- __*[Fundamentos de algoritmos e programação](/atividades/projetos/ensino/trilha-dados/linguagens/python/intro)*__
-- __*[Coleta de dados](/atividades/projetos/ensino/trilha-dados/coleta-dados/intro)*__
-- __*[Análise de dados](/atividades/projetos/ensino/trilha-dados/analise-dados/intro)*__
-- __*[Banco de dados](/atividades/projetos/ensino/trilha-dados/banco-dados/intro)*__
-- __*[Métodos Quantitativos](/atividades/projetos/ensino/trilha-dados/metodos-quanti/intro)*__
-
+- **_[Ambiente de Trabalho](/atividades/projetos/ensino/trilha-dados/ambiente/intro)_**
+- **_[Fundamentos de algoritmos e programação](/atividades/projetos/ensino/trilha-dados/linguagens/python/intro)_**
+- **_[Coleta de dados](/atividades/projetos/ensino/trilha-dados/coleta-dados/intro)_**
+- **_[Análise de dados](/atividades/projetos/ensino/trilha-dados/analise-dados/intro)_**
+- **_[Banco de dados](/atividades/projetos/ensino/trilha-dados/banco-dados/intro)_**
+- **_[Métodos Quantitativos](/atividades/projetos/ensino/trilha-dados/metodos-quanti/intro)_**
 
 ### Autoria
 

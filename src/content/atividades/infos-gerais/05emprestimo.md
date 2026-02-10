@@ -10,7 +10,7 @@ Para realizar os empréstimos o estudante deve realizar o pedido pelo formulári
 
 - [**Formulário de Empréstimo de Equipamentos CPPS**](https://docs.google.com/forms/d/e/1FAIpQLScqiqOjXAUqbvUhNtWAxvWYNvtkp7T7taNwLc1zAbyd5SLSUw/viewform)
 - Itens patrimoniados devem, além do forms do CPPS serem inseriod no form do setor de Patrimônio:
-    - [**SETOR DE PATRIMÔNIO - Formulário Movimentação Externa de Bens e Patrimônios**](https://docs.google.com/forms/d/e/1FAIpQLSdfVCBF6lxpd7fHtN-9YryaL3Kvnp_hpMtZRSfk1v4sGwHTTA/viewform)
+  - [**SETOR DE PATRIMÔNIO - Formulário Movimentação Externa de Bens e Patrimônios**](https://docs.google.com/forms/d/e/1FAIpQLSdfVCBF6lxpd7fHtN-9YryaL3Kvnp_hpMtZRSfk1v4sGwHTTA/viewform)
 
 Para solicitação Requisição de Serviços Internos é necessário preencher o fomulário
 
@@ -20,7 +20,7 @@ Abaixo a Planilha de Horários dos estagiários
 
 - [Planilha de Horários Estagiários](https://docs.google.com/spreadsheets/d/1JyOgWGXTUxLYQmzlYszNUBOW22VfNoq6n6B6TVBxzrs/edit?gid=0#gid=0)
 
-Para verificação e localização de itens é utilizado o  Inventário Visual
+Para verificação e localização de itens é utilizado o Inventário Visual
 
 - [Pasta do Inventário Visual](https://drive.google.com/drive/folders/1D_BJgqbPwJoIRn9LIMVVPqbzCKSMfoZU?usp=drive_link)
 

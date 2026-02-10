@@ -1,6 +1,6 @@
 ---
-title: "Elementos Equador"
-description: "Detalhamento dos elementos coletados nos jornais do Equador."
+title: 'Elementos Equador'
+description: 'Detalhamento dos elementos coletados nos jornais do Equador.'
 sidebar:
   order: 4
 ---
@@ -8,8 +8,9 @@ sidebar:
 Esta seção detalha quais elementos foram extraídos em cada etapa da coleta para os jornais do Equador.
 
 ## Jornais Coletados
-*   **El Universo**
-*   **El Comercio**
+
+- **El Universo**
+- **El Comercio**
 
 ---
 
@@ -17,40 +18,41 @@ Esta seção detalha quais elementos foram extraídos em cada etapa da coleta pa
 
 A tabela abaixo indica a disponibilidade dos dados nas diferentes fases de coleta (`Coleta 01` e `Coleta 02`).
 
-| Elemento | Tipo | Coleta 01 | Coleta 02 |
-| :--- | :--- | :---: | :---: |
-| `origem` | str | ✔️ | |
-| `classificado` | list | ✔️ | |
-| `sigla` | str | ✔️ | |
-| `país` | str | ✔️ | |
-| `categoria` | list | | ✔️ |
-| `autoria` | list | | ✔️ |
-| `titulo` | str | ✔️ | |
-| `subtitulo` | str | ✔️ | |
-| `data` | str | ✔️ | |
-| `horario` | str | ✔️ | |
-| `data_atualizado` | list | | ✔️ |
-| `horario_atualizado` | list | | ✔️ |
-| `link` | str | ✔️ | |
-| `link_archive` | str | | |
-| `data_archive` | str | | |
-| `horario_archive` | str | | |
-| `local` | list | | |
-| `tags` | list | | ✔️ |
-| `paragrafos` | list | | ✔️ |
-| `dir_bd` | str | ✔️ | |
-| `dir_arquivo` | str | | |
-| `codigo_bd` | str | | ✔️ |
-| `imagens` | list | | |
-| `nome_arquivo` | str | | ✔️ |
-| `extra_01` | - | - | - |
-| `extra_02` | - | - | - |
-| `extra_03` | - | - | - |
+| Elemento             | Tipo | Coleta 01 | Coleta 02 |
+| :------------------- | :--- | :-------: | :-------: |
+| `origem`             | str  |    ✔️     |           |
+| `classificado`       | list |    ✔️     |           |
+| `sigla`              | str  |    ✔️     |           |
+| `país`               | str  |    ✔️     |           |
+| `categoria`          | list |           |    ✔️     |
+| `autoria`            | list |           |    ✔️     |
+| `titulo`             | str  |    ✔️     |           |
+| `subtitulo`          | str  |    ✔️     |           |
+| `data`               | str  |    ✔️     |           |
+| `horario`            | str  |    ✔️     |           |
+| `data_atualizado`    | list |           |    ✔️     |
+| `horario_atualizado` | list |           |    ✔️     |
+| `link`               | str  |    ✔️     |           |
+| `link_archive`       | str  |           |           |
+| `data_archive`       | str  |           |           |
+| `horario_archive`    | str  |           |           |
+| `local`              | list |           |           |
+| `tags`               | list |           |    ✔️     |
+| `paragrafos`         | list |           |    ✔️     |
+| `dir_bd`             | str  |    ✔️     |           |
+| `dir_arquivo`        | str  |           |           |
+| `codigo_bd`          | str  |           |    ✔️     |
+| `imagens`            | list |           |           |
+| `nome_arquivo`       | str  |           |    ✔️     |
+| `extra_01`           | -    |     -     |     -     |
+| `extra_02`           | -    |     -     |     -     |
+| `extra_03`           | -    |     -     |     -     |
 
 <br>
 <br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

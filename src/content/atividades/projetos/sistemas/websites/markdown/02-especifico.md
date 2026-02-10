@@ -10,44 +10,44 @@ Para saber mais sobre sintaxe extendida em Markdown, [clique aqui](https://www.m
 
 Para mais tutoriais em Markdown, [clique aqui](https://www.markdownguide.org/tools/docusaurus/)
 
------
+---
 
 ## Tabelas
 
 - Para adicionar uma tabela use tres ou mais hífens (---) para criar as colunas e pipes (|) para separar cada coluna
 
-
-````
+```
 | Syntax      | Description |
 | ----------- | ----------- |
 | Header      | Title       |
 | Paragraph   | Text        |
-````
+```
+
 - O resultado renderizado deverá parecer com isso:
 
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+| Syntax    | Description |
+| --------- | ----------- |
+| Header    | Title       |
+| Paragraph | Text        |
 
 ### Alinhamento
 
 - Para alinhar o texto das colunas basta adicionar dois pontos na esquerda, direita, ou em ambos caso queira centralizar o texto
 
-````
+```
 | Syntax      | Description | Test for text marks   |
 | :---        |    :----:   |          ---:         |
 | Header      | Title       | Here's this           |
 | Paragraph   | Text        | And more              |
 
-````
+```
 
 - O resultado redenrizado deverá parecer com isso:
 
-| Syntax      | Description | Test for text marks   |
-| :---        |    :----:   |          ---:         |
-| Header      | Title       | Here's this           |
-| Paragraph   | Text        | And more              |
+| Syntax    | Description | Test for text marks |
+| :-------- | :---------: | ------------------: |
+| Header    |    Title    |         Here's this |
+| Paragraph |    Text     |            And more |
 
 - DICA: É possivel utilizar o [Markdown Tables Generator](https://www.tablesgenerator.com/markdown_tables) ou o [AnyWayData Markdown Export](https://anywaydata.com) para criar tabelas usando interface gráfica
 
@@ -59,7 +59,7 @@ Para mais tutoriais em Markdown, [clique aqui](https://www.markdownguide.org/too
 
 - DICA: Também é possível utilizar HTML para adicionar quebras de linha e listas dentro de tabelas
 
------
+---
 
 ## Blocos de código
 
@@ -69,11 +69,11 @@ Para mais tutoriais em Markdown, [clique aqui](https://www.markdownguide.org/too
 
 - É possivel alterar a linguagem da caixa de código adicionando "bash", "hmtl" ou "javascript" após as crases do inicio, sem espaço entre as crases e a linguagem. Isso irá alterar a forma como seu bloco de código é visualizado, podendo habilitar diversos recursos de cada linguagem.
 
------
+---
 
 ## Notas de rodapé
 
-- Quando uma *footnote é criada*, um número sobrescrito com um link aparece. Leitores podem clicar nesse número para pular para o fim da página, onde as referências ou notas de rodapés estão localizadas
+- Quando uma _footnote é criada_, um número sobrescrito com um link aparece. Leitores podem clicar nesse número para pular para o fim da página, onde as referências ou notas de rodapés estão localizadas
 
 - Para adicionar uma referência utilize o acento circunflexo e um identificador entre colchetes. Identificadores podem ser números ou palavras, mas não podem conter espaços ou caracteres especiais.
 

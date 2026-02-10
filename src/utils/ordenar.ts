@@ -8,22 +8,22 @@
  * @param ordem - Direção da ordenação ("asc" ou "desc")
  * @returns Lista ordenada
  */
-export function ordenarPorPrioridadeOuNome<T extends Record<string, any>>(
+export function ordenarPorPrioridadeOuNome<T extends Record<string, unknown>>(
   lista: T[],
-  chavePrioridade: string = "prioridade",
-  chaveNome: string = "nome",
-  ordem: "asc" | "desc" = "asc"
+  chavePrioridade: string = 'prioridade',
+  chaveNome: string = 'nome',
+  ordem: 'asc' | 'desc' = 'asc'
 ): T[] {
-  function parsePrioridade(valor: any): number | null {
+  function parsePrioridade(valor: unknown): number | null {
     try {
-      const num = parseInt(valor);
+      const num = parseInt(valor as string);
       return isNaN(num) ? null : num;
     } catch {
       return null;
     }
   }
 
-  const multiplicador = ordem === "asc" ? 1 : -1;
+  const multiplicador = ordem === 'asc' ? 1 : -1;
 
   return lista.slice().sort((a, b) => {
     const pa = parsePrioridade(a[chavePrioridade]);
@@ -33,8 +33,8 @@ export function ordenarPorPrioridadeOuNome<T extends Record<string, any>>(
     if (pa !== null) return -1 * multiplicador;
     if (pb !== null) return 1 * multiplicador;
 
-    const nomeA = (a[chaveNome] as string)?.toLowerCase?.() || "";
-    const nomeB = (b[chaveNome] as string)?.toLowerCase?.() || "";
+    const nomeA = (a[chaveNome] as string)?.toLowerCase?.() || '';
+    const nomeB = (b[chaveNome] as string)?.toLowerCase?.() || '';
     return nomeA.localeCompare(nomeB) * multiplicador;
   });
 }

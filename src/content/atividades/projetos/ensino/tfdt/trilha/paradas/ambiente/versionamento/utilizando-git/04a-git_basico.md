@@ -57,7 +57,6 @@ git commit -m "SUA MENSAGEM DE COMMIT AQUI"
 
 Para sincronizar seu repositório local com um repositório remoto, você deve primeiro adicionar o repositório remoto como um "remote" do seu repositório local. Isso é feito executando o seguinte comando:
 
-
 ```
 git remote add NOME_DO_REMOTO URL_DO_REMOTO
 ```
@@ -76,34 +75,38 @@ git push NOME_DO_REMOTO BRANCH_DO_REMOTO
 
 ## Git: comandos básicos
 
-| Comando | Funcionalidade | Descrição/Forma de usar |
-| :-----: | :------------: | :----------------------:|
-| git config | definir usuário e email | necessário para submeter commits |
-| git help | ajuda a entender comandos | git help ou git `comando` --help |
-| git init | adicionar um projeto existente | - |
-| git clone | clonar um repositório do gitlab/github | git clone `url` |
-| git add | comando para iniciar submissão de commit | - |
-| git commit | descreve o que será enviado | "git commit -m `mensagem do commit` |
-| git pull | adiciona ao projeto novas modificações externas | "git pull origin" |
-| git push | enviar o commit | "git push origin main" |
-| git status | analisar status do arquivo | - |
-
+|  Comando   |                 Funcionalidade                  |       Descrição/Forma de usar       |
+| :--------: | :---------------------------------------------: | :---------------------------------: |
+| git config |             definir usuário e email             |  necessário para submeter commits   |
+|  git help  |            ajuda a entender comandos            |  git help ou git `comando` --help   |
+|  git init  |         adicionar um projeto existente          |                  -                  |
+| git clone  |     clonar um repositório do gitlab/github      |           git clone `url`           |
+|  git add   |    comando para iniciar submissão de commit     |                  -                  |
+| git commit |           descreve o que será enviado           | "git commit -m `mensagem do commit` |
+|  git pull  | adiciona ao projeto novas modificações externas |          "git pull origin"          |
+|  git push  |                 enviar o commit                 |       "git push origin main"        |
+| git status |           analisar status do arquivo            |                  -                  |
 
 ### Aplicação dos comandos
+
 - Verificar estado atual dos arquivos monitorados pelo git
+
 ```
 git status
 ```
 
 - Adicinar todos os arquivos no monitoramento do git
+
 ```
 git add .
 ```
+
 - Salvando versionamento com comentário
 
 ```
 git commit -m "inserir mensagem sobre o commit realizado"
 ```
+
 - Sincronizar arquivos remotos localizados no repositorio do gitlab com seus arquivos locais
 
 ```
@@ -111,19 +114,20 @@ git pull origin main
 ```
 
 - Sincronizar arquivos locais com arquivos localizados no repositorio remoto
+
 ```
 git push origin main
 ```
 
-
-
 #### Git global steup
+
 ```
 git config --global user.name "Seu Nome'"
 git config --global user.email "seuemail@unesp.br"
 ```
 
 #### Create a new repository
+
 ```
 git clone git@gitlab.com:unesp-labri/sys-admin/gestao-dados-labri.git
 cd gestao-dados-labri
@@ -156,6 +160,7 @@ git push -u origin --tags
 ```
 
 ### Comandos adicionais do Git
+
 ```
 git log`: exibe o histórico de commits do repositório.
 git branch`: lista as branches existentes no repositório.
@@ -176,7 +181,6 @@ Esses são apenas alguns dos comandos disponíveis no Git. É importante lembrar
 - [Git Command Explorer](https://gitexplorer.com/)
 - [Cómo borrar un archivo de entorno .env de Git después de haberlo enviado al repositorio remoto?](https://desarrolloweb.com/faq/como-borrar-un-archivo-de-entorno-env-de-git-despues-de-haberlo-enviado-al-repositorio-remoto)
 - [Revertendo para um commit especifico !](https://natanaelfonseca.com.br/2013/06/06/git-revertendo-para-um-commit-especifico/)
-
 
 ## Autoria
 

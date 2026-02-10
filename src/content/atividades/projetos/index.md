@@ -1,6 +1,6 @@
 ---
-title: "Bem-vindo à Documentação CPPS"
-description: "Guia central dos projetos, infraestrutura e equipe."
+title: 'Bem-vindo à Documentação CPPS'
+description: 'Guia central dos projetos, infraestrutura e equipe.'
 slug: projetos
 ---
 

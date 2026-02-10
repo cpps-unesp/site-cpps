@@ -1,6 +1,6 @@
 ---
 // IconSocial.astro
-const { tipo, url, tamanho = "text-lg" } = Astro.props;
+const { tipo, url, tamanho = 'text-lg' } = Astro.props;
 
 // Normaliza o nome para facilitar comparações
 const tipoNormalizado = tipo.toLowerCase();
@@ -13,30 +13,30 @@ const iconSizeClass = tamanho === 'text-xl' ? 'w-6 h-6' : 'w-5 h-5';
   target="_blank"
   rel="noopener"
   title={tipo}
-  class="hover:scale-110 transition-transform inline-flex items-center justify-center"
+  class="inline-flex items-center justify-center transition-transform hover:scale-110"
 >
   {
-    tipoNormalizado === "linkedin" ? (
-      <i class={`fab fa-linkedin ${tamanho}`}></i>
-    ) : tipoNormalizado === "lattes" ? (
+    tipoNormalizado === 'linkedin' ? (
+      <i class={`fab fa-linkedin ${tamanho}`} />
+    ) : tipoNormalizado === 'lattes' ? (
       <img
         src="/imagens/logos/lattes_icon.svg"
         alt="Lattes"
         class={`${iconSizeClass} object-contain`}
         loading="lazy"
       />
-    ) : tipoNormalizado === "orcid" ? (
+    ) : tipoNormalizado === 'orcid' ? (
       <img
         src="/imagens/logos/orcid.png"
         alt="ORCID"
         class={`${iconSizeClass} object-contain`}
         loading="lazy"
       />
-    ) : tipoNormalizado === "portal-docente-unesp" ? (
+    ) : tipoNormalizado === 'portal-docente-unesp' ? (
       <img
         src="/imagens/logos/logo-unesp-mapa.svg"
         alt="Portal Docente UNESP"
-        class="w-8 h-8 object-contain"
+        class="h-8 w-8 object-contain"
         loading="lazy"
       />
     ) : (

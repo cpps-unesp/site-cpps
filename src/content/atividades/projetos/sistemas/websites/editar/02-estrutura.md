@@ -6,7 +6,7 @@ sidebar_label: Estrutura
 
 Esta página indica como as **pastas** do site do LabRI/UNESP estão estruturados.
 
------
+---
 
 ```bash
 website

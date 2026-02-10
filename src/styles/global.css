@@ -1,26 +1,26 @@
-@import "tailwindcss";
-@plugin "daisyui";
+@import 'tailwindcss';
+@plugin 'daisyui';
 
-@plugin "daisyui/theme" {
-  name: "light";
+@plugin 'daisyui/theme' {
+  name: 'light';
   default: true;
-  --color-primary: #00ACF0;
-  --color-secondary: #347D9B;
-  --color-accent: #2197C5;
-  --color-neutral: #2E3F46;
+  --color-primary: #00acf0;
+  --color-secondary: #347d9b;
+  --color-accent: #2197c5;
+  --color-neutral: #2e3f46;
   --color-neutral-content: #ffffff;
   --color-base-100: #ffffff;
-  --color-base-content: #2E3F46;
+  --color-base-content: #2e3f46;
 }
 
-@plugin "daisyui/theme" {
-  name: "dark";
-  --color-primary: #00ACF0;
-  --color-secondary: #347D9B;
-  --color-accent: #2197C5;
+@plugin 'daisyui/theme' {
+  name: 'dark';
+  --color-primary: #00acf0;
+  --color-secondary: #347d9b;
+  --color-accent: #2197c5;
   --color-neutral: #111827;
   --color-neutral-content: #f3f4f6;
-  --color-base-100: #1F2937;
+  --color-base-100: #1f2937;
   --color-base-content: #f3f4f6;
 }
 
@@ -45,8 +45,12 @@ body > *:last-child {
 }
 
 /* Títulos */
-h1, h2, h3, h4, .titulo {
-  font-family: "Bebas Neue", sans-serif;
+h1,
+h2,
+h3,
+h4,
+.titulo {
+  font-family: 'Bebas Neue', sans-serif;
   letter-spacing: 0.5px;
   text-transform: uppercase;
   font-weight: normal;
@@ -81,13 +85,13 @@ h1, h2, h3, h4, .titulo {
   hyphens: auto;
 }
 .paragrafo a {
-  color: #00ACF0;
+  color: #00acf0;
   font-weight: 600;
   text-decoration: none;
 }
 
 .paragrafo a:hover {
-  color: #2197C5;
+  color: #2197c5;
 }
 
 /* Utilitários para Markdown/MDX */
@@ -95,10 +99,10 @@ h1, h2, h3, h4, .titulo {
   @apply float-left mr-6 mb-4 rounded-lg shadow-md;
 }
 .img-right {
-  @apply float-right ml-6 mb-4 rounded-lg shadow-md;
+  @apply float-right mb-4 ml-6 rounded-lg shadow-md;
 }
 .img-center {
-  @apply block mx-auto my-8 rounded-lg shadow-lg;
+  @apply mx-auto my-8 block rounded-lg shadow-lg;
 }
 
 /* Ajustes para o prose (Tailwind Typography) */
@@ -173,8 +177,9 @@ h1, h2, h3, h4, .titulo {
   color: var(--color-primary) !important;
 }
 
-.prose code::before, .prose code::after {
-  content: "" !important;
+.prose code::before,
+.prose code::after {
+  content: '' !important;
 }
 
 .prose blockquote {

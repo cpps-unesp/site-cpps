@@ -6,11 +6,11 @@ sidebar_label: Equipe
 
 Esta página indica como o editar a pagina de equipe do site do LabRI/UNESP.
 
------
+---
 
 ## Editar a equipe de estágiarios
 
-- Quando quiser adicionar um novo membro ou alterar as informações de um estágiario **ativo** do LabRI/UNESP, procure o arquivo localizado em *docs>equipe>ativo.md* e utilize a estrutura indicada
+- Quando quiser adicionar um novo membro ou alterar as informações de um estágiario **ativo** do LabRI/UNESP, procure o arquivo localizado em _docs>equipe>ativo.md_ e utilize a estrutura indicada
 
 ```
 ## Nome do membro
@@ -35,7 +35,7 @@ Breve descrição
 </div>
 ```
 
-- Caso queira editar os estágiarios que **já passaram** pela equipe do Labri/UNESP, procure *docs>equipe>inativo.md* e utilize a estrutura indicada
+- Caso queira editar os estágiarios que **já passaram** pela equipe do Labri/UNESP, procure _docs>equipe>inativo.md_ e utilize a estrutura indicada
 
 ```
 ## Nome exemplo
@@ -57,12 +57,12 @@ Breve descrição
 </div>
 ```
 
------
+---
 
 ## Editar a equipe dos projetos
 
-- Caso queira editar as informaçoes de um **membro dos projetos** do LabRI/UNESP, procure a pasta do projeto desejado em *docs>projetos*. Abra o arquivo *02-equipe.md* para realizar alterações nos membros do projeto, utilizando a estrutura indicada
-- Lembre-se de observar a estrutura do arquivo *02-equipe.md*, geralmente está divido em "Coordernadores" e "Colaboradores" (ativos e inativos)
+- Caso queira editar as informaçoes de um **membro dos projetos** do LabRI/UNESP, procure a pasta do projeto desejado em _docs>projetos_. Abra o arquivo _02-equipe.md_ para realizar alterações nos membros do projeto, utilizando a estrutura indicada
+- Lembre-se de observar a estrutura do arquivo _02-equipe.md_, geralmente está divido em "Coordernadores" e "Colaboradores" (ativos e inativos)
 
 ```
 ### [Nome do Membro](/atividades/equipe#nome-exemplo)
@@ -83,15 +83,15 @@ Breve descrição
 </div>
 ```
 
------
+---
 
 ## Adicionar foto
 
 - Para aprender a adicionar imagens, [clique aqui](/atividades/projetos/sistemas/site/markdown/geral)
-- Dê preferência a imagens no **formato** *jpg* ou até *png*, com proporção de um quadrado de lados iguais (evita que a imagem fique distorcida)
-- O **padrão** a ser adotado ao nomear os arquivos deve ser *nome-sobrenome.jpg*
-- As **imagens** da equipe do LabRI e dos membros dos projetos deverão sempre sempre estar localizadas em *website>static>img>equipe*
-- Os **icones** das redes sociais da equipe e do projeto estão localizados em *website>static>img>social*
+- Dê preferência a imagens no **formato** _jpg_ ou até _png_, com proporção de um quadrado de lados iguais (evita que a imagem fique distorcida)
+- O **padrão** a ser adotado ao nomear os arquivos deve ser _nome-sobrenome.jpg_
+- As **imagens** da equipe do LabRI e dos membros dos projetos deverão sempre sempre estar localizadas em _website>static>img>equipe_
+- Os **icones** das redes sociais da equipe e do projeto estão localizados em _website>static>img>social_
 - Para saber mais sobre informações estáticas do site do LabRI/UNESP [clique aqui](/atividades/projetos/sistemas/site/editar/static#static)
 
------
+---

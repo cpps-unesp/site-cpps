@@ -1,33 +1,37 @@
 ---
-import ReportIssueLink from "./ReportIssueLink.astro";
+import ReportIssueLink from './ReportIssueLink.astro';
 
 interface Props {
   githubPath?: string;
   lang?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   texts?: any;
 }
 
 const { githubPath, lang = 'pt', texts = {} } = Astro.props;
-const editLabel = texts.editOnGithub || (lang === 'en' ? 'Edit page' : (lang === 'es' ? 'Editar la pagina' : 'Editar a pagina'));
-const reportLabel = lang === 'en' ? 'Report error' : (lang === 'es' ? 'Reportar error' : 'Reportar erro');
+const editLabel =
+  texts.editOnGithub ||
+  (lang === 'en' ? 'Edit page' : lang === 'es' ? 'Editar la pagina' : 'Editar a pagina');
+const reportLabel =
+  lang === 'en' ? 'Report error' : lang === 'es' ? 'Reportar error' : 'Reportar erro';
 
 if (!githubPath) return null;
 
 // Encode path segments to handle brackets and other special characters in filenames (like [lang]/[...slug].astro)
 const encodedPath = githubPath
   .split('/')
-  .map(segment => encodeURIComponent(segment))
+  .map((segment) => encodeURIComponent(segment))
   .join('/');
 
 const url = `https://github.com/cpps-unesp/site-cpps/blob/main/${encodedPath}`;
 ---
 
-<div class="flex items-center justify-between gap-3 py-4 border-t border-base-300 mt-8">
+<div class="border-base-300 mt-8 flex items-center justify-between gap-3 border-t py-4">
   <a
     href={url}
     target="_blank"
     rel="noopener noreferrer"
-    class="flex items-center gap-2 hover:text-primary transition-colors text-xs font-medium"
+    class="hover:text-primary flex items-center gap-2 text-xs font-medium transition-colors"
   >
     <i class="fa-brands fa-github text-lg"></i>
     <span>{editLabel}</span>

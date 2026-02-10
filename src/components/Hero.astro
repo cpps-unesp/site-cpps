@@ -1,63 +1,66 @@
 ---
-import { getTranslatedPath } from "../utils/getTranslatedPath";
+import { getTranslatedPath } from '../utils/getTranslatedPath';
 
 interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   heroData: any;
   lang?: string;
 }
 
-const { heroData, lang = "pt" } = Astro.props;
+const { heroData, lang = 'pt' } = Astro.props;
 ---
 
 <section
-  class="relative w-full min-h-[100dvh] bg-cover bg-center sm:bg-top bg-no-repeat z-0"
+  class="relative z-0 min-h-[100dvh] w-full bg-cover bg-center bg-no-repeat sm:bg-top"
   style={`background-image: url('${heroData?.hero.link}')`}
 >
   <!-- 🔳 Overlay em mobile usando base-100 para adaptação automática ao tema -->
   <div
-    class="absolute inset-0 z-0 sm:hidden bg-gradient-to-b from-base-100 via-base-100/90 to-base-100/80"
+    class="from-base-100 via-base-100/90 to-base-100/80 absolute inset-0 z-0 bg-gradient-to-b sm:hidden"
   >
   </div>
 
   <!-- 🔳 Gradiente lateral no desktop usando base-100 para adaptação automática ao tema -->
   <div class="absolute inset-0 z-0 hidden sm:block">
-    <div class="absolute inset-y-0 left-0 w-80 bg-base-100"></div>
+    <div class="bg-base-100 absolute inset-y-0 left-0 w-80"></div>
     <div
-      class="absolute inset-y-0 left-80 right-[35%] bg-gradient-to-r from-base-100 via-base-100/90 to-transparent"
+      class="from-base-100 via-base-100/90 absolute inset-y-0 right-[35%] left-80 bg-gradient-to-r to-transparent"
     >
     </div>
   </div>
 
   <!-- Conteúdo -->
   <div
-    class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full min-h-[100dvh] flex items-start sm:items-center pt-32 sm:pt-0"
+    class="relative z-10 mx-auto flex h-full min-h-[100dvh] w-full max-w-7xl items-start px-4 pt-32 sm:items-center sm:px-6 sm:pt-0 lg:px-8"
   >
-    <div class="flex flex-col items-start text-left w-full">
+    <div class="flex w-full flex-col items-start text-left">
       <!-- Logo + Título -->
-      <div
-        class="flex flex-col sm:flex-row items-center gap-6 mb-8 text-center sm:text-left"
-      >
+      <div class="mb-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
         <img
           src="/imagens/logos/cpps/logo-cpps-01_rev_1.png"
           alt="Logo CPPS"
-          class="h-32 sm:h-48 md:h-64 w-auto z-10"
+          class="z-10 h-32 w-auto sm:h-48 md:h-64"
         />
         <h1
-          class="titulo text-3xl sm:text-5xl md:text-6xl leading-tight z-10 text-base-content mt-4 sm:mt-0"
-          set:html={heroData?.hero.title}
-        />
+          class="titulo text-base-content z-10 mt-4 text-3xl leading-tight sm:mt-0 sm:text-5xl md:text-6xl"
+        >
+          {/* eslint-disable-next-line astro/no-set-html-directive */}
+          <Fragment set:html={heroData?.hero.title} />
+        </h1>
       </div>
 
       <!-- Descrição -->
-      <div class="max-w-2xl w-full text-center sm:text-left px-2 sm:px-0">
+      <div class="w-full max-w-2xl px-2 text-center sm:px-0 sm:text-left">
         <p
-          class="text-base md:text-lg leading-relaxed mb-6 text-base-content"
-          set:html={heroData?.hero.description}
-        />
+          class="text-base-content mb-6 text-base leading-relaxed md:text-lg"
+        >
+          {/* eslint-disable-next-line astro/no-set-html-directive */}
+          <Fragment set:html={heroData?.hero.description} />
+        </p>
 
         <!-- Botão -->
         <div
-          class="flex flex-col sm:flex-row justify-end sm:justify-end items-center sm:items-end gap-4 mt-4"
+          class="mt-4 flex flex-col items-center justify-end gap-4 sm:flex-row sm:items-end sm:justify-end"
         >
           {
             heroData?.hero.button && (
@@ -67,11 +70,12 @@ const { heroData, lang = "pt" } = Astro.props;
                   if (url.startsWith('http://') || url.startsWith('https://')) return url;
                   if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
                   const normalized = url.startsWith('/') ? url.slice(1) : url;
+                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   const translated = getTranslatedPath(normalized as any, lang as any);
                   const path = translated.startsWith('/') ? translated : `/${translated}`;
                   return `/${lang}${path}`;
                 })()}
-                class="btn btn-primary px-6 py-3 text-lg shadow-lg whitespace-nowrap"
+                class="btn btn-primary px-6 py-3 text-lg whitespace-nowrap shadow-lg"
                 style="color: white;"
               >
                 {heroData.hero.button.text}

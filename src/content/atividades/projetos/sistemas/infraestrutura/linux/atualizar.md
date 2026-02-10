@@ -3,6 +3,7 @@ id: atualizar
 title: Atualização de Computadores
 sidebar_label: Atualização
 ---
+
 :::tip
 Esta página reúne configurações feitas nos computadores localizados na sala do LabRI/UNESP
 :::
@@ -15,7 +16,6 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 ## Limpeza sistema PCs
-
 
 ```
 sudo apt autoremove -y && sudo apt autoclean -y && sudo apt clean -y

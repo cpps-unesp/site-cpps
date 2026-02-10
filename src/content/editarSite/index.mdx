@@ -28,13 +28,27 @@ Esta area centraliza os guias de edicao do site.
 
 ## Fluxo recomendado
 
-```bash
-npm install
-npm run dev
-```
+1. Instale as dependencias:
 
-No final da edicao:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run build
-```
+2. Inicie o servidor local:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Durante a edicao, verifique se o codigo esta padronizado:
+
+   ```bash
+   npm run format
+   ```
+
+4. Antes de enviar (commit), garanta que esta tudo certo:
+   ```bash
+   npm run ci
+   ```
+
+No final, o CI/CD cuidara do build de producao.

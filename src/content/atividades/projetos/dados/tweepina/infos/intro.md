@@ -10,8 +10,8 @@ sidebar_label: Introdução
 
 ### Informações Adicionais
 
-✅ Para acessar as pastas do *google drive* do projeto, [clique aqui](https://drive.google.com/drive/u/0/folders/1DCPUHymPWk07yYP6MvyImByttbQpzLJY).
+✅ Para acessar as pastas do _google drive_ do projeto, [clique aqui](https://drive.google.com/drive/u/0/folders/1DCPUHymPWk07yYP6MvyImByttbQpzLJY).
 
-✅ Para acessar a página do *Notion*, [clique aqui](https://www.notion.so/org-geral/Projeto-TweePInA-c9c5edcea2c84a2c8aabcb3e1763e8e9).
+✅ Para acessar a página do _Notion_, [clique aqui](https://www.notion.so/org-geral/Projeto-TweePInA-c9c5edcea2c84a2c8aabcb3e1763e8e9).
 
 ✅ Para acessar os fluxogramas do projeto [clique aqui](https://app.diagrams.net/#G1DtLtvntJ48YGEgyAI6SqpsMQduhmMafS)

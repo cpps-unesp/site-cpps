@@ -3,6 +3,7 @@ id: explicar
 title: Explicação Geral
 sidebar_label: Explicação Geral
 ---
+
 :::tip
 Esta página reúne explicações gerais sobre o acesso remoto disponibilizado LabRI/UNESP e do IPPRI/UNESP.
 :::
@@ -14,7 +15,6 @@ A partir de uma Infraestrutura de Desktop Virtual ([VDI](https://pt.wikipedia.or
 Adotamos um VDI persistente, ou seja, o usuário tem as mesmas funcionalidades que estão presentes um desktop físico pessoal com a vantagem deste desktop estar acessível em qualquer aparelho com conexão a internet. Além disso, o usuário pode customizar seu desktop de acordo com suas necessidades, pois tais ajustes ficam salvos para os próximos acessos realizados.
 
 Atualmente o desktop completo que disponibilizamos é a última versão de suporte de longo prazo [LTS](https://pt.wikipedia.org/wiki/Suporte_de_longo_prazo) do Ubuntu com interface XFCE ou LXDE.
-
 
 ## Como é realizado o acesso?
 
@@ -30,7 +30,6 @@ Também é possivel acessar o desktop através do programa [X2GO](https://wiki.x
 - Acesso a Bases de dados construídas nos [projetos](/projetos) do LabRI/UNESP e do IPPRI/UNESP.
 - Redução de custos com hardware e software, pois o desktop virtualizado é mantido e gerenciado centralmente, eliminando a necessidade de atualizações e manutenção em cada computador individualmente.
 
-
 ## Histórico
 
 Desde 2016 o LabRI/UNESP disponibiliza acesso a uma estação remota de Trabalho. 😉
@@ -40,7 +39,6 @@ Desde 2016 o LabRI/UNESP disponibiliza acesso a uma estação remota de Trabalho
 - [What is virtual desktop infrastructure (VDI)?](https://azure.microsoft.com/en-us/resources/cloud-computing-dictionary/what-is-virtual-desktop-infrastructure-vdi/#what-is-virtualization)
 - [O que é infraestrutura de desktop virtual (VDI) e como ela funciona?](https://www.vmware.com/br/topics/glossary/content/virtual-desktop-infrastructure-vdi.html)
 - [Criar uma estação de trabalho virtual](https://cloud.google.com/architecture/creating-a-virtual-workstation?hl=pt-br)
-
 
 # Autoria
 

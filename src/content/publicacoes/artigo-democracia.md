@@ -1,11 +1,11 @@
 ---
-title: "A Crise da Democracia Liberal no Século XXI"
+title: 'A Crise da Democracia Liberal no Século XXI'
 date: 2024-02-15
-authors: ["Murilo Gaspardo", "Agnaldo de Sousa Barbosa"]
-summary: "Uma análise profunda sobre os desafios institucionais e sociais que as democracias liberais enfrentam diante do crescimento do populismo global."
-tags: ["Democracia", "Instituições", "Populismo"]
-type: "artigo"
-lang: "pt"
+authors: ['Murilo Gaspardo', 'Agnaldo de Sousa Barbosa']
+summary: 'Uma análise profunda sobre os desafios institucionais e sociais que as democracias liberais enfrentam diante do crescimento do populismo global.'
+tags: ['Democracia', 'Instituições', 'Populismo']
+type: 'artigo'
+lang: 'pt'
 featured: true
 ---
 

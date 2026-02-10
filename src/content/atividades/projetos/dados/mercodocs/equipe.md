@@ -1,6 +1,6 @@
 ---
-title: "Equipe MercoDocs"
-description: "Conheça a equipe do projeto NewsCloud."
+title: 'Equipe MercoDocs'
+description: 'Conheça a equipe do projeto NewsCloud.'
 sidebar:
   order: 2
 ---
@@ -47,7 +47,6 @@ sidebar:
 
 <hr style="width: 50%; margin: 0 auto;">
 
-
 <!-- ========================================== -->
 <!-- SEÇÃO COLABORADORES -->
 <!-- ========================================== -->
@@ -66,7 +65,6 @@ sidebar:
       <img src="/imagens/logos/instagram.png" width="40" alt="Instagram">
     </a>
   </div>
-
 
 <!-- ========================================== -->
 <!-- SEÇÃO JÁ PASSARAM POR AQUI -->
@@ -91,6 +89,7 @@ sidebar:
 <br><br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

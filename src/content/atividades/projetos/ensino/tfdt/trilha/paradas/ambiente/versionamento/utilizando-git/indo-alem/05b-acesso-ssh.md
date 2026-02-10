@@ -3,7 +3,8 @@ id: chave-ssh
 title: Acesso por chave SSH
 sidebar_label: Acesso por chave SSH
 ---
-*Tempo estimado: 2 - 4 minutos*
+
+_Tempo estimado: 2 - 4 minutos_
 
 - Não precisa de senha para interagir com o repositório (pull, push e afins)
 - Maior segurança no acesso
@@ -37,7 +38,6 @@ Mantenha copiada a chave gerada, assim como mostra o print.
 
 ![tutorial_ssh_1](/imagens/img-geral/tutorial_ssh_1.jpeg)
 
-
 ## GitLab
 
 Em seguida, acesse o GitLab pela sua conta e clique em preferências.
@@ -56,7 +56,6 @@ Após salvar sua chave, é preciso clonar novamente o repositório excluído. Pa
 
 ![tutorial_ssh_4](/imagens/img-geral/ventoy4.jpeg)
 
-
 ## Terminal
 
 Novamente em seu terminal, digite o comando abaixo e cole o link do repositório.
@@ -70,8 +69,6 @@ Se der alguma mensagem de erro, tente somente:
 ```
 git clone <link do repositório>
 ```
-
-
 
 <div style={{textAlign: 'center'}}>
 

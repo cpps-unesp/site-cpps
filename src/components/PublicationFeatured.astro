@@ -1,9 +1,10 @@
 ---
-import type { SupportedLang } from "../types/lang";
-import { getTranslations } from "../utils/i18n";
+import type { SupportedLang } from '../types/lang';
+import { getTranslations } from '../utils/i18n';
+import type { CollectionEntry } from 'astro:content';
 
 interface Props {
-  publication: any;
+  publication: CollectionEntry<'publicacoes'>;
   lang: SupportedLang;
 }
 
@@ -12,54 +13,63 @@ const { data, slug } = publication;
 const locale = getTranslations(lang);
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
-
-const formattedDate = new Intl.DateTimeFormat(lang, {
-  year: 'numeric',
-  month: 'long',
-}).format(data.date);
 ---
 
-<section class="mb-16 bg-gray-50 rounded-2xl overflow-hidden border border-gray-200 shadow-sm">
+<section class="mb-16 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm">
   <div class="grid md:grid-cols-2">
-    {data.image ? (
-      <div class="h-64 md:h-full">
-        <img src={data.image} alt={data.title} class="w-full h-full object-cover" />
-      </div>
-    ) : (
-      <div class="h-64 md:h-full bg-primary/10 flex items-center justify-center">
-        <span class="text-primary/20 font-black text-6xl uppercase transform -rotate-12 select-none">CPPS</span>
-      </div>
-    )}
+    {
+      data.image ? (
+        <div class="h-64 md:h-full">
+          <img src={data.image} alt={data.title} class="h-full w-full object-cover" />
+        </div>
+      ) : (
+        <div class="bg-primary/10 flex h-64 items-center justify-center md:h-full">
+          <span class="text-primary/20 -rotate-12 transform text-6xl font-black uppercase select-none">
+            CPPS
+          </span>
+        </div>
+      )
+    }
 
-    <div class="p-8 md:p-12 flex flex-col justify-center">
-      <div class="flex items-center gap-4 mb-6">
-        <span class="bg-primary text-white text-xs font-black uppercase px-3 py-1 rounded-full">
+    <div class="flex flex-col justify-center p-8 md:p-12">
+      <div class="mb-6 flex items-center gap-4">
+        <span class="bg-primary rounded-full px-3 py-1 text-xs font-black text-white uppercase">
           {locale.publicacoes.featured}
         </span>
         <a
           href={`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`}
-          class="text-gray-500 text-xs font-bold uppercase tracking-widest hover:text-primary transition-colors"
+          class="hover:text-primary text-xs font-bold tracking-widest text-gray-500 uppercase transition-colors"
         >
           {typeLabel}
         </a>
       </div>
 
-      <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-6 leading-tight publication-featured-title">
-        <a href={`/${lang}/publicacoes/${slug}`} class="hover:text-primary transition-colors italic">
+      <h2
+        class="publication-featured-title mb-6 text-3xl leading-tight font-black text-gray-900 md:text-4xl"
+      >
+        <a
+          href={`/${lang}/publicacoes/${slug}`}
+          class="hover:text-primary italic transition-colors"
+        >
           {data.title}
         </a>
       </h2>
 
-      <p class="text-gray-600 mb-8 leading-relaxed line-clamp-4">
+      <p class="mb-8 line-clamp-4 leading-relaxed text-gray-600">
         {data.summary}
       </p>
 
       <div class="flex items-center justify-between">
         <div class="flex flex-col">
-           <span class="text-xs text-gray-400 uppercase font-bold tracking-tighter">{locale.publicacoes.authors}</span>
-           <span class="text-sm font-bold text-gray-800">{data.authors.join(", ")}</span>
+          <span class="text-xs font-bold tracking-tighter text-gray-400 uppercase"
+            >{locale.publicacoes.authors}</span
+          >
+          <span class="text-sm font-bold text-gray-800">{data.authors.join(', ')}</span>
         </div>
-        <a href={`/${lang}/publicacoes/${slug}`} class="bg-white text-primary border-2 border-primary hover:bg-primary hover:text-white px-6 py-2 rounded-full font-black text-sm transition-all">
+        <a
+          href={`/${lang}/publicacoes/${slug}`}
+          class="text-primary border-primary hover:bg-primary rounded-full border-2 bg-white px-6 py-2 text-sm font-black transition-all hover:text-white"
+        >
           {locale.publicacoes.readMore}
         </a>
       </div>

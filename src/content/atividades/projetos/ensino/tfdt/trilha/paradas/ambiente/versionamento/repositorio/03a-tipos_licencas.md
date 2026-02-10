@@ -4,7 +4,6 @@ title: Tipos de Licenças
 sidebar_label: Tipos de Licenças
 ---
 
-
 ## Qual o problema?⚠️
 
 A partir do contexto da globalização 🌐 e ampliação do uso da internet, uma vasta produção de conhecimento passou a circular no meio digital. A disseminação de conhecimento, muitas vezes, não apresenta garantia, o que pode acarretar no uso indevido ou inapropriado das informações disponibilizadas de forma aberta.
@@ -23,7 +22,6 @@ Já na segunda opção🔓, nas licenças abertas, os direitos patrimoniais do d
 
 Além da divisão entre abertas e fechadas, as licenças são apresentadas, também, por dois tipos: licenças para código e licenças para bases de dados. Nas de código, segundo o site mend.io, em 2021 as mais usadas foram Apache License 2.0, MIT License e GNU General Public License v3.0.
 
-
 import Tabs from '@theme/Tabs';
 
 import TabItem from '@theme/TabItem';
@@ -33,10 +31,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="apache license 2.0" label="Apache license 2.0">
 
-
-
 🔶 Direitos autorais: licença irrevogável para reproduzir, derivar trabalhos e publicá-los.
-
 
 🔶 Defende os contribuidores e suas contribuições.
 
@@ -50,12 +45,9 @@ import TabItem from '@theme/TabItem';
 
 🔶 30% mais usada.
 </TabItem>
-  <TabItem value="MIT License" label="MIT License">
-
-
+<TabItem value="MIT License" label="MIT License">
 
 🔶 Licença permissiva.
-
 
 🔶 Possui cláusula de isenção de garantias e responsabilidades.
 
@@ -71,12 +63,9 @@ import TabItem from '@theme/TabItem';
 
 🔶 26% mais usada.
 </TabItem>
-  <TabItem value="GNU General Public License v3.0" label="GNU General Public License v3.0">
-
-
+<TabItem value="GNU General Public License v3.0" label="GNU General Public License v3.0">
 
 🔶 Licença de código aberto.
-
 
 🔶 Protege o usuário de certas ameaças novas: Leis que proíbem o uso de Software Livre; Acordos de patentes que não pertencem, de fato, àquela empresa; Tivoização (GPL que não pode ser alterada).
 
@@ -96,17 +85,12 @@ import TabItem from '@theme/TabItem';
 
 ### Nas de bases de dados 🎲, há apenas duas:
 
-
 :::info Bases de dados
 
 <Tabs>
   <TabItem value="DbCL" label="DbCL">
 
-
-
 🔶 Licença do Conteúdo do Banco de Dados.
-
-
 
 🔶 Licença de direitos autorais mundial 🌐.
 
@@ -117,9 +101,7 @@ import TabItem from '@theme/TabItem';
 🔶 O licenciador isenta-se de qualquer responsabilidade sobre perdas ou danos causados por qualquer uso e por
 qualquer pessoa desta licença (mesmo se a falha for causada por erro do Licenciante).
 </TabItem>
-  <TabItem value="ODbL" label="ODbL">
-
-
+<TabItem value="ODbL" label="ODbL">
 
 🔶 Open Database License.
 
@@ -134,27 +116,28 @@ qualquer pessoa desta licença (mesmo se a falha for causada por erro do Licenci
 :::
 
 # Material de apoio:
-   Há, ainda, outras licenças de código disponíveis para consulta, como: BSD (Simplificada e Modificada); Mozilla; Eclipse; GNU (Affero, v2.0 e Lesser); Boost; Creative Commons. The Unlicense.
-   Abaixo indicamos alguns sites que podem auxiliar na escolha de uma licença adequada:
 
-   🔶 [GitHub Repositories.](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
+Há, ainda, outras licenças de código disponíveis para consulta, como: BSD (Simplificada e Modificada); Mozilla; Eclipse; GNU (Affero, v2.0 e Lesser); Boost; Creative Commons. The Unlicense.
+Abaixo indicamos alguns sites que podem auxiliar na escolha de uma licença adequada:
 
-   🔶 Links para auxílio:
+🔶 [GitHub Repositories.](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository)
 
-   🔸[Comissão Europeia: assistente de licenciamento - Ache e compare lienças de softwares.](https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-find-and-compare-software-licenses)
+🔶 Links para auxílio:
 
-   🔸[Escolha uma licença.](https://choosealicense.com/)
+🔸[Comissão Europeia: assistente de licenciamento - Ache e compare lienças de softwares.](https://joinup.ec.europa.eu/collection/eupl/solution/joinup-licensing-assistant/jla-find-and-compare-software-licenses)
 
-   🔸[Licenças e exceções comumente usadas em fontes abertas ou softwares colaborativos, dados, hardware ou documentações.](https://spdx.org/licenses/)
+🔸[Escolha uma licença.](https://choosealicense.com/)
 
-   🔸[Licenças para software em inglês simples.](https://www.tldrlegal.com/)
+🔸[Licenças e exceções comumente usadas em fontes abertas ou softwares colaborativos, dados, hardware ou documentações.](https://spdx.org/licenses/)
 
-   🔶 Links para aprofundamento/textos complementares:
+🔸[Licenças para software em inglês simples.](https://www.tldrlegal.com/)
 
-   🔸["Um estudo sistemático de licenças de software livre." Tese de mestrado de Vanessa Cristina Sabino.](https://www.teses.usp.br/teses/disponiveis/45/45134/tde-14032012-003454/pt-br.php)
+🔶 Links para aprofundamento/textos complementares:
 
-   🔸[Wikipedia: Comparação entre licenças para softwares abertos.](https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses)
+🔸["Um estudo sistemático de licenças de software livre." Tese de mestrado de Vanessa Cristina Sabino.](https://www.teses.usp.br/teses/disponiveis/45/45134/tde-14032012-003454/pt-br.php)
 
-   🔸[Open Data Commons](https://opendatacommons.org/)
+🔸[Wikipedia: Comparação entre licenças para softwares abertos.](https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses)
 
-   🔸[Sobre as licenças Creative Commons.](https://creativecommons.org/licenses/?lang=pt_BR)
+🔸[Open Data Commons](https://opendatacommons.org/)
+
+🔸[Sobre as licenças Creative Commons.](https://creativecommons.org/licenses/?lang=pt_BR)

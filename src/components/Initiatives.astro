@@ -7,44 +7,52 @@ type InitiativeItem = {
   description?: string;
 };
 
-const { initiatives, lang = "pt" } = Astro.props;
-const { label, title = "Most used initiatives", items = [] } = (initiatives ?? {}) as {
+const { initiatives, lang = 'pt' } = Astro.props;
+const {
+  label,
+  title = 'Most used initiatives',
+  items = [],
+} = (initiatives ?? {}) as {
   label?: string;
   title?: string;
   items?: InitiativeItem[];
 };
+
+function getUrl(link?: string) {
+  const url = link || '';
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
+  if (url.startsWith('/')) return `/${lang}${url}`;
+  return `/${lang}/${url}`;
+}
 ---
 
 <div class="bg-base-100 py-16">
-  <div class="max-w-screen-xl mx-auto px-4">
-    <p class="text-center text-primary font-semibold uppercase tracking-wide mb-2">
+  <div class="mx-auto max-w-screen-xl px-4">
+    <p class="text-primary mb-2 text-center font-semibold tracking-wide uppercase">
       {label}
     </p>
 
-    <h2 class="titulo text-center text-primary mb-4">{title}</h2>
+    <h2 class="titulo text-primary mb-4 text-center">{title}</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {items.map((initiative: InitiativeItem) => (
-        <a
-          href={(() => {
-            const url = initiative.link || '';
-            if (url.startsWith('http://') || url.startsWith('https://')) return url;
-            if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
-            if (url.startsWith('/')) return `/${lang}${url}`;
-            return `/${lang}/${url}`;
-          })()}
-          class="relative block card bg-base-200 text-base-content shadow-md hover:shadow-lg transition-shadow rounded-xl p-6 space-y-3 hover:bg-base-300"
-        >
-          <!-- Tag no canto superior direito -->
-          <span class="absolute top-2 right-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded uppercase">
-            {initiative.tipo}
-          </span>
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        items.map((initiative: InitiativeItem) => (
+          <a
+            href={getUrl(initiative.link)}
+            class="card bg-base-200 text-base-content hover:bg-base-300 relative block space-y-3 rounded-xl p-6 shadow-md transition-shadow hover:shadow-lg"
+          >
+            {/* Tag no canto superior direito */}
+            <span class="bg-primary absolute top-2 right-2 rounded px-2 py-1 text-[10px] font-bold text-white uppercase">
+              {initiative.tipo}
+            </span>
 
-          <div class="text-3xl text-primary">{initiative.icon}</div>
-          <h3 class="text-[20px] font-display mb-1 text-primary">{initiative.title}</h3>
-          <p class="text-[12px] leading-snug">{initiative.description}</p>
-        </a>
-      ))}
+            <div class="text-primary text-3xl">{initiative.icon}</div>
+            <h3 class="font-display text-primary mb-1 text-[20px]">{initiative.title}</h3>
+            <p class="text-[12px] leading-snug">{initiative.description}</p>
+          </a>
+        ))
+      }
     </div>
   </div>
 </div>

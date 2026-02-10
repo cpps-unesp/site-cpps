@@ -3,77 +3,46 @@ id: editor-codigo
 title: Editor de Código
 sidebar_label: Editor de Código
 ---
-*Tempo estimado: 8 - 10 minutos*
+
+_Tempo estimado: 8 - 10 minutos_
 
 :::tip
 Atenção: O VSCode é um dos editores mais populares para desenvolvimento de software e é usado por muitos desenvolvedores em todo o mundo. É importante!
 :::
 
-
 ## Introdução ao VSCode
 
 O VSCode é um editor de código-fonte gratuito e de código aberto criado pela Microsoft. Ele é um editor leve e altamente personalizável que suporta várias linguagens de programação e possui muitos recursos avançados para desenvolvimento de software.
 
-
 ## Instalação do VSCode
-
-
 
 Antes de começar a usar o VSCode, você precisa instalá-lo em seu computador. O VSCode está disponível para Windows, MacOS e Linux. Você pode baixar a versão mais recente do VSCode no site oficial da Microsoft, [clicando aqui](https://code.visualstudio.com/download).
 
-
-
 ## Como usar o VSCode
-
-
 
 Aqui estão algumas instruções básicas sobre como usar o VSCode:
 
-
-
 ### 1. Abrir o VSCode
-
-
 
 Depois de instalar o VSCode, abra-o clicando no ícone do VSCode em sua área de trabalho.
 
-
-
 ### 2. Criar um novo arquivo
-
-
 
 Para criar um novo arquivo, vá em `Arquivo > Novo Arquivo` ou use o atalho `Ctrl + N` (Windows) ou `Cmd + N` (MacOS). Você pode salvar o arquivo em seu computador clicando em `Arquivo > Salvar` ou usando o atalho `Ctrl + S` (Windows) ou `Cmd + S` (MacOS).
 
-
-
 ### 3. Personalizar o VSCode
-
-
 
 O VSCode é altamente personalizável. Você pode personalizar o tema, as cores, as fontes, as extensões e muitas outras opções. Para personalizar o VSCode, vá em `Arquivo > Preferências` (Windows) ou `Code > Preferências` (MacOS) e selecione a opção desejada.
 
-
-
 ### 4. Instalar extensões
-
-
 
 O VSCode tem muitas extensões disponíveis para melhorar a funcionalidade do editor. Para instalar extensões, vá em `Exibir > Extensões` ou use o atalho `Ctrl + Shift + X` (Windows) ou `Cmd + Shift + X` (MacOS). Pesquise a extensão desejada e clique em `Instalar`.
 
-
-
 ### 5. Usar o terminal integrado
-
-
 
 O VSCode possui um terminal integrado que permite executar comandos diretamente no editor. Para abrir o terminal, vá em `Terminal > Novo Terminal` ou use o atalho `Ctrl + Shift +` (Windows) ou `Cmd + Shift +` (MacOS).
 
-
-
 ### 6. Usar o depurador integrado
-
-
 
 O VSCode possui um depurador integrado que permite depurar o código em tempo real. Para usar o depurador, coloque pontos de interrupção no código e vá em `Depurar > Iniciar Depuração` ou use o atalho `F5`.
 
@@ -99,35 +68,32 @@ Aqui estão algumas etapas básicas para começar a usar o VS Code em conjunto c
 
 **Gitpod:**
 
--   Acesse o site do [Gitpod ](https://gitpod.io/) e crie uma conta;
--   Abra um repositório no Gitpod clicando no botão "Open in Gitpod" no GitHub ou no GitLab, ou digitando o endereço do repositório no Gitpod;
--   O Gitpod criará um ambiente de desenvolvimento na nuvem, com todas as dependências necessárias para o seu projeto;
--   Depois de alguns minutos, o VS Code será iniciado dentro do navegador, com acesso a todos os arquivos do seu projeto.
+- Acesse o site do [Gitpod ](https://gitpod.io/) e crie uma conta;
+- Abra um repositório no Gitpod clicando no botão "Open in Gitpod" no GitHub ou no GitLab, ou digitando o endereço do repositório no Gitpod;
+- O Gitpod criará um ambiente de desenvolvimento na nuvem, com todas as dependências necessárias para o seu projeto;
+- Depois de alguns minutos, o VS Code será iniciado dentro do navegador, com acesso a todos os arquivos do seu projeto.
 
 **GitHub:**
 
--   Acesse o site do  [GitHub](https://github.com/) e crie uma conta;
--   Crie um novo repositório ou faça o fork de um repositório existente;
--   Clique no botão "Code" e copie o link do repositório;
--   Abra o VS Code e vá em "File" -> "Open Folder";
--   Cole o link do repositório na caixa de diálogo e clique em "Open";
--   O VS Code carregará todos os arquivos do seu projeto e você poderá começar a trabalhar.
+- Acesse o site do [GitHub](https://github.com/) e crie uma conta;
+- Crie um novo repositório ou faça o fork de um repositório existente;
+- Clique no botão "Code" e copie o link do repositório;
+- Abra o VS Code e vá em "File" -> "Open Folder";
+- Cole o link do repositório na caixa de diálogo e clique em "Open";
+- O VS Code carregará todos os arquivos do seu projeto e você poderá começar a trabalhar.
 
 **GitLab:**
 
--   Acesse o site do [GitLab](https://gitlab.com/) e crie uma conta;
--   Crie um novo repositório ou faça o fork de um repositório existente;
--   Clique no botão "Clone" e copie o link do repositório;
--   Abra o VS Code e vá em "File" -> "Open Folder";
--   Cole o link do repositório na caixa de diálogo e clique em "Open";
--   O VS Code carregará todos os arquivos do seu projeto e você poderá começar a trabalhar.
+- Acesse o site do [GitLab](https://gitlab.com/) e crie uma conta;
+- Crie um novo repositório ou faça o fork de um repositório existente;
+- Clique no botão "Clone" e copie o link do repositório;
+- Abra o VS Code e vá em "File" -> "Open Folder";
+- Cole o link do repositório na caixa de diálogo e clique em "Open";
+- O VS Code carregará todos os arquivos do seu projeto e você poderá começar a trabalhar.
 
 Com o VS Code configurado em conjunto com esses serviços, você poderá aproveitar todos os recursos do editor, como IntelliSense, depuração de código, extensões e muito mais, em um ambiente de desenvolvimento completamente online e remoto.
 
-
-
 ## Comandos principais
-
 
 - Ctrl + N (Windows) ou Cmd + N (MacOS): criar um novo arquivo
 

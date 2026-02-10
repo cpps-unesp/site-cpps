@@ -8,7 +8,6 @@ sidebar_label: Equipamentos LabRI/UNESP
 
 Os equipamentos listados abaixo estão disponíveis e alocados no espaço do Laboratório de Relações Internacionais (LabRI/UNESP) do Departamento de Relações Internacionais da UNESP/Franca. Eles compõe um cluster computacional, baseado no PROXMOX - plataforma open source de virtualização. Ademais, destacamos, em um item à parte, o storage alocado neste cluster.
 
-
 - **PVE 01**
   - AMD FX 8320E OCA CORE Black Edition
   - ASUS M5A78L-M PLUS/USB3
@@ -60,7 +59,7 @@ Os equipamentos listados abaixo estão disponíveis e alocados no espaço do Lab
   - HD SAS: 600 Gigabytes
   - SSD SATA: 1920 Gigabytes
 
------
+---
 
 - 12 computadores Itautec
 - 9 computadores HP all in One

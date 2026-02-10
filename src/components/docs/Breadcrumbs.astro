@@ -15,16 +15,20 @@ function formatLabel(str: string) {
 }
 ---
 
-<nav class="text-xs mb-6 text-base-content/50 uppercase tracking-widest overflow-x-auto whitespace-nowrap scrollbar-hide">
+<nav
+  class="text-base-content/50 scrollbar-hide mb-6 overflow-x-auto text-xs tracking-widest whitespace-nowrap uppercase"
+>
   <ul class="flex items-center gap-2">
     <li><a href={basePath} class="hover:text-primary transition">{baseLabel}</a></li>
-    {parts.map((part, index) => (
-      <li class="flex items-center gap-2">
-        <span>/</span>
-        <span class={index === parts.length - 1 ? 'text-primary font-bold' : ''}>
-          {formatLabel(part)}
-        </span>
-      </li>
-    ))}
+    {
+      parts.map((part, index) => (
+        <li class="flex items-center gap-2">
+          <span>/</span>
+          <span class={index === parts.length - 1 ? 'text-primary font-bold' : ''}>
+            {formatLabel(part)}
+          </span>
+        </li>
+      ))
+    }
   </ul>
 </nav>

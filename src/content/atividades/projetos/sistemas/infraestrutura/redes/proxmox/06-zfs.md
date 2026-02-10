@@ -77,9 +77,9 @@ pvesm zfsscan
 # zpool add -f <pool> log <device-part1> cache <device-part2>
 
 # zpool add-f disk01-zfs-raid0 cache /dev/sdd6 log /dev/sdd5
- ```
+```
 
-  * metade da memoria RAM da máquina real = log
+- metade da memoria RAM da máquina real = log
 
 ### ETAPA 8 - Limitar uso da mémoria utilizada pelo ZFS
 
@@ -130,10 +130,9 @@ nano/etc/zfs/zed.d/zed.rc
 
 ## Reutilizar storage ZFS
 
-
- - Antes de reabilitar o storage é necessário:
-   - instalar o proxmox
-   - inserir o node no cluster (se existir)
+- Antes de reabilitar o storage é necessário:
+  - instalar o proxmox
+  - inserir o node no cluster (se existir)
 
 ### Importar storages existentes
 
@@ -215,22 +214,21 @@ zfs set compression=on zfs02-twodisk08t-raid0/vms
 zfs set compression=on zfs02-twodisk08t-raid0/bkp
 ```
 
-
 ```
 zpool import zfs01-twodisk08t-raid0 -f
 zpool import -a
 ```
 
-* Renomear discos antigos
+- Renomear discos antigos
 
 zfs rename
 
-* criar vm
+- criar vm
 
-* Apagar discos da vm
-zfs destroy
+- Apagar discos da vm
+  zfs destroy
 
-* Renomear discos antigos com nomes dos novos
+- Renomear discos antigos com nomes dos novos
 
 ```
 sudo zfs rename zfs01ssd480x3raid0/vms/vm-old100-disk-0 zfs01ssd480x3raid0/vms/vm-9999-disk-0

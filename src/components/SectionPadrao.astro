@@ -1,60 +1,64 @@
 ---
-import TextoComCheck from "./TextoComCheck.astro";
-import CheckIcon from "../icons/CheckIcon.astro";
+import TextoComCheck from './TextoComCheck.astro';
+import CheckIcon from '../icons/CheckIcon.astro';
 const { titulo, texto, imagem, departamentos = null, reverse = false } = Astro.props;
 ---
 
-<div class="grid md:grid-cols-2 gap-12 items-center">
-  {reverse ? (
-    <>
-      <div>
-        <img
-          src={imagem}
-          alt={`Imagem ilustrativa de ${titulo}`}
-          class="rounded-xl w-full max-w-md mx-auto transition duration-300 ease-in-out"
-          loading="lazy"
-        />
-      </div>      <div>
-        <h2 class="text-4xl font-extrabold mb-6">{titulo}</h2>
-        <TextoComCheck texto={texto} />
+<div class="grid items-center gap-12 md:grid-cols-2">
+  {
+    reverse ? (
+      <>
+        <div>
+          <img
+            src={imagem}
+            alt={`Imagem ilustrativa de ${titulo}`}
+            class="mx-auto w-full max-w-md rounded-xl transition duration-300 ease-in-out"
+            loading="lazy"
+          />
+        </div>{' '}
+        <div>
+          <h2 class="mb-6 text-4xl font-extrabold">{titulo}</h2>
+          <TextoComCheck texto={texto} />
 
-        {departamentos && (
-          <ul class="list-none mt-6 space-y-4 pl-8">
-            {departamentos.map((item) => (
-              <div class="flex items-start gap-2">
-                <CheckIcon size={24} class="mt-1" />
-                <span class="paragrafo">{item}</span>
-              </div>
-            ))}
-          </ul>
-        )}
-      </div>
-    </>
-  ) : (    <>
-      <div>
-        <h2 class="text-4xl font-extrabold mb-6">{titulo}</h2>
-        <TextoComCheck texto={texto} />
+          {departamentos && (
+            <ul class="mt-6 list-none space-y-4 pl-8">
+              {departamentos.map((item) => (
+                <div class="flex items-start gap-2">
+                  <CheckIcon size={24} class="mt-1" />
+                  <span class="paragrafo">{item}</span>
+                </div>
+              ))}
+            </ul>
+          )}
+        </div>
+      </>
+    ) : (
+      <>
+        <div>
+          <h2 class="mb-6 text-4xl font-extrabold">{titulo}</h2>
+          <TextoComCheck texto={texto} />
 
-        {departamentos && (
-          <ul class="list-none mt-6 space-y-4 pl-8">
-            {departamentos.map((item) => (
-              <div class="flex items-start gap-2">
-                <CheckIcon size={24} class="mt-1" />
-                <span class="paragrafo">{item}</span>
-              </div>
-            ))}
-          </ul>
-        )}
-      </div>
+          {departamentos && (
+            <ul class="mt-6 list-none space-y-4 pl-8">
+              {departamentos.map((item) => (
+                <div class="flex items-start gap-2">
+                  <CheckIcon size={24} class="mt-1" />
+                  <span class="paragrafo">{item}</span>
+                </div>
+              ))}
+            </ul>
+          )}
+        </div>
 
-      <div>
-        <img
-          src={imagem}
-          alt={`Imagem ilustrativa de ${titulo}`}
-          class="rounded-xl w-full max-w-md mx-auto transition duration-300 ease-in-out"
-          loading="lazy"
-        />
-      </div>
-    </>
-  )}
+        <div>
+          <img
+            src={imagem}
+            alt={`Imagem ilustrativa de ${titulo}`}
+            class="mx-auto w-full max-w-md rounded-xl transition duration-300 ease-in-out"
+            loading="lazy"
+          />
+        </div>
+      </>
+    )
+  }
 </div>

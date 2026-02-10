@@ -1,6 +1,6 @@
 ---
-import { getCollection } from "astro:content";
-import IconSocial from "./IconSocial.astro";
+import { getCollection } from 'astro:content';
+import IconSocial from './IconSocial.astro';
 
 // Types for members and social networks
 type Rede = {
@@ -23,169 +23,193 @@ const props = Astro.props as {
   ativos?: Array<[string, Membro[]]>;
   inativos?: Membro[];
   lang?: string;
-  layout?: string;
   texts?: Record<string, string>;
 };
 
 const ativos = props.ativos ?? [];
 const inativos = props.inativos ?? [];
-const lang = props.lang ?? "pt";
-const layout = props.layout ?? "pesquisador";
+const lang = props.lang ?? 'pt';
 const texts = props.texts ?? {};
 
-const membrosCollection = await getCollection("membros");
+const membrosCollection = await getCollection('membros');
 const membrosDisponiveis = new Set(
   membrosCollection
     .filter((entry) => entry.id.endsWith(`.${lang}.mdx`))
     .map((entry) => {
       // pop() can be undefined; guard with optional chaining and fallback
-      const last = entry.id.split("/").pop()?.replace(/\.(pt|en|es)\.mdx$/, "") ?? "";
+      const last =
+        entry.id
+          .split('/')
+          .pop()
+          ?.replace(/\.(pt|en|es)\.mdx$/, '') ?? '';
       return last;
     })
 );
 
 function getSlug(membro: Membro): string {
-  return membro.slug?.trim() || membro.nome.toLowerCase().replace(/\s+/g, "-");
+  return membro.slug?.trim() || membro.nome.toLowerCase().replace(/\s+/g, '-');
 }
-
-const categoriasTodas = Array.from(
-  new Set([
-    ...ativos.map(([cat]) => cat),
-    ...Object.keys(Object.fromEntries(ativos.concat([["inativos", inativos]]))),
-  ])
-);
 ---
 
 <script type="module" is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const tabs = document.querySelectorAll("[data-tab]");
-    const secoes = document.querySelectorAll("[data-categoria]");
-    const inativoContainer = document.querySelector("#inativos-tab");
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('[data-tab]');
+    const secoes = document.querySelectorAll('[data-categoria]');
+    const inativoContainer = document.querySelector('#inativos-tab');
 
     tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        const alvo = tab.getAttribute("data-tab");
+      tab.addEventListener('click', () => {
+        const alvo = tab.getAttribute('data-tab');
 
-        tabs.forEach((t) => t.classList.remove("tab-active"));
-        tab.classList.add("tab-active");
+        tabs.forEach((t) => t.classList.remove('tab-active'));
+        tab.classList.add('tab-active');
 
         secoes.forEach((sec) => {
-          sec.style.display =
-            alvo === "todos" || sec.dataset.categoria === alvo
-              ? "flex"
-              : "none";
+          sec.style.display = alvo === 'todos' || sec.dataset.categoria === alvo ? 'flex' : 'none';
         });
 
         if (inativoContainer) {
-          inativoContainer.style.display =
-            alvo === "inativos" ? "flex" : "none";
+          inativoContainer.style.display = alvo === 'inativos' ? 'flex' : 'none';
         }
       });
     });
   });
 </script>
 
-<div class="tabs tabs-boxed justify-center mb-10">
+<div class="tabs tabs-boxed mb-10 justify-center">
   <button class="tab tab-active" data-tab="todos">Todos</button>
-  {ativos.map(([categoria]) => (
-    <button class="tab" data-tab={categoria}>{categoria}</button>
-  ))}
+  {
+    ativos.map(([categoria]) => (
+      <button class="tab" data-tab={categoria}>
+        {categoria}
+      </button>
+    ))
+  }
   <button class="tab" data-tab="inativos">Já passaram por aqui</button>
 </div>
 
-{ativos.map(([categoria, membros]) => (
-  <div data-categoria={categoria} class="mb-12 flex flex-col gap-12">
-    <h3 id={categoria.toLowerCase().replace(/\s+/g, "-")} class="text-2xl font-semibold text-primary mt-8 mb-6">
-      {categoria}
-    </h3>
+{
+  ativos.map(([categoria, membros]) => (
+    <div data-categoria={categoria} class="mb-12 flex flex-col gap-12">
+      <h3
+        id={categoria.toLowerCase().replace(/\s+/g, '-')}
+        class="text-primary mt-8 mb-6 text-2xl font-semibold"
+      >
+        {categoria}
+      </h3>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {membros.map((membro) => {
-        const slug = getSlug(membro);
-        const temPagina = membrosDisponiveis.has(slug);
-        return (
-          <div class="relative card bg-base-100 text-base-content shadow-md hover:shadow-xl hover:border-primary/20 border border-base-200 transition-all duration-300 rounded-2xl overflow-hidden p-6 pt-10 flex flex-col items-center text-center group">
-            {temPagina && (
-              <a href={`/${lang}/${slug}`} class="absolute top-3 right-3 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg shadow-primary/20 z-10 transform transition-transform group-hover:scale-110">
-                {texts.buttonPersonalPage}
-              </a>
-            )}
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {membros.map((membro) => {
+          const slug = getSlug(membro);
+          const temPagina = membrosDisponiveis.has(slug);
+          return (
+            <div class="card bg-base-100 text-base-content hover:border-primary/20 border-base-200 group relative flex flex-col items-center overflow-hidden rounded-2xl border p-6 pt-10 text-center shadow-md transition-all duration-300 hover:shadow-xl">
+              {temPagina && (
+                <a
+                  href={`/${lang}/${slug}`}
+                  class="bg-primary shadow-primary/20 absolute top-3 right-3 z-10 transform rounded-full px-3 py-1.5 text-[10px] font-black tracking-widest text-white uppercase shadow-lg transition-transform group-hover:scale-110"
+                >
+                  {texts.buttonPersonalPage}
+                </a>
+              )}
 
-            {temPagina ? (
-              <a href={`/${lang}/${slug}`} class="relative block">
-                <img src={membro.foto} alt={membro.nome} class="w-40 h-40 object-cover rounded-2xl mb-6 shadow-lg group-hover:scale-105 transition-transform duration-500" />
-                <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/10"></div>
-              </a>
-            ) : (
-              <div class="relative">
-                <img src={membro.foto} alt={membro.nome} class="w-40 h-40 object-cover rounded-2xl mb-6 shadow-lg" />
-                <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/10"></div>
-              </div>
-            )}
+              {temPagina ? (
+                <a href={`/${lang}/${slug}`} class="relative block">
+                  <img
+                    src={membro.foto}
+                    alt={membro.nome}
+                    class="mb-6 h-40 w-40 rounded-2xl object-cover shadow-lg transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
+                </a>
+              ) : (
+                <div class="relative">
+                  <img
+                    src={membro.foto}
+                    alt={membro.nome}
+                    class="mb-6 h-40 w-40 rounded-2xl object-cover shadow-lg"
+                  />
+                  <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
+                </div>
+              )}
 
-            {membro.redes && membro.redes.length > 0 && (
-              <div class="flex justify-center space-x-4 mb-2">
-                {membro.redes.slice(0, 3).map((rede) => (
-                  <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
-                ))}
-              </div>
-            )}
+              {membro.redes && membro.redes.length > 0 && (
+                <div class="mb-2 flex justify-center space-x-4">
+                  {membro.redes.slice(0, 3).map((rede) => (
+                    <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
+                  ))}
+                </div>
+              )}
 
-            <h3 class="text-[20px] font-display text-primary mb-1">{membro.nome}</h3>
-            <p class="text-[12px] text-neutral mb-1">{membro.cargo}</p>
-            <p class="text-[12px] text-base-content">{membro.descricao}</p>
-            {membro.contribuicao && (
-              <p class="text-[12px] italic mt-2 text-base-content">{membro.contribuicao}</p>
-            )}
-          </div>
-        );
-      })}
+              <h3 class="font-display text-primary mb-1 text-[20px]">{membro.nome}</h3>
+              <p class="text-neutral mb-1 text-[12px]">{membro.cargo}</p>
+              <p class="text-base-content text-[12px]">{membro.descricao}</p>
+              {membro.contribuicao && (
+                <p class="text-base-content mt-2 text-[12px] italic">{membro.contribuicao}</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
     </div>
-  </div>
-))}
+  ))
+}
 
-<div id="inativos-tab" style="display: none;" class="space-y-16 flex flex-col">
-  {Array.from({ length: Math.ceil(inativos.length / 21) }).map((_, pageIndex) => (
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-      {inativos.slice(pageIndex * 21, (pageIndex + 1) * 21).map((membro) => {
-        const slug = getSlug(membro);
-        const temPagina = membrosDisponiveis.has(slug);
-        return (
-          <div class="relative card bg-base-100 text-base-content shadow-md hover:shadow-xl hover:border-primary/20 border border-base-200 transition-all duration-300 rounded-2xl overflow-hidden p-6 pt-10 flex flex-col items-center text-center group">
-            {temPagina && (
-              <a href={`/${lang}/${slug}`} class="absolute top-3 right-3 bg-primary text-white text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg shadow-primary/20 z-10 transform transition-transform group-hover:scale-110">
-                {texts.buttonPersonalPage}
-              </a>
-            )}
-            {temPagina ? (
-              <a href={`/${lang}/${slug}`} class="relative block">
-                <img src={membro.foto} alt={membro.nome} class="w-40 h-40 object-cover rounded-2xl mb-6 shadow-lg group-hover:scale-105 transition-transform duration-500 opacity-60 grayscale hover:opacity-100 hover:grayscale-0" />
-                <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/10"></div>
-              </a>
-            ) : (
-              <div class="relative">
-                <img src={membro.foto} alt={membro.nome} class="w-40 h-40 object-cover rounded-2xl mb-6 shadow-lg opacity-60 grayscale" />
-                <div class="absolute inset-0 rounded-2xl ring-1 ring-inset ring-black/10"></div>
-              </div>
-            )}
+<div id="inativos-tab" style="display: none;" class="flex flex-col space-y-16">
+  {
+    Array.from({ length: Math.ceil(inativos.length / 21) }).map((_, pageIndex) => (
+      <div class="mb-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        {inativos.slice(pageIndex * 21, (pageIndex + 1) * 21).map((membro) => {
+          const slug = getSlug(membro);
+          const temPagina = membrosDisponiveis.has(slug);
+          return (
+            <div class="card bg-base-100 text-base-content hover:border-primary/20 border-base-200 group relative flex flex-col items-center overflow-hidden rounded-2xl border p-6 pt-10 text-center shadow-md transition-all duration-300 hover:shadow-xl">
+              {temPagina && (
+                <a
+                  href={`/${lang}/${slug}`}
+                  class="bg-primary shadow-primary/20 absolute top-3 right-3 z-10 transform rounded-full px-3 py-1.5 text-[10px] font-black tracking-widest text-white uppercase shadow-lg transition-transform group-hover:scale-110"
+                >
+                  {texts.buttonPersonalPage}
+                </a>
+              )}
+              {temPagina ? (
+                <a href={`/${lang}/${slug}`} class="relative block">
+                  <img
+                    src={membro.foto}
+                    alt={membro.nome}
+                    class="mb-6 h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale transition-transform duration-500 group-hover:scale-105 hover:opacity-100 hover:grayscale-0"
+                  />
+                  <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
+                </a>
+              ) : (
+                <div class="relative">
+                  <img
+                    src={membro.foto}
+                    alt={membro.nome}
+                    class="mb-6 h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale"
+                  />
+                  <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
+                </div>
+              )}
 
-            {membro.redes && membro.redes.length > 0 && (
-              <div class="flex justify-center space-x-4 mb-2">
-                {membro.redes.slice(0, 3).map((rede) => (
-                  <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
-                ))}
-              </div>
-            )}
+              {membro.redes && membro.redes.length > 0 && (
+                <div class="mb-2 flex justify-center space-x-4">
+                  {membro.redes.slice(0, 3).map((rede) => (
+                    <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
+                  ))}
+                </div>
+              )}
 
-            <h3 class="text-[20px] font-display text-primary mb-1">{membro.nome}</h3>
-            <p class="text-[12px] text-neutral mb-1">{membro.cargo}</p>
-            <p class="text-[12px] text-base-content">{membro.descricao}</p>
-            {membro.contribuicao && (
-              <p class="text-[12px] italic mt-2 text-base-content">{membro.contribuicao}</p>
-            )}
-          </div>
-        );
-      })}
-    </div>
-  ))}
+              <h3 class="font-display text-primary mb-1 text-[20px]">{membro.nome}</h3>
+              <p class="text-neutral mb-1 text-[12px]">{membro.cargo}</p>
+              <p class="text-base-content text-[12px]">{membro.descricao}</p>
+              {membro.contribuicao && (
+                <p class="text-base-content mt-2 text-[12px] italic">{membro.contribuicao}</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    ))
+  }
 </div>

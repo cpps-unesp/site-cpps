@@ -1,6 +1,6 @@
 ---
-title: "Tecnologias Digitais"
-description: "Apresentação sobre Tecnologias Digitais."
+title: 'Tecnologias Digitais'
+description: 'Apresentação sobre Tecnologias Digitais.'
 sidebar:
   order: 1
 ---

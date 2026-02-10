@@ -6,7 +6,7 @@ sidebar_label: Fluxograma
 
 ### Fluxograma
 
-Para acessar o *fluxograma* do projeto TweePInA, [clique aqui](https://app.diagrams.net/#G1DtLtvntJ48YGEgyAI6SqpsMQduhmMafS).
+Para acessar o _fluxograma_ do projeto TweePInA, [clique aqui](https://app.diagrams.net/#G1DtLtvntJ48YGEgyAI6SqpsMQduhmMafS).
 
 ## Utilização do repositório
 

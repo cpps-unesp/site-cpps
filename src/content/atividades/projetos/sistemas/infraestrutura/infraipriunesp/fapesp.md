@@ -12,7 +12,6 @@ O primeiro objetivo era “Instalar a infraestrutura computacional básica de vi
 
 Foi realizada a compra de equipamentos novos e atualização em dois servidores doados que necessitavam de upgrade para que se integrassem à infraestrutura computacional planejada. Ao final da aquisição temos os seguintes equipamentos disponíveis:
 
-
 - 3 Estações Multifuncionais de Trabalho (cada estação tem a configuração descrita a seguir).
   - Processador AMD Ryzen 9 3900x;
   - Placa Mãe Asus Prime B450M-GAMING/BR;
@@ -41,8 +40,6 @@ Foi realizada a compra de equipamentos novos e atualização em dois servidores 
     - 2 WebCam Logitech C920
     - Estes painéis estão integrados as três estações multifuncionais de trabalho;
 
-
-
   - Storage/Armazenamento de 45 Terabytes:
     - HD: 42 terabytes
     - SSD (SATA e NVMe M.2): 3 terabytes
@@ -52,23 +49,22 @@ Foi realizada a compra de equipamentos novos e atualização em dois servidores 
 
 - 3 headset Logitech H390
 
-*O segundo objetivo era “Prover acesso local e remoto a infraestrutura computacional instalada”*. Com a infraestrutura instalada e descrita acima se viabiliza a implementação  de um cluster computacional, baseado no sistema de virtualização Proxmox. Basicamente, um cluster é um sistema em que dois ou mais computadores (nodes) estão interconectados e realizam atividades conjuntas podendo fornecer maior capacidade de processamento, de armazenamento, alta disponibilidade de serviços entre outros aspectos que um computador isolado não suportaria. No caso específico da sala de situação e pesquisa avançada as três estações multifuncionais de trabalho, os dois servidores e mais uma máquina pré-existente são os nodes que formam o Cluster Computacional do IPPRI/UNESP. A partir disso uma série de possibilidades de suporte a pesquisa se abrem, inicialmente, o cluster está voltado para:
+_O segundo objetivo era “Prover acesso local e remoto a infraestrutura computacional instalada”_. Com a infraestrutura instalada e descrita acima se viabiliza a implementação de um cluster computacional, baseado no sistema de virtualização Proxmox. Basicamente, um cluster é um sistema em que dois ou mais computadores (nodes) estão interconectados e realizam atividades conjuntas podendo fornecer maior capacidade de processamento, de armazenamento, alta disponibilidade de serviços entre outros aspectos que um computador isolado não suportaria. No caso específico da sala de situação e pesquisa avançada as três estações multifuncionais de trabalho, os dois servidores e mais uma máquina pré-existente são os nodes que formam o Cluster Computacional do IPPRI/UNESP. A partir disso uma série de possibilidades de suporte a pesquisa se abrem, inicialmente, o cluster está voltado para:
 
 - Fornecer condições adequadas para a implementação da sala de situação;
 - Fornecer aos pesquisadores uma Estação de Trabalho Virtual que pode ser acessada local ou remotamente e que provenha uma melhor capacidade de processamento e armazenamento de dados das pesquisas;
 - Disponibilizar Acervos de Pesquisa (ver: https://hemerotecapeb.lantri.org;)
 - Integração com o cluster do LabRI/UNESP localizado no campus da UNESP/Franca;
 
-*O terceiro objetivo era “Estimular o uso contínuo de novas tecnologias de pesquisa na área de ciências humanas e sociais”*. Os pontos elencados acima viabilizados pelo Cluster IPPRI/UNESP possibilitam aos pesquisadores melhores recursos para incorporar ferramentas tecnológicas no seu cotidiano de trabalho. Abaixo indicamos alguns resultados desta melhor disponibilidade de recursos tecnológicos ao pesquisador. Grande parte dos pontos apontados a seguir estão sendo realizados em atividades conjuntas com o LabRI/UNESP.
+_O terceiro objetivo era “Estimular o uso contínuo de novas tecnologias de pesquisa na área de ciências humanas e sociais”_. Os pontos elencados acima viabilizados pelo Cluster IPPRI/UNESP possibilitam aos pesquisadores melhores recursos para incorporar ferramentas tecnológicas no seu cotidiano de trabalho. Abaixo indicamos alguns resultados desta melhor disponibilidade de recursos tecnológicos ao pesquisador. Grande parte dos pontos apontados a seguir estão sendo realizados em atividades conjuntas com o LabRI/UNESP.
 
 - Coleta de dados de perfis públicos nas redes Sociais;
 - Coleta de Bibliografia Acadêmica;
 - Coleta de dados em sites governamentais e de instituições internacionais;
 - Viabilização do tratamento de textos, em uma quantidade relativamente grande, que necessitam de um pós-processamento (ajustes dos arquivos e Optical Character Recognition - OCR);
-- Formação de bases de dados e indexação integral de documentos, inicialmente,  através do Recoll Desktop Search;
+- Formação de bases de dados e indexação integral de documentos, inicialmente, através do Recoll Desktop Search;
 - Limpeza e estruturação de dados;
-- Melhoria na integração  dos trabalhos realizados na rede internacional de pesquisa Development  International Politics and Peace (DIPP) vinculada ao CAPPES/PRINT/UNESP.
-
+- Melhoria na integração dos trabalhos realizados na rede internacional de pesquisa Development International Politics and Peace (DIPP) vinculada ao CAPPES/PRINT/UNESP.
 
 Abaixo colocamos o desenho final da sala de situação pesquisa avançada:
 

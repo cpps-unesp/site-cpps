@@ -13,36 +13,31 @@ Guia de estudos de HTML, CSS, JavaScript, React e D3 com o foco na visualizaçã
 Conteúdo:
 
 1. Estudo de "HTML"
-
-    * Material apoio: [Site](https://calma-senhora.netlify.app)
+   - Material apoio: [Site](https://calma-senhora.netlify.app)
 
 2. Estudo de "CSS"
+   - Material de apoio: [Site](https://calma-senhora.netlify.app)
 
-    * Material de apoio: [Site](https://calma-senhora.netlify.app)
-
-    * Sugestão: [GitHub](https://github.com/polyanetuag/30DiasDeCSS)
+   - Sugestão: [GitHub](https://github.com/polyanetuag/30DiasDeCSS)
 
 3. Estudo de "JavaScript"
+   - Material de apoio: [Site](https://calma-senhora.netlify.app)
 
-    * Material de apoio: [Site](https://calma-senhora.netlify.app)
-
-    * Sugestão: [Youtube](https://www.youtube.com/playlist?list=PLirko8T4cEmzWZVn_ZKQbfDOuCnSZJ4va)
+   - Sugestão: [Youtube](https://www.youtube.com/playlist?list=PLirko8T4cEmzWZVn_ZKQbfDOuCnSZJ4va)
 
 4. Estudo de "React"
+   - Material de apoio: [Site](https://calma-senhora.netlify.app)
 
-    * Material de apoio: [Site](https://calma-senhora.netlify.app)
-
-    * Sugestão: [Playlist 1](https://youtube.com/playlist?list=PLnDvRpP8BneyVA0SZ2okm-QBojomniQVO) e [Playlist 2](https://www.youtube.com/playlist?list=PLirko8T4cEmzWZVn_ZKQbfDOuCnSZJ4va)
+   - Sugestão: [Playlist 1](https://youtube.com/playlist?list=PLnDvRpP8BneyVA0SZ2okm-QBojomniQVO) e [Playlist 2](https://www.youtube.com/playlist?list=PLirko8T4cEmzWZVn_ZKQbfDOuCnSZJ4va)
 
 5. Estudo de "D3"
-
-    * Material de apoio: [Curso pt. 1](https://youtu.be/2LhoCfjm8R4) e [Curso pt. 2](https://youtu.be/H2qPeJx1RDI)
+   - Material de apoio: [Curso pt. 1](https://youtu.be/2LhoCfjm8R4) e [Curso pt. 2](https://youtu.be/H2qPeJx1RDI)
 
 6. Sugestão de Artigos online sobre Desenvolvimento Front-end
 
-* [Reprograma: "Reduzindo o gap de gênero no setor de tecnologia por meio da educação."](https://medium.com/reprogramabr?source=logo-2c2c54fafa65---96ebd20682e1)
+- [Reprograma: "Reduzindo o gap de gênero no setor de tecnologia por meio da educação."](https://medium.com/reprogramabr?source=logo-2c2c54fafa65---96ebd20682e1)
 
-    _O **Reprograma** é responsável pela criação do site de apoio **Calma, Senhora**_
+  _O **Reprograma** é responsável pela criação do site de apoio **Calma, Senhora**_
 
 ## Sugestões
 

@@ -16,7 +16,7 @@ Site institucional do Centro de Pesquisa Política e Social da Faculdade de Ciê
 
 ## 📋 Pré-requisitos
 
-- Node.js 18+ 
+- Node.js 18+
 - npm ou yarn
 
 ## ⚡ Início rápido
@@ -75,8 +75,9 @@ cpps-unesp/
 ## 🌐 Internacionalização
 
 O site suporta 3 idiomas:
+
 - Português (pt)
-- Inglês (en) 
+- Inglês (en)
 - Espanhol (es)
 
 ## ✍️ Editar site

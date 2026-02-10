@@ -2,15 +2,17 @@
 const { icon, title, description } = Astro.props;
 ---
 
-<div class="card bg-base-100 shadow-md hover:shadow-lg transition-shadow">
+<div class="card bg-base-100 shadow-md transition-shadow hover:shadow-lg">
   <div class="card-body">
     <div class="flex items-start space-x-4">
-      <div class="flex items-center justify-center w-12 h-12 rounded-full bg-primary text-base-100 text-2xl">
+      <div
+        class="bg-primary text-base-100 flex h-12 w-12 items-center justify-center rounded-full text-2xl"
+      >
         {icon}
       </div>
       <div class="max-w-sm">
-        <h3 class="card-title text-[20px] font-display mb-1 text-primary">{title}</h3>
-        <p class="text-[12px] text-base-content leading-snug">
+        <h3 class="card-title font-display text-primary mb-1 text-[20px]">{title}</h3>
+        <p class="text-base-content text-[12px] leading-snug">
           {description}
         </p>
       </div>

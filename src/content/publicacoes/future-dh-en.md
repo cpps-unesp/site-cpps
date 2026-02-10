@@ -1,11 +1,11 @@
 ---
-title: "The Future of Digital Humanities in Latin America"
+title: 'The Future of Digital Humanities in Latin America'
 date: 2024-03-01
-authors: ["Marcelo Passini Mariano"]
-summary: "An overview of the development and challenges of digital humanities research in the Latin American context."
-tags: ["Digital Humanities", "Latin America"]
-type: "analise"
-lang: "en"
+authors: ['Marcelo Passini Mariano']
+summary: 'An overview of the development and challenges of digital humanities research in the Latin American context.'
+tags: ['Digital Humanities', 'Latin America']
+type: 'analise'
+lang: 'en'
 featured: true
 ---
 

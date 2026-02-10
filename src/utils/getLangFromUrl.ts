@@ -1,4 +1,4 @@
-import type { SupportedLang } from "../types/lang";
+import type { SupportedLang } from '../types/lang';
 
 export function getLangFromUrl(url: URL): SupportedLang {
   const supportedLangs: SupportedLang[] = ['pt', 'en', 'es'];

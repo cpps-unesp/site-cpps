@@ -1,20 +1,28 @@
 ---
 import NoticiaCard from './NoticiaCard.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  noticias: CollectionEntry<'noticias'>[];
+  lang: string;
+}
 
 const { noticias, lang } = Astro.props;
 ---
 
 <div class="grid gap-8 md:grid-cols-2">
-  {noticias.map((post: any) => (
-    <NoticiaCard
-      title={post.data.title}
-      resumo={post.data.resumo}
-      image={post.data.image}
-      tags={post.data.tags}
-      slug={`/${lang}/noticias/${post.slug}`}
-      lang={lang}
-      date={post.data.date}
-      author={post.data.author}
-    />
-  ))}
+  {
+    noticias.map((post) => (
+      <NoticiaCard
+        title={post.data.title}
+        resumo={post.data.resumo}
+        image={post.data.image}
+        tags={post.data.tags}
+        slug={`/${lang}/noticias/${post.slug}`}
+        lang={lang}
+        date={post.data.date}
+        author={post.data.author}
+      />
+    ))
+  }
 </div>

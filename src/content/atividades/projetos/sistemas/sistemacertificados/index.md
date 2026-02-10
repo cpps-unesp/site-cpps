@@ -11,16 +11,17 @@ sidebar_label: Tutorial
 1. Através do Google Formulários, você irá coletar as informações como e-mail, nome e etc., que irão diretamente para a planilha que servirá como base de dados para a geração de certificados
 1. No Planilhas, é importante ressaltar que utilizaremos uma ferramenta (complemento) chamada [Autocrat](https://workspace.google.com/u/0/marketplace/app/autocrat/539341275670?hl=pt&pann=sheets_addon_widget), que fará a integração da planilha com o arquivo do Google Apresentações.
 
-
 ### Passo a passo
 
 1. Abra o Google Apresentações e crie um template básico que servirá para o Certificado.
+
 - Note que aqui colocamos algumas variáveis, como `<<nome>>`, `<<nome_do_evento>>`, `<<data>>` e `<<ch>>`. É importante que essas variáveis estejam entre os sinais de `<<>>`, pois é assim que o Autocrat irá "ler" as informações da planilha e convertê-las para o certificado.
 - Guarde o local onde você salvou esse certificado, recomenda-se que crie uma pasta no Google Drive exclusiva para o processo como um todo.
 
 ![certificado 1](/imagens/img-geral/certificado1.png)
 
 2. Agora, usando o Formulários, crie um formulário padrão, onde você irá requisitar as informações dos participantes/de quem vai ter seus dados inseridos no certificado.
+
 - O mais importante nesta parte é solicitar o e-mail, através das configurações → coletar e-mail.
 - Na aba de respostas, selecione a opção para criar uma planilha, tentando coloca-la na mesma pasta do drive que você criou o formulário e a apresentação/certificado.
 
@@ -34,6 +35,7 @@ sidebar_label: Tutorial
 ![certificado 2](/imagens/img-geral/certificado2.png)
 
 4. A seguir, utilizaremos o serviço do Autocrat. Na planilha, vá em Extensões > Complementos > Instalar complementos e procure por Autocrat.
+
 - Para abrir o Autocrat vá em Extensões > Autocrat > Open. Clique em "New Job" e escolha um nome para o processo. Pode ser um nome genérico, ele não será contabilizado no certificado.
 - Na etapa 2, selecione no Google Drive o modelo de certificado que você criou anteriormente.
 

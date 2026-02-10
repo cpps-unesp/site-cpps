@@ -24,7 +24,6 @@ sidebar_label: Funções
 - Retornam algo (opcional)
 - Somente são executadas quando são chamadas
 
-
 ### Definindo uma função
 
 ```py
@@ -83,7 +82,6 @@ import nome_modulo
 from nome_modulo import funcao_do_modulo
 
 ```
-
 
 ### `if __name__ == "__main__":`
 

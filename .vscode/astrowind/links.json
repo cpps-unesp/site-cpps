@@ -1,27 +1,27 @@
 {
-    "redes": {
-        "youtube": {
-            "link": "",
-            "icon": ""
-        },
-        "instagram": {
-            "link": "",
-            "icon": "/images/logos/instagram_icon_cinza.svg"
-        },
-        "email": {
-            "link": "cpps.franca@unesp.br",
-            "icon": ""
-        },
-        "linkedin": {
-            "": ""
-        }
+  "redes": {
+    "youtube": {
+      "link": "",
+      "icon": ""
     },
-    "CPPS": {
-        "logo": "",
-        "site":""
+    "instagram": {
+      "link": "",
+      "icon": "/images/logos/instagram_icon_cinza.svg"
     },
-    "unesp": {
-        "logo": "",
-        "site":"https://unesp.br"
+    "email": {
+      "link": "cpps.franca@unesp.br",
+      "icon": ""
+    },
+    "linkedin": {
+      "": ""
     }
+  },
+  "CPPS": {
+    "logo": "",
+    "site": ""
+  },
+  "unesp": {
+    "logo": "",
+    "site": "https://unesp.br"
+  }
 }

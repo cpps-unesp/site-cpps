@@ -10,11 +10,7 @@ import { buildAtividadesSidebar } from '../../../utils/atividadesSidebar';
 import type { SidebarItem } from '../../../types/docs';
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: "pt" } },
-    { params: { lang: "en" } },
-    { params: { lang: "es" } },
-  ];
+  return [{ params: { lang: 'pt' } }, { params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
 const lang = (Astro.params.lang ?? 'pt') as Language;
@@ -30,7 +26,8 @@ function normalizeAtividadesUrl(path: string): string {
 
 function flattenSidebarUrls(items: SidebarItem[]): string[] {
   return items.flatMap((item) => {
-    const current = item.url && item.url.startsWith('/atividades') ? [normalizeAtividadesUrl(item.url)] : [];
+    const current =
+      item.url && item.url.startsWith('/atividades') ? [normalizeAtividadesUrl(item.url)] : [];
     const nested = item.items ? flattenSidebarUrls(item.items) : [];
     return [...current, ...nested];
   });
@@ -56,118 +53,136 @@ const orphanActivityPages = atividades
   githubPath="src/pages/[lang]/atividades/index.astro"
   lang={lang}
 >
-  <div class="max-w-screen-xl mx-auto px-4 md:px-8 pt-8 pb-16 md:pt-12">
-    <header class="mb-12 md:mb-14 text-center max-w-3xl mx-auto">
-        <span class="text-primary font-bold tracking-widest uppercase text-sm mb-4 block">Central de Atividades</span>
-        <h1 class="titulo mb-5 font-black">Atividades CPPS</h1>
-        <p class="subtitulo text-base-content/70 mx-auto">
-            Explore nossos materiais, trilhas de ensino e documentacoes de projetos.
-        </p>
+  <div class="mx-auto max-w-screen-xl px-4 pt-8 pb-16 md:px-8 md:pt-12">
+    <header class="mx-auto mb-12 max-w-3xl text-center md:mb-14">
+      <span class="text-primary mb-4 block text-sm font-bold tracking-widest uppercase"
+        >Central de Atividades</span
+      >
+      <h1 class="titulo mb-5 font-black">Atividades CPPS</h1>
+      <p class="subtitulo text-base-content/70 mx-auto">
+        Explore nossos materiais, trilhas de ensino e documentacoes de projetos.
+      </p>
     </header>
 
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        <section class="lg:col-span-2 space-y-12">
-            <div>
-                <h2 class="mini-titulo mb-6 flex items-center gap-3">
-                    <i class="fa-solid fa-star text-primary text-2xl"></i>
-                    Essencial
-                </h2>
-                <CardGrid columns={2}>
-                    <LinkCard
-                        title="Guia de Edicao"
-                        href={`/${lang}/editar-site`}
-                        description="Aprenda a criar e editar paginas usando Markdown e componentes."
-                        icon="✍️"
-                    />
-                    <LinkCard
-                        title="Trilha de Dados"
-                        href={`${basePath}/projetos/ensino/tfdt`}
-                        description="Nossa trilha completa de fundamentos de tecnologia."
-                        icon="🐍"
-                    />
-                </CardGrid>
-            </div>
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-3">
+      <section class="space-y-12 lg:col-span-2">
+        <div>
+          <h2 class="mini-titulo mb-6 flex items-center gap-3">
+            <i class="fa-solid fa-star text-primary text-2xl"></i>
+            Essencial
+          </h2>
+          <CardGrid columns={2}>
+            <LinkCard
+              title="Guia de Edicao"
+              href={`/${lang}/editar-site`}
+              description="Aprenda a criar e editar paginas usando Markdown e componentes."
+              icon="✍️"
+            />
+            <LinkCard
+              title="Trilha de Dados"
+              href={`${basePath}/projetos/ensino/tfdt`}
+              description="Nossa trilha completa de fundamentos de tecnologia."
+              icon="🐍"
+            />
+          </CardGrid>
+        </div>
 
-            <div>
-                <h2 class="mini-titulo mb-6 flex items-center gap-3">
-                    <i class="fa-solid fa-microchip text-primary text-2xl"></i>
-                    Sistemas e Dados
-                </h2>
-                <CardGrid columns={2}>
-                    <LinkCard
-                        title="Acervos de Dados"
-                        href={`${basePath}/projetos/dados`}
-                        description="Documentacao tecnica sobre a Hemeroteca e NewsCloud."
-                        icon="📊"
-                    />
-                    <LinkCard
-                        title="Infraestrutura"
-                        href={`${basePath}/projetos/sistemas/infraestrutura`}
-                        description="Configuracoes de servidores, redes e automacao."
-                        icon="⚙️"
-                    />
-                </CardGrid>
-            </div>
+        <div>
+          <h2 class="mini-titulo mb-6 flex items-center gap-3">
+            <i class="fa-solid fa-microchip text-primary text-2xl"></i>
+            Sistemas e Dados
+          </h2>
+          <CardGrid columns={2}>
+            <LinkCard
+              title="Acervos de Dados"
+              href={`${basePath}/projetos/dados`}
+              description="Documentacao tecnica sobre a Hemeroteca e NewsCloud."
+              icon="📊"
+            />
+            <LinkCard
+              title="Infraestrutura"
+              href={`${basePath}/projetos/sistemas/infraestrutura`}
+              description="Configuracoes de servidores, redes e automacao."
+              icon="⚙️"
+            />
+          </CardGrid>
+        </div>
 
-            <Notice type="info" title="Interface Renovada">
-                Agora voce pode colapsar as barras laterais clicando nas setas para focar totalmente na leitura.
-            </Notice>
+        <Notice type="info" title="Interface Renovada">
+          Agora voce pode colapsar as barras laterais clicando nas setas para focar totalmente na
+          leitura.
+        </Notice>
 
-            <section class="rounded-3xl border border-base-300 bg-base-100 shadow-sm">
-                <div class="p-6 md:p-8">
-                    <h2 class="mini-titulo mb-3">Paginas de atividades fora do menu</h2>
-                    {orphanActivityPages.length > 0 ? (
-                        <>
-                            <p class="text-base-content/70 mb-4">
-                                Encontramos {orphanActivityPages.length} paginas que existem no conteudo, mas ainda nao aparecem no menu lateral.
-                            </p>
-                            <details class="collapse collapse-plus border border-base-300 bg-base-200/40">
-                                <summary class="collapse-title font-semibold">Ver lista completa</summary>
-                                <div class="collapse-content">
-                                    <ul class="columns-1 sm:columns-2 gap-6 space-y-2 text-sm">
-                                        {orphanActivityPages.map((page) => (
-                                            <li class="break-inside-avoid">
-                                                <a
-                                                    href={`/${lang}${page.routePath}`}
-                                                    class="link link-hover text-primary"
-                                                    title={page.routePath}
-                                                >
-                                                    {page.title}
-                                                </a>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            </details>
-                        </>
-                    ) : (
-                        <p class="text-success font-medium">
-                            Todas as paginas de atividades ja estao representadas no menu lateral.
-                        </p>
-                    )}
-                </div>
-            </section>
+        <section class="border-base-300 bg-base-100 rounded-3xl border shadow-sm">
+          <div class="p-6 md:p-8">
+            <h2 class="mini-titulo mb-3">Paginas de atividades fora do menu</h2>
+            {
+              orphanActivityPages.length > 0 ? (
+                <>
+                  <p class="text-base-content/70 mb-4">
+                    Encontramos {orphanActivityPages.length} paginas que existem no conteudo, mas
+                    ainda nao aparecem no menu lateral.
+                  </p>
+                  <details class="collapse-plus border-base-300 bg-base-200/40 collapse border">
+                    <summary class="collapse-title font-semibold">Ver lista completa</summary>
+                    <div class="collapse-content">
+                      <ul class="columns-1 gap-6 space-y-2 text-sm sm:columns-2">
+                        {orphanActivityPages.map((page) => (
+                          <li class="break-inside-avoid">
+                            <a
+                              href={`/${lang}${page.routePath}`}
+                              class="link link-hover text-primary"
+                              title={page.routePath}
+                            >
+                              {page.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </details>
+                </>
+              ) : (
+                <p class="text-success font-medium">
+                  Todas as paginas de atividades ja estao representadas no menu lateral.
+                </p>
+              )
+            }
+          </div>
         </section>
+      </section>
 
-        <aside class="space-y-8">
-            <div class="bg-base-200 rounded-3xl p-8 border border-base-300">
-                <h3 class="font-bold text-xl mb-4 italic text-primary">Navegacao Rapida</h3>
-                <ul class="menu menu-compact bg-transparent p-0">
-                    <li><a href={`${basePath}/projetos/dados/hemeroteca-peb`} class="py-2">Hemeroteca PEB</a></li>
-                    <li><a href={`${basePath}/projetos/sistemas/websites/01-intro-md`} class="py-2">Edicao de Websites</a></li>
-                    <li><a href={`${basePath}/projetos/sistemas/infraestrutura/linux/atualizar`} class="py-2">Servidores Linux</a></li>
-                </ul>
-            </div>
+      <aside class="space-y-8">
+        <div class="bg-base-200 border-base-300 rounded-3xl border p-8">
+          <h3 class="text-primary mb-4 text-xl font-bold italic">Navegacao Rapida</h3>
+          <ul class="menu menu-compact bg-transparent p-0">
+            <li>
+              <a href={`${basePath}/projetos/dados/hemeroteca-peb`} class="py-2">Hemeroteca PEB</a>
+            </li>
+            <li>
+              <a href={`${basePath}/projetos/sistemas/websites/01-intro-md`} class="py-2"
+                >Edicao de Websites</a
+              >
+            </li>
+            <li>
+              <a href={`${basePath}/projetos/sistemas/infraestrutura/linux/atualizar`} class="py-2"
+                >Servidores Linux</a
+              >
+            </li>
+          </ul>
+        </div>
 
-            <div class="bg-primary/5 rounded-3xl p-8 border border-primary/20">
-                <h3 class="font-bold text-xl mb-4 text-primary">Repositorio Org</h3>
-                <p class="text-sm mb-4 opacity-80 italic">Contribua com codigo e documentacao no nosso GitHub oficial.</p>
-                <a href="https://github.com/cpps-unesp" target="_blank" class="btn btn-primary btn-block">
-                    <i class="fa-brands fa-github mr-2"></i>
-                    Acessar GitHub
-                </a>
-            </div>
-        </aside>
+        <div class="bg-primary/5 border-primary/20 rounded-3xl border p-8">
+          <h3 class="text-primary mb-4 text-xl font-bold">Repositorio Org</h3>
+          <p class="mb-4 text-sm italic opacity-80">
+            Contribua com codigo e documentacao no nosso GitHub oficial.
+          </p>
+          <a href="https://github.com/cpps-unesp" target="_blank" class="btn btn-primary btn-block">
+            <i class="fa-brands fa-github mr-2"></i>
+            Acessar GitHub
+          </a>
+        </div>
+      </aside>
     </div>
   </div>
 </BaseLayout>

@@ -11,7 +11,10 @@ type EditarSiteEntry = {
   };
 };
 
-export function buildEditarSiteSidebar(entries: EditarSiteEntry[], basePath: string): SidebarItem[] {
+export function buildEditarSiteSidebar(
+  entries: EditarSiteEntry[],
+  basePath: string
+): SidebarItem[] {
   return buildDocsSidebar(entries, {
     basePath,
     sectionLabel: 'Editar site',

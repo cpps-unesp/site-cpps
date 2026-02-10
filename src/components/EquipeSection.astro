@@ -1,40 +1,78 @@
 ---
 import { ordenarPorPrioridadeOuNome } from '../utils/ordenar';
 import EquipeTabs from '../components/EquipeTabs.astro';
+
+interface Membro {
+  nome: string;
+  status?: string;
+  prioridade?: number | string;
+  slug?: string;
+  foto?: string;
+  cargo?: string;
+  descricao?: string;
+  contribuicao?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  redes?: any[];
+  [key: string]: unknown;
+}
+
+interface EquipeData {
+  title: string;
+  intro?: string[];
+  categorias?: Record<string, Membro[]>;
+}
+
+interface Props {
+  equipe: EquipeData;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  texts: any;
+}
+
 const { equipe, texts } = Astro.props;
 
 // Organiza os membros ativos por categoria
-const ativosPorCategoria = Object.entries(equipe.categorias ?? {}).map(
+const ativosPorCategoria = Object.entries((equipe.categorias as Record<string, Membro[]>) ?? {}).map(
   ([categoria, membros]) => [
     categoria,
     ordenarPorPrioridadeOuNome(
-      membros.filter((m) => m.status !== 'inativo'),
+      membros.filter((m: Membro) => m.status !== 'inativo'),
       'prioridade',
       'nome',
       'asc'
-    )
+    ),
   ]
 );
 
 // Coleta e ordena todos os membros inativos
-const inativosTodos = Object.values(equipe.categorias ?? {})
+const inativosTodos = Object.values((equipe.categorias as Record<string, Membro[]>) ?? {})
   .flat()
-  .filter((m) => m.status === 'inativo');
+  .filter((m: Membro) => m.status === 'inativo');
 
 const inativosOrdenados = ordenarPorPrioridadeOuNome(inativosTodos, 'prioridade', 'nome', 'asc');
 ---
 
-<section class="mt-16 px-4 md:px-8 max-w-screen-xl mx-auto">
-  <h1 class="titulo text-center text-primary mb-8">{equipe.title}</h1>
+<section class="mx-auto mt-16 max-w-screen-xl px-4 md:px-8">
+  <h1 class="titulo text-primary mb-8 text-center">{equipe.title}</h1>
 
-  {equipe.intro && equipe.intro.length > 0 && (
-    <div class="mb-10 space-y-4 text-base-content text-center max-w-3xl mx-auto">
-      {equipe.intro.map((paragrafo) => (
-        <p set:html={paragrafo} class="paragrafo text-[clamp(0.95rem,1vw+0.2rem,1.125rem)] leading-relaxed [&>a]:text-primary [&>a]:underline hover:[&>a]:text-secondary transition"></p>
-      ))}
-    </div>
-  )}
+  {
+    equipe.intro && equipe.intro.length > 0 && (
+      <div class="text-base-content mx-auto mb-10 max-w-3xl space-y-4 text-center">
+        {equipe.intro.map((paragrafo: string) => (
+          <p class="paragrafo [&>a]:text-primary hover:[&>a]:text-secondary text-[clamp(0.95rem,1vw+0.2rem,1.125rem)] leading-relaxed transition [&>a]:underline">
+            {/* eslint-disable-next-line astro/no-set-html-directive */}
+            <Fragment set:html={paragrafo} />
+          </p>
+        ))}
+      </div>
+    )
+  }
 
   <!-- Tabs com layout unificado usando componente padrão do DaisyUI -->
-  <EquipeTabs ativos={ativosPorCategoria} inativos={inativosOrdenados} lang={Astro.params.lang ?? 'pt'} layout="pesquisador" texts={texts}/>
+  <EquipeTabs
+    ativos={ativosPorCategoria}
+    inativos={inativosOrdenados}
+    lang={Astro.params.lang ?? 'pt'}
+    layout="pesquisador"
+    texts={texts}
+  />
 </section>

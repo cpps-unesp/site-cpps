@@ -20,7 +20,6 @@ Sugestões de editor de texto: [Atom](https://atom.io) ou [VSCode](https://code.
 
 :::
 
-
 Além disso, será necessário utilizar um navegador (Chrome, Safari, etc...) para poder visualizar o que está sendo gerado no editor de código.
 
 :::tip
@@ -28,7 +27,6 @@ Além disso, será necessário utilizar um navegador (Chrome, Safari, etc...) pa
 Procure não utilizar o _Internet Explorer_ devido a limitação do navegador em lidar com ferramentas mais avançadas.
 
 :::
-
 
 ## Primeiros Passos
 
@@ -62,7 +60,7 @@ O HTML é utilizado para definir o conteúdo de uma página web. Sendo assim, pa
 
 ### Estrutura do documento HTML
 
-Todo documento HTML precisa de uma estrutura básica, sendo essa composta em primeiro momento por "!DOCTYPE html" para indicar para o navegador que o documento está escrito em  HTML.
+Todo documento HTML precisa de uma estrutura básica, sendo essa composta em primeiro momento por "!DOCTYPE html" para indicar para o navegador que o documento está escrito em HTML.
 
 Além disso, é necessário que todo o código esteja dentro da tag html. Sendo assim, abra o documento com
 
@@ -321,10 +319,9 @@ Reproduza a imagem abaixo utilizando apenas os conhecimentos aprendidos nesse pr
 
 Link das imagens necessárias:
 
-* [Icon](https://findicons.com/icon/238224/application_xml)
+- [Icon](https://findicons.com/icon/238224/application_xml)
 
-* [Imagem principal](https://imgur.com/nX8u383)
-
+- [Imagem principal](https://imgur.com/nX8u383)
 
 ## Módulo 2: Aprofundando os conhecimentos HTML
 
@@ -365,7 +362,7 @@ ol{
 
 :::caution
 
- _upper-alpha_ determina que haverá uma sequência alfabética antes de cada "li", enquanto _circle_ determina que será alterado para círculo na frente de cada "li".
+_upper-alpha_ determina que haverá uma sequência alfabética antes de cada "li", enquanto _circle_ determina que será alterado para círculo na frente de cada "li".
 
 :::
 
@@ -391,8 +388,8 @@ Outro fator importante seria o maior nível de acessibilidade resultante do bom 
 
 **Lembre-se**: Por se tratar de uma questão estrutural, os elementos semânticos devem estar no código HTML e não no CSS.
 
-|Tag|Explicação|Exemplo|
-|---|----------|-------|
-|section|Para seção de genérica|-|
-|article|Para seção idependente|Artigo de revista, post de fórum, etc|
-|address|Para informações do article|Contato de uma empresa, etc|
+| Tag     | Explicação                  | Exemplo                               |
+| ------- | --------------------------- | ------------------------------------- |
+| section | Para seção de genérica      | -                                     |
+| article | Para seção idependente      | Artigo de revista, post de fórum, etc |
+| address | Para informações do article | Contato de uma empresa, etc           |

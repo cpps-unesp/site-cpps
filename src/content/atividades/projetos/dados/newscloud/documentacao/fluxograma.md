@@ -1,6 +1,6 @@
 ---
-title: "Fluxograma"
-description: "Acesso aos fluxogramas de processos do projeto NewsCloud."
+title: 'Fluxograma'
+description: 'Acesso aos fluxogramas de processos do projeto NewsCloud.'
 sidebar:
   order: 7
 ---
@@ -15,6 +15,7 @@ Esta seção disponibiliza os fluxogramas que detalham os processos do projeto.
 <br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

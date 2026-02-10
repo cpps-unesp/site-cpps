@@ -29,38 +29,40 @@ function buildUrl(url?: string) {
 
 <section class="mt-16 space-y-16">
   <div class="text-center">
-    <h2 class="text-4xl font-extrabold mb-4">{cafe.titulo}</h2>
-    <p class="text-base-content max-w-2xl mx-auto">{cafe.descricao}</p>
+    <h2 class="mb-4 text-4xl font-extrabold">{cafe.titulo}</h2>
+    <p class="text-base-content mx-auto max-w-2xl">{cafe.descricao}</p>
   </div>
 
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {cafe.episodios.map((episodio: CafeEpisodio) => (
-      <div class="bg-base-100 rounded-xl shadow-md p-6 flex flex-col space-y-4 hover:shadow-lg transition-shadow">
-        <div class="flex justify-center">
-          <img
-            src="/imagens/logos/logo-unesp-mapa.svg"
-            alt="Logo UNESP Mapa"
-            class="h-16 w-16 object-contain"
-          />
-        </div>
-        <h3 class="text-lg font-bold">{episodio.titulo}</h3>
-        <p class="text-sm text-base-content">{episodio.descricao}</p>
-
-        {Array.isArray(episodio.materiais) && episodio.materiais.length > 0 && (
-          <div class="flex flex-wrap gap-2 mt-2">
-            {episodio.materiais.map((mat: CafeMaterial) => (
-              <a
-                href={buildUrl(mat.url)}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="border border-base-content text-xs font-bold px-3 py-1 rounded hover:bg-base-200 transition-colors uppercase"
-              >
-                {mat.nome}
-              </a>
-            ))}
+    {
+      cafe.episodios.map((episodio: CafeEpisodio) => (
+        <div class="bg-base-100 flex flex-col space-y-4 rounded-xl p-6 shadow-md transition-shadow hover:shadow-lg">
+          <div class="flex justify-center">
+            <img
+              src="/imagens/logos/logo-unesp-mapa.svg"
+              alt="Logo UNESP Mapa"
+              class="h-16 w-16 object-contain"
+            />
           </div>
-        )}
-      </div>
-    ))}
+          <h3 class="text-lg font-bold">{episodio.titulo}</h3>
+          <p class="text-base-content text-sm">{episodio.descricao}</p>
+
+          {Array.isArray(episodio.materiais) && episodio.materiais.length > 0 && (
+            <div class="mt-2 flex flex-wrap gap-2">
+              {episodio.materiais.map((mat: CafeMaterial) => (
+                <a
+                  href={buildUrl(mat.url)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="border-base-content hover:bg-base-200 rounded border px-3 py-1 text-xs font-bold uppercase transition-colors"
+                >
+                  {mat.nome}
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+      ))
+    }
   </div>
 </section>

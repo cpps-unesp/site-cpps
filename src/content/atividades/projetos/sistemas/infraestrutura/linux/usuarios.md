@@ -4,7 +4,6 @@ title: Usuários
 sidebar_label: Usuários
 ---
 
-
 ### Criar usuário
 
 ```

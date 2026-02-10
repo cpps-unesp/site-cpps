@@ -26,7 +26,7 @@ Os membros se dividiram em três cargos: coordenação, representes e participan
 
 - **Representantes**: Matheus Eduardo, Mayara Zorzo, Sofia Navarro.
 
-- **Participantes**: Ana Júlia Diniz Neves do Lago, Bianca Poltronieri, Isabel Gonçalves, Jonas Vieira, Júlia Coleone, Lucas Quispe, Maria Paula Morabito, Matheus Eduardo, Mayara Zorzo, Sofia Navarro,  Carlos Leandro Zanotti Guizzo, Julia Robaina Fernandes, Bruna Aveiro Santos, Joyce Victor Felix, Gabriela Guillardi,  Nicole Mourad Pereira, Rafael Menguer Bykowski dos Santos, Pedro Otávio Passos Rapace e Gabriela Ritter Brigido.
+- **Participantes**: Ana Júlia Diniz Neves do Lago, Bianca Poltronieri, Isabel Gonçalves, Jonas Vieira, Júlia Coleone, Lucas Quispe, Maria Paula Morabito, Matheus Eduardo, Mayara Zorzo, Sofia Navarro, Carlos Leandro Zanotti Guizzo, Julia Robaina Fernandes, Bruna Aveiro Santos, Joyce Victor Felix, Gabriela Guillardi, Nicole Mourad Pereira, Rafael Menguer Bykowski dos Santos, Pedro Otávio Passos Rapace e Gabriela Ritter Brigido.
 
 ### GT2: Grupos vulneráveis, experiências autoritárias e saúde global
 
@@ -42,7 +42,7 @@ Os membros se dividiram em dois cargos:representantes e participantes (redatores
 
 - **Representantes**: Mayara Zorzo, Matheus Valencia, Lívia Dutra, Sofia Navarro.
 
-- **Participantes**:  Ana Júlia, André Tolino, Gabriela Alencar Araujo, Gustavo Castejon, Julia Coleone, Júlia Lourenço, Lívia Dutra, Lucas Quispe, Maria Paula Morabito,  Matheus Eduardo, Matheus Novais, Sofia Navarro, Maria Cecília Silva Santos, Cíntia Paulena Di Iório, Eduarda Campos Bormanas, Julia Robaina Fernandes, Enila dos Santos Araujo e Léa Briese Staschower.
+- **Participantes**: Ana Júlia, André Tolino, Gabriela Alencar Araujo, Gustavo Castejon, Julia Coleone, Júlia Lourenço, Lívia Dutra, Lucas Quispe, Maria Paula Morabito, Matheus Eduardo, Matheus Novais, Sofia Navarro, Maria Cecília Silva Santos, Cíntia Paulena Di Iório, Eduarda Campos Bormanas, Julia Robaina Fernandes, Enila dos Santos Araujo e Léa Briese Staschower.
 
 ### GT3: Tecnologias na pandemia e privacidade de dados
 

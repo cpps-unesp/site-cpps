@@ -8,7 +8,7 @@ sidebar_label: Ambiente Virtual
 Os ambientes virtuais habilitam a criação de um ambiente onde cada projeto possui suas configurações em suas diretrizes independentemente de outros projetos. Assim, é possível a administração das dependências de múltiplos projetos sem convergência dessas dependências.
 :::
 
-A ferramenta **Anaconda** tem como objetivo simplificar a instalação e o gerenciamento de instrumentos de linguagens, como Python, em prol principalmente de aplicações no âmbito científico. A partir da utilização da Anaconda, a maioria dos programadores entra em contato com o gerenciador  **Conda**, que permite gerenciar ambientes virtuais e em qualquer linguagem.
+A ferramenta **Anaconda** tem como objetivo simplificar a instalação e o gerenciamento de instrumentos de linguagens, como Python, em prol principalmente de aplicações no âmbito científico. A partir da utilização da Anaconda, a maioria dos programadores entra em contato com o gerenciador **Conda**, que permite gerenciar ambientes virtuais e em qualquer linguagem.
 
 O Conda, por causa de sua versatilidade de utilizar bibliotecas e pacotes, tem grande eficiência em testar aplicações de código em diversos cenários, sendo possível o uso de processos de testes e com sistemas de integração contínuo.
 
@@ -18,7 +18,7 @@ Desta forma, se algum destes componentes deixa de ser compatível, seja por uma 
 
 ### Criação
 
-A seguir, os comandos utilizados para configurar, criar e ativar o ambiente virtual. Lembrando que *estes comandos só devem ser executados uma vez*, visto que uma vez ativado o ambiente virtual, todo o trabalho no diretório do repositório se dará dentro do ambiente virtual.
+A seguir, os comandos utilizados para configurar, criar e ativar o ambiente virtual. Lembrando que _estes comandos só devem ser executados uma vez_, visto que uma vez ativado o ambiente virtual, todo o trabalho no diretório do repositório se dará dentro do ambiente virtual.
 
 Seguem os comandos:
 
@@ -26,7 +26,7 @@ Seguem os comandos:
 conda config --set pip_interop_enabled True
 ```
 
-Habilita a interoperabilidade entre o [repositório do ambiente virtual Anaconda (conda-forge)](https://conda-forge.org/), e o  [repositório oficial da comunidade Python (pip)](https://pypi.org/). Desta forma, componentes presentes no repositório oficial serão incluídos no ambiente virtual.
+Habilita a interoperabilidade entre o [repositório do ambiente virtual Anaconda (conda-forge)](https://conda-forge.org/), e o [repositório oficial da comunidade Python (pip)](https://pypi.org/). Desta forma, componentes presentes no repositório oficial serão incluídos no ambiente virtual.
 
 ```
 conda config --set env_prompt '({name})'

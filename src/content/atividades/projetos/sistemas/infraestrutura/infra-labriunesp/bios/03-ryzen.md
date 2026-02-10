@@ -4,7 +4,6 @@ title: RYZEN
 sidebar_label: RYZEN
 ---
 
-
 ```
 
 Base Board Information

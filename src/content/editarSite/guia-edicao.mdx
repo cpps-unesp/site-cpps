@@ -23,36 +23,60 @@ O menu lateral de `/atividades` e gerado automaticamente pela estrutura dos arqu
 
 ### Estrutura generica reutilizavel
 
-O projeto possui uma base de documentacao reutilizavel para outras areas do site.
+O projeto possui uma arquitetura de documentacao modular. Se voce precisar criar uma nova area (ex: `/manual`), nao reinvente a roda. Reutilize a engenharia existente.
 
-- Nucleo compartilhado:
-  - `src/utils/docsSidebar.ts`
-  - `src/components/docs/Sidebar.astro`
-  - `src/components/docs/Breadcrumbs.astro`
-  - `src/components/docs/TableOfContents.astro`
-  - `src/components/docs/Pagination.astro`
+#### Como criar uma nova secao (ex: `/manual`)
 
-- Secoes que ja usam essa base:
-  - `atividades` (conteudo em `src/content/atividades/`)
-  - `atendimento` (conteudo em `src/content/atendimento/`)
-  - `editar-site` (conteudo em `src/content/editarSite/`)
+<Steps>
+
+### 1. Criar o Conteudo
+
+Crie a pasta `src/content/manual/`. Adicione um arquivo `index.md` para ser a capa.
+
+### 2. Configurar a Colecao
+
+Edite `src/content/config.ts` e duplique a configuracao de uma colecao existente (ex: `atividades`), renomeando para `manual`. Nao esqueca de exportar no final.
+
+### 3. Criar a Sidebar
+
+Duplique o arquivo `src/utils/atividadesSidebar.ts` para `src/utils/manualSidebar.ts`. Renomeie a funcao para `buildManualSidebar`.
+
+### 4. Criar a Pagina Dinamica
+
+Copie a pasta `src/pages/[lang]/atividades/` para `src/pages/[lang]/manual/`.
+
+- No arquivo `[...slug].astro`, altere:
+  - `getCollection('atividades')` -> `getCollection('manual')`
+  - `buildAtividadesSidebar` -> `buildManualSidebar`
+  - `basePath` -> `/${lang}/manual`
+
+</Steps>
 
 <Notice type="tip">
-  Sempre que criar uma nova secao de documentacao, prefira reutilizar os componentes em `src/components/docs/` e o builder em `src/utils/docsSidebar.ts` em vez de duplicar codigo.
+  Esta arquitetura garante que todas as areas do site tenham a mesma UX: menus laterais, busca, i18n
+  e layout responsivo.
 </Notice>
 
 ### Como inserir uma pagina no menu
 
 1. Crie o arquivo `.md` ou `.mdx` no local correto da colecao.
 2. Defina `title` no frontmatter.
-3. Salve e rode o site. A pagina sera incluida automaticamente no menu lateral.
+3. Salve e rode o site.
 
-Exemplo:
+| Acao               | Como fazer                  | Exemplo                 |
+| :----------------- | :-------------------------- | :---------------------- |
+| **Criar pagina**   | Novo arquivo `.md`          | `projeto-x.md`          |
+| **Criar submenu**  | Nova pasta + arquivos       | `/dados/projeto-x/`     |
+| **Pagina inicial** | Arquivo `index.md` na pasta | `/dados/index.md`       |
+| **Mudar ordem**    | `sidebar_order: N` no topo  | `sidebar_order: 1`      |
+| **Mudar nome**     | `sidebar_label: "Nome"`     | `sidebar_label: "Docs"` |
+
+### Exemplo de Frontmatter
 
 ```markdown
 ---
-title: "Minha Nova Pagina"
-description: "Resumo do conteudo"
+title: 'Minha Nova Pagina'
+description: 'Resumo do conteudo'
 ---
 ```
 
@@ -62,8 +86,8 @@ Se quiser um rotulo diferente do `title`, use `sidebar_label` no frontmatter:
 
 ```markdown
 ---
-title: "Introducao Tecnica ao Projeto"
-sidebar_label: "Introducao"
+title: 'Introducao Tecnica ao Projeto'
+sidebar_label: 'Introducao'
 ---
 ```
 
@@ -73,8 +97,8 @@ Para colocar uma pagina na secao Geral, use:
 
 ```markdown
 ---
-title: "Guia de Atendimento"
-sidebar_section: "geral"
+title: 'Guia de Atendimento'
+sidebar_section: 'geral'
 sidebar_order: 20
 ---
 ```
@@ -116,8 +140,8 @@ No topo do arquivo, defina titulo e descricao:
 
 ```markdown
 ---
-title: "Nome da Pagina"
-description: "Resumo do conteudo"
+title: 'Nome da Pagina'
+description: 'Resumo do conteudo'
 ---
 ```
 
@@ -131,21 +155,13 @@ Importe e use os componentes para dar um visual profissional ao texto.
 
 ### 1. Caixas de aviso (Notice)
 
-<Notice type="info">
-  Padrao: use para informacoes gerais.
-</Notice>
+<Notice type="info">Padrao: use para informacoes gerais.</Notice>
 
-<Notice type="tip">
-  Dica: use para atalhos e boas praticas.
-</Notice>
+<Notice type="tip">Dica: use para atalhos e boas praticas.</Notice>
 
-<Notice type="warning">
-  Aviso: use para alertas que requerem atencao.
-</Notice>
+<Notice type="warning">Aviso: use para alertas que requerem atencao.</Notice>
 
-<Notice type="danger">
-  Perigo: use para acoes que podem causar perda de dados.
-</Notice>
+<Notice type="danger">Perigo: use para acoes que podem causar perda de dados.</Notice>
 
 ### 2. Cards e grades (CardGrid)
 
@@ -171,14 +187,15 @@ Importe e use os componentes para dar um visual profissional ao texto.
 
 O posicionamento correto das imagens melhora a experiencia de leitura.
 
-| Classe | Como aplicar | Resultado |
-| :--- | :--- | :--- |
-| `img-left` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-left" />` | Texto flui a direita. |
-| `img-right` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-right" />` | Texto flui a esquerda. |
+| Classe       | Como aplicar                                                          | Resultado                      |
+| :----------- | :-------------------------------------------------------------------- | :----------------------------- |
+| `img-left`   | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-left" />`   | Texto flui a direita.          |
+| `img-right`  | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-right" />`  | Texto flui a esquerda.         |
 | `img-center` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-center" />` | Imagem centralizada e isolada. |
 
 <Notice type="tip">
-  Ao usar `img-left` ou `img-right`, certifique-se de que o paragrafo seja longo o suficiente para contornar a imagem.
+  Ao usar `img-left` ou `img-right`, certifique-se de que o paragrafo seja longo o suficiente para
+  contornar a imagem.
 </Notice>
 
 ## Sidebars colapsaveis
@@ -191,6 +208,24 @@ O posicionamento correto das imagens melhora a experiencia de leitura.
 ```bash
 # Para rodar o site localmente
 npm run dev
+```
+
+## Qualidade de Codigo
+
+Para manter o projeto organizado e sem erros, configuramos ferramentas automaticas.
+
+<Notice type="info">
+  Se voce usar o VS Code com a extensao Prettier, o codigo sera formatado automaticamente ao salvar.
+</Notice>
+
+Se preferir rodar manualmente:
+
+```bash
+# Formata todos os arquivos
+npm run format
+
+# Verifica se ha erros de logica
+npm run lint
 ```
 
 ## Edicao via GitHub

@@ -3,10 +3,10 @@ id: formatos
 title: Formato de Arquivos
 sidebar_label: Formato de Arquivos
 ---
+
 :::tip
 Essa página tem como função detalhar os tipos de formatos de arquivos que são mais utilizados para pesquisa e estudo da graduação e da pós-graduação. O processo de digitalização será explicado na página de OCR.
 :::
-
 
 ### Identificar formato
 
@@ -20,7 +20,7 @@ Essa página tem como função detalhar os tipos de formatos de arquivos que sã
 
 - Se o arquivo for um PDF não pesquisável é necessário transforma-lo em algum formato de imagem. De preferência para transforma-lo em TIFF, pois é o formato mais utilizado para este tipo de processamento.
 - Se o arquivo já se encontra em formato de imagem siga pra o próximo passo.
-**ATENÇÃO:** ao digitalizar páginas de documentos, livros e afins busque definir uma resolução ao menos média (equivalente a 300 dpi) para ter um melhor resultado final ao processar as imagens.
+  **ATENÇÃO:** ao digitalizar páginas de documentos, livros e afins busque definir uma resolução ao menos média (equivalente a 300 dpi) para ter um melhor resultado final ao processar as imagens.
 - Se o arquivo estiver no formato de PDF é necessário transformá-lo em TIFF. Para isso basta seguir o [vídeo tutorial](https://www.youtube.com/watch?v=wmcrUGzGvkQ). Caso o arquivo já se encontre no formato TIFF é seguir para o segundo passo.
 
 ### Processar o arquivo

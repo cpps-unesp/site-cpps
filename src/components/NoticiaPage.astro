@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsSidebar from './NewsSidebar.astro';
 import TranslationWarning from './TranslationWarning.astro';
-import { getEntry, getCollection } from 'astro:content';
+import { getCollection } from 'astro:content';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
@@ -15,20 +15,20 @@ const noticiasRoute = routeTranslations['noticias'][lang as SupportedLang];
 const rawSlug = slug.replace(`${noticiasRoute}/`, '');
 
 const allNoticias = await getCollection('noticias');
-const relatedPosts = allNoticias.filter(p => p.slug === rawSlug);
+const relatedPosts = allNoticias.filter((p) => p.slug === rawSlug);
 
-const availableLangs = relatedPosts.map(p => p.data.lang);
+const availableLangs = relatedPosts.map((p) => p.data.lang);
 const isTranslationMissing = relatedPosts.length > 0 && !availableLangs.includes(lang);
 
-let post = relatedPosts.find(p => p.data.lang === lang);
+let post = relatedPosts.find((p) => p.data.lang === lang);
 
 if (!post && relatedPosts.length > 0) {
-  post = relatedPosts.find(p => p.data.lang === 'pt') || relatedPosts[0];
+  post = relatedPosts.find((p) => p.data.lang === 'pt') || relatedPosts[0];
 }
 
 if (!post) throw new Error(`Notícia não encontrada: ${slug}`);
 const langNoticias = allNoticias
-  .filter(p => p.data.lang === lang)
+  .filter((p) => p.data.lang === lang)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const { title, date, image, tags, author, resumo } = post.data;
@@ -43,72 +43,89 @@ const { Content } = await post.render();
   identidade={locale.identidade}
   githubPath={`src/content/noticias/${post.id}`}
 >
-  {isTranslationMissing && (
-    <TranslationWarning
-      availableLangs={availableLangs}
-      currentLang={lang}
-      texts={locale.texts}
-    />
-  )}
+  {
+    isTranslationMissing && (
+      <TranslationWarning availableLangs={availableLangs} currentLang={lang} texts={locale.texts} />
+    )
+  }
   <main class="container mx-auto px-4 py-12">
-    <div class="grid lg:grid-cols-3 gap-12">
+    <div class="grid gap-12 lg:grid-cols-3">
       <!-- Article Content -->
       <article class="lg:col-span-2">
         <header class="mb-8">
-          <div class="flex flex-wrap gap-2 mb-4">
-            {tags.map((tag: string) => (
-              <a
-                href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
-                class="text-xs font-bold uppercase tracking-widest text-primary hover:underline"
-              >
-                {tag}
-              </a>
-            ))}
+          <div class="mb-4 flex flex-wrap gap-2">
+            {
+              tags.map((tag: string) => (
+                <a
+                  href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+                  class="text-primary text-xs font-bold tracking-widest uppercase hover:underline"
+                >
+                  {tag}
+                </a>
+              ))
+            }
           </div>
 
-          <h1 class="text-4xl md:text-5xl font-bold text-base-content mb-6 leading-tight">
+          <h1 class="text-base-content mb-6 text-4xl leading-tight font-bold md:text-5xl">
             {title}
           </h1>
 
-          <p class="text-xl text-base-content/70 mb-8 italic">
+          <p class="text-base-content/70 mb-8 text-xl italic">
             {resumo}
           </p>
 
-          <div class="flex items-center gap-4 py-6 border-y border-base-200 text-sm">
+          <div class="border-base-200 flex items-center gap-4 border-y py-6 text-sm">
             <div class="flex flex-col">
-              {author && <span class="font-bold text-base-content">{locale.noticias?.by || 'Por'} {author}</span>}
+              {
+                author && (
+                  <span class="text-base-content font-bold">
+                    {locale.noticias?.by || 'Por'} {author}
+                  </span>
+                )
+              }
               <span class="text-base-content/60">
-                {locale.publicacoes?.publishedIn || 'Publicado em'} {new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+                {locale.publicacoes?.publishedIn || 'Publicado em'}
+                {
+                  new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', {
+                    day: 'numeric',
+                    month: 'long',
+                    year: 'numeric',
+                  })
+                }
               </span>
             </div>
           </div>
         </header>
 
-        {image && (
-          <figure class="mb-10">
-            <img src={image} alt={title} class="w-full rounded-2xl shadow-lg" />
-          </figure>
-        )}
+        {
+          image && (
+            <figure class="mb-10">
+              <img src={image} alt={title} class="w-full rounded-2xl shadow-lg" />
+            </figure>
+          )
+        }
 
-        <div class="prose prose-lg max-w-none
-          prose-headings:text-primary prose-headings:font-bold
-          prose-p:text-base-content/90 prose-p:leading-relaxed prose-p:text-justify
-          prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-          prose-img:rounded-xl prose-img:shadow-md">
+        <div
+          class="prose prose-lg prose-headings:text-primary prose-headings:font-bold prose-p:text-base-content/90 prose-p:leading-relaxed prose-p:text-justify prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-md max-w-none"
+        >
           <Content />
         </div>
 
-        <footer class="mt-12 pt-8 border-t border-base-200">
+        <footer class="border-base-200 mt-12 border-t pt-8">
           <div class="flex flex-wrap gap-2">
-            <span class="text-sm font-bold mr-2 self-center uppercase tracking-wider opacity-50">{locale.noticias?.tags || 'Tags'}:</span>
-            {tags.map((tag: string) => (
-              <a
-                href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
-                class="badge badge-outline badge-primary px-3 py-3"
-              >
-                {tag}
-              </a>
-            ))}
+            <span class="mr-2 self-center text-sm font-bold tracking-wider uppercase opacity-50"
+              >{locale.noticias?.tags || 'Tags'}:</span
+            >
+            {
+              tags.map((tag: string) => (
+                <a
+                  href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+                  class="badge badge-outline badge-primary px-3 py-3"
+                >
+                  {tag}
+                </a>
+              ))
+            }
           </div>
         </footer>
       </article>

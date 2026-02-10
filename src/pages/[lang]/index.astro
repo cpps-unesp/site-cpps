@@ -1,27 +1,23 @@
 ---
 export const prerender = true;
 
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Hero from "../../components/Hero.astro";
-import AtividadesSection from "../../components/AtividadesSection.astro";
-import ProdutosSection from "../../components/ProdutosSection.astro";
-import FAQSection from "../../components/FAQSection.astro";
-import { getTranslations } from "../../utils/i18n";
-import type { SupportedLang } from "../../types/lang";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import AtividadesSection from '../../components/AtividadesSection.astro';
+import ProdutosSection from '../../components/ProdutosSection.astro';
+import FAQSection from '../../components/FAQSection.astro';
+import { getTranslations } from '../../utils/i18n';
+import type { SupportedLang } from '../../types/lang';
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: "pt" } },
-    { params: { lang: "en" } },
-    { params: { lang: "es" } },
-  ];
+  return [{ params: { lang: 'pt' } }, { params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
-const currentLang = (Astro.params.lang ?? "pt") as SupportedLang;
+const currentLang = (Astro.params.lang ?? 'pt') as SupportedLang;
 
-const allowedLangs = ["pt", "en", "es"];
+const allowedLangs = ['pt', 'en', 'es'];
 if (!allowedLangs.includes(currentLang)) {
-  return Astro.redirect("/pt/");
+  return Astro.redirect('/pt/');
 }
 
 const locale = getTranslations(currentLang);
@@ -30,37 +26,43 @@ const {
   hero,
   titulo,
   descricao,
-  initiatives,
   atividadesPesquisa,
-  atividadesExtensao,
   produtos,
-  faqs,
-  imagens,
 } = locale;
 ---
 
-<BaseLayout lang={currentLang} titulo={titulo} descricao={descricao} texts={locale.texts}
-  identidade={locale.identidade} githubPath="src/pages/[lang]/index.astro">
+<BaseLayout
+  lang={currentLang}
+  titulo={titulo}
+  descricao={descricao}
+  texts={locale.texts}
+  identidade={locale.identidade}
+  githubPath="src/pages/[lang]/index.astro"
+>
   <Hero heroData={locale} lang={currentLang} />
 
-  {atividadesPesquisa && (
-    <AtividadesSection
-      id="atividades"
-      title={atividadesPesquisa.title}
-      description={atividadesPesquisa.description}
-      image={hero.link}
-      activities={atividadesPesquisa.items}
-    />
-  )}
+  {
+    atividadesPesquisa && (
+      <AtividadesSection
+        id="atividades"
+        title={atividadesPesquisa.title}
+        description={atividadesPesquisa.description}
+        image={hero.link}
+        activities={atividadesPesquisa.items}
+      />
+    )
+  }
 
-  {produtos && (
-    <ProdutosSection
-      title={produtos.title}
-      description={produtos.description}
-      image={hero.link}
-      produtos={produtos.items}
-    />
-  )}
+  {
+    produtos && (
+      <ProdutosSection
+        title={produtos.title}
+        description={produtos.description}
+        image={hero.link}
+        produtos={produtos.items}
+      />
+    )
+  }
 
   {locale.faqs && <FAQSection faqs={locale.faqs.items} />}
 </BaseLayout>

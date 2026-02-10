@@ -3,7 +3,8 @@ id: ambiente-virtual
 title: Ambiente Virtual
 sidebar_label: Ambiente Virtual
 ---
-*Tempo estimado: 8 - 10 minutos*
+
+_Tempo estimado: 8 - 10 minutos_
 
 ## O que é Ambiente virtual ?
 
@@ -12,7 +13,6 @@ Neste tutorial, vamos aprender como criar e usar um ambiente virtual. O ambiente
 :::
 
 Ambiente virtual é uma técnica usada para criar um espaço isolado onde podemos instalar diferentes versões de pacotes ou bibliotecas para diferentes projetos sem afetar o ambiente global do sistema. O Conda é um gerenciador de pacotes e ambiente virtual que permite criar e gerenciar ambientes virtuais de forma fácil e eficiente. 👍
-
 
 ## Ativação e atualização do ambiente virtual
 
@@ -41,6 +41,7 @@ Na primeira vez que você usar o conda em um novo terminal, é necessário inici
 ```
 conda init
 ```
+
 Depois de executar este comando, reinicie o terminal antes de prosseguir.
 
 ### Configuração do conda
@@ -78,7 +79,6 @@ conda env create -f environment.yml
 ```
 
 Certifique-se de que está na raiz do repositório antes de executar esse comando. O ambiente virtual será criado com o nome especificado no arquivo `environment.yml`.
-
 
 ## Autoria
 

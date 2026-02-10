@@ -8,7 +8,7 @@ sidebar_label: React
 
 ### O que é React?
 
-O **React** é uma biblioteca desenvolvida e disponibilizada pelo *Facebook*, sendo uma lib de [código aberto](https://github.com/facebook/react) e sendo mantida por diversos desenvolvedores a nível internacional.
+O **React** é uma biblioteca desenvolvida e disponibilizada pelo _Facebook_, sendo uma lib de [código aberto](https://github.com/facebook/react) e sendo mantida por diversos desenvolvedores a nível internacional.
 
 Diferente do JQuery ou até mesmo do JavaScript puro, o React possui a habilidade de dividir as funcionalidades de um _software_ em **componentes**.
 
@@ -18,17 +18,17 @@ Esses componentes são:
 2. Visualização (HTML/JSX);
 3. Estilização (CSS).
 
-* **JSX** ("JavaScript XML") trata-se de utilizar elementos HTML no JavaScript.
+- **JSX** ("JavaScript XML") trata-se de utilizar elementos HTML no JavaScript.
 
 Exemplo de funcionalidade do JSX:
 
 ![Imagem: exemplo de funcionalidade do JSX](https://i.imgur.com/H85Yvdh.png)
 
-* **Estrutura básica com _ES6_**:
+- **Estrutura básica com _ES6_**:
 
 ![Imagem: Estrutura básica com ES6](https://i.imgur.com/fWxIIRL.png)
 
-* **Exemplo**:
+- **Exemplo**:
 
 ![Imagem: Exemplo básico de como utilizar o React](https://i.imgur.com/xGAvkwa.png)
 
@@ -42,13 +42,13 @@ Para utilizar o componente em qualquer outra classe do projeto, basta utilizar o
 
 ## Instalação e setup
 
-* **Alternativa Um**: Para utilizar o React é necessário:
+- **Alternativa Um**: Para utilizar o React é necessário:
 
-* [CDN](https://reactjs.org/docs/cdn-links.html): Biblioteca React
-* [Babel](https://babeljs.io/): Compilador
-* [Live-server](https://www.npmjs.com/package/live-server): Simulador de servidor
+- [CDN](https://reactjs.org/docs/cdn-links.html): Biblioteca React
+- [Babel](https://babeljs.io/): Compilador
+- [Live-server](https://www.npmjs.com/package/live-server): Simulador de servidor
 
-* **Alternativa Dois**: Utilize o comando [Create React App](https://create-react-app.dev):
+- **Alternativa Dois**: Utilize o comando [Create React App](https://create-react-app.dev):
 
 ```
 npx create-react-app nome-da-pasta
@@ -82,11 +82,11 @@ Atualizando o render:
 
 ![Imagem: atualizando o render](https://i.imgur.com/GIlpYRX.png)
 
-* **FLUXO DE RENDERIZAÇÃO**
+- **FLUXO DE RENDERIZAÇÃO**
 
 A utilização da variável `state` ajuda a determinar a necessidade de cada componente ser renderizado novamente, caso receba alguma alteração.
 
-* **ALTERANDO O ESTADO**
+- **ALTERANDO O ESTADO**
 
 Embora seja possível acessar a variável state utilizando diretamente o `this.state`, não é possível utilizá-lo para alterar o estado. De maneira geral, o estado é **imutável**.
 
@@ -158,16 +158,16 @@ Veja o exemplo a seguir:
 
 ## Links úteis
 
-* [Frontend Mentor](https://www.frontendmentor.io/challenges): plataforma digital para **treinar conhecimentos de JavaScript (incluindo React), CSS e HTML**.
+- [Frontend Mentor](https://www.frontendmentor.io/challenges): plataforma digital para **treinar conhecimentos de JavaScript (incluindo React), CSS e HTML**.
 
-* [Pensando em React](https://pt-br.reactjs.org/docs/thinking-in-react.html): documentação oficial do React sobre como pensar do jeito React.
+- [Pensando em React](https://pt-br.reactjs.org/docs/thinking-in-react.html): documentação oficial do React sobre como pensar do jeito React.
 
 ### Ferramentas úteis para o uso do React
 
 Sugestões de ferramentas para utilizar em conjunto com o React:
 
-* [Redux](https://react-redux.js.org): Biblioteca *open-source* disponível para **React, Angular, Ember e Js**.
+- [Redux](https://react-redux.js.org): Biblioteca _open-source_ disponível para **React, Angular, Ember e Js**.
 
-* [React DevTools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi): *Extensão do Google* que facilita o processo de inspecionar elementos React.
+- [React DevTools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi): _Extensão do Google_ que facilita o processo de inspecionar elementos React.
 
-* [React-Bootstrap](https://react-bootstrap.github.io): utilizando **Bootstrap e React**.
+- [React-Bootstrap](https://react-bootstrap.github.io): utilizando **Bootstrap e React**.

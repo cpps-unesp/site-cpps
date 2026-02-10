@@ -25,14 +25,15 @@ O markdown foi criado para uso em websites, portanto pode ser usado em conjunto 
 - [Opção 2](link da opção 2)
 
 ```
+
 O texto acima está formatado com o markdown, o resultado dele seria esse:
 
-**Olá!**, *Clque em uma opção para continuar:*
+**Olá!**, _Clque em uma opção para continuar:_
 
 - [Opção 1](https://www.markdownguide.org/getting-started/)
 - [Opção 2](https://www.markdownguide.org/basic-syntax/)
 
------
+---
 
 ## Citação
 
@@ -41,7 +42,9 @@ Para criar um campo de citação, somente adicione um ">" na frente da frase, po
 ```
 > LabRI UNESP
 ```
+
 O texto ficaria assim:
+
 > Labri UNESP
 
 ## Imagem
@@ -58,10 +61,9 @@ No título, você pode colocar qualquer coisa, é só para razões de controle.
 O link seguinte é a localização do arquivo no diretório do site. Não esqueça de descrever o formato (geralmente png, jpg ou jpeg).
 Lembre-se, ao renomear o arquivo no diretório, você irá precisar trocar o nome na edição também.
 
------
+---
 
 ## Material de Apoio
-
 
 - Para se aprofundar sobre o conceito do markdown, [clique aqui](https://www.markdownguide.org/getting-started/).
 - Para visualizar os códigos mais básicos, [clique aqui](https://www.markdownguide.org/basic-syntax/).

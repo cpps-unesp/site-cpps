@@ -6,6 +6,6 @@ sidebar_label: Atividades
 
 ## Atividades Realizadas
 
-|Data|Atividades Realizadas|Presentes|
-|----------|---------------|---------------|
-|14/02/2022|Apoio - atualização do site|Rafael, Júlia|
+| Data       | Atividades Realizadas       | Presentes     |
+| ---------- | --------------------------- | ------------- |
+| 14/02/2022 | Apoio - atualização do site | Rafael, Júlia |

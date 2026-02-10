@@ -7,17 +7,17 @@ slug: voluntario
 
 Como estagiário voluntário você pode colaborar em diversas frentes, sendo elas:
 
-  ✅ Marketing e comunicação
+✅ Marketing e comunicação
 
-  ✅ Infraestrutura computacional
+✅ Infraestrutura computacional
 
-  ✅ Gestão de Dados
+✅ Gestão de Dados
 
-  ✅ Desenvolvimento de sistemas
+✅ Desenvolvimento de sistemas
 
-  ✅ Produção de material didático
+✅ Produção de material didático
 
-  ✅ Suporte a usuários
+✅ Suporte a usuários
 
 # Estágio voluntário de fluxo contínuo
 

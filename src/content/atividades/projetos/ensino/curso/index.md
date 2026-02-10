@@ -11,6 +11,7 @@ O curso visa preencher uma lacuna nas disciplinas de Relações Internacionais e
 :::
 
 Assim, o curso tem como principal objetivo apresentar as discussões já consolidadas sobre Governança da Internet, assim como debates contemporâneos, abrangendo tópicos como:
+
 - História da Governança da Internet, principais conceitos e autores;
 - Aspectos técnicos de gerenciamento global da Internet e suas implicações geopolíticas;
 - Aspectos socioeconômicos como governança de plataformas e principais regulações propostas por atores estatais e não-estatais;
