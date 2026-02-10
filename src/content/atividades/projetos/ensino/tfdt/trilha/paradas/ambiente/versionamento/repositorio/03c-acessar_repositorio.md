@@ -26,7 +26,6 @@ Existem vários benefícios de repositórios abertos e do uso do GitHub. Alguns 
 
 5.  Portfólio: o GitHub é um ótimo lugar para criar um portfólio online de projetos que você criou. Isso pode ajudá-lo a se destacar em entrevistas de emprego e a mostrar seu trabalho para possíveis empregadores ou clientes.
 
-
 Além desses benefícios, o GitHub também oferece uma série de ferramentas e recursos para ajudar os desenvolvedores a trabalhar com mais eficiência, como integração contínua, controle de problemas, revisão de código e muito mais. Por esses motivos, o GitHub é amplamente utilizado por desenvolvedores em todo o mundo como uma plataforma para hospedar, gerenciar e colaborar em projetos de código aberto e privados.
 
 ## Criação de uma conta no GitHub
@@ -66,11 +65,9 @@ Seu repositório agora está pronto para ser usado com a licença MIT aplicada!
 
 Observação: é importante ler e entender os termos da licença antes de aplicá-la ao seu projeto. A licença MIT permite que outras pessoas usem, copiem, modificem e distribuam seu código, desde que atribuam a você a autoria do código original e incluam a licença em seus projetos.
 
-
 ## Material de apoio
 
 - [Clone a GitHub repository using a Personal Access Token](https://gist.github.com/magickatt/07ff02068f8cd2e4e558f20358b2082c)
-
 
 ## Autoria
 

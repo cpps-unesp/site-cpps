@@ -9,16 +9,21 @@ sidebar_label: Script com Caminhos Absolutos
 Para que o Python detecte todas as dependências, é necessário rodar o script como um módulo, pois quando rodado diretamente, é **impossível** para o Python, detectar qualquer script importado que não esteja em uma subpasta ou que não tenha sido instalado pelo gerenciador de pacotes.
 
 Portanto, dada a estrutura atual do projeto:
+
 ```
 tweepina/api_v2/api_twitter/api_academic/
 ```
+
 Quando rodamos um script diretamente, como no exemplo :
+
 ```
 python tweepina/api_v2/api_twitter/api_academic/collected_perfis.py
 ```
+
 O script `collected_perfis.py` só localizará scripts em sua pasta ou em subpastas, qualquer método de importação que busque importar algo de uma pasta acima de `api_academic` irá falhar.
 
 Para resolver este problema, precisamos rodar o script como um módulo. De uma pasta superior, neste caso a pasta `tweepina`, rodamos o comando `python -m`, e ao invés de especificar o caminho do arquivo, especificamos o que queremos rodar da seguinte maneira (lembre-se, que estamos dentro da pasta raiz do projeto, `tweepina`):
+
 ```
 python -m api_v2.api_twitter.api_academic.collected_perfis
 ```
@@ -29,16 +34,20 @@ Cada subnível (dividido por pontos) é vista pelo python como um **módulo**.
 Módulos que estão aninhados nos subníveis desta estrutura são chamados também de **submódulos**.
 
 A única diferença é que **todos os imports** devem ser modificados, no projeto inteiro, para refletir esta estrutura. Portanto, no arquivo `collected_perfis.py`, os imports locais que antes eram:
+
 ```
 from twitter_api import create_headers, get_perfis, create_endpoint, connect_to_endpoint, flatten_tweets
 from get_tweets import get_last_tweet, main_get_tweets
 from get_info import main_get_info
 ```
+
 Para:
+
 ```
 from api_v2.api_twitter.api_academic.twitter_api import create_headers, get_perfis, create_endpoint, connect_to_endpoint, flatten_tweets
 from api_v2.api_twitter.api_academic.get_tweets import get_last_tweet, main_get_tweets
 from api_v2.api_twitter.api_academic.get_info import main_get_info
 ```
+
 O primeiro exemplo mostra imports relativos, neste segundo, os imports são **absolutos**.
 Apesar do nome, no Python, os imports absolutos só são absolutos em relação à estrutura do pacote, ou seja, não têm relação nenhuma com caminhos absolutos no sistema de arquivos. Desta forma, se o comando `python -m` for chamado de um outro local, explicitando outra estrutura para o pacote, os imports deverão ser alterados de acordo.

@@ -10,26 +10,26 @@ const icons = {
   info: 'ℹ️',
   tip: '💡',
   warning: '⚠️',
-  danger: '🚫'
+  danger: '🚫',
 };
 
 const colors = {
   info: 'bg-info/10 border-info/50 text-info-content',
   tip: 'bg-success/10 border-success/50 text-success-content',
   warning: 'bg-warning/10 border-warning/50 text-warning-content',
-  danger: 'bg-error/10 border-error/50 text-error-content'
+  danger: 'bg-error/10 border-error/50 text-error-content',
 };
 
 const titles = {
   info: 'Informação',
   tip: 'Dica',
   warning: 'Aviso',
-  danger: 'Cuidado'
+  danger: 'Cuidado',
 };
 ---
 
 <div class={`my-6 p-4 rounded-lg border-l-4 ${colors[type]}`}>
-  <div class="flex items-center gap-2 mb-2 font-bold uppercase text-xs tracking-wider">
+  <div class="mb-2 flex items-center gap-2 text-xs font-bold tracking-wider uppercase">
     <span>{icons[type]}</span>
     <span>{title || titles[type]}</span>
   </div>

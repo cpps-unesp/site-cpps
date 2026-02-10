@@ -3,6 +3,7 @@ id: ventoy
 title: Uso do Ventoy para formatação
 sidebar_label: Uso do Ventoy para formatação
 ---
+
 :::tip
 Esta página visa instruir sobre o uso do programa "Ventoy" para tornar um pendrive bootável. O objetivo do uso do Ventoy é ser possível somente copiar e colar o arquivo .ISO do sistema operacional desejado na pasta de um pendrive.
 :::
@@ -35,6 +36,6 @@ Esta página visa instruir sobre o uso do programa "Ventoy" para tornar um pendr
 
 9. Clique em "Apply Changes", "Yes" e em "Exit". O computador irá inicializar pelo pendrive Ventoy. Agora é só escolher o sistema operacional desejado e dar início a formatação.
 
-
 ### Material de apoio
+
 - [Como fazer Pen Drive Bootável de Linux e Windows - Ventoy](https://www.youtube.com/watch?v=11CkqZQ3scE)

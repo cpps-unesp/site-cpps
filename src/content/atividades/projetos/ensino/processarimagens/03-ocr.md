@@ -3,6 +3,7 @@ id: ocr
 title: Realizar OCR
 sidebar_label: Realizar OCR
 ---
+
 :::tip
 Essa página tem como função explicar o processo de digitalização e edição de um livro, para que o arquivo se torne de fácil visualização para estudo e pesquisa, além de ser possível pesquisar palavras-chave. Neste tutorial, as etapas são feitas no acesso remoto do LabRI/UNESP.
 
@@ -74,7 +75,6 @@ trocando o nome_arquivo para o nome do arquivo PDF.
 - Para mais instruções sofre a inclusão dos marcadores basta assistir o [vídeo tutorial](https://www.youtube.com/watch?v=VQ3UQY4qOd0).
 - Nós termos fizemos um script em python para realizar o processo de divisão do arquivo a partir dos marcadores presentes no mesmo.
 - Também é possivel utilizar programas como o PDFsam para realizar este passo. Para poder cortar o arquivo em capítulos será necessário utilizar o aplicativo PDFsam. Para entender melhor siga as instruções do [vídeo tutorial](https://www.youtube.com/watch?v=WvsRdDKj6_Y).
-
 
 ### Autoria
 

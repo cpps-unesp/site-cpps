@@ -4,15 +4,11 @@ title: Edição de páginas
 sidebar_label: Edição de páginas
 ---
 
-
 Esta página reúne informações para e edição das paginas de grupos que utilizam o site do LabRI/UNESP
-
-
 
 ## Projeto Cidades Sustentáveis
 
 - [Paginas do projeto Cidades Sustentáveis](https://gitlab.com/unesp-labri/sites/labri/-/tree/main/website/src/pages/cidades-sustentaveis)
-
 
 ## Edição rápida
 
@@ -23,7 +19,6 @@ Esta página reúne informações para e edição das paginas de grupos que util
 - Vá até a linha 31 nesta linha consta a seguinte informação `const primeiracoluna = [
 
 - duplique as linhas que estão entre chaves `{}` e edite as informações necessárias
-
 
 ```
     {
@@ -43,7 +38,6 @@ Esta página reúne informações para e edição das paginas de grupos que util
 - Vá até a linha 47 nesta linha consta a seguinte informação `const exmembros = [`
 
 - duplique as linhas que estão entre chaves `{}` e edite as informações necessárias
-
 
 ```
 

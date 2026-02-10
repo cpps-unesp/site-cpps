@@ -16,9 +16,9 @@ Textos digitalizados em PDF substituem os textos em papel no meio acadêmico dev
 
 OCR é um acrónimo para o inglês Optical Character Recognition, é uma tecnologia para reconhecer caracteres a partir de um arquivo de imagem ou mapa de bits sejam eles escaneados, escritos a mão, datilografados ou impressos. Dessa forma, através do OCR é possível obter um arquivo de texto editável por um computador.
 
-Combinado com outras tecnologias, como a inteligência artificial, empresas de diversos segmentos têm aplicado o OCR para automatizar processos de cadastro, onboarding e formalização, extraindo informações de documentos de identificação pessoal, contratos e comprovantes de residência.*
+Combinado com outras tecnologias, como a inteligência artificial, empresas de diversos segmentos têm aplicado o OCR para automatizar processos de cadastro, onboarding e formalização, extraindo informações de documentos de identificação pessoal, contratos e comprovantes de residência.\*
 
------
+---
 
 - Caso você tenha dúvidas ou dificuldades de configurar seu computador ou notebook envie um email para: unesplabri@gmail.com.
 - Caso não consigamos resolver as dificuldades por email podemos marcar uma videoconferência para realizada a configuração em conjunto com você. 😉
@@ -29,4 +29,4 @@ Combinado com outras tecnologias, como a inteligência artificial, empresas de d
 - [Artur Dantas](https://gitlab.com/unesp-labri/sites/labri/-/commits/main/website/docs/projetos/ensino/filezilla?author=Artur%20Dantas)
 - [Ver todas as autorias](https://gitlab.com/unesp-labri/sites/labri/-/commits/main/website/docs/projetos/ensino/processamento-imagens)
 
-*Texto retirado de: [Wikipedia - Reconhecimento ótico de caracteres](https://pt.wikipedia.org/wiki/Reconhecimento_%C3%B3tico_de_caracteres)
+\*Texto retirado de: [Wikipedia - Reconhecimento ótico de caracteres](https://pt.wikipedia.org/wiki/Reconhecimento_%C3%B3tico_de_caracteres)

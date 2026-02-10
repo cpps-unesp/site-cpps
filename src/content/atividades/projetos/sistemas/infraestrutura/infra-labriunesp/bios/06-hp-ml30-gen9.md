@@ -1,10 +1,8 @@
 ---
 id: 121
-title:  HPE ProLiant ML30 Gen9
+title: HPE ProLiant ML30 Gen9
 sidebar_label: HP ML30 GEN9
 ---
-
-
 
 ```
 Base Board Information
@@ -19,12 +17,9 @@ Mensagem do boot do server:
 
 - [[Firmware Bug]: The BIOS Has Corrupted Hw-PMU Resources](https://support.hpe.com/hpesc/docDisplay?docId=emr_na-c03265132)
 
-
 Documentação oficial:
 
 - [HPE ProLiant Gen9 Servers - Download Drivers, Firmware, Software, Utilities, Documentation and Guides](https://support.hpe.com/hpesc/docDisplay?docId=sf000044077en_us&docLocale=en_US)
-
-
 
 ## Como acessar a BIOS
 

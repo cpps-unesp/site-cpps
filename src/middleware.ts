@@ -1,13 +1,13 @@
 import { defineMiddleware } from 'astro:middleware';
 
 const SUPPORTED_LANGS = ['pt', 'en', 'es'] as const;
-type Lang = typeof SUPPORTED_LANGS[number];
+type Lang = (typeof SUPPORTED_LANGS)[number];
 
 function parseAcceptLanguage(header: string | null): Lang {
   if (!header) return 'pt';
 
   try {
-    const languages = header.split(',').map(part => {
+    const languages = header.split(',').map((part) => {
       const [lang, qPart] = part.trim().split(';');
       const q = qPart ? parseFloat(qPart.replace('q=', '')) : 1.0;
       const langCode = lang.split('-')[0].toLowerCase();
@@ -76,7 +76,6 @@ export const onRequest = defineMiddleware(async (context, next) => {
 
     const newPath = `/${lang}${path === '/' ? '/' : path}`;
     return redirect(newPath, 301);
-
   } catch (err) {
     console.error('Middleware error:', err);
     // Em caso de QUALQUER falha, deixa a requisição passar

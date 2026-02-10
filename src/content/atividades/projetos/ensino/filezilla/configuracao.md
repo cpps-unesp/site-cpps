@@ -3,19 +3,18 @@ id: configuracao
 title: Configuração do Filezilla
 sidebar_label: Configuração do Filezilla
 ---
+
 :::tip
 Essa página visa instruir o usuário sobre a utilização e configuração passo a passo do FileZilla. Uma apresentação geral desse programa já foi feita na página "Apresentação". Caso ainda não tenha lido, sugerimos que comece por ela.
 :::
-
 
 ### Passo 1
 
 ![passo1](/imagens/img-geral/passo1.png)
 
-
 ### Passo 2
-![passo2](/imagens/img-geral/passo2.png)
 
+![passo2](/imagens/img-geral/passo2.png)
 
 - Clique no ícone no canto superior esquerda da tela, logo abaixo de Arquivo.
 
@@ -35,7 +34,7 @@ Essa página visa instruir o usuário sobre a utilização e configuração pass
 
 ![passo2](/imagens/img-geral/passo5.png)
 
-- Quando aparecer uma mensagem de Chave Host Desconhecida,  selecione a caixa de confiar nesse host e depois clique em OK.
+- Quando aparecer uma mensagem de Chave Host Desconhecida, selecione a caixa de confiar nesse host e depois clique em OK.
 
 ### Passo 6
 

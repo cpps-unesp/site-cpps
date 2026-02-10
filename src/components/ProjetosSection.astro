@@ -4,18 +4,20 @@ const { projetos } = Astro.props;
 ---
 
 <section class="mt-16">
-  <h2 class="text-4xl font-extrabold text-center mb-4">{projetos.titulo}</h2>
-  <p class="text-center text-base-content mb-10 max-w-2xl mx-auto">
+  <h2 class="mb-4 text-center text-4xl font-extrabold">{projetos.titulo}</h2>
+  <p class="text-base-content mx-auto mb-10 max-w-2xl text-center">
     Descubra nossa seleção de projetos para impulsionar e transformar suas iniciativas.
   </p>
 
   <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-    {projetos.lista.map((projeto) => (
-      <div class="bg-base-100 rounded-xl shadow-md p-6 flex flex-col space-y-4 hover:shadow-lg transition-shadow">
-        <div class="text-4xl text-primary">{projeto.icone}</div>
-        <h3 class="text-lg font-bold">{projeto.titulo}</h3>
-        <p class="text-sm text-base-content">{projeto.descricao}</p>
-      </div>
-    ))}
+    {
+      projetos.lista.map((projeto) => (
+        <div class="bg-base-100 flex flex-col space-y-4 rounded-xl p-6 shadow-md transition-shadow hover:shadow-lg">
+          <div class="text-primary text-4xl">{projeto.icone}</div>
+          <h3 class="text-lg font-bold">{projeto.titulo}</h3>
+          <p class="text-base-content text-sm">{projeto.descricao}</p>
+        </div>
+      ))
+    }
   </div>
 </section>

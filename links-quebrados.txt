@@ -1,6 +1,5 @@
 Arquivos com placeholder de imagem (logo oficial) em substituicao a links quebrados:
 
-- src/content/atividades/guia-edicao.mdx
 - src/content/atividades/projetos/dados/govlatinamerica/equipe.md
 - src/content/atividades/projetos/dados/internet-ri/equipe.md
 - src/content/atividades/projetos/ensino/assinatura.md
@@ -26,4 +25,4 @@ Arquivos com placeholder de imagem (logo oficial) em substituicao a links quebra
 - src/content/atividades/projetos/sistemas/websites/editar/09-paginas-js.md
 - src/content/atividades/projetos/sistemas/websites/markdown/01-geral.md
 
-Total: 25
+Total: 24

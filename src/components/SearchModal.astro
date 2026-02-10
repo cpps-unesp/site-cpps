@@ -1,19 +1,19 @@
 ---
 const { texts } = Astro.props;
-import Search from "astro-pagefind/components/Search";
+import Search from 'astro-pagefind/components/Search';
 ---
 
 <!-- ✅ Botão para abrir o modal
-<label for="search-modal" class="btn">🔍 Buscar</label> -->
-
-<!-- ✅ Modal DaisyUI -->
+<label for="search-modal" class="btn">🔍 Buscar</label> --><!-- ✅ Modal DaisyUI -->
 <input type="checkbox" id="search-modal" class="modal-toggle" />
 <div class="modal" role="dialog" aria-modal="true" aria-labelledby="search-title">
   <div class="modal-box animate-scale-up glass-modal relative">
     <!-- ✅ Botão de fechar "X" -->
-    <label for="search-modal" class="absolute top-3 right-3 cursor-pointer text-lg font-bold">✖</label>
+    <label for="search-modal" class="absolute top-3 right-3 cursor-pointer text-lg font-bold"
+      >✖</label
+    >
 
-    <h3 id="search-title" class="font-bold text-lg mb-4 text-primary">{texts.header.buscar}</h3>
+    <h3 id="search-title" class="text-primary mb-4 text-lg font-bold">{texts.header.buscar}</h3>
 
     <!-- ✅ Componente de busca Pagefind mais translúcido -->
     <div class="search-wrapper">
@@ -21,34 +21,32 @@ import Search from "astro-pagefind/components/Search";
     </div>
 
     <!-- ✅ Indicação com mesma cor do título -->
-    <p class="text-sm font-semibold text-primary text-right mt-4">Pressione ESC para fechar</p>
+    <p class="text-primary mt-4 text-right text-sm font-semibold">Pressione ESC para fechar</p>
   </div>
 </div>
 
 <script>
   document.addEventListener('keydown', (e) => {
-  const modalToggle = document.getElementById('search-modal') as HTMLInputElement | null;
-  if (modalToggle && e.key === 'Escape' && modalToggle.checked) {
-    modalToggle.checked = false;
-  }
-});
-
-const modalToggle = document.getElementById('search-modal') as HTMLInputElement | null;
-if (modalToggle) {
-  modalToggle.addEventListener('change', () => {
-    if (modalToggle.checked) {
-      setTimeout(() => {
-        const input = document.querySelector('.pagefind-ui input') as HTMLInputElement | null;
-        if (input) input.focus();
-      }, 100);
+    const modalToggle = document.getElementById('search-modal') as HTMLInputElement | null;
+    if (modalToggle && e.key === 'Escape' && modalToggle.checked) {
+      modalToggle.checked = false;
     }
   });
-}
 
+  const modalToggle = document.getElementById('search-modal') as HTMLInputElement | null;
+  if (modalToggle) {
+    modalToggle.addEventListener('change', () => {
+      if (modalToggle.checked) {
+        setTimeout(() => {
+          const input = document.querySelector('.pagefind-ui input') as HTMLInputElement | null;
+          if (input) input.focus();
+        }, 100);
+      }
+    });
+  }
 </script>
 
 <style is:global>
-  
   @keyframes scale-up {
     0% {
       transform: scale(0.95);

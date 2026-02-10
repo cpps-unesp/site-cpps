@@ -1,15 +1,15 @@
 ---
-import IconSun from "../icons/IconThemeSun.astro";
-import IconMoon from "../icons/IconThemeMoon.astro";
-const { class: className = "" } = Astro.props;
+import IconSun from '../icons/IconThemeSun.astro';
+import IconMoon from '../icons/IconThemeMoon.astro';
+const { class: className = '' } = Astro.props;
 ---
 
 <span class={`relative inline-flex items-center justify-center ${className}`}>
   <span class="theme-icon-sun">
-    <IconSun class="w-5 h-5" />
+    <IconSun class="h-5 w-5" />
   </span>
   <span class="theme-icon-moon">
-    <IconMoon class="w-5 h-5" />
+    <IconMoon class="h-5 w-5" />
   </span>
 </span>
 

@@ -1,6 +1,6 @@
 ---
-import slugify from "slugify";
-import { getTranslations } from "../utils/i18n";
+import slugify from 'slugify';
+import { getTranslations } from '../utils/i18n';
 
 const { noticias, lang } = Astro.props;
 const locale = getTranslations(lang);
@@ -14,51 +14,60 @@ const recentPosts = noticias.slice(0, 5);
 
 <aside class="space-y-12">
   <!-- Search Widget -->
-  <div class="bg-base-100 p-6 rounded-xl shadow-sm border border-base-200">
-    <h3 class="text-xl font-bold mb-4 text-primary border-b-2 border-primary pb-2 inline-block">
+  <div class="bg-base-100 border-base-200 rounded-xl border p-6 shadow-sm">
+    <h3 class="text-primary border-primary mb-4 inline-block border-b-2 pb-2 text-xl font-bold">
       {locale.texts.header?.buscar || 'Buscar'}
     </h3>
     <div class="relative mt-2">
-      <label for="search-modal" class="flex items-center w-full px-4 py-2 bg-base-200 rounded-lg cursor-pointer hover:bg-base-300 transition-colors">
-        <span class="text-base-content opacity-60">{locale.noticias?.search || 'Pesquisar notícias...'}</span>
+      <label
+        for="search-modal"
+        class="bg-base-200 hover:bg-base-300 flex w-full cursor-pointer items-center rounded-lg px-4 py-2 transition-colors"
+      >
+        <span class="text-base-content opacity-60"
+          >{locale.noticias?.search || 'Pesquisar notícias...'}</span
+        >
         <span class="ml-auto">🔍</span>
       </label>
     </div>
   </div>
 
   <!-- Categories/Tags Widget -->
-  <div class="bg-base-100 p-6 rounded-xl shadow-sm border border-base-200">
-    <h3 class="text-xl font-bold mb-4 text-primary border-b-2 border-primary pb-2 inline-block">
+  <div class="bg-base-100 border-base-200 rounded-xl border p-6 shadow-sm">
+    <h3 class="text-primary border-primary mb-4 inline-block border-b-2 pb-2 text-xl font-bold">
       {locale.noticias?.categories || 'Categorias'}
     </h3>
-    <div class="flex flex-wrap gap-2 mt-2">
-      {allTags.map(tag => (
-        <a
-          href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
-          class="px-3 py-1 bg-secondary/10 text-secondary hover:bg-secondary hover:text-white rounded-full text-sm font-medium transition-colors"
-        >
-          {tag}
-        </a>
-      ))}
+    <div class="mt-2 flex flex-wrap gap-2">
+      {
+        allTags.map((tag) => (
+          <a
+            href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+            class="bg-secondary/10 text-secondary hover:bg-secondary rounded-full px-3 py-1 text-sm font-medium transition-colors hover:text-white"
+          >
+            {tag}
+          </a>
+        ))
+      }
     </div>
   </div>
 
   <!-- Recent Posts Widget -->
-  <div class="bg-base-100 p-6 rounded-xl shadow-sm border border-base-200">
-    <h3 class="text-xl font-bold mb-4 text-primary border-b-2 border-primary pb-2 inline-block">
+  <div class="bg-base-100 border-base-200 rounded-xl border p-6 shadow-sm">
+    <h3 class="text-primary border-primary mb-4 inline-block border-b-2 pb-2 text-xl font-bold">
       {locale.noticias?.recent || 'Mais Recentes'}
     </h3>
-    <div class="space-y-4 mt-2">
-      {recentPosts.map((post: any) => (
-        <a href={`/${lang}/noticias/${post.slug}`} class="group block">
-          <p class="text-xs text-base-content/60 mb-1">
-            {new Date(post.data.date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
-          </p>
-          <h4 class="font-bold text-base group-hover:text-primary transition-colors line-clamp-2">
-            {post.data.title}
-          </h4>
-        </a>
-      ))}
+    <div class="mt-2 space-y-4">
+      {
+        recentPosts.map((post: any) => (
+          <a href={`/${lang}/noticias/${post.slug}`} class="group block">
+            <p class="text-base-content/60 mb-1 text-xs">
+              {new Date(post.data.date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
+            </p>
+            <h4 class="group-hover:text-primary line-clamp-2 text-base font-bold transition-colors">
+              {post.data.title}
+            </h4>
+          </a>
+        ))
+      }
     </div>
   </div>
 </aside>

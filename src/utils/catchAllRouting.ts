@@ -39,7 +39,7 @@ export function buildRouteTranslationPaths(langs: SupportedLang[]): RoutePath[] 
 export function buildLocalizedContentPaths(
   langs: SupportedLang[],
   routeKey: 'noticias' | 'publicacao',
-  slugs: string[],
+  slugs: string[]
 ): RoutePath[] {
   const paths: RoutePath[] = [];
 
@@ -86,7 +86,7 @@ export function buildMembroPaths(langs: SupportedLang[], memberSlugs: string[]):
   return memberSlugs.flatMap((slug) =>
     langs.map((lang) => ({
       params: { lang, slug },
-    })),
+    }))
   );
 }
 

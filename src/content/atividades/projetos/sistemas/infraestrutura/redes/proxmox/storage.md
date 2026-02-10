@@ -126,12 +126,9 @@ scp root@numero_ip_origem:/etc/pve/qemu-server/numero_vm.conf /etc/pve/qemu-serv
 /etc/pve/qemu-server/numero_vm.conf
 ```
 
-
 - [Copy zfs volume onto another server using ssh](https://ispire.me/copy-zfs-volume-onto-another-server-using-ssh/)
 - [Sending and Receiving ZFS Data](https://docs.oracle.com/cd/E18752_01/html/819-5461/gbchx.html)
 - [How to Remotely Administer ZFS With Secure Shell](https://docs.oracle.com/cd/E53394_01/html/E54793/sshuser-9.html)
-
-
 
 ```
 / - 51G
@@ -144,7 +141,6 @@ scp root@numero_ip_origem:/etc/pve/qemu-server/numero_vm.conf /etc/pve/qemu-serv
 https://diolinux.com.br/sistemas-operacionais/como-instalar-o-zram-no-ubuntu-e-outras-dicas-para-melhorar-o-desempenho.html
 
 ```
-
 
 ```
 https://wiki.archlinux.org/title/ZFS_(Portugu%C3%AAs)
@@ -163,7 +159,6 @@ https://tbellembois.github.io/ZFS_debian.html
 
 ### Configuração no cliente
 
-
 ```
 sudo mkdir r -p /media/hdvm05
 
@@ -179,7 +174,6 @@ sudo mount -o proto=tcp -t nfs4 200.145.122.125:/media/hdvm05 /media/hdvm05/
 
 ```
 
-
 ### autofs
 
 - Edite o arquivo `/etc/auto.master` para incluir a seguinte linha:
@@ -188,8 +182,8 @@ sudo mount -o proto=tcp -t nfs4 200.145.122.125:/media/hdvm05 /media/hdvm05/
 diretorio_raiz /etc/auto.nfs
 
 ```
-- Crie o arquivo `/etc/auto.nfs` com as informações das partições a serem montada
 
+- Crie o arquivo `/etc/auto.nfs` com as informações das partições a serem montada
 
 ```
 compartilhada  -fstype=nfs4   endereço_servidor:/pasta/compartilhada
@@ -203,11 +197,7 @@ sudo systemctl restart autofs
 
 ```
 
-
-
-
 https://www.dobitaobyte.com.br/network-file-system-nfs/
-
 
 ## PVESM
 
@@ -216,7 +206,6 @@ http://www.ricardobarbosams.com.br/dokuwiki/doku.php?id=infra-estrutura:proxmox:
 https://pve.proxmox.com/pve-docs/pvesm.1.html
 
 ```
-
 
 ## IO Delay
 

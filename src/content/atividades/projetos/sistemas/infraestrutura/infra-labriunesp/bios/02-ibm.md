@@ -4,8 +4,6 @@ title: Servidores IBM
 sidebar_label: Servidores IBM
 ---
 
-
-
 ```
 IBM x3100 M4
 Base Board Information
@@ -21,7 +19,6 @@ Base Board Information
 
 
 ```
-
 
 ## IBM x3500 M4
 

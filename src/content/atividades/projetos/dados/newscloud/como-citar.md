@@ -1,6 +1,6 @@
 ---
-title: "Como citar"
-description: "Veja como referenciar os dados do NewsCloud em seus trabalhos acadêmicos."
+title: 'Como citar'
+description: 'Veja como referenciar os dados do NewsCloud em seus trabalhos acadêmicos.'
 sidebar:
   order: 6
 ---
@@ -15,7 +15,7 @@ Abaixo estão os modelos de citação nos formatos mais utilizados.
 
 ## Formato APA
 
-> Mariano, M. P., Laisner, R., & Aguilar, S. L. C. (Coords.). (2021). *NewsCloud*. Laboratório de Relações Internacionais (LABRI-UNESP). https://labriunesp.org/docs/projetos/dados/newscloud
+> Mariano, M. P., Laisner, R., & Aguilar, S. L. C. (Coords.). (2021). _NewsCloud_. Laboratório de Relações Internacionais (LABRI-UNESP). https://labriunesp.org/docs/projetos/dados/newscloud
 
 ## BibTeX
 
@@ -30,3 +30,4 @@ Para usuários de LaTeX ou gerenciadores de referência (Zotero, Mendeley, EndNo
   url = {https://labriunesp.org/docs/projetos/dados/newscloud},
   note = {Acessado em: [Data de Acesso]}
 }
+```

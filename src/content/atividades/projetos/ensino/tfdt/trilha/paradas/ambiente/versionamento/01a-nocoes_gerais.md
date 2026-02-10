@@ -4,19 +4,13 @@ title: Noções Gerais
 sidebar_label: Noções Gerais
 ---
 
-
 Antes de falarmos do programa (`git`) e dos serviços (`gitlab` e `github`) que são o foco principal desse tópico. Cabe discutirmos algumas noções gerais para uma melhor contextualização e entendimento sobre a utilização dessas ferramentas.
 
 :::tip
 
-**O objetivo deste tópico** é compreender o que siginifica *VERSIONAMENTO*.
+**O objetivo deste tópico** é compreender o que siginifica _VERSIONAMENTO_.
 
 :::
-
-
-
-
-
 
 ## O que é Git?
 
@@ -31,40 +25,38 @@ O Git é o sistema de controle de versão de código-fonte em si. Github e Gitla
 
 O controle de versão é uma técnica utilizada em desenvolvimento de software que permite aos desenvolvedores acompanhar as alterações em um conjunto de arquivos ao longo do tempo. Com o controle de versão, é possível recuperar uma versão anterior do código-fonte e comparar as diferenças entre as versões. Isso é importante para garantir a reprodutibilidade científica, onde é necessário rastrear e documentar todas as etapas do trabalho realizado.
 
-
-
-
 ## Sugestão de Estrutura
 
 ✅ Noções Gerais
-  - Contexto - lidar com qual problema?
-    - O que é versionamento? Qual a sua importância?
-  - Encaminhamento - como lidar com o problema?
-  - Ferramentas - que ferramentas dão apoio ao encaminhamento?
 
-    - diferença entre GIT e GITLAB/GITHUB
-    - Zenodo (CERN)
+- Contexto - lidar com qual problema?
+  - O que é versionamento? Qual a sua importância?
+- Encaminhamento - como lidar com o problema?
+- Ferramentas - que ferramentas dão apoio ao encaminhamento?
+  - diferença entre GIT e GITLAB/GITHUB
+  - Zenodo (CERN)
 
 ✅ Dinamica de versionamento
-  - Implementação - como o encaminhamento/ferramenta funciona?
-    - Fluxo do versionamento
-    - Versionamento semántico
 
+- Implementação - como o encaminhamento/ferramenta funciona?
+  - Fluxo do versionamento
+  - Versionamento semántico
 
 ✅ Repositório
-  - Tipos de licenças
-  - Criação de repositório
-    - Instalação do GIT
-  - Tipos de acessos (https, ssh, token)
+
+- Tipos de licenças
+- Criação de repositório
+  - Instalação do GIT
+- Tipos de acessos (https, ssh, token)
 
 - GIT - Básico
 - GIT- Indo Além
 
 ✅ Sugestões:
-  - Criar repositório chamado `ambiente_trabalho`
 
+- Criar repositório chamado `ambiente_trabalho`
 
-  ## Material de Apoio
+## Material de Apoio
 
 - [Academic Benefits of Using git and GitHub](https://archive.is/tqpaC)
 - [Version Control with Git](https://swcarpentry.github.io/git-novice/)

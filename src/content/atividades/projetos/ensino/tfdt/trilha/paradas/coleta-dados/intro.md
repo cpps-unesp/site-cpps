@@ -10,45 +10,28 @@ Esta parada da Trilha de Dados trata da coleta de dados utilizando da liguagem d
 O estudante terá contato com bibliotecas[^1] como beautifulsoap, scrapy, selenium e tinyDB
 :::
 
-
 ## Pré requisitos
 
 - [Treinamento de Preparação de Ambiente de Trabalho](/atividades/projetos/ensino/trilha-dados/ambiente/intro)
 
-
 ## Tópicos do treinamento
-
 
 - Tópico 01 - Conceitos iniciais
   - Fontes de pesquisa
   - HTML e CSS
   -
 
-- Tópico 02 - Extração de informações
-  -
+- ## Tópico 02 - Extração de informações
 
 - Tópico 03 - Tratamento de dados
 
 - Tópico 04 - Armazenamento de dados
 
-
 ## Certificação
 
 - [Formulário Treinamento de coleta de dados com python](https://forms.gle/joyj6KrdG1Sv3hTT7)
 
-
 [^1]: [EXPLICAR O QUE UMA BIBLIOTECA]
-
-
-
-
-
-
-
-
-
-
-
 
 ### Material de apoio
 

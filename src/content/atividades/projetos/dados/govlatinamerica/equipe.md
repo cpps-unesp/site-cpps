@@ -1,6 +1,6 @@
 ---
-title: "Equipe GovLatinAmerica"
-description: "Conheça a equipe do projeto GovLatinAmerica."
+title: 'Equipe GovLatinAmerica'
+description: 'Conheça a equipe do projeto GovLatinAmerica.'
 sidebar:
   order: 2
 ---
@@ -35,7 +35,6 @@ sidebar:
 </div>
 
 <hr style="width: 50%; margin: 0 auto;">
-
 
 <!-- ========================================== -->
 <!-- SEÇÃO COLABORADORES -->
@@ -182,7 +181,6 @@ sidebar:
   </div>
 </div>
 
-
 <!-- ========================================== -->
 <!-- SEÇÃO JÁ PASSARAM POR AQUI -->
 <!-- ========================================== -->
@@ -284,6 +282,7 @@ sidebar:
 <br><br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/16/2025 by Rafael de Almeida
 </p>

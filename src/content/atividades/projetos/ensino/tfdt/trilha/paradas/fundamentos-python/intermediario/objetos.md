@@ -10,9 +10,8 @@ sidebar_label: Objetos
 
 Podemos pensar uma classe como o "tipo de algo" e a instância como uma "subcategoria desse tipo". Por exemplo, país pode ser considerado um tipo de classe, e o Brasil seria uma instância dessa classe.
 
-- Para prepararmos um bolo, a __classe__ seria a receita, e o __objeto__ seria o bolo em si.
-- Na construção de uma casa, a planta da casa seria __classe__, e a casa em si, __objeto__
-
+- Para prepararmos um bolo, a **classe** seria a receita, e o **objeto** seria o bolo em si.
+- Na construção de uma casa, a planta da casa seria **classe**, e a casa em si, **objeto**
 
 - `self`
 
@@ -24,6 +23,7 @@ class Pais:
     # atributos e métodos da classe
 
 ```
+
 - A palavra reservada `class` aponta a criação de uma classe em Python;
 - Após a palavra `class`, indicamos o nome desejado para a classe. Por convenção, o nome da classe deve ser iniciado com letra maiúscula. Caso o nome da classe seja constituído por mais de uma palavra, a letra inical de cada palavra deve ser maiúscula. Ex.: `PaisesAfrica`
 
@@ -49,8 +49,6 @@ Para declarar um atributo em uma classe, é necessário utilizar o método espec
 - Composição
   - Quando a existência de uma classe depende de uma outra classe
 - Modificadores de acesso (Encapsulamento)
-
-
 
 ```py
 
@@ -95,16 +93,16 @@ Encapsulamento diz respeito à proteção do acesso de algumas informações pre
 - `get`: recupera dados
 - `set`: altera dados
 
-|Encapsulamento|Descrição|
-|---|---|
-|`self.atributo` - público|Pode ser acessada por qualquer lugar |
-|`self.__atributo` - privado|Atributo/Método não deve ser acessado fora da classe|
-|`self._atributo` - protegido|Atributo/Método é público mas não deve ser acessado|
-|`@property`|Atributo/Método está restrito, sendo assim, o acesso às variáveis funciona apenas dentro da classe|
+| Encapsulamento               | Descrição                                                                                          |
+| ---------------------------- | -------------------------------------------------------------------------------------------------- |
+| `self.atributo` - público    | Pode ser acessada por qualquer lugar                                                               |
+| `self.__atributo` - privado  | Atributo/Método não deve ser acessado fora da classe                                               |
+| `self._atributo` - protegido | Atributo/Método é público mas não deve ser acessado                                                |
+| `@property`                  | Atributo/Método está restrito, sendo assim, o acesso às variáveis funciona apenas dentro da classe |
 
 - https://algoritmosempython.com.br/cursos/programacao-python/encapsulamento/
 
-###  Tipos de métodos
+### Tipos de métodos
 
 - [Replit](https://replit.com/@fparon/objetos#metodos_classe.py)
 

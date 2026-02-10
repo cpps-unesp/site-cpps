@@ -76,14 +76,20 @@ function nodeToSidebarItems(node: SidebarNode): SidebarItem[] {
     });
 }
 
-export function buildDocsSidebar(entries: DocEntry[], options: BuildDocsSidebarOptions): SidebarItem[] {
+export function buildDocsSidebar(
+  entries: DocEntry[],
+  options: BuildDocsSidebarOptions
+): SidebarItem[] {
   const root = createNode(options.sectionLabel ?? 'Documentacao');
   const customIntroItems: Array<{ label: string; url: string; order: number }> = [];
 
   for (const entry of entries) {
     const segments = entry.slug.split('/').filter(Boolean);
     const pagePath = normalizePath(`${options.basePath}/${entry.slug}`);
-    const pageLabel = entry.data.sidebar_label || entry.data.title || titleFromSegment(segments[segments.length - 1] || 'pagina');
+    const pageLabel =
+      entry.data.sidebar_label ||
+      entry.data.title ||
+      titleFromSegment(segments[segments.length - 1] || 'pagina');
     const sidebarSection = entry.data.sidebar_section;
     const sidebarOrder = entry.data.sidebar_order ?? 9999;
 
@@ -134,9 +140,11 @@ export function buildDocsSidebar(entries: DocEntry[], options: BuildDocsSidebarO
   const introItems = [
     { label: options.introLabel ?? 'Introducao', url: options.basePath },
     ...customIntroItems
-      .sort((a, b) => (a.order - b.order) || a.label.localeCompare(b.label, 'pt-BR'))
+      .sort((a, b) => a.order - b.order || a.label.localeCompare(b.label, 'pt-BR'))
       .map(({ label, url }) => ({ label, url })),
-  ].filter((item, index, items) => items.findIndex((candidate) => candidate.url === item.url) === index);
+  ].filter(
+    (item, index, items) => items.findIndex((candidate) => candidate.url === item.url) === index
+  );
 
   return [
     {

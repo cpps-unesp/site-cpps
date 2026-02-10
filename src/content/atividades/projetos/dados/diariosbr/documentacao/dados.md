@@ -1,6 +1,6 @@
 ---
-title: "Dados e Metadados"
-description: "Descrição das variáveis e estrutura dos dados do DiáriosBR."
+title: 'Dados e Metadados'
+description: 'Descrição das variáveis e estrutura dos dados do DiáriosBR.'
 sidebar:
   order: 2
 ---
@@ -9,24 +9,24 @@ Abaixo apresentamos o dicionário de dados contendo as variáveis utilizadas no 
 
 ## Dicionário de Variáveis
 
-| Variável | Descrição | Exemplos |
-| :--- | :--- | :--- |
-| `tipo_dado` | Indica a restrição do dado | Público ou Privado |
-| `plataforma` | Indica a plataforma que disponibiliza o documento | Diário Oficial Eletrônico (DiOE), Diário Oficial Municipal ou Site da Prefeitura |
-| `origem` | Nome do município de origem | São Joaquim da Barra |
-| `origem_lower` | Nome do município de origem em caixa baixa | saojoaquimdabarra |
-| `cod_ibge` | Código do Município no IBGE | 3549409 |
-| `categoria` | Indica se é uma edição rotineira ou excepcional | Ordinário ou Extraordinário |
-| `data` | Define a data da edição | dd/mm/yyyy |
-| `num_ed` | Número da Edição | - |
-| `nome_arquivo` | Nome do arquivo salvo | - |
-| `link_pdf` | Link original do PDF | - |
-| `coleta_pdf` | Verifica se a coleta já foi realizada | `True` ou `False` |
-| `dir_bd` | Diretório base do banco de dados | `/media/hdvm04/` |
-| `codigo_bd` | Indicação da identificação local | `bd/001/002/0xx` |
-| `dir_local` | Caminho absoluto da pasta | `dir_bd` + `codigo_bd` |
-| `arq_local_pdf` | Caminho absoluto do arquivo .pdf | `/caminho/absoluto/arquivo.pdf` |
-| `arq_local_json` | Caminho absoluto do arquivo .json | `/caminho/absoluto/arquivo.json` |
+| Variável         | Descrição                                         | Exemplos                                                                         |
+| :--------------- | :------------------------------------------------ | :------------------------------------------------------------------------------- |
+| `tipo_dado`      | Indica a restrição do dado                        | Público ou Privado                                                               |
+| `plataforma`     | Indica a plataforma que disponibiliza o documento | Diário Oficial Eletrônico (DiOE), Diário Oficial Municipal ou Site da Prefeitura |
+| `origem`         | Nome do município de origem                       | São Joaquim da Barra                                                             |
+| `origem_lower`   | Nome do município de origem em caixa baixa        | saojoaquimdabarra                                                                |
+| `cod_ibge`       | Código do Município no IBGE                       | 3549409                                                                          |
+| `categoria`      | Indica se é uma edição rotineira ou excepcional   | Ordinário ou Extraordinário                                                      |
+| `data`           | Define a data da edição                           | dd/mm/yyyy                                                                       |
+| `num_ed`         | Número da Edição                                  | -                                                                                |
+| `nome_arquivo`   | Nome do arquivo salvo                             | -                                                                                |
+| `link_pdf`       | Link original do PDF                              | -                                                                                |
+| `coleta_pdf`     | Verifica se a coleta já foi realizada             | `True` ou `False`                                                                |
+| `dir_bd`         | Diretório base do banco de dados                  | `/media/hdvm04/`                                                                 |
+| `codigo_bd`      | Indicação da identificação local                  | `bd/001/002/0xx`                                                                 |
+| `dir_local`      | Caminho absoluto da pasta                         | `dir_bd` + `codigo_bd`                                                           |
+| `arq_local_pdf`  | Caminho absoluto do arquivo .pdf                  | `/caminho/absoluto/arquivo.pdf`                                                  |
+| `arq_local_json` | Caminho absoluto do arquivo .json                 | `/caminho/absoluto/arquivo.json`                                                 |
 
 ---
 
@@ -38,6 +38,7 @@ Para identificar os diários coletados e manter a padronização, utilizamos a t
 <br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

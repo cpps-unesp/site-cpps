@@ -46,12 +46,12 @@ b) Substituir programas padrão pelos especificados abaixo:
 
 ##### Substituição de programa no Recoll:
 
-|Programa Padrão|Programa Especificado|
-|---------------|---------------------|
-|inode/directory|`pcmanfm %f`|
-|inode/directory/parentopen|`pcmanfm --select %(childurl) %f`|
-|text/html|`google-chrome %f`|
-|application/pdf|`okular %f`|
+| Programa Padrão            | Programa Especificado             |
+| -------------------------- | --------------------------------- |
+| inode/directory            | `pcmanfm %f`                      |
+| inode/directory/parentopen | `pcmanfm --select %(childurl) %f` |
+| text/html                  | `google-chrome %f`                |
+| application/pdf            | `okular %f`                       |
 
 Abaixo um exemplo da substituição do programa padrão pelo especificado:
 

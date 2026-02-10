@@ -1,46 +1,45 @@
 ---
-import IconSun from "../icons/IconThemeSun.astro";
-import IconMoon from "../icons/IconThemeMoon.astro";
-import IconSystem from "../icons/IconThemeSystem.astro"; // Ícone para a opção "System" no menu
-import ThemeIcon from "../components/ThemeIcon.astro"; // Componente que mostra o ícone dinâmico (sol/lua)
+import IconSun from '../icons/IconThemeSun.astro';
+import IconMoon from '../icons/IconThemeMoon.astro';
+import IconSystem from '../icons/IconThemeSystem.astro'; // Ícone para a opção "System" no menu
+import ThemeIcon from '../components/ThemeIcon.astro'; // Componente que mostra o ícone dinâmico (sol/lua)
 ---
 
-<div class="dropdown dropdown-hover dropdown-end w-full md:w-auto group">
+<div class="dropdown dropdown-hover dropdown-end group w-full md:w-auto">
   <label
     tabindex="0"
-    class="flex items-center gap-1 cursor-pointer hover:text-primary text-base-content"
+    class="hover:text-primary text-base-content flex cursor-pointer items-center gap-1"
   >
     {/* ✅ Ícone dinâmico (sol/lua) que muda com o tema efetivamente aplicado */}
-    <ThemeIcon class="w-5 h-5" />
+    <ThemeIcon class="h-5 w-5" />
 
-    <svg class="ml-1 w-3 h-3 fill-current" viewBox="0 0 20 20">
-      <path d="M5.25 7.75L10 12.5l4.75-4.75" />
+    <svg class="ml-1 h-3 w-3 fill-current" viewBox="0 0 20 20">
+      <path d="M5.25 7.75L10 12.5l4.75-4.75"></path>
     </svg>
   </label>
 
   {/* ✅ Menu com seletores de tema */}
   <ul
-    class="dropdown-content menu p-0 shadow bg-base-100 text-base-content rounded-sm w-full md:w-40 -translate-y-2
-           transition transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 duration-150 ease-out"
+    class="dropdown-content menu bg-base-100 text-base-content w-full -translate-y-2 scale-95 transform rounded-sm p-0 opacity-0 shadow transition duration-150 ease-out group-hover:scale-100 group-hover:opacity-100 md:w-40"
   >
     <li>
       {/* Botão para tema claro */}
       <a data-set-theme="light" data-act-class="font-bold">
-        <IconSun class="inline w-4 h-4 mr-2" />
+        <IconSun class="mr-2 inline h-4 w-4" />
         Light
       </a>
     </li>
     <li>
       {/* Botão para tema escuro */}
       <a data-set-theme="dark" data-act-class="font-bold">
-        <IconMoon class="inline w-4 h-4 mr-2" />
+        <IconMoon class="mr-2 inline h-4 w-4" />
         Dark
       </a>
     </li>
     <li>
       {/* Botão para tema do sistema */}
       <a data-set-theme="system" data-act-class="font-bold">
-        <IconSystem class="inline w-4 h-4 mr-2" />
+        <IconSystem class="mr-2 inline h-4 w-4" />
         System
       </a>
     </li>
@@ -64,9 +63,15 @@ import ThemeIcon from "../components/ThemeIcon.astro"; // Componente que mostra 
   function setActive(theme) {
     themeOptions.forEach((el) => {
       const activeClass = el.getAttribute('data-act-class') || '';
-      activeClass.split(' ').filter(Boolean).forEach((cls) => el.classList.remove(cls));
+      activeClass
+        .split(' ')
+        .filter(Boolean)
+        .forEach((cls) => el.classList.remove(cls));
       if (el.getAttribute('data-set-theme') === theme) {
-        activeClass.split(' ').filter(Boolean).forEach((cls) => el.classList.add(cls));
+        activeClass
+          .split(' ')
+          .filter(Boolean)
+          .forEach((cls) => el.classList.add(cls));
       }
     });
   }

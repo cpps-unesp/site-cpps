@@ -6,9 +6,9 @@ sidebar_label: Documentação
 
 ### Repositório
 
-✅ Para acessar o *repositório*, [clique aqui](https://gitlab.com/unesp-labri/projeto/govlatinamerica).
+✅ Para acessar o _repositório_, [clique aqui](https://gitlab.com/unesp-labri/projeto/govlatinamerica).
 
-✅ Acesse a página do *Google Drive* do projeto GovLatinAmerica clicando [aqui](https://drive.google.com/drive/u/1/folders/1_g01RcccLl2PpTupxQyCoXEJka30VXeG).
+✅ Acesse a página do _Google Drive_ do projeto GovLatinAmerica clicando [aqui](https://drive.google.com/drive/u/1/folders/1_g01RcccLl2PpTupxQyCoXEJka30VXeG).
 
 ✅ Mais informações sobre o projeto na página do [notion](https://www.notion.so/org-geral/Projeto-GovLatinAmerica-9219a9b60ae24cb98a197f7bdab42209).
 

@@ -18,6 +18,7 @@ simbolos = 'áàUÜ#@^><阿萨'
 print(simbolos, type(simbolos))
 
 ```
+
 - Utilização de aspas dentro de aspas
 
 ```py
@@ -26,6 +27,7 @@ frase = 'O homem é o "lobo" do homem'
 print(frase, type(frase))
 
 ```
+
 - Função built-in `input()`
 
 ```py
@@ -33,6 +35,7 @@ novo_membro = input('digite o seu nome: ')
 print('olá, ' + novo_membro)
 
 ```
+
 ### Formatação de string 📜
 
 - `f-string`
@@ -56,7 +59,6 @@ print('olá, ' + novo_membro + '. Tudo bem com você?')
 print('Rafael ' * 10)
 
 ```
-
 
 ### Índices e manipulação de strings
 
@@ -99,17 +101,14 @@ print(string_de_numeros[::2])
 
 ```
 
-|Tipos de dados `str`||
-|------------------|---|
-|uso|usado para armazenar uma lista de caracteres|
-|criação|caracteres colocados `"entre aspas"`|
-|métodos de buscar|`find('elemento')`|
-|ordem preservada?| sim. os itens podem ser acessados por índices|
-|mutável?|não|
-|ordenado?|sim|
-
-
-
+| Tipos de dados `str` |                                               |
+| -------------------- | --------------------------------------------- |
+| uso                  | usado para armazenar uma lista de caracteres  |
+| criação              | caracteres colocados `"entre aspas"`          |
+| métodos de buscar    | `find('elemento')`                            |
+| ordem preservada?    | sim. os itens podem ser acessados por índices |
+| mutável?             | não                                           |
+| ordenado?            | sim                                           |
 
 ### Métodos de String 🧩
 
@@ -119,19 +118,18 @@ print(string_de_numeros[::2])
 - `print()`, `type()`, `len()`, `input()` também são funções embutidas no Python.
 - Todas as funções e métodos embutidos no Python visam facilitar o manuseio de determinado tipo de dado, seja ele em string, lista, dicionário, tupla ou conjunto
 
-|Método|       operação                |
-|-----------|--------------------------|
-|`split()`  | Separa uma string em uma lista com substrings     |
-|`join()`   | Unir uma lista de strings em uma única string  |
-|`strip()`  | Remove todos os espaços extras do começo ao fim da string|
-|`lower()`, `upper()`, `swapcase()`, `title()`  | Colocar em caixa alta, baixa, trocar minusculas por maiusculas e vice-versa e título (primeiras letras maiusculas, resto minusculo)  |
-|`replace()`   |Substitui caracteres na string|
-|`count()`   | Retorna a quantidade de caracteres repetidos |
-|`startswith()`, `endswith()` |Retorna `True` ou `False` para indicar o prefixo ou sufixo da string |
-|`find()`, `index()`   | Busca determinado caractere na string e retorna o índice do primeiro caractere encontrado; o `index()` gera uma excessão caso não encontre o caractere especificado|
-|`isalnum()`, `isalpha()`, `isidentifier()`, `iskeyword()`, `isprintable()`, `isspace()`, `isupper()`, `islower()`  | Retorna `True` ou `False` para indicar se é alfanumérico, caixa alta ou baixa, entre outros.|
-|`zfill()`   | Retorna a string preenchendo à esquerda com o caractere `0` |
-
+| Método                                                                                                            | operação                                                                                                                                                            |
+| ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `split()`                                                                                                         | Separa uma string em uma lista com substrings                                                                                                                       |
+| `join()`                                                                                                          | Unir uma lista de strings em uma única string                                                                                                                       |
+| `strip()`                                                                                                         | Remove todos os espaços extras do começo ao fim da string                                                                                                           |
+| `lower()`, `upper()`, `swapcase()`, `title()`                                                                     | Colocar em caixa alta, baixa, trocar minusculas por maiusculas e vice-versa e título (primeiras letras maiusculas, resto minusculo)                                 |
+| `replace()`                                                                                                       | Substitui caracteres na string                                                                                                                                      |
+| `count()`                                                                                                         | Retorna a quantidade de caracteres repetidos                                                                                                                        |
+| `startswith()`, `endswith()`                                                                                      | Retorna `True` ou `False` para indicar o prefixo ou sufixo da string                                                                                                |
+| `find()`, `index()`                                                                                               | Busca determinado caractere na string e retorna o índice do primeiro caractere encontrado; o `index()` gera uma excessão caso não encontre o caractere especificado |
+| `isalnum()`, `isalpha()`, `isidentifier()`, `iskeyword()`, `isprintable()`, `isspace()`, `isupper()`, `islower()` | Retorna `True` ou `False` para indicar se é alfanumérico, caixa alta ou baixa, entre outros.                                                                        |
+| `zfill()`                                                                                                         | Retorna a string preenchendo à esquerda com o caractere `0`                                                                                                         |
 
 #### Exemplos
 
@@ -187,19 +185,18 @@ print(p.index('pa'))
 print(p.find('pa'))
 ```
 
-
 ### Caracteres de escape
 
 - [Link](https://replit.com/@fparon/string-escape#main.py) do Replit
 
-| Caractere | Descrição |
-| --- | --- |
-| `\n` , `\r` ,  `\r\n`    | nova linha  |
-| `\s`    |  espaço   |
-| `\t`    |  tab   |
-| `\v`    |  tab vertical   |
-| `\e`    | escape    |
-| `\b`   | backspace    |
+| Caractere            | Descrição    |
+| -------------------- | ------------ |
+| `\n` , `\r` , `\r\n` | nova linha   |
+| `\s`                 | espaço       |
+| `\t`                 | tab          |
+| `\v`                 | tab vertical |
+| `\e`                 | escape       |
+| `\b`                 | backspace    |
 
 ```py
 print('meu nome é \n Fábio')

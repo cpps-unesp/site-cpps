@@ -11,18 +11,25 @@ interface Props {
 const { availableLangs, currentLang, texts } = Astro.props;
 
 const langNames: Record<string, string> = {
-  pt: "Português",
-  en: "English",
-  es: "Español",
+  pt: 'Português',
+  en: 'English',
+  es: 'Español',
 };
 
-const warningText = texts.languageUnavailable || (
-  currentLang === 'en' ? 'CONTENT NOT AVAILABLE IN ENGLISH' :
-  (currentLang === 'es' ? 'CONTENIDO NO DISPONIBLE EN ESPAÑOL' : 'CONTEÚDO NÃO DISPONÍVEL EM PORTUGUÊS')
-);
+const warningText =
+  texts.languageUnavailable ||
+  (currentLang === 'en'
+    ? 'CONTENT NOT AVAILABLE IN ENGLISH'
+    : currentLang === 'es'
+      ? 'CONTENIDO NO DISPONIBLE EN ESPAÑOL'
+      : 'CONTEÚDO NÃO DISPONÍVEL EM PORTUGUÊS');
 
-const availableInText = currentLang === 'en' ? 'This page is available in:' :
-  (currentLang === 'es' ? 'Esta página está disponible en:' : 'Esta página está disponível em:');
+const availableInText =
+  currentLang === 'en'
+    ? 'This page is available in:'
+    : currentLang === 'es'
+      ? 'Esta página está disponible en:'
+      : 'Esta página está disponível em:';
 
 const sourceLang = (['pt', 'en', 'es'].includes(currentLang) ? currentLang : 'pt') as SupportedLang;
 const currentPath = Astro.url.pathname.split('/').filter(Boolean).slice(1).join('/');
@@ -32,24 +39,28 @@ function getPathForLanguage(targetLang: SupportedLang): string {
 }
 ---
 
-<div class="max-w-4xl mx-auto mt-8 px-4">
-  <div class="alert alert-warning shadow-lg border-l-8 border-warning flex flex-col md:flex-row items-start md:items-center gap-4 py-6">
+<div class="mx-auto mt-8 max-w-4xl px-4">
+  <div
+    class="alert alert-warning border-warning flex flex-col items-start gap-4 border-l-8 py-6 shadow-lg md:flex-row md:items-center"
+  >
     <div class="flex items-center gap-3">
-        <i class="fa-solid fa-language text-3xl opacity-80"></i>
-        <div>
-            <h3 class="font-bold text-xs uppercase tracking-widest opacity-70 mb-1">{warningText}</h3>
-            <p class="text-sm font-medium">{availableInText}</p>
-        </div>
+      <i class="fa-solid fa-language text-3xl opacity-80"></i>
+      <div>
+        <h3 class="mb-1 text-xs font-bold tracking-widest uppercase opacity-70">{warningText}</h3>
+        <p class="text-sm font-medium">{availableInText}</p>
+      </div>
     </div>
     <div class="flex flex-wrap gap-2 md:ml-auto">
-      {availableLangs.map((lang) => (
-        <a
-          href={`/${lang}/${getPathForLanguage(lang as SupportedLang)}`.replace(/\/+/g, '/')}
-          class="btn btn-xs btn-outline hover:btn-primary transition-all px-4"
-        >
-          {langNames[lang] || lang.toUpperCase()}
-        </a>
-      ))}
+      {
+        availableLangs.map((lang) => (
+          <a
+            href={`/${lang}/${getPathForLanguage(lang as SupportedLang)}`.replace(/\/+/g, '/')}
+            class="btn btn-xs btn-outline hover:btn-primary px-4 transition-all"
+          >
+            {langNames[lang] || lang.toUpperCase()}
+          </a>
+        ))
+      }
     </div>
   </div>
 </div>

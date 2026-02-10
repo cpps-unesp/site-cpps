@@ -14,7 +14,6 @@ sidebar_label: CSS
 Cascading Style Sheet (CSS) é utilizado para personalizar e estilizar os elementos escritos através do HTML. Além disso, CSS passou a ser uma linguagem completa que dispensa as regras de estilo do HTML, principalmente por gerar resultados mais robustos e por ser de fácil utilização.
 :::
 
-
 De modo geral, CSS possui uma estrutura de sintaxe simples, para definir um valor basta utilizar ":" e terminar com ";"
 
 ```
@@ -24,7 +23,7 @@ background-color: black;
 
 Outra maneira de indicar um valor específico, seria através da tag "style"
 
-* _style_ aplicado no elemento:
+- _style_ aplicado no elemento:
 
 ```
 <p style="color: blue; background-color: black;">
@@ -32,7 +31,7 @@ Testando estilos com CSS
 </p>
 ```
 
-* _style_ como tag separada:
+- _style_ como tag separada:
 
 A tag "style" deve estar dentro da tag "head". Veja um exemplo:
 
@@ -56,17 +55,14 @@ A tag "style" deve estar dentro da tag "head". Veja um exemplo:
 
 A maneira de indicar um estilo dentro do CSS segue uma ordem, sendo ela:
 
-* **Seletor**: o nome do elemento que deseja modificar.
+- **Seletor**: o nome do elemento que deseja modificar.
+  - _Exemplo_: se o seletor for "p" então todos os elementos do código que são definidos por "p" estarão seguindo o estilo indicado por essa tag.
 
-    * *Exemplo*: se o seletor for "p" então todos os elementos do código que são definidos por "p" estarão seguindo o estilo indicado por essa tag.
+- **Propriedade**: o nome do que deseja ser modificado dentro do elemento (seletor) indicado.
+  - _Exemplo_: se a propriedade for "color" então a cor do texto do seletor será da cor indicada nessa linha.
 
-* **Propriedade**: o nome do que deseja ser modificado dentro do elemento (seletor) indicado.
-
-    * *Exemplo*: se a propriedade for "color" então a cor do texto do seletor será da cor indicada nessa linha.
-
-* **Propriedade-subpropriedade**: tem a mesma característica da "Propriedade" mas adiciona uma subdivisão específica do que deseja ser estilizado.
-
-    * *Exemplo*: se a propriedade-subpropriedade for "background-color" então a cor que será modificada será apenas do elemento indicado.
+- **Propriedade-subpropriedade**: tem a mesma característica da "Propriedade" mas adiciona uma subdivisão específica do que deseja ser estilizado.
+  - _Exemplo_: se a propriedade-subpropriedade for "background-color" então a cor que será modificada será apenas do elemento indicado.
 
 ```
 seletor{
@@ -79,7 +75,7 @@ seletor{
 
 Para que o código fique mais organizado, é necessário criar um arquivo ".css" para a página que deseja editar. Sendo assim, é recomendado criar uma pasta CSS dentro da pasta do projeto para que todos os documentos .css possam ser encotrados nessa nova pasta.
 
-*Exemplo*: Para estilizar uma página chamada de "sobre.html" é interessante dar o nome do arquivo css de "sobre.css".
+_Exemplo_: Para estilizar uma página chamada de "sobre.html" é interessante dar o nome do arquivo css de "sobre.css".
 
 ### Como referenciar o arquivo CSS dentro do arquivo HTML
 
@@ -93,30 +89,30 @@ Após criar o documento .css é necessário fazer uma referencia direta na "head
 
 #### Texto
 
-|Propriedade|Valor|Observação|
-|-----------|-----|----------|
-|text-align|center/right/left/justify|-|
-|text-decoration|underline/italic/bold|-|
-|font-family|serif/sans-serif|Utilizar o **nome** da fonte entre aspas seguido do tipo de fonte que ela se encaixa. *Exemplo*: "Helvetica", sans-serif;|
-|line-height|Tamanho da altura de cada linha|Utilizar medidas em pixel (px), rem (rem), etc|
-|letter-spacing|Espaçamento entre letras|Utilizar medidas em pixel (px), rem(rem), etc|
-|word-spacing|Espaçamento entre palavras|Utilizar medidas em pixel(px), rem(rem), etc|
-|color|Cor da fonte|Utilizar nome de cores em inglês ou o código da cor utilizando "#" e 6 dígitos. *Exemplo*: #000000;|
+| Propriedade     | Valor                           | Observação                                                                                                                |
+| --------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| text-align      | center/right/left/justify       | -                                                                                                                         |
+| text-decoration | underline/italic/bold           | -                                                                                                                         |
+| font-family     | serif/sans-serif                | Utilizar o **nome** da fonte entre aspas seguido do tipo de fonte que ela se encaixa. _Exemplo_: "Helvetica", sans-serif; |
+| line-height     | Tamanho da altura de cada linha | Utilizar medidas em pixel (px), rem (rem), etc                                                                            |
+| letter-spacing  | Espaçamento entre letras        | Utilizar medidas em pixel (px), rem(rem), etc                                                                             |
+| word-spacing    | Espaçamento entre palavras      | Utilizar medidas em pixel(px), rem(rem), etc                                                                              |
+| color           | Cor da fonte                    | Utilizar nome de cores em inglês ou o código da cor utilizando "#" e 6 dígitos. _Exemplo_: #000000;                       |
 
 #### Fundo
 
-|Propriedade|Valor|Observação|
-|-----------|-----|----------|
-|background-color|Cor de fundo do elemento|Utilizar nome de cores em inglês ou o código da cor utilizando "#" e 6 dígitos. *Exemplo*: #000000;|
-|background-image|Imagem de fundo do elemento|Utilizar a url da imagem. *Exemplo*: url(link padrão)|
+| Propriedade      | Valor                       | Observação                                                                                          |
+| ---------------- | --------------------------- | --------------------------------------------------------------------------------------------------- |
+| background-color | Cor de fundo do elemento    | Utilizar nome de cores em inglês ou o código da cor utilizando "#" e 6 dígitos. _Exemplo_: #000000; |
+| background-image | Imagem de fundo do elemento | Utilizar a url da imagem. _Exemplo_: url(link padrão)                                               |
 
 #### Bordas
 
-|Propriedade|Valor|Observação|
-|-----------|-----|----------|
-|border-width|Largura da borda|Utilizar medidas em pixel (px), rem (rem), etc|
-|border-color|Cor da borda|Utilizar nome de cores em inglês ou o código da cor utilizando "#" e 6 dígitos. *Exemplo*: #000000;|
-|border-style|solid/dotted/double/etc|-|
+| Propriedade  | Valor                   | Observação                                                                                          |
+| ------------ | ----------------------- | --------------------------------------------------------------------------------------------------- |
+| border-width | Largura da borda        | Utilizar medidas em pixel (px), rem (rem), etc                                                      |
+| border-color | Cor da borda            | Utilizar nome de cores em inglês ou o código da cor utilizando "#" e 6 dígitos. _Exemplo_: #000000; |
+| border-style | solid/dotted/double/etc | -                                                                                                   |
 
 Além disso, a função de borda pode ser simplificada para apenas:
 
@@ -126,7 +122,7 @@ seletor{
 }
 ```
 
-Caso prefira colocar a borda em apenas um local específico do elemento, é possível utilizar a posição (bottom/left/right/top) na frente da propriedade "border". *Exemplo*: border-left: 2px dotted red;
+Caso prefira colocar a borda em apenas um local específico do elemento, é possível utilizar a posição (bottom/left/right/top) na frente da propriedade "border". _Exemplo_: border-left: 2px dotted red;
 
 ### Quiz: FORMULÁRIO
 
@@ -154,10 +150,10 @@ p{
 
 As propriedades de espaçamento são importantes para determinar o espaçamento interno dos elementos, facilitando a leitura e visualização do resultado final.
 
-|Propriedade|Valor|Observação|
-|-----------|-----|----------|
-|Padding|Propriedade utilizada para determinar os limites internos de um elemento (margem/borda)|Utilizar medidas em pixel (px), rem (rem), etc ou apenas escrever "auto"|
-|Margin|Propriedade utilizada para determinar os limites externos de um elemento (margem/borda)|Utilizar medidas em pixel (px), rem (rem), etc ou apenas escrever "auto"|
+| Propriedade | Valor                                                                                   | Observação                                                               |
+| ----------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Padding     | Propriedade utilizada para determinar os limites internos de um elemento (margem/borda) | Utilizar medidas em pixel (px), rem (rem), etc ou apenas escrever "auto" |
+| Margin      | Propriedade utilizada para determinar os limites externos de um elemento (margem/borda) | Utilizar medidas em pixel (px), rem (rem), etc ou apenas escrever "auto" |
 
 #### Padding
 
@@ -286,13 +282,13 @@ O padrão BEMCSS é uma ótima opção para quem está começando a aprender HTM
 
 #### Como funciona
 
-A estrutura BEM é: *bloco__elemento--modificador*
+A estrutura BEM é: _bloco\_\_elemento--modificador_
 
-- *bloco*: trata-se de um elemento HTML que não depende de outro elemento para fazer sentido;
+- _bloco_: trata-se de um elemento HTML que não depende de outro elemento para fazer sentido;
 
-- *elemento*: trata-se da parte _semântica_ do bloco;
+- _elemento_: trata-se da parte _semântica_ do bloco;
 
-- *modificador*: trata-se do comportamento ou estilização do bloco.
+- _modificador_: trata-se do comportamento ou estilização do bloco.
 
 - Exemplo no HTML:
 
@@ -313,11 +309,11 @@ A estrutura BEM é: *bloco__elemento--modificador*
 
 #### Display
 
-|Tipo de Display|Significado|Modo de utilização|
-|---------------|-----------|------------------|
-|block|o elemento passará a ocupar toda a largura disponível; diminuir o elemento resulta em uma margem não removível|"display:block"|
-|inline|o elemento ocupa o espaço necessário para visualização, permitindo que outro elemento fique ao lado quando possível; não é possivel determinar valores de tamanho.|"display:inline"|
-|inline-block|permite as mesmas coisas que o "inline" porém também é possível modificar os valores de tamanho.|"display:inline-block"|
+| Tipo de Display | Significado                                                                                                                                                        | Modo de utilização     |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------- |
+| block           | o elemento passará a ocupar toda a largura disponível; diminuir o elemento resulta em uma margem não removível                                                     | "display:block"        |
+| inline          | o elemento ocupa o espaço necessário para visualização, permitindo que outro elemento fique ao lado quando possível; não é possivel determinar valores de tamanho. | "display:inline"       |
+| inline-block    | permite as mesmas coisas que o "inline" porém também é possível modificar os valores de tamanho.                                                                   | "display:inline-block" |
 
 ### Quiz: Formulário Módulo 3 CSS
 
@@ -332,7 +328,6 @@ Utilizar medidas relativas é muito útil quando se está criando sites com maio
 - **Utilizando porcentagem (%) como medida**:
 
 Quando utilizamos porcentagem (%) para definir um tamanho dentro do CSS, o tamanho final será relativo ao tamanho da sua tag mãe ("div").
-
 
 ```
 div{
@@ -437,11 +432,11 @@ Quando não especificamos os valores de estilização o navegador reconhece que 
 
 #### Tabela de diferentes CSS Reset
 
-|Nome|Como funciona|Download|
-|----|-------------|------|
-|HTML5 Boilerplate|-|[Link](https://html5boilerplate.com/)|
-|YUI3 CSS Reset|-|[Link](https://cssdeck.com/blog/scripts/yahoo-css-reset-yui-3/)|
-|Eric Meyer CSS Reset|-|[Link](http://meyerweb.com/eric/tools/css/reset/)|
+| Nome                 | Como funciona | Download                                                        |
+| -------------------- | ------------- | --------------------------------------------------------------- |
+| HTML5 Boilerplate    | -             | [Link](https://html5boilerplate.com/)                           |
+| YUI3 CSS Reset       | -             | [Link](https://cssdeck.com/blog/scripts/yahoo-css-reset-yui-3/) |
+| Eric Meyer CSS Reset | -             | [Link](http://meyerweb.com/eric/tools/css/reset/)               |
 
 ### Importar fontes externas
 
@@ -459,13 +454,13 @@ body {
 
 ### CSS Geral e CSS específico
 
-* **CSS Geral**:
+- **CSS Geral**:
 
 Criação de um arquivo css que defina valores padrões de todas as páginas do projeto.
 
 Embora a sua criação seja eficaz e necessária, um arquivo geral pode acabar se tornando muito extenso, fazendo com que muitas páginas tenham que fazer import de informações que não serão utilizadas por elas.
 
-* **CSS Específico**:
+- **CSS Específico**:
 
 Criação de um arquivo css que defina valores específicos da página em que será inserido.
 
@@ -481,30 +476,30 @@ Isso significa que é necessário priorizar e garantir a adequação das condiç
 
 De maneira geral, "display: flex" é utilizado para manipular o posicionamento de elementos de maneira **unidimensional**, ou seja, irá distribuir valores de maneira igual. Veja alguns exemplos abaixo:
 
-* **Valores horizontais**:
+- **Valores horizontais**:
 
 _justify-content_
 
-|Propriedade|Significado|
-|-----------|-----------|
-|_flex-start_|Valor padrão: todos os elementos ficam grudados uns aos outros à esquerda do flex container|
-|_flex-end_|Todos os elementos ficam grudados uns aos outros à direita do flex container|
-|_center_|Todos os elementos ficam grudados uns aos outros no centro do flex container|
-|_space-between_|O primeiro elemento fica totalmente à direita e o segundo elemento totalmente à equerda|
-|_space-around_|Cada elemento possui um espaçamento igual em ambos os lados, fazendo com que o elemento que esteja na direita possua um espaçamento maior à sua direita (o valor do space-around+valor pré-existente à sua direita) e o elemento que esteja na esquerda irá ter um espaçamento maior à sua esquerda|
-|_space-evenly_|Arruma o valor adicional do problema identificado no "space-around"|
+| Propriedade     | Significado                                                                                                                                                                                                                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _flex-start_    | Valor padrão: todos os elementos ficam grudados uns aos outros à esquerda do flex container                                                                                                                                                                                                         |
+| _flex-end_      | Todos os elementos ficam grudados uns aos outros à direita do flex container                                                                                                                                                                                                                        |
+| _center_        | Todos os elementos ficam grudados uns aos outros no centro do flex container                                                                                                                                                                                                                        |
+| _space-between_ | O primeiro elemento fica totalmente à direita e o segundo elemento totalmente à equerda                                                                                                                                                                                                             |
+| _space-around_  | Cada elemento possui um espaçamento igual em ambos os lados, fazendo com que o elemento que esteja na direita possua um espaçamento maior à sua direita (o valor do space-around+valor pré-existente à sua direita) e o elemento que esteja na esquerda irá ter um espaçamento maior à sua esquerda |
+| _space-evenly_  | Arruma o valor adicional do problema identificado no "space-around"                                                                                                                                                                                                                                 |
 
-* **Valores verticais**:
+- **Valores verticais**:
 
 _align-items_
 
-|Propriedade|Significado|
-|-----------|-----------|
-|_stretch_|Valor padrão: os elementos se esticam para que todos fiquem com a mesma altura|
-|_flex-start_|Todos os elementos ficam alinhados no topo do flex container|
-|_flex-end_|Todos os elementos ficam alinhados na base do flex container|
-|_center_|Os elementos ficam alinhados no meio do flex container|
-|_baseline_|Os elementos se alinham conforme o conteúdo textual de cada|
+| Propriedade  | Significado                                                                    |
+| ------------ | ------------------------------------------------------------------------------ |
+| _stretch_    | Valor padrão: os elementos se esticam para que todos fiquem com a mesma altura |
+| _flex-start_ | Todos os elementos ficam alinhados no topo do flex container                   |
+| _flex-end_   | Todos os elementos ficam alinhados na base do flex container                   |
+| _center_     | Os elementos ficam alinhados no meio do flex container                         |
+| _baseline_   | Os elementos se alinham conforme o conteúdo textual de cada                    |
 
 :::tip
 
@@ -545,22 +540,21 @@ Após essa análise, crie um documento "container.css" para arquivar valores que
 
 **Comentário**: Fazer um módulo apenas explicando como utilizar os diferentes tipos de medidas e como cada uma é importante para coisas diferentes.
 
-
 ### Display: grid
 
 Embora "display: flex" tenha se mostrado muito útil quando precisamos lidar com valores iguais, quando nos deparamos com situações em que o posicionamento precisa ser dado de maneira **bidimensional**, "flex" passa a não ser suficiente para estes casos.
 
 Por este motivo, quando formos lidar com situações que demandam posicionamento bidimensional, utilizamos "display: grid".
 
-Assim como "display: flex" irá criar um *flex container*, a utilização de "diplay grid" cria um *grid container*. Isso significa que cada um dos elementos irão ser posicionados uma coluna separada. Veja os exemplos abaixo:
+Assim como "display: flex" irá criar um _flex container_, a utilização de "diplay grid" cria um _grid container_. Isso significa que cada um dos elementos irão ser posicionados uma coluna separada. Veja os exemplos abaixo:
 
 Após determinar que "display: grid", adicione outras especificações que determinarão o posicionamento dos elementos
 
-|Propriedade|Significado|Exemplo|
-|-----------|-----------|-------|
-|**grid-template-columns**|Cada valor dentro dessa propriedade irá representar **uma** coluna|"grid-template-columns: 1fr 1fr 1fr" : 3 colunas em que cada uma ocupa 1 fração do espaço disponível|
-|**grid-template-rows**|Cada valor dentro dessa propriedade irá representar **uma** fileira|"grid-template-rows: 1fr 1fr" : 2 fileiras em que cada uma ocupa 1 fração do espaço disponível|
-|**grid-row**|Valor estabelecido para um elemento filho. Recebe dois valores: linha início e linha de término|"grid-row: span 2" : o valor "span" é utilizado para mesclar linhas e o "2" demonstra a quantidade de linhas que devem ser mescladas|
+| Propriedade               | Significado                                                                                     | Exemplo                                                                                                                              |
+| ------------------------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **grid-template-columns** | Cada valor dentro dessa propriedade irá representar **uma** coluna                              | "grid-template-columns: 1fr 1fr 1fr" : 3 colunas em que cada uma ocupa 1 fração do espaço disponível                                 |
+| **grid-template-rows**    | Cada valor dentro dessa propriedade irá representar **uma** fileira                             | "grid-template-rows: 1fr 1fr" : 2 fileiras em que cada uma ocupa 1 fração do espaço disponível                                       |
+| **grid-row**              | Valor estabelecido para um elemento filho. Recebe dois valores: linha início e linha de término | "grid-row: span 2" : o valor "span" é utilizado para mesclar linhas e o "2" demonstra a quantidade de linhas que devem ser mescladas |
 
 ### Quiz: Formulário do Módulo 5 do CSS
 
@@ -582,21 +576,21 @@ Para aprender mais sobre o Bootstrap basta visitar o website oficial: [GetBootst
 
 Alguns recursos disponibilizados são:
 
-* *Reset CSS*;
+- _Reset CSS_;
 
-* *Estilo visual base para uma diversa quantidade de tags*;
+- _Estilo visual base para uma diversa quantidade de tags_;
 
-* *Ícones*;
+- _Ícones_;
 
-* *Grids prontos para uso*;
+- _Grids prontos para uso_;
 
-* *Componentes CSS*;
+- _Componentes CSS_;
 
-* *Plugins JavaScript*;
+- _Plugins JavaScript_;
 
-* *Tudo Responsivo e mobile-first*;
+- _Tudo Responsivo e mobile-first_;
 
-* *Estilo e componentes básicos*
+- _Estilo e componentes básicos_
 
 ### Aplicação do Bootstrap
 
@@ -608,7 +602,7 @@ Para aplicar o Boostrap em seu projeto, basta importar através da seguinte linh
 
 Será a partir dessa linha que o Bootstrap já estará pronto para utilizar, além de já ser aplicado o reset disponibilizado.
 
-*Exemplo de classe*: **Jumbotron** - utilizado para estilizar um título com frase de abertura em destaque.
+_Exemplo de classe_: **Jumbotron** - utilizado para estilizar um título com frase de abertura em destaque.
 
 ### Utilizando Bootstrap no JavaScript: JQuery
 
@@ -629,125 +623,125 @@ Conclua o [formulário do Módulo 6](https://forms.gle/2ifuFhiVTM9R3xN19) para f
 
 ### Font
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**font-size**|px, em, rem, pt, %|Manipulação do _tamanho da fonte_|
-|**font-weight**|0 à 1000 porém depende da fonte utilizada|Manipulação do _peso da fonte_|
-|**font-style**|normal, italic, oblique| - |
-|**font-family**|serif, sans-serif, monospace, custom|Manipulação da _família da fonte_|
+| Propriedade     | Valores                                   | Significado                       |
+| --------------- | ----------------------------------------- | --------------------------------- |
+| **font-size**   | px, em, rem, pt, %                        | Manipulação do _tamanho da fonte_ |
+| **font-weight** | 0 à 1000 porém depende da fonte utilizada | Manipulação do _peso da fonte_    |
+| **font-style**  | normal, italic, oblique                   | -                                 |
+| **font-family** | serif, sans-serif, monospace, custom      | Manipulação da _família da fonte_ |
 
 ### Text
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**text-align**|left, center, right, justify|Manipulação do _alinhamento do texto_|
-|**text-transform**|capitalize, uppercase, lowercase, none|Manipulação da _capitalização do texto_|
-|**text-indent**|px, em, rem, %|Manipulação do _tamanho da indentação_ que deve ser colocado antes do texto|
+| Propriedade        | Valores                                | Significado                                                                 |
+| ------------------ | -------------------------------------- | --------------------------------------------------------------------------- |
+| **text-align**     | left, center, right, justify           | Manipulação do _alinhamento do texto_                                       |
+| **text-transform** | capitalize, uppercase, lowercase, none | Manipulação da _capitalização do texto_                                     |
+| **text-indent**    | px, em, rem, %                         | Manipulação do _tamanho da indentação_ que deve ser colocado antes do texto |
 
 ### Letter-spacing
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**letter-spacing**|px, em, rem, %, pt|Manipulação do espaçamento entre as letras|
+| Propriedade        | Valores            | Significado                                |
+| ------------------ | ------------------ | ------------------------------------------ |
+| **letter-spacing** | px, em, rem, %, pt | Manipulação do espaçamento entre as letras |
 
 ### Line-height
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**line-height**|px, em, rem, %, pt, sem unidade de medida|Manipulação da altura das linhas|
+| Propriedade     | Valores                                   | Significado                      |
+| --------------- | ----------------------------------------- | -------------------------------- |
+| **line-height** | px, em, rem, %, pt, sem unidade de medida | Manipulação da altura das linhas |
 
 ### Cor
 
 Diferentes maneiras de definir o valor da propriedade "color":
 
-|Valores|Significado|
-|-------|-----------|
-|**#RRGGBB**|Valor hexadecimal de uma cor. *Exemplo*: #f1f1f1|
-|**#RGB**|Valor hexadecimal simplificado. *Exemplo*: #fff|
-|**rgb(R, G, B)**|Valor RGB de 0 a 255. *Exemplo*: rgb(255, 0, 255)|
-|**#RRGGBBAA**|Valor hexadecimal com opacidade (alpha). *Exemplo*: #ff00ff00|
-|**rgba(R, G, B, A)**|Valor RGB com opacidade. *Exemplo*: rgba(255, 0, 255, 0.0)|
+| Valores              | Significado                                                   |
+| -------------------- | ------------------------------------------------------------- |
+| **#RRGGBB**          | Valor hexadecimal de uma cor. _Exemplo_: #f1f1f1              |
+| **#RGB**             | Valor hexadecimal simplificado. _Exemplo_: #fff               |
+| **rgb(R, G, B)**     | Valor RGB de 0 a 255. _Exemplo_: rgb(255, 0, 255)             |
+| **#RRGGBBAA**        | Valor hexadecimal com opacidade (alpha). _Exemplo_: #ff00ff00 |
+| **rgba(R, G, B, A)** | Valor RGB com opacidade. _Exemplo_: rgba(255, 0, 255, 0.0)    |
 
 ### Background
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**background-color**|hexadecimal, nome, rgb, rgba|Manipulação da _cor de fundo_|
-|**background-image**|url()|Inserção de _imagem de fundo_|
-|**background-size**|y, x/y, cover, contain, %, rem, px, em|Manipulação do _tamanho do plano de fundo_|
-|**background-repeat**|repeat, no-repeat|Manipulação de _repetição da imagem de fundo_|
-|**background-position**|top right bottom left, top px, bottom rem, right %|Manipulação da _posição do plano de fundo_|
+| Propriedade             | Valores                                            | Significado                                   |
+| ----------------------- | -------------------------------------------------- | --------------------------------------------- |
+| **background-color**    | hexadecimal, nome, rgb, rgba                       | Manipulação da _cor de fundo_                 |
+| **background-image**    | url()                                              | Inserção de _imagem de fundo_                 |
+| **background-size**     | y, x/y, cover, contain, %, rem, px, em             | Manipulação do _tamanho do plano de fundo_    |
+| **background-repeat**   | repeat, no-repeat                                  | Manipulação de _repetição da imagem de fundo_ |
+| **background-position** | top right bottom left, top px, bottom rem, right % | Manipulação da _posição do plano de fundo_    |
 
 ### Border
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**border**| espessura estilo cor|Inserção de uma borda em todo o elemento|
-|**border-top**|espessura estilo cor|Inserção de uma borda no topo do elemento|
-|**border-right**|espessura estilo cor|Inserção de uma borda na direita do elemento|
-|**border-bottom**|espessura estilo cor|Inserção de uma borda abaixo do elemento|
-|**border-left**|espessura estilo cor|Inserção de uma borda na esquerda do elemento|
+| Propriedade       | Valores              | Significado                                   |
+| ----------------- | -------------------- | --------------------------------------------- |
+| **border**        | espessura estilo cor | Inserção de uma borda em todo o elemento      |
+| **border-top**    | espessura estilo cor | Inserção de uma borda no topo do elemento     |
+| **border-right**  | espessura estilo cor | Inserção de uma borda na direita do elemento  |
+| **border-bottom** | espessura estilo cor | Inserção de uma borda abaixo do elemento      |
+| **border-left**   | espessura estilo cor | Inserção de uma borda na esquerda do elemento |
 
 ### Vertical-align
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**vertical-align**|baseline, top, middle, bottom|Alinhar verticalmente elementos inline ou inline-block|
+| Propriedade        | Valores                       | Significado                                            |
+| ------------------ | ----------------------------- | ------------------------------------------------------ |
+| **vertical-align** | baseline, top, middle, bottom | Alinhar verticalmente elementos inline ou inline-block |
 
 ### Width
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**width**|px, rem, em, %|Manipulação da _largura do elemento_|
-|**min-width**|px, rem, em, %|Manipulação da _largura mínima do elemento_|
-|**max-width**|px, rem, em, %|Manipulação da _largura máxima do elemento_|
+| Propriedade   | Valores        | Significado                                 |
+| ------------- | -------------- | ------------------------------------------- |
+| **width**     | px, rem, em, % | Manipulação da _largura do elemento_        |
+| **min-width** | px, rem, em, % | Manipulação da _largura mínima do elemento_ |
+| **max-width** | px, rem, em, % | Manipulação da _largura máxima do elemento_ |
 
 ### Height
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**height**|px, rem, em, %|Manipulação da _altura do elemento_|
-|**min-height**|px, rem, em, %|Manipulação da _altura mínima do elemento_|
-|**max-height**|px, rem, em, %|Manipulação da _altura máxima do elemento_|
+| Propriedade    | Valores        | Significado                                |
+| -------------- | -------------- | ------------------------------------------ |
+| **height**     | px, rem, em, % | Manipulação da _altura do elemento_        |
+| **min-height** | px, rem, em, % | Manipulação da _altura mínima do elemento_ |
+| **max-height** | px, rem, em, % | Manipulação da _altura máxima do elemento_ |
 
 ### Box-sizing
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**box-sizing**|border-box, content-box|Definição de qual _caixa do box model_ será utilizada|
+| Propriedade    | Valores                 | Significado                                           |
+| -------------- | ----------------------- | ----------------------------------------------------- |
+| **box-sizing** | border-box, content-box | Definição de qual _caixa do box model_ será utilizada |
 
 ### Overflow
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**overflow**|visible, hidden, scroll, auto|Manipulação dos _elementos internos que ultrapassam o espaço definido pela tag mãe_|
-|**overflow-x**|visible, hidden, scroll, auto|Manipulação dos _elementos internos que ultrapassam o espaço horizontal definido pela tag mãe|
-|**overflow-y**|visible, hidden, scroll, auto|Manipulação dos _elementos internos que ultrapassam o espaço vertical definido pela tag mãe|
+| Propriedade    | Valores                       | Significado                                                                                    |
+| -------------- | ----------------------------- | ---------------------------------------------------------------------------------------------- |
+| **overflow**   | visible, hidden, scroll, auto | Manipulação dos _elementos internos que ultrapassam o espaço definido pela tag mãe_            |
+| **overflow-x** | visible, hidden, scroll, auto | Manipulação dos \_elementos internos que ultrapassam o espaço horizontal definido pela tag mãe |
+| **overflow-y** | visible, hidden, scroll, auto | Manipulação dos \_elementos internos que ultrapassam o espaço vertical definido pela tag mãe   |
 
 ### Display
 
-|Propriedades|Valores|
-|------------|-------|
-|**display**|flex, block|
+| Propriedades | Valores     |
+| ------------ | ----------- |
+| **display**  | flex, block |
 
 ### Flex Container
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**flex-direction**|row, row-reverse, column, column-reverse|Definição da _direção dos flex itens_|
-|**flex-wrap**|wrap, nowrap, wrap-reverse|Definição da _quebra ou não quebra de linha_|
-|**flex-flow**|row nowrap,  row wrap, column wrap|Definição de um _atalho para as propriedades __flex-direction__ e __flex-wrap__|
-|**justify-content**|flex-start, flex-end, center, space-between, space-around|Definição do _alinhamento dos flex itens no container de acordo com a direção_|
-|**align-items**|stretch, flex-start, flex-end, center, baseline|Definição do _alinhamento dos flex itens de acordo com o eixo do container_|
-|**align-content**|stretch, flex-start, flex-end, center, space-between, space-around|Definição do _alinhamento do container em relação ao eixo vertical_|
+| Propriedade         | Valores                                                            | Significado                                                                      |
+| ------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| **flex-direction**  | row, row-reverse, column, column-reverse                           | Definição da _direção dos flex itens_                                            |
+| **flex-wrap**       | wrap, nowrap, wrap-reverse                                         | Definição da _quebra ou não quebra de linha_                                     |
+| **flex-flow**       | row nowrap, row wrap, column wrap                                  | Definição de um \_atalho para as propriedades **flex-direction** e **flex-wrap** |
+| **justify-content** | flex-start, flex-end, center, space-between, space-around          | Definição do _alinhamento dos flex itens no container de acordo com a direção_   |
+| **align-items**     | stretch, flex-start, flex-end, center, baseline                    | Definição do _alinhamento dos flex itens de acordo com o eixo do container_      |
+| **align-content**   | stretch, flex-start, flex-end, center, space-between, space-around | Definição do _alinhamento do container em relação ao eixo vertical_              |
 
 ### Flex item
 
-|Propriedade|Valores|Significado|
-|-----------|-------|-----------|
-|**flex-grow**|número (ex: 0, 1, ...)|Definição da _habilidade de um flex item crescer|
-|**flex-basis**|auto, unidade (px, %, número, etc), 0|Definição do _tamanho inicial do flex item_|
-|**flex-shrink**|0, 1, número|Definição da _capacidade de redução do tamanho do item_|
-|**flex**|1, 0 1 auto (padrão), etc|Definição do _atalho para as propriedades flex-grow, flex-shrink e flex-basis_|
-|**order**|número|Modificação da _ordem dos flex itens_|
-|**align-self**|auto, flex-start, flex-end, center, baseline, stretch|Definição do _alinhamento específico de um único flex item_|
+| Propriedade     | Valores                                               | Significado                                                                    |
+| --------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **flex-grow**   | número (ex: 0, 1, ...)                                | Definição da \_habilidade de um flex item crescer                              |
+| **flex-basis**  | auto, unidade (px, %, número, etc), 0                 | Definição do _tamanho inicial do flex item_                                    |
+| **flex-shrink** | 0, 1, número                                          | Definição da _capacidade de redução do tamanho do item_                        |
+| **flex**        | 1, 0 1 auto (padrão), etc                             | Definição do _atalho para as propriedades flex-grow, flex-shrink e flex-basis_ |
+| **order**       | número                                                | Modificação da _ordem dos flex itens_                                          |
+| **align-self**  | auto, flex-start, flex-end, center, baseline, stretch | Definição do _alinhamento específico de um único flex item_                    |

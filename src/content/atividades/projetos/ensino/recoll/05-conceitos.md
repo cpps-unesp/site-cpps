@@ -12,15 +12,15 @@ O Recoll Desktop Search é um programa de indexação automática e integral de 
 
 A indexação pode ser caracterizada como o processo de inserção de um documento em um índice. Sendo que o índice pode ser entendido como um banco de dados, o qual será acessado quando as buscas forem realizadas no Recoll.
 
-Por padrão, o Recoll gera um índice único que armazena todos os documentos que estarão disponíveis para pesquisa. Ele denomina este processo de criação de múltiplos índices (multiple indexes). Várias bases de dados do LabRI podem ser pesquisadas a partir da seleção dos índices listados em “External Index Dialog” que está localizado no item “__Query__” do menu. As bases de dados disponíveis do Recoll podem ser encontradas [aqui](https://docs.google.com/document/d/1VAnENddRJThWD8rxhP6V97I6x4KzL-KfJVwWo45l-OE/edit).  😉
+Por padrão, o Recoll gera um índice único que armazena todos os documentos que estarão disponíveis para pesquisa. Ele denomina este processo de criação de múltiplos índices (multiple indexes). Várias bases de dados do LabRI podem ser pesquisadas a partir da seleção dos índices listados em “External Index Dialog” que está localizado no item “**Query**” do menu. As bases de dados disponíveis do Recoll podem ser encontradas [aqui](https://docs.google.com/document/d/1VAnENddRJThWD8rxhP6V97I6x4KzL-KfJVwWo45l-OE/edit). 😉
 
 ### Tipos de dados
 
-* **Metadados**
+- **Metadados**
 
 👉 São dados que descrevem um determinado dado, para assim tornar mais fácil a sua identificação.
 
-* **Dados**
+- **Dados**
 
 👉 Podem ser entendidos como o conjunto de metadados disponíveis, ao inserirmos determinadas informações (metadados), em um arquivo, estamos produzindo um dado. Por exemplo, uma notícia é um dado que contém determinados metadados, como é visto na imagem abaixo.
 
@@ -28,11 +28,11 @@ Por padrão, o Recoll gera um índice único que armazena todos os documentos qu
 
 ### Formatos de arquivos
 
-* A identificação do formato dos arquivos é importante para uma adequada seleção do programa que auxiliará na análise dos dados;
+- A identificação do formato dos arquivos é importante para uma adequada seleção do programa que auxiliará na análise dos dados;
 
-* Arquivos no formato **.pdf, .docx, .odt, .html, .txt, .epub ou similares**, armazenam informações não-estruturadas e programas como o **Recoll** são ferramentas boas para auxiliar análise dos dados contidos nesses formatos de arquivos.
+- Arquivos no formato **.pdf, .docx, .odt, .html, .txt, .epub ou similares**, armazenam informações não-estruturadas e programas como o **Recoll** são ferramentas boas para auxiliar análise dos dados contidos nesses formatos de arquivos.
 
-* O Recoll **não** é um programa adequado para análise de dados armazenados  nos formatos **.xlsx, .csv, .json, .sql, .ods**. Programas como **Microsoft Excel ou Libre Office Calc** podem ser utilizados para .xlsx e .csv ou .ods. Já o **.json**, por se tratar do formato JavaScript, é necessário um visualizador do mesmo, como exemplo o **WordPad**. Por fim **.sql** é uma linguagem de banco de dados, sendo necessário um programa como **MySQL**
+- O Recoll **não** é um programa adequado para análise de dados armazenados nos formatos **.xlsx, .csv, .json, .sql, .ods**. Programas como **Microsoft Excel ou Libre Office Calc** podem ser utilizados para .xlsx e .csv ou .ods. Já o **.json**, por se tratar do formato JavaScript, é necessário um visualizador do mesmo, como exemplo o **WordPad**. Por fim **.sql** é uma linguagem de banco de dados, sendo necessário um programa como **MySQL**
 
 :::info
 

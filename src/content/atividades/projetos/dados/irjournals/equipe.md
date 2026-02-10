@@ -1,6 +1,6 @@
 ---
-title: "Equipe IRjournalsBR"
-description: "Conheça a equipe do projeto NewsCloud."
+title: 'Equipe IRjournalsBR'
+description: 'Conheça a equipe do projeto NewsCloud.'
 sidebar:
   order: 2
 ---
@@ -28,7 +28,6 @@ sidebar:
   </div>
 </div>
 
-
 <!-- Rafael de Almeida -->
 <div style="text-align: center; margin-bottom: 50px;">
   <h3 style="margin-bottom: 5px;">Rafael de Almeida</h3>
@@ -44,9 +43,6 @@ sidebar:
   </div>
 </div>
 
-
-
-
 <hr style="width: 50%; margin: 0 auto;">
 
 <hr style="width: 50%; margin: 0 auto;">
@@ -54,6 +50,7 @@ sidebar:
 <br><br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

@@ -3,6 +3,7 @@ id: solicitar-acesso
 title: Solicitar Acesso
 sidebar_label: Solicitar Acesso
 ---
+
 :::tip
 Esta pagina reúne perguntas relativas a solicitação de acesso a Estação Remota de Trabalho
 :::
@@ -16,7 +17,6 @@ Esta pagina reúne perguntas relativas a solicitação de acesso a Estação Rem
   - PPGRI San Tiago Dantas (UNESP, UNICAMP, PUC-SP)
   - PPG TerritoriAL
 - Aos colaboradores dos [projetos](/projetos/) desenvolvidos pelo LabRI/UNESP e pelo IPPRI/UNESP
-
 
 ## Como solicitar acesso?
 

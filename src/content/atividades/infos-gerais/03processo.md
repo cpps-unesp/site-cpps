@@ -6,12 +6,12 @@ slug: processo
 
 ### Oportunidades de Estágio
 
-:::note 
+:::note
 ATUALMENTE, A VAGA DE ESTÁGIO REMUNERADO ESTÁ PREENCHIDA
 [PARA MAIS DETALHES CLIQUE NESTE LINK](/atividades/geral/info/processo-seletivo)
 :::
 
-O Laboratório de Relações Internacionais da UNESP (LabRI/UNESP) oferece uma vaga de estágio remunerado via edital. Quando o processo seletivo para esta vaga esta aberto divulgamos no sistema interno da UNESP, em nossas redes sociais, em [nosso site](/atividades/geral/info/processo-seletivo) e também no site do [Departamento de Relações Internacionais (DERI)](https://www.franca.unesp.br/#!/selecaoestagiariolabri) da Unesp-Franca. 
+O Laboratório de Relações Internacionais da UNESP (LabRI/UNESP) oferece uma vaga de estágio remunerado via edital. Quando o processo seletivo para esta vaga esta aberto divulgamos no sistema interno da UNESP, em nossas redes sociais, em [nosso site](/atividades/geral/info/processo-seletivo) e também no site do [Departamento de Relações Internacionais (DERI)](https://www.franca.unesp.br/#!/selecaoestagiariolabri) da Unesp-Franca.
 
 A pessoa que ocupa a vaga remunerada pode permanecer no estágio por até dois anos.
 

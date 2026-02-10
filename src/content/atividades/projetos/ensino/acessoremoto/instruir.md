@@ -11,7 +11,7 @@ Nesta página você encontra as seguintes instruções para:
 - Ativar o acesso a Estação Remota de Trabalho via Chrome Remote Desktop (CRD)
 - Funcionalidades do CRD
 - Configurações iniciais do seu usuário pessoal na estação remota de trabalho
-:::
+  :::
 
 :::info
 
@@ -19,9 +19,7 @@ Tempo total estimado para realizar as instruções indicadas: 30 minutos
 
 :::
 
-
 ## Habilitar Identificação por dois fatores
-
 
 Para acessar a Estação Remota de Trabalho é necessário inicialmente realizar os passos indicados abaixo:
 
@@ -43,19 +41,16 @@ Para acessar a Estação Remota de Trabalho é necessário inicialmente realizar
 
 </details>
 
-
 - **[Habilitar Identificação por dois fatores (clique aqui para assistir o video)](https://youtu.be/ncNyvDqn4iQ)**
 
 - **Atenção:** Caso você tenha problemas com o PowerShell, você pode utilizar o terminal de extensão do Google Chrome chamado Secure Shell. [Clique aqui](https://youtu.be/z3GmizNhmig) para acessar o vídeo de instruções do Secure Shell no canal do LabRI/UNESP.
-
-
 
 <details>
 <summary>Indicamos aqui, textualmente, os principais pontos indicados no vídeo acima</summary>
 
 - Abra o terminal (em distribuições linux ou no macOS) ou o powerShell (no windows)
 - Realize o acesso ssh digitando: `ssh seu_usuario@endereço_servidor`
-  - troque o usuario e o endereço_ do _servidor pelos que foram enviados por email para você
+  - troque o usuario e o endereço\_ do \_servidor pelos que foram enviados por email para você
 - Digite a senha provisória enviada por email (ela será pedida duas vezes).
   - Lembre-se que ao digitar a senha no PowerShell ou no Terminal, ela não aparece na tela por questões de segurança. Não se preocupe se você não conseguir ver a senha enquanto a digita. Você pode estar acostumado a ver asteriscos ou pontos em outros lugares ao digitar uma senha, mas no terminal nada é mostrado. Assim, você pode ignorar que o terminal pareça travado, **apenas digite sua senha e pressione Enter (repita este processo se necessário)**.
 - Digite uma senha pessoal e intransferível (somente você saberá essa senha)
@@ -67,9 +62,7 @@ Para acessar a Estação Remota de Trabalho é necessário inicialmente realizar
 
 </details>
 
-
-
-## Ativar  acesso via CRD
+## Ativar acesso via CRD
 
 Agora que você já mudou a senha provisória e habilitou o duplo fator de autenticação. Vamos para a etapa de ativar ou reativar o Chrome Remote Desktop (CRD)
 
@@ -82,7 +75,7 @@ Abaixo indicamos textualmente os principais pontos indicados no vídeo acima:
 
 - Abra o secure Shell (extensão Chrome Store) ou terminal (em distribuições linux ou no macOS) ou o [powerShell (no windows)](https://youtu.be/Gbs55DTZuGM)
 - Realize o acesso ssh digitando: `ssh seu_usuario@endereço_servidor`
-  - troque o usuario e o endereço_ do _servidor pelos que foram enviados por email para você
+  - troque o usuario e o endereço\_ do \_servidor pelos que foram enviados por email para você
 - Digite sua senha pessoal e intransferível
   - Lembre-se que ao digitar a senha no PowerShell ou no Terminal, ela não aparece na tela por questões de segurança. Não se preocupe se você não conseguir ver a senha enquanto a digita. Você pode estar acostumado a ver asteriscos ou pontos em outros lugares ao digitar uma senha, mas no terminal nada é mostrado. Assim, você pode ignorar que o terminal pareça travado, **apenas digite sua senha e pressione Enter (repita este proceso se necessário)**.
 - Digite o código de verificação indicado no **Google Authenticator** ([Android](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=pt_BR&gl=US) | [Apple](https://apps.apple.com/br/app/google-authenticator/id388497605)) ou **FreeOTP** ([Android](https://play.google.com/store/apps/details?id=org.fedorahosted.freeotp&hl=pt_BR&gl=US) | [Apple](https://apps.apple.com/us/app/freeotp-authenticator/id872559395))
@@ -92,14 +85,12 @@ Abaixo indicamos textualmente os principais pontos indicados no vídeo acima:
 - No powerShell ou no terminal (linux ou MacOS) digite `add-chrome-remote-desktop`, de um espaço, cole a chave copiada e de `enter`
   - Exemplificação:
 
-   ```add-chrome-remote-desktop DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AVHEtk4NEdBqUxUZkQ71FLLuBThmFoMeZialyg_sPq3y8ZFn2qnHR9HHm_rqt0ITm_0BYA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)```
+  `add-chrome-remote-desktop DISPLAY= /opt/google/chrome-remote-desktop/start-host --code="4/0AVHEtk4NEdBqUxUZkQ71FLLuBThmFoMeZialyg_sPq3y8ZFn2qnHR9HHm_rqt0ITm_0BYA" --redirect-url="https://remotedesktop.google.com/_/oauthredirect" --name=$(hostname)`
 
 - Indique um PIN de no minimo 6 digitos
 - Quando por pedido uma senha aperte `ctrl` + `c`
 
 </details>
-
-
 
 ## Funcionalidades
 
@@ -125,7 +116,6 @@ Para realizar esses ajustes, assista aos seguintes vídeos:
 
 - **[Configurar teclado no acesso remoto](https://youtu.be/TNE2lFU1fCM)**
 - **[Criar atalhos na área de trabalho](https://youtu.be/4JAw_E2Dv2E)**
-
 
 # Material de apoio
 

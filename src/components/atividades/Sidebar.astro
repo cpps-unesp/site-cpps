@@ -21,8 +21,8 @@ function isActive(url?: string) {
   if (!url) return false;
   if (url.startsWith('http')) return false;
   const resolvedUrl = buildUrl(url) ?? url;
-  const normalizedUrl = resolvedUrl.replace(/\/$/, "");
-  const normalizedPath = currentPath.replace(/\/$/, "");
+  const normalizedUrl = resolvedUrl.replace(/\/$/, '');
+  const normalizedPath = currentPath.replace(/\/$/, '');
   return normalizedPath === normalizedUrl;
 }
 
@@ -33,66 +33,83 @@ function isExternal(url?: string) {
 function hasActiveChild(item: SidebarItem): boolean {
   if (item.url && isActive(item.url)) return true;
   if (item.items) {
-    return item.items.some(child => hasActiveChild(child));
+    return item.items.some((child) => hasActiveChild(child));
   }
   return false;
 }
 ---
 
 <ul class={`space-y-1 ${level > 0 ? 'ml-4 border-l border-base-300 pl-4 mt-1' : ''}`}>
-  {items.map((item) => (
-    <li>
-      {item.items && item.items.length > 0 ? (
-        <details open={hasActiveChild(item) || item.collapsed === false} class="group/details">
-          <summary class="flex items-center justify-between py-1.5 px-2 rounded-lg cursor-pointer hover:bg-base-200 transition-colors list-none [&::-webkit-details-marker]:hidden">
-            {item.url ? (
-               <a
-                href={buildUrl(item.url)}
-                target={isExternal(item.url) ? "_blank" : undefined}
-                rel={isExternal(item.url) ? "noopener noreferrer" : undefined}
-                class={`text-sm transition-colors hover:text-primary flex items-center gap-1 ${
-                  isActive(item.url) ? 'text-primary font-bold active' : 'text-base-content/70'
-                }`}
+  {
+    items.map((item) => (
+      <li>
+        {item.items && item.items.length > 0 ? (
+          <details open={hasActiveChild(item) || item.collapsed === false} class="group/details">
+            <summary class="hover:bg-base-200 flex cursor-pointer list-none items-center justify-between rounded-lg px-2 py-1.5 transition-colors [&::-webkit-details-marker]:hidden">
+              {item.url ? (
+                <a
+                  href={buildUrl(item.url)}
+                  target={isExternal(item.url) ? '_blank' : undefined}
+                  rel={isExternal(item.url) ? 'noopener noreferrer' : undefined}
+                  class={`hover:text-primary flex items-center gap-1 text-sm transition-colors ${
+                    isActive(item.url) ? 'text-primary active font-bold' : 'text-base-content/70'
+                  }`}
+                >
+                  {item.label}
+                  {isExternal(item.url) && (
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50" />
+                  )}
+                </a>
+              ) : (
+                <span
+                  class={`text-sm font-semibold ${level === 0 ? 'text-base-content/40 tracking-wider uppercase' : 'text-base-content/70'}`}
+                >
+                  {item.label}
+                </span>
+              )}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-4 w-4 opacity-50 transition-transform group-open/details:rotate-180"
+                viewBox="0 0 20 20"
+                fill="currentColor"
               >
-                {item.label}
-                {isExternal(item.url) && <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50"></i>}
-              </a>
-            ) : (
-              <span class={`text-sm font-semibold ${level === 0 ? 'uppercase tracking-wider text-base-content/40' : 'text-base-content/70'}`}>
-                {item.label}
-              </span>
-            )}
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 opacity-50 group-open/details:rotate-180 transition-transform" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-            </svg>
-          </summary>
-          <div class="mt-1">
-            <Astro.self items={item.items} currentPath={currentPath} level={level + 1} />
-          </div>
-        </details>
-      ) : (
-        item.url ? (
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </summary>
+            <div class="mt-1">
+              <Astro.self items={item.items} currentPath={currentPath} level={level + 1} />
+            </div>
+          </details>
+        ) : item.url ? (
           <a
             href={buildUrl(item.url)}
-            target={isExternal(item.url) ? "_blank" : undefined}
-            rel={isExternal(item.url) ? "noopener noreferrer" : undefined}
-            class={`flex items-center justify-between py-1.5 px-2 rounded-lg text-sm transition-colors hover:bg-base-200 hover:text-primary ${
+            target={isExternal(item.url) ? '_blank' : undefined}
+            rel={isExternal(item.url) ? 'noopener noreferrer' : undefined}
+            class={`hover:bg-base-200 hover:text-primary flex items-center justify-between rounded-lg px-2 py-1.5 text-sm transition-colors ${
               isActive(item.url)
-                ? 'bg-primary/10 text-primary font-bold active'
+                ? 'bg-primary/10 text-primary active font-bold'
                 : 'text-base-content/70'
             }`}
           >
             {item.label}
-            {isExternal(item.url) && <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50"></i>}
+            {isExternal(item.url) && (
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-50" />
+            )}
           </a>
         ) : (
-          <span class={`block py-1.5 px-2 text-xs font-semibold uppercase tracking-wider text-base-content/40 ${level === 0 ? 'mt-4 first:mt-0' : ''}`}>
+          <span
+            class={`text-base-content/40 block px-2 py-1.5 text-xs font-semibold tracking-wider uppercase ${level === 0 ? 'mt-4 first:mt-0' : ''}`}
+          >
             {item.label}
           </span>
-        )
-      )}
-    </li>
-  ))}
+        )}
+      </li>
+    ))
+  }
 </ul>
 
 <style>

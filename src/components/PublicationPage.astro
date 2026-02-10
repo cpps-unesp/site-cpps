@@ -14,15 +14,17 @@ const { lang, slug } = Astro.props;
 const locale = getTranslations(lang);
 
 const allPublications = await getCollection('publicacoes');
-const relatedPubs = allPublications.filter(p => p.slug === slug || p.id === slug || p.id === `${slug}.md` || p.id === `${slug}.mdx`);
+const relatedPubs = allPublications.filter(
+  (p) => p.slug === slug || p.id === slug || p.id === `${slug}.md` || p.id === `${slug}.mdx`
+);
 
-const availableLangs = relatedPubs.map(p => p.data.lang);
+const availableLangs = relatedPubs.map((p) => p.data.lang);
 const isTranslationMissing = relatedPubs.length > 0 && !availableLangs.includes(lang);
 
-let publication = relatedPubs.find(p => p.data.lang === lang);
+let publication = relatedPubs.find((p) => p.data.lang === lang);
 
 if (!publication && relatedPubs.length > 0) {
-  publication = relatedPubs.find(p => p.data.lang === 'pt') || relatedPubs[0];
+  publication = relatedPubs.find((p) => p.data.lang === 'pt') || relatedPubs[0];
 }
 
 if (!publication) {
@@ -49,83 +51,100 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
   identidade={locale.identidade}
   githubPath={`src/content/publicacoes/${publication.id}`}
 >
-  {isTranslationMissing && (
-    <TranslationWarning
-      availableLangs={availableLangs}
-      currentLang={lang}
-      texts={locale.texts}
-    />
-  )}
-  <article class="max-w-screen-xl mx-auto px-4 md:px-8 py-16">
-    <header class="mb-16 border-b border-base-200 pb-12">
-      <div class="flex items-center gap-4 mb-6">
+  {
+    isTranslationMissing && (
+      <TranslationWarning availableLangs={availableLangs} currentLang={lang} texts={locale.texts} />
+    )
+  }
+  <article class="mx-auto max-w-screen-xl px-4 py-16 md:px-8">
+    <header class="border-base-200 mb-16 border-b pb-12">
+      <div class="mb-6 flex items-center gap-4">
         <a
           href={`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`}
-          class="bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-primary/20 hover:bg-primary/20 transition-colors"
+          class="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 rounded-full border px-3 py-1 text-[10px] font-black tracking-widest uppercase transition-colors"
         >
           {typeLabel}
         </a>
         <span class="text-base-content/40 text-sm font-medium">{formattedDate}</span>
       </div>
 
-      <h1 class="text-4xl md:text-6xl font-black text-base-content mb-8 leading-tight tracking-tight publication-title">
+      <h1
+        class="text-base-content publication-title mb-8 text-4xl leading-tight font-black tracking-tight md:text-6xl"
+      >
         {data.title}
       </h1>
 
-      <div class="grid lg:grid-cols-12 gap-12">
+      <div class="grid gap-12 lg:grid-cols-12">
         <div class="lg:col-span-8">
-           <p class="text-xl md:text-2xl text-base-content/70 leading-relaxed font-medium italic mb-10 border-l-4 border-primary/20 pl-8">
+          <p
+            class="text-base-content/70 border-primary/20 mb-10 border-l-4 pl-8 text-xl leading-relaxed font-medium italic md:text-2xl"
+          >
             {data.summary}
           </p>
 
-          <div class="flex flex-wrap gap-3 mb-8">
-            <span class="text-[10px] font-black uppercase text-base-content/30 w-full mb-1 tracking-widest">{locale.publicacoes.keywords}</span>
-            {data.tags.map((tag: string) => (
-              <a
-                href={`/${lang}/publicacoes?tag=${encodeURIComponent(tag)}`}
-                class="bg-base-200 text-base-content/60 text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-primary hover:text-white transition-all shadow-sm"
-              >
-                #{tag}
-              </a>
-            ))}
+          <div class="mb-8 flex flex-wrap gap-3">
+            <span
+              class="text-base-content/30 mb-1 w-full text-[10px] font-black tracking-widest uppercase"
+              >{locale.publicacoes.keywords}</span
+            >
+            {
+              data.tags.map((tag: string) => (
+                <a
+                  href={`/${lang}/publicacoes?tag=${encodeURIComponent(tag)}`}
+                  class="bg-base-200 text-base-content/60 hover:bg-primary rounded-lg px-3 py-1.5 text-xs font-semibold shadow-sm transition-all hover:text-white"
+                >
+                  #{tag}
+                </a>
+              ))
+            }
           </div>
         </div>
 
         <div class="lg:col-span-4">
-          <div class="bg-base-200/50 p-8 rounded-3xl h-fit border border-base-300 shadow-inner">
-            <h3 class="text-[10px] font-black uppercase text-base-content/40 mb-5 tracking-widest pl-1">{locale.publicacoes.authors}</h3>
+          <div class="bg-base-200/50 border-base-300 h-fit rounded-3xl border p-8 shadow-inner">
+            <h3
+              class="text-base-content/40 mb-5 pl-1 text-[10px] font-black tracking-widest uppercase"
+            >
+              {locale.publicacoes.authors}
+            </h3>
             <ul class="space-y-4">
-              {data.authors.map((author: string) => (
-                <li>
-                  <a
-                    href={`/${lang}/publicacoes?author=${encodeURIComponent(author)}`}
-                    class="text-base font-bold text-base-content hover:text-primary hover:underline transition-colors flex items-center gap-2"
-                  >
-                    <i class="fa-solid fa-user text-xs opacity-30"></i>
-                    {author}
-                  </a>
-                </li>
-              ))}
+              {
+                data.authors.map((author: string) => (
+                  <li>
+                    <a
+                      href={`/${lang}/publicacoes?author=${encodeURIComponent(author)}`}
+                      class="text-base-content hover:text-primary flex items-center gap-2 text-base font-bold transition-colors hover:underline"
+                    >
+                      <i class="fa-solid fa-user text-xs opacity-30" />
+                      {author}
+                    </a>
+                  </li>
+                ))
+              }
             </ul>
 
-            {data.pdf_url && (
-              <div class="mt-10 pt-8 border-t border-base-300/50">
-                <a href={data.pdf_url} target="_blank" class="btn btn-error btn-block gap-3 text-white font-black shadow-lg shadow-error/20">
-                  <i class="fa-solid fa-file-pdf text-lg"></i>
-                  {locale.publicacoes.downloadPdf}
-                </a>
-              </div>
-            )}
+            {
+              data.pdf_url && (
+                <div class="border-base-300/50 mt-10 border-t pt-8">
+                  <a
+                    href={data.pdf_url}
+                    target="_blank"
+                    class="btn btn-error btn-block shadow-error/20 gap-3 font-black text-white shadow-lg"
+                  >
+                    <i class="fa-solid fa-file-pdf text-lg" />
+                    {locale.publicacoes.downloadPdf}
+                  </a>
+                </div>
+              )
+            }
           </div>
         </div>
       </div>
     </header>
 
-    <div class="prose prose-lg max-w-none
-      prose-headings:text-primary prose-headings:font-black prose-headings:tracking-tight
-      prose-p:text-base-content/80 prose-p:leading-relaxed prose-p:text-justify
-      prose-a:text-primary prose-a:font-bold hover:prose-a:underline
-      prose-img:rounded-3xl prose-img:shadow-2xl">
+    <div
+      class="prose prose-lg prose-headings:text-primary prose-headings:font-black prose-headings:tracking-tight prose-p:text-base-content/80 prose-p:leading-relaxed prose-p:text-justify prose-a:text-primary prose-a:font-bold hover:prose-a:underline prose-img:rounded-3xl prose-img:shadow-2xl max-w-none"
+    >
       <Content />
     </div>
   </article>

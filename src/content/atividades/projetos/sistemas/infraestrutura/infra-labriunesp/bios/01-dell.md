@@ -6,7 +6,6 @@ sidebar_label: DELL
 
 - Para acessar a BIOS dos PCs Dell do LabRI/UNESP, ligue o computador e aperte consecutivamente a tecla F2.
 
-
 ```
 System Information
         Manufacturer: Dell Inc.
@@ -14,13 +13,12 @@ System Information
 
 ```
 
-
 ### Como modificar a prioridade de boot
 
 1. Com o computador desligado, plugue o pendrive. Ligue-o e acesse a BIOS.
 
 2. Clique em Boot Configuration. Na lista, clique nas setas até o pendrive ser a primeira opção.
-![bios1](/imagens/logos/logo-cpps-unesp.png)
+   ![bios1](/imagens/logos/logo-cpps-unesp.png)
 
 3. Clique em "Apply Changes" e "Exit". O computador irá iniciar pelo pendrive.
 

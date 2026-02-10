@@ -6,13 +6,13 @@ sidebar_label: Informações Estáticas
 
 Esta página tem como objetivo indicar onde se localizam as informações estáticas do site LabRI/UNESP (imagens, pdfs e afins)
 
-------
+---
 
 ## Static
 
-- A pasta *website>static* contem duas subpastas: **arquivos** e **img**. A primeira se refere aos *PDFs* e a segunda as *imagens* utilizadas no site do Labri/UNESP
+- A pasta _website>static_ contem duas subpastas: **arquivos** e **img**. A primeira se refere aos _PDFs_ e a segunda as _imagens_ utilizadas no site do Labri/UNESP
 
-- Para adicionar um **PDF** a pasta "website>static>arquivos" siga o padrão *DATA-LABRI-NÚMERO DO CADERNO.pdf* como indicado na imagem a seguir
+- Para adicionar um **PDF** a pasta "website>static>arquivos" siga o padrão _DATA-LABRI-NÚMERO DO CADERNO.pdf_ como indicado na imagem a seguir
 
 - A data descrita no nome do arquivo deve seguir o formato ANO-MÊS-DIA
 
@@ -22,14 +22,14 @@ Esta página tem como objetivo indicar onde se localizam as informações estát
 
 ![img](/imagens/logos/logo-cpps-unesp.png)
 
-- As fotos da equipe de colaboradores e estagiários do LabRI/UNESP estão localizadas na pasta "equipe" sempre seguindo o padrão *NOME-SOBRENOME.jpg*
+- As fotos da equipe de colaboradores e estagiários do LabRI/UNESP estão localizadas na pasta "equipe" sempre seguindo o padrão _NOME-SOBRENOME.jpg_
 
 - É importante se atentar para a proporção das fotos da equipe (quadrado de lados iguais) para evitar que a imagem fique distorcida. Geralmente o tamanho das imagens utilizadas é 600x600 pixels, no formato jpg ou png
 
-- Caso queira alterar as imagens da equipe de um grupo de extensão ou de pesquisa específico procure a **subpasta correspondente** no local *static>img*
+- Caso queira alterar as imagens da equipe de um grupo de extensão ou de pesquisa específico procure a **subpasta correspondente** no local _static>img_
 
-- Para alterar logos e ícones do site do LabRI utilize o formato padrão **.svg** ou **.png** de imagens com o *fundo transparente*
+- Para alterar logos e ícones do site do LabRI utilize o formato padrão **.svg** ou **.png** de imagens com o _fundo transparente_
 
-- Os ícones das redes sociais estão localizados em *static>img>social*
+- Os ícones das redes sociais estão localizados em _static>img>social_
 
-------
+---

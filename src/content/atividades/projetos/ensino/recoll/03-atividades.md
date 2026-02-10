@@ -4,8 +4,8 @@ title: Atividades Realizadas Recoll
 sidebar_label: Atividades Realizadas
 ---
 
-|Data|Atividades Realizadas|Presentes|
-|---|---|---|
+| Data | Atividades Realizadas | Presentes |
+| ---- | --------------------- | --------- |
 
 ### Autoria
 

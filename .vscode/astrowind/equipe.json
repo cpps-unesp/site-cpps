@@ -1,85 +1,83 @@
-{ 
-        "Murilo_Gaspardo": {
-      "ordem": 1,
-      "foto": "",
-      "rede1": "http://lattes.cnpq.br/7249928800890408",
-      "icone1": "/imagens/logos/lattes_icon.svg",
-      "rede2": "", 
-      "icone2": ""
-    },
-        "Marcelo_Mariano": {
-      "ordem": 2,
-      "foto": "",
-      "rede1": "http://lattes.cnpq.br/3505849964932313",
-      "icone1": "/imagens/logos/lattes_icon.svg",
-      "rede2": "",
-      "icone2": ""
-    },
-        "Thais_Amoroso": {
-      "ordem": 3,
-      "foto": "",
-      "rede1": " http://lattes.cnpq.br/1531037509340384",
-      "icone1": "/imagens/logos/lattes_icon.svg",
-      "rede2": "",
-      "icone2": ""
-    },
-        "Rafael_Almeida": {
-      "ordem": 4,
-      "foto": "/imagens/equipe/rafael_almeida.jpeg",
-      "rede1": " http://lattes.cnpq.br/5174307461578307",
-      "icone1": "/imagens/logos/lattes_icon.svg",
-      "rede2": "https://www.linkedin.com/in/rafaelrdealmeida/",
-      "icone2": "/imagens/logos/linkedin_icon2.svg"
-    },
-        "Joao_Vidal": {
-      "ordem": 5,
-      "foto": "/imagens/equipe/Joao_Vidal.jpg",
-      "rede1": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
-      "icone1": "/imagens/logos/linkedin_icon2.svg",
-      "rede2": "https://www.instagram.com/_vidaljp/",
-      "icone2": ""
-    },
-       "Caio_Palombo": {
-      "ordem": 6,
-      "foto": "/imagens/equipe/caio_tomaz.png",
-      "rede1": "https://www.linkedin.com/in/caio-t-palomvo2664/",
-      "icone1": "/imagens/logos/linkedin_icon2.svg",
-      "rede2": "https://www.instagram.com/Caio_2664/",
-      "icone2": "/imagens/logos/instagram_icon_cinza.svg"
-    },
-        "Ligia_Simplicio": {
-      "ordem": 7,
-      "foto": "/imagens/equipe/ligia_simplicio.jpeg",
-      "rede1": "http://lattes.cnpq.br/9979622141210229",
-      "icone1": "/imagens/logos/lattes_icon.svg",
-      "rede2": "https://www.instagram.com/ligia.simplicio/",
-      "icone2": "/imagens/logos/instagram_icon_cinza.svg"
-    },
+{
+  "Murilo_Gaspardo": {
+    "ordem": 1,
+    "foto": "",
+    "rede1": "http://lattes.cnpq.br/7249928800890408",
+    "icone1": "/imagens/logos/lattes_icon.svg",
+    "rede2": "",
+    "icone2": ""
+  },
+  "Marcelo_Mariano": {
+    "ordem": 2,
+    "foto": "",
+    "rede1": "http://lattes.cnpq.br/3505849964932313",
+    "icone1": "/imagens/logos/lattes_icon.svg",
+    "rede2": "",
+    "icone2": ""
+  },
+  "Thais_Amoroso": {
+    "ordem": 3,
+    "foto": "",
+    "rede1": " http://lattes.cnpq.br/1531037509340384",
+    "icone1": "/imagens/logos/lattes_icon.svg",
+    "rede2": "",
+    "icone2": ""
+  },
+  "Rafael_Almeida": {
+    "ordem": 4,
+    "foto": "/imagens/equipe/rafael_almeida.jpeg",
+    "rede1": " http://lattes.cnpq.br/5174307461578307",
+    "icone1": "/imagens/logos/lattes_icon.svg",
+    "rede2": "https://www.linkedin.com/in/rafaelrdealmeida/",
+    "icone2": "/imagens/logos/linkedin_icon2.svg"
+  },
+  "Joao_Vidal": {
+    "ordem": 5,
+    "foto": "/imagens/equipe/Joao_Vidal.jpg",
+    "rede1": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
+    "icone1": "/imagens/logos/linkedin_icon2.svg",
+    "rede2": "https://www.instagram.com/_vidaljp/",
+    "icone2": ""
+  },
+  "Caio_Palombo": {
+    "ordem": 6,
+    "foto": "/imagens/equipe/caio_tomaz.png",
+    "rede1": "https://www.linkedin.com/in/caio-t-palomvo2664/",
+    "icone1": "/imagens/logos/linkedin_icon2.svg",
+    "rede2": "https://www.instagram.com/Caio_2664/",
+    "icone2": "/imagens/logos/instagram_icon_cinza.svg"
+  },
+  "Ligia_Simplicio": {
+    "ordem": 7,
+    "foto": "/imagens/equipe/ligia_simplicio.jpeg",
+    "rede1": "http://lattes.cnpq.br/9979622141210229",
+    "icone1": "/imagens/logos/lattes_icon.svg",
+    "rede2": "https://www.instagram.com/ligia.simplicio/",
+    "icone2": "/imagens/logos/instagram_icon_cinza.svg"
+  },
 
-      "Monize_Cruz": {
-      "ordem": 8,
-      "foto": "",
-      "rede1": "linkedin:https://www.linkedin.com/in/monize-cruz-07a0a11b0/",
-      "icone1": "/imagens/logos/linkedin_icon2.svg",
-      "rede2": "",
-      "icone2": "/imagens/logos/instagram_icon_cinza.svg"
-    },
-        "Luana_Vitorino": {
-      "ordem": 9,
-      "foto": "/imagens/equipe/Luana_Vitorino.jpg",
-      "rede1": "https://github.com/luanavitorino07",
-      "icone1": "/imagens/logos/github-icon.svg",
-      "rede2": "https://www.instagram.com/luanaa.vit/",
-      "icone2": "/imagens/logos/instagram_icon_cinza.svg"
-    },
-        "Heloisa_Ricci": {
-      "ordem": 10,
-      "foto": "/imagens/equipe/heloisa_ricci.jpg",
-      "rede1": "",
-      "icone1": "",
-      "rede2": "https://www.instagram.com/ricci_helo/",
-      "icone2": "/imagens/logos/instagram_icon_cinza.svg"
-    }
-
-
+  "Monize_Cruz": {
+    "ordem": 8,
+    "foto": "",
+    "rede1": "linkedin:https://www.linkedin.com/in/monize-cruz-07a0a11b0/",
+    "icone1": "/imagens/logos/linkedin_icon2.svg",
+    "rede2": "",
+    "icone2": "/imagens/logos/instagram_icon_cinza.svg"
+  },
+  "Luana_Vitorino": {
+    "ordem": 9,
+    "foto": "/imagens/equipe/Luana_Vitorino.jpg",
+    "rede1": "https://github.com/luanavitorino07",
+    "icone1": "/imagens/logos/github-icon.svg",
+    "rede2": "https://www.instagram.com/luanaa.vit/",
+    "icone2": "/imagens/logos/instagram_icon_cinza.svg"
+  },
+  "Heloisa_Ricci": {
+    "ordem": 10,
+    "foto": "/imagens/equipe/heloisa_ricci.jpg",
+    "rede1": "",
+    "icone1": "",
+    "rede2": "https://www.instagram.com/ricci_helo/",
+    "icone2": "/imagens/logos/instagram_icon_cinza.svg"
+  }
 }

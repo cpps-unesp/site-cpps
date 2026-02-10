@@ -17,7 +17,7 @@ Tutorial de instalação de um dual boot com os sistemas Windows e Linux nos com
 ![IMG_4102](/imagens/img-geral/IMG_4102.jpeg)
 
 3. Em seguida, conecte o pendrive bootável do sistema desejado (neste caso, Linux Ubuntu 22.04) e reinicie o computador. Antes que a tela de login apareça, clique em F12 para abrir a tela abaixo.
-Com o pendrive conectado no computador, selecione-o como mostra a imagem (haverá um símbolo de USB ao seu lado). Neste caso, nosso pendrive identifica-se por UEFI USB DISK 2.0
+   Com o pendrive conectado no computador, selecione-o como mostra a imagem (haverá um símbolo de USB ao seu lado). Neste caso, nosso pendrive identifica-se por UEFI USB DISK 2.0
 
 ![IMG_4091](/imagens/img-geral/IMG_4091.jpg)
 
@@ -34,7 +34,7 @@ Com o pendrive conectado no computador, selecione-o como mostra a imagem (haver�
 ![IMG_4095](/imagens/img-geral/IMG_4095.jpg)
 
 6. Para prosseguir a instalação, é possível selecionar uma conexão de internet para baixar softwares de terceiros e afins. Para conectar-se ao eduroam, rede de WiFi da instituição, siga as configurações mostradas na imagem abaixo.
-No campo “nome de usuário”, informe seu email institucional da Unesp e, no campo abaixo, sua senha.
+   No campo “nome de usuário”, informe seu email institucional da Unesp e, no campo abaixo, sua senha.
 
 ![IMG_4096](/imagens/img-geral/IMG_4096.jpg)
 
@@ -47,6 +47,6 @@ No campo “nome de usuário”, informe seu email institucional da Unesp e, no 
 ![IMG_4099](/imagens/img-geral/IMG_4099.jpeg)
 
 8. Para finalizar sua instalação, configure as informações do computador inserindo os dados do usuário e do pc. Reproduza as configurações abaixo e altere as informações conforme o computador utilizado. Em seguida, basta prosseguir e aguardar a instalação completa.
-Ao final da instalação, aparecerá uma imagem para reiniciar o computador e remover o dispositivo de instalação (no caso, o pendrive utilizado).
+   Ao final da instalação, aparecerá uma imagem para reiniciar o computador e remover o dispositivo de instalação (no caso, o pendrive utilizado).
 
 ![IMG_4100](/imagens/img-geral/IMG_4100.jpg)

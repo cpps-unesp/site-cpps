@@ -128,10 +128,7 @@
         "processo": "2022/02922-1",
         "natureza": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
         "valor": "R$ 174.353,54 + Quota de Bolsa Orçamentária: Mestrado: 02; Iniciação Científica: 08",
-        "associados": [
-          "Alessandro Pinzani (UFSC)",
-          "Leonardo Jorge da Hora Pereira (UFBA)"
-        ],
+        "associados": ["Alessandro Pinzani (UFSC)", "Leonardo Jorge da Hora Pereira (UFBA)"],
         "resumo": "O projeto investiga a pobreza como objeto da filosofia social, questionando como essa experiência negativa e multidimensional pode contribuir para a crítica social. A pesquisa se organiza em quatro etapas: análise da filosofia social, estudo de teorias da pobreza, investigação de abordagens das ciências sociais e, por fim, uma síntese filosófica para responder à questão central.",
         "apoioCentro": []
       },
@@ -188,15 +185,7 @@
         "associados": [],
         "resumo": "Visa criar um centro de pesquisa em história e cultura africana e afro-brasileira no nordeste paulista. O objetivo principal é organizar o acervo bibliográfico e documental doado pelo historiador Manolo Garcia Florentino, envolvendo a higienização, catalogação e acondicionamento de mais de 2.000 volumes para torná-los acessíveis à pesquisa.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "agencia",
-          "processo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "agencia", "processo", "departamento", "status"]
       },
       {
         "id": "politica-outros-meios-mobilizacao-juridica",
@@ -212,13 +201,7 @@
         "associados": [],
         "resumo": "Investiga a mobilização do direito como estratégia de luta política no Brasil e na América Latina nas últimas três décadas. O projeto busca compreender por que os tribunais se tornaram um caminho estratégico, a natureza dos conflitos levados à justiça, os enquadramentos legais utilizados e os efeitos de mobilização e contramobilização gerados.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "departamento", "status"]
       },
       {
         "id": "feminist-judgments-projects",
@@ -234,13 +217,7 @@
         "associados": [],
         "resumo": "Inspirado em projetos internacionais, o projeto brasileiro 'Reescrevendo Decisões Judiciais em Perspectivas Feministas' reúne uma rede de mais de 60 acadêmicas e juristas para reescrever decisões judiciais significativas sob a ótica de metodologias feministas e antirracistas. O objetivo é fortalecer a crítica jurídica feminista e analisar seu impacto potencial nas decisões judiciais.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "departamento", "status"]
       },
       {
         "id": "crise-democratica-sistema-presidencialista",
@@ -256,13 +233,7 @@
         "associados": [],
         "resumo": "Busca compreender a crise democrática global a partir do Direito Constitucional, mapeando o debate e sistematizando a produção sobre o tema. O projeto investiga o impacto do populismo no presidencialismo brasileiro e na dinâmica entre os poderes, questionando sobre a possibilidade de transformações no sistema de governo, como a adoção do semipresidencialismo.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "departamento", "status"]
       },
       {
         "id": "historia-primeira-metade-seculo-xx",
@@ -278,13 +249,7 @@
         "associados": [],
         "resumo": "Problematiza como a história do Brasil foi, em grande parte, construída como uma história da expansão paulista. O projeto analisa a 'bandeirologia' na primeira metade do século XX, investigando como se formulou um saber que definiu São Paulo e o 'paulista' como centrais, construindo uma retórica sobre as habilidades especiais deste povo e território.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "departamento", "status"]
       },
       {
         "id": "emu-equipamentos-humanidades-digitais",
@@ -300,15 +265,7 @@
         "associados": [],
         "resumo": "O objetivo deste projeto é viabilizar um investimento na infraestrutura computacional do Instituto de Política Pública e Relações Internacionais (IPPRI/UNESP). O projeto propõe a aquisição de equipamentos com redundância, com alto desempenho (CPU e GPU) e capacidade de armazenamento escaláveis. Com esses recursos, será possível ampliar e abrir novos horizontes para coletar, processar, analisar e visualizar grandes volumes de dados. Além disso, o projeto busca promover a colaboração e o intercâmbio de conhecimento entre pesquisadores, ampliando o acesso e a disseminação das humanidades digitais não apenas no Estado de São Paulo, mas também em outras regiões. Em nosso comitê de usuários, além de representantes paulistas (INCT-INEU, UNESP, UNICAMP, UNIFESP), temos representantes da Universidade de Brasília (UnB) e da Universidade Federal de Uberlândia (UFU). A fundamentação deste pedido de aquisição de equipamento multiusuário é o avanço da infraestrutura de pesquisa nas humanidades, propiciando maior capacidade de processamento em CPU e GPU, armazenamento em rede, serviços e ambientes de análise e visualização de grandes bases de dados, permitindo o desenvolvimento de pesquisas mais complexas e inovadoras. Com isso, será possível ampliar os horizontes da área em um contexto em que as humanidades enfrentam um desafio crescente: o volume e a complexidade dos dados disponíveis. Dados textuais, audiovisuais, e de redes sociais se proliferam rapidamente, mas são difíceis de serem processados, analisados e interpretados pelo pesquisador sem o auxílio computacional adequado.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "agencia",
-          "processo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "agencia", "processo", "departamento", "status"]
       },
       {
         "id": "monitoramento-politica-externa-brasileira",
@@ -324,13 +281,7 @@
         "associados": [],
         "resumo": "Objetiva desenvolver um conjunto de instrumentos de monitoramento e avaliação aplicáveis a qualquer estratégia da política externa brasileira. A intenção é criar uma rotina comum para comparar resultados de políticas passadas e avaliar as futuras, preenchendo uma lacuna na Análise de Política Externa e promovendo a prestação de contas à sociedade.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "departamento", "status"]
       },
       {
         "id": "newpereubra-ue-brasil",
@@ -346,13 +297,7 @@
         "associados": [],
         "resumo": "Este Módulo Jean Monnet visa ensinar a estudantes brasileiros sobre os conceitos, políticas e o papel global da União Europeia, focando na relação UE-Brasil. O projeto aborda cinco áreas: UE como ator global, democracia e direitos humanos, energia e desenvolvimento sustentável, comércio e investimentos, e segurança regional, combinando conhecimento teórico e aplicado.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "departamento", "status"]
       },
       {
         "id": "consorcio-nordeste-desenvolvimento-sustentavel",
@@ -368,13 +313,7 @@
         "associados": [],
         "resumo": "Este projeto analisa o Consórcio do Nordeste com foco crítico no conceito de 'desenvolvimento sustentável' que orienta suas ações. A pesquisa busca identificar se a concepção adotada se alinha ao crescimento econômico tradicional ou a uma transição para uma sociedade ecologicamente justa, analisando os projetos do Consórcio a partir de dados e entrevistas.",
         "apoioCentro": [],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "periodo",
-          "departamento",
-          "status"
-        ]
+        "mostrar": ["resumo", "docente", "periodo", "departamento", "status"]
       }
     ]
   },

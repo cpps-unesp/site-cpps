@@ -26,18 +26,18 @@ Observação: Na imagem o nome do repositório está diferente do nome de usuár
 
 ![github2](/imagens/img-geral/github2.png)
 
-   b. Esse menu permite que você deslize as cores na paleta, copie o código de uma cor, favorite, etc. O ícone de cadeado fixa a cor em questão na sua paleta. Aperte a barra de espaço do seu teclado para alterar as cores da paleta que não estiverem travadas (cadeado)
+b. Esse menu permite que você deslize as cores na paleta, copie o código de uma cor, favorite, etc. O ícone de cadeado fixa a cor em questão na sua paleta. Aperte a barra de espaço do seu teclado para alterar as cores da paleta que não estiverem travadas (cadeado)
 
 ### Mão na massa
 
 1. Utilize um editor de imagens como o Figma ou Canvas no seu navegador.
 2. Escolha imagens png com fundo transparente. Aqui estão alguns sites com imagens disponíveis:
 
-    a. [https://www.freepik.com](https://www.freepik.com/)
+   a. [https://www.freepik.com](https://www.freepik.com/)
 
-    b. [https://lukaszadam.com](https://lukaszadam.com/)
+   b. [https://lukaszadam.com](https://lukaszadam.com/)
 
-    c. [https://blush.design/pt](https://blush.design/pt)
+   c. [https://blush.design/pt](https://blush.design/pt)
 
 3. Recomenda-se fortemente [essa publicação](https://dev.to/dii_lua/github-profile-como-fazer-54o0) para ter uma noção melhor de como montar o fundo de uma imagem, adicionar gradiente e painéis interativos, além de várias dicas de como montar seu perfil no Github.
 4. Crie um texto de boas vindas, utilize os recursos do Markdown para isso. É possível adicionar imagens, gifs, ajustar o alinhamento e várias outras funções apenas alterando o arquivo README.md do seu repositório. Para saber mais sobre markdown [clique aqui](https://labriunesp.org/docs/projetos/ensino/trilha-dados/ambiente/markdown/nocoes-gerais).

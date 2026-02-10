@@ -8,23 +8,23 @@ slug: contato
 
 ### DERI - Departamento de Relações Internacionais
 
-*[Página Web](https://www.franca.unesp.br/#!/departamentos/relacoes-internacionais/)*
+_[Página Web](https://www.franca.unesp.br/#!/departamentos/relacoes-internacionais/)_
 
 Endereço: Administração I - Sala 05
 
-Telefone: *(16) 3706-8891*
+Telefone: _(16) 3706-8891_
 
 E-mail: *deri.franca@unesp.br*
 
-----
+---
 
 ### DTI - Diretoria Técnica de Informatica
 
-*[Página Web](https://www.franca.unesp.br/#!/dti)*
+_[Página Web](https://www.franca.unesp.br/#!/dti)_
 
 Endereço: Bloco 3 - Sala STI07
 
-Telefone: *(16) 3706-8780*
+Telefone: _(16) 3706-8780_
 
 E-mail: *dti.franca@unesp.br*
 
@@ -32,36 +32,36 @@ Expediente: 08h00 - 21h00
 
 Para o +requerimento de serviços+ do DTI - como manutenção de máquinas - é necessário utilizar a seguinte plataforma:
 
-*[Suporte DTI](https://suporte.franca.unesp.br/)*
+_[Suporte DTI](https://suporte.franca.unesp.br/)_
 
 **_Caso não tenha um login, entre em contato com o DTI para criar o seu._**
 
-----
+---
 
 ### STAEPE - Seção Técnica de Apoio ao Ensino, Pesquisa e Extensão
 
-*[Página Web](https://www.franca.unesp.br/#!/administracao/divisao-tecnica-academica/secao-tecnica-de-apoio-ao-ensino-pesquisa-e-extensao/)*
+_[Página Web](https://www.franca.unesp.br/#!/administracao/divisao-tecnica-academica/secao-tecnica-de-apoio-ao-ensino-pesquisa-e-extensao/)_
 
 Endereço: Bloco 1
 
-Telefone: *(16) 3706-8758*
+Telefone: _(16) 3706-8758_
 
 E-mail: *staepe.franca@unesp.br*
 
 Expediente: 07h00 - 23h00
 
-----
+---
 
 ### SCM - Seção de Conservação e Manutenção
 
-*[Página Web](https://www.franca.unesp.br/#!/administracao/diretoria-de-servicos-e-atividades-auxiliares/secao-de-conservacao-e-manutencao/)*
+_[Página Web](https://www.franca.unesp.br/#!/administracao/diretoria-de-servicos-e-atividades-auxiliares/secao-de-conservacao-e-manutencao/)_
 
-Telefone: 
-*(16) 3706-8768* - Sala do Supervisor
+Telefone:
+_(16) 3706-8768_ - Sala do Supervisor
 
-*(16) 3706-8771* - Oficina
+_(16) 3706-8771_ - Oficina
 
-*(16) 3706-8772* - Sala de reunião, Copa e Almoxarifado
+_(16) 3706-8772_ - Sala de reunião, Copa e Almoxarifado
 
 E-mail: *scm.franca@unesp.br*
 
@@ -73,16 +73,16 @@ Para acompanhar os serviços requisitados, pesquise na seguinte planilha:
 
 [Planilha SCM](https://docs.google.com/spreadsheets/d/1sisZPFxo57X9hA6MbRtlTwlkzO9vysZ9iVhifvzbmf8/edit#gid=1657704734)
 
-----
+---
 
 ### STS - Seção Técnica de Saúde
 
-*[Página Web](https://www.franca.unesp.br/#!/administracao/divisao-tecnica-administrativa/secao-tecnica-de-saude/)*
+_[Página Web](https://www.franca.unesp.br/#!/administracao/divisao-tecnica-administrativa/secao-tecnica-de-saude/)_
 
-Telefones: 
-*(16) 3706-8856*
+Telefones:
+_(16) 3706-8856_
 
-*(16) 3706-8854* - (Recepção/Agendamento)
+_(16) 3706-8854_ - (Recepção/Agendamento)
 
 E-mail: *sts.franca@unesp.br*
 
@@ -92,15 +92,15 @@ Horário de atendimento ao público:
 
 3ª a 6ª feira - 8h às 12h e das 13h às 16h
 
-De segunda a sexta-feira (dias úteis). 
+De segunda a sexta-feira (dias úteis).
 
-----
+---
 
 ### Comunicação
 
 Endereço: Administração I - Sala 04
 
-Telefone: *(16) 3706-8897*
+Telefone: _(16) 3706-8897_
 
 E-mail: *comunicacao.franca@unesp.br*
 
@@ -108,15 +108,15 @@ Para solicitar serviços da Comunicação, basta enviar um e-mail para o endere�
 
 Expediente: 07h00 - 12h00 / 13h00 - 16h00
 
-----
+---
 
 ### Biblioteca
 
-*[Página Web](https://www.franca.unesp.br/#!/sobre2108/biblioteca/)*
+_[Página Web](https://www.franca.unesp.br/#!/sobre2108/biblioteca/)_
 
 Endereço: Biblioteca
 
-Telefone: *(16) 3706-8883*
+Telefone: _(16) 3706-8883_
 
 E-mail: *biblioteca.franca@unesp.br*
 

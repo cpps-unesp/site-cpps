@@ -7,11 +7,17 @@ interface Props {
 
 const { githubPath, lang = 'pt', texts = {} } = Astro.props;
 const currentYear = new Date().getFullYear();
-const editLabel = texts.editOnGithub || (lang === 'en' ? 'Edit this page on GitHub' : (lang === 'es' ? 'Editar esta página en GitHub' : 'Editar esta página no GitHub'));
+const editLabel =
+  texts.editOnGithub ||
+  (lang === 'en'
+    ? 'Edit this page on GitHub'
+    : lang === 'es'
+      ? 'Editar esta página en GitHub'
+      : 'Editar esta página no GitHub');
 ---
 
-<footer class="bg-[#2E3F46] text-white p-8 mt-auto" data-pagefind-ignore>
-  <div class="max-w-screen-xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<footer class="mt-auto bg-[#2E3F46] p-8 text-white" data-pagefind-ignore>
+  <div class="mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-4 md:flex-row">
     <p>&copy; {currentYear} CPPS - Centro de Pesquisa Política e Social</p>
   </div>
 </footer>

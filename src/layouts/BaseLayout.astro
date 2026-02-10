@@ -1,7 +1,7 @@
 ---
-import { getTranslations, type Language } from "../utils/i18n";
-import { getLangFromUrl } from "../utils/getLangFromUrl";
-import { getLocalizedPathFromPathname, isSupportedLang } from "../utils/i18nRouteMatch";
+import { getTranslations, type Language } from '../utils/i18n';
+import { getLangFromUrl } from '../utils/getLangFromUrl';
+import { getLocalizedPathFromPathname, isSupportedLang } from '../utils/i18nRouteMatch';
 
 const urlLang = getLangFromUrl(Astro.url) as Language;
 
@@ -14,14 +14,7 @@ interface Props {
   githubPath?: string;
 }
 
-const {
-  lang: propLang,
-  texts,
-  identidade,
-  githubPath,
-  titulo,
-  descricao,
-} = Astro.props as Props;
+const { lang: propLang, texts, identidade, githubPath, titulo, descricao } = Astro.props as Props;
 
 const lang = propLang ?? urlLang;
 const t = getTranslations(lang);
@@ -48,16 +41,18 @@ const alternateHrefs = (['pt', 'en', 'es'] as Language[]).map((targetLang) => {
 
 const ogLocale = lang === 'pt' ? 'pt_BR' : lang === 'en' ? 'en_US' : 'es_ES';
 const ogAlternateLocales = alternateHrefs
-  .map(({ lang: localeLang }) => (localeLang === 'pt' ? 'pt_BR' : localeLang === 'en' ? 'en_US' : 'es_ES'))
+  .map(({ lang: localeLang }) =>
+    localeLang === 'pt' ? 'pt_BR' : localeLang === 'en' ? 'en_US' : 'es_ES'
+  )
   .filter((locale) => locale !== ogLocale);
 
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import GitHubEditLink from "../components/GitHubEditLink.astro";
-import SearchModal from "../components/SearchModal.astro";
-import BackToTop from "../components/BackToTop.astro";
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import GitHubEditLink from '../components/GitHubEditLink.astro';
+import SearchModal from '../components/SearchModal.astro';
+import BackToTop from '../components/BackToTop.astro';
 
-import "../styles/global.css";
+import '../styles/global.css';
 ---
 
 <html lang={lang} dir="ltr">
@@ -87,11 +82,7 @@ import "../styles/global.css";
     <!-- ✅ SEO multilíngue -->
     {
       alternateHrefs.map(({ lang: altLang, href }) => (
-        <link
-          rel="alternate"
-          hreflang={altLang}
-          href={href}
-        />
+        <link rel="alternate" hreflang={altLang} href={href} />
       ))
     }
     <link rel="alternate" hreflang="x-default" href={alternateHrefs[0].href} />
@@ -116,13 +107,15 @@ import "../styles/global.css";
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <script is:inline>
-      (function() {
+      (function () {
         const THEME_STORAGE_KEY = 'theme';
         const DEFAULT_THEME_CHOICE = 'system';
         const storedChoice = localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME_CHOICE;
         let themeToApply = storedChoice;
         if (storedChoice === 'system') {
-          themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
         }
         document.documentElement.setAttribute('data-theme', themeToApply);
       })();
@@ -134,11 +127,13 @@ import "../styles/global.css";
 
     <main class:list={[isLangHome ? 'pt-0' : 'pt-20 md:pt-24', 'flex-1']} data-pagefind-body>
       <slot />
-      {githubPath && (
-        <div class="max-w-screen-2xl mx-auto px-4 md:px-8">
-           <GitHubEditLink githubPath={githubPath} lang={lang} texts={pageTexts} />
-        </div>
-      )}
+      {
+        githubPath && (
+          <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+            <GitHubEditLink githubPath={githubPath} lang={lang} texts={pageTexts} />
+          </div>
+        )
+      }
     </main>
     <Footer lang={lang} texts={pageTexts} githubPath={githubPath} />
     <BackToTop lang={lang} />

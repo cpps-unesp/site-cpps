@@ -4,8 +4,6 @@ title: Google Authenticator
 sidebar_label: Google Authenticator
 ---
 
-
-
 # Material de Apoio
 
 - [google-authenticator-libpam](https://github.com/google/google-authenticator-libpam)
@@ -14,7 +12,6 @@ sidebar_label: Google Authenticator
 - [Setting up multi-factor authentication on Linux systems](https://www.redhat.com/sysadmin/mfa-linux)
 - [How to use two-factor authentication with sudo and SSH on Linux with Google Authenticator](https://www.vultr.com/docs/how-to-use-two-factor-authentication-with-sudo-and-ssh-on-linux-with-google-authenticator/)
 - [Two-factor authentication for SSH key on Ubuntu](https://www.linuxbabe.com/ubuntu/two-factor-authentication-ssh-key-ubuntu)
-
 
 # Autoria
 

@@ -1,6 +1,6 @@
 ---
-title: "Como citar"
-description: "Veja como referenciar os dados da Hemeroteca PEB em seus trabalhos acadêmicos."
+title: 'Como citar'
+description: 'Veja como referenciar os dados da Hemeroteca PEB em seus trabalhos acadêmicos.'
 sidebar:
   order: 10
 ---
@@ -15,7 +15,7 @@ Abaixo estão os modelos de citação nos formatos mais utilizados.
 
 ## Formato APA
 
-> Vigevani, T., Miyamoto, S., & Mariano, M. P. (Coords.). (2021). *Hemeroteca de Política Externa Brasileira (Hemeroteca PEB)*. Laboratório de Relações Internacionais (LABRI-UNESP). https://labriunesp.org/docs/projetos/dados/hemeroteca-peb
+> Vigevani, T., Miyamoto, S., & Mariano, M. P. (Coords.). (2021). _Hemeroteca de Política Externa Brasileira (Hemeroteca PEB)_. Laboratório de Relações Internacionais (LABRI-UNESP). https://labriunesp.org/docs/projetos/dados/hemeroteca-peb
 
 ## BibTeX
 
@@ -30,3 +30,4 @@ Para usuários de LaTeX ou gerenciadores de referência (Zotero, Mendeley, EndNo
   url = {https://labriunesp.org/docs/projetos/dados/hemeroteca-peb},
   note = {Acessado em: [Data de Acesso]}
 }
+```

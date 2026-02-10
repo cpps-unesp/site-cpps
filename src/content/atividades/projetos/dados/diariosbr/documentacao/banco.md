@@ -1,6 +1,6 @@
 ---
-title: "Termos de Busca - Franca"
-description: "Lista de termos e palavras-chave utilizados para busca nos diários de Franca."
+title: 'Termos de Busca - Franca'
+description: 'Lista de termos e palavras-chave utilizados para busca nos diários de Franca.'
 sidebar:
   order: 4
 ---
@@ -206,6 +206,7 @@ Abaixo estão listados os grupos de palavras-chave e operadores booleanos utiliz
 <br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

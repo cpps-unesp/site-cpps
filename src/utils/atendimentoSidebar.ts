@@ -11,7 +11,10 @@ type AtendimentoEntry = {
   };
 };
 
-export function buildAtendimentoSidebar(entries: AtendimentoEntry[], basePath: string): SidebarItem[] {
+export function buildAtendimentoSidebar(
+  entries: AtendimentoEntry[],
+  basePath: string
+): SidebarItem[] {
   return buildDocsSidebar(entries, {
     basePath,
     sectionLabel: 'Atendimento',

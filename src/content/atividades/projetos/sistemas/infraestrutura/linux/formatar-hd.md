@@ -28,6 +28,7 @@ sudo umount /dev/sdc1
 ```
 sudo mkdir /media/hdvm12
 ```
+
 ## Montagem na inicialização do sistema
 
 ```

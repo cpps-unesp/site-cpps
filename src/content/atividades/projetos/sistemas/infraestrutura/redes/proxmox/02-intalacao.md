@@ -12,14 +12,11 @@ rm /etc/network/interfaces.d/setup
 
 ## Add source list debian 11
 
-
-
 ## desabilitar suspensão e hibernação
 
 - https://archive.is/iotiY
 
 - https://www.2daygeek.com/enable-disable-up-down-nic-network-interface-port-linux/
-
 
 ```
 sudo systemctl mask sleep.target suspend.target hibernate.target hybrid-sleep.target
@@ -37,7 +34,6 @@ sudo apt-get remove --purge network-manager-gnome network-manager
 
 ## Fixar nomes de interfaces de rede
 
-
 ```
 nano /etc/systemd/network/10-enp1s0.link
 [Match]
@@ -52,7 +48,6 @@ Name=enp1s0
 
 ## Adicionar network/interfaces
 
-
 ```
 auto lo
 iface lo inet loopback
@@ -66,7 +61,6 @@ iface eno1 inet static
 
 
 ```
-
 
 ## Instalar proxomox
 
@@ -92,9 +86,6 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ```
 
-
-
-
 ```
 127.0.0.1       localhost
 
@@ -115,7 +106,6 @@ ff02::2 ip6-allrouters
 
 ```
 
-
 ```
 
 - nano /etc/apt/sources.list
@@ -135,7 +125,6 @@ deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
 deb http://security.debian.org/debian-security bookworm-security main contrib non-free-firmware
 
 ```
-
 
 ```
 apt autoclean && apt clean && apt update
@@ -161,8 +150,8 @@ apt autoclean && apt clean && apt remove os-prober
 nano /etc/apt/sources.list.d/pve-enterprise.list
 
 ```
-## Remove the Debian kernel
 
+## Remove the Debian kernel
 
 ```
 
@@ -174,10 +163,8 @@ apt remove linux-image-amd64 'linux-image-6.1*'
 update-grub
 ```
 
-
 - https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_11_Bullseye
 - https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_Buster#Optional:_Remove_the_Debian_kernel
-
 
 ## NTP
 
@@ -185,14 +172,10 @@ update-grub
 sudo apt update && sudo apt install ntpdate nmap
 ```
 
-
-
-
 ```
 sudo nmap -p123 -sU -P0 localhost
 
 ```
-
 
 ```
 sudo nano /etc/systemd/timesyncd.conf
@@ -251,7 +234,6 @@ iface vmbr1.192 inet static
 pvecm create nome_cluster
 ```
 
-
 ## Incluir node no cluster
 
 ```
@@ -280,7 +262,6 @@ https://www.nvidia.com.br/Download/driverResults.aspx/186033/br
 
 ```
 
-
 # NVIDIA Driver e outros
 
 ```
@@ -296,13 +277,12 @@ https://forum.proxmox.com/threads/installing-nvidia-drivers-on-proxmox-host.6955
 
 ### verificar modelo da placade video
 
-
 ```
 lspci | egrep 'VGA|NVIDIA'
 
 ```
 
-###  Efetuar o download no [site da NVIDIA](https://www.nvidia.com.br/Download/index.aspx?lang=br)
+### Efetuar o download no [site da NVIDIA](https://www.nvidia.com.br/Download/index.aspx?lang=br)
 
 ```
 
@@ -313,7 +293,6 @@ apt-get install -y libglvnd-dev
 apt install pve-headers
 
 ```
-
 
 ```
 
@@ -331,10 +310,7 @@ blacklist rivatv
 
 ```
 
-
 - ajuste via grub
-
-
 
 ```
 
@@ -344,7 +320,7 @@ blacklist rivatv
 
 ## Adicione o botão Minimizar
 
- - Abra Tweaks> Barras de título da janela> Ativar Minimizar
+- Abra Tweaks> Barras de título da janela> Ativar Minimizar
 
 ```
 https://forum.proxmox.com/threads/configure-pfsense-with-a-public-ip-single.46319/
@@ -388,7 +364,6 @@ Killing node 3
 
 ```
 
-
 ```
 
 post-up echo 1 > /proc/sys/net/ipv4/ip_forward
@@ -397,19 +372,15 @@ post-down iptables -t nat -D PREROUTING -i vmbr0 -p tcp --dport 11111 -j DNAT --
 
 ```
 
-
-
 ## IO Delay
 
 - https://forum.proxmox.com/threads/high-io-delay.89599/
 - https://forum.proxmox.com/threads/very-high-io-delay-on-any-load.37693/
 - https://forum.level1techs.com/t/zfs-high-i-o-issue-txg-sync-100-and-z-trim-int-60-to-70/163166/38
 
-
 ## Ajuste grub
 
-
-### Ajustar no arquivo abaixo  o `GRUB_DEFAULT` para `4` E `GRUB_TIMEOUT` para `5`
+### Ajustar no arquivo abaixo o `GRUB_DEFAULT` para `4` E `GRUB_TIMEOUT` para `5`
 
 ```
 sudo nano /etc/default/grub
@@ -423,11 +394,9 @@ sudo update-grub
 
 ```
 
-
 ## NTP - UBUNTU
 
 ### Edite o arquivo de configuração:
-
 
 ```
 sudo nano /etc/systemd/timesyncd.conf
@@ -456,12 +425,10 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb &
 
 ## atualizar o sistema
 
-
 ```
 sudo apt update && sudo apt upgrade
 ```
 
 ## Alterar nome do computador
-
 
 https://labriunesp.org/docs/projetos/sistemas/linux/alterar-nome-pc

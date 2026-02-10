@@ -1,32 +1,32 @@
 ---
 export const prerender = true;
 
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import EquipeSection from "../../components/EquipeSection.astro";
-import SobreSection from "../../components/BlocoSection.astro";
-import ProjetosSection from "../../components/ProjetosSection.astro";
-import CafeComCienciaSection from "../../components/CafeComCienciaSection.astro";
-import DocumentosSection from "../../components/DocumentosSection.astro";
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import EquipeSection from '../../components/EquipeSection.astro';
+import SobreSection from '../../components/BlocoSection.astro';
+import ProjetosSection from '../../components/ProjetosSection.astro';
+import CafeComCienciaSection from '../../components/CafeComCienciaSection.astro';
+import DocumentosSection from '../../components/DocumentosSection.astro';
 
-import IniciativasPublicacoesSection from "../../components/IniciativasPublicacoesSection.astro";
-import IniciativasMaterialApoioSection from "../../components/IniciativasMaterialApoioSection.astro";
-import IniciativasOficinasSection from "../../components/IniciativasOficinasSection.astro";
-import IniciativasParceiriasSection from "../../components/IniciativasParceiriasSection.astro";
-import IniciativasSolucoesTecnologicasSection from "../../components/IniciativasSolucoesTecnologicasSection.astro";
-import IniciativasProjetosSection from "../../components/IniciativasProjetosSection.astro";
-import IniciativasProjetosDeDadosSection from "../../components/IniciativasProjetosDeDadosSection.astro";
-import IniciativasProjetosDePesquisaSection from "../../components/IniciativasProjetosDePesquisaSection.astro";
+import IniciativasPublicacoesSection from '../../components/IniciativasPublicacoesSection.astro';
+import IniciativasMaterialApoioSection from '../../components/IniciativasMaterialApoioSection.astro';
+import IniciativasOficinasSection from '../../components/IniciativasOficinasSection.astro';
+import IniciativasParceiriasSection from '../../components/IniciativasParceiriasSection.astro';
+import IniciativasSolucoesTecnologicasSection from '../../components/IniciativasSolucoesTecnologicasSection.astro';
+import IniciativasProjetosSection from '../../components/IniciativasProjetosSection.astro';
+import IniciativasProjetosDeDadosSection from '../../components/IniciativasProjetosDeDadosSection.astro';
+import IniciativasProjetosDePesquisaSection from '../../components/IniciativasProjetosDePesquisaSection.astro';
 
-import NoticiaPage from "../../components/NoticiaPage.astro";
-import NoticiasListPage from "../../components/NoticiasListPage.astro";
-import PublicationListPage from "../../components/PublicationListPage.astro";
-import PublicationPage from "../../components/PublicationPage.astro";
-import TranslationWarning from "../../components/TranslationWarning.astro";
-import routeTranslations from "../../i18n/routeTranslations";
-import { getCollection } from "astro:content";
-import type { SupportedLang } from "../../types/lang";
-import { getTranslations } from "../../utils/i18n";
+import NoticiaPage from '../../components/NoticiaPage.astro';
+import NoticiasListPage from '../../components/NoticiasListPage.astro';
+import PublicationListPage from '../../components/PublicationListPage.astro';
+import PublicationPage from '../../components/PublicationPage.astro';
+import TranslationWarning from '../../components/TranslationWarning.astro';
+import routeTranslations from '../../i18n/routeTranslations';
+import { getCollection } from 'astro:content';
+import type { SupportedLang } from '../../types/lang';
+import { getTranslations } from '../../utils/i18n';
 import {
   buildLocalizedContentPaths,
   buildMembroPaths,
@@ -34,31 +34,31 @@ import {
   buildRouteTranslationPaths,
   findOriginalKey,
   getMembroSlugFromEntryId,
-} from "../../utils/catchAllRouting";
+} from '../../utils/catchAllRouting';
 
 // ✅ Exporta os caminhos possíveis para páginas estáticas
 export async function getStaticPaths() {
-  const langs: SupportedLang[] = ["pt", "en", "es"];
+  const langs: SupportedLang[] = ['pt', 'en', 'es'];
   const paths = buildRouteTranslationPaths(langs);
 
   // Notícias individuais (todos os idiomas para permitir fallback)
-  const allNoticias = await getCollection("noticias");
+  const allNoticias = await getCollection('noticias');
   const uniqueNoticiasSlugs = [...new Set(allNoticias.map((n) => n.slug))];
-  paths.push(...buildLocalizedContentPaths(langs, "noticias", uniqueNoticiasSlugs));
+  paths.push(...buildLocalizedContentPaths(langs, 'noticias', uniqueNoticiasSlugs));
 
   // Publicações individuais (todos os idiomas para permitir fallback)
-  const allPublicacoes = await getCollection("publicacoes");
+  const allPublicacoes = await getCollection('publicacoes');
   const uniquePubSlugs = [
-    ...new Set(allPublicacoes.map((p) => p.slug || p.id.replace(/\.[^/.]+$/, ""))),
+    ...new Set(allPublicacoes.map((p) => p.slug || p.id.replace(/\.[^/.]+$/, ''))),
   ];
-  paths.push(...buildLocalizedContentPaths(langs, "publicacao", uniquePubSlugs));
+  paths.push(...buildLocalizedContentPaths(langs, 'publicacao', uniquePubSlugs));
 
   // Categorias de notícias
   const tags = [...new Set(allNoticias.flatMap((n) => n.data.tags || []))];
   paths.push(...buildNewsCategoryPaths(langs, tags));
 
   // Membros (todos os idiomas para permitir fallback)
-  const allMembros = await getCollection("membros");
+  const allMembros = await getCollection('membros');
   const uniqueMembroSlugs = [...new Set(allMembros.map((m) => getMembroSlugFromEntryId(m.id)))];
   paths.push(...buildMembroPaths(langs, uniqueMembroSlugs));
 
@@ -66,37 +66,34 @@ export async function getStaticPaths() {
 }
 
 // ✅ Lógica de roteamento e carregamento
-const langs: SupportedLang[] = ["pt", "en", "es"];
-const currentLang = (Astro.params.lang as SupportedLang) ?? "pt";
+const langs: SupportedLang[] = ['pt', 'en', 'es'];
+const currentLang = (Astro.params.lang as SupportedLang) ?? 'pt';
 const slugParam = Astro.params.slug;
-const slugPath = Array.isArray(slugParam)
-  ? slugParam.join("/")
-  : (slugParam ?? "");
-const slugArray = slugPath.split("/");
+const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? '');
+const slugArray = slugPath.split('/');
 
 const locale = getTranslations(currentLang);
 const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } = locale;
 
-const noticiasPrefix = routeTranslations["noticias"][currentLang];
+const noticiasPrefix = routeTranslations['noticias'][currentLang];
 const isNoticiasList = slugPath === noticiasPrefix;
 const isNoticiasCategory = slugPath.startsWith(`${noticiasPrefix}/categoria/`);
-const isNoticia = slugPath.startsWith(`${noticiasPrefix}/`) && !isNoticiasList && !isNoticiasCategory;
+const isNoticia =
+  slugPath.startsWith(`${noticiasPrefix}/`) && !isNoticiasList && !isNoticiasCategory;
 
-const publicacoesPrefix = routeTranslations["publicacao"][currentLang];
+const publicacoesPrefix = routeTranslations['publicacao'][currentLang];
 const isPublication = slugPath.startsWith(`${publicacoesPrefix}/`);
 
-const allMembros = await getCollection("membros");
-const membroEntries = allMembros.filter(
-  (entry) => getMembroSlugFromEntryId(entry.id) === slugPath
-);
+const allMembros = await getCollection('membros');
+const membroEntries = allMembros.filter((entry) => getMembroSlugFromEntryId(entry.id) === slugPath);
 
-const availableLangs = membroEntries.map(e => e.data.lang);
+const availableLangs = membroEntries.map((e) => e.data.lang);
 const isTranslationMissing = membroEntries.length > 0 && !availableLangs.includes(currentLang);
 
-let membroSelecionado = membroEntries.find(e => e.data.lang === currentLang);
+let membroSelecionado = membroEntries.find((e) => e.data.lang === currentLang);
 
 if (!membroSelecionado && membroEntries.length > 0) {
-  membroSelecionado = membroEntries.find(e => e.data.lang === 'pt') || membroEntries[0];
+  membroSelecionado = membroEntries.find((e) => e.data.lang === 'pt') || membroEntries[0];
 }
 
 // Renderiza o conteúdo do .mdx
@@ -111,7 +108,10 @@ const originalKey = findOriginalKey(slugPath, currentLang);
 
 {
   isNoticiasList || isNoticiasCategory ? (
-    <NoticiasListPage lang={currentLang} tag={isNoticiasCategory ? slugPath.split('/').pop() : undefined} />
+    <NoticiasListPage
+      lang={currentLang}
+      tag={isNoticiasCategory ? slugPath.split('/').pop() : undefined}
+    />
   ) : isNoticia ? (
     <NoticiaPage lang={currentLang} slug={slugPath} />
   ) : isPublication ? (
@@ -120,7 +120,7 @@ const originalKey = findOriginalKey(slugPath, currentLang);
     <BaseLayout
       lang={currentLang}
       titulo={membroSelecionado.data.title}
-      descricao={membroSelecionado.data.cargo ?? ""}
+      descricao={membroSelecionado.data.cargo ?? ''}
       texts={texts}
       githubPath={`src/content/membros/${membroSelecionado.id}`}
     >
@@ -131,25 +131,22 @@ const originalKey = findOriginalKey(slugPath, currentLang);
           texts={texts}
         />
       )}
-      <article class="max-w-3xl mx-auto pt-16 pb-10 text-center">
+      <article class="mx-auto max-w-3xl pt-16 pb-10 text-center">
         <img
           src={membroSelecionado.data.foto}
           alt={membroSelecionado.data.title}
-          class="w-48 h-48 object-cover rounded-xl mx-auto mb-4"
+          class="mx-auto mb-4 h-48 w-48 rounded-xl object-cover"
         />
-        <h1 class="text-3xl font-bold text-primary">
-          {membroSelecionado.data.title}
-        </h1>
-        <p class="text-neutral text-sm mb-8">{membroSelecionado.data.cargo}</p>
+        <h1 class="text-primary text-3xl font-bold">{membroSelecionado.data.title}</h1>
+        <p class="text-neutral mb-8 text-sm">{membroSelecionado.data.cargo}</p>
 
         {Content ? (
-          <div class="mt-16 prose prose-lg prose-p:my-6 mx-auto text-justify leading-relaxed">
+          <div class="prose prose-lg prose-p:my-6 mx-auto mt-16 text-justify leading-relaxed">
             <Content />
           </div>
         ) : (
           <p class="text-warning mt-4">
-            {texts.languageUnavailable ??
-              "Conteúdo do membro indisponível neste idioma."}
+            {texts.languageUnavailable ?? 'Conteúdo do membro indisponível neste idioma.'}
           </p>
         )}
       </article>
@@ -157,7 +154,7 @@ const originalKey = findOriginalKey(slugPath, currentLang);
   ) : (
     <BaseLayout
       lang={currentLang}
-      titulo={originalKey === "noticias" ? (texts.noticias?.title ?? "Notícias") : titulo}
+      titulo={originalKey === 'noticias' ? (texts.noticias?.title ?? 'Notícias') : titulo}
       descricao={descricao}
       texts={texts}
       githubPath="src/pages/[lang]/[...slug].astro"
@@ -166,42 +163,48 @@ const originalKey = findOriginalKey(slugPath, currentLang);
 
       {(() => {
         switch (originalKey) {
-          case "institucional/equipe":
+          case 'institucional/equipe':
             return <EquipeSection equipe={equipe} texts={texts} />;
-          case "institucional/sobre":
+          case 'institucional/sobre':
             return <SobreSection blocos={sobre} />;
-          case "institucional/documentos":
+          case 'institucional/documentos':
             return <DocumentosSection documentos={documentos} lang={currentLang} />;
-          case "noticias":
+          case 'noticias':
             return <NoticiasListPage lang={currentLang} />;
 
           // Iniciativas
-          case "iniciativas/cafe-com-ciencia":
+          case 'iniciativas/cafe-com-ciencia':
             return <CafeComCienciaSection cafe={cafe} lang={currentLang} />;
-          case "iniciativas/publicacoes":
-          case "publicacao":
+          case 'iniciativas/publicacoes':
+          case 'publicacao':
             return <PublicationListPage lang={currentLang} />;
-          case "iniciativas/material-de-apoio":
+          case 'iniciativas/material-de-apoio':
             return <IniciativasMaterialApoioSection texts={texts} />;
-          case "iniciativas/oficinas":
+          case 'iniciativas/oficinas':
             return <IniciativasOficinasSection texts={texts} />;
-          case "iniciativas/projetos":
+          case 'iniciativas/projetos':
             return <IniciativasProjetosSection texts={texts} />;
-          case "iniciativas/projetos-de-pesquisa":
-            return <IniciativasProjetosDePesquisaSection texts={texts} projetos={iniciativas.projetosLista} iniciativas={iniciativas}/>;
-          case "iniciativas/projetos-de-dados":
+          case 'iniciativas/projetos-de-pesquisa':
+            return (
+              <IniciativasProjetosDePesquisaSection
+                texts={texts}
+                projetos={iniciativas.projetosLista}
+                iniciativas={iniciativas}
+              />
+            );
+          case 'iniciativas/projetos-de-dados':
             return <IniciativasProjetosDeDadosSection texts={texts} />;
-          case "iniciativas/parcerias":
+          case 'iniciativas/parcerias':
             return <IniciativasParceiriasSection texts={texts} />;
-          case "iniciativas/solucoes-tecnologicas":
+          case 'iniciativas/solucoes-tecnologicas':
             return <IniciativasSolucoesTecnologicasSection texts={texts} />;
 
           default:
             return (
               <>
-                <h1 class="text-3xl font-bold mb-4">404 - {texts.notFound}</h1>
+                <h1 class="mb-4 text-3xl font-bold">404 - {texts.notFound}</h1>
                 <p class="mb-4">
-                  {texts.pageNotFound ?? "Desculpe, não encontramos a página"}:{" "}
+                  {texts.pageNotFound ?? 'Desculpe, não encontramos a página'}:{' '}
                   <strong>{slugPath}</strong>
                 </p>
                 <p>

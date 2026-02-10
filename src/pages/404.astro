@@ -1,32 +1,32 @@
 ---
-import { getTranslations, type Language } from "../utils/i18n";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import GitHubEditLink from "../components/GitHubEditLink.astro";
-import SearchModal from "../components/SearchModal.astro";
-import BackToTop from "../components/BackToTop.astro";
+import { getTranslations, type Language } from '../utils/i18n';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import GitHubEditLink from '../components/GitHubEditLink.astro';
+import SearchModal from '../components/SearchModal.astro';
+import BackToTop from '../components/BackToTop.astro';
 
-import "../styles/global.css";
+import '../styles/global.css';
 
 // Try to detect language from cookie or URL, fallback to Portuguese
 function detectLang(request: Request): Language {
-  const supportedLangs: Language[] = ["pt", "en", "es"];
-  
+  const supportedLangs: Language[] = ['pt', 'en', 'es'];
+
   // Check cookie first
-  const cookies = request.headers.get("cookie") || "";
+  const cookies = request.headers.get('cookie') || '';
   const langCookie = cookies.match(/lang=(pt|en|es)/);
   if (langCookie && supportedLangs.includes(langCookie[1] as Language)) {
     return langCookie[1] as Language;
   }
-  
+
   // Try URL path
   const url = new URL(request.url);
-  const pathLang = url.pathname.split("/")[1];
+  const pathLang = url.pathname.split('/')[1];
   if (supportedLangs.includes(pathLang as Language)) {
     return pathLang as Language;
   }
-  
-  return "pt";
+
+  return 'pt';
 }
 
 const lang = detectLang(Astro.request);
@@ -64,13 +64,15 @@ const identidade = t.identidade;
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
     <script is:inline>
-      (function() {
+      (function () {
         const THEME_STORAGE_KEY = 'theme';
         const DEFAULT_THEME_CHOICE = 'system';
         const storedChoice = localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME_CHOICE;
         let themeToApply = storedChoice;
         if (storedChoice === 'system') {
-          themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
         }
         document.documentElement.setAttribute('data-theme', themeToApply);
       })();
@@ -80,18 +82,15 @@ const identidade = t.identidade;
   <body class="bg-base-100 text-base-content">
     <Header lang={lang} texts={texts} identidade={identidade} />
 
-    <main class="pt-24 flex-1">
-      <section class="min-h-[60vh] flex items-center justify-center px-4">
-        <div class="text-center max-w-lg">
-          <h1 class="text-8xl font-heading font-bold text-primary mb-4">404</h1>
-          <h2 class="text-3xl font-heading font-semibold mb-4">{texts.notFound}</h2>
-          <p class="text-lg text-base-content/70 mb-8">
+    <main class="flex-1 pt-24">
+      <section class="flex min-h-[60vh] items-center justify-center px-4">
+        <div class="max-w-lg text-center">
+          <h1 class="font-heading text-primary mb-4 text-8xl font-bold">404</h1>
+          <h2 class="font-heading mb-4 text-3xl font-semibold">{texts.notFound}</h2>
+          <p class="text-base-content/70 mb-8 text-lg">
             {texts.notFoundDescription}
           </p>
-          <a
-            href={`/${lang}/`}
-            class="btn btn-primary btn-lg"
-          >
+          <a href={`/${lang}/`} class="btn btn-primary btn-lg">
             <i class="fa-solid fa-house mr-2"></i>
             {texts.backToHome}
           </a>
@@ -102,7 +101,7 @@ const identidade = t.identidade;
         </div>
       </section>
     </main>
-    
+
     <Footer lang={lang} texts={texts} />
     <BackToTop lang={lang} />
     <SearchModal texts={texts} />

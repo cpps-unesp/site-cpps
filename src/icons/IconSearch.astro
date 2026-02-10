@@ -1,6 +1,6 @@
 ---
 // Aceita classes externas como text-base-content
-const { class: className = "" } = Astro.props;
+const { class: className = '' } = Astro.props;
 ---
 
 <svg
@@ -13,7 +13,7 @@ const { class: className = "" } = Astro.props;
   stroke-linejoin="round"
   class={`w-5 h-5 ${className}`}
 >
-  <circle cx="11" cy="11" r="8" />
+  <circle cx="11" cy="11" r="8"></circle>
   <!-- Haste começa fora do círculo (x1=18, y1=18) e termina mais distante -->
-  <line x1="18" y1="18" x2="28" y2="28" />
+  <line x1="18" y1="18" x2="28" y2="28"></line>
 </svg>

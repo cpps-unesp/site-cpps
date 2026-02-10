@@ -14,7 +14,7 @@ const locale = getTranslations(lang);
 const allNoticias = await getCollection('noticias');
 
 const langNoticias = allNoticias
-  .filter(post => post.data.lang === lang)
+  .filter((post) => post.data.lang === lang)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 let displayedNoticias = langNoticias;
@@ -22,35 +22,46 @@ let featuredPost = null;
 let titlePage = locale.texts.header.noticias || 'Notícias';
 
 if (tag) {
-  displayedNoticias = langNoticias.filter(post =>
-    post.data.tags?.some(t => slugify(t, { lower: true, strict: true }) === tag)
+  displayedNoticias = langNoticias.filter((post) =>
+    post.data.tags?.some((t) => slugify(t, { lower: true, strict: true }) === tag)
   );
-  const actualTagName = displayedNoticias[0]?.data.tags.find(t => slugify(t, { lower: true, strict: true }) === tag) || tag;
+  const actualTagName =
+    displayedNoticias[0]?.data.tags.find(
+      (t) => slugify(t, { lower: true, strict: true }) === tag
+    ) || tag;
   titlePage = `${titlePage}: ${actualTagName}`;
 } else {
   // Logic for featured post only on main news page
-  featuredPost = langNoticias.find(post => post.data.featured) || langNoticias[0];
-  displayedNoticias = langNoticias.filter(post => post.id !== featuredPost?.id);
+  featuredPost = langNoticias.find((post) => post.data.featured) || langNoticias[0];
+  displayedNoticias = langNoticias.filter((post) => post.id !== featuredPost?.id);
 }
 ---
 
-<BaseLayout lang={lang} titulo={titlePage} descricao={locale.descricao} texts={locale.texts} identidade={locale.identidade}>
+<BaseLayout
+  lang={lang}
+  titulo={titlePage}
+  descricao={locale.descricao}
+  texts={locale.texts}
+  identidade={locale.identidade}
+>
   <main class="container mx-auto px-4 py-12">
     <header class="mb-12">
-      <h1 class="text-5xl font-bold text-primary mb-4">{titlePage}</h1>
-      <div class="w-20 h-1.5 bg-primary"></div>
+      <h1 class="text-primary mb-4 text-5xl font-bold">{titlePage}</h1>
+      <div class="bg-primary h-1.5 w-20"></div>
     </header>
 
-    {featuredPost && (
-      <NewsFeatured post={featuredPost} lang={lang} />
-    )}
+    {featuredPost && <NewsFeatured post={featuredPost} lang={lang} />}
 
-    <div class="grid lg:grid-cols-3 gap-12">
+    <div class="grid gap-12 lg:grid-cols-3">
       <div class="lg:col-span-2">
         <NewsGrid noticias={displayedNoticias} lang={lang} />
-        {displayedNoticias.length === 0 && (
-           <p class="text-center py-10 opacity-50">{locale.noticias?.noResults || 'Nenhuma notícia encontrada nesta categoria.'}</p>
-        )}
+        {
+          displayedNoticias.length === 0 && (
+            <p class="py-10 text-center opacity-50">
+              {locale.noticias?.noResults || 'Nenhuma notícia encontrada nesta categoria.'}
+            </p>
+          )
+        }
       </div>
 
       <div>

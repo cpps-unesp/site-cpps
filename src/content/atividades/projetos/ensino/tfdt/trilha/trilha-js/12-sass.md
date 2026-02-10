@@ -8,7 +8,7 @@ sidebar_label: Sass
 
 :::caution
 
-É necessário finalizar o **TREINAMENTO CSS E HMTL** antes de começar o tutorial de utilização de Sass/Scss**
+É necessário finalizar o **TREINAMENTO CSS E HMTL** antes de começar o tutorial de utilização de Sass/Scss\*\*
 
 :::
 
@@ -24,11 +24,11 @@ Este tutorial tem como objetivo facilitar o seguimento do treinamento JS do LabR
 
 Sass é uma versão prévia do Scss, sendo o último considerado sua versão otimizada. Veja a seguir a diferença nas estruturas do Sass e do Scss.
 
-* **Estrtura do Sass**:
+- **Estrtura do Sass**:
 
 ![Estrutura do Sass](https://i.imgur.com/w5u5LSW.png)
 
-* **Estrutura do Scss**:
+- **Estrutura do Scss**:
 
 ![Estrutura do Scss](https://i.imgur.com/M4mmX56.png)
 
@@ -36,7 +36,7 @@ Sass é uma versão prévia do Scss, sendo o último considerado sua versão oti
 
 Para instalar o Sass basta entrar no [site oficial](https://sass-lang.com/install).
 
-* **Instalando com NPM**
+- **Instalando com NPM**
 
 Utilize a seguinte linha de código:
 
@@ -46,9 +46,9 @@ npm install -g sass
 
 ### Vantagens em utilizar o Sass/Scss
 
-* Facilita a organização e leitura do código;
-* Facilita a reutilização de código, não sendo necessário repetir em diversos documentos CSS;
-* Facilita o controle e organização da estilização da página.
+- Facilita a organização e leitura do código;
+- Facilita a reutilização de código, não sendo necessário repetir em diversos documentos CSS;
+- Facilita o controle e organização da estilização da página.
 
 ## Conhecimentos básicos
 
@@ -56,12 +56,12 @@ npm install -g sass
 
 Para utilizar um documento .scss é necessário:
 
-1. Criar um documento CSS. *Exemplo*: `style.css`;
-2. Criar um documento Scss. *Exemplo*: `style.scss`;
+1. Criar um documento CSS. _Exemplo_: `style.css`;
+2. Criar um documento Scss. _Exemplo_: `style.scss`;
 3. Criar código no documento Scss;
 4. Utilizar a seguinte linha de código para adicionar o scss no css: ` sass --watch style.scss:style.css`;
 5. Acrescentar o documento css no documento que será estilizado. Exemplo:
-    * ![Adicionando Sass na estrutura HTML](https://i.imgur.com/Q4efvfi.png)
+   - ![Adicionando Sass na estrutura HTML](https://i.imgur.com/Q4efvfi.png)
 
 ## Exemplo
 

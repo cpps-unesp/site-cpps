@@ -60,9 +60,10 @@ const localizedBasePath = `/${lang}${docsBasePath}`;
   githubPath={`src/content/atendimento/${entry.id}`}
   lang={lang}
 >
-  <div class="max-w-screen-2xl mx-auto px-4 md:px-8 pt-2 pb-12 md:pt-4 lg:pt-8">
-
-    <div class="lg:hidden flex items-center gap-2 mb-4 pb-3 border-b border-base-300 sticky top-20 bg-base-100/80 backdrop-blur-md z-30">
+  <div class="mx-auto max-w-screen-2xl px-4 pt-2 pb-12 md:px-8 md:pt-4 lg:pt-8">
+    <div
+      class="border-base-300 bg-base-100/80 sticky top-20 z-30 mb-4 flex items-center gap-2 border-b pb-3 backdrop-blur-md lg:hidden"
+    >
       <button id="mobile-menu-left-trigger" class="btn btn-ghost btn-sm flex items-center gap-2">
         <i class="fa-solid fa-bars"></i>
         <span class="text-sm font-medium">Menu</span>
@@ -74,23 +75,33 @@ const localizedBasePath = `/${lang}${docsBasePath}`;
       </button>
     </div>
 
-    <div class="flex flex-col lg:flex-row gap-8 lg:gap-12 relative" id="docs-container">
-      <div id="mobile-backdrop" class="fixed inset-0 bg-black/50 z-40 hidden lg:hidden transition-opacity duration-300 opacity-0"></div>
+    <div class="relative flex flex-col gap-8 lg:flex-row lg:gap-12" id="docs-container">
+      <div
+        id="mobile-backdrop"
+        class="fixed inset-0 z-40 hidden bg-black/50 opacity-0 transition-opacity duration-300 lg:hidden"
+      >
+      </div>
 
-      <aside id="left-sidebar" class="w-full lg:w-72 flex-shrink-0 transition-all duration-300 overflow-hidden
-             fixed lg:static inset-y-0 left-0 z-50 bg-base-100 lg:bg-transparent
-             transform -translate-x-full lg:translate-x-0
-             p-4 lg:p-0 shadow-2xl lg:shadow-none">
-        <div class="lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-4 scrollbar-thin scrollbar-thumb-base-300 h-full lg:h-auto flex flex-col">
-          <div class="flex items-center justify-between mb-6 lg:mb-6">
-            <h3 class="font-bold text-lg text-primary flex items-center gap-2">
+      <aside
+        id="left-sidebar"
+        class="bg-base-100 fixed inset-y-0 left-0 z-50 w-full flex-shrink-0 -translate-x-full transform overflow-hidden p-4 shadow-2xl transition-all duration-300 lg:static lg:w-72 lg:translate-x-0 lg:bg-transparent lg:p-0 lg:shadow-none"
+      >
+        <div
+          class="scrollbar-thin scrollbar-thumb-base-300 flex h-full flex-col lg:sticky lg:top-24 lg:h-auto lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto lg:pr-4"
+        >
+          <div class="mb-6 flex items-center justify-between lg:mb-6">
+            <h3 class="text-primary flex items-center gap-2 text-lg font-bold">
               <i class="fa-solid fa-headset text-sm"></i>
               Atendimento
             </h3>
-            <button id="mobile-close-left" class="lg:hidden btn btn-ghost btn-sm btn-circle">
+            <button id="mobile-close-left" class="btn btn-ghost btn-sm btn-circle lg:hidden">
               <i class="fa-solid fa-xmark"></i>
             </button>
-            <button id="toggle-left" class="hidden lg:flex btn btn-ghost btn-xs opacity-50 hover:opacity-100" title="Encolher menu">
+            <button
+              id="toggle-left"
+              class="btn btn-ghost btn-xs hidden opacity-50 hover:opacity-100 lg:flex"
+              title="Encolher menu"
+            >
               <i class="fa-solid fa-angles-left"></i>
             </button>
           </div>
@@ -100,22 +111,32 @@ const localizedBasePath = `/${lang}${docsBasePath}`;
         </div>
       </aside>
 
-      <button id="expand-left" class="hidden fixed left-0 top-1/2 -translate-y-1/2 z-40 bg-base-200 border border-l-0 border-base-300 p-2 rounded-r-xl shadow-lg hover:bg-primary hover:text-white transition-all duration-300 group" title="Expandir menu">
-        <i class="fa-solid fa-angles-right group-hover:translate-x-1 transition-transform"></i>
+      <button
+        id="expand-left"
+        class="bg-base-200 border-base-300 hover:bg-primary group fixed top-1/2 left-0 z-40 hidden -translate-y-1/2 rounded-r-xl border border-l-0 p-2 shadow-lg transition-all duration-300 hover:text-white"
+        title="Expandir menu"
+      >
+        <i class="fa-solid fa-angles-right transition-transform group-hover:translate-x-1"></i>
       </button>
 
-      <div class="flex-1 min-w-0 transition-all duration-300">
-        <div class="max-w-4xl mx-auto relative">
-          <Breadcrumbs currentPath={currentPath} basePath={localizedBasePath} baseLabel="Atendimento" />
+      <div class="min-w-0 flex-1 transition-all duration-300">
+        <div class="relative mx-auto max-w-4xl">
+          <Breadcrumbs
+            currentPath={currentPath}
+            basePath={localizedBasePath}
+            baseLabel="Atendimento"
+          />
 
-          <article class="prose prose-lg max-w-none dark:prose-invert">
-            <header class="mb-12 not-prose">
+          <article class="prose prose-lg dark:prose-invert max-w-none">
+            <header class="not-prose mb-12">
               <h1 class="titulo mb-4 font-black">{entry.data.title}</h1>
-              {entry.data.description && (
-                <p class="subtitulo text-base-content/70 leading-relaxed border-l-4 border-primary/20 pl-6 italic">
-                  {entry.data.description}
-                </p>
-              )}
+              {
+                entry.data.description && (
+                  <p class="subtitulo text-base-content/70 border-primary/20 border-l-4 pl-6 leading-relaxed italic">
+                    {entry.data.description}
+                  </p>
+                )
+              }
               <div class="divider mt-8"></div>
             </header>
 
@@ -126,19 +147,23 @@ const localizedBasePath = `/${lang}${docsBasePath}`;
         </div>
       </div>
 
-      <aside id="right-sidebar" class="hidden xl:block w-64 flex-shrink-0 transition-all duration-300 overflow-hidden
-             fixed xl:static inset-y-0 right-0 z-50 bg-base-100 xl:bg-transparent
-             transform translate-x-full xl:translate-x-0
-             p-4 xl:p-0 shadow-2xl xl:shadow-none">
-        <div class="xl:sticky xl:top-24 h-full xl:h-auto flex flex-col">
-          <div class="flex items-center justify-between mb-4 xl:mb-4">
-            <h3 class="font-bold text-xs uppercase tracking-widest text-base-content/40">
+      <aside
+        id="right-sidebar"
+        class="bg-base-100 fixed inset-y-0 right-0 z-50 hidden w-64 flex-shrink-0 translate-x-full transform overflow-hidden p-4 shadow-2xl transition-all duration-300 xl:static xl:block xl:translate-x-0 xl:bg-transparent xl:p-0 xl:shadow-none"
+      >
+        <div class="flex h-full flex-col xl:sticky xl:top-24 xl:h-auto">
+          <div class="mb-4 flex items-center justify-between xl:mb-4">
+            <h3 class="text-base-content/40 text-xs font-bold tracking-widest uppercase">
               Nesta pagina
             </h3>
-            <button id="mobile-close-right" class="xl:hidden btn btn-ghost btn-sm btn-circle">
+            <button id="mobile-close-right" class="btn btn-ghost btn-sm btn-circle xl:hidden">
               <i class="fa-solid fa-xmark"></i>
             </button>
-            <button id="toggle-right" class="hidden xl:flex btn btn-ghost btn-xs opacity-50 hover:opacity-100" title="Encolher indice">
+            <button
+              id="toggle-right"
+              class="btn btn-ghost btn-xs hidden opacity-50 hover:opacity-100 xl:flex"
+              title="Encolher indice"
+            >
               <i class="fa-solid fa-angles-right"></i>
             </button>
           </div>
@@ -148,8 +173,12 @@ const localizedBasePath = `/${lang}${docsBasePath}`;
         </div>
       </aside>
 
-      <button id="expand-right" class="hidden fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-base-200 border border-r-0 border-base-300 p-2 rounded-l-xl shadow-lg hover:bg-primary hover:text-white transition-all duration-300 group" title="Expandir indice">
-        <i class="fa-solid fa-angles-left group-hover:-translate-x-1 transition-transform"></i>
+      <button
+        id="expand-right"
+        class="bg-base-200 border-base-300 hover:bg-primary group fixed top-1/2 right-0 z-40 hidden -translate-y-1/2 rounded-l-xl border border-r-0 p-2 shadow-lg transition-all duration-300 hover:text-white"
+        title="Expandir indice"
+      >
+        <i class="fa-solid fa-angles-left transition-transform group-hover:-translate-x-1"></i>
       </button>
     </div>
   </div>

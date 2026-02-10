@@ -4,9 +4,7 @@ title: Acesso Remoto
 sidebar_label: Acesso Remoto
 ---
 
-
 # Utilização do X2Go
-
 
 ## Instalando
 
@@ -16,7 +14,7 @@ sudo add-apt-repository ppa:x2go/stable -y
 sudo apt-get update && sudo apt-get install x2goclient -y
 ```
 
-##  Configurando o X2GO para acesso via chave pública
+## Configurando o X2GO para acesso via chave pública
 
 ### Criar usuário
 
@@ -48,15 +46,14 @@ cd
 
 ![terminal_comando_local](/imagens/logos/logo-cpps-unesp.png)
 
-
 ### Gerar chave privada e pública ssh
 
 ```
 ssh-keygen -b 2048 -t rsa -v
 ```
-- quando aperecer a mensagem `Enter file in which to save the key` não escreva nada, deixe em branco apentando `ENTER`
- - quando aperecer a mensagem `Enter passphrase` não escreva nada, deixe em branco apentando `ENTER`
 
+- quando aperecer a mensagem `Enter file in which to save the key` não escreva nada, deixe em branco apentando `ENTER`
+- quando aperecer a mensagem `Enter passphrase` não escreva nada, deixe em branco apentando `ENTER`
 
 ### Enviar chave pública para o computador de destino
 
@@ -79,7 +76,6 @@ ssh-copy-id <user>@<host> password:
 
 - Vá na aba "Connection" e habilite "Connection speed" para "LAN".
 
-
 ### Deixando o Acesso Remoto funcional
 
 - Ao terminar de configurar o Acesso Remoto pelo X2Go, é necessário deixá-lo funcional
@@ -91,10 +87,7 @@ ssh-copy-id <user>@<host> password:
 
 ![print_3_x2go](/imagens/logos/logo-cpps-unesp.png)
 
-
-
 # Utilização do Chrome Remote Desktop
-
 
 ## Instalar Navegador - Google Chrome
 
@@ -105,7 +98,6 @@ sudo apt-get update && sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 rm google-chrome*
 ```
-
 
 # Instalar Chrome Remote Desktop
 
@@ -118,20 +110,17 @@ rm chrome-remote-desktop*
 
 - https://cloud.google.com/architecture/chrome-desktop-remote-on-compute-engine
 
-
 ## Acesso via SSH
 
 Quando o acesso a área de trabalho remota acessada via Chrome Remote Desktop é interropido ou esta inativo você tem duas opções para reativa-lo.
 
-A primeira opção é via x2go reativar o acesso via  Chrome Remote Desktop. A segunda opção é reativar o acesso via Chrome Remote Desktop a partir de acesso SSH
+A primeira opção é via x2go reativar o acesso via Chrome Remote Desktop. A segunda opção é reativar o acesso via Chrome Remote Desktop a partir de acesso SSH
 
 :::info
 
 Necessário acesso admistrativo para realizar os procedimentos abaixo. Quando possivel prefira fazer este procedimento via x2go
 
 :::
-
-
 
 ### Etapa 1: Acesso via SSH
 
@@ -142,7 +131,6 @@ ssh <user>@lantrivm01.lantri.org
 ```
 
 ### Etapa 2: SystemD
-
 
 - ação: `status`, `stop`, `start`, `restart`
 - substitua a palavra `<ação>` por uma das ações indicadas no item anterior
@@ -160,6 +148,6 @@ Caso a etapa 2 tenha sido bem sucedida esta etapa não será necessária
 :::
 
 - Acesse a [Area de trabalho remota do Google Chrome - configurar por SSH](https://remotedesktop.google.com/headless)
-- Clicar  `começar`>> `Próxima` >> `Autorizar`
+- Clicar `começar`>> `Próxima` >> `Autorizar`
 - Copiar o comando indicado em `Debian Linux`
 - Colar o comando indicado em `Debian Linux` no terminal acesso via SSH

@@ -4,9 +4,6 @@ title: Apresentação
 sidebar_label: Apresentação
 ---
 
-
-
-
 ### Material de apoio
 
 - [Trilha SQL](https://www.youtube.com/playlist?list=PLvlkVRRKOYFQrPsRLU-53-No8c4e-RvHk)

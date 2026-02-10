@@ -3,6 +3,7 @@ id: tela-preta
 title: Tela Preta
 sidebar_label: Tela Preta
 ---
+
 :::tip
 As instruções abaixo visam resolver o problema de tela preta no compartilhamento em video conferências
 :::

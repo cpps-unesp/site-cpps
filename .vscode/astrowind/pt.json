@@ -1,122 +1,123 @@
 {
-    "home": {
-        "apresentar": {
-            "texto": "O Centro de Pesquisa Política e Social visa a integração das atividades de pesquisa das áreas de Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, dentre outras. Com uma abordagem interdisciplinar, o centro pretende coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo."
-        },
-    
-    "sobre": {
-        "titulo": "Sobre",
-        "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
-        "btn": "Saiba Mais"
+  "home": {
+    "apresentar": {
+      "texto": "O Centro de Pesquisa Política e Social visa a integração das atividades de pesquisa das áreas de Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, dentre outras. Com uma abordagem interdisciplinar, o centro pretende coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo."
     },
-    "noticias": {
-        "titulo": "Notícias",
-        "texto": "Acesse as notícias mais recentes sobre o Centro de Pesquisa Política e Social e suas atividades.",
-        "btn": "Saiba Mais"
-    },
-    "publicacoes": {
-        "titulo": "Publicações",
-        "texto": "Acesse as publicações dos membros e pesquisadores do Centro de Pesquisa Política e Social.",
-        "btn": "Saiba Mais"
-    }
-},
 
-    "rodape": {
-        "contato": "Contato",
-        "social": "Rede Social"
-    },
     "sobre": {
-        "titulo": "Centro de Pesquisa Política e Social",
-        "objetivos": "Objetivos",
-        "paragrafo1": "A Faculdade de Ciências Humanas e Sociais da UNESP propõe a criação do Centro de Pesquisa Política e Social, concebido como um centro interdepartamental que visa a integração das atividades de pesquisa das áreas de Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, dentre outras. Com uma abordagem interdisciplinar, o centro pretende coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo.",
-        "paragrafo2": "O Centro de Pesquisa Política e Social possui dois objetivos principais: fomentar a integração do conhecimento produzido em diversas áreas acadêmicas, oferecendo uma visão mais abrangente e detalhada dos processos sociais e políticos, e concentrar-se nas humanidades digitais, uma área que envolve o uso de tecnologias digitais avançadas na pesquisa acadêmica. O centro promoverá a colaboração intensa entre os pesquisadores, fará uso de metodologias avançadas e infraestrutura de pesquisa adequada, e se esforçará para manter e expandir a infraestrutura computacional existente, adaptando-se ao uso acadêmico de novas tecnologias digitais.",
-        "paragrafo3": "Os objetivos específicos do Centro incluem a realização e organização de eventos acadêmicos, a formação, aperfeiçoamento e incentivo à participação em pesquisa, o estímulo à colaboração internacional, intercâmbio e cooperação, a publicação e disseminação de pesquisas, o suporte a atividades acadêmicas com infraestrutura computacional, o desenvolvimento e adaptação de ferramentas para pesquisa, a capacitação em humanidades digitais e a gestão de dados de pesquisa. Assim, o Centro de Pesquisa Política e Social é concebido como um núcleo de excelência em pesquisa que fomenta uma abordagem integrada e interdisciplinar no estudo das ciências humanas e sociais, com um forte compromisso com a incorporação das tecnologias digitais para fins científicos, a colaboração e a relevância acadêmica e social.",
-        "paragrafo4": "A iniciativa de estabelecer o Centro de Pesquisa Política e Social não é um ponto de partida isolado, mas um movimento estratégico para articular e amplificar esforços preexistentes. O novo centro tem como objetivo capitalizar a infraestrutura e as atividades do já consolidado Centro de Pesquisas em Ciências Humanas e Sociais, bem como do Centro de Humanidades Digitais, que se originou a partir dos avanços e da infraestrutura computacional desenvolvida pelo Laboratório de Relações Internacionais. A criação do Centro de Humanidades Digitais da UNESP representou a formalização institucional das atividades iniciadas pelo Laboratório de Relações Internacionais (LabRI) em 2012, como parte da estrutura do departamento de Relações Internacionais (DERI) da UNESP, campus Franca."
+      "titulo": "Sobre",
+      "texto": "O Centro de Pesquisa Política e Social é um centro interdepartamental que busca integrar as atividades de pesquisa em áreas como Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, utilizando uma abordagem interdisciplinar.",
+      "btn": "Saiba Mais"
     },
     "noticias": {
-        "noticiaNaoEncontrada": "Notícia não encontrada",
-        "noticiaIndisponivelNesseIdioma": "Esta notícia não está disponível nesse idioma.",
-        "voltarParaNoticias": "Voltar para Notícias",
-        "titulo": "Notícias",
-        "texto": "Leia as últimas notícias sobre o Núcleo de Estudos em Filosofia, Teoria e Sociedade.",
-        "tags_titulo": "Notícias relacionadas a: ",
-        "todas_tags": "Todas as Tags",
-        "sem_tags": "Nenhuma tag encontrada.",
-        "texto_categorias": "Para visualizar as categorias de notícias",
-        "ver_categorias": "clique aqui"
+      "titulo": "Notícias",
+      "texto": "Acesse as notícias mais recentes sobre o Centro de Pesquisa Política e Social e suas atividades.",
+      "btn": "Saiba Mais"
     },
     "publicacoes": {
-        "titulo": "Publicações",
-        "livros": "Livros",
-        "artigos": "Capítulos de Livros e Artigos",
-        "teses": "Teses e Dissertações",
-        "tccs": "TCCs",
-        "relatorios": "Relatórios de Pesquisa"
-    },
-    "videos": {
-        "titulo": "Vídeos",
-        "texto": "Confira os vídeos postados em nosso canal do ",
-        "btn": "Ver Lista Completa"
-    },
-    "menu": {
-        "home": "Home",
-        "sobre": "Sobre",
-        "equipe": "Equipe",
-        "noticias": "Notícias",
-        "publicacoes": "Publicações",
-        "videos": "Vídeos"
-    },
-    "equipe": {
-        "Marcelo_Mariano": {
-        "titulo": "Equipe",
-        "nome": "Prof. Dr. Marcelo Passini Mariano" ,
-        "cargo": "",
-        "sobre": "Professor do Departamento de Relações Internacionais da Faculdade de Ciências Humanas e Sociais da Universidade Estadual Paulista (UNESP) e no Programa de Pós-Graduação em Relações Internacionais San Tiago Dantas (UNESP, UNICAMP, PUC-SP). Coordena o Laboratório de Novas Tecnologias de Pesquisa em Relações Internacionais (LANTRI) e é pesquisador associado no Centro de Estudos de Cultura Contemporânea (CEDEC), no Observatório de Regionalismo (ODR) e na Rede Desenvolvimento, Política Internacional e Paz (DIPP). Graduado em Ciências Sociais pela Universidade de São Paulo (1992), obteve seu mestrado em Ciência Política pela mesma universidade (1998) e doutorado em Sociologia pela Universidade Estadual Paulista (2007). Foi pesquisador convidado do Instituto de Pesquisa Econômica Aplicada (IPEA) entre 2011-2013 e 2021-2023. "
+      "titulo": "Publicações",
+      "texto": "Acesse as publicações dos membros e pesquisadores do Centro de Pesquisa Política e Social.",
+      "btn": "Saiba Mais"
+    }
+  },
+
+  "rodape": {
+    "contato": "Contato",
+    "social": "Rede Social"
+  },
+  "sobre": {
+    "titulo": "Centro de Pesquisa Política e Social",
+    "objetivos": "Objetivos",
+    "paragrafo1": "A Faculdade de Ciências Humanas e Sociais da UNESP propõe a criação do Centro de Pesquisa Política e Social, concebido como um centro interdepartamental que visa a integração das atividades de pesquisa das áreas de Direito, Políticas Públicas, História, Serviço Social e Relações Internacionais, dentre outras. Com uma abordagem interdisciplinar, o centro pretende coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo.",
+    "paragrafo2": "O Centro de Pesquisa Política e Social possui dois objetivos principais: fomentar a integração do conhecimento produzido em diversas áreas acadêmicas, oferecendo uma visão mais abrangente e detalhada dos processos sociais e políticos, e concentrar-se nas humanidades digitais, uma área que envolve o uso de tecnologias digitais avançadas na pesquisa acadêmica. O centro promoverá a colaboração intensa entre os pesquisadores, fará uso de metodologias avançadas e infraestrutura de pesquisa adequada, e se esforçará para manter e expandir a infraestrutura computacional existente, adaptando-se ao uso acadêmico de novas tecnologias digitais.",
+    "paragrafo3": "Os objetivos específicos do Centro incluem a realização e organização de eventos acadêmicos, a formação, aperfeiçoamento e incentivo à participação em pesquisa, o estímulo à colaboração internacional, intercâmbio e cooperação, a publicação e disseminação de pesquisas, o suporte a atividades acadêmicas com infraestrutura computacional, o desenvolvimento e adaptação de ferramentas para pesquisa, a capacitação em humanidades digitais e a gestão de dados de pesquisa. Assim, o Centro de Pesquisa Política e Social é concebido como um núcleo de excelência em pesquisa que fomenta uma abordagem integrada e interdisciplinar no estudo das ciências humanas e sociais, com um forte compromisso com a incorporação das tecnologias digitais para fins científicos, a colaboração e a relevância acadêmica e social.",
+    "paragrafo4": "A iniciativa de estabelecer o Centro de Pesquisa Política e Social não é um ponto de partida isolado, mas um movimento estratégico para articular e amplificar esforços preexistentes. O novo centro tem como objetivo capitalizar a infraestrutura e as atividades do já consolidado Centro de Pesquisas em Ciências Humanas e Sociais, bem como do Centro de Humanidades Digitais, que se originou a partir dos avanços e da infraestrutura computacional desenvolvida pelo Laboratório de Relações Internacionais. A criação do Centro de Humanidades Digitais da UNESP representou a formalização institucional das atividades iniciadas pelo Laboratório de Relações Internacionais (LabRI) em 2012, como parte da estrutura do departamento de Relações Internacionais (DERI) da UNESP, campus Franca."
+  },
+  "noticias": {
+    "noticiaNaoEncontrada": "Notícia não encontrada",
+    "noticiaIndisponivelNesseIdioma": "Esta notícia não está disponível nesse idioma.",
+    "voltarParaNoticias": "Voltar para Notícias",
+    "titulo": "Notícias",
+    "texto": "Leia as últimas notícias sobre o Núcleo de Estudos em Filosofia, Teoria e Sociedade.",
+    "tags_titulo": "Notícias relacionadas a: ",
+    "todas_tags": "Todas as Tags",
+    "sem_tags": "Nenhuma tag encontrada.",
+    "texto_categorias": "Para visualizar as categorias de notícias",
+    "ver_categorias": "clique aqui"
+  },
+  "publicacoes": {
+    "titulo": "Publicações",
+    "livros": "Livros",
+    "artigos": "Capítulos de Livros e Artigos",
+    "teses": "Teses e Dissertações",
+    "tccs": "TCCs",
+    "relatorios": "Relatórios de Pesquisa"
+  },
+  "videos": {
+    "titulo": "Vídeos",
+    "texto": "Confira os vídeos postados em nosso canal do ",
+    "btn": "Ver Lista Completa"
+  },
+  "menu": {
+    "home": "Home",
+    "sobre": "Sobre",
+    "equipe": "Equipe",
+    "noticias": "Notícias",
+    "publicacoes": "Publicações",
+    "videos": "Vídeos"
+  },
+  "equipe": {
+    "Marcelo_Mariano": {
+      "titulo": "Equipe",
+      "nome": "Prof. Dr. Marcelo Passini Mariano",
+      "cargo": "",
+      "sobre": "Professor do Departamento de Relações Internacionais da Faculdade de Ciências Humanas e Sociais da Universidade Estadual Paulista (UNESP) e no Programa de Pós-Graduação em Relações Internacionais San Tiago Dantas (UNESP, UNICAMP, PUC-SP). Coordena o Laboratório de Novas Tecnologias de Pesquisa em Relações Internacionais (LANTRI) e é pesquisador associado no Centro de Estudos de Cultura Contemporânea (CEDEC), no Observatório de Regionalismo (ODR) e na Rede Desenvolvimento, Política Internacional e Paz (DIPP). Graduado em Ciências Sociais pela Universidade de São Paulo (1992), obteve seu mestrado em Ciência Política pela mesma universidade (1998) e doutorado em Sociologia pela Universidade Estadual Paulista (2007). Foi pesquisador convidado do Instituto de Pesquisa Econômica Aplicada (IPEA) entre 2011-2013 e 2021-2023. "
     },
     "Murilo_Gaspardo": {
-        "nome": "Prof. Dr. Murilo Gaspardo",
-        "cargo": "",
-        "sobre": "Vice-diretor da Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista Júlio de Mesquita Filho (UNESP) - Campus de Franca - SP (Gestão 2022 - 2026), onde foi Diretor (Gestão 2018 - 2022) e é professor associado do Departamento de Direito Público e do Programa de Pós-graduação em Direito (Mestrado e Doutorado). Possui graduação em Direito (2005), Mestrado (2009) e Doutorado (2013) em Direito do Estado pela Faculdade de Direito da Universidade de São Paulo (USP) e Livre-docência (2019) em Teoria do Estado pela UNESP. Realizou estágio de pesquisa de pós-doutorado na Universidade de Durham, Reino Unido (2017 - 2018), com bolsa da FAPESP, e na London School of Economics and Political Science (LSE), com bolsa do CNPq (2023 - 2024). Honorary Fellow da School of Government and International Affairs, Universidade de Durham, Reino Unido (2022 - 2025). Tem experiência na área de Direito, com ênfase em Teoria do Estado. Dedica-se especialmete a pesquisas sobre democracia e instituições."
+      "nome": "Prof. Dr. Murilo Gaspardo",
+      "cargo": "",
+      "sobre": "Vice-diretor da Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista Júlio de Mesquita Filho (UNESP) - Campus de Franca - SP (Gestão 2022 - 2026), onde foi Diretor (Gestão 2018 - 2022) e é professor associado do Departamento de Direito Público e do Programa de Pós-graduação em Direito (Mestrado e Doutorado). Possui graduação em Direito (2005), Mestrado (2009) e Doutorado (2013) em Direito do Estado pela Faculdade de Direito da Universidade de São Paulo (USP) e Livre-docência (2019) em Teoria do Estado pela UNESP. Realizou estágio de pesquisa de pós-doutorado na Universidade de Durham, Reino Unido (2017 - 2018), com bolsa da FAPESP, e na London School of Economics and Political Science (LSE), com bolsa do CNPq (2023 - 2024). Honorary Fellow da School of Government and International Affairs, Universidade de Durham, Reino Unido (2022 - 2025). Tem experiência na área de Direito, com ênfase em Teoria do Estado. Dedica-se especialmete a pesquisas sobre democracia e instituições."
     },
     "Thais_Amoroso": {
-        "nome": "Thais Amoroso Paschoal",
-        "cargo": "",
-        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+      "nome": "Thais Amoroso Paschoal",
+      "cargo": "",
+      "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
     },
     "Rafael_Almeida": {
-        "nome": "Rafael Augusto Ribeiro de Almeida",
-        "cargo": "",
-        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+      "nome": "Rafael Augusto Ribeiro de Almeida",
+      "cargo": "",
+      "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
     },
     "Joao_Vidal": {
-        "nome": "João Pedro Dias Vidal",
-        "cargo": "",
-        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+      "nome": "João Pedro Dias Vidal",
+      "cargo": "",
+      "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
     },
     "Caio_Palombo": {
-        "nome": "Caio Tomaz Palombo",
-        "cargo": "Estagiária Remunerada",
-        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
+      "nome": "Caio Tomaz Palombo",
+      "cargo": "Estagiária Remunerada",
+      "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
     },
-   
+
     "Ligia_Simplicio": {
-        "nome": "Lígia de Lima Simplicio",
-        "cargo": "Estagiária Remunerada",
-        "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
-   
-        },"Monize_Cruz": {
-        "nome": "Monize Cruz Gonçalves",
-        "cargo": "Estagiária Voluntária",
-        "sobre": "Graduanda do curso de Relações Internacionais na Universidade Estadual Júlio de mesquita Filho (UNESP)no campus de Franca em São Paulo, interessada  nas áreas de Identidade Nacional, Interseccionalidade, estudos étnico-raciais, ciência política, periferia e politicas públicas.Membro do centro acadêmico Jõao Cabral de Melo Neto, representante discente e atuante no campus."
-   
-        },"Luana_Vitorino": {
-        "nome": "Luana Assunção Vitorino",
-        "cargo": "Pibic-Jr.",
-        "sobre": "Estudante de Curso Técnico em Desenvolvimento de Sistemas, com grande paixão por tecnologia e um entusiasmo contínuo por aprender coisas novas. Integra o programa PIBIC Jr. e compõe o Centro de Pesquisa Política Social (CPPS) da UNESP, conectando seus interesses em tecnologia com a pesquisa acadêmica." 
+      "nome": "Lígia de Lima Simplicio",
+      "cargo": "Estagiária Remunerada",
+      "sobre": "Professora de Direito Processual Civil na Graduação em Direito e Professora Permanente do Programa de Pós-graduação em Direito (Mestrado e Doutorado) da UNESP - Universidade Estadual Paulista Júlio de Mesquita Filho - Faculdade de Ciências Humanas e Sociais - Campus Franca (SP). Doutora e Mestre em Direito pela Universidade Federal do Paraná. Pós-graduada em Direito Civil e Processo Civil pela Universidade Estadual de Londrina. Graduada em Direito pela Universidade Estadual de Londrina. Membro integrante do Instituto Brasileiro de Direito Processual e da Processualistas. Líder do GEPAV - Grupo de Estudos e Pesquisas em Acesso à justiça e vulnerabilidades e pesquisadora do DEMUS - Grupo de Estudos e Pesquisas em Direito e Mudança Social, ambos da UNESP-Franca. Coordenadora da Clínica de Direitos Humanos da FCHS - UNESP. Pesquisadora do CCons - Centro de Estudos da Constituição, e dos Núcleos de Pesquisa Direito Processual Civil Comparado e Meios adequados de solução heterônoma de conflitos, dentro e fora do Estado, do PPGD-UFPR, ambos integrantes da ProcNet - Rede Internacional de Pesquisa Justiça Civil e Processo Contemporâneo."
     },
-        "Heloisa_Ricci": {
-        "nome": "Heloisa Ghisleri Ricci.",
-        "cargo": "Pibic-Jr.",
-        "sobre": "Estudante de Curso Técnico em Desenvolvimento de Sistemas na escola técnica Dr. Júlio Cardoso. Integra o programa PIBIC Jr. e compõe o Centro de Pesquisa Política Social (CPPS) da UNESP." 
-    }}
+    "Monize_Cruz": {
+      "nome": "Monize Cruz Gonçalves",
+      "cargo": "Estagiária Voluntária",
+      "sobre": "Graduanda do curso de Relações Internacionais na Universidade Estadual Júlio de mesquita Filho (UNESP)no campus de Franca em São Paulo, interessada  nas áreas de Identidade Nacional, Interseccionalidade, estudos étnico-raciais, ciência política, periferia e politicas públicas.Membro do centro acadêmico Jõao Cabral de Melo Neto, representante discente e atuante no campus."
+    },
+    "Luana_Vitorino": {
+      "nome": "Luana Assunção Vitorino",
+      "cargo": "Pibic-Jr.",
+      "sobre": "Estudante de Curso Técnico em Desenvolvimento de Sistemas, com grande paixão por tecnologia e um entusiasmo contínuo por aprender coisas novas. Integra o programa PIBIC Jr. e compõe o Centro de Pesquisa Política Social (CPPS) da UNESP, conectando seus interesses em tecnologia com a pesquisa acadêmica."
+    },
+    "Heloisa_Ricci": {
+      "nome": "Heloisa Ghisleri Ricci.",
+      "cargo": "Pibic-Jr.",
+      "sobre": "Estudante de Curso Técnico em Desenvolvimento de Sistemas na escola técnica Dr. Júlio Cardoso. Integra o programa PIBIC Jr. e compõe o Centro de Pesquisa Política Social (CPPS) da UNESP."
+    }
+  }
 }

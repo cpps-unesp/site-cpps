@@ -2,135 +2,132 @@
 export const prerender = true;
 
 export function getStaticPaths() {
-  return [
-    { params: { lang: 'pt' } },
-    { params: { lang: 'en' } },
-    { params: { lang: 'es' } }
-  ];
+  return [{ params: { lang: 'pt' } }, { params: { lang: 'en' } }, { params: { lang: 'es' } }];
 }
 
 const { lang } = Astro.params;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt">
-<head>
-  <meta charset="UTF-8">
-  <title>Busca - CPPS (debug)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .container {
-      max-width: 600px;
-      margin: 2rem auto;
-      padding: 1rem;
-      font-family: Arial, sans-serif;
-    }
-    .input {
-      display: block;
-      width: 100%;
-      padding: 0.5rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.25rem;
-    }
-    .menu {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .menu li {
-      padding: 0.5rem;
-      border-bottom: 1px solid #eee;
-    }
-    .menu li:hover {
-      background: #f0f0f0;
-    }
-  </style>
-</head>
-<body>
-<div class="container">
-    <h1>Busca com Debug</h1>
-    <input 
-      id="search-input" 
-      type="text" 
-      placeholder="Digite sua busca..." 
-      class="input"
-      aria-label="Buscar"
-    />
-
-    <ul id="search-results" class="menu"></ul>
-  </div>
-
-  <script type="module">
-    console.log("✅ Iniciando import do Pagefind...");
-
-    import("/_pagefind/pagefind.js").then(({ default: pagefind }) => {
-      console.log("✅ Pagefind importado com sucesso:", pagefind);
-
-      const input = document.getElementById('search-input');
-      const resultsContainer = document.getElementById('search-results');
-
-      if (!input) {
-        console.error("❌ Não encontrou o elemento #search-input!");
+  <head>
+    <meta charset="UTF-8" />
+    <title>Busca - CPPS (debug)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1rem;
+        font-family: Arial, sans-serif;
       }
-      if (!resultsContainer) {
-        console.error("❌ Não encontrou o elemento #search-results!");
+      .input {
+        display: block;
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
       }
-
-      let debounceTimeout = null;
-
-      function clearResults() {
-        console.log("🧹 Limpando resultados...");
-        resultsContainer.innerHTML = '';
+      .menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
       }
-
-      function createResultItem(url, title) {
-        const li = document.createElement('li');
-        li.innerHTML = `<a href="${url}">${title}</a>`;
-        return li;
+      .menu li {
+        padding: 0.5rem;
+        border-bottom: 1px solid #eee;
       }
+      .menu li:hover {
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Busca com Debug</h1>
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Digite sua busca..."
+        class="input"
+        aria-label="Buscar"
+      />
 
-      input.addEventListener('input', () => {
-        const term = input.value.trim();
-        console.log("📝 Input detectado:", term);
+      <ul id="search-results" class="menu"></ul>
+    </div>
 
-        clearTimeout(debounceTimeout);
-        debounceTimeout = setTimeout(async () => {
-          if (term.length < 2) {
-            console.warn("⚠️ Termo muito curto para buscar.");
-            clearResults();
-            return;
+    <script type="module">
+      console.log('✅ Iniciando import do Pagefind...');
+
+      import('/_pagefind/pagefind.js')
+        .then(({ default: pagefind }) => {
+          console.log('✅ Pagefind importado com sucesso:', pagefind);
+
+          const input = document.getElementById('search-input');
+          const resultsContainer = document.getElementById('search-results');
+
+          if (!input) {
+            console.error('❌ Não encontrou o elemento #search-input!');
+          }
+          if (!resultsContainer) {
+            console.error('❌ Não encontrou o elemento #search-results!');
           }
 
-          console.log("🔎 Buscando por:", term);
-          try {
-            const results = await pagefind.search(term);
-            console.log("📦 Resultados encontrados:", results);
+          let debounceTimeout = null;
 
-            clearResults();
+          function clearResults() {
+            console.log('🧹 Limpando resultados...');
+            resultsContainer.innerHTML = '';
+          }
 
-            if (results.length) {
-              for (const result of results) {
-                const item = await result.data();
-                console.log("📄 Item:", item);
-                const li = createResultItem(item.url, item.meta.title || item.excerpt);
-                resultsContainer.appendChild(li);
+          function createResultItem(url, title) {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="${url}">${title}</a>`;
+            return li;
+          }
+
+          input.addEventListener('input', () => {
+            const term = input.value.trim();
+            console.log('📝 Input detectado:', term);
+
+            clearTimeout(debounceTimeout);
+            debounceTimeout = setTimeout(async () => {
+              if (term.length < 2) {
+                console.warn('⚠️ Termo muito curto para buscar.');
+                clearResults();
+                return;
               }
-            } else {
-              console.log("❗️ Nenhum resultado encontrado.");
-              const li = document.createElement('li');
-              li.textContent = 'Nenhum resultado encontrado';
-              resultsContainer.appendChild(li);
-            }
-          } catch (err) {
-            console.error("❌ Erro ao buscar:", err);
-          }
-        }, 300);
-      });
-    }).catch(err => {
-      console.error("❌ Falha ao importar Pagefind:", err);
-    });
-  </script>
 
-</body>
+              console.log('🔎 Buscando por:', term);
+              try {
+                const results = await pagefind.search(term);
+                console.log('📦 Resultados encontrados:', results);
+
+                clearResults();
+
+                if (results.length) {
+                  for (const result of results) {
+                    const item = await result.data();
+                    console.log('📄 Item:', item);
+                    const li = createResultItem(item.url, item.meta.title || item.excerpt);
+                    resultsContainer.appendChild(li);
+                  }
+                } else {
+                  console.log('❗️ Nenhum resultado encontrado.');
+                  const li = document.createElement('li');
+                  li.textContent = 'Nenhum resultado encontrado';
+                  resultsContainer.appendChild(li);
+                }
+              } catch (err) {
+                console.error('❌ Erro ao buscar:', err);
+              }
+            }, 300);
+          });
+        })
+        .catch((err) => {
+          console.error('❌ Falha ao importar Pagefind:', err);
+        });
+    </script>
+  </body>
 </html>

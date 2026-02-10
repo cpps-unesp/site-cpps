@@ -10,36 +10,36 @@ Aprender linguagens de programação pode ser mais complicado do que aprender li
 
 Além dos exercícios que serão propostos nesta página, é possível acessar websites que disponibilizam diversos exercícios com visualização IDE:
 
-* [JS Hero](https://www.jshero.net/en/success.html):
-    * _Website gratuito que disponibiliza exercícios para quem quer praticar conhecimentos introdutórios de JavaScript_
-    * **Nível de dificuldade**: Iniciante
-    * **Língua**: Inglês
+- [JS Hero](https://www.jshero.net/en/success.html):
+  - _Website gratuito que disponibiliza exercícios para quem quer praticar conhecimentos introdutórios de JavaScript_
+  - **Nível de dificuldade**: Iniciante
+  - **Língua**: Inglês
 
-* [Exercism](https://exercism.org/tracks/javascript/exercises):
-    * _Website gratuito que disponibiliza exercícios de JavaScript, sendo possível visualizar a sua própria área de progresso de conhecimento_
-    * **Nível de dificuldade**: Iniciante ao Avançado
-    * **Língua**: Inglês
+- [Exercism](https://exercism.org/tracks/javascript/exercises):
+  - _Website gratuito que disponibiliza exercícios de JavaScript, sendo possível visualizar a sua própria área de progresso de conhecimento_
+  - **Nível de dificuldade**: Iniciante ao Avançado
+  - **Língua**: Inglês
 
-* [freeCodeCamp](https://www.freecodecamp.org/learn/):
-    * _Website gratuito que disponibiliza exercícios e possui formações gratuitas com certificado_
-    * **Nível de dificuldade**: Iniciante ao Avançado
-    * **Língua**: Inglês
+- [freeCodeCamp](https://www.freecodecamp.org/learn/):
+  - _Website gratuito que disponibiliza exercícios e possui formações gratuitas com certificado_
+  - **Nível de dificuldade**: Iniciante ao Avançado
+  - **Língua**: Inglês
 
-* [Learn JavaScript](https://learnjavascript.online):
-    * _Website interativo que disponibiliza diversos exercícios e conteúdos gratuitos, mas o curso completo **não** é gratuito_
-    * **Nível de dificuldade**: Iniciante
-    * **Língua**: Inglês
+- [Learn JavaScript](https://learnjavascript.online):
+  - _Website interativo que disponibiliza diversos exercícios e conteúdos gratuitos, mas o curso completo **não** é gratuito_
+  - **Nível de dificuldade**: Iniciante
+  - **Língua**: Inglês
 
-* [School of Net](https://www.schoolofnet.com/curso/frontend/javascript/iniciando-com-javascript-rev3/):
-    * _Website **brasileiro** que oferece um curso gratuito para aprender JavaScript_
-    * **Nível de dificuldade**: Iniciante
-    * **Língua**: Português BR
+- [School of Net](https://www.schoolofnet.com/curso/frontend/javascript/iniciando-com-javascript-rev3/):
+  - _Website **brasileiro** que oferece um curso gratuito para aprender JavaScript_
+  - **Nível de dificuldade**: Iniciante
+  - **Língua**: Português BR
 
 ## EXERCÍCIOS: Operadores
 
-* Acesse o conteúdo teórico disponibilizado no Módulo 2 da [página JS](https://labriunesp.org/docs/projetos/ensino/trilha-dados/linguagens/js/js) antes de resolver os exercícios.
+- Acesse o conteúdo teórico disponibilizado no Módulo 2 da [página JS](https://labriunesp.org/docs/projetos/ensino/trilha-dados/linguagens/js/js) antes de resolver os exercícios.
 
-* Para a resolução dos exercícios utilize um editor de código (ex: VSCode).
+- Para a resolução dos exercícios utilize um editor de código (ex: VSCode).
 
 ### Exercício 1
 
@@ -68,7 +68,6 @@ O cliente de uma loja deseja saber a porcentagem de desconto aplicada dos produt
 ### Resolução dos exercícios
 
 [Acesse aqui](https://replit.com/join/spangfsend-rikamishiro)
-
 
 ## EXERCÍCIOS: "if" e "switch"
 
@@ -110,26 +109,26 @@ Escreva um código que retorne a quantidade de pontos que seu time fez de acordo
 
 Elabore um programa que dada a idade de um nadador classifica-o em uma das seguintes categorias
 
-|Idade|Categoria|
-|-----|---------|
-|5-7 anos|Infantil A|
-|8-10 anos|Infantil B|
-|11-13 anos|Juvenil A|
-|14-17 anos|Juvenil B|
-|+18|Adulto|
+| Idade      | Categoria  |
+| ---------- | ---------- |
+| 5-7 anos   | Infantil A |
+| 8-10 anos  | Infantil B |
+| 11-13 anos | Juvenil A  |
+| 14-17 anos | Juvenil B  |
+| +18        | Adulto     |
 
 ### Exercício 10
 
 Faça um algoritmo que dado um número, retorne a classificação do ângulo.
 
-|Tipo de ângulo|Significado|
-|--------------|-----------|
-|Ângulo agudo|ângulo com medida maior que 0º e menor que 90º|
-|Ângulo reto|ângulo com medida igual a 90º|
-|Ângulo obtuso|ângulo com medida maior que 90º|
-|Ângulo rado|ângulo com a medida igual a 0º ou 180º|
-|Ângulo côncavo|ângulo com medida entre 180º e 360º|
-|Ângulo completo|ângulo com medida igual a 360º|
+| Tipo de ângulo  | Significado                                    |
+| --------------- | ---------------------------------------------- |
+| Ângulo agudo    | ângulo com medida maior que 0º e menor que 90º |
+| Ângulo reto     | ângulo com medida igual a 90º                  |
+| Ângulo obtuso   | ângulo com medida maior que 90º                |
+| Ângulo rado     | ângulo com a medida igual a 0º ou 180º         |
+| Ângulo côncavo  | ângulo com medida entre 180º e 360º            |
+| Ângulo completo | ângulo com medida igual a 360º                 |
 
 ### Resolução dos exercícios
 
@@ -141,25 +140,25 @@ Faça um algoritmo que dado um número, retorne a classificação do ângulo.
 
 Baseando na tabela abaixo, retorne a classificação de um produto.
 
-|Código|Classificação|
-|------|-------------|
-|1|Alimento não perecível|
-|2 - 4|Alimento perecível|
-|5 - 6|Vestuário|
-|7|Higiene Pessoal|
-|8 - 15|Limpeza e utensílios domésticos|
-|Qualquer outro código|Código inválido|
+| Código                | Classificação                   |
+| --------------------- | ------------------------------- |
+| 1                     | Alimento não perecível          |
+| 2 - 4                 | Alimento perecível              |
+| 5 - 6                 | Vestuário                       |
+| 7                     | Higiene Pessoal                 |
+| 8 - 15                | Limpeza e utensílios domésticos |
+| Qualquer outro código | Código inválido                 |
 
 ### Exercício 2
 
 Baseado na tabela abaixo, escreva um algoritmo que leia o código do item adquirido pelo consumidor e a quantidade, calculando e mostrando o valor a pagar. A mensagem de retorno deve conter o produto, a quantidade e o valor total a pagar.
 
-|Código|Produto|Preço Unitário (R$)|
-|------|-------|-------------------|
-|200|Camiseta|R$ 25,00|
-|201|Calça|R$ 35,00|
-|202|Jaqueta|R$ 45,00|
-|203|Saia|R$ 55,00|
+| Código | Produto  | Preço Unitário (R$) |
+| ------ | -------- | ------------------- |
+| 200    | Camiseta | R$ 25,00            |
+| 201    | Calça    | R$ 35,00            |
+| 202    | Jaqueta  | R$ 45,00            |
+| 203    | Saia     | R$ 55,00            |
 
 ## DESAFIO: Criação de página com JS (Bootstrap e JQuery)
 
@@ -187,8 +186,8 @@ Retorne o nome de 6 frutas com somente a primeira letra maiúscula
 
 Retorne uma nova array com o nome dos estudantes e com a nota final
 
-|Estudantes|Matemática|Peso de M.|Português|Peso de P.|
-|----------|----------|----------|---------|----------|
-|Nathalia|7|1.5|5|2|
-|Zelia|5|1.5|8|2|
-|Raquel|8|1.5|9|2|
+| Estudantes | Matemática | Peso de M. | Português | Peso de P. |
+| ---------- | ---------- | ---------- | --------- | ---------- |
+| Nathalia   | 7          | 1.5        | 5         | 2          |
+| Zelia      | 5          | 1.5        | 8         | 2          |
+| Raquel     | 8          | 1.5        | 9         | 2          |

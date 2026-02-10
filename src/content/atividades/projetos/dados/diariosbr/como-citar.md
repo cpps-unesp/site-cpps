@@ -1,11 +1,11 @@
 ---
-title: "Como citar"
-description: "Veja como referenciar os dados do DiáriosBR em seus trabalhos acadêmicos."
+title: 'Como citar'
+description: 'Veja como referenciar os dados do DiáriosBR em seus trabalhos acadêmicos.'
 sidebar:
   order: 6
 ---
 
-Se você utilizou os dados ou a documentação do  projeto **DiáriosBR** em sua pesquisa, artigo ou trabalho acadêmico, pedimos que cite o projeto. Isso é fundamental para dar crédito aos pesquisadores e garantir a continuidade do financiamento e suporte ao projeto.
+Se você utilizou os dados ou a documentação do projeto **DiáriosBR** em sua pesquisa, artigo ou trabalho acadêmico, pedimos que cite o projeto. Isso é fundamental para dar crédito aos pesquisadores e garantir a continuidade do financiamento e suporte ao projeto.
 
 Abaixo estão os modelos de citação nos formatos mais utilizados.
 
@@ -15,7 +15,7 @@ Abaixo estão os modelos de citação nos formatos mais utilizados.
 
 ## Formato APA
 
-> Mariano, M. P. (Coord.). (2021). *DiáriosBR*. Laboratório de Relações Internacionais (LABRI-UNESP). https://labriunesp.org/docs/projetos/dados/diariosbr
+> Mariano, M. P. (Coord.). (2021). _DiáriosBR_. Laboratório de Relações Internacionais (LABRI-UNESP). https://labriunesp.org/docs/projetos/dados/diariosbr
 
 ## BibTeX
 
@@ -42,6 +42,7 @@ Os dados disponibilizados pelo DiáriosBR são de uso público para fins de pesq
 <br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

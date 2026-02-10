@@ -1,4 +1,4 @@
-(function() {
+(function () {
   const THEME_STORAGE_KEY = 'theme';
   const DEFAULT_THEME_CHOICE = 'system';
 

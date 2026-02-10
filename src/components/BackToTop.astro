@@ -1,12 +1,12 @@
 ---
 // BackToTop Component
-const { lang = "pt" } = Astro.props;
+const { lang = 'pt' } = Astro.props;
 
 // Textos multilíngues
 const texts: Record<string, string> = {
-  pt: "Voltar ao topo",
-  en: "Back to top", 
-  es: "Volver arriba"
+  pt: 'Voltar ao topo',
+  en: 'Back to top',
+  es: 'Volver arriba',
 };
 
 const ariaLabel = texts[lang as string] || texts.pt;
@@ -14,7 +14,8 @@ const ariaLabel = texts[lang as string] || texts.pt;
 
 <button
   id="back-to-top"
-  class="fixed bottom-6 right-6 bg-primary hover:bg-primary-focus text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible z-50 hover:scale-110"  aria-label={ariaLabel}
+  class="bg-primary hover:bg-primary-focus invisible fixed right-6 bottom-6 z-50 rounded-full p-3 text-white opacity-0 shadow-lg transition-all duration-300 hover:scale-110"
+  aria-label={ariaLabel}
   title={ariaLabel}
 >
   <svg
@@ -25,20 +26,20 @@ const ariaLabel = texts[lang as string] || texts.pt;
     stroke="currentColor"
     stroke-width="2"
   >
-    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"></path>
   </svg>
 </button>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const backToTopButton = document.getElementById('back-to-top');
-    
+
     if (!backToTopButton) return;
 
     // Mostrar/ocultar botão baseado no scroll
     function toggleVisibility() {
       if (!backToTopButton) return;
-      
+
       if (window.pageYOffset > 300) {
         backToTopButton.classList.remove('opacity-0', 'invisible');
         backToTopButton.classList.add('opacity-100', 'visible');
@@ -52,7 +53,7 @@ const ariaLabel = texts[lang as string] || texts.pt;
     function scrollToTop() {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
 
@@ -70,14 +71,17 @@ const ariaLabel = texts[lang as string] || texts.pt;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
-  
+
   #back-to-top:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   }
-  
+
   /* Animação suave para mudanças de visibilidade */
   #back-to-top {
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.2s ease;
   }
 </style>

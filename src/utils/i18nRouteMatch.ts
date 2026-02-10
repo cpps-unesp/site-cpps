@@ -33,7 +33,7 @@ export function getRouteMatch(path: string, sourceLang: SupportedLang): RouteMat
 export function translatePathBetweenLangs(
   path: string,
   sourceLang: SupportedLang,
-  targetLang: SupportedLang,
+  targetLang: SupportedLang
 ): string {
   const match = getRouteMatch(path, sourceLang);
   if (!match) return path;
@@ -52,5 +52,7 @@ export function getLocalizedPathFromPathname(pathname: string, targetLang: Suppo
     ? translatePathBetweenLangs(currentPath, sourceLang, targetLang)
     : currentPath;
 
-  return `/${targetLang}/${translatedPath}`.replace(/\/+/g, '/').replace(/\/$/, '/') || `/${targetLang}/`;
+  return (
+    `/${targetLang}/${translatedPath}`.replace(/\/+/g, '/').replace(/\/$/, '/') || `/${targetLang}/`
+  );
 }

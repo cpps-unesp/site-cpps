@@ -6,7 +6,7 @@ sidebar_label: JQuery
 
 ## Introdução
 
-* [Website oficial do JQuery](https://jquery.com)
+- [Website oficial do JQuery](https://jquery.com)
 
 Criada em 2006 como ferramente para reduzir a escrita de algumas funções do JavaScript, JQuery é uma biblioteca _open source_ que tem como intuito facilitar o desenvolvimento front-end.
 
@@ -34,18 +34,18 @@ https://code.jquery.com/jquery-3.5.1.min.js
 
 ### Sintaxe
 
-* ```$(seletor).ação()```
-* **$**: simbolo de acesso ao JQuery;
-* **Seletor**: utilizado para encontrar os elementos HTML;
-* **Ação**: o que deseja realizar
+- `$(seletor).ação()`
+- **$**: simbolo de acesso ao JQuery;
+- **Seletor**: utilizado para encontrar os elementos HTML;
+- **Ação**: o que deseja realizar
 
 ### Métodos de inicialização
 
-* Estrutura:
+- Estrutura:
 
 ![estrutura1](https://i.imgur.com/YF7vh4q.png)
 
-* Equivale a:
+- Equivale a:
 
 ![estrutura2](https://i.imgur.com/pGF6Fzo.png)
 
@@ -53,7 +53,7 @@ https://code.jquery.com/jquery-3.5.1.min.js
 
 Para encontrar os elementos HTML, o seletor seleciona o elemento de acordo com seu nome.
 
-Por exemplo, para selecionar todos os elementos ```<p>```, utilizamos ```$("p")```.
+Por exemplo, para selecionar todos os elementos `<p>`, utilizamos `$("p")`.
 
 Exemplo:
 
@@ -61,13 +61,13 @@ Exemplo:
 
 _Visualização do resultado_: [LINK](#)
 
-Para  selecionar #id, utilize: ```$(#test)```.
+Para selecionar #id, utilize: `$(#test)`.
 
 Exemplo:
 
 ![exemplo2](https://i.imgur.com/hNgMJrc.png)
 
-Para selecionar .class, utilize: ```$(.test)```
+Para selecionar .class, utilize: `$(.test)`
 
 Exemplo:
 
@@ -81,15 +81,15 @@ Acesse o [link](https://api.jquery.com/category/attributes/) para conhecer algun
 
 Os métodos de eventos disparam eventos que acontecem quando o usuário interage com o navegador, como uma forma de manipular o comportamento do(s) elemento(s) selecionado.
 
-|Tipo de eventos|Nome|
-|---------------|----|
-|**Eventos de Navegador**|_scroll()_|
-|**Eventos de Mouse**|_click()_, _dblclick()_, _hover()_, _mouseleave()_, e mais.|
-|**Eventos de Teclado**|_keypress()_, _keyup()_, _keydown()_|
+| Tipo de eventos          | Nome                                                        |
+| ------------------------ | ----------------------------------------------------------- |
+| **Eventos de Navegador** | _scroll()_                                                  |
+| **Eventos de Mouse**     | _click()_, _dblclick()_, _hover()_, _mouseleave()_, e mais. |
+| **Eventos de Teclado**   | _keypress()_, _keyup()_, _keydown()_                        |
 
-**Sintaxe**: ```$("p").click();```
+**Sintaxe**: `$("p").click();`
 
-* **COMO UTILIZAR**
+- **COMO UTILIZAR**
 
 > "click()"
 
@@ -117,7 +117,7 @@ A biblioteca do JQuery disponibiliza diversas técnicas para a adesão de anima�
 
 **Exemplos**:
 
-* Utilizando métodos "hide()" e "show()"
+- Utilizando métodos "hide()" e "show()"
 
 ![efeitoExemplo1](https://i.imgur.com/V6YJ4Nn.png)
 
@@ -127,42 +127,42 @@ _Sintaxe_:
 
     $(selector).show(speed, callback);
 
-* O efeito do JQuery será utilizado no valor de velocidade. Resultado final:
+- O efeito do JQuery será utilizado no valor de velocidade. Resultado final:
 
 ![efeitoResultado1](https://i.imgur.com/GMTStpH.png)
 
-* Utilizando o método "toggle()" (elemento "hidden" passa a ser "shown" e "shown" passa a ser "hidden")
+- Utilizando o método "toggle()" (elemento "hidden" passa a ser "shown" e "shown" passa a ser "hidden")
 
 _Sintaxe_:
 
     $(selector).toggle(speed, callback);
 
-* Resultado final:
+- Resultado final:
 
 ![efeitoResultado2](https://i.imgur.com/dX1qBJI.png)
 
-As velocidades também podem ser determinadas como, por exemplo, ```("slow")``` ao invés de números.
+As velocidades também podem ser determinadas como, por exemplo, `("slow")` ao invés de números.
 
 Treine os exercícios de "[Efeitos JQ](https://www.w3schools.com/jquery/exercise_jq.asp?filename=exercise_jq_dom_add2)".
 
 ### EFEITOS: Tabela e Valores
 
-* **TABELA**
+- **TABELA**
 
-|Aplicação|Significado|Exemplos|
-|---------|-----------|--------|
-|*(speed, callback)*|Determinar um valor (numérico ou não) de velocidade|$("p").fadeToggle("slow"); / $("p");fadeToggle(3000);|
-|*(speed, opacity, callback)*|Determinar um valor de velocidade para a duração de um efeito de opacidade|$("p").fadeTo("slow", 0.15);|
-|*(stopAll, goToEnd)*|Determinar o método stop()|$("p").stop()|
-|_callback_|Determinar o parametro callback depois do efeito ter sido aplicado|alert("Aviso após efeito");|
+| Aplicação                    | Significado                                                                | Exemplos                                              |
+| ---------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------- |
+| _(speed, callback)_          | Determinar um valor (numérico ou não) de velocidade                        | $("p").fadeToggle("slow"); / $("p");fadeToggle(3000); |
+| _(speed, opacity, callback)_ | Determinar um valor de velocidade para a duração de um efeito de opacidade | $("p").fadeTo("slow", 0.15);                          |
+| _(stopAll, goToEnd)_         | Determinar o método stop()                                                 | $("p").stop()                                         |
+| _callback_                   | Determinar o parametro callback depois do efeito ter sido aplicado         | alert("Aviso após efeito");                           |
 
-* **VALORES**
-    * **Valores relativos**: Para determinar um valor relativo, basta utilizar "+=" ou "-=" antes do valor. _Exemplo_: "height: '+=150px'"
-    * **Valores pré-definidos**: Utilizar "show", "hide" ou "toggle".
+- **VALORES**
+  - **Valores relativos**: Para determinar um valor relativo, basta utilizar "+=" ou "-=" antes do valor. _Exemplo_: "height: '+=150px'"
+  - **Valores pré-definidos**: Utilizar "show", "hide" ou "toggle".
 
 ### EFEITOS: "animate()"
 
-*Sintaxe*:
+_Sintaxe_:
 
 ```
 $(selector).animate({params}, speed, callback);
@@ -170,17 +170,17 @@ $(selector).animate({params}, speed, callback);
 
 O parametro "{params}" define a propriedade CSS a ser animada.
 
-* Exemplos:
+- Exemplos:
 
-1)
+1.
 
 ![efeitoResultado3](https://i.imgur.com/sZRU4MT.png)
 
-2)
+2.
 
 ![efeitoResultado4](https://i.imgur.com/fsDmxe0.png)
 
-3) EXEMPLO COM _CALLBACK_:
+3. EXEMPLO COM _CALLBACK_:
 
 ![efeitoResultado5](https://i.imgur.com/HXmKM9Q.png)
 
@@ -188,4 +188,4 @@ O parametro "{params}" define a propriedade CSS a ser animada.
 
 É possível carregar dados de um arquivo ".json" em um documento utilizando o JQuery.
 
-Para importar dados de um arquivo .json, utilize o método ```$.getJSON()```, utilizando o caminho do arquivo json dentro dos parênteses.
+Para importar dados de um arquivo .json, utilize o método `$.getJSON()`, utilizando o caminho do arquivo json dentro dos parênteses.

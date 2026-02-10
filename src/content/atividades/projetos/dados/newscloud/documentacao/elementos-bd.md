@@ -1,6 +1,6 @@
 ---
-title: "Elementos do Banco de Dados"
-description: "Definição das variáveis, tipos e estrutura do banco de dados."
+title: 'Elementos do Banco de Dados'
+description: 'Definição das variáveis, tipos e estrutura do banco de dados.'
 sidebar:
   order: 2
 ---
@@ -12,9 +12,10 @@ Esta seção detalha a estrutura de dados utilizada no projeto, definindo as var
 Antes de analisar a estrutura do banco, atente-se aos seguintes pontos identificados durante o processo de coleta:
 
 :::note[Autoria]
-*   A **autoria** nem sempre aparece na página web visível, mas pode estar presente no código-fonte. Contudo, o formato do nome muitas vezes se apresenta como no exemplo: `/autor/cmgutierrez/`.
-*   O nome do autor não é necessariamente de quem escreveu a notícia; pode ser o nome do responsável pela publicação no site.
-:::
+
+- A **autoria** nem sempre aparece na página web visível, mas pode estar presente no código-fonte. Contudo, o formato do nome muitas vezes se apresenta como no exemplo: `/autor/cmgutierrez/`.
+- O nome do autor não é necessariamente de quem escreveu a notícia; pode ser o nome do responsável pela publicação no site.
+  :::
 
 :::caution[Fuso Horário]
 É necessário se atentar com os horários dos jornais peruanos, pois apresentam fuso horário **-5** (UTC-5).
@@ -26,38 +27,38 @@ Antes de analisar a estrutura do banco, atente-se aos seguintes pontos identific
 
 A tabela abaixo descreve os elementos que compõem o banco de dados principal.
 
-| Variáveis | Tipo | Descrição | Exemplos Newscloud | Exemplos GovLatinAmerica |
-| :--- | :--- | :--- | :--- | :--- |
-| `tipo_dado` | list | Disponibilidade dos dados | Aberto / Fechado | Aberto / Fechado |
-| `pais` | str | País referente ao dado | Brasil | Brasil |
-| `origem` | list | Nome da fonte dos dados | Estadão | Ministério da Educação |
-| `sigla` | str | Junção do País com a Origem (Abreviado) | BRA-ESTADAO | - |
-| `categoria` | list | Categoria dos dados (subdivisão) | Política, Economia | Trabalho, Emprego e Previdência |
-| `autoria` | list | Quem é o autor dos dados | Autor da Notícia | Autor dos documentos |
-| `titulo` | str | Título dos dados | Título da Notícia | Título do artigo |
-| `subtitulo` | str | Subtítulo do artigo | Subtítulo da Notícia | Subtítulo do artigo |
-| `data` | str | Data de publicação | dd/mm/aaaa | dd/mm/aaaa |
-| `horario` | str | Horário de publicação | hh:mm | hh:mm |
-| `datetime` | datetime | Data e Horário de publicação | dd/mm/yyyy hh:mm | dd/mm/yyyy hh:mm |
-| `data_atualizado` | list | Data de Atualização | dd/mm/aaaa | - |
-| `horario_atualizado` | list | Horário de Atualização | hh:mm | hh:mm |
-| `link` | str | URLs que devem ser coletados | `https:...` | `https:...` |
-| `link_archive` | str | Link arquivado (Wayback Machine, etc) | - | - |
-| `data_archive` | list | Data do arquivamento | - | - |
-| `horario_archive` | list | Horário do arquivamento | - | - |
-| `local` | list | Local da notícia | - | - |
-| `tags` | list | Tags de identificação dos dados | - | "Economia popular e solidária" |
-| `paragrafos` | list | Corpo do texto | Parágrafos das notícias | Parágrafos dos artigos |
-| `nome_arquivo` | str | Nome do arquivo salvo | - | - |
-| `imagens` | list | Lista de imagens da notícia | - | - |
-| `dir_bd` | list | Diretório do Banco de Dados | - | - |
-| `dir_arquivo` | list | Diretório do Arquivo | - | - |
-| `codigo_bd` | str | Caminho do banco de dados | `bd/002/010/001` | `bd/001/02/001` |
-| `nome_bd_json` | str | Nome do documento JSON | `BD_JORNAL_CHILE_LA_NACION.json` | - |
-| `env_dir_bd` | str | Código do banco usado na variável de ambiente | `BD_JORNAL_BOLIVIA_ELDEBER` | - |
-| `extra_01` | str | Campo extra para informações diversas | - | - |
-| `extra_02` | str | Campo extra para informações diversas | - | - |
-| `extra_03` | str | Campo extra para informações diversas | - | - |
+| Variáveis            | Tipo     | Descrição                                     | Exemplos Newscloud               | Exemplos GovLatinAmerica        |
+| :------------------- | :------- | :-------------------------------------------- | :------------------------------- | :------------------------------ |
+| `tipo_dado`          | list     | Disponibilidade dos dados                     | Aberto / Fechado                 | Aberto / Fechado                |
+| `pais`               | str      | País referente ao dado                        | Brasil                           | Brasil                          |
+| `origem`             | list     | Nome da fonte dos dados                       | Estadão                          | Ministério da Educação          |
+| `sigla`              | str      | Junção do País com a Origem (Abreviado)       | BRA-ESTADAO                      | -                               |
+| `categoria`          | list     | Categoria dos dados (subdivisão)              | Política, Economia               | Trabalho, Emprego e Previdência |
+| `autoria`            | list     | Quem é o autor dos dados                      | Autor da Notícia                 | Autor dos documentos            |
+| `titulo`             | str      | Título dos dados                              | Título da Notícia                | Título do artigo                |
+| `subtitulo`          | str      | Subtítulo do artigo                           | Subtítulo da Notícia             | Subtítulo do artigo             |
+| `data`               | str      | Data de publicação                            | dd/mm/aaaa                       | dd/mm/aaaa                      |
+| `horario`            | str      | Horário de publicação                         | hh:mm                            | hh:mm                           |
+| `datetime`           | datetime | Data e Horário de publicação                  | dd/mm/yyyy hh:mm                 | dd/mm/yyyy hh:mm                |
+| `data_atualizado`    | list     | Data de Atualização                           | dd/mm/aaaa                       | -                               |
+| `horario_atualizado` | list     | Horário de Atualização                        | hh:mm                            | hh:mm                           |
+| `link`               | str      | URLs que devem ser coletados                  | `https:...`                      | `https:...`                     |
+| `link_archive`       | str      | Link arquivado (Wayback Machine, etc)         | -                                | -                               |
+| `data_archive`       | list     | Data do arquivamento                          | -                                | -                               |
+| `horario_archive`    | list     | Horário do arquivamento                       | -                                | -                               |
+| `local`              | list     | Local da notícia                              | -                                | -                               |
+| `tags`               | list     | Tags de identificação dos dados               | -                                | "Economia popular e solidária"  |
+| `paragrafos`         | list     | Corpo do texto                                | Parágrafos das notícias          | Parágrafos dos artigos          |
+| `nome_arquivo`       | str      | Nome do arquivo salvo                         | -                                | -                               |
+| `imagens`            | list     | Lista de imagens da notícia                   | -                                | -                               |
+| `dir_bd`             | list     | Diretório do Banco de Dados                   | -                                | -                               |
+| `dir_arquivo`        | list     | Diretório do Arquivo                          | -                                | -                               |
+| `codigo_bd`          | str      | Caminho do banco de dados                     | `bd/002/010/001`                 | `bd/001/02/001`                 |
+| `nome_bd_json`       | str      | Nome do documento JSON                        | `BD_JORNAL_CHILE_LA_NACION.json` | -                               |
+| `env_dir_bd`         | str      | Código do banco usado na variável de ambiente | `BD_JORNAL_BOLIVIA_ELDEBER`      | -                               |
+| `extra_01`           | str      | Campo extra para informações diversas         | -                                | -                               |
+| `extra_02`           | str      | Campo extra para informações diversas         | -                                | -                               |
+| `extra_03`           | str      | Campo extra para informações diversas         | -                                | -                               |
 
 ---
 
@@ -65,12 +66,12 @@ A tabela abaixo descreve os elementos que compõem o banco de dados principal.
 
 Explicação sobre as variáveis utilizadas para controle de diretórios e arquivos.
 
-| Variável | Significado | Exemplo |
-| :--- | :--- | :--- |
-| `env_dir_bd` | Aponta para uma variável de ambiente que leva para o diretório raiz | A variável de ambiente leva para o diretório local/raiz `BD_JORNAL_UNESP` |
-| `env_dir_json` | Diretório geral dos arquivos json | `env_dir_bd` + `/json` |
-| `nome_bd_json` | Nome do arquivo json | `env_dir_bd` + data |
-| `dir_json` | Caminho completo do arquivo json | `env_dir_json` + `env_dir_bd` + `data.json` |
+| Variável       | Significado                                                         | Exemplo                                                                   |
+| :------------- | :------------------------------------------------------------------ | :------------------------------------------------------------------------ |
+| `env_dir_bd`   | Aponta para uma variável de ambiente que leva para o diretório raiz | A variável de ambiente leva para o diretório local/raiz `BD_JORNAL_UNESP` |
+| `env_dir_json` | Diretório geral dos arquivos json                                   | `env_dir_bd` + `/json`                                                    |
+| `nome_bd_json` | Nome do arquivo json                                                | `env_dir_bd` + data                                                       |
+| `dir_json`     | Caminho completo do arquivo json                                    | `env_dir_json` + `env_dir_bd` + `data.json`                               |
 
 ---
 
@@ -78,34 +79,34 @@ Explicação sobre as variáveis utilizadas para controle de diretórios e arqui
 
 Resumo dos tipos de dados esperados para cada elemento.
 
-| Elemento | Significado | Tipo |
-| :--- | :--- | :--- |
-| `origem` | - | str |
-| `sigla` | - | str |
-| `classificado` | - | list |
-| `categoria` | - | list |
-| `País` | - | str |
-| `autoria` | - | list |
-| `titulo` | - | str |
-| `subtitulo` | - | str |
-| `data` | - | str |
-| `horario` | - | str |
-| `data_atualizado` | - | list |
-| `horario_atualizado` | - | list |
-| `link_archive` | - | str |
-| `data_archive` | - | str |
-| `horario_archive` | - | str |
-| `local` | - | list |
-| `tags` | - | list |
-| `paragrafos` | - | list |
-| `nome_arquivo` | - | str |
-| `imagens` | - | list |
-| `dir_bd` | - | str |
-| `dir_arquivo` | - | str |
-| `codigo_bd` | - | str |
-| `extra_01` | - | - |
-| `extra_02` | - | - |
-| `extra_03` | - | - |
+| Elemento             | Significado | Tipo |
+| :------------------- | :---------- | :--- |
+| `origem`             | -           | str  |
+| `sigla`              | -           | str  |
+| `classificado`       | -           | list |
+| `categoria`          | -           | list |
+| `País`               | -           | str  |
+| `autoria`            | -           | list |
+| `titulo`             | -           | str  |
+| `subtitulo`          | -           | str  |
+| `data`               | -           | str  |
+| `horario`            | -           | str  |
+| `data_atualizado`    | -           | list |
+| `horario_atualizado` | -           | list |
+| `link_archive`       | -           | str  |
+| `data_archive`       | -           | str  |
+| `horario_archive`    | -           | str  |
+| `local`              | -           | list |
+| `tags`               | -           | list |
+| `paragrafos`         | -           | list |
+| `nome_arquivo`       | -           | str  |
+| `imagens`            | -           | list |
+| `dir_bd`             | -           | str  |
+| `dir_arquivo`        | -           | str  |
+| `codigo_bd`          | -           | str  |
+| `extra_01`           | -           | -    |
+| `extra_02`           | -           | -    |
+| `extra_03`           | -           | -    |
 
 ---
 
@@ -116,6 +117,7 @@ Os HTMLs gerados a partir da coleta podem ser pesquisados através da ferramenta
 ### Índices Externos
 
 Para gerar os índices externos é necessário indicar:
+
 1.  A pasta em que se encontram os dados (HTMLs ou PDFs);
 2.  A pasta na qual o índice será salvo.
 
@@ -123,6 +125,7 @@ Para gerar os índices externos é necessário indicar:
 <br>
 
 ---
+
 <p style="font-size: 0.9em; color: gray;">
   Last updated on 10/15/2025 by Rafael de Almeida
 </p>

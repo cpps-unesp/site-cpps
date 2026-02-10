@@ -6,7 +6,6 @@ sidebar_label: Identificação de Status
 
 ## Como saber se um Status é um tweet, retweet ou um retuite comentado
 
-
 - Quando o status é uma quote - retuite comentado - haverá a marcação
   `'is_quote_status': True,`
 
@@ -29,7 +28,6 @@ Decidir se isso será enquadrado como retweet ou quote
 Tanto no caso de quotes quanto de retweets, os objetos Status trazem consigo -mações tanto do original quanto do citado ou retuitado.
 
 ### Lista de variáveis
-
 
 ```
 in_reply_to_user_id

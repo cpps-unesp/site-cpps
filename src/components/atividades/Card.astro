@@ -7,13 +7,13 @@ interface Props {
 const { title, icon } = Astro.props;
 ---
 
-<div class="card bg-base-200 border border-base-300 shadow-sm not-prose">
+<div class="card bg-base-200 border-base-300 not-prose border shadow-sm">
   <div class="card-body p-6">
-    <h3 class="card-title text-lg flex items-center gap-2">
+    <h3 class="card-title flex items-center gap-2 text-lg">
       {icon && <span>{icon}</span>}
       {title}
     </h3>
-    <div class="text-sm text-base-content/80 mt-2">
+    <div class="text-base-content/80 mt-2 text-sm">
       <slot />
     </div>
   </div>

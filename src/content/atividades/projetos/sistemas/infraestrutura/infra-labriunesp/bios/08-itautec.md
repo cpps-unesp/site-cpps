@@ -4,14 +4,12 @@ title: Itautec
 sidebar_label: Itautec
 ---
 
-
 ```
 Base Board Information
         Manufacturer: Itautec S.A.
         Product Name: SM 3321
 
 ```
-
 
 ### Como acessar a BIOS
 
@@ -41,7 +39,7 @@ Base Board Information
 
 ### Como habilitar Power On
 
-1. Na BIOS, vá no menu Power >  APM Configuration
+1. Na BIOS, vá no menu Power > APM Configuration
 
 ![itautec5](/imagens/logos/logo-cpps-unesp.png)
 
