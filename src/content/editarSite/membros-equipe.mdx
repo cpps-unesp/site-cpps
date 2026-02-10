@@ -1,0 +1,44 @@
+---
+title: Membros da equipe
+description: Como adicionar e manter perfis da equipe do CPPS.
+sidebar_order: 4
+---
+
+Os perfis ficam em `src/content/membros/`.
+
+## Adicionando um novo membro
+
+1. Crie arquivos MDX no padrao:
+
+```text
+nome-do-membro.pt.mdx
+nome-do-membro.en.mdx
+nome-do-membro.es.mdx
+```
+
+2. Use este template:
+
+```mdx
+---
+title: 'Nome do Membro'
+lang: 'pt'
+foto: '/imagens/equipe/foto.jpg'
+cargo: 'Cargo do Membro'
+redes:
+  - tipo: 'lattes'
+    url: 'http://lattes.cnpq.br/...'
+    icone: '/imagens/logos/lattes_icon.svg'
+contribuicao: 'Descricao opcional'
+---
+
+# Biografia
+
+Texto da biografia...
+```
+
+3. Atualize a listagem principal da equipe em `src/i18n/locales/pt.json`.
+
+## Dicas
+
+- Mantenha o mesmo slug base para os tres idiomas.
+- Prefira imagens em proporcao parecida com as ja usadas na equipe.

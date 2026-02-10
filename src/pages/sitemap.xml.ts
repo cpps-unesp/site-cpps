@@ -20,6 +20,7 @@ export async function GET() {
     urls.add(`/${lang}/`);
     urls.add(`/${lang}/atividades`);
     urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
+    urls.add(`/${lang}/${routeTranslations['editar-site'][lang]}`);
   }
 
   for (const path of buildRouteTranslationPaths(langs)) {
@@ -67,6 +68,15 @@ export async function GET() {
     }
   }
 
+  const editarSite = await getCollection('editarSite');
+  for (const lang of langs) {
+    const basePath = `/${lang}/${routeTranslations['editar-site'][lang]}`;
+    for (const entry of editarSite) {
+      if (entry.slug === 'index') continue;
+      urls.add(`${basePath}/${entry.slug}`);
+    }
+  }
+
   const xmlItems = [...urls]
     .sort((a, b) => a.localeCompare(b, 'pt-BR'))
     .map((path) => {
@@ -87,7 +97,7 @@ export async function GET() {
 
   return new Response(sitemap, {
     headers: {
-      'Content-Type': 'application/xml'
-    }
+      'Content-Type': 'application/xml',
+    },
   });
 }
