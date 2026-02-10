@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "ci": "npm run typecheck && npm run lint && npm run build",
+    "ci": "astro sync && npm run typecheck && npm run lint && npm run build",
     "astro": "astro"
   },
   "dependencies": {
