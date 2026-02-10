@@ -76,4 +76,9 @@ export const routeTranslations = {
     en: "help-desk",
     es: "mesa-de-ayuda",
   },
+  "editar-site": {
+    pt: "editar-site",
+    en: "editar-site",
+    es: "editar-site",
+  },
 } as const;

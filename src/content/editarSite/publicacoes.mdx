@@ -1,0 +1,53 @@
+---
+title: Publicacoes
+description: Como cadastrar e manter publicacoes academicas.
+sidebar_order: 3
+---
+
+As publicacoes ficam em `src/content/publicacoes/`.
+
+## Estrutura de arquivos
+
+Use pastas por idioma, por exemplo:
+
+- `src/content/publicacoes/pt/`
+- `src/content/publicacoes/en/`
+- `src/content/publicacoes/es/`
+
+## Frontmatter
+
+Cada arquivo deve conter:
+
+```markdown
+---
+title: "Titulo da Publicacao"
+date: 2024-02-15
+authors: ["Autor 1", "Autor 2"]
+summary: "Resumo breve do trabalho."
+tags: ["Democracia", "Instituicoes"]
+type: "artigo"
+lang: "pt"
+image: "/imagens/campus/entrada-unesp-franca.jpg"
+featured: true
+pdf_url: "https://exemplo.com/artigo.pdf"
+---
+```
+
+## Tipos aceitos
+
+- `artigo`
+- `analise`
+- `material-didatico`
+- `texto-curto`
+- `texto-longo`
+
+## Como adicionar nova publicacao
+
+1. Crie um arquivo `.md` na pasta do idioma.
+2. Preencha o frontmatter com os metadados.
+3. Escreva o texto em Markdown abaixo do frontmatter.
+
+## Observacoes
+
+- `pdf_url` e opcional.
+- `featured: true` coloca a publicacao em destaque.

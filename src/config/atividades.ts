@@ -10,7 +10,7 @@ export const sidebar: SidebarItem[] = [
     label: "Geral",
     items: [
       { label: "Introdução", url: "/atividades" },
-      { label: "Guia de Edição", url: "/atividades/guia-edicao" },
+      { label: "Editar Site", url: "/editar-site" },
     ],
   },
   {

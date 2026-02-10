@@ -20,6 +20,7 @@ export async function GET() {
     urls.add(`/${lang}/`);
     urls.add(`/${lang}/atividades`);
     urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
+    urls.add(`/${lang}/${routeTranslations['editar-site'][lang]}`);
   }
 
   for (const path of buildRouteTranslationPaths(langs)) {
@@ -62,6 +63,15 @@ export async function GET() {
   for (const lang of langs) {
     const basePath = `/${lang}/${routeTranslations.atendimento[lang]}`;
     for (const entry of atendimento) {
+      if (entry.slug === 'index') continue;
+      urls.add(`${basePath}/${entry.slug}`);
+    }
+  }
+
+  const editarSite = await getCollection('editarSite');
+  for (const lang of langs) {
+    const basePath = `/${lang}/${routeTranslations['editar-site'][lang]}`;
+    for (const entry of editarSite) {
       if (entry.slug === 'index') continue;
       urls.add(`${basePath}/${entry.slug}`);
     }
