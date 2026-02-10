@@ -83,10 +83,23 @@ const atividades = defineCollection({
   }).passthrough(),
 });
 
+// ✅ Collection de atendimento
+const atendimento = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string().optional().default('Atendimento'),
+    description: z.string().optional(),
+    sidebar_label: z.string().optional(),
+    sidebar_section: z.enum(['geral']).optional(),
+    sidebar_order: z.number().int().optional(),
+  }).passthrough(),
+});
+
 // ✅ Exportando as collections
 export const collections = {
   noticias,
   publicacoes,
   atividades,
+  atendimento,
   membros,
 };
