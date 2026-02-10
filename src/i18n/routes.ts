@@ -81,9 +81,4 @@ export const routeTranslations = {
     en: 'editar-site',
     es: 'editar-site',
   },
-  "editar-site": {
-    pt: "editar-site",
-    en: "editar-site",
-    es: "editar-site",
-  },
 } as const;
