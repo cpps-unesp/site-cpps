@@ -11,10 +11,10 @@ import LinkCard from '../../../components/atividades/LinkCard.astro';
 import Steps from '../../../components/atividades/Steps.astro';
 
 // Componentes de estrutura da documentacao
-import DocsSidebar from '../../../components/atividades/Sidebar.astro';
-import TableOfContents from '../../../components/atividades/TableOfContents.astro';
-import Breadcrumbs from '../../../components/atividades/Breadcrumbs.astro';
-import Pagination from '../../../components/atividades/Pagination.astro';
+import DocsSidebar from '../../../components/docs/Sidebar.astro';
+import TableOfContents from '../../../components/docs/TableOfContents.astro';
+import Breadcrumbs from '../../../components/docs/Breadcrumbs.astro';
+import Pagination from '../../../components/docs/Pagination.astro';
 
 import { buildAtividadesSidebar } from '../../../utils/atividadesSidebar';
 import type { Language } from '../../../utils/i18n';
@@ -37,6 +37,7 @@ const { Content, headings } = await render(entry);
 const currentPath = Astro.url.pathname;
 const allAtividades = await getCollection('atividades');
 const sidebar = buildAtividadesSidebar(allAtividades);
+const basePath = `/${lang}/atividades`;
 ---
 
 <BaseLayout
@@ -91,7 +92,7 @@ const sidebar = buildAtividadesSidebar(allAtividades);
 
         <div class="flex-1 min-w-0 transition-all duration-300">
           <div class="max-w-4xl mx-auto relative">
-            <Breadcrumbs currentPath={currentPath} lang={lang} />
+            <Breadcrumbs currentPath={currentPath} basePath={basePath} baseLabel="Atividades" />
 
             <article class="prose prose-lg max-w-none dark:prose-invert">
               <header class="mb-12 not-prose">
@@ -107,7 +108,7 @@ const sidebar = buildAtividadesSidebar(allAtividades);
               <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
             </article>
 
-            <Pagination currentPath={currentPath} lang={lang} />
+            <Pagination currentPath={currentPath} lang={lang} items={sidebar} />
           </div>
         </div>
 

@@ -1,26 +1,8 @@
 import type { CollectionEntry } from 'astro:content';
-import type { SidebarItem } from '../config/atividades';
+import type { SidebarItem } from '../types/docs';
+import { buildDocsSidebar } from './docsSidebar';
 
 type AtividadeEntry = CollectionEntry<'atividades'>;
-
-type SidebarNode = {
-  label: string;
-  url?: string;
-  items: Map<string, SidebarNode>;
-};
-
-const acronymMap: Record<string, string> = {
-  tfdt: 'TFDT',
-  md: 'MD',
-  ocr: 'OCR',
-  css: 'CSS',
-  html: 'HTML',
-  js: 'JS',
-  d3: 'D3',
-  api: 'API',
-  ipri: 'IPRI',
-  cpps: 'CPPS',
-};
 
 const externalResources: SidebarItem = {
   label: 'Recursos Externos',
@@ -30,96 +12,10 @@ const externalResources: SidebarItem = {
   ],
 };
 
-function normalizePath(path: string): string {
-  const trimmed = path.replace(/\/+$/, '');
-  return trimmed.endsWith('/index') ? trimmed.slice(0, -6) : trimmed;
-}
-
-function titleFromSegment(segment: string): string {
-  const clean = segment
-    .replace(/^\d+[-_]?/, '')
-    .replace(/[-_]+/g, ' ')
-    .trim();
-
-  if (!clean) return 'Pagina';
-
-  return clean
-    .split(' ')
-    .map((part) => {
-      const lower = part.toLowerCase();
-      if (acronymMap[lower]) return acronymMap[lower];
-      return lower.charAt(0).toUpperCase() + lower.slice(1);
-    })
-    .join(' ');
-}
-
-function createNode(label: string): SidebarNode {
-  return { label, items: new Map() };
-}
-
-function nodeToSidebarItems(node: SidebarNode): SidebarItem[] {
-  return Array.from(node.items.entries())
-    .sort(([a], [b]) => a.localeCompare(b, 'pt-BR'))
-    .map(([, child]) => {
-      const nestedItems = nodeToSidebarItems(child);
-      return {
-        label: child.label,
-        url: child.url,
-        items: nestedItems.length > 0 ? nestedItems : undefined,
-      };
-    });
-}
-
 export function buildAtividadesSidebar(entries: AtividadeEntry[]): SidebarItem[] {
-  const root = createNode('Atividades');
-
-  for (const entry of entries) {
-    const segments = entry.slug.split('/').filter(Boolean);
-    const pagePath = normalizePath(`/atividades/${entry.slug}`);
-    const pageLabel = entry.data.sidebar_label || entry.data.title || titleFromSegment(segments[segments.length - 1] || 'pagina');
-
-    if (segments.length === 0) continue;
-
-    let currentNode = root;
-    let currentPath = '/atividades';
-
-    for (let i = 0; i < segments.length; i += 1) {
-      const segment = segments[i];
-      const isLast = i === segments.length - 1;
-      const isIndex = segment === 'index';
-
-      if (isIndex && isLast) {
-        currentNode.url = normalizePath(currentPath);
-        currentNode.label = pageLabel;
-        break;
-      }
-
-      currentPath = `${currentPath}/${segment}`;
-
-      if (!currentNode.items.has(segment)) {
-        currentNode.items.set(segment, createNode(titleFromSegment(segment)));
-      }
-
-      const nextNode = currentNode.items.get(segment);
-      if (!nextNode) break;
-
-      currentNode = nextNode;
-
-      if (isLast) {
-        currentNode.url = pagePath;
-        currentNode.label = pageLabel;
-      }
-    }
-  }
-
-  const generatedItems = nodeToSidebarItems(root);
-
-  return [
-    {
-      label: 'Geral',
-      items: [{ label: 'Introducao', url: '/atividades' }],
-    },
-    ...generatedItems,
+  return buildDocsSidebar(entries, {
+    basePath: '/atividades',
+    sectionLabel: 'Atividades',
     externalResources,
-  ];
+  });
 }

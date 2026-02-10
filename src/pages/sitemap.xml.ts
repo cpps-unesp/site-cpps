@@ -9,6 +9,7 @@ import {
   buildRouteTranslationPaths,
   getMembroSlugFromEntryId,
 } from '../utils/catchAllRouting';
+import routeTranslations from '../i18n/routeTranslations';
 
 export async function GET() {
   const base = 'https://cpps.franca.unesp.br';
@@ -18,6 +19,7 @@ export async function GET() {
   for (const lang of langs) {
     urls.add(`/${lang}/`);
     urls.add(`/${lang}/atividades`);
+    urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
   }
 
   for (const path of buildRouteTranslationPaths(langs)) {
@@ -53,6 +55,15 @@ export async function GET() {
   for (const lang of langs) {
     for (const entry of atividades) {
       urls.add(`/${lang}/atividades/${entry.slug}`);
+    }
+  }
+
+  const atendimento = await getCollection('atendimento');
+  for (const lang of langs) {
+    const basePath = `/${lang}/${routeTranslations.atendimento[lang]}`;
+    for (const entry of atendimento) {
+      if (entry.slug === 'index') continue;
+      urls.add(`${basePath}/${entry.slug}`);
     }
   }
 
