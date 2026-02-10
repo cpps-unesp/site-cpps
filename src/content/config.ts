@@ -59,7 +59,7 @@ const membros = defineCollection({
         )
         .optional(),
     })
-    .transform((data, ctx: any) => {
+    .transform((data, ctx) => {
       const filePath = ctx?.meta?.fileURL?.pathname ?? '';
       const fileName = filePath.split('/').pop() ?? '';
       const rawSlug = fileName.replace(/(-pt|-en|-es)?\.mdx$/, '');

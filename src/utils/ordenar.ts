@@ -8,15 +8,15 @@
  * @param ordem - Direção da ordenação ("asc" ou "desc")
  * @returns Lista ordenada
  */
-export function ordenarPorPrioridadeOuNome<T extends Record<string, any>>(
+export function ordenarPorPrioridadeOuNome<T extends Record<string, unknown>>(
   lista: T[],
   chavePrioridade: string = 'prioridade',
   chaveNome: string = 'nome',
   ordem: 'asc' | 'desc' = 'asc'
 ): T[] {
-  function parsePrioridade(valor: any): number | null {
+  function parsePrioridade(valor: unknown): number | null {
     try {
-      const num = parseInt(valor);
+      const num = parseInt(valor as string);
       return isNaN(num) ? null : num;
     } catch {
       return null;

@@ -6,10 +6,8 @@ const projetosData = iniciativas?.projetosLista || projetos || [];
 const url = new URL(Astro.request.url);
 const ordemValida = ['titulo', 'docente', 'periodo'];
 const ordemParam = url.searchParams.get('ordem') ?? '';
-const agenciaParam = url.searchParams.get('agencia') ?? '';
 
 const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : 'titulo';
-const agenciaInicial = agenciaParam || '';
 ---
 
 <section class="mx-auto max-w-5xl space-y-8 px-4 py-16">

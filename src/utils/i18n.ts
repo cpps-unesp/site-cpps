@@ -14,6 +14,7 @@ const translations = {
  * For arrays of objects, it merges items based on a unique 'id' key.
  * If 'id' is not present, it falls back to 'nome' or 'titulo'.
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function deepMerge(base: any, override: any): any {
   if (typeof base !== 'object' || base === null) {
     return override ?? base;
