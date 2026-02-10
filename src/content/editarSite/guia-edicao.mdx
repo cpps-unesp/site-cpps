@@ -1,0 +1,203 @@
+---
+title: Guia de edicao completo
+description: Guia detalhado para organizar menus, criar paginas e editar documentacao do CPPS.
+sidebar_order: 2
+sidebar_label: Guia completo
+---
+
+Este guia foi desenvolvido para capacitar estudantes e estagiarios a gerenciarem a base de conhecimento do CPPS com autonomia e qualidade tecnica.
+
+## Estrutura de arquivos e pastas
+
+Nossa documentacao e baseada em colecoes de conteudo. Isso significa que a organizacao das pastas define a organizacao do site.
+
+- Localizacao principal: `src/content/atividades/`
+- Pastas sugeridas:
+  - `/projetos/dados/`: documentacao tecnica de datasets.
+  - `/projetos/ensino/`: trilhas, cursos e manuais de treinamento.
+  - `/projetos/sistemas/`: infraestrutura, servidores e desenvolvimento.
+
+## Gerenciando menus (sidebar)
+
+O menu lateral de `/atividades` e gerado automaticamente pela estrutura dos arquivos em `src/content/atividades/`.
+
+### Estrutura generica reutilizavel
+
+O projeto possui uma base de documentacao reutilizavel para outras areas do site.
+
+- Nucleo compartilhado:
+  - `src/utils/docsSidebar.ts`
+  - `src/components/docs/Sidebar.astro`
+  - `src/components/docs/Breadcrumbs.astro`
+  - `src/components/docs/TableOfContents.astro`
+  - `src/components/docs/Pagination.astro`
+
+- Secoes que ja usam essa base:
+  - `atividades` (conteudo em `src/content/atividades/`)
+  - `atendimento` (conteudo em `src/content/atendimento/`)
+  - `editar-site` (conteudo em `src/content/editarSite/`)
+
+<Notice type="tip">
+  Sempre que criar uma nova secao de documentacao, prefira reutilizar os componentes em `src/components/docs/` e o builder em `src/utils/docsSidebar.ts` em vez de duplicar codigo.
+</Notice>
+
+### Como inserir uma pagina no menu
+
+1. Crie o arquivo `.md` ou `.mdx` no local correto da colecao.
+2. Defina `title` no frontmatter.
+3. Salve e rode o site. A pagina sera incluida automaticamente no menu lateral.
+
+Exemplo:
+
+```markdown
+---
+title: "Minha Nova Pagina"
+description: "Resumo do conteudo"
+---
+```
+
+### Como personalizar o nome exibido no menu
+
+Se quiser um rotulo diferente do `title`, use `sidebar_label` no frontmatter:
+
+```markdown
+---
+title: "Introducao Tecnica ao Projeto"
+sidebar_label: "Introducao"
+---
+```
+
+### Como decidir o que aparece em Geral
+
+Para colocar uma pagina na secao Geral, use:
+
+```markdown
+---
+title: "Guia de Atendimento"
+sidebar_section: "geral"
+sidebar_order: 20
+---
+```
+
+- `sidebar_section: "geral"` envia a pagina para o grupo Geral.
+- `sidebar_order` controla a ordem (numero menor aparece antes).
+
+### Como organizar submenus
+
+Os grupos e subgrupos sao montados a partir das pastas.
+
+Exemplo:
+
+- `src/content/atividades/projetos/dados/meu-projeto/index.md`
+- `src/content/atividades/projetos/dados/meu-projeto/equipe.md`
+
+Isso gera a navegacao:
+
+- Projetos
+  - Dados
+    - Meu Projeto
+      - Equipe
+
+<Notice type="info">
+  Navegacao inteligente: o grupo da pagina atual abre automaticamente no menu.
+</Notice>
+
+## Criando e editando paginas
+
+<Steps>
+
+### Criar o arquivo
+
+Crie um arquivo com extensao `.mdx` dentro da colecao correta.
+
+### Configurar o frontmatter
+
+No topo do arquivo, defina titulo e descricao:
+
+```markdown
+---
+title: "Nome da Pagina"
+description: "Resumo do conteudo"
+---
+```
+
+### Usar componentes
+
+Importe e use os componentes para dar um visual profissional ao texto.
+
+</Steps>
+
+## Componentes MDX
+
+### 1. Caixas de aviso (Notice)
+
+<Notice type="info">
+  Padrao: use para informacoes gerais.
+</Notice>
+
+<Notice type="tip">
+  Dica: use para atalhos e boas praticas.
+</Notice>
+
+<Notice type="warning">
+  Aviso: use para alertas que requerem atencao.
+</Notice>
+
+<Notice type="danger">
+  Perigo: use para acoes que podem causar perda de dados.
+</Notice>
+
+### 2. Cards e grades (CardGrid)
+
+<CardGrid columns={2}>
+  <Card title="Recurso A" icon="📁">
+    Descricao curta do recurso.
+  </Card>
+  <Card title="Recurso B" icon="🌐">
+    Descricao curta do recurso.
+  </Card>
+</CardGrid>
+
+### 3. Links em destaque (LinkCard)
+
+<LinkCard
+  title="Infraestrutura Linux"
+  href="/pt/atividades/projetos/sistemas/infraestrutura"
+  description="Saiba como configuramos nossos servidores."
+  icon="🐧"
+/>
+
+## Imagens e layout
+
+O posicionamento correto das imagens melhora a experiencia de leitura.
+
+| Classe | Como aplicar | Resultado |
+| :--- | :--- | :--- |
+| `img-left` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-left" />` | Texto flui a direita. |
+| `img-right` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-right" />` | Texto flui a esquerda. |
+| `img-center` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-center" />` | Imagem centralizada e isolada. |
+
+<Notice type="tip">
+  Ao usar `img-left` ou `img-right`, certifique-se de que o paragrafo seja longo o suficiente para contornar a imagem.
+</Notice>
+
+## Sidebars colapsaveis
+
+1. Colapso vertical: clique nas setas ao lado dos nomes dos grupos para expandir/recolher subpastas.
+2. Colapso horizontal: no desktop, use as setas laterais para esconder menus e ganhar area de leitura.
+
+## Exemplo de codigo
+
+```bash
+# Para rodar o site localmente
+npm run dev
+```
+
+## Edicao via GitHub
+
+Para facilitar a colaboracao, as paginas possuem um link de edicao no GitHub.
+
+1. No final da pagina, clique em "Editar a pagina".
+2. O link abre o arquivo fonte no repositorio.
+3. Edite via interface web ou localmente.
+4. Depois de salvar e enviar, o CI/CD do Cloudflare Pages publica as alteracoes.
