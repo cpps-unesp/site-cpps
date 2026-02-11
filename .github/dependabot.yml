@@ -7,3 +7,10 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - 'dependencies'
+    ignore:
+      - dependency-name: 'lodash'
+        versions:
+          - '<=4.17.21'
+      - dependency-name: 'eslint'
+        versions:
+          - '>=10'
