@@ -4,7 +4,15 @@ import tseslint from 'typescript-eslint';
 export default [
   // Configurações globais para todos os arquivos
   ...tseslint.configs.recommended,
-  ...eslintPluginAstro.configs.recommended,
+  ...eslintPluginAstro.configs['flat/recommended'],
+  {
+    files: ['**/*.astro'],
+    languageOptions: {
+      parserOptions: {
+        parser: tseslint.parser,
+      },
+    },
+  },
   {
     ignores: ['dist/', 'node_modules/', '.astro/', '.wrangler/'],
   },
