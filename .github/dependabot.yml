@@ -11,3 +11,6 @@ updates:
       - dependency-name: 'lodash'
         versions:
           - '<=4.17.21'
+      - dependency-name: 'eslint'
+        versions:
+          - '>=10'
