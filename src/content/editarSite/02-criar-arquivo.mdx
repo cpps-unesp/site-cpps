@@ -1,11 +1,10 @@
 ---
-title: Guia de edição completo
-description: Guia detalhado para organizar menus, criar páginas e editar a documentação do CPPS.
+title: Criar Arquivos
+description: Criar Arquivos
 sidebar_order: 2
-sidebar_label: Guia completo
+sidebar_label: Criar Arquivos
 ---
 
-Este guia reúne instruções práticas para criação e edição de páginas `.md` e `.mdx`.
 
 ## Estrutura de arquivos e pastas
 
@@ -106,108 +105,3 @@ Isso gera a navegação:
 <Notice type="info">
   Navegação inteligente: o grupo da página atual abre automaticamente no menu.
 </Notice>
-
-## Criando e editando páginas
-
-<Steps>
-
-### Criar o arquivo
-
-Crie um arquivo com extensão `.mdx` dentro da coleção correta.
-
-### Configurar o frontmatter
-
-No topo do arquivo, defina título e descrição:
-
-```markdown
----
-title: 'Nome da página'
-description: 'Resumo do conteúdo'
----
-```
-
-### Usar componentes
-
-Importe e use os componentes para dar um visual profissional ao texto.
-
-</Steps>
-
-## Componentes MDX
-
-### 1. Caixas de aviso (Notice)
-
-<Notice type="info">Padrão: use para informações gerais.</Notice>
-
-<Notice type="tip">Dica: use para atalhos e boas práticas.</Notice>
-
-<Notice type="warning">Aviso: use para alertas que requerem atenção.</Notice>
-
-<Notice type="danger">Perigo: use para ações que podem causar perda de dados.</Notice>
-
-### 2. Cards e grades (CardGrid)
-
-<CardGrid columns={2}>
-  <Card title="Recurso A" icon="📁">
-    Descrição curta do recurso.
-  </Card>
-  <Card title="Recurso B" icon="🌐">
-    Descrição curta do recurso.
-  </Card>
-</CardGrid>
-
-### 3. Links em destaque (LinkCard)
-
-<LinkCard
-  title="Infraestrutura Linux"
-  href="/pt/atividades/projetos/sistemas/infraestrutura"
-  description="Saiba como configuramos nossos servidores."
-  icon="🐧"
-/>
-
-## Imagens e layout
-
-O posicionamento correto das imagens melhora a experiência de leitura.
-
-| Classe       | Como aplicar                                                          | Resultado                      |
-| :----------- | :-------------------------------------------------------------------- | :----------------------------- |
-| `img-left`   | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-left" />`   | Texto flui à direita.          |
-| `img-right`  | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-right" />`  | Texto flui à esquerda.         |
-| `img-center` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-center" />` | Imagem centralizada e isolada. |
-
-<Notice type="tip">
-  Ao usar `img-left` ou `img-right`, certifique-se de que o parágrafo seja longo o suficiente para
-  contornar a imagem.
-</Notice>
-
-## Sidebars colapsáveis
-
-1. Colapso vertical: clique nas setas ao lado dos nomes dos grupos para expandir/recolher subpastas.
-2. Colapso horizontal: no desktop, use as setas laterais para ocultar menus e ganhar área de leitura.
-
-## Exemplo de comando
-
-```bash
-# Para rodar o site localmente
-npm run dev
-```
-
-## Qualidade de conteúdo
-
-Para manter o projeto organizado e sem erros:
-
-1. Use um editor com formatação automática de Markdown/MDX.
-2. Revise links internos e caminhos de imagem.
-3. Rode o build local antes de abrir PR:
-
-```bash
-npm run build
-```
-
-## Edição via GitHub
-
-Para facilitar a colaboração, as páginas possuem um link de edição no GitHub.
-
-1. No final da página, clique em "Editar a página".
-2. O link abre o arquivo fonte no repositório.
-3. Edite via interface web ou localmente.
-4. Depois de salvar e enviar, o CI/CD do Cloudflare Pages publica as alterações.
