@@ -190,3 +190,29 @@ h4,
   border-top-right-radius: 0.5rem !important;
   border-bottom-right-radius: 0.5rem !important;
 }
+
+/* Tabelas no prose */
+.prose table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 2rem 0 !important;
+  border: 1px solid color-mix(in srgb, var(--color-base-content), transparent 80%) !important;
+  display: table !important;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid color-mix(in srgb, var(--color-base-content), transparent 80%) !important;
+  padding: 0.75rem !important;
+  text-align: left !important;
+}
+
+.prose th {
+  background-color: color-mix(in srgb, var(--color-primary), transparent 90%) !important;
+  font-weight: 700 !important;
+  color: var(--color-primary) !important;
+}
+
+.prose tr:nth-child(even) {
+  background-color: color-mix(in srgb, var(--color-base-content), transparent 96%) !important;
+}
