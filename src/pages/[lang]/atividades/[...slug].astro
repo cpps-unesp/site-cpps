@@ -9,6 +9,11 @@ import { normalizeLegacyAtividadesSlug } from '../../../utils/wikiLegacyAliases'
 const lang = (Astro.params.lang ?? 'pt') as SupportedLang;
 const slugParam = Astro.params.slug;
 const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? '');
+
+if (!slugPath) {
+  return new Response(null, { status: 404 });
+}
+
 const normalizedSlug = normalizeLegacyAtividadesSlug(slugPath);
 
 if (normalizedSlug) {
