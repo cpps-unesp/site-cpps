@@ -1,0 +1,20 @@
+---
+export const prerender = false;
+
+import { getCollection } from 'astro:content';
+import type { SupportedLang } from '../../../types/lang';
+import { resolveAtividadesLegacyPath } from '../../../utils/atividadesLegacyRedirect';
+
+const lang = (Astro.params.lang ?? 'pt') as SupportedLang;
+const slug = Astro.params.slug ?? '';
+
+const entries = await getCollection('atividades');
+const validSlugs = new Set(entries.map((entry) => entry.slug));
+const redirectPath = resolveAtividadesLegacyPath(lang, slug, validSlugs);
+
+if (redirectPath) {
+  return Astro.redirect(redirectPath, 301);
+}
+
+return Astro.redirect(`/${lang}/atividades`, 302);
+---
