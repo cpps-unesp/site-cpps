@@ -1,12 +1,9 @@
 ---
 export const prerender = false;
 
-import type { SupportedLang } from '../../../types/lang';
-
-const lang = (Astro.params.lang ?? 'pt') as SupportedLang;
 const slugParam = Astro.params.slug;
 const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : slugParam;
 const suffix = slugPath ? `/${slugPath}` : '';
 
-return Astro.redirect(`/${lang}/wiki${suffix}`, 301);
+return Astro.redirect(`/pt/wiki${suffix}`, 301);
 ---

@@ -13,8 +13,15 @@ const externalResources: SidebarItem = {
 };
 
 export function buildAtividadesSidebar(entries: AtividadeEntry[]): SidebarItem[] {
+  return buildAtividadesSidebarWithBase(entries, '/wiki');
+}
+
+export function buildAtividadesSidebarWithBase(
+  entries: AtividadeEntry[],
+  basePath: string
+): SidebarItem[] {
   return buildDocsSidebar(entries, {
-    basePath: '/atividades',
+    basePath,
     sectionLabel: 'Atividades',
     externalResources,
   });
