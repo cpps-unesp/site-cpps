@@ -1,34 +1,34 @@
 ---
-title: Traducoes
+title: Traduções
 description: Como manter textos e rotas nos idiomas pt, en e es.
 sidebar_order: 5
 ---
 
-O site suporta tres idiomas: `pt`, `en`, `es`.
+O site suporta três idiomas: `pt`, `en`, `es`.
 
 ## 1. Editando Textos (JSON)
 
-Os arquivos `src/i18n/locales/*.json` contem os textos da interface (botoes, menus, rodape).
+Os arquivos `src/i18n/locales/*.json` contêm os textos da interface (botões, menus, rodapé).
 Eles usam uma estrutura aninhada. Exemplo:
 
 ```json
 {
   "nav": {
-    "home": "Inicio",
+    "home": "Início",
     "about": "Sobre"
   }
 }
 ```
 
 <Notice type="danger">
-  Nao apague chaves existentes. Se voce apagar `"home": "Inicio"` do arquivo em PT, mas o codigo
-  ainda tentar usar `t.nav.home`, o site podera quebrar ou mostrar espaco em branco.
+  Não apague chaves existentes. Se você apagar `"home": "Início"` do arquivo em PT, mas o código
+  ainda tentar usar `t.nav.home`, o site poderá quebrar ou mostrar espaço em branco.
 </Notice>
 
 ## 2. Editando Rotas
 
-O arquivo `src/i18n/routes.ts` define como as URLs aparecem em cada lingua.
-Isso e importante para SEO (ex: `/sobre` em PT e `/about` em EN).
+O arquivo `src/i18n/routes.ts` define como as URLs aparecem em cada língua.
+Isso é importante para SEO (ex: `/sobre` em PT e `/about` em EN).
 
 Exemplo de como adicionar uma rota:
 
@@ -51,6 +51,6 @@ export const routes = {
 
 ## Checklist de Qualidade
 
-1. **Sincronia:** Adicionou uma chave no `pt.json`? Adicione tambem no `en.json` e `es.json`.
-2. **Formato:** Rode `npm run format` apos editar os JSONs para garantir que nao sobrou virgula errada.
-3. **Rotas:** Se criar uma pagina nova, lembre de adicionar a rota traduzida se quiser URL amigavel.
+1. **Sincronia:** Adicionou uma chave no `pt.json`? Adicione também no `en.json` e `es.json`.
+2. **Formato:** Valide a sintaxe do JSON no editor e rode `npm run build` para confirmar que está tudo certo.
+3. **Rotas:** Se criar uma página nova, lembre de adicionar a rota traduzida se quiser URL amigável.
