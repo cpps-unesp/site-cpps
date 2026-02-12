@@ -8,5 +8,9 @@ const slugParam = Astro.params.slug;
 const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : slugParam;
 const suffix = slugPath ? `/${slugPath}` : '';
 
-return Astro.redirect(`/${lang}/wiki${suffix}`, 301);
+if (slugPath?.startsWith('projetos')) {
+  return Astro.redirect(`/${lang}/wiki${suffix}`, 301);
+}
+
+return Astro.redirect(`/${lang}/atividades`, 302);
 ---
