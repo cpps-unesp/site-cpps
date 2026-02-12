@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 
   return langs.flatMap((lang) => {
     return atividades.map((entry) => ({
-      params: { lang, slug: entry.slug },
+      params: { lang, slug: entry.slug === 'index' ? undefined : entry.slug },
       props: { entry },
     }));
   });
