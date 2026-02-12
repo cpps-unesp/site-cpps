@@ -1,10 +1,10 @@
 ---
-title: Publicacoes
-description: Como cadastrar e manter publicacoes academicas.
+title: Publicações
+description: Como cadastrar e manter publicações acadêmicas.
 sidebar_order: 3
 ---
 
-As publicacoes ficam em `src/content/publicacoes/`.
+As publicações ficam em `src/content/publicacoes/`.
 
 ## Estrutura de arquivos
 
@@ -20,11 +20,11 @@ Cada arquivo deve conter:
 
 ```markdown
 ---
-title: 'Titulo da Publicacao'
+title: 'Título da publicação'
 date: 2024-02-15
 authors: ['Autor 1', 'Autor 2']
 summary: 'Resumo breve do trabalho.'
-tags: ['Democracia', 'Instituicoes']
+tags: ['Democracia', 'Instituições']
 type: 'artigo'
 lang: 'pt'
 image: '/imagens/campus/entrada-unesp-franca.jpg'
@@ -33,21 +33,21 @@ pdf_url: 'https://exemplo.com/artigo.pdf'
 ---
 ```
 
-## Tipos aceitos (Importante)
+## Tipos aceitos (importante)
 
-O campo `type` e estrito. Use apenas um destes valores exatos:
+O campo `type` é estrito. Use apenas um destes valores exatos:
 
-- `artigo`: Artigos cientificos ou academicos.
-- `analise`: Analises de conjuntura ou politica.
-- `material-didatico`: Apostilas, guias e tutoriais.
-- `texto-curto`: Notas ou comunicados rapidos.
-- `texto-longo`: Ensaios ou capitulos de livros.
+- `artigo`: artigos científicos ou acadêmicos.
+- `analise`: análises de conjuntura ou política.
+- `material-didatico`: apostilas, guias e tutoriais.
+- `texto-curto`: notas ou comunicados rápidos.
+- `texto-longo`: ensaios ou capítulos de livros.
 
 <Notice type="warning">
-  Se voce usar um tipo diferente destes (ex: "Artigo"), o site apresentara erro ao construir.
+  Se você usar um tipo diferente destes (ex: "Artigo"), o site apresentará erro ao construir.
 </Notice>
 
-## Como adicionar nova publicacao
+## Como adicionar nova publicação
 
 1. Crie um arquivo `.md` na pasta do idioma (ex: `src/content/publicacoes/pt/meu-artigo.md`).
 2. Preencha o frontmatter seguindo o modelo acima.
@@ -56,6 +56,6 @@ O campo `type` e estrito. Use apenas um destes valores exatos:
 ## Detalhes dos campos
 
 - `authors`: Lista de nomes entre colchetes `['Nome A', 'Nome B']`.
-- `image`: Caminho da imagem em `public/`. Se nao tiver, o card ficara sem foto.
+- `image`: Caminho da imagem em `public/`. Se não tiver, o card ficará sem foto.
 - `pdf_url`: Pode ser link externo (`https://...`) ou interno (`/arquivos/meu.pdf` -> arquivo salvo em `public/arquivos/`).
-- `featured`: Use `true` apenas para as publicacoes mais importantes que devem aparecer na Home ou no topo.
+- `featured`: Use `true` apenas para as publicações mais importantes que devem aparecer na Home ou no topo.

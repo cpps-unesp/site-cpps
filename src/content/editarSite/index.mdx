@@ -1,34 +1,33 @@
 ---
 title: Editar site
-description: Guia central para editar conteudo do site do CPPS com editor de codigo.
-sidebar_section: geral
+description: Guia central para editar conteúdo do site do CPPS com editor de código.
+sidebar_label: Introdução
 sidebar_order: 1
-sidebar_label: Inicio
 ---
 
-Esta area centraliza os guias de edicao do site.
+Esta área centraliza os guias de edição do site.
 
-## Como usar esta area
+## Como usar esta área
 
-1. Abra o menu lateral e escolha o tema que voce quer editar.
-2. Siga o passo a passo da pagina (noticias, publicacoes, equipe ou traducoes).
-3. Edite os arquivos no repositorio e rode `npm run dev` para validar localmente.
+1. Abra o menu lateral e escolha o tema que você quer editar.
+2. Siga o passo a passo da página (notícias, publicações, equipe ou traduções).
+3. Edite os arquivos no repositório e rode `npm run dev` para validar localmente.
 4. Quando terminar, rode `npm run build` antes de abrir PR.
 
-> Escopo atual: edicao por codigo no repositorio.
+> Escopo atual: edição por código no repositório.
 >
 > Escopo futuro: adicionar fluxos com Strapi e Notion.
 
-## Trilhas disponiveis
+## Trilhas disponíveis
 
-- `Noticias`: criar e atualizar materias em `src/content/noticias/`.
-- `Publicacoes`: cadastrar publicacoes em `src/content/publicacoes/`.
+- `Notícias`: criar e atualizar matérias em `src/content/noticias/`.
+- `Publicações`: cadastrar publicações em `src/content/publicacoes/`.
 - `Membros da equipe`: adicionar perfis em `src/content/membros/`.
-- `Traducoes`: manter textos em `src/i18n/locales/` e rotas em `src/i18n/routes.ts`.
+- `Traduções`: manter textos em `src/i18n/locales/` e rotas em `src/i18n/routes.ts`.
 
 ## Fluxo recomendado
 
-1. Instale as dependencias:
+1. Instale as dependências:
 
    ```bash
    npm install
@@ -40,15 +39,16 @@ Esta area centraliza os guias de edicao do site.
    npm run dev
    ```
 
-3. Durante a edicao, verifique se o codigo esta padronizado:
+3. Durante a edição, valide as mudanças no navegador e revise os arquivos alterados:
 
    ```bash
-   npm run format
+   git diff
    ```
 
-4. Antes de enviar (commit), garanta que esta tudo certo:
+4. Antes de enviar (commit), garanta que está tudo certo:
+
    ```bash
-   npm run ci
+   npm run build
    ```
 
-No final, o CI/CD cuidara do build de producao.
+No final, o CI/CD cuidará do build de produção.

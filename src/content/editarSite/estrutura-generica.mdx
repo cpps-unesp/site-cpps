@@ -1,0 +1,49 @@
+---
+title: DocsMdxPage
+description: Estrutura reutilizável para áreas de documentação em MDX.
+sidebar_order: 1
+sidebar_label: DocsMdxPage
+---
+
+import Notice from '../../components/atividades/Notice.astro';
+import Steps from '../../components/atividades/Steps.astro';
+
+### Estrutura genérica reutilizável
+
+O projeto possui uma arquitetura de documentação modular. Se você precisar criar uma nova área (ex: `/manual`), reutilize a engenharia existente.
+
+#### Como criar uma nova seção (ex: `/manual`)
+
+<Steps>
+
+### 1. Criar o conteúdo
+
+Crie a pasta `src/content/manual/`. Adicione um arquivo `index.md` para ser a capa da seção.
+
+### 2. Configurar a coleção
+
+Edite `src/content/config.ts` e duplique a configuração de uma coleção existente (ex: `atividades`), renomeando para `manual`. Não esqueça de exportar a nova coleção no objeto `collections`.
+
+### 3. Criar o builder da sidebar
+
+Duplique `src/utils/atividadesSidebar.ts` para `src/utils/manualSidebar.ts` e renomeie a função para `buildManualSidebar`.
+
+### 4. Criar a rota dinâmica
+
+Crie um novo arquivo em `src/pages/[lang]/manual/[...slug].astro` seguindo o padrão das páginas atuais.
+
+- No arquivo, ajuste:
+  - `getCollection('atividades')` -> `getCollection('manual')`
+  - `buildAtividadesSidebar` -> `buildManualSidebar`
+  - `basePath` -> `/${lang}/manual`
+
+### 5. Reutilizar o layout de documentação
+
+Use `src/components/docs/DocsMdxPage.astro` para manter o mesmo comportamento visual (sidebar, índice da página, navegação entre páginas e botões de ocultar/mostrar).
+
+</Steps>
+
+<Notice type="tip">
+  Essa arquitetura garante que todas as áreas do site mantenham a mesma UX: menus laterais,
+  documentação navegável, i18n e layout responsivo.
+</Notice>

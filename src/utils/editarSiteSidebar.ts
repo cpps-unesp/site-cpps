@@ -6,7 +6,7 @@ type EditarSiteEntry = {
   data: {
     title?: string;
     sidebar_label?: string;
-    sidebar_section?: 'geral';
+    sidebar_section?: string;
     sidebar_order?: number;
   };
 };

@@ -5,7 +5,7 @@ type DocEntry = {
   data: {
     title?: string;
     sidebar_label?: string;
-    sidebar_section?: 'geral';
+    sidebar_section?: string;
     sidebar_order?: number;
   };
 };
@@ -63,6 +63,11 @@ function createNode(label: string): SidebarNode {
   return { label, items: new Map() };
 }
 
+function formatSectionLabel(value: string): string {
+  const normalized = value.trim().replace(/\s+/g, '-');
+  return titleFromSegment(normalized);
+}
+
 function nodeToSidebarItems(node: SidebarNode): SidebarItem[] {
   return Array.from(node.items.entries())
     .sort(([a], [b]) => a.localeCompare(b, 'pt-BR'))
@@ -81,7 +86,7 @@ export function buildDocsSidebar(
   options: BuildDocsSidebarOptions
 ): SidebarItem[] {
   const root = createNode(options.sectionLabel ?? 'Documentacao');
-  const customIntroItems: Array<{ label: string; url: string; order: number }> = [];
+  const sectionItems = new Map<string, Array<{ label: string; url: string; order: number }>>();
 
   for (const entry of entries) {
     const segments = entry.slug.split('/').filter(Boolean);
@@ -95,8 +100,13 @@ export function buildDocsSidebar(
 
     if (segments.length === 0) continue;
 
-    if (sidebarSection === 'geral') {
-      customIntroItems.push({
+    if (sidebarSection && sidebarSection.trim()) {
+      const sectionKey = sidebarSection.trim().toLowerCase();
+      if (!sectionItems.has(sectionKey)) {
+        sectionItems.set(sectionKey, []);
+      }
+
+      sectionItems.get(sectionKey)?.push({
         label: pageLabel,
         url: pagePath,
         order: sidebarOrder,
@@ -137,21 +147,32 @@ export function buildDocsSidebar(
   }
 
   const generatedItems = nodeToSidebarItems(root);
-  const introItems = [
-    { label: options.introLabel ?? 'Introducao', url: options.basePath },
-    ...customIntroItems
-      .sort((a, b) => a.order - b.order || a.label.localeCompare(b.label, 'pt-BR'))
-      .map(({ label, url }) => ({ label, url })),
-  ].filter(
-    (item, index, items) => items.findIndex((candidate) => candidate.url === item.url) === index
+  const rootLink = root.url
+    ? [
+        {
+          label: root.label,
+          url: root.url,
+        },
+      ]
+    : [];
+
+  const rootItems = [...rootLink, ...generatedItems].filter(
+    (item, index, items) =>
+      !item.url || items.findIndex((candidate) => candidate.url === item.url) === index
   );
 
+  const sectionGroups = Array.from(sectionItems.entries())
+    .sort(([a], [b]) => a.localeCompare(b, 'pt-BR'))
+    .map(([section, items]) => ({
+      label: formatSectionLabel(section),
+      items: items
+        .sort((a, b) => a.order - b.order || a.label.localeCompare(b.label, 'pt-BR'))
+        .map(({ label, url }) => ({ label, url })),
+    }));
+
   return [
-    {
-      label: 'Geral',
-      items: introItems,
-    },
-    ...generatedItems,
+    ...rootItems,
+    ...sectionGroups,
     ...(options.externalResources ? [options.externalResources] : []),
   ];
 }
