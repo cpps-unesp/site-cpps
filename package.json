@@ -18,7 +18,7 @@
     "astro": "^5.17.2",
     "astro-pagefind": "^1.8.5",
     "daisyui": "^5.5.18",
-    "marked": "^17.0.1",
+    "marked": "^17.0.2",
     "sharp": "^0.34.5",
     "slugify": "^1.6.6",
     "tailwindcss": "^4.1.18",
