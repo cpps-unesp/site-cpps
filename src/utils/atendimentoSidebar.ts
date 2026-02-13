@@ -1,5 +1,6 @@
 import type { SidebarItem } from '../types/docs';
 import { buildDocsSidebar } from './docsSidebar';
+import { filterVisibleDocsEntries } from './docsVisibility';
 
 type AtendimentoEntry = {
   slug: string;
@@ -8,6 +9,7 @@ type AtendimentoEntry = {
     sidebar_label?: string;
     sidebar_section?: string;
     sidebar_order?: number;
+    draft?: boolean;
   };
 };
 
@@ -15,7 +17,9 @@ export function buildAtendimentoSidebar(
   entries: AtendimentoEntry[],
   basePath: string
 ): SidebarItem[] {
-  return buildDocsSidebar(entries, {
+  const visibleEntries = filterVisibleDocsEntries(entries);
+
+  return buildDocsSidebar(visibleEntries, {
     basePath,
     sectionLabel: 'Atendimento',
   });

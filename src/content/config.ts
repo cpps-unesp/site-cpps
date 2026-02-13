@@ -82,6 +82,7 @@ const atividades = defineCollection({
       sidebar_label: z.string().optional(),
       sidebar_section: z.string().trim().optional(),
       sidebar_order: z.number().int().optional(),
+      draft: z.boolean().optional().default(false),
     })
     .passthrough(),
 });
@@ -96,6 +97,7 @@ const atendimento = defineCollection({
       sidebar_label: z.string().optional(),
       sidebar_section: z.string().trim().optional(),
       sidebar_order: z.number().int().optional(),
+      draft: z.boolean().optional().default(false),
     })
     .passthrough(),
 });
@@ -110,6 +112,7 @@ const editarSite = defineCollection({
       sidebar_label: z.string().optional(),
       sidebar_section: z.string().trim().optional(),
       sidebar_order: z.number().int().optional(),
+      draft: z.boolean().optional().default(false),
     })
     .passthrough(),
 });

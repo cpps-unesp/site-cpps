@@ -10,10 +10,11 @@ import LinkCard from '../../../components/atividades/LinkCard.astro';
 import Steps from '../../../components/atividades/Steps.astro';
 import DocsMdxPage from '../../../components/docs/DocsMdxPage.astro';
 import { buildAtividadesSidebarWithBase } from '../../../utils/atividadesSidebar';
+import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
 import type { Language } from '../../../utils/i18n';
 
 export async function getStaticPaths() {
-  const atividades = await getCollection('atividades');
+  const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
   const langs = ['pt', 'en', 'es'];
 
   return langs.flatMap((lang) => {
@@ -28,7 +29,7 @@ const { entry } = Astro.props;
 const lang = (Astro.params.lang ?? 'pt') as Language;
 const { Content, headings } = await render(entry);
 const currentPath = Astro.url.pathname;
-const allAtividades = await getCollection('atividades');
+const allAtividades = filterVisibleDocsEntries(await getCollection('atividades'));
 const sidebar = buildAtividadesSidebarWithBase(allAtividades, '/wiki');
 const basePath = `/${lang}/wiki`;
 ---

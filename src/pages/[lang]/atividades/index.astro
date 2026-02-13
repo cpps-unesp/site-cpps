@@ -7,6 +7,7 @@ import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
 import type { Language } from '../../../utils/i18n';
 import { buildAtividadesSidebarWithBase } from '../../../utils/atividadesSidebar';
+import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
 import type { SidebarItem } from '../../../types/docs';
 
 export function getStaticPaths() {
@@ -16,7 +17,7 @@ export function getStaticPaths() {
 const lang = (Astro.params.lang ?? 'pt') as Language;
 const wikiBasePath = `/${lang}/wiki`;
 
-const atividades = await getCollection('atividades');
+const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
 const sidebar = buildAtividadesSidebarWithBase(atividades, '/wiki');
 
 function normalizeWikiUrl(path: string): string {

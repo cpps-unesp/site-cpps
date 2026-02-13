@@ -6,6 +6,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import routeTranslations from '../../../i18n/routeTranslations';
 import type { SupportedLang } from '../../../types/lang';
 import { buildAtendimentoSidebar } from '../../../utils/atendimentoSidebar';
+import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
 import { selectDocsHomeEntry } from '../../../utils/docsHome';
 import Notice from '../../../components/atividades/Notice.astro';
 import Card from '../../../components/atividades/Card.astro';
@@ -20,7 +21,7 @@ function getSupportBasePath(lang: SupportedLang): string {
 
 export async function getStaticPaths() {
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
-  const entries = await getCollection('atendimento');
+  const entries = filterVisibleDocsEntries(await getCollection('atendimento'));
   const homeEntry = selectDocsHomeEntry(entries);
 
   return langs.flatMap((lang) => {
@@ -67,7 +68,7 @@ if (homeSlug && Astro.params.slug === homeSlug) {
 
 const { Content, headings } = await render(entry);
 const currentPath = Astro.url.pathname;
-const allEntries = await getCollection('atendimento');
+const allEntries = filterVisibleDocsEntries(await getCollection('atendimento'));
 const docsBasePath = getSupportBasePath(lang);
 const sidebar = buildAtendimentoSidebar(allEntries, docsBasePath);
 const localizedBasePath = `/${lang}${docsBasePath}`;

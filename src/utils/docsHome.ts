@@ -1,7 +1,10 @@
+import { isVisibleDocsEntry } from './docsVisibility';
+
 type DocsEntryLike = {
   slug: string;
   data: {
     sidebar_order?: number;
+    draft?: boolean;
   };
 };
 
@@ -17,7 +20,9 @@ function compareDocsOrder(a: DocsEntryLike, b: DocsEntryLike): number {
 }
 
 export function selectDocsHomeEntry<T extends DocsEntryLike>(entries: T[]): T | undefined {
-  if (entries.length === 0) return undefined;
+  const visibleEntries = entries.filter(isVisibleDocsEntry);
 
-  return [...entries].sort(compareDocsOrder)[0];
+  if (visibleEntries.length === 0) return undefined;
+
+  return [...visibleEntries].sort(compareDocsOrder)[0];
 }

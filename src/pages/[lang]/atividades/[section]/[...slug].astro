@@ -4,6 +4,7 @@ export const prerender = false;
 import { getCollection } from 'astro:content';
 import type { SupportedLang } from '../../../../types/lang';
 import { resolveAtividadesLegacyPath } from '../../../../utils/atividadesLegacyRedirect';
+import { filterVisibleDocsEntries } from '../../../../utils/docsVisibility';
 
 const lang = (Astro.params.lang ?? 'pt') as SupportedLang;
 const section = Astro.params.section ?? '';
@@ -11,7 +12,7 @@ const slugParts = Astro.params.slug;
 const tail = Array.isArray(slugParts) ? slugParts.join('/') : (slugParts ?? '');
 const fullSlug = tail ? `${section}/${tail}` : section;
 
-const entries = await getCollection('atividades');
+const entries = filterVisibleDocsEntries(await getCollection('atividades'));
 const validSlugs = new Set(entries.map((entry) => entry.slug));
 const redirectPath = resolveAtividadesLegacyPath(lang, fullSlug, validSlugs);
 

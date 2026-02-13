@@ -1,6 +1,7 @@
 import type { CollectionEntry } from 'astro:content';
 import type { SidebarItem } from '../types/docs';
 import { buildDocsSidebar } from './docsSidebar';
+import { filterVisibleDocsEntries } from './docsVisibility';
 
 type AtividadeEntry = CollectionEntry<'atividades'>;
 
@@ -20,7 +21,9 @@ export function buildAtividadesSidebarWithBase(
   entries: AtividadeEntry[],
   basePath: string
 ): SidebarItem[] {
-  return buildDocsSidebar(entries, {
+  const visibleEntries = filterVisibleDocsEntries(entries);
+
+  return buildDocsSidebar(visibleEntries, {
     basePath,
     sectionLabel: 'Atividades',
     externalResources,
