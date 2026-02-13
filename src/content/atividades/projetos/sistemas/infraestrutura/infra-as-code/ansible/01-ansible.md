@@ -1,7 +1,0 @@
----
-id: intro
-title: Introdução
-sidebar_label: Introdução
----
-
-O conteúdo desta seção reúne configurações e comandos úteis que podem auxiliar o usuário durante o uso dos computadores do LabRI/UNESP.

@@ -1,5 +1,0 @@
----
-id: apoio
-title: Material de Apoio
-sidebar_label: Material de Apoio
----

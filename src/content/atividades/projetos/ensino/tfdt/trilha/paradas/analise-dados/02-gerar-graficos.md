@@ -1,7 +1,0 @@
----
-id: gerar-graficos
-title: Geração de Gráficos
-sidebar_label: Geração de Gráficos
----
-
-[EM CONSTRUÇÃO]

@@ -1,0 +1,39 @@
+---
+title: Mutabilidade
+sidebar_label: Mutabilidade
+---
+
+
+- O que chamamos aqui de tipos de dados avançados também é chamado na documentação oficial de `built-in containers`. Em geral, o termo `built-in` se refere a aspectos oferecidos nativamente pelo Python, ou seja, são aspectos que estão disponíveis por padrão na linguagem, não sendo necessário a utilização de bibliotecas de terceiros. Já o termo `containers` se refere a tipos de dados sequenciais, de conjuntos, de mapeamento. Deste modo, como veremos a seguir, tipos de dados como listas, tuplas, dicionários, conjuntos, são chamados de `built-in containers`
+
+- Todo tipo de dado em Python é considerado um objeto.
+
+- Um aspecto importante quando lidamos com os tipos de dados básicos e principalmente com os dados avançados diz respeito à questão relacionada à mutabilidade e ordenação desses dados.
+
+- Mutabilidade: refere-se a possibilidade de alterar itens de um determinado tipo de dado (objeto). Se é possivel adicionar, remover ou modificar itens dizemos que o tipo de dado é mutável. Caso contrário é imutável.
+
+- MOSTRAR UM EXEMPLO
+
+- Ordem:
+  - Refere-se a possibilidade dos items poderem ser ordenados ou serem uma sequencia não ordenada de items
+  - Se o tipo de dado é passivel de ordenação, é possivel acessar os items através de indices/posições
+  - Se o tipo de dados não é passivel de ordenação, não é possivel acessar os itens pelos indices/posições. Neste caso só é possivel saber se o tipo de dados (por exemplo uma `list`) possui determinado item.
+
+- Classificação (sort): diz respeito a capacidade de reordenar determinado tipo de dado (por exemplo de maneira crescente ou decrescente)
+
+| tipo básico               | uso               | mutável? |
+| ------------------------- | ----------------- | -------- |
+| `int`, `float`, `decimal` | numeros           | NÃO      |
+| `str`                     | caracteres        | NÃO      |
+| `bool`                    | `True` ou `False` | NÃO      |
+
+| tipo container Built-in | uso                                                                                                                                                              | mutável? | posição? | reordenavel? |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | -------- | ------------ |
+| `list`                  | Grupo de items ordenado, acessiveis por posição                                                                                                                  | SIM      | SIM      | SIM          |
+| `set`                   | Grupo mutável não ordenado e não acessivel por posição, não armazena items repetidos                                                                             | SIM      | NÃO      | NÃO          |
+| `tuple`                 | Grupo imutável, ordenado e acessivel por posição                                                                                                                 | NÃO      | SIM      | NÃO          |
+| `dict`                  | Contem chaves e valores. são mutáveis (pode adicionar/remover/modificar), mas as `key` são imutáveis e não são acessiveis por posição somente pelo nome da `key` | SIM      | NÃO      | NÃO          |
+
+#### Material consultado
+
+- https://archive.is/cg2P6

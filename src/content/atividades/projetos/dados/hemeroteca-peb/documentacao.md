@@ -1,5 +1,0 @@
----
-title: 'Documentação'
----
-
-Aqui você coloca a lista da equipe...
