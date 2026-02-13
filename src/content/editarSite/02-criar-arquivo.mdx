@@ -1,0 +1,107 @@
+---
+title: Criar Arquivos
+description: Criar Arquivos
+sidebar_order: 2
+sidebar_label: Criar Arquivos
+---
+
+
+## Estrutura de arquivos e pastas
+
+| Caminho da pasta           | Descrição do conteúdo                               |
+| -------------------------- | --------------------------------------------------- |
+| `src/content/atividades/`  | Documentação de atividades e projetos do CPPS       |
+| `src/content/atendimento/` | Materiais e informações sobre atendimento           |
+| `src/content/editarSite/`  | Guias e instruções para edição e manutenção do site |
+
+O conteúdo localizado nas pastas acima é baseado em coleções de conteúdo. Isso significa que a organização das pastas define a organização dessa parte do site.
+
+- Localização principal: `src/content/atividades/`
+- Pastas sugeridas:
+
+  | Pasta                 | Descrição                                     |
+  | --------------------- | --------------------------------------------- |
+  | `/projetos/dados/`    | Documentação técnica de datasets.             |
+  | `/projetos/ensino/`   | Trilhas, cursos e manuais de treinamento.     |
+  | `/projetos/sistemas/` | Infraestrutura, servidores e desenvolvimento. |
+
+## Gerenciando menus (sidebar)
+
+O menu lateral de `/atividades` é gerado automaticamente pela estrutura dos arquivos em `src/content/atividades/`.
+
+### Como inserir uma página no menu
+
+1. Crie o arquivo `.md` ou `.mdx` no local correto da coleção.
+2. Defina `title` no frontmatter.
+3. Salve e rode o site.
+
+| Ação               | Como fazer                  | Exemplo                 |
+| :----------------- | :-------------------------- | :---------------------- |
+| **Criar página**   | Novo arquivo `.md`          | `projeto-x.md`          |
+| **Criar submenu**  | Nova pasta + arquivos       | `/dados/projeto-x/`     |
+| **Página inicial** | Arquivo `index.md` na pasta | `/dados/index.md`       |
+| **Mudar ordem**    | `sidebar_order: N` no topo  | `sidebar_order: 1`      |
+| **Mudar nome**     | `sidebar_label: "Nome"`     | `sidebar_label: "Docs"` |
+
+### Frontmatter: opções disponíveis
+
+| Campo             | Obrigatório | Tipo       | Exemplo                           | Efeito no site                                       |
+| :---------------- | :---------- | :--------- | :-------------------------------- | :--------------------------------------------------- |
+| `title`           | Recomendado | `string`   | `title: "Guia de Atendimento"`    | Título da página e fallback no menu                  |
+| `description`     | Não         | `string`   | `description: "Resumo da página"` | Subtítulo no topo da página                          |
+| `sidebar_label`   | Não         | `string`   | `sidebar_label: "Início"`         | Nome exibido no menu lateral                         |
+| `sidebar_section` | Não         | `string`   | `sidebar_section: "Operação"`     | Coloca a página em seção dinâmica da sidebar         |
+| `sidebar_order`   | Não         | `number`   | `sidebar_order: 10`               | Ordena itens na mesma seção (menor vem antes)        |
+| `authors`         | Não         | `string[]` | `authors: ["Ana", "Bruno"]`       | Metadado editorial (sem efeito visual automático)    |
+| `tags`            | Não         | `string[]` | `tags: ["guia", "edição"]`        | Metadado editorial para classificação futura         |
+| `status`          | Não         | `string`   | `status: "draft"`                 | Metadado de fluxo (`draft`, `published`, `archived`) |
+| `updated_at`      | Não         | `string`   | `updated_at: "2026-02-12"`        | Data da última revisão editorial                     |
+
+- Sem `sidebar_section`, a página fica na raiz da sidebar.
+- Não existe mais seção `Geral` ou `Introdução` automática.
+- Metadados editoriais são aceitos no frontmatter, mas só aparecem no site se alguma tela/consulta usar esses campos.
+
+### Exemplo mínimo
+
+```markdown
+---
+title: 'Minha nova página'
+description: 'Resumo do conteúdo'
+---
+```
+
+### Exemplo completo
+
+```markdown
+---
+title: 'Guia de atendimento'
+description: 'Passos para abrir e acompanhar chamados'
+sidebar_label: 'Atendimento'
+sidebar_section: 'Operação'
+sidebar_order: 10
+authors: ['Equipe CPPS', 'Colaborador X']
+tags: ['guia', 'edição']
+status: 'draft'
+updated_at: '2026-02-12'
+---
+```
+
+### Como organizar submenus
+
+Os grupos e subgrupos são montados a partir das pastas.
+
+Exemplo:
+
+- `src/content/atividades/projetos/dados/meu-projeto/index.md`
+- `src/content/atividades/projetos/dados/meu-projeto/equipe.md`
+
+Isso gera a navegação:
+
+- Projetos
+  - Dados
+    - Meu Projeto
+      - Equipe
+
+<Notice type="info">
+  Navegação inteligente: o grupo da página atual abre automaticamente no menu.
+</Notice>

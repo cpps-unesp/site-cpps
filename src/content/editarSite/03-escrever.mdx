@@ -1,0 +1,195 @@
+---
+title: Escrever
+description: Escrever
+sidebar_order: 3
+sidebar_label: Escrever
+---
+
+## Criando e editando páginas
+
+<Steps>
+
+### Criar o arquivo
+
+Crie um arquivo com extensão `.mdx` dentro da coleção correta.
+
+Estrutura de exemplo:
+
+```text
+src/content/editarSite/minha-pagina.mdx
+```
+
+### Configurar o frontmatter
+
+No topo do arquivo, defina título e descrição:
+
+```markdown
+---
+title: 'Nome da página'
+description: 'Resumo do conteúdo'
+---
+```
+
+Exemplo completo de estrutura da página:
+
+```mdx
+---
+title: 'Nome da página'
+description: 'Resumo do conteúdo'
+sidebar_label: 'Nome curto'
+sidebar_section: 'Operação'
+sidebar_order: 20
+---
+
+# Título principal
+
+Texto inicial da página.
+```
+
+### Usar componentes
+
+Importe e use os componentes para dar um visual profissional ao texto.
+
+</Steps>
+
+## Componentes MDX
+
+### 1. Caixas de aviso (Notice)
+
+Estrutura em código:
+
+```mdx
+<Notice type="info">Informações gerais.</Notice>
+<Notice type="tip">Dicas práticas.</Notice>
+<Notice type="warning">Pontos de atenção.</Notice>
+<Notice type="danger">Risco de perda de dados.</Notice>
+```
+
+Resultado:
+
+<Notice type="info">Padrão: use para informações gerais.</Notice>
+
+<Notice type="tip">Dica: use para atalhos e boas práticas.</Notice>
+
+<Notice type="warning">Aviso: use para alertas que requerem atenção.</Notice>
+
+<Notice type="danger">Perigo: use para ações que podem causar perda de dados.</Notice>
+
+### 2. Cards e grades (CardGrid)
+
+Estrutura em código:
+
+```mdx
+<CardGrid columns={2}>
+  <Card title="Recurso A" icon="📁">
+    Descrição curta do recurso.
+  </Card>
+  <Card title="Recurso B" icon="🌐">
+    Descrição curta do recurso.
+  </Card>
+</CardGrid>
+```
+
+Resultado:
+
+<CardGrid columns={2}>
+  <Card title="Recurso A" icon="📁">
+    Descrição curta do recurso.
+  </Card>
+  <Card title="Recurso B" icon="🌐">
+    Descrição curta do recurso.
+  </Card>
+</CardGrid>
+
+### 3. Links em destaque (LinkCard)
+
+Estrutura em código:
+
+```mdx
+<LinkCard
+  title="Infraestrutura Linux"
+  href="/pt/atividades/projetos/sistemas/infraestrutura"
+  description="Saiba como configuramos nossos servidores."
+  icon="🐧"
+/>
+```
+
+Resultado:
+
+<LinkCard
+  title="Infraestrutura Linux"
+  href="/pt/atividades/projetos/sistemas/infraestrutura"
+  description="Saiba como configuramos nossos servidores."
+  icon="🐧"
+/>
+
+## Imagens e layout
+
+O posicionamento correto das imagens melhora a experiência de leitura.
+
+Estrutura base em código:
+
+```mdx
+<img src="/imagens/logos/logo-cpps-unesp.png" class="img-left" />
+<img src="/imagens/logos/logo-cpps-unesp.png" class="img-right" />
+<img src="/imagens/logos/logo-cpps-unesp.png" class="img-center" />
+```
+
+| Classe       | Como aplicar                                                          | Resultado                      |
+| :----------- | :-------------------------------------------------------------------- | :----------------------------- |
+| `img-left`   | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-left" />`   | Texto flui à direita.          |
+| `img-right`  | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-right" />`  | Texto flui à esquerda.         |
+| `img-center` | `<img src="/imagens/logos/logo-cpps-unesp.png" class="img-center" />` | Imagem centralizada e isolada. |
+
+<Notice type="tip">
+  Ao usar `img-left` ou `img-right`, certifique-se de que o parágrafo seja longo o suficiente para
+  contornar a imagem.
+</Notice>
+
+## Sidebars colapsáveis
+
+Comportamento esperado:
+
+1. Colapso vertical: clique nas setas ao lado dos nomes dos grupos para expandir/recolher subpastas.
+2. Colapso horizontal: no desktop, use as setas laterais para ocultar menus e ganhar área de leitura.
+
+Estrutura de referência (rotas que usam o mesmo layout):
+
+```text
+src/pages/[lang]/atividades/[...slug].astro
+src/pages/[lang]/[support]/[...slug].astro
+src/pages/[lang]/[editSite]/[...slug].astro
+```
+
+## Exemplo de comando
+
+Estrutura de verificação local:
+
+```bash
+# Para rodar o site localmente
+npm run dev
+
+# Para validar antes de abrir PR
+npm run build
+```
+
+## Qualidade de conteúdo
+
+Para manter o projeto organizado e sem erros:
+
+1. Use um editor com formatação automática de Markdown/MDX.
+2. Revise links internos e caminhos de imagem.
+3. Rode o build local antes de abrir PR:
+
+```bash
+npm run build
+```
+
+## Edição via GitHub
+
+Para facilitar a colaboração, as páginas possuem um link de edição no GitHub.
+
+1. No final da página, clique em "Editar a página".
+2. O link abre o arquivo fonte no repositório.
+3. Edite via interface web ou localmente.
+4. Depois de salvar e enviar, o CI/CD do Cloudflare Pages publica as alterações.

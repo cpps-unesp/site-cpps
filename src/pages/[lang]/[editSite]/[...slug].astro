@@ -6,6 +6,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import routeTranslations from '../../../i18n/routeTranslations';
 import type { SupportedLang } from '../../../types/lang';
 import { buildEditarSiteSidebar } from '../../../utils/editarSiteSidebar';
+import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
+import { selectDocsHomeEntry } from '../../../utils/docsHome';
 import Notice from '../../../components/atividades/Notice.astro';
 import Card from '../../../components/atividades/Card.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
@@ -20,17 +22,34 @@ function getEditSiteBasePath(lang: SupportedLang): string {
 
 export async function getStaticPaths() {
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
-  const entries = await getCollection('editarSite');
+  const entries = filterVisibleDocsEntries(await getCollection('editarSite'));
+  const homeEntry = selectDocsHomeEntry(entries);
 
   return langs.flatMap((lang) => {
-    return entries.map((entry) => ({
+    const paths = entries.map((entry) => ({
       params: {
         lang,
         editSite: routeTranslations['editar-site'][lang],
-        slug: entry.slug === 'index' ? undefined : entry.slug,
+        slug: entry.slug,
       },
-      props: { entry },
+      props: { entry, homeSlug: homeEntry?.slug },
     }));
+
+    if (!homeEntry) {
+      return paths;
+    }
+
+    return [
+      ...paths,
+      {
+        params: {
+          lang,
+          editSite: routeTranslations['editar-site'][lang],
+          slug: undefined,
+        },
+        props: { entry: homeEntry, homeSlug: homeEntry.slug },
+      },
+    ];
   });
 }
 
@@ -41,10 +60,16 @@ if (Astro.params.editSite !== expectedEditSite) {
   return Astro.redirect(`/${lang}/${expectedEditSite}`, 302);
 }
 
-const { entry } = Astro.props;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const { entry, homeSlug } = Astro.props as { entry: any; homeSlug?: string };
+
+if (homeSlug && Astro.params.slug === homeSlug) {
+  return Astro.redirect(`/${lang}/${expectedEditSite}`, 301);
+}
+
 const { Content, headings } = await render(entry);
 const currentPath = Astro.url.pathname;
-const allEntries = await getCollection('editarSite');
+const allEntries = filterVisibleDocsEntries(await getCollection('editarSite'));
 const docsBasePath = getEditSiteBasePath(lang);
 const sidebar = buildEditarSiteSidebar(allEntries, docsBasePath);
 const localizedBasePath = `/${lang}${docsBasePath}`;

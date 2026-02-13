@@ -19,6 +19,7 @@ export async function GET() {
   for (const lang of langs) {
     urls.add(`/${lang}/`);
     urls.add(`/${lang}/atividades`);
+    urls.add(`/${lang}/wiki`);
     urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
     urls.add(`/${lang}/${routeTranslations['editar-site'][lang]}`);
   }
@@ -55,7 +56,7 @@ export async function GET() {
   const atividades = await getCollection('atividades');
   for (const lang of langs) {
     for (const entry of atividades) {
-      urls.add(`/${lang}/atividades/${entry.slug}`);
+      urls.add(`/${lang}/wiki/${entry.slug}`);
     }
   }
 

@@ -6,7 +6,8 @@ import LinkCard from '../../../components/atividades/LinkCard.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
 import type { Language } from '../../../utils/i18n';
-import { buildAtividadesSidebar } from '../../../utils/atividadesSidebar';
+import { buildAtividadesSidebarWithBase } from '../../../utils/atividadesSidebar';
+import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
 import type { SidebarItem } from '../../../types/docs';
 
 export function getStaticPaths() {
@@ -14,20 +15,19 @@ export function getStaticPaths() {
 }
 
 const lang = (Astro.params.lang ?? 'pt') as Language;
-const basePath = `/${lang}/atividades`;
+const wikiBasePath = `/${lang}/wiki`;
 
-const atividades = await getCollection('atividades');
-const sidebar = buildAtividadesSidebar(atividades);
+const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
+const sidebar = buildAtividadesSidebarWithBase(atividades, '/wiki');
 
-function normalizeAtividadesUrl(path: string): string {
+function normalizeWikiUrl(path: string): string {
   const normalized = path.replace(/\/+$/, '');
   return normalized.endsWith('/index') ? normalized.slice(0, -6) : normalized;
 }
 
 function flattenSidebarUrls(items: SidebarItem[]): string[] {
   return items.flatMap((item) => {
-    const current =
-      item.url && item.url.startsWith('/atividades') ? [normalizeAtividadesUrl(item.url)] : [];
+    const current = item.url && item.url.startsWith('/wiki') ? [normalizeWikiUrl(item.url)] : [];
     const nested = item.items ? flattenSidebarUrls(item.items) : [];
     return [...current, ...nested];
   });
@@ -37,7 +37,7 @@ const sidebarUrls = new Set(flattenSidebarUrls(sidebar));
 
 const orphanActivityPages = atividades
   .map((entry) => {
-    const routePath = normalizeAtividadesUrl(`/atividades/${entry.slug}`);
+    const routePath = normalizeWikiUrl(`/wiki/${entry.slug}`);
     return {
       routePath,
       title: entry.data.title || entry.slug,
@@ -80,7 +80,7 @@ const orphanActivityPages = atividades
             />
             <LinkCard
               title="Trilha de Dados"
-              href={`${basePath}/projetos/ensino/tfdt`}
+              href={`${wikiBasePath}/projetos/ensino/tfdt`}
               description="Nossa trilha completa de fundamentos de tecnologia."
               icon="🐍"
             />
@@ -90,19 +90,25 @@ const orphanActivityPages = atividades
         <div>
           <h2 class="mini-titulo mb-6 flex items-center gap-3">
             <i class="fa-solid fa-microchip text-primary text-2xl"></i>
-            Sistemas e Dados
+            Wiki de Projetos
           </h2>
-          <CardGrid columns={2}>
+          <CardGrid columns={3}>
             <LinkCard
-              title="Acervos de Dados"
-              href={`${basePath}/projetos/dados`}
-              description="Documentacao tecnica sobre a Hemeroteca e NewsCloud."
+              title="Projetos de Dados"
+              href={`${wikiBasePath}/projetos/dados`}
+              description="Acesse acervos, documentação técnica e bases de pesquisa."
               icon="📊"
             />
             <LinkCard
-              title="Infraestrutura"
-              href={`${basePath}/projetos/sistemas/infraestrutura`}
-              description="Configuracoes de servidores, redes e automacao."
+              title="Projetos de Ensino"
+              href={`${wikiBasePath}/projetos/ensino`}
+              description="Trilhas, cursos, materiais de apoio e conteúdos formativos."
+              icon="🎓"
+            />
+            <LinkCard
+              title="Projetos de Sistemas"
+              href={`${wikiBasePath}/projetos/sistemas`}
+              description="Infraestrutura, websites, redes, automação e operação técnica."
               icon="⚙️"
             />
           </CardGrid>
@@ -157,15 +163,15 @@ const orphanActivityPages = atividades
           <h3 class="text-primary mb-4 text-xl font-bold italic">Navegacao Rapida</h3>
           <ul class="menu menu-compact bg-transparent p-0">
             <li>
-              <a href={`${basePath}/projetos/dados/hemeroteca-peb`} class="py-2">Hemeroteca PEB</a>
+              <a href={`${wikiBasePath}/projetos/dados/hemeroteca-peb`} class="py-2">Hemeroteca PEB</a>
             </li>
             <li>
-              <a href={`${basePath}/projetos/sistemas/websites/01-intro-md`} class="py-2"
+              <a href={`${wikiBasePath}/projetos/sistemas/websites/01-intro-md`} class="py-2"
                 >Edicao de Websites</a
               >
             </li>
             <li>
-              <a href={`${basePath}/projetos/sistemas/infraestrutura/linux/atualizar`} class="py-2"
+              <a href={`${wikiBasePath}/projetos/sistemas/infraestrutura/linux/atualizar`} class="py-2"
                 >Servidores Linux</a
               >
             </li>

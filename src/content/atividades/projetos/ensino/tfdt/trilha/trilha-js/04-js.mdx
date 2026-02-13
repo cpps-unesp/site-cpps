@@ -1,0 +1,764 @@
+---
+title: JavaScript
+sidebar_label: JavaScript
+---
+
+# Conhecimentos básicos de JavaScript
+
+## Módulo 1: Primeiros Passos
+
+**PRÉ-REQUISITOS PARA COMEÇAR O MÓDULO 1 DO JAVASCRIPT**: Ter concluido o módulo 6 do CSS: [Formulário do Módulo 6 do CSS](https://forms.gle/2ifuFhiVTM9R3xN19).
+
+### O que é JavaScript?
+
+Toda página Web que possui qualquer tipo de interatividade, está utilizando a linguagem JavaScript (JS) para que isso seja possível. Por este motivo, JS é a linguagem de programação mais utilizada na área de desenvolvimento Web.
+
+JavaScript trata-se de uma linguagem de _scripting_, sendo possível utiliza-la para controlar aplicações de terceiros. Além disso, assim como o HTML, o JS é interpretado, ou seja, o código passa a ser intepretado e executado pela leitura linha a linha do navegador.
+
+### Primeiros comandos
+
+### Variáveis
+
+A variável no JS serve para armazenar um valor para que ele possa ser utilizado posteriormente:
+
+![Exemplo 1](https://i.imgur.com/nn8UP4s.png)
+
+&lt;Notice type="warning"&gt;
+
+Toda vez que uma variável for determinada, ela inicialmente irá resultar em "undefined". Para conseguir o valor esperado, é necessário chamar o nome da função.
+
+&lt;/Notice&gt;
+
+Além disso, é possível manipular a variável para que o resultado seja diferente:
+
+![Exemplo 2](https://i.imgur.com/1HETTn2.png)
+
+&lt;Notice type="tip"&gt;
+
+Faça os seguintes **exercícios sobre variável** para testar o que foi aprendido: [Link](https://edabit.com/tutorial/javascript#variables)
+
+&lt;/Notice&gt;
+
+### Alert
+
+O comando "alert" é utilizado para a criação de popups:
+
+```
+alert('bem vindo!')
+```
+
+É possível utilizar uma variável para determinar o que deve ser escrito no comando "alert":
+
+```
+var exemplo = "bem vindo!"
+
+alert(exemplo)
+```
+
+### Script
+
+Para modificar um código JS dentro de uma página é necessário que o código esteja inserido dentro da tag "script" dentro da página.
+
+Normalmente, a tag "script" é declarada dentro da tag "head" ou "body".
+
+![Exemplo 4](https://i.imgur.com/5GNFxww.png)
+
+### Console
+
+Para verificar uma variável através de uma mensagem no console, basta escrever:
+
+```
+var exemplo = 15 + 3
+console.log(exemplo)
+```
+
+### querySelector
+
+Para modificar um seletor CSS com JavaScript, é necessário utilizar o comando "querySelector":
+
+```
+document.querySelector("h1")
+```
+
+Além disso, é possível salvar o resultado "querySelector" dentro de uma variável:
+
+```
+var titulo = document.querySelector("h1")
+```
+
+### textContent
+
+É possível manipular o conteúdo selecionado no querySelector:
+
+```
+titulo.textContent = "Novo título"
+```
+
+### querySelectorAll
+
+Para selecionar vários elementos com uma mesma tag de classe, é preciso utilizar o "querySelectorAll":
+
+```
+document.querySelectorAll(".classe")
+```
+
+Também é possível acessar elementos da lista utilizando a sua posição.
+
+A posição dos elementos começa no "0", ou seja, o primeiro elemento deve ser mencionado como 0:
+
+```
+document.querySelectorAll(".classe")[0]
+```
+
+### DOM
+
+### Alterações no DOM
+
+Toda mudança nos elementos da página são sincronizados e alterados em tempo real.
+
+### Funções no DOM
+
+Algumas vezes é necessário criar funções que leiam o que está dentro do `&lt;script&gt;` em momentos específicos e não no momento que o navegador carrega a página.
+
+**Exemplo**: criação de botões com JavaScript.
+
+![Exemplo 4](https://i.imgur.com/kViVnh9.png)
+
+Função para utilizar botões:
+
+![Exemplo 5](https://i.imgur.com/yrPucEG.png)
+
+### Eventos do DOM
+
+Eventos são comandos que permitem que as funções façam parte da interação do usuário com a página:
+
+| Evento      | O que significa                                                                                                   |
+| ----------- | ----------------------------------------------------------------------------------------------------------------- |
+| oninput     | quando um elemento input tem seu valor modificado                                                                 |
+| onclick     | quando ocorre um click com o mouse                                                                                |
+| onblclick   | quando ocorre dois clicks com o mouse                                                                             |
+| onmousemove | quando mexe o mouse                                                                                               |
+| onmousedown | quando aperta o botão do mouse                                                                                    |
+| onmouseup   | quando solta o botão do mouse (útil com os dois acima para gerenciar drag'n'drop)                                 |
+| onkeypress  | quando pressionar e soltar uma tecla                                                                              |
+| onkeydown   | quando pressionar uma tecla                                                                                       |
+| onkeyup     | quando soltar uma tecla                                                                                           |
+| onblur      | quando um elemento perde foco                                                                                     |
+| onfocus     | quando um elemento ganha foco                                                                                     |
+| onchange    | quando um input, select ou textarea tem seu valor alterado                                                        |
+| onload      | quando a página é carregada                                                                                       |
+| onunload    | quando a página é fechada                                                                                         |
+| onsubmit    | disparado antes de submeter o formulário (útil para realizar validações)                                          |
+|             | **Fonte**: [Apostila JS](https://www.caelum.com.br/apostila-html-css-javascript/38CA-eventos-com-javascript#null) |
+
+Existem eventos mais avançados que permitem a criação de interações para drag'n'drop ou até mesmo a criação de eventos personalizados.
+
+### Funções Anônimas
+
+Funções anônimas são aquelas que não possuem nome, são apenas declaradas e armazenadas em uma variável.
+
+**Exemplo**:
+
+```
+inputTamanho.oninput = function(){
+    outputTamanho.value = inputTamanho.value
+}
+```
+
+### Strings
+
+### Manipulando Strings
+
+Uma variável que armazena um string pode, por exemplo, consultar o seu tamanho e manipular o seu valor.
+
+![Exemplo 6](https://i.imgur.com/uRcJerH.png)
+
+## Módulo 2: Lógica da Programação com JavaScript
+
+**PRÉ-REQUISITOS PARA COMEÇAR O MÓDULO 2 DO JAVASCRIPT**: Ter concluido o módulo 1 do JavaScript: [Formulário do Módulo 1 do JS](#).
+
+Fonte: [Módulo 2](https://github.com/reprograma/T9-logica-e-js)
+
+### Introdução
+
+Antes de começar o processo de criação de códigos de um programa, é necessário entender a lógica da programação para que o desenvolvimento do programa siga uma ordem de intruções capaz de evitar ou resolver possíveis problemas de código.
+
+Aprenda, a seguir, como funciona a _lógica da programação no JavaScript_.
+
+&lt;Notice type="tip"&gt;
+
+Devido a enorme quantidade de comando e propriedades utilizadas pelo JavaScript, procure sites que possam facilitar a encontrar o necessário para seu código e para que o programa funcione como desejado.
+
+&lt;/Notice&gt;
+
+&lt;Highlight color="#25c2a0"&gt;Links&lt;/Highlight&gt;
+
+- [Stack Overflow](https://stackoverflow.com)
+
+- [MDN Web Docs](https://developer.mozilla.org/pt-BR/)
+
+- [W3Schools Online Web Tutorials](https://www.w3schools.com)
+
+### Algoritmo
+
+Por definição, algoritmo é uma sequência finita de instruções ou operações necessárias para atingir um objetivo.
+
+### JavaScript
+
+Como já mencionado no Módulo 1, JS trata-se de uma **linguagem de programação** com foco no controle do HTML e CSS com o intuito de gerar comportamentos em uma página.
+
+- Para adicionar o JS em uma página de forma **inline**, basta utilizar a tag `&lt;script&gt;`:
+
+```
+<script type="text/javascript">
+    alert('Exemplo');
+</script>
+```
+
+- Para adicionar o JS em uma página através de um **arquivo externo** de dentro do próprio projeto, basta escrever:
+
+```
+<script type="text/javascript" src="js/script.js">  // nome do caminho da pasta
+```
+
+- Para adicionar o JS em uma página através de um **arquivo da internet**, basta escrever:
+
+```
+<script type="text/javascript>" src="https://google.com"> // link da página para acessar o código
+```
+
+- Para adicionar **comentários** no código, basta utilizar:
+
+```
+// para comentar uma linha
+/*
+para comentar
+várias linhas
+*/
+```
+
+### Variáveis
+
+Por definição, uma variável trata-se de uma forma de refenciar um espaço na memória do computador para guardar informações que serão utilizados em um progama.
+
+Os nomes das variáveis são conhecidos como _identificadores_ e eles precisam obedecer determinadas regras. No JavaScript, um identificador precisa começar com uma **letra**, **underline(\_)** ou **cifrão($)**. Os outros caracteres podem ser números e/ou letras (maiúsculas ou minúsculas).
+
+&lt;Notice type="info"&gt;
+
+O JavaScript é _case-sensitive_, ou seja, a utilização de uma letra maiúscula ou minúscula em um interpretador não deve ser ignorada em outros momentos do código.
+
+&lt;/Notice&gt;
+
+&lt;Notice type="warning"&gt;
+
+Algumas palavras **não** estão disponíveis para a utilização no nome de variáveis por conta de valores pré-determinados pela linguagem.
+
+&lt;/Notice&gt;
+
+| Palavras que não podem ser utilizadas na criação do nome de uma variável                                                                                                                                                                                                                                                                                                                                 |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _abstract, boolean, break, byte, case, catch, char, class, const, continue, default, do, double, else, extends, false, final, finally, float, for, function, goto, if, implements, import, in, instanceof, int, interface, long, native, new, null, package, private, protected, public, return, short, static, super, switch, synchronized, this, throws, transient, true, try, var, void, while, with_ |
+
+### Modos de declaração
+
+Há duas maneiras recomendadas de declaração em JavaScript:
+
+- **let**
+
+Declaração de uma variável local de escopo do bloco.
+
+Ex: `let x = 1`
+
+- **const**
+
+Declaração de uma constante de escopo do bloco, apenas de leitura.
+
+Ex: `const x = 3`
+
+### Variáveis globais
+
+São propriedades do objeto global. Em páginas web o objeto global é a _window_, sendo possível acessar a propriedade através da sintaxe `window.variavel`.
+
+## Exercício 1
+
+Levando em consideração o que já foi aprendido, desenvolva as seguintes propostas:
+
+1. Crie uma mensagem inicial de "Bem vindo!";
+
+2. Defina dois valores numéricos e faça a soma dos mesmos;
+
+3. Defina o valor do: _nome, endereço e telefone_ e mostre-os;
+
+4. Solicite o ano de nascimento do usuário, calcule sua idade e mostre-a;
+
+5. Solicite três valores numéricos do usuário, calcule a média entre eles e mostre-a.
+
+### Tipos de dados
+
+O JavaScript está dentro das linguagens de programação que não necessitam da definição do tipo da variável, isso porque o processo já é automático. Essas linguagens são conhecidas como _fracamente tipadas_, sendo elas: JavaScript, Python, Ruby.
+
+O recente padrão ECMAScript define **sete tipos de dados**:
+
+- Primitivos:
+  - &lt;Highlight color="#25c2a0"&gt;Booleano&lt;/Highlight&gt;: **true** e **false**.
+    - É um tipo de dado lógico que pode ter apenas dois valores: falso ou verdadeiro.
+  - &lt;Highlight color="#25c2a0"&gt;null&lt;/Highlight&gt;: é uma palavra-chave para indicar que algum valor é **nulo**. **Atenção**: "null" não é o mesmo que _Null_, _NULL_, etc.
+    - O valor nulo é uma referência que aponta para um objeto ou enderço de memória inválido ou inexistente.
+  - &lt;Highlight color="#25c2a0"&gt;undefined&lt;/Highlight&gt;: é uma propriedade que indica quando algum valor é **indefinido**.
+    - Trata-se de um valor automaticamente atribuído para variáveis mas que ainda não foram inicializadas.
+  - &lt;Highlight color="#25c2a0"&gt;Number&lt;/Highlight&gt;: **42** ou **3.14159**.
+    - No JS, number é um tipo de dado numérico.
+  - &lt;Highlight color="#25c2a0"&gt;String&lt;/Highlight&gt;
+    - String é uma sequência de caracteres utilizadas para representar texto.
+  - &lt;Highlight color="#25c2a0"&gt;Symbol&lt;/Highlight&gt;: trata-se de um tipo de dado único e imutável.
+    - Valores desse tipo podem ser utilizados como propriedades de objetos anônimos.
+  - &lt;Highlight color="#25c2a0"&gt;Object&lt;/Highlight&gt;
+    - Trata-se de uma estrutura de dados que contem dados e instruções utlizadas para trabalhar com os dados acima.
+
+JavaScript, Java, C++, Python e Ruby são conhecidas como **linguagens orientadas à objeto - _object oriented programming_**.
+
+### Operadores
+
+No JavaScript, opreradores são necessários para a utilização de operações matemáticas, de comparação e lógica. Veja alguns exemplos:
+
+### Operadores de atribuição
+
+Utilizados para atribuir um valor ao operando à sua esquerda baseado no valor operado à direita.
+
+| Nome                            | Operador encurtado | Significado  |
+| ------------------------------- | ------------------ | ------------ |
+| **Atribuição**                  | x = y              | x = y        |
+| **Atribuição de adição**        | x += y             | x = x + y    |
+| **Atribuição de subtração**     | x -= y             | x = x + y    |
+| **Atribuição de multiplicação** | x \*= y            | x = x \* y   |
+| **Atribuição de divisão**       | x /= y             | x = x / y    |
+| **Atribuição de resto**         | x %= y             | x = x % y    |
+| **Atribuição exponencial**      | x \*\*= y          | x = x \*\* y |
+
+### Operadores de comparação
+
+Utilizados para comparar seus operandos e retornar um valor lógico baseado em se a comparação é verdadeira.
+
+| Nome                       | Operador | Descrição                                                                      |
+| -------------------------- | -------- | ------------------------------------------------------------------------------ |
+| **Igual**                  | ==       | Retorna verdadeiro quando os operandos são iguais                              |
+| **Não igual**              | !=       | Retorna verdadeiro quando os operadores não são iguais                         |
+| **Estritamente igual**     | ===      | Retorna verdadeiro quando os operadores são iguais e do mesmo tipo             |
+| **Estritamente não igual** | !==      | Retorna verdadeiro quando os operadores não são iguais e/ou do mesmo tipo      |
+| **Maior que**              | &gt;     | Retorna verdadeiro quando o operando da esquerda é maior que o da direita      |
+| **Maior que ou igual**     | &gt;=    | Retorna verdadeiro quando o operando da esquerda é maior ou igual o da direita |
+| **Menor que**              | &lt;     | Retorna verdadeiro quando o operando da esquerda é menor que o da direita      |
+| **Menor que ou igual**     | &lt;=    | Retorna verdadeiro quando o operando da esquerda é menor ou igual o da direita |
+
+### Operadores aritméticos
+
+Tomam valores numéricos como seus operandos e retoram um único valor numérico.
+
+| Nome                          | Operador | Descrição                                                                                                                          |
+| ----------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| **Módulo**                    | %        | Operador binário. Retorna inteiro restante da divisão dos dois operandos                                                           |
+| **Incremento**                | ++       | Operador unário. Adiciona um ao seu operando. Também pode ser utilizado como operador prefixados "++x" ou operador pósfixado "x++" |
+| **Decremento**                | --       | Operador unário. Subtrai um de seu operando                                                                                        |
+| **Negação**                   | -        | Operador unário. Retorna a negação de seu operando                                                                                 |
+| **Adição**                    | +        | Operador unário. Tenta converter o operando em um número, sempre que possível                                                      |
+| **Operador de exponenciação** | \*\*     | Calcula a base elevada à potência do expoente                                                                                      |
+
+### Operadores lógicos
+
+| Nome    | Operador | Utilização       | Descrição                                                                                                                                                                                                                  |
+| ------- | -------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **AND** | &&       | _expr1 && expr2_ | Retorna expr1 caso possa ser convertido para falso; senão, retorna expr2. Assim, quando utilizado com valores booleanos, && retorna verdadeiro caso ambos operandos sejam verdadeiro; se ambos forem falsos, retorna falso |
+| **NOT** | !        | _!expr_          | Retorna falso caso o único opreando possa ser convertido para verdadeiro; senão, retorna verdadeiro                                                                                                                        |
+
+```
+OU: ||
+Utilização: expr1 || expr2
+Descrição: Retorna expr1 caso possa ser convertido para verdadeiro; senão, retorna expr2. Assim, quando utilizado com valores booleanos, || retorna verdadeiro caso ambos os operandos sejam verdadeiros; se ambos forem falsos, retorna falso.
+```
+
+&lt;Notice type="tip"&gt;
+
+Faça os seguintes **exercícios sobre operadores** para testar o que foi aprendido: [Link](https://edabit.com/tutorial/javascript#operators)
+
+&lt;/Notice&gt;
+
+### Operador condicional (ternário)
+
+No JavaScript, esse operador é o único que utiliza três operandos. Trata-se de um operador que pode ter um de dois valores baseados em uma condição. Sintaxe:
+
+> condicao ? valor1 : valor2
+
+**Exemplo**:
+
+```
+var status = (idade >= 18) ? "adulto" : "menor de idade";
+```
+
+## Módulo 3: Estruturas condicionais e Estruturas de repetição
+
+**PRÉ-REQUISITOS PARA COMEÇAR O MÓDULO 3 DO JAVASCRIPT**: Ter concluido o módulo 2 do JavaScript: [Exercícios do Módulo 2 do JS](https://labriunesp.org/docs/projetos/ensino/trilha-dados/linguagens/js/exercicios-js#exerc%C3%ADcios-operadores).
+
+### Estruturas condicionais
+
+_Controle de fluxo_ ou _Estruturas condicionais_ são comandos do JavaScript que permitem o desvio do fluxo de um programa, dependendo de um teste.
+
+### "if"
+
+A declaração "if" deve ser utilizada caso a condição lógica for verdadeira.
+
+**if**
+
+- Estrutura:
+
+![estrutura](https://i.imgur.com/efp0Sk2.png)
+
+- Exemplo:
+
+![exemplo](https://i.imgur.com/IVO7PSF.png)
+
+**if...else**
+
+- Exemplo:
+
+![exemplo2](https://i.imgur.com/WJ8XhdO.png)
+
+**else if**
+
+- Exemplo:
+
+![exemplo3](https://i.imgur.com/mHjVrFU.png)
+
+### "switch"
+
+A estrutura "switch" é utilizada para testes simples, geralmente utilizada para evitar uma cadeia de else if, deixando mais legível.
+
+A declaração "switch" permite que um programa avalie uma expressão e tente associá-la ao valor da expressão a cláusula de uma "case".
+
+A instrução "break" é associada a cada rótulo "case", garantindo que o programa sairá do "switch" assim que a declaração correspondente for executada, continuando a execução a partir da declaração "switch" seguinte.
+
+- Estrutura:
+
+![estruturaswitch](https://i.imgur.com/gNQ9RGW.png)
+
+- Exemplo:
+
+![exemploswitch](https://i.imgur.com/dHiJqIT.png)
+
+### Estruturas de repetição
+
+_Laços de repetição_ ou _Estruturas de repetição_ são comandos do JavaScript que permitem que um código seja executado até que uma condição de parada seja satisfeita.
+
+### "for"
+
+Utiliza-se "for" para que um laço seja repetido até que sua condição seja falsa.
+
+Estrutura formada por três partes: _inicialização, condição e incremento_.
+
+- Estrutura:
+
+![estruturafor](https://i.imgur.com/aWTrKh2.png)
+
+### "while"
+
+Utiliza-se "while" para executar uma condição especificada avaliada como verdadeira. É possível trocar o `for()` por `while()`.
+
+A diferença está em: geralmente loop "for" é utilizado para interar com contadores e loop "while" é utilizado para até que alguma condição mude. **Exemplo**: de _true_ para _false_.
+
+- Estrutura:
+
+![estruturawhile](https://i.imgur.com/aWTrKh2.png)
+
+- Exemplo:
+
+![exemplowhile](https://i.imgur.com/sFa17fW.png)
+
+- Exemplo 2:
+
+![exemplowhile2](https://i.imgur.com/th8ZJDp.png)
+
+### "do-while"
+
+Utiliza-se "do-while" será repetida até que a condição especificada seja _falsa_. Ele sempre é executado pelo menos uma vez, pois primeiramente ele faz o _do_ para depois testar a condição.
+
+- Estrutura:
+
+![estruturadowhile](https://i.imgur.com/JtgtDG8.png)
+
+### Declarações complementares
+
+- **break**
+
+Ele encerra imediatamente o laço mais interno di _while, do-while, for_ ou _switch_ e transfere o controle para a próxima instrução.
+
+- Exemplo:
+
+![exemplobreak](https://i.imgur.com/Ztr4LPp.png)
+
+- **continue**
+
+É utilizada para reiniciar uma instrução _while, do-while_ ou _for_. Faz a execução do laço a partir da próxima iteração.
+
+- Exemplo:
+
+![estruturacontinue](https://i.imgur.com/OyVK67g.png)
+
+&lt;Notice type="tip"&gt;
+
+Faça os seguintes **exercícios sobre estrutura de repetição**: [Link](https://edabit.com/tutorial/javascript#loops)
+
+&lt;/Notice&gt;
+
+## Módulo 4: Conhecimentos intermediários
+
+### Métodos Array
+
+"Array" pode ser definida como objetos disponilizados em um formato de lista.
+
+- Exemplo:
+
+```
+let frutas = ['Maça', 'Banana']
+console.log(fruits.length)
+```
+
+Tabela de principais métodos array:
+
+| Nome do método  | Como funciona                                                                                                                    |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **concat**      | Faz cópia simples do Array e adiciona os argumentos                                                                              |
+| **join**        | Cria um string do Array. Adiciona o argumento como cola entre cada membro do Array.                                              |
+| **shift**       | Remove e retorna o primeiro elemento                                                                                             |
+| **pop**         | Remove e retorna o último elemento                                                                                               |
+| **unshift**     | Anexa os argumentos na frente do Array                                                                                           |
+| **push**        | Anexa os argumentos no final do Array                                                                                            |
+| **reverse**     | Inverte o Array sem copiá-lo                                                                                                     |
+| **slice**       | Faz cópia simples da porção do Array delimitada por argumentos do índice                                                         |
+| **splice**      | Remove elementos especificados do Array, e os subtitui com argumentos adicionais opcionais                                       |
+| **sort**        | Classifica o Array sem copiá-lo, opcionalmente usando um argumento comparador                                                    |
+| **toString**    | Chama join sem passar um argumento                                                                                               |
+| **indexOf**     | Retorna o primeiro elemento igual ao valor especificado, ou -1 se nenhum for encontrado                                          |
+| **lastIndexOf** | Retorna o primeiro elemento igual ao valor especificado, ou -1 se nenhum for encotrado                                           |
+| **forEach**     | Aplica a função fornecida para todos os elementos do Array                                                                       |
+| **map**         | Cria um novo Array contendo os resultados da aplicação da função a todos elementos do Array                                      |
+| **filter**      | Cria um novo Array contendo todos os elementos para os quais a função fornecida retorna verdadeiro                               |
+| **reduce**      | Aplica uma função simultaneamente para dois valores do Array (da esquerda para a direita) de forma a reduzi-los a um valor único |
+| **some**        | Checa se pelo menos um dos elementos do Array obece a condição passada pela função                                               |
+| **every**       | Checa se todos os elementos do Array obecedem a condição passada pela função                                                     |
+
+_Definições retiradas do curso [Calma, senhora](https://github.com/reprograma/T9-JS-III)_
+
+&lt;Notice type="tip"&gt;
+
+Acesse a página sobre Array do [MDN Web docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array) para definições mais aprofundadas dos métodos da tabela.
+
+&lt;/Notice&gt;
+
+&lt;Notice type="tip"&gt;
+
+Faça os seguintes **exercícios sobre arrays** para testar o que foi aprendido: [Link](https://edabit.com/tutorial/javascript#arrays)
+
+&lt;/Notice&gt;
+
+### Protocolo HTTP
+
+HTTP trata-se de um protocolo de transferência de dados na Web. Isto significa que, ao acessar uma página web, o navegador solicita (request) para o servidor onde ele está hospedado. Deste modo, o servidor envia uma resposta (response) para essa solicitação.
+
+&lt;Notice type="tip"&gt;
+
+Acesse a página sobre HTTP do [MDN Web docs](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Overview) e leia mais profundamente sobre suas definições e utilizações.
+
+&lt;/Notice&gt;
+
+- **Método HTTP**:
+  - _GET, POST, PUT, DELETE_
+  - O modo mais comum de mostrar dados é através do _GET_;
+  - Os demais verbos são utilizados para modificar dados ou banco de dados;
+
+- **Código de Status das respostas HTTP**:
+  - [HTTP Statuses](https://httpstatuses.com/);
+  - [HTTP Dogs](https://httpstatusdogs.com/);
+  - [HTTP Cats](https://http.cat/)
+
+### API
+
+O _Application Programming Interface_ (API) ou Interface de Programação de Aplicativos é uma interface de comunicação e integração entre aplicativos.
+
+A utilização de APIs é uma ótima maneira de melhorar a colaboração entre empresas e equipes de TI, levando em consideração que elas simplificam a forma como os desenvolvedores acrescentam novos componentes a uma arquitetura preexistente.
+
+> Para resumir, com as APIs, você libera o acesso aos seus recursos sem abrir mão da segurança e do controle. É você quem determina como isso será feito e quem terá acesso. A segurança das APIs dependem de um bom gerenciamento. É possível conectar APIs, bem como criar aplicações que fazem uso dos dados ou funcionalidades disponibilizadas por elas, usando uma plataforma de integração distribuída que ligue todos os elementos, incluindo sistemas legados e dispositivos de Internet das Coisas (IoT).
+
+Os três tipos de API: _**API Privada**_: são utilizadas internamente entre as aplicações de uma empresa; _**API de Parceiros**_: são utilizadas entre parceiros de negócios ou para permitir a integração entre diferentes softwares; _**API Pública**_: podem ser utilizadas livremente.
+
+Aprofunde seus conhecimentos sobre API através do artigo disponibilizado pelo site [Red Hat](https://www.redhat.com/pt-br/topics/api/what-are-application-programming-interfaces).
+
+- **Métodos API**
+
+| Método     | Significado       | Status de retorno |
+| ---------- | ----------------- | ----------------- |
+| **GET**    | Traz informações  | 200               |
+| **POST**   | Cria um novo item | 201               |
+| **PUT**    | Atualiza um item  | 200               |
+| **DELETE** | Remove um item    | 200               |
+
+&lt;Notice type="tip"&gt;
+
+Conheça algumas [Public APIs](https://github.com/public-apis/public-apis) disponibilizadas gratuitamente
+
+&lt;/Notice&gt;
+
+- **RESTful API (REST API)**
+
+Representational State Transfer (REST) API é um conjunto de restrições utilizadas para que as requisições HTTP atendam as diretrizes definidas na arquitetura. Essas restrições são:
+
+1. **cliente-servidor**: as aplicações no servidor e no cliente são separadas;
+2. **sem estado**: requisições independentes que executam apenas uma determinada ação;
+3. **cache**: utiliza-se o cache para evitar chamadas recorrentes ao servidor;
+4. **interface uniforme**: faz uma junção dos quatro conceitos
+
+Uma das principais funções do REST API é a possibilidade de fornecer comunicação entre aplicações para a troca de informações de maneira rápida e segura.
+
+Isso significa, por exemplo, que as empresas podem ter acesso às informações atualizadas com maior rapidez.
+
+Aprofunde seus conhecimentos sobre REST API através do artigo publicado no website [Rockcontent](https://rockcontent.com/br/blog/rest-api/).
+
+### CORS
+
+O Cross-Origin Resource Sharing (CORS) ou Compartilhamento de Recursos de Origem Diferente, permite o acesso de recursos com origens distintas.
+
+### JSON
+
+O JavaScript OBject Notation (JSON) ou Notação de Objeto JavaScript, trata-se de uma sintaxe para armazenas e transferir dados.
+
+```
+    {
+        "nome": "Melina",
+        "idade": 21,
+        "profissão": "desenvolvedora"
+    }
+]
+```
+
+- **JSON.parse(data)**:
+
+```
+const parsedData = JSON.parse(data);
+```
+
+### Requisições
+
+A requisição **XMLHttpRequest** é utilizada para receber dados de uma URL sem ter que atualizar a página.
+
+![Imagem: Exemplo de XMLHttpRequest](https://i.imgur.com/gPbdVmOt.png)
+
+A requisição **Promise** é um objeto que representa o sucesso ou fracasso de uma operação _assíncrona_.
+
+![Imagem: Exemplo de Promise](https://i.imgur.com/ieTu0cgt.png)
+
+O **Fetch** (`fetch()`) é um método utilizado para transferência de dados entre recursos web. Seu resultado será o retorno de uma Promise.
+
+![Imagem: Estrutura de Fetch](https://i.imgur.com/GeCgFR4t.png)
+
+O **async** é utilizado em declarações ou expressões de funções, se tornando em funções assíncronas que permitem o uso do **await**.
+
+![Imagem: Exemplo de Fetch](https://i.imgur.com/vzXS4NGt.png)
+
+## Módulo 5: Aprofundando conhecimentos de JavaScript
+
+### HTML5 Drag and Drop API
+
+Utilizar o HTML5 Drag and Drop (DND) API possibilita tornar quase qualquer elemento da página em um objeto arrastável (draggable).
+
+Conheça alguns eventos DND:
+
+- **dragstart**
+
+- **drag**
+
+- **dragenter**
+
+- **dragleave**
+
+- **dragover**
+
+- **drop**
+
+- **dragend**
+
+Exemplos:
+
+- HTML: sem utilizar JS (a API precisa do JS para funcionar)
+
+![Imagem: Exemplo de Drag and Drop com apenas HTML](https://i.imgur.com/0dcb1hc.png)
+
+- CSS: sem utilizar JS
+
+![Imagem: Exemplo de Drag and Drop com apenas CSS](https://i.imgur.com/Z06ryKP.png)
+
+- JavaScript: utilizando a DND API
+
+![Imagem: Exemplo de como utilizar a API com JavaScript](https://i.imgur.com/QUn1JXl.png)
+
+&lt;Notice type="tip"&gt;
+
+Explore o Drag and Drop API a partir deste [artigo](https://web.dev/drag-and-drop/)
+
+&lt;/Notice&gt;
+
+### Comandos para Array
+
+1. "**forEach**"
+
+O `forEach()` permite percorrer um array em JavaScript, recebendo uma função que executa cada item do array.
+
+> Exemplo:
+
+![Imagem: Exemplo de forEach](https://i.imgur.com/FKnsI2f.png)
+
+2. "**map**"
+
+O `map()` é utilizando para percorrer e fazer algum tipo de alteração em uma array. Além disso, _map_ ajuda a guardar o resultado.
+
+> Exemplo:
+
+![Imagem: Exemplo de map()](https://i.imgur.com/f8vAZLV.png)
+
+3. "**filter**"
+
+O `filter()` recebe uma função que deve retornar um booleano (true ou false):
+
+- _true_: entra no novo array
+
+- _false_: não entra no novo array
+
+> Exemplo:
+
+![Imagem: exemplo de filter()](https://i.imgur.com/Ba9zbMb.png)
+
+4. "**reduce**"
+
+O `reduce()` retorna um valor único de valores de uma array.
+
+> Exemplo:
+
+![Imagem: exemplo de reduce()](https://i.imgur.com/m6We8jt.png)
+
+## Tabela de propriedades JavaScript
+
+### Variável
+
+| Tipos de variáveis          | Significado                                                                    | Utilizar                          |
+| --------------------------- | ------------------------------------------------------------------------------ | --------------------------------- |
+| **String/Cadeias de texto** | String é um texto puro                                                         |
+| **Números**                 | Números utilizados no JS                                                       | _float_, _integer_, _double_, etc |
+| **Booleanos**               | Operadores booleanos                                                           | _true_ ou _false_                 |
+| **Arrays/Listas**           | Estrutura de dado que armazena uma coleção/lista de valores (de qualquer tipo) |
+| **Objetos**                 | Conjunto de atributos alinhados a uma variável                                 |
+| **Funções**                 | Faz operações e retorna um valor para a variável de declaração                 |
+
+&lt;Notice type="tip"&gt;
+
+Faça os seguintes **exercícios sobre números**: [Link](https://edabit.com/tutorial/javascript#numbers)
+
+Faça os seguintes **exercícios sobre objetos**: [Link](https://edabit.com/tutorial/javascript#objects)
+
+&lt;/Notice&gt;

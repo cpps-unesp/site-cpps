@@ -1,4 +1,5 @@
 import type { SidebarItem } from '../types/docs';
+import { isVisibleDocsEntry } from './docsVisibility';
 
 type DocEntry = {
   slug: string;
@@ -7,6 +8,7 @@ type DocEntry = {
     sidebar_label?: string;
     sidebar_section?: string;
     sidebar_order?: number;
+    draft?: boolean;
   };
 };
 
@@ -89,6 +91,8 @@ export function buildDocsSidebar(
   const sectionItems = new Map<string, Array<{ label: string; url: string; order: number }>>();
 
   for (const entry of entries) {
+    if (!isVisibleDocsEntry(entry)) continue;
+
     const segments = entry.slug.split('/').filter(Boolean);
     const pagePath = normalizePath(`${options.basePath}/${entry.slug}`);
     const pageLabel =

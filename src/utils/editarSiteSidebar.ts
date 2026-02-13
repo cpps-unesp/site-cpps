@@ -1,5 +1,6 @@
 import type { SidebarItem } from '../types/docs';
 import { buildDocsSidebar } from './docsSidebar';
+import { filterVisibleDocsEntries } from './docsVisibility';
 
 type EditarSiteEntry = {
   slug: string;
@@ -8,6 +9,7 @@ type EditarSiteEntry = {
     sidebar_label?: string;
     sidebar_section?: string;
     sidebar_order?: number;
+    draft?: boolean;
   };
 };
 
@@ -15,7 +17,9 @@ export function buildEditarSiteSidebar(
   entries: EditarSiteEntry[],
   basePath: string
 ): SidebarItem[] {
-  return buildDocsSidebar(entries, {
+  const visibleEntries = filterVisibleDocsEntries(entries);
+
+  return buildDocsSidebar(visibleEntries, {
     basePath,
     sectionLabel: 'Editar site',
   });

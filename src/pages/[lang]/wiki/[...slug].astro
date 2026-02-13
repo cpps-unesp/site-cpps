@@ -1,0 +1,59 @@
+---
+export const prerender = true;
+
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Notice from '../../../components/atividades/Notice.astro';
+import Card from '../../../components/atividades/Card.astro';
+import CardGrid from '../../../components/atividades/CardGrid.astro';
+import LinkCard from '../../../components/atividades/LinkCard.astro';
+import Steps from '../../../components/atividades/Steps.astro';
+import DocsMdxPage from '../../../components/docs/DocsMdxPage.astro';
+import { buildAtividadesSidebarWithBase } from '../../../utils/atividadesSidebar';
+import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
+import type { Language } from '../../../utils/i18n';
+
+export async function getStaticPaths() {
+  const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
+  const langs = ['pt', 'en', 'es'];
+
+  return langs.flatMap((lang) => {
+    return atividades.map((entry) => ({
+      params: { lang, slug: entry.slug === 'index' ? undefined : entry.slug },
+      props: { entry },
+    }));
+  });
+}
+
+const { entry } = Astro.props;
+const lang = (Astro.params.lang ?? 'pt') as Language;
+const { Content, headings } = await render(entry);
+const currentPath = Astro.url.pathname;
+const allAtividades = filterVisibleDocsEntries(await getCollection('atividades'));
+const sidebar = buildAtividadesSidebarWithBase(allAtividades, '/wiki');
+const basePath = `/${lang}/wiki`;
+---
+
+<BaseLayout
+  titulo={entry.data.title}
+  descricao={entry.data.description}
+  githubPath={`src/content/atividades/${entry.id}`}
+  lang={lang}
+>
+  <DocsMdxPage
+    sidebar={sidebar}
+    currentPath={currentPath}
+    lang={lang}
+    basePath={basePath}
+    baseLabel="Wiki"
+    headings={headings}
+    sectionTitle="Wiki"
+    sectionIcon="fa-book-open"
+    title={entry.data.title}
+    description={entry.data.description}
+  >
+    <Fragment slot="content">
+      <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
+    </Fragment>
+  </DocsMdxPage>
+</BaseLayout>

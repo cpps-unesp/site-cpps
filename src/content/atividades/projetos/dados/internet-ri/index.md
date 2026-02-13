@@ -1,9 +1,0 @@
----
-id: info
-title: Apresentação Internet e Relações Internacionais
-sidebar_label: Apresentação
----
-
-Em construção
-
-- [Página no Notion](https://www.notion.so/org-geral/PROJETO-INTERNET-E-RELA-ES-INTERNACIONAIS-523f506f589647f38ce5793fe6fb11c3)
