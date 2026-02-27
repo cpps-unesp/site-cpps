@@ -21,7 +21,7 @@
     "marked": "^17.0.3",
     "sharp": "^0.34.5",
     "slugify": "^1.6.6",
-    "tailwindcss": "^4.2.0",
+    "tailwindcss": "^4.2.1",
     "theme-change": "^2.5.0"
   },
   "devDependencies": {
