@@ -17,8 +17,6 @@ if (recentNoticias.length === 0) return null;
 
 const noticiasPath =
   routeTranslations['noticias'][lang as keyof (typeof routeTranslations)['noticias']];
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
 <section class="bg-base-200/50 py-16">
@@ -30,7 +28,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
         </h2>
         <div class="bg-primary h-1.5 w-20"></div>
       </div>
-      <a href={withBase(`/${lang}/${noticiasPath}`)} class="btn btn-primary btn-outline">
+      <a href={`/${lang}/${noticiasPath}`} class="btn btn-primary btn-outline">
         {locale.noticias?.allNews || 'Ver Todas'}
       </a>
     </div>

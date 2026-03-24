@@ -34,8 +34,6 @@ const availableInText =
 
 const sourceLang = (['pt', 'en', 'es'].includes(currentLang) ? currentLang : 'pt') as SupportedLang;
 const currentPath = Astro.url.pathname.split('/').filter(Boolean).slice(1).join('/');
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
 function getPathForLanguage(targetLang: SupportedLang): string {
   return translatePathBetweenLangs(currentPath, sourceLang, targetLang);
@@ -57,7 +55,7 @@ function getPathForLanguage(targetLang: SupportedLang): string {
       {
         availableLangs.map((lang) => (
           <a
-            href={withBase(`/${lang}/${getPathForLanguage(lang as SupportedLang)}`.replace(/\/+/g, '/'))}
+            href={`/${lang}/${getPathForLanguage(lang as SupportedLang)}`.replace(/\/+/g, '/')}
             class="btn btn-xs btn-outline hover:btn-primary px-4 transition-all"
           >
             {langNames[lang] || lang.toUpperCase()}

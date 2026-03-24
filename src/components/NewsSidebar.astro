@@ -10,8 +10,6 @@ interface Props {
 
 const { noticias, lang } = Astro.props;
 const locale = getTranslations(lang as Language);
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
 // Get all unique tags
 const allTags = [...new Set(noticias.flatMap((post) => post.data.tags || []))].sort();
@@ -48,7 +46,7 @@ const recentPosts = noticias.slice(0, 5);
       {
         allTags.map((tag: string) => (
           <a
-            href={withBase(`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`)}
+            href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
             class="bg-secondary/10 text-secondary hover:bg-secondary rounded-full px-3 py-1 text-sm font-medium transition-colors hover:text-white"
           >
             {tag}
@@ -66,7 +64,7 @@ const recentPosts = noticias.slice(0, 5);
     <div class="mt-2 space-y-4">
       {
         recentPosts.map((post) => (
-          <a href={withBase(`/${lang}/noticias/${post.slug}`)} class="group block">
+          <a href={`/${lang}/noticias/${post.slug}`} class="group block">
             <p class="text-base-content/60 mb-1 text-xs">
               {new Date(post.data.date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
             </p>

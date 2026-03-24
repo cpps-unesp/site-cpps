@@ -8,8 +8,6 @@ interface Props {
 }
 
 const { heroData, lang = 'pt' } = Astro.props;
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
 <section
@@ -39,7 +37,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
       <!-- Logo + Título -->
       <div class="mb-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
         <img
-          src={withBase('/imagens/logos/cpps/logo-cpps-01_rev_1.png')}
+          src="/imagens/logos/cpps/logo-cpps-01_rev_1.png"
           alt="Logo CPPS"
           class="z-10 h-32 w-auto sm:h-48 md:h-64"
         />
@@ -70,12 +68,12 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
                 href={(() => {
                   const url = heroData.hero.button.url || '';
                   if (url.startsWith('http://') || url.startsWith('https://')) return url;
-                  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return withBase(url);
+                  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
                   const normalized = url.startsWith('/') ? url.slice(1) : url;
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   const translated = getTranslatedPath(normalized as any, lang as any);
                   const path = translated.startsWith('/') ? translated : `/${translated}`;
-                  return withBase(`/${lang}${path}`);
+                  return `/${lang}${path}`;
                 })()}
                 class="btn btn-primary px-6 py-3 text-lg whitespace-nowrap shadow-lg"
                 style="color: white;"
