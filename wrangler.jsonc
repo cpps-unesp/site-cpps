@@ -1,0 +1,16 @@
+{
+  "name": "site-cpps",
+  "pages_build_output_dir": "dist",
+  "compatibility_date": "2026-02-10",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "kv_namespaces": [
+    {
+      "binding": "SESSION",
+      "id": "9e0ae2cbfe4a44c485ca6ce24f010e31",
+      "preview_id": "529aaeda85e54a3f81be38c6539e55f7",
+    },
+  ],
+  "observability": {
+    "enabled": true,
+  },
+}

@@ -24,10 +24,9 @@ const pageTexts = texts ?? t.texts;
 const pageIdentidade = identidade ?? t.identidade;
 const pageTitle = titulo ?? t.titulo;
 const pageDescription = descricao ?? t.descricao;
-const siteUrl = Astro.site ?? new URL(Astro.url.origin);
 
 const pathname = Astro.url.pathname;
-const canonicalUrl = new URL(pathname || `/${lang}/`, siteUrl).toString();
+const canonicalUrl = new URL(pathname || `/${lang}/`, Astro.site).toString();
 const pathParts = pathname.split('/').filter(Boolean);
 const hasLangInPath = isSupportedLang(pathParts[0] ?? '');
 const isLangHome = hasLangInPath && pathParts.length === 1;
@@ -38,10 +37,9 @@ const alternateHrefs = (['pt', 'en', 'es'] as Language[]).map((targetLang) => {
 
   return {
     lang: targetLang,
-    href: new URL(localizedPath, siteUrl).toString(),
+    href: new URL(localizedPath, Astro.site).toString(),
   };
 });
-const ogImageUrl = new URL('/imagens/logos/cpps/logo-cpps-01_rev_1.png', siteUrl).toString();
 
 const ogLocale = lang === 'pt' ? 'pt_BR' : lang === 'en' ? 'en_US' : 'es_ES';
 const ogAlternateLocales = alternateHrefs
@@ -75,7 +73,10 @@ import '../styles/global.css';
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={ogLocale} />
     {ogAlternateLocales.map((locale) => <meta property="og:locale:alternate" content={locale} />)}
-    <meta property="og:image" content={ogImageUrl} />
+    <meta
+      property="og:image"
+      content="https://cpps.franca.unesp.br/imagens/logos/cpps/logo-cpps-01_rev_1.png"
+    />
     <meta property="og:image:alt" content="Logotipo do CPPS - UNESP" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
