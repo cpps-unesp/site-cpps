@@ -12,7 +12,7 @@ import {
 import routeTranslations from '../i18n/routeTranslations';
 
 export async function GET() {
-  const base = 'https://cpps-unesp.github.io/site-cpps';
+  const base = 'https://cpps.franca.unesp.br';
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
   const urls = new Set<string>();
 
