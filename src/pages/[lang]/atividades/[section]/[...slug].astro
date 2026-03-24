@@ -61,5 +61,5 @@ if (redirectPath) {
   return Astro.redirect(redirectPath, 301);
 }
 
-return Astro.redirect(`/${lang}/atividades`, 302);
+return Astro.redirect(`${import.meta.env.BASE_URL}${lang}/atividades`, 302);
 ---

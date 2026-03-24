@@ -6,6 +6,8 @@ const { tipo, url, tamanho = 'text-lg' } = Astro.props;
 const tipoNormalizado = tipo.toLowerCase();
 
 const iconSizeClass = tamanho === 'text-xl' ? 'w-6 h-6' : 'w-5 h-5';
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
 <a
@@ -20,21 +22,21 @@ const iconSizeClass = tamanho === 'text-xl' ? 'w-6 h-6' : 'w-5 h-5';
       <i class={`fab fa-linkedin ${tamanho}`} />
     ) : tipoNormalizado === 'lattes' ? (
       <img
-        src="/imagens/logos/lattes_icon.svg"
+        src={withBase('/imagens/logos/lattes_icon.svg')}
         alt="Lattes"
         class={`${iconSizeClass} object-contain`}
         loading="lazy"
       />
     ) : tipoNormalizado === 'orcid' ? (
       <img
-        src="/imagens/logos/orcid.png"
+        src={withBase('/imagens/logos/orcid.png')}
         alt="ORCID"
         class={`${iconSizeClass} object-contain`}
         loading="lazy"
       />
     ) : tipoNormalizado === 'portal-docente-unesp' ? (
       <img
-        src="/imagens/logos/logo-unesp-mapa.svg"
+        src={withBase('/imagens/logos/logo-unesp-mapa.svg')}
         alt="Portal Docente UNESP"
         class="h-8 w-8 object-contain"
         loading="lazy"

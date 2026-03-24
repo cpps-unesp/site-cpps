@@ -17,6 +17,8 @@ type CafeData = {
 };
 
 const { cafe, lang } = Astro.props as { cafe: CafeData; lang?: string };
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
 function buildUrl(url?: string) {
   if (!url || url.startsWith('http')) return url;
@@ -39,7 +41,7 @@ function buildUrl(url?: string) {
         <div class="bg-base-100 flex flex-col space-y-4 rounded-xl p-6 shadow-md transition-shadow hover:shadow-lg">
           <div class="flex justify-center">
             <img
-              src="/imagens/logos/logo-unesp-mapa.svg"
+              src={withBase('/imagens/logos/logo-unesp-mapa.svg')}
               alt="Logo UNESP Mapa"
               class="h-16 w-16 object-contain"
             />

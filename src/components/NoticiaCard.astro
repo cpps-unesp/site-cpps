@@ -20,14 +20,18 @@ const { title, resumo, image, tags, slug, lang, date, author } = Astro.props;
 
 const translations = { pt, en, es };
 const t = translations[lang] || translations.pt;
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
+const resolvedSlug = slug.startsWith('/') ? withBase(slug) : slug;
+const resolvedImage = image.startsWith('/') ? withBase(image) : image;
 ---
 
 <article
   class="bg-base-100 group border-base-200 flex h-full flex-col overflow-hidden rounded-2xl border shadow-md transition-all duration-300 hover:shadow-xl"
 >
-  <a href={slug} class="relative block aspect-video overflow-hidden">
+  <a href={resolvedSlug} class="relative block aspect-video overflow-hidden">
     <img
-      src={image}
+      src={resolvedImage}
       alt={title}
       class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
     />
@@ -42,7 +46,7 @@ const t = translations[lang] || translations.pt;
       {
         tags.map((tag: string) => (
           <a
-            href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+            href={withBase(`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`)}
             class="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline"
           >
             {tag}
@@ -54,7 +58,7 @@ const t = translations[lang] || translations.pt;
     <h3
       class="text-base-content group-hover:text-primary mb-3 line-clamp-2 text-xl font-bold transition-colors"
     >
-      <a href={slug}>{title}</a>
+      <a href={resolvedSlug}>{title}</a>
     </h3>
 
     <p class="text-base-content/70 mb-6 line-clamp-3 flex-1 text-sm">
@@ -76,7 +80,7 @@ const t = translations[lang] || translations.pt;
         }
       </span>
       <a
-        href={slug}
+        href={resolvedSlug}
         class="text-primary inline-flex items-center gap-2 text-sm font-bold transition-all hover:gap-3"
       >
         {t.noticias.readMore}

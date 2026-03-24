@@ -17,6 +17,12 @@ const {
 };
 
 const h = texts.header ?? {};
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
+const resolveAsset = (path?: string) => {
+  if (!path) return withBase('/imagens/logos/cpps/logo-cpps-01_rev_1.png');
+  return path.startsWith('/') ? withBase(path) : path;
+};
 ---
 
 <nav
@@ -25,9 +31,9 @@ const h = texts.header ?? {};
   <div class="mx-auto max-w-screen-2xl px-4 py-2 md:px-8">
     <div class="flex items-center justify-between">
       <!-- 🔹 ESQUERDA: Logo CPPS + texto -->
-      <a href={`/${lang}/`} class="flex items-center gap-3">
+      <a href={withBase(`/${lang}/`)} class="flex items-center gap-3">
         <img
-          src={identidade.logo ?? '/imagens/logos/cpps/logo-cpps-01_rev_1.png'}
+          src={resolveAsset(identidade.logo)}
           alt="Logo CPPS UNESP"
           class="h-16 w-auto"
         />
@@ -37,13 +43,13 @@ const h = texts.header ?? {};
       <!-- 🔹 MENU DESKTOP -->
       <ul class="hidden items-center gap-6 text-sm font-semibold sm:text-base lg:flex">
         <li>
-          <a class="hover:text-primary transition" href={`/${lang}/`}>
+          <a class="hover:text-primary transition" href={withBase(`/${lang}/`)}>
             {h.home}
           </a>
         </li>
 
         <li>
-          <a class="hover:text-primary transition" href={`/${lang}/atividades`}>
+          <a class="hover:text-primary transition" href={withBase(`/${lang}/atividades`)}>
             {h.atividades}
           </a>
         </li>
@@ -51,7 +57,7 @@ const h = texts.header ?? {};
         <li>
           <a
             class="hover:text-primary transition"
-            href={`/${lang}/${getTranslatedPath('noticias', lang)}`}
+            href={withBase(`/${lang}/${getTranslatedPath('noticias', lang)}`)}
           >
             {h.noticias}
           </a>
@@ -72,13 +78,13 @@ const h = texts.header ?? {};
             class="dropdown-content menu bg-base-100 text-base-content w-40 rounded-sm p-2 shadow"
           >
             <li>
-              <a href={`/${lang}/${getTranslatedPath('institucional/sobre', lang)}`}>{h.sobre}</a>
+              <a href={withBase(`/${lang}/${getTranslatedPath('institucional/sobre', lang)}`)}>{h.sobre}</a>
             </li>
             <li>
-              <a href={`/${lang}/${getTranslatedPath('institucional/equipe', lang)}`}>{h.equipe}</a>
+              <a href={withBase(`/${lang}/${getTranslatedPath('institucional/equipe', lang)}`)}>{h.equipe}</a>
             </li>
             <li>
-              <a href={`/${lang}/${getTranslatedPath('institucional/documentos', lang)}`}
+              <a href={withBase(`/${lang}/${getTranslatedPath('institucional/documentos', lang)}`)}
                 >{h.documentos}</a
               >
             </li>
@@ -100,17 +106,17 @@ const h = texts.header ?? {};
             class="dropdown-content menu bg-base-100 text-base-content w-64 rounded-sm p-2 shadow"
           >
             <li>
-              <a href={`/${lang}/${getTranslatedPath('iniciativas/cafe-com-ciencia', lang)}`}
+              <a href={withBase(`/${lang}/${getTranslatedPath('iniciativas/cafe-com-ciencia', lang)}`)}
                 >{h.cafe}</a
               >
             </li>
             <li>
-              <a href={`/${lang}/${getTranslatedPath('iniciativas/publicacoes', lang)}`}
+              <a href={withBase(`/${lang}/${getTranslatedPath('iniciativas/publicacoes', lang)}`)}
                 >{h.publicacoes}</a
               >
             </li>
             <li>
-              <a href={`/${lang}/${getTranslatedPath('iniciativas/projetos', lang)}`}
+              <a href={withBase(`/${lang}/${getTranslatedPath('iniciativas/projetos', lang)}`)}
                 >{h.projetos}</a
               >
             </li>
@@ -132,17 +138,17 @@ const h = texts.header ?? {};
       <!-- 🔹 DIREITA: Logos -->
       <div class="hidden items-center gap-3 lg:flex">
         <img
-          src="/imagens/logos/logo-unesp02/AV01A.svg"
+          src={withBase('/imagens/logos/logo-unesp02/AV01A.svg')}
           alt="Logo UNESP"
           class="logo-unesp-light h-16 w-auto"
         />
         <img
-          src="/imagens/logos/logo-unesp03/AV01F.svg"
+          src={withBase('/imagens/logos/logo-unesp03/AV01F.svg')}
           alt="Logo UNESP"
           class="logo-unesp-dark h-16 w-auto"
         />
         <img
-          src="/imagens/logos/cpps/circulos_grade_01.svg"
+          src={withBase('/imagens/logos/cpps/circulos_grade_01.svg')}
           alt="Círculos decorativos"
           class="h-16 w-auto"
         />
@@ -174,23 +180,23 @@ const h = texts.header ?? {};
     <!-- 🔹 MENU MOBILE -->
     <div id="menu-mobile" class="mt-2 hidden lg:hidden">
       <ul class="flex flex-col gap-2 text-base font-semibold">
-        <li><a href={`/${lang}/`}>{h.home}</a></li>
-        <li><a href={`/${lang}/atividades`}>{h.atividades}</a></li>
-        <li><a href={`/${lang}/${getTranslatedPath('noticias', lang)}`}>{h.noticias}</a></li>
+        <li><a href={withBase(`/${lang}/`)}>{h.home}</a></li>
+        <li><a href={withBase(`/${lang}/atividades`)}>{h.atividades}</a></li>
+        <li><a href={withBase(`/${lang}/${getTranslatedPath('noticias', lang)}`)}>{h.noticias}</a></li>
         <li>
           <details>
             <summary class="cursor-pointer">{h.institucional}</summary>
             <ul>
               <li>
-                <a href={`/${lang}/${getTranslatedPath('institucional/sobre', lang)}`}>{h.sobre}</a>
+                <a href={withBase(`/${lang}/${getTranslatedPath('institucional/sobre', lang)}`)}>{h.sobre}</a>
               </li>
               <li>
-                <a href={`/${lang}/${getTranslatedPath('institucional/equipe', lang)}`}
+                <a href={withBase(`/${lang}/${getTranslatedPath('institucional/equipe', lang)}`)}
                   >{h.equipe}</a
                 >
               </li>
               <li>
-                <a href={`/${lang}/${getTranslatedPath('institucional/documentos', lang)}`}
+                <a href={withBase(`/${lang}/${getTranslatedPath('institucional/documentos', lang)}`)}
                   >{h.documentos}</a
                 >
               </li>
@@ -202,17 +208,17 @@ const h = texts.header ?? {};
             <summary class="cursor-pointer">{h.iniciativas}</summary>
             <ul>
               <li>
-                <a href={`/${lang}/${getTranslatedPath('iniciativas/cafe-com-ciencia', lang)}`}
+                <a href={withBase(`/${lang}/${getTranslatedPath('iniciativas/cafe-com-ciencia', lang)}`)}
                   >{h.cafe}</a
                 >
               </li>
               <li>
-                <a href={`/${lang}/${getTranslatedPath('iniciativas/publicacoes', lang)}`}
+                <a href={withBase(`/${lang}/${getTranslatedPath('iniciativas/publicacoes', lang)}`)}
                   >{h.publicacoes}</a
                 >
               </li>
               <li>
-                <a href={`/${lang}/${getTranslatedPath('iniciativas/projetos', lang)}`}
+                <a href={withBase(`/${lang}/${getTranslatedPath('iniciativas/projetos', lang)}`)}
                   >{h.projetos}</a
                 >
               </li>

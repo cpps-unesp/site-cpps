@@ -21,6 +21,8 @@ const featuredPublication = langPublications.find((p) => p.data.featured) || lan
 const regularPublications = langPublications.filter((p) => p.id !== featuredPublication?.id);
 
 const publicationTypes = ['artigo', 'analise', 'material-didatico', 'texto-curto', 'texto-longo'];
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
 <section class="mx-auto max-w-screen-xl px-4 py-16 md:px-8">
@@ -32,7 +34,7 @@ const publicationTypes = ['artigo', 'analise', 'material-didatico', 'texto-curto
 
     <div class="mt-8 flex flex-wrap items-center justify-center gap-3 md:justify-start">
       <a
-        href={`/${lang}/publicacoes`}
+        href={withBase(`/${lang}/publicacoes`)}
         class="border-base-300 hover:border-primary hover:text-primary bg-base-100 rounded-full border px-4 py-2 text-[10px] font-bold tracking-widest uppercase shadow-sm transition-all"
       >
         {locale.publicacoes.allTypes}
@@ -40,7 +42,7 @@ const publicationTypes = ['artigo', 'analise', 'material-didatico', 'texto-curto
       {
         publicationTypes.map((type) => (
           <a
-            href={`/${lang}/publicacoes?type=${encodeURIComponent(type)}`}
+            href={withBase(`/${lang}/publicacoes?type=${encodeURIComponent(type)}`)}
             class="border-base-300 hover:border-primary hover:text-primary bg-base-100 rounded-full border px-4 py-2 text-[10px] font-bold tracking-widest uppercase shadow-sm transition-all"
           >
             {locale.publicacoes.types[type]}

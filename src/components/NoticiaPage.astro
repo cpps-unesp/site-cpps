@@ -30,6 +30,8 @@ if (!post) throw new Error(`Notícia não encontrada: ${slug}`);
 const langNoticias = allNoticias
   .filter((p) => p.data.lang === lang)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
 const { title, date, image, tags, author, resumo } = post.data;
 const { Content } = await post.render();
@@ -57,7 +59,7 @@ const { Content } = await post.render();
             {
               tags.map((tag: string) => (
                 <a
-                  href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+                  href={withBase(`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`)}
                   class="text-primary text-xs font-bold tracking-widest uppercase hover:underline"
                 >
                   {tag}
@@ -119,7 +121,7 @@ const { Content } = await post.render();
             {
               tags.map((tag: string) => (
                 <a
-                  href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+                  href={withBase(`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`)}
                   class="badge badge-outline badge-primary px-3 py-3"
                 >
                   {tag}

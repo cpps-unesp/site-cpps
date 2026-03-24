@@ -13,6 +13,8 @@ const { data, slug } = publication;
 const locale = getTranslations(lang);
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
 <section class="mb-16 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm">
@@ -37,7 +39,7 @@ const typeLabel = locale.publicacoes.types[data.type] || data.type;
           {locale.publicacoes.featured}
         </span>
         <a
-          href={`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`}
+          href={withBase(`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`)}
           class="hover:text-primary text-xs font-bold tracking-widest text-gray-500 uppercase transition-colors"
         >
           {typeLabel}
@@ -48,7 +50,7 @@ const typeLabel = locale.publicacoes.types[data.type] || data.type;
         class="publication-featured-title mb-6 text-3xl leading-tight font-black text-gray-900 md:text-4xl"
       >
         <a
-          href={`/${lang}/publicacoes/${slug}`}
+          href={withBase(`/${lang}/publicacoes/${slug}`)}
           class="hover:text-primary italic transition-colors"
         >
           {data.title}
@@ -67,7 +69,7 @@ const typeLabel = locale.publicacoes.types[data.type] || data.type;
           <span class="text-sm font-bold text-gray-800">{data.authors.join(', ')}</span>
         </div>
         <a
-          href={`/${lang}/publicacoes/${slug}`}
+          href={withBase(`/${lang}/publicacoes/${slug}`)}
           class="text-primary border-primary hover:bg-primary rounded-full border-2 bg-white px-6 py-2 text-sm font-black transition-all hover:text-white"
         >
           {locale.publicacoes.readMore}

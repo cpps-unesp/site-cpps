@@ -1,5 +1,7 @@
 ---
-const { texts } = Astro.props;
+const { texts, lang = 'pt' } = Astro.props;
+const basePath = import.meta.env.BASE_URL;
+const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 ---
 
 <section class="mx-auto max-w-6xl space-y-12 px-4 py-16">
@@ -20,7 +22,7 @@ const { texts } = Astro.props;
         Projetos científicos em andamento ou concluídos, conduzidos por pesquisadores do CPPS em
         parceria com outras instituições.
       </p>
-      <a class="btn btn-sm btn-primary" href="/pt/iniciativas/projetos-de-pesquisa"> Ver mais </a>
+      <a class="btn btn-sm btn-primary" href={withBase(`/${lang}/iniciativas/projetos-de-pesquisa`)}> Ver mais </a>
     </div>
 
     <div
@@ -31,7 +33,7 @@ const { texts } = Astro.props;
         Iniciativas voltadas à estruturação, tratamento e disponibilização de dados sociais,
         políticos e econômicos.
       </p>
-      <a class="btn btn-sm btn-primary" href="/pt/iniciativas/projetos-de-dados"> Ver mais </a>
+      <a class="btn btn-sm btn-primary" href={withBase(`/${lang}/iniciativas/projetos-de-dados`)}> Ver mais </a>
     </div>
   </div>
 </section>
