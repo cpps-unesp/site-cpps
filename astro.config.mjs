@@ -6,6 +6,9 @@ import mdx from '@astrojs/mdx';
 
 const siteBase = '/site-cpps';
 
+/**
+ * @param {string} basePath
+ */
 function normalizeBase(basePath) {
   if (!basePath || basePath === '/') {
     return '/';
@@ -13,6 +16,10 @@ function normalizeBase(basePath) {
   return `/${basePath.replace(/^\/+|\/+$/g, '')}/`;
 }
 
+/**
+ * @param {string} value
+ * @param {string} basePath
+ */
 function rewriteRootRelativeValue(value, basePath) {
   if (typeof value !== 'string') return value;
   if (!value.startsWith('/') || value.startsWith('//')) return value;
@@ -22,6 +29,10 @@ function rewriteRootRelativeValue(value, basePath) {
   return `${normalizedBase}${value.replace(/^\//, '')}`.replace(/\/+/g, '/');
 }
 
+/**
+ * @param {any} node
+ * @param {string} basePath
+ */
 function rewriteNodeAttributes(node, basePath) {
   if (!node || typeof node !== 'object') return;
 
@@ -47,6 +58,10 @@ function rewriteNodeAttributes(node, basePath) {
   }
 }
 
+/**
+ * @param {any} node
+ * @param {(node: any) => void} visitor
+ */
 function visitTree(node, visitor) {
   if (!node || typeof node !== 'object') return;
   visitor(node);
@@ -57,7 +72,11 @@ function visitTree(node, visitor) {
   }
 }
 
+/**
+ * @param {string} basePath
+ */
 function rehypePrefixBaseUrls(basePath) {
+  /** @param {any} tree */
   return (tree) => {
     visitTree(tree, (node) => rewriteNodeAttributes(node, basePath));
   };
