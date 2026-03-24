@@ -14,7 +14,7 @@ export default [
     },
   },
   {
-    ignores: ['dist/', 'node_modules/', '.astro/', '.wrangler/'],
+    ignores: ['dist/', 'node_modules/', '.astro/'],
   },
   {
     rules: {
