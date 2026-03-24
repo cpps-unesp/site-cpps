@@ -4,7 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 import pagefind from 'astro-pagefind';
 import mdx from '@astrojs/mdx';
 
-const siteBase = '/site-cpps';
+const siteBase = '/';
 
 /**
  * @param {string} basePath
@@ -84,7 +84,7 @@ function rehypePrefixBaseUrls(basePath) {
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://cpps-unesp.github.io',
+  site: 'https://cppsunesp.org',
   base: siteBase,
   output: 'static',
   markdown: {
