@@ -6,7 +6,8 @@ import mdx from '@astrojs/mdx';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://cpps.franca.unesp.br',
+  site: 'https://cpps-unesp.github.io',
+  base: '/site-cpps',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],
