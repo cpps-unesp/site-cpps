@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 import IconLang from '../icons/iconLang.astro';
 import { getTranslations } from '../utils/i18n';
 import { getRouteMatch } from '../utils/i18nRouteMatch';
+import { stripBaseFromPathname, withBasePath } from '../utils/basePath';
 
 const { lang = 'pt' } = Astro.props as { lang?: SupportedLang };
 
@@ -21,7 +22,8 @@ const translations: Record<SupportedLang, any> = {
   es: getTranslations('es'),
 };
 
-const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const pathnameWithoutBase = stripBaseFromPathname(Astro.url.pathname, import.meta.env.BASE_URL);
+const pathParts = pathnameWithoutBase.split('/').filter(Boolean);
 const currentPath = pathParts.slice(1).join('/');
 
 const routeMatch = getRouteMatch(currentPath, lang);
@@ -69,21 +71,24 @@ if (!routeMatch && currentPath) {
   >
     {
       languages.map((l) => {
-        let href = `/${l.code}/`;
+        let href = withBasePath(`/${l.code}/`, import.meta.env.BASE_URL);
         let disabled = false;
         let labelExtra = '';
 
         if (routeMatch) {
           const translatedPrefix = getTranslatedPath(routeMatch.key, l.code);
-          href = `/${l.code}/${translatedPrefix}${routeMatch.remainder ? `/${routeMatch.remainder}` : ''}`;
+          href = withBasePath(
+            `/${l.code}/${translatedPrefix}${routeMatch.remainder ? `/${routeMatch.remainder}` : ''}`,
+            import.meta.env.BASE_URL
+          );
         } else if (membroBaseSlug) {
-          href = `/${l.code}/${membroBaseSlug}`;
+          href = withBasePath(`/${l.code}/${membroBaseSlug}`, import.meta.env.BASE_URL);
           if (!membrosPorIdioma[l.code]) {
             disabled = true;
             labelExtra = ` (${translations[l.code]?.texts?.languageUnavailable ?? 'Not available'})`;
           }
         } else if (currentPath) {
-          href = `/${l.code}/${currentPath}`;
+          href = withBasePath(`/${l.code}/${currentPath}`, import.meta.env.BASE_URL);
         }
 
         return (

@@ -3,6 +3,7 @@ import slugify from 'slugify';
 import pt from '../i18n/locales/pt.json';
 import en from '../i18n/locales/en.json';
 import es from '../i18n/locales/es.json';
+import { getTranslatedPath } from '../utils/getTranslatedPath';
 
 interface Props {
   title: string;
@@ -20,6 +21,7 @@ const { title, resumo, image, tags, slug, lang, date, author } = Astro.props;
 
 const translations = { pt, en, es };
 const t = translations[lang] || translations.pt;
+const newsPrefix = getTranslatedPath('noticias', lang);
 const basePath = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 const resolvedSlug = slug.startsWith('/') ? withBase(slug) : slug;
@@ -46,7 +48,7 @@ const resolvedImage = image.startsWith('/') ? withBase(image) : image;
       {
         tags.map((tag: string) => (
           <a
-            href={withBase(`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`)}
+            href={withBase(`/${lang}/${newsPrefix}/categoria/${slugify(tag, { lower: true, strict: true })}`)}
             class="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline"
           >
             {tag}

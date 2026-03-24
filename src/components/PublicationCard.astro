@@ -2,6 +2,7 @@
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
+import { getTranslatedPath } from '../utils/getTranslatedPath';
 
 interface Props {
   publication: CollectionEntry<'publicacoes'>;
@@ -11,6 +12,7 @@ interface Props {
 const { publication, lang } = Astro.props;
 const { data, slug } = publication;
 const locale = getTranslations(lang);
+const publicationsPrefix = getTranslatedPath('publicacao', lang);
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
 
@@ -44,7 +46,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 >
   <div class="mb-4 flex items-center gap-3">
     <a
-      href={withBase(`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`)}
+      href={withBase(`/${lang}/${publicationsPrefix}?type=${encodeURIComponent(data.type)}`)}
       class={`text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-md border ${badgeClass} hover:opacity-80 transition-opacity`}
     >
       {typeLabel}
@@ -55,7 +57,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
   <h3
     class="text-base-content publication-card-title group-hover:text-primary mb-3 text-xl leading-tight font-bold transition-colors"
   >
-    <a href={withBase(`/${lang}/publicacoes/${slug}`)}>
+    <a href={withBase(`/${lang}/${publicationsPrefix}/${slug}`)}>
       {data.title}
     </a>
   </h3>
@@ -66,7 +68,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
       data.authors.map((author: string, index: number) => (
         <>
           <a
-            href={withBase(`/${lang}/publicacoes?author=${encodeURIComponent(author)}`)}
+            href={withBase(`/${lang}/${publicationsPrefix}?author=${encodeURIComponent(author)}`)}
             class="hover:text-primary transition-colors hover:underline"
           >
             {author}
@@ -83,7 +85,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
   <div class="border-base-200/50 mt-auto flex items-center justify-between border-t pt-4">
     <a
-      href={withBase(`/${lang}/publicacoes/${slug}`)}
+      href={withBase(`/${lang}/${publicationsPrefix}/${slug}`)}
       class="text-primary inline-flex items-center gap-2 text-sm font-bold transition-all hover:gap-3"
     >
       {locale.publicacoes.readMore}

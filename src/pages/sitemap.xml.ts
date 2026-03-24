@@ -18,7 +18,7 @@ export async function GET() {
 
   for (const lang of langs) {
     urls.add(`/${lang}/`);
-    urls.add(`/${lang}/atividades`);
+    urls.add(`/${lang}/${routeTranslations.atividades[lang]}`);
     urls.add(`/${lang}/wiki`);
     urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
     urls.add(`/${lang}/${routeTranslations['editar-site'][lang]}`);

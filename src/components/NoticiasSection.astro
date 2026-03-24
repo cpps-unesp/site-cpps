@@ -1,7 +1,10 @@
 ---
 import NoticiaCard from './NoticiaCard.astro';
+import type { SupportedLang } from '../types/lang';
+import { getTranslatedPath } from '../utils/getTranslatedPath';
 
-const { noticias, lang } = Astro.props;
+const { noticias, lang } = Astro.props as { noticias: Array<any>; lang: SupportedLang };
+const newsPrefix = getTranslatedPath('noticias', lang);
 ---
 
 <section class="mx-auto max-w-screen-xl px-4 py-12 md:px-8">
@@ -15,7 +18,7 @@ const { noticias, lang } = Astro.props;
           resumo={post.data.resumo}
           image={post.data.image}
           tags={post.data.tags}
-          slug={`/${lang}/noticias/${post.slug}`}
+          slug={`/${lang}/${newsPrefix}/${post.slug}`}
           lang={lang}
         />
       ))

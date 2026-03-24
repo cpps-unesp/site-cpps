@@ -2,6 +2,7 @@
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
+import { getTranslatedPath } from '../utils/getTranslatedPath';
 
 interface Props {
   publication: CollectionEntry<'publicacoes'>;
@@ -13,16 +14,18 @@ const { data, slug } = publication;
 const locale = getTranslations(lang);
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
+const publicationsPrefix = getTranslatedPath('publicacao', lang);
 const basePath = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
+const resolvedImage = data.image && data.image.startsWith('/') ? withBase(data.image) : data.image;
 ---
 
 <section class="mb-16 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm">
   <div class="grid md:grid-cols-2">
     {
-      data.image ? (
+      resolvedImage ? (
         <div class="h-64 md:h-full">
-          <img src={data.image} alt={data.title} class="h-full w-full object-cover" />
+          <img src={resolvedImage} alt={data.title} class="h-full w-full object-cover" />
         </div>
       ) : (
         <div class="bg-primary/10 flex h-64 items-center justify-center md:h-full">
@@ -39,7 +42,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
           {locale.publicacoes.featured}
         </span>
         <a
-          href={withBase(`/${lang}/publicacoes?type=${encodeURIComponent(data.type)}`)}
+          href={withBase(`/${lang}/${publicationsPrefix}?type=${encodeURIComponent(data.type)}`)}
           class="hover:text-primary text-xs font-bold tracking-widest text-gray-500 uppercase transition-colors"
         >
           {typeLabel}
@@ -50,7 +53,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
         class="publication-featured-title mb-6 text-3xl leading-tight font-black text-gray-900 md:text-4xl"
       >
         <a
-          href={withBase(`/${lang}/publicacoes/${slug}`)}
+          href={withBase(`/${lang}/${publicationsPrefix}/${slug}`)}
           class="hover:text-primary italic transition-colors"
         >
           {data.title}
@@ -69,7 +72,7 @@ const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
           <span class="text-sm font-bold text-gray-800">{data.authors.join(', ')}</span>
         </div>
         <a
-          href={withBase(`/${lang}/publicacoes/${slug}`)}
+          href={withBase(`/${lang}/${publicationsPrefix}/${slug}`)}
           class="text-primary border-primary hover:bg-primary rounded-full border-2 bg-white px-6 py-2 text-sm font-black transition-all hover:text-white"
         >
           {locale.publicacoes.readMore}

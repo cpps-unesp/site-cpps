@@ -1,10 +1,12 @@
 ---
 import NoticiaCard from './NoticiaCard.astro';
 import type { CollectionEntry } from 'astro:content';
+import { getTranslatedPath } from '../utils/getTranslatedPath';
+import type { SupportedLang } from '../types/lang';
 
 interface Props {
   noticias: CollectionEntry<'noticias'>[];
-  lang: string;
+  lang: SupportedLang;
 }
 
 const { noticias, lang } = Astro.props;
@@ -18,7 +20,7 @@ const { noticias, lang } = Astro.props;
         resumo={post.data.resumo}
         image={post.data.image}
         tags={post.data.tags}
-        slug={`/${lang}/noticias/${post.slug}`}
+        slug={`/${lang}/${getTranslatedPath('noticias', lang)}/${post.slug}`}
         lang={lang}
         date={post.data.date}
         author={post.data.author}

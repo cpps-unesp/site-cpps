@@ -2,6 +2,7 @@
 import slugify from 'slugify';
 import { getTranslations, type Language } from '../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
+import { getTranslatedPath } from '../utils/getTranslatedPath';
 
 interface Props {
   noticias: CollectionEntry<'noticias'>[];
@@ -10,6 +11,7 @@ interface Props {
 
 const { noticias, lang } = Astro.props;
 const locale = getTranslations(lang as Language);
+const newsPrefix = getTranslatedPath('noticias', lang as Language);
 const basePath = import.meta.env.BASE_URL;
 const withBase = (path: string) => `${basePath}${path.replace(/^\//, '')}`;
 
@@ -48,7 +50,7 @@ const recentPosts = noticias.slice(0, 5);
       {
         allTags.map((tag: string) => (
           <a
-            href={withBase(`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`)}
+            href={withBase(`/${lang}/${newsPrefix}/categoria/${slugify(tag, { lower: true, strict: true })}`)}
             class="bg-secondary/10 text-secondary hover:bg-secondary rounded-full px-3 py-1 text-sm font-medium transition-colors hover:text-white"
           >
             {tag}
@@ -66,7 +68,7 @@ const recentPosts = noticias.slice(0, 5);
     <div class="mt-2 space-y-4">
       {
         recentPosts.map((post) => (
-          <a href={withBase(`/${lang}/noticias/${post.slug}`)} class="group block">
+          <a href={withBase(`/${lang}/${newsPrefix}/${post.slug}`)} class="group block">
             <p class="text-base-content/60 mb-1 text-xs">
               {new Date(post.data.date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
             </p>
