@@ -12,7 +12,7 @@ import {
 import routeTranslations from '../i18n/routeTranslations';
 
 export async function GET() {
-  const base = 'https://cpps.franca.unesp.br';
+  const site = new URL(import.meta.env.SITE ?? 'https://cpps.franca.unesp.br/');
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
   const urls = new Set<string>();
 
@@ -83,9 +83,10 @@ export async function GET() {
     .map((path) => {
       const normalizedPath = path.endsWith('/') ? path : `${path}/`;
       const priority = normalizedPath.split('/').filter(Boolean).length <= 1 ? '1.0' : '0.8';
+      const loc = new URL(normalizedPath.replace(/^\//, ''), site).toString();
       return `
       <url>
-        <loc>${base}${normalizedPath}</loc>
+        <loc>${loc}</loc>
         <changefreq>weekly</changefreq>
         <priority>${priority}</priority>
       </url>`;
