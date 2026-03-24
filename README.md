@@ -35,6 +35,17 @@ npm run dev
 
 O site estará disponível em `http://localhost:4321`
 
+### Simulação Cloudflare (opcional)
+
+Para simular o runtime de Pages Functions localmente:
+
+```bash
+npm run build
+npx wrangler pages dev
+```
+
+Use esse fluxo apenas quando precisar validar comportamento específico de Cloudflare. Para desenvolvimento diário, prefira `npm run dev`.
+
 ## 📁 Estrutura do Projeto
 
 ```
@@ -102,20 +113,15 @@ npm run ci            # Typecheck + build (pipeline local)
 
 ## 🛠️ Troubleshooting
 
-### GitHub Pages publica sem domínio customizado
+### `The Workers runtime failed to start`
 
-- Confirme se `public/CNAME` existe com `cpps.franca.unesp.br`.
-- Em **Settings → Pages** do repositório, valide o domínio customizado configurado.
-- Verifique o DNS do domínio apontando para GitHub Pages.
-
-### Links canônicos ou sitemap com domínio incorreto
-
-- Confira `site` em `astro.config.mjs`.
-- Rode `npm run build` e valide `dist/sitemap.xml`.
+- Se esse erro aparecer no `wrangler pages dev`, continue o desenvolvimento com `npm run dev`.
+- Para testar Cloudflare local, rode `npm run build` antes de `npx wrangler pages dev`.
+- Em caso de falhas locais persistentes do Wrangler, use CI/deploy para validar o ambiente Cloudflare.
 
 ## 🚀 Deploy
 
-### GitHub Pages (via GitHub Actions)
+### Build para produção
 
 ```bash
 npm run build
@@ -125,25 +131,27 @@ Os arquivos estáticos serão gerados em `./dist/`
 
 ### Configurações importantes
 
-- O projeto usa `output: 'static'` para publicação em GitHub Pages.
+- O projeto usa `output: 'server'` com `@astrojs/cloudflare` para execução no runtime do Cloudflare.
 - Atualize a URL base em `astro.config.mjs`
 - Configure o sitemap em `pages/sitemap.xml.ts`
 - Ajuste as meta tags em `layouts/BaseLayout.astro`
-- Mantenha `public/CNAME` com o domínio customizado
 
-### Pipeline de publicação
+### Cloudflare KV para sessões (`SESSION`)
 
-O deploy ocorre automaticamente no push para `main` via workflow:
+Antes do deploy em produção, crie os namespaces KV e atualize `wrangler.jsonc`:
 
 ```bash
-/.github/workflows/deploy.yml
+# namespace de produção
+npx wrangler kv namespace create SESSION
+
+# namespace de preview
+npx wrangler kv namespace create SESSION --preview
 ```
 
-### Requisitos para domínio customizado
+Depois, copie os IDs retornados para:
 
-- Repositório de publicação: `site-cpps.github.io`
-- `public/CNAME` com `cpps.franca.unesp.br`
-- DNS do domínio configurado para GitHub Pages
+- `kv_namespaces[0].id` em `wrangler.jsonc`
+- `kv_namespaces[0].preview_id` em `wrangler.jsonc`
 
 ## 🤝 Contribuindo
 
