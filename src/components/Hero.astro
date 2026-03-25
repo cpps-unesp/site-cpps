@@ -8,18 +8,11 @@ interface Props {
 }
 
 const { heroData, lang = 'pt' } = Astro.props;
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath.replace(/\/?$/, '/')}${path.replace(/^\//, '')}`;
-const heroBackground = (() => {
-  const link = heroData?.hero?.link;
-  if (!link || typeof link !== 'string') return '';
-  return link.startsWith('/') ? withBase(link) : link;
-})();
 ---
 
 <section
   class="relative z-0 min-h-[100dvh] w-full bg-cover bg-center bg-no-repeat sm:bg-top"
-  style={`background-image: url('${heroBackground}')`}
+  style={`background-image: url('${heroData?.hero.link}')`}
 >
   <!-- 🔳 Overlay em mobile usando base-100 para adaptação automática ao tema -->
   <div
@@ -44,7 +37,7 @@ const heroBackground = (() => {
       <!-- Logo + Título -->
       <div class="mb-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
         <img
-          src={withBase('/imagens/logos/cpps/logo-cpps-01_rev_1.png')}
+          src="/imagens/logos/cpps/logo-cpps-01_rev_1.png"
           alt="Logo CPPS"
           class="z-10 h-32 w-auto sm:h-48 md:h-64"
         />
@@ -75,12 +68,12 @@ const heroBackground = (() => {
                 href={(() => {
                   const url = heroData.hero.button.url || '';
                   if (url.startsWith('http://') || url.startsWith('https://')) return url;
-                  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return withBase(url);
+                  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
                   const normalized = url.startsWith('/') ? url.slice(1) : url;
                   // eslint-disable-next-line @typescript-eslint/no-explicit-any
                   const translated = getTranslatedPath(normalized as any, lang as any);
                   const path = translated.startsWith('/') ? translated : `/${translated}`;
-                  return withBase(`/${lang}${path}`);
+                  return `/${lang}${path}`;
                 })()}
                 class="btn btn-primary px-6 py-3 text-lg whitespace-nowrap shadow-lg"
                 style="color: white;"

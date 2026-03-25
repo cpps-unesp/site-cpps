@@ -1,9 +1,4 @@
 export const routeTranslations = {
-  atividades: {
-    pt: 'atividades',
-    en: 'activities',
-    es: 'actividades',
-  },
   'iniciativas/projetos': {
     pt: 'iniciativas/projetos',
     en: 'initiatives/projects',

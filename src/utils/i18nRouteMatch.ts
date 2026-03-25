@@ -1,6 +1,5 @@
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
-import { stripBaseFromPathname, withBasePath } from './basePath';
 
 type RouteKey = keyof typeof routeTranslations;
 
@@ -44,8 +43,7 @@ export function translatePathBetweenLangs(
 }
 
 export function getLocalizedPathFromPathname(pathname: string, targetLang: SupportedLang): string {
-  const pathnameWithoutBase = stripBaseFromPathname(pathname, import.meta.env.BASE_URL);
-  const pathParts = pathnameWithoutBase.split('/').filter(Boolean);
+  const pathParts = pathname.split('/').filter(Boolean);
   const maybeLang = pathParts[0];
   const sourceLang = isSupportedLang(maybeLang) ? maybeLang : null;
   const currentPath = sourceLang ? pathParts.slice(1).join('/') : pathParts.join('/');
@@ -54,8 +52,7 @@ export function getLocalizedPathFromPathname(pathname: string, targetLang: Suppo
     ? translatePathBetweenLangs(currentPath, sourceLang, targetLang)
     : currentPath;
 
-  const targetPath =
-    `/${targetLang}/${translatedPath}`.replace(/\/+/g, '/').replace(/\/$/, '/') || `/${targetLang}/`;
-
-  return withBasePath(targetPath, import.meta.env.BASE_URL);
+  return (
+    `/${targetLang}/${translatedPath}`.replace(/\/+/g, '/').replace(/\/$/, '/') || `/${targetLang}/`
+  );
 }

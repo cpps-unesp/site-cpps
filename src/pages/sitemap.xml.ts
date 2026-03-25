@@ -12,13 +12,13 @@ import {
 import routeTranslations from '../i18n/routeTranslations';
 
 export async function GET() {
-  const base = 'https://cppsunesp.org';
+  const base = 'https://cpps.franca.unesp.br';
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
   const urls = new Set<string>();
 
   for (const lang of langs) {
     urls.add(`/${lang}/`);
-    urls.add(`/${lang}/${routeTranslations.atividades[lang]}`);
+    urls.add(`/${lang}/atividades`);
     urls.add(`/${lang}/wiki`);
     urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
     urls.add(`/${lang}/${routeTranslations['editar-site'][lang]}`);

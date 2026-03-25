@@ -35,14 +35,16 @@ npm run dev
 
 O site estará disponível em `http://localhost:4321`
 
-### Preview local do build
+### Simulação Cloudflare (opcional)
 
-Para simular o resultado final do deploy no GitHub Pages:
+Para simular o runtime de Pages Functions localmente:
 
 ```bash
 npm run build
-npm run preview
+npx wrangler pages dev
 ```
+
+Use esse fluxo apenas quando precisar validar comportamento específico de Cloudflare. Para desenvolvimento diário, prefira `npm run dev`.
 
 ## 📁 Estrutura do Projeto
 
@@ -111,11 +113,11 @@ npm run ci            # Typecheck + build (pipeline local)
 
 ## 🛠️ Troubleshooting
 
-### Falha no deploy do GitHub Pages
+### `The Workers runtime failed to start`
 
-- Verifique se `npm run build` funciona localmente.
-- Confirme se `astro.config.mjs` está com `site` e `base` corretos para `github.io`.
-- Revise o workflow `.github/workflows/deploy.yml`.
+- Se esse erro aparecer no `wrangler pages dev`, continue o desenvolvimento com `npm run dev`.
+- Para testar Cloudflare local, rode `npm run build` antes de `npx wrangler pages dev`.
+- Em caso de falhas locais persistentes do Wrangler, use CI/deploy para validar o ambiente Cloudflare.
 
 ## 🚀 Deploy
 
@@ -129,10 +131,27 @@ Os arquivos estáticos serão gerados em `./dist/`
 
 ### Configurações importantes
 
-- O projeto usa `output: 'static'` para publicação no GitHub Pages.
-- Atualize a URL base em `astro.config.mjs`.
-- Configure o sitemap em `pages/sitemap.xml.ts`.
-- Ajuste as meta tags em `layouts/BaseLayout.astro`.
+- O projeto usa `output: 'server'` com `@astrojs/cloudflare` para execução no runtime do Cloudflare.
+- Atualize a URL base em `astro.config.mjs`
+- Configure o sitemap em `pages/sitemap.xml.ts`
+- Ajuste as meta tags em `layouts/BaseLayout.astro`
+
+### Cloudflare KV para sessões (`SESSION`)
+
+Antes do deploy em produção, crie os namespaces KV e atualize `wrangler.jsonc`:
+
+```bash
+# namespace de produção
+npx wrangler kv namespace create SESSION
+
+# namespace de preview
+npx wrangler kv namespace create SESSION --preview
+```
+
+Depois, copie os IDs retornados para:
+
+- `kv_namespaces[0].id` em `wrangler.jsonc`
+- `kv_namespaces[0].preview_id` em `wrangler.jsonc`
 
 ## 🤝 Contribuindo
 
@@ -150,7 +169,7 @@ Este projeto está sob a licença [MIT](LICENSE).
 
 Centro de Pesquisa Política e Social - UNESP Franca
 
-- Website: [cpps-unesp.github.io/site-cpps](https://cpps-unesp.github.io/site-cpps/)
+- Website: [cpps.franca.unesp.br](https://cpps.franca.unesp.br)
 - Email: cpps@franca.unesp.br
 
 ## Agradecimentos

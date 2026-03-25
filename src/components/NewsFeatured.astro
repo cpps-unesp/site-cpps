@@ -1,22 +1,17 @@
 ---
 import { getTranslations } from '../utils/i18n';
-import { getTranslatedPath } from '../utils/getTranslatedPath';
 
 const { post, lang } = Astro.props;
 const locale = getTranslations(lang);
 const { title, resumo, image, tags, date, author } = post.data;
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath.replace(/\/?$/, '/')}${path.replace(/^\//, '')}`;
-const newsPrefix = getTranslatedPath('noticias', lang);
-const slug = withBase(`/${lang}/${newsPrefix}/${post.slug}`);
-const resolvedImage = image.startsWith('/') ? withBase(image) : image;
+const slug = `/${lang}/noticias/${post.slug}`;
 ---
 
 <div class="group bg-base-100 relative mb-12 overflow-hidden rounded-2xl shadow-xl">
   <div class="grid gap-0 md:grid-cols-2">
     <div class="relative h-64 overflow-hidden md:h-auto">
       <img
-        src={resolvedImage}
+        src={image}
         alt={title}
         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />

@@ -1,6 +1,5 @@
 ---
 import { getLangFromUrl } from '../utils/getLangFromUrl';
-import { withBasePath } from '../utils/basePath';
 
 interface Props {
   href: string;
@@ -23,7 +22,6 @@ if (href.startsWith('/') && !href.startsWith('http') && !/^\/(pt|en|es)(\/|$)/.t
 }
 
 localizedHref = localizedHref.replace(/\/+/g, '/');
-localizedHref = withBasePath(localizedHref, import.meta.env.BASE_URL);
 ---
 
 <a href={localizedHref} class={className} {...rest}>

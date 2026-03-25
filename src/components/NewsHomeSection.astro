@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import NoticiaCard from './NoticiaCard.astro';
 import routeTranslations from '../i18n/routeTranslations';
 import { getTranslations } from '../utils/i18n';
-import { getTranslatedPath } from '../utils/getTranslatedPath';
 
 const { lang, title } = Astro.props;
 const locale = getTranslations(lang);
@@ -18,9 +17,6 @@ if (recentNoticias.length === 0) return null;
 
 const noticiasPath =
   routeTranslations['noticias'][lang as keyof (typeof routeTranslations)['noticias']];
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath.replace(/\/?$/, '/')}${path.replace(/^\//, '')}`;
-const newsPrefix = getTranslatedPath('noticias', lang as 'pt' | 'en' | 'es');
 ---
 
 <section class="bg-base-200/50 py-16">
@@ -32,7 +28,7 @@ const newsPrefix = getTranslatedPath('noticias', lang as 'pt' | 'en' | 'es');
         </h2>
         <div class="bg-primary h-1.5 w-20"></div>
       </div>
-      <a href={withBase(`/${lang}/${noticiasPath}`)} class="btn btn-primary btn-outline">
+      <a href={`/${lang}/${noticiasPath}`} class="btn btn-primary btn-outline">
         {locale.noticias?.allNews || 'Ver Todas'}
       </a>
     </div>
@@ -45,7 +41,7 @@ const newsPrefix = getTranslatedPath('noticias', lang as 'pt' | 'en' | 'es');
             resumo={post.data.resumo}
             image={post.data.image}
             tags={post.data.tags}
-            slug={`/${lang}/${newsPrefix}/${post.slug}`}
+            slug={`/${lang}/noticias/${post.slug}`}
             lang={lang}
             date={post.data.date}
             author={post.data.author}

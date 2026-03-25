@@ -3,12 +3,10 @@ import { getCollection } from 'astro:content';
 import type { SupportedLang } from '../../../types/lang';
 import { resolveAtividadesLegacyPath } from '../../../utils/atividadesLegacyRedirect';
 import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
-import routeTranslations from '../../../i18n/routeTranslations';
 import {
   getLegacyAtividadesAliasSources,
   normalizeLegacyAtividadesSlug,
 } from '../../../utils/wikiLegacyAliases';
-import { withBasePath } from '../../../utils/basePath';
 
 export async function getStaticPaths() {
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
@@ -52,8 +50,5 @@ if (redirectPath) {
   return Astro.redirect(redirectPath, 301);
 }
 
-return Astro.redirect(
-  withBasePath(`/${lang}/${routeTranslations.atividades[lang]}`, import.meta.env.BASE_URL),
-  302
-);
+return Astro.redirect(`/${lang}/atividades`, 302);
 ---
