@@ -119,39 +119,6 @@ npm run ci            # Typecheck + build (pipeline local)
 - Para testar Cloudflare local, rode `npm run build` antes de `npx wrangler pages dev`.
 - Em caso de falhas locais persistentes do Wrangler, use CI/deploy para validar o ambiente Cloudflare.
 
-## 📊 Relatório de 404
-
-O middleware registra eventos 404 em JSON no log do servidor com o campo `event: "http_404"`.
-
-Campos emitidos:
-
-- `timestamp`
-- `method`
-- `path`
-- `query`
-- `status`
-- `referer`
-- `userAgent`
-- `lang`
-- `requestId`
-
-### Como consultar no Cloudflare
-
-Use o tail do Worker e filtre os eventos:
-
-```bash
-npx wrangler tail --format pretty
-```
-
-No output, filtre por `http_404` para levantar URLs quebradas e origem (`referer`).
-
-### Recorte recomendado (semanal)
-
-- Top paths 404
-- Top referers
-- Distribuição por idioma (`lang`)
-- Padrões recorrentes para criar redirects/correções
-
 ## 🚀 Deploy
 
 ### Build para produção
