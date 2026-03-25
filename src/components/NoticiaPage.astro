@@ -6,12 +6,10 @@ import { getCollection } from 'astro:content';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
-import { getTranslatedPath } from '../utils/getTranslatedPath';
 import slugify from 'slugify';
 
 const { lang, slug } = Astro.props as { lang: SupportedLang; slug: string };
 const locale = getTranslations(lang);
-const newsPrefix = getTranslatedPath('noticias', lang);
 
 const noticiasRoute = routeTranslations['noticias'][lang as SupportedLang];
 const rawSlug = slug.replace(`${noticiasRoute}/`, '');
@@ -32,11 +30,8 @@ if (!post) throw new Error(`Notícia não encontrada: ${slug}`);
 const langNoticias = allNoticias
   .filter((p) => p.data.lang === lang)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath.replace(/\/?$/, '/')}${path.replace(/^\//, '')}`;
 
 const { title, date, image, tags, author, resumo } = post.data;
-const resolvedImage = image.startsWith('/') ? withBase(image) : image;
 const { Content } = await post.render();
 ---
 
@@ -62,7 +57,7 @@ const { Content } = await post.render();
             {
               tags.map((tag: string) => (
                 <a
-                  href={withBase(`/${lang}/${newsPrefix}/categoria/${slugify(tag, { lower: true, strict: true })}`)}
+                  href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
                   class="text-primary text-xs font-bold tracking-widest uppercase hover:underline"
                 >
                   {tag}
@@ -105,7 +100,7 @@ const { Content } = await post.render();
         {
           image && (
             <figure class="mb-10">
-              <img src={resolvedImage} alt={title} class="w-full rounded-2xl shadow-lg" />
+              <img src={image} alt={title} class="w-full rounded-2xl shadow-lg" />
             </figure>
           )
         }
@@ -124,7 +119,7 @@ const { Content } = await post.render();
             {
               tags.map((tag: string) => (
                 <a
-                  href={withBase(`/${lang}/${newsPrefix}/categoria/${slugify(tag, { lower: true, strict: true })}`)}
+                  href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
                   class="badge badge-outline badge-primary px-3 py-3"
                 >
                   {tag}

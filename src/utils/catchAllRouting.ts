@@ -7,7 +7,6 @@ type RoutePath = { params: { lang: SupportedLang; slug: string } };
 export function buildRouteTranslationPaths(langs: SupportedLang[]): RoutePath[] {
   const paths: RoutePath[] = [];
   const catchAllRouteKeys: Array<keyof typeof routeTranslations> = [
-    'atividades',
     'iniciativas/projetos',
     'iniciativas/projetos-de-pesquisa',
     'iniciativas/projetos-de-dados',

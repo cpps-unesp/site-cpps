@@ -49,10 +49,6 @@ const membrosDisponiveis = new Set(
 function getSlug(membro: Membro): string {
   return membro.slug?.trim() || membro.nome.toLowerCase().replace(/\s+/g, '-');
 }
-
-const basePath = import.meta.env.BASE_URL;
-const withBase = (path: string) => `${basePath.replace(/\/?$/, '/')}${path.replace(/^\//, '')}`;
-const resolveAsset = (path?: string) => (path && path.startsWith('/') ? withBase(path) : path);
 ---
 
 <script type="module" is:inline>
@@ -110,7 +106,7 @@ const resolveAsset = (path?: string) => (path && path.startsWith('/') ? withBase
             <div class="card bg-base-100 text-base-content hover:border-primary/20 border-base-200 group relative flex flex-col items-center overflow-hidden rounded-2xl border p-6 pt-10 text-center shadow-md transition-all duration-300 hover:shadow-xl">
               {temPagina && (
                 <a
-                  href={withBase(`/${lang}/${slug}`)}
+                  href={`/${lang}/${slug}`}
                   class="bg-primary shadow-primary/20 absolute top-3 right-3 z-10 transform rounded-full px-3 py-1.5 text-[10px] font-black tracking-widest text-white uppercase shadow-lg transition-transform group-hover:scale-110"
                 >
                   {texts.buttonPersonalPage}
@@ -118,9 +114,9 @@ const resolveAsset = (path?: string) => (path && path.startsWith('/') ? withBase
               )}
 
               {temPagina ? (
-                <a href={withBase(`/${lang}/${slug}`)} class="relative block">
+                <a href={`/${lang}/${slug}`} class="relative block">
                   <img
-                    src={resolveAsset(membro.foto)}
+                    src={membro.foto}
                     alt={membro.nome}
                     class="mb-6 h-40 w-40 rounded-2xl object-cover shadow-lg transition-transform duration-500 group-hover:scale-105"
                   />
@@ -129,7 +125,7 @@ const resolveAsset = (path?: string) => (path && path.startsWith('/') ? withBase
               ) : (
                 <div class="relative">
                   <img
-                    src={resolveAsset(membro.foto)}
+                    src={membro.foto}
                     alt={membro.nome}
                     class="mb-6 h-40 w-40 rounded-2xl object-cover shadow-lg"
                   />
@@ -170,16 +166,16 @@ const resolveAsset = (path?: string) => (path && path.startsWith('/') ? withBase
             <div class="card bg-base-100 text-base-content hover:border-primary/20 border-base-200 group relative flex flex-col items-center overflow-hidden rounded-2xl border p-6 pt-10 text-center shadow-md transition-all duration-300 hover:shadow-xl">
               {temPagina && (
                 <a
-                  href={withBase(`/${lang}/${slug}`)}
+                  href={`/${lang}/${slug}`}
                   class="bg-primary shadow-primary/20 absolute top-3 right-3 z-10 transform rounded-full px-3 py-1.5 text-[10px] font-black tracking-widest text-white uppercase shadow-lg transition-transform group-hover:scale-110"
                 >
                   {texts.buttonPersonalPage}
                 </a>
               )}
               {temPagina ? (
-                <a href={withBase(`/${lang}/${slug}`)} class="relative block">
+                <a href={`/${lang}/${slug}`} class="relative block">
                   <img
-                    src={resolveAsset(membro.foto)}
+                    src={membro.foto}
                     alt={membro.nome}
                     class="mb-6 h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale transition-transform duration-500 group-hover:scale-105 hover:opacity-100 hover:grayscale-0"
                   />
@@ -188,7 +184,7 @@ const resolveAsset = (path?: string) => (path && path.startsWith('/') ? withBase
               ) : (
                 <div class="relative">
                   <img
-                    src={resolveAsset(membro.foto)}
+                    src={membro.foto}
                     alt={membro.nome}
                     class="mb-6 h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale"
                   />
