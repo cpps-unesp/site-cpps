@@ -1,8 +1,12 @@
 import { defineCollection, z } from 'astro:content';
+import { glob } from 'astro/loaders';
 import slugify from 'slugify';
 
-// ✅ Collection de notícias
 const noticias = defineCollection({
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/noticias',
+  }),
   schema: z
     .object({
       title: z.string(),
@@ -23,8 +27,11 @@ const noticias = defineCollection({
     })),
 });
 
-// ✅ Collection de publicações (Artigos, Análises, etc.)
 const publicacoes = defineCollection({
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/publicacoes',
+  }),
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -39,9 +46,11 @@ const publicacoes = defineCollection({
   }),
 });
 
-// ✅ Collection de membros (com slug baseado no nome do arquivo)
 const membros = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/membros',
+  }),
   schema: z
     .object({
       title: z.string(),
@@ -72,9 +81,11 @@ const membros = defineCollection({
     }),
 });
 
-// ✅ Collection de atividades
 const atividades = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/atividades',
+  }),
   schema: z
     .object({
       title: z.string().optional().default('Atividades'),
@@ -87,9 +98,11 @@ const atividades = defineCollection({
     .passthrough(),
 });
 
-// ✅ Collection de atendimento
 const atendimento = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/atendimento',
+  }),
   schema: z
     .object({
       title: z.string().optional().default('Atendimento'),
@@ -102,9 +115,11 @@ const atendimento = defineCollection({
     .passthrough(),
 });
 
-// ✅ Collection de editar-site
 const editarSite = defineCollection({
-  type: 'content',
+  loader: glob({
+    pattern: '**/*.{md,mdx}',
+    base: './src/content/editarSite',
+  }),
   schema: z
     .object({
       title: z.string().optional().default('Editar site'),
@@ -117,7 +132,6 @@ const editarSite = defineCollection({
     .passthrough(),
 });
 
-// ✅ Exportando as collections
 export const collections = {
   noticias,
   publicacoes,

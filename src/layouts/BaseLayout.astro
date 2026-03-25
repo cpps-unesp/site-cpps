@@ -25,7 +25,7 @@ const pageIdentidade = identidade ?? t.identidade;
 const pageTitle = titulo ?? t.titulo;
 const pageDescription = descricao ?? t.descricao;
 
-const pathname = Astro.url.pathname;
+const pathname = Astro.url?.pathname ?? `/${lang}/`;
 const canonicalUrl = new URL(pathname || `/${lang}/`, Astro.site).toString();
 const pathParts = pathname.split('/').filter(Boolean);
 const hasLangInPath = isSupportedLang(pathParts[0] ?? '');

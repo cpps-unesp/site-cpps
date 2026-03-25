@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import NewsSidebar from './NewsSidebar.astro';
 import TranslationWarning from './TranslationWarning.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
@@ -15,7 +15,9 @@ const noticiasRoute = routeTranslations['noticias'][lang as SupportedLang];
 const rawSlug = slug.replace(`${noticiasRoute}/`, '');
 
 const allNoticias = await getCollection('noticias');
-const relatedPosts = allNoticias.filter((p) => p.slug === rawSlug);
+const getNewsSlug = (post: (typeof allNoticias)[number]) =>
+  post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
+const relatedPosts = allNoticias.filter((p) => getNewsSlug(p) === rawSlug);
 
 const availableLangs = relatedPosts.map((p) => p.data.lang);
 const isTranslationMissing = relatedPosts.length > 0 && !availableLangs.includes(lang);
@@ -32,7 +34,7 @@ const langNoticias = allNoticias
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const { title, date, image, tags, author, resumo } = post.data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <BaseLayout

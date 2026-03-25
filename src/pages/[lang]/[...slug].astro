@@ -22,7 +22,7 @@ import PublicationListPage from '../../components/PublicationListPage.astro';
 import PublicationPage from '../../components/PublicationPage.astro';
 import TranslationWarning from '../../components/TranslationWarning.astro';
 import routeTranslations from '../../i18n/routeTranslations';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import type { SupportedLang } from '../../types/lang';
 import { getTranslations } from '../../utils/i18n';
 import {
@@ -36,12 +36,15 @@ import {
 
 // ✅ Exporta os caminhos possíveis para páginas estáticas
 export async function getStaticPaths() {
+  const getNoticiaSlug = (entry: Awaited<ReturnType<typeof getCollection<'noticias'>>>[number]) =>
+    entry.slug || entry.data.slug || entry.id.replace(/\.[^/.]+$/, '');
+
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
   const paths = buildRouteTranslationPaths(langs);
 
   // Notícias individuais (todos os idiomas para permitir fallback)
   const allNoticias = await getCollection('noticias');
-  const uniqueNoticiasSlugs = [...new Set(allNoticias.map((n) => n.slug))];
+  const uniqueNoticiasSlugs = [...new Set(allNoticias.map(getNoticiaSlug).filter(Boolean))];
   paths.push(...buildLocalizedContentPaths(langs, 'noticias', uniqueNoticiasSlugs));
 
   // Publicações individuais (todos os idiomas para permitir fallback)
@@ -96,7 +99,7 @@ if (!membroSelecionado && membroEntries.length > 0) {
 // Renderiza o conteúdo do .mdx
 let Content = null;
 if (membroSelecionado) {
-  const renderResult = await membroSelecionado.render();
+  const renderResult = await render(membroSelecionado);
   Content = renderResult.Content;
 }
 

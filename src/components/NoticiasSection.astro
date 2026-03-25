@@ -2,6 +2,8 @@
 import NoticiaCard from './NoticiaCard.astro';
 
 const { noticias, lang } = Astro.props;
+const getNewsSlug = (post: (typeof noticias)[number]) =>
+  post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
 ---
 
 <section class="mx-auto max-w-screen-xl px-4 py-12 md:px-8">
@@ -15,7 +17,7 @@ const { noticias, lang } = Astro.props;
           resumo={post.data.resumo}
           image={post.data.image}
           tags={post.data.tags}
-          slug={`/${lang}/noticias/${post.slug}`}
+          slug={`/${lang}/noticias/${getNewsSlug(post)}`}
           lang={lang}
         />
       ))

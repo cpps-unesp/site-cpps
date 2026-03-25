@@ -13,6 +13,9 @@ const recentNoticias = allNoticias
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 
+const getNewsSlug = (post: (typeof allNoticias)[number]) =>
+  post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
+
 if (recentNoticias.length === 0) return null;
 
 const noticiasPath =
@@ -41,7 +44,7 @@ const noticiasPath =
             resumo={post.data.resumo}
             image={post.data.image}
             tags={post.data.tags}
-            slug={`/${lang}/noticias/${post.slug}`}
+            slug={`/${lang}/noticias/${getNewsSlug(post)}`}
             lang={lang}
             date={post.data.date}
             author={post.data.author}

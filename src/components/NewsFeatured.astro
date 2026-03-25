@@ -4,7 +4,8 @@ import { getTranslations } from '../utils/i18n';
 const { post, lang } = Astro.props;
 const locale = getTranslations(lang);
 const { title, resumo, image, tags, date, author } = post.data;
-const slug = `/${lang}/noticias/${post.slug}`;
+const slugValue = post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
+const slug = `/${lang}/noticias/${slugValue}`;
 ---
 
 <div class="group bg-base-100 relative mb-12 overflow-hidden rounded-2xl shadow-xl">
