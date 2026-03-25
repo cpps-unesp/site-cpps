@@ -30,10 +30,6 @@ const exactAliases: Record<string, string> = {
   'projetos/ensino/acesso-remoto/instrucao-inicial': 'projetos/ensino/acessoremoto/instruir',
 };
 
-export function getLegacyAtividadesAliasSources(): string[] {
-  return Object.keys(exactAliases);
-}
-
 export function normalizeLegacyAtividadesSlug(rawSlug: string): string {
   const slug = rawSlug.replace(/^\/+|\/+$/g, '');
   if (!slug) return slug;

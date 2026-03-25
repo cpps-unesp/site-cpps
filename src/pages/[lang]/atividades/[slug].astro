@@ -1,50 +1,17 @@
 ---
+export const prerender = false;
+
 import { getCollection } from 'astro:content';
 import type { SupportedLang } from '../../../types/lang';
 import { resolveAtividadesLegacyPath } from '../../../utils/atividadesLegacyRedirect';
 import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
-import {
-  getLegacyAtividadesAliasSources,
-  normalizeLegacyAtividadesSlug,
-} from '../../../utils/wikiLegacyAliases';
-
-export async function getStaticPaths() {
-  const langs: SupportedLang[] = ['pt', 'en', 'es'];
-  const entries = filterVisibleDocsEntries(await getCollection('atividades'));
-  const singleSegmentSources = new Set<string>();
-
-  for (const entry of entries) {
-    if (!entry.slug.includes('/')) {
-      singleSegmentSources.add(entry.slug);
-    }
-  }
-
-  for (const source of getLegacyAtividadesAliasSources()) {
-    if (!source.includes('/')) {
-      singleSegmentSources.add(source);
-    }
-  }
-
-  const paths: Array<{ params: { lang: SupportedLang; slug: string } }> = [];
-
-  for (const lang of langs) {
-    for (const slug of singleSegmentSources) {
-      paths.push({ params: { lang, slug } });
-    }
-  }
-
-  return paths;
-}
 
 const lang = (Astro.params.lang ?? 'pt') as SupportedLang;
 const slug = Astro.params.slug ?? '';
+
 const entries = filterVisibleDocsEntries(await getCollection('atividades'));
 const validSlugs = new Set(entries.map((entry) => entry.slug));
-const redirectPath = resolveAtividadesLegacyPath(
-  lang,
-  normalizeLegacyAtividadesSlug(slug),
-  validSlugs
-);
+const redirectPath = resolveAtividadesLegacyPath(lang, slug, validSlugs);
 
 if (redirectPath) {
   return Astro.redirect(redirectPath, 301);

@@ -1,58 +1,17 @@
 ---
+export const prerender = false;
+
 import { getCollection } from 'astro:content';
 import type { SupportedLang } from '../../../../types/lang';
 import { resolveAtividadesLegacyPath } from '../../../../utils/atividadesLegacyRedirect';
 import { filterVisibleDocsEntries } from '../../../../utils/docsVisibility';
-import {
-  getLegacyAtividadesAliasSources,
-  normalizeLegacyAtividadesSlug,
-} from '../../../../utils/wikiLegacyAliases';
-
-export async function getStaticPaths() {
-  const langs: SupportedLang[] = ['pt', 'en', 'es'];
-  const entries = filterVisibleDocsEntries(await getCollection('atividades'));
-  const multiSegmentSlugs = new Set<string>();
-
-  for (const entry of entries) {
-    if (entry.slug.includes('/')) {
-      multiSegmentSlugs.add(entry.slug);
-    }
-  }
-
-  for (const source of getLegacyAtividadesAliasSources()) {
-    if (source.includes('/')) {
-      multiSegmentSlugs.add(normalizeLegacyAtividadesSlug(source));
-    }
-  }
-
-  const paths: Array<{ params: { lang: SupportedLang; section: string; slug: string } }> = [];
-
-  for (const lang of langs) {
-    for (const fullSlug of multiSegmentSlugs) {
-      const [section, ...rest] = fullSlug.split('/');
-
-      if (!section || rest.length === 0) {
-        continue;
-      }
-
-      paths.push({
-        params: {
-          lang,
-          section,
-          slug: rest.join('/'),
-        },
-      });
-    }
-  }
-
-  return paths;
-}
 
 const lang = (Astro.params.lang ?? 'pt') as SupportedLang;
 const section = Astro.params.section ?? '';
 const slugParts = Astro.params.slug;
 const tail = Array.isArray(slugParts) ? slugParts.join('/') : (slugParts ?? '');
 const fullSlug = tail ? `${section}/${tail}` : section;
+
 const entries = filterVisibleDocsEntries(await getCollection('atividades'));
 const validSlugs = new Set(entries.map((entry) => entry.slug));
 const redirectPath = resolveAtividadesLegacyPath(lang, fullSlug, validSlugs);
