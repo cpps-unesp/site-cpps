@@ -1,6 +1,5 @@
 {
   "name": "site-cpps",
-  "main": "./dist/_worker.js/index.js",
   "compatibility_date": "2026-02-10",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "kv_namespaces": [
@@ -12,9 +11,5 @@
   ],
   "observability": {
     "enabled": true,
-  },
-  "assets": {
-    "directory": "./dist",
-    "binding": "ASSETS",
   },
 }

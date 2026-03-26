@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 import { getTranslations, type Language } from '../utils/i18n';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -8,28 +10,8 @@ import BackToTop from '../components/BackToTop.astro';
 
 import '../styles/global.css';
 
-// Try to detect language from cookie or URL, fallback to Portuguese
-function detectLang(request: Request): Language {
-  const supportedLangs: Language[] = ['pt', 'en', 'es'];
-
-  // Check cookie first
-  const cookies = request.headers.get('cookie') || '';
-  const langCookie = cookies.match(/lang=(pt|en|es)/);
-  if (langCookie && supportedLangs.includes(langCookie[1] as Language)) {
-    return langCookie[1] as Language;
-  }
-
-  // Try URL path
-  const url = new URL(request.url);
-  const pathLang = url.pathname.split('/')[1];
-  if (supportedLangs.includes(pathLang as Language)) {
-    return pathLang as Language;
-  }
-
-  return 'pt';
-}
-
-const lang = detectLang(Astro.request);
+// Static page: default to Portuguese; language is updated client-side
+const lang: Language = 'pt';
 const t = getTranslations(lang);
 
 const titulo = t.titulo;
@@ -86,13 +68,13 @@ const identidade = t.identidade;
       <section class="flex min-h-[60vh] items-center justify-center px-4">
         <div class="max-w-lg text-center">
           <h1 class="font-heading text-primary mb-4 text-8xl font-bold">404</h1>
-          <h2 class="font-heading mb-4 text-3xl font-semibold">{texts.notFound}</h2>
-          <p class="text-base-content/70 mb-8 text-lg">
+          <h2 id="not-found-title" class="font-heading mb-4 text-3xl font-semibold">{texts.notFound}</h2>
+          <p id="not-found-desc" class="text-base-content/70 mb-8 text-lg">
             {texts.notFoundDescription}
           </p>
-          <a href={`/${lang}/`} class="btn btn-primary btn-lg">
+          <a id="back-home-link" href={`/${lang}/`} class="btn btn-primary btn-lg">
             <i class="fa-solid fa-house mr-2"></i>
-            {texts.backToHome}
+            <span id="back-home-text">{texts.backToHome}</span>
           </a>
 
           <div class="mt-12 text-left">
@@ -106,5 +88,35 @@ const identidade = t.identidade;
     <BackToTop lang={lang} />
     <SearchModal texts={texts} />
     <script type="module" src="/scripts/themeSwitcher.js"></script>
+    <script is:inline>
+      (function () {
+        const i18n = {
+          en: {
+            titulo: 'UNESP Franca | Center for Political and Social Research',
+            notFound: 'Page not found',
+            notFoundDescription: 'The page you are looking for does not exist or has been moved.',
+            backToHome: 'Back to home',
+          },
+          es: {
+            titulo: 'UNESP Franca | Centro de Investigación Política y Social',
+            notFound: 'Página no encontrada',
+            notFoundDescription: 'La página que buscas no existe o ha sido movida.',
+            backToHome: 'Volver al inicio',
+          },
+        };
+        const cookieMatch = document.cookie.match(/lang=(en|es)/);
+        const pathLang = location.pathname.split('/')[1];
+        const lang = (cookieMatch && cookieMatch[1]) || (['en', 'es'].includes(pathLang) ? pathLang : null);
+        if (lang) {
+          const t = i18n[lang];
+          document.documentElement.lang = lang;
+          document.title = t.notFound + ' | ' + t.titulo;
+          document.getElementById('not-found-title').textContent = t.notFound;
+          document.getElementById('not-found-desc').textContent = t.notFoundDescription;
+          document.getElementById('back-home-text').textContent = t.backToHome;
+          document.getElementById('back-home-link').href = '/' + lang + '/';
+        }
+      })();
+    </script>
   </body>
 </html>
