@@ -1,12 +1,18 @@
 ---
-title: DocsMdxPage
-description: Estrutura reutilizável para áreas de documentação em MDX.
+title: Estrutura genérica
+description: Estrutura reutilizável para criar novas áreas de documentação em MDX.
+custom_slug:
+  pt: estrutura-generica
+  en: generic-structure
+  es: estructura-generica
 sidebar_order: 1
-sidebar_label: DocsMdxPage
+sidebar_label: Estrutura genérica
 ---
 
 import Notice from '../../components/atividades/Notice.astro';
 import Steps from '../../components/atividades/Steps.astro';
+
+Este guia mostra como replicar a arquitetura de documentação para criar novas seções, como `/manual`.
 
 ### Estrutura genérica reutilizável
 
@@ -22,7 +28,7 @@ Crie a pasta `src/content/manual/`. Adicione um arquivo `index.md` para ser a ca
 
 ### 2. Configurar a coleção
 
-Edite `src/content/config.ts` e duplique a configuração de uma coleção existente (ex: `atividades`), renomeando para `manual`. Não esqueça de exportar a nova coleção no objeto `collections`.
+Edite `src/content.config.ts` e duplique a configuração de uma coleção existente (ex: `atividades`), renomeando para `manual`. Não esqueça de exportar a nova coleção no objeto `collections`.
 
 ### 3. Criar o builder da sidebar
 

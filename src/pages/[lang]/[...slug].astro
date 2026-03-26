@@ -37,7 +37,7 @@ import {
 // ✅ Exporta os caminhos possíveis para páginas estáticas
 export async function getStaticPaths() {
   const getNoticiaSlug = (entry: Awaited<ReturnType<typeof getCollection<'noticias'>>>[number]) =>
-    entry.slug || entry.data.slug || entry.id.replace(/\.[^/.]+$/, '');
+    entry.data.slug || entry.id.replace(/\.[^/.]+$/, '');
 
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
   const paths = buildRouteTranslationPaths(langs);
@@ -49,9 +49,7 @@ export async function getStaticPaths() {
 
   // Publicações individuais (todos os idiomas para permitir fallback)
   const allPublicacoes = await getCollection('publicacoes');
-  const uniquePubSlugs = [
-    ...new Set(allPublicacoes.map((p) => p.slug || p.id.replace(/\.[^/.]+$/, ''))),
-  ];
+  const uniquePubSlugs = [...new Set(allPublicacoes.map((p) => p.id.replace(/\.[^/.]+$/, '')))];
   paths.push(...buildLocalizedContentPaths(langs, 'publicacao', uniquePubSlugs));
 
   // Categorias de notícias

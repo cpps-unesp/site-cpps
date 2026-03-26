@@ -1,18 +1,27 @@
 ---
 title: Publicações
 description: Como cadastrar e manter publicações acadêmicas.
+custom_slug:
+  pt: publicacoes
+  en: publications
+  es: publicaciones
 sidebar_order: 3
 ---
+
+Este guia explica como cadastrar e manter publicações seguindo os campos validados da coleção.
 
 As publicações ficam em `src/content/publicacoes/`.
 
 ## Estrutura de arquivos
 
-Use pastas por idioma, por exemplo:
+As publicações podem ser salvas diretamente em `src/content/publicacoes/`.
 
-- `src/content/publicacoes/pt/`
-- `src/content/publicacoes/en/`
-- `src/content/publicacoes/es/`
+Use o campo `lang` no frontmatter para definir o idioma (`pt`, `en`, `es`).
+
+<Notice type="info">
+  Evite usar pastas por idioma sem necessidade. Em publicações, o caminho do arquivo pode impactar o
+  slug da rota final (URL).
+</Notice>
 
 ## Frontmatter
 
@@ -49,13 +58,25 @@ O campo `type` é estrito. Use apenas um destes valores exatos:
 
 ## Como adicionar nova publicação
 
-1. Crie um arquivo `.md` na pasta do idioma (ex: `src/content/publicacoes/pt/meu-artigo.md`).
+1. Crie um arquivo `.md` ou `.mdx` em `src/content/publicacoes/` (ex: `src/content/publicacoes/meu-artigo.md`).
 2. Preencha o frontmatter seguindo o modelo acima.
 3. Escreva o texto em Markdown abaixo do frontmatter.
 
-## Detalhes dos campos
+## Tabela de campos
 
-- `authors`: Lista de nomes entre colchetes `['Nome A', 'Nome B']`.
-- `image`: Caminho da imagem em `public/`. Se não tiver, o card ficará sem foto.
-- `pdf_url`: Pode ser link externo (`https://...`) ou interno (`/arquivos/meu.pdf` -> arquivo salvo em `public/arquivos/`).
-- `featured`: Use `true` apenas para as publicações mais importantes que devem aparecer na Home ou no topo.
+| Campo      | Obrigatório | Padrão | Exemplo                                              |
+| ---------- | ----------- | ------ | ---------------------------------------------------- |
+| `title`    | Sim         | —      | `"Título da publicação"`                            |
+| `date`     | Sim         | —      | `2024-02-15`                                         |
+| `authors`  | Sim         | —      | `['Autor 1', 'Autor 2']`                             |
+| `summary`  | Sim         | —      | `"Resumo breve do trabalho"`                        |
+| `type`     | Sim         | —      | `"artigo"`                                          |
+| `lang`     | Sim         | —      | `"pt"`, `"en"`, `"es"`                            |
+| `tags`     | Não         | `[]`   | `['Democracia', 'Instituições']`                     |
+| `image`    | Não         | —      | `"/imagens/campus/entrada-unesp-franca.jpg"`        |
+| `featured` | Não         | `false` | `true` ou `false`                                   |
+| `pdf_url`  | Não         | —      | `"https://exemplo.com/artigo.pdf"` ou `"/arquivos/x.pdf"` |
+
+- `authors` deve ser uma lista de nomes entre colchetes.
+- Se não houver `image`, o card é exibido sem foto.
+- Use `featured: true` apenas em publicações que devem ganhar destaque.

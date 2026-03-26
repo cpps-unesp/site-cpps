@@ -1,16 +1,20 @@
 ---
 title: Introdução
 description: Guia detalhado para organizar menus, criar páginas e editar a documentação do CPPS.
+custom_slug:
+  pt: introducao
+  en: introduction
+  es: introduccion
 sidebar_order: 1
 sidebar_label: Introdução
 ---
 
-Reúne instruções práticas para criação e edição de páginas `.md` e `.mdx`.
+Este guia apresenta as convenções usadas para criar e editar páginas `.md` e `.mdx` no projeto.
 
 ## Convenções deste projeto (Astro + CPPS)
 
 Seguimos a documentação oficial do Astro como base para Markdown e MDX. Neste repositório, usamos algumas convenções para manter consistência.
 
-- **Collections (Content Collections):** são conjuntos de conteúdo com schema e validação em `src/content/config.ts` (ex.: `atividades`, `atendimento`, `editarSite`).
+- **Coleções de conteúdo (Content Collections):** são conjuntos de conteúdo com schema e validação em `src/content.config.ts` (ex.: `atividades`, `atendimento`, `editarSite`).
 - **Sidebar:** é o menu lateral da documentação. Ele é gerado a partir da estrutura de pastas/arquivos e do frontmatter (`sidebar_label`, `sidebar_section`, `sidebar_order`).
-- **Fluxo desta seção:** o conteúdo de `/editar-site/` segue collections + roteamento dinâmico, então a organização dos arquivos define a navegação.
+- **Fluxo desta seção:** o conteúdo de `/editar-site/` segue coleções + roteamento dinâmico, então a organização dos arquivos define a navegação.

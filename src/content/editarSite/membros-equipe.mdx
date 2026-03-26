@@ -1,10 +1,27 @@
 ---
 title: Membros da equipe
 description: Como adicionar e manter perfis da equipe do CPPS.
+custom_slug:
+  pt: membros-equipe
+  en: team-members
+  es: miembros-equipo
 sidebar_order: 4
 ---
 
+Este guia mostra como cadastrar e manter perfis da equipe em todos os idiomas do site.
+
 Os perfis ficam em `src/content/membros/`.
+
+## Tabela de campos
+
+| Campo         | Obrigatório | Padrão | Exemplo                          |
+| ------------- | ----------- | ------ | -------------------------------- |
+| `title`       | Sim         | —      | `"Nome do membro"`              |
+| `lang`        | Sim         | —      | `"pt"` (`pt`, `en`, `es`)       |
+| `cargo`       | Sim         | —      | `"Pesquisadora"`                |
+| `foto`        | Não         | —      | `"/imagens/equipe/foto.jpg"`    |
+| `contribuicao` | Não         | —      | `"Pesquisa em humanidades..."`  |
+| `redes`       | Não         | —      | Lista de links com `tipo/url/icone` |
 
 ## Adicionando um novo membro
 
@@ -42,3 +59,4 @@ Texto da biografia...
 
 - Mantenha o mesmo slug base para os três idiomas.
 - Prefira imagens em proporção parecida com as já usadas na equipe.
+- Se usar `redes`, preencha cada item com `tipo`, `url` e `icone`.

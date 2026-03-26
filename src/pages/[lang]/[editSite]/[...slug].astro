@@ -6,7 +6,11 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import routeTranslations from '../../../i18n/routeTranslations';
 import type { SupportedLang } from '../../../types/lang';
 import { buildEditarSiteSidebar } from '../../../utils/editarSiteSidebar';
-import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
+import {
+  filterVisibleDocsEntries,
+  getDocsEntryDefaultSlug,
+  getDocsEntrySlug,
+} from '../../../utils/docsVisibility';
 import { selectDocsHomeEntry } from '../../../utils/docsHome';
 import Notice from '../../../components/atividades/Notice.astro';
 import Card from '../../../components/atividades/Card.astro';
@@ -26,14 +30,37 @@ export async function getStaticPaths() {
   const homeEntry = selectDocsHomeEntry(entries);
 
   return langs.flatMap((lang) => {
-    const paths = entries.map((entry) => ({
-      params: {
-        lang,
-        editSite: routeTranslations['editar-site'][lang],
-        slug: entry.slug,
-      },
-      props: { entry, homeSlug: homeEntry?.slug },
-    }));
+    const homeSlug = homeEntry ? getDocsEntrySlug(homeEntry, lang) : undefined;
+
+    const paths = entries.flatMap((entry) => {
+      const canonicalSlug = getDocsEntrySlug(entry, lang);
+      const fallbackSlug = getDocsEntryDefaultSlug(entry);
+
+      const canonicalPath = {
+        params: {
+          lang,
+          editSite: routeTranslations['editar-site'][lang],
+          slug: canonicalSlug,
+        },
+        props: { entry, homeSlug },
+      };
+
+      if (!fallbackSlug || fallbackSlug === canonicalSlug) {
+        return [canonicalPath];
+      }
+
+      return [
+        canonicalPath,
+        {
+          params: {
+            lang,
+            editSite: routeTranslations['editar-site'][lang],
+            slug: fallbackSlug,
+          },
+          props: { entry, homeSlug },
+        },
+      ];
+    });
 
     if (!homeEntry) {
       return paths;
@@ -47,7 +74,7 @@ export async function getStaticPaths() {
           editSite: routeTranslations['editar-site'][lang],
           slug: undefined,
         },
-        props: { entry: homeEntry, homeSlug: homeEntry.slug },
+        props: { entry: homeEntry, homeSlug },
       },
     ];
   });
@@ -62,6 +89,12 @@ if (Astro.params.editSite !== expectedEditSite) {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const { entry, homeSlug } = Astro.props as { entry: any; homeSlug?: string };
+const entrySlug = getDocsEntrySlug(entry, lang);
+const requestedSlug = Astro.params.slug;
+
+if (requestedSlug && entrySlug && requestedSlug !== entrySlug) {
+  return Astro.redirect(`/${lang}/${expectedEditSite}/${entrySlug}`, 301);
+}
 
 if (homeSlug && Astro.params.slug === homeSlug) {
   return Astro.redirect(`/${lang}/${expectedEditSite}`, 301);

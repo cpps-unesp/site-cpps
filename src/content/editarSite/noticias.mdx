@@ -1,14 +1,20 @@
 ---
 title: Notícias
 description: Como criar, editar e organizar notícias do site.
+custom_slug:
+  pt: noticias
+  en: news
+  es: noticias
 sidebar_order: 2
 ---
+
+Este guia explica como criar, editar e publicar notícias mantendo consistência editorial.
 
 As notícias ficam em `src/content/noticias/`.
 
 ## Como criar uma nova notícia
 
-1. Crie um arquivo `.md` com nome curto e descritivo.
+1. Crie um arquivo `.md` ou `.mdx` com nome curto e descritivo.
 2. Preencha o frontmatter.
 3. Escreva o conteúdo em Markdown abaixo do frontmatter.
 
@@ -27,16 +33,20 @@ featured: false
 ---
 ```
 
-## Campos
+## Tabela de campos
 
-- `title`: título principal da notícia.
-- `date`: data no formato `AAAA-MM-DD`.
-- `resumo`: texto curto exibido nas listagens.
-- `tags`: categorias da matéria.
-- `image`: caminho da imagem de destaque em `public/imagens/noticias/`.
-- `lang`: idioma (`pt`, `en`, `es`).
-- `author`: opcional.
-- `featured`: destaque principal da página de notícias.
+| Campo      | Obrigatório | Padrão | Exemplo                                |
+| ---------- | ----------- | ------ | -------------------------------------- |
+| `title`    | Sim         | —      | `"Título da notícia"`                 |
+| `date`     | Sim         | —      | `2024-03-20`                           |
+| `resumo`   | Sim         | —      | `"Resumo curto para listagem"`        |
+| `image`    | Sim         | —      | `"/imagens/noticias/minha-capa.jpg"`  |
+| `lang`     | Sim         | —      | `"pt"`, `"en"`, `"es"`              |
+| `tags`     | Não         | `[]`   | `['Categoria 1', 'Categoria 2']`       |
+| `author`   | Não         | —      | `"Nome do autor"`                     |
+| `featured` | Não         | `false` | `true` ou `false`                     |
+
+- As imagens devem estar em `public/imagens/noticias/`.
 
 ## Idiomas
 
@@ -48,10 +58,11 @@ Para publicar uma notícia em inglês:
 2. Defina `lang: 'en'`.
 3. Escreva o conteúdo em inglês.
 
-O sistema gera o link (URL) automaticamente com base em Data + Título. Exemplo:
+O sistema gera a rota (URL) automaticamente com base em data + título. Exemplo:
 
 - Título: "Nova Pesquisa" -> URL: `/pt/noticias/2024-03-20-nova-pesquisa`
-- Title: "New Research" -> URL: `/en/noticias/2024-03-20-new-research`
+- Título (EN): "New Research" -> URL: `/en/news/2024-03-20-new-research`
+- Título: "Nueva Investigación" -> URL: `/es/noticias/2024-03-20-nueva-investigacion`
 
 ## Boas práticas editoriais
 

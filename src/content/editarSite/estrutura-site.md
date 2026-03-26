@@ -22,7 +22,7 @@
 - **Layout global compartilhado**:
   - `src/layouts/BaseLayout.astro`
 - **Coleções Astro com schema espelhado** (estrutura muito parecida):
-  - `src/content/config.ts` (coleções: atividades, atendimento, editarSite)
+  - `src/content.config.ts` (coleções: atividades, atendimento, editarSite)
 - **Builders de sidebar com mesmo papel** (um por seção):
   - `src/utils/atividadesSidebar.ts`
   - `src/utils/atendimentoSidebar.ts`
