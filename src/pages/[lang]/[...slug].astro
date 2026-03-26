@@ -157,7 +157,9 @@ const originalKey = findOriginalKey(slugPath, currentLang);
       texts={texts}
       githubPath="src/pages/[lang]/[...slug].astro"
     >
-      <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
+      <div class="container mx-auto px-4">
+        <Breadcrumbs lang={currentLang} slugArray={slugArray} texts={texts} />
+      </div>
 
       {(() => {
         switch (originalKey) {
