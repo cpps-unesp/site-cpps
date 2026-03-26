@@ -55,7 +55,8 @@
       "analise": "Analysis",
       "material-didatico": "Didactic Material",
       "texto-curto": "Short Text",
-      "texto-longo": "Long Text"
+      "texto-longo": "Long Text",
+      "tutorial": "Tutorial"
     },
     "search": "Search publications...",
     "filterByType": "Filter by type",
