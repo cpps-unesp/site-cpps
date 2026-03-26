@@ -16,7 +16,8 @@ const locale = getTranslations(lang);
 
 const allPublications = await getCollection('publicacoes');
 const relatedPubs = allPublications.filter(
-  (p) => p.slug === slug || p.id === slug || p.id === `${slug}.md` || p.id === `${slug}.mdx`
+  (p) =>
+    p.id.replace(/\.[^/.]+$/, '') === slug || p.id === slug || p.id === `${slug}.md` || p.id === `${slug}.mdx`
 );
 
 const availableLangs = relatedPubs.map((p) => p.data.lang);
@@ -36,7 +37,7 @@ const { data } = publication;
 const { Content } = await render(publication);
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
-const genericAuthor = 'Equipe CPPS';
+const authorsList = data.authors;
 
 const formattedDate = new Intl.DateTimeFormat(lang, {
   year: 'numeric',
@@ -111,12 +112,16 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
               {locale.publicacoes.authors}
             </h3>
             <ul class="space-y-4">
-              <li>
-                <span class="text-base-content flex items-center gap-2 text-base font-bold">
-                  <i class="fa-solid fa-user text-xs opacity-30" />
-                  {genericAuthor}
-                </span>
-              </li>
+              {
+                authorsList.map((author) => (
+                  <li>
+                    <span class="text-base-content flex items-center gap-2 text-base font-bold">
+                      <i class="fa-solid fa-user text-xs opacity-30" />
+                      {author}
+                    </span>
+                  </li>
+                ))
+              }
             </ul>
 
             {

@@ -9,9 +9,10 @@ interface Props {
 }
 
 const { publication, lang } = Astro.props;
-const { data, slug } = publication;
+const { data } = publication;
 const locale = getTranslations(lang);
-const genericAuthor = 'Equipe CPPS';
+const publicationSlug = publication.id.replace(/\.[^/.]+$/, '');
+const authorsList = data.authors.join(', ');
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
 ---
@@ -49,7 +50,7 @@ const typeLabel = locale.publicacoes.types[data.type] || data.type;
         class="publication-featured-title mb-6 text-3xl leading-tight font-black text-gray-900 md:text-4xl"
       >
         <a
-          href={`/${lang}/publicacoes/${slug}`}
+          href={`/${lang}/publicacoes/${publicationSlug}`}
           class="hover:text-primary italic transition-colors"
         >
           {data.title}
@@ -65,10 +66,10 @@ const typeLabel = locale.publicacoes.types[data.type] || data.type;
           <span class="text-xs font-bold tracking-tighter text-gray-400 uppercase"
             >{locale.publicacoes.authors}</span
           >
-          <span class="text-sm font-bold text-gray-800">{genericAuthor}</span>
+          <span class="text-sm font-bold text-gray-800">{authorsList}</span>
         </div>
         <a
-          href={`/${lang}/publicacoes/${slug}`}
+          href={`/${lang}/publicacoes/${publicationSlug}`}
           class="text-primary border-primary hover:bg-primary rounded-full border-2 bg-white px-6 py-2 text-sm font-black transition-all hover:text-white"
         >
           {locale.publicacoes.readMore}

@@ -9,11 +9,11 @@ interface Props {
 }
 
 const { publication, lang } = Astro.props;
-const { data, slug } = publication;
+const { data } = publication;
 const locale = getTranslations(lang);
+const publicationSlug = publication.id.replace(/\.[^/.]+$/, '');
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
-const genericAuthor = 'Equipe CPPS';
 
 // Cores baseadas no tipo
 const typeColors: Record<string, string> = {
@@ -32,7 +32,7 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
   day: 'numeric',
 }).format(data.date);
 
-const authorsList = genericAuthor;
+const authorsList = data.authors.join(', ');
 ---
 
 <div
@@ -54,14 +54,14 @@ const authorsList = genericAuthor;
   <h3
     class="text-base-content publication-card-title group-hover:text-primary mb-3 text-xl leading-tight font-bold transition-colors"
   >
-    <a href={`/${lang}/publicacoes/${slug}`}>
+    <a href={`/${lang}/publicacoes/${publicationSlug}`}>
       {data.title}
     </a>
   </h3>
 
   <p class="text-base-content/80 mb-4 text-sm font-medium">
     <span class="font-normal opacity-50">{locale.publicacoes.authors}:</span>
-    <span class="ml-1">{genericAuthor}</span>
+    <span class="ml-1">{authorsList}</span>
   </p>
 
   <p class="text-base-content/70 mb-6 line-clamp-3 flex-grow text-sm leading-relaxed">
@@ -70,7 +70,7 @@ const authorsList = genericAuthor;
 
   <div class="border-base-200/50 mt-auto flex items-center justify-between border-t pt-4">
     <a
-      href={`/${lang}/publicacoes/${slug}`}
+      href={`/${lang}/publicacoes/${publicationSlug}`}
       class="text-primary inline-flex items-center gap-2 text-sm font-bold transition-all hover:gap-3"
     >
       {locale.publicacoes.readMore}
