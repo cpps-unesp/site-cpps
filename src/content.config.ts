@@ -125,7 +125,16 @@ const editarSite = defineCollection({
     .object({
       title: z.string().optional().default('Editar site'),
       description: z.string().optional(),
-      custom_slug: z.string().trim().optional(),
+      custom_slug: z
+        .union([
+          z.string().trim(),
+          z.object({
+            pt: z.string().trim().optional(),
+            en: z.string().trim().optional(),
+            es: z.string().trim().optional(),
+          }),
+        ])
+        .optional(),
       sidebar_label: z.string().optional(),
       sidebar_section: z.string().trim().optional(),
       sidebar_order: z.number().int().optional(),
