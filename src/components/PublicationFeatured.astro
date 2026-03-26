@@ -2,6 +2,7 @@
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
+import { formatPublicationTypeLabel } from '../config/publicationTypes';
 
 interface Props {
   publication: CollectionEntry<'publicacoes'>;
@@ -14,7 +15,7 @@ const locale = getTranslations(lang);
 const publicationSlug = publication.id.replace(/\.[^/.]+$/, '');
 const authorsList = data.authors.join(', ');
 
-const typeLabel = locale.publicacoes.types[data.type] || data.type;
+const typeLabel = locale.publicacoes.types[data.type] || formatPublicationTypeLabel(data.type);
 ---
 
 <section class="mb-16 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-sm">

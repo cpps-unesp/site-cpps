@@ -56,6 +56,26 @@ O campo `type` é estrito. Use apenas um destes valores exatos:
   Se você usar um tipo diferente destes (ex: "Artigo"), o site apresentará erro ao construir.
 </Notice>
 
+## Como manter os tipos ao longo do tempo
+
+Para facilitar manutenção, os tipos válidos ficam centralizados em:
+
+- `src/config/publicationTypes.ts`
+
+Fluxo recomendado quando quiser adicionar, renomear ou remover tipos:
+
+1. Atualize a lista `PUBLICATION_TYPES` em `src/config/publicationTypes.ts`.
+2. Ajuste os rótulos exibidos na interface (PT/EN/ES) em:
+   - `src/i18n/locales/pt.json` → `publicacoes.types`
+   - `src/i18n/locales/en.json` → `publicacoes.types`
+   - `src/i18n/locales/es.json` → `publicacoes.types`
+3. Rode o build (`npm run build`) para validar conteúdo e filtros.
+
+<Notice type="info">
+  Se um rótulo de tradução não existir para um tipo novo, o site ainda exibe o tipo com formatação automática
+  (fallback), mas o ideal é sempre traduzir nos arquivos de locale.
+</Notice>
+
 ## Como adicionar nova publicação
 
 1. Crie um arquivo `.md` ou `.mdx` em `src/content/publicacoes/` (ex: `src/content/publicacoes/meu-artigo.md`).

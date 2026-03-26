@@ -5,6 +5,7 @@ import FaseTesteAlert from './FaseTesteAlert.astro';
 import { getCollection } from 'astro:content';
 import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
+import { PUBLICATION_TYPES, formatPublicationTypeLabel } from '../config/publicationTypes';
 
 interface Props {
   lang: SupportedLang;
@@ -21,7 +22,9 @@ const langPublications = allPublications
 const featuredPublication = langPublications.find((p) => p.data.featured) || langPublications[0];
 const regularPublications = langPublications.filter((p) => p.id !== featuredPublication?.id);
 
-const publicationTypes = ['artigo', 'analise', 'material-didatico', 'texto-curto', 'texto-longo'];
+const publicationTypes = PUBLICATION_TYPES;
+const typeLabels = locale.publicacoes.types as Record<string, string>;
+const getTypeLabel = (type: string) => typeLabels[type] || formatPublicationTypeLabel(type);
 ---
 
 <section class="mx-auto max-w-screen-xl px-4 py-16 md:px-8">
@@ -45,7 +48,7 @@ const publicationTypes = ['artigo', 'analise', 'material-didatico', 'texto-curto
             href={`/${lang}/publicacoes?type=${encodeURIComponent(type)}`}
             class="border-base-300 hover:border-primary hover:text-primary bg-base-100 rounded-full border px-4 py-2 text-[10px] font-bold tracking-widest uppercase shadow-sm transition-all"
           >
-            {locale.publicacoes.types[type]}
+            {getTypeLabel(type)}
           </a>
         ))
       }
@@ -96,7 +99,7 @@ const publicationTypes = ['artigo', 'analise', 'material-didatico', 'texto-curto
             <option value="all">{locale.publicacoes.allTypes}</option>
             {
               publicationTypes.map((type) => (
-                <option value={type}>{locale.publicacoes.types[type]}</option>
+                <option value={type}>{getTypeLabel(type)}</option>
               ))
             }
           </select>

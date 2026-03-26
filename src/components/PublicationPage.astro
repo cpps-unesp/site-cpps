@@ -5,6 +5,7 @@ import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
 import { getCollection, render } from 'astro:content';
 import TranslationWarning from './TranslationWarning.astro';
+import { formatPublicationTypeLabel } from '../config/publicationTypes';
 
 interface Props {
   lang: SupportedLang;
@@ -36,7 +37,7 @@ if (!publication) {
 const { data } = publication;
 const { Content } = await render(publication);
 
-const typeLabel = locale.publicacoes.types[data.type] || data.type;
+const typeLabel = locale.publicacoes.types[data.type] || formatPublicationTypeLabel(data.type);
 const authorsList = data.authors;
 
 const formattedDate = new Intl.DateTimeFormat(lang, {

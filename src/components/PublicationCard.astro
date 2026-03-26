@@ -2,6 +2,7 @@
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
+import { formatPublicationTypeLabel } from '../config/publicationTypes';
 
 interface Props {
   publication: CollectionEntry<'publicacoes'>;
@@ -13,7 +14,7 @@ const { data } = publication;
 const locale = getTranslations(lang);
 const publicationSlug = publication.id.replace(/\.[^/.]+$/, '');
 
-const typeLabel = locale.publicacoes.types[data.type] || data.type;
+const typeLabel = locale.publicacoes.types[data.type] || formatPublicationTypeLabel(data.type);
 
 // Cores baseadas no tipo
 const typeColors: Record<string, string> = {

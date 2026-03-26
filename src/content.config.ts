@@ -1,6 +1,7 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 import slugify from 'slugify';
+import { PUBLICATION_TYPES } from './config/publicationTypes';
 
 const noticias = defineCollection({
   loader: glob({
@@ -38,7 +39,7 @@ const publicacoes = defineCollection({
     authors: z.array(z.string()),
     summary: z.string(),
     tags: z.array(z.string()).optional().default([]),
-    type: z.enum(['artigo', 'analise', 'material-didatico', 'texto-curto', 'texto-longo']),
+    type: z.enum(PUBLICATION_TYPES),
     lang: z.enum(['pt', 'en', 'es']),
     image: z.string().optional(),
     featured: z.boolean().optional().default(false),
@@ -124,16 +125,7 @@ const editarSite = defineCollection({
     .object({
       title: z.string().optional().default('Editar site'),
       description: z.string().optional(),
-      custom_slug: z
-        .union([
-          z.string().trim(),
-          z.object({
-            pt: z.string().trim().optional(),
-            en: z.string().trim().optional(),
-            es: z.string().trim().optional(),
-          }),
-        ])
-        .optional(),
+      custom_slug: z.string().trim().optional(),
       sidebar_label: z.string().optional(),
       sidebar_section: z.string().trim().optional(),
       sidebar_order: z.number().int().optional(),
