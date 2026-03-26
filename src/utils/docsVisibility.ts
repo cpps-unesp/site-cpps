@@ -1,9 +1,16 @@
 type DocsEntryLike = {
+  id?: string;
   slug?: string;
   data: {
     draft?: boolean;
   };
 };
+
+function getEntrySlug(entry: DocsEntryLike): string {
+  if (entry.slug) return entry.slug;
+  if (entry.id) return entry.id.replace(/\.[^/.]+$/, '');
+  return '';
+}
 
 export function hasHiddenSlugSegment(slug?: string): boolean {
   if (!slug) return false;
@@ -16,8 +23,11 @@ export function hasHiddenSlugSegment(slug?: string): boolean {
 
 export function isVisibleDocsEntry<T extends DocsEntryLike>(entry: T): boolean {
   if (entry.data.draft === true) return false;
-  if (!entry.slug) return false;
-  if (hasHiddenSlugSegment(entry.slug)) return false;
+
+  const entrySlug = getEntrySlug(entry);
+  if (!entrySlug) return false;
+  if (hasHiddenSlugSegment(entrySlug)) return false;
+
   return true;
 }
 

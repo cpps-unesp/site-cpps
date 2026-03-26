@@ -1,12 +1,19 @@
 import { isVisibleDocsEntry } from './docsVisibility';
 
 type DocsEntryLike = {
-  slug: string;
+  id?: string;
+  slug?: string;
   data: {
     sidebar_order?: number;
     draft?: boolean;
   };
 };
+
+function getEntrySlug(entry: DocsEntryLike): string {
+  if (entry.slug) return entry.slug;
+  if (entry.id) return entry.id.replace(/\.[^/.]+$/, '');
+  return '';
+}
 
 function compareDocsOrder(a: DocsEntryLike, b: DocsEntryLike): number {
   const orderA = a.data.sidebar_order ?? Number.MAX_SAFE_INTEGER;
@@ -16,7 +23,10 @@ function compareDocsOrder(a: DocsEntryLike, b: DocsEntryLike): number {
     return orderA - orderB;
   }
 
-  return a.slug.localeCompare(b.slug, 'pt-BR');
+  const slugA = getEntrySlug(a);
+  const slugB = getEntrySlug(b);
+
+  return slugA.localeCompare(slugB, 'pt-BR');
 }
 
 export function selectDocsHomeEntry<T extends DocsEntryLike>(entries: T[]): T | undefined {

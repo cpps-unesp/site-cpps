@@ -2,7 +2,8 @@ import type { SidebarItem } from '../types/docs';
 import { isVisibleDocsEntry } from './docsVisibility';
 
 type DocEntry = {
-  slug: string;
+  id?: string;
+  slug?: string;
   data: {
     title?: string;
     sidebar_label?: string;
@@ -11,6 +12,12 @@ type DocEntry = {
     draft?: boolean;
   };
 };
+
+function getEntrySlug(entry: DocEntry): string {
+  if (entry.slug) return entry.slug;
+  if (entry.id) return entry.id.replace(/\.[^/.]+$/, '');
+  return '';
+}
 
 type SidebarNode = {
   label: string;
@@ -93,8 +100,11 @@ export function buildDocsSidebar(
   for (const entry of entries) {
     if (!isVisibleDocsEntry(entry)) continue;
 
-    const segments = entry.slug.split('/').filter(Boolean);
-    const pagePath = normalizePath(`${options.basePath}/${entry.slug}`);
+    const entrySlug = getEntrySlug(entry);
+    if (!entrySlug) continue;
+
+    const segments = entrySlug.split('/').filter(Boolean);
+    const pagePath = normalizePath(`${options.basePath}/${entrySlug}`);
     const pageLabel =
       entry.data.sidebar_label ||
       entry.data.title ||

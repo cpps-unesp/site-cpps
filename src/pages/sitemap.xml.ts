@@ -11,6 +11,16 @@ import {
 } from '../utils/catchAllRouting';
 import routeTranslations from '../i18n/routeTranslations';
 
+function getEntrySlug(entry: { id: string; data?: Record<string, unknown> }): string {
+  const slugFromData = entry.data?.slug;
+
+  if (typeof slugFromData === 'string' && slugFromData.length > 0) {
+    return slugFromData;
+  }
+
+  return entry.id.replace(/\.[^/.]+$/, '');
+}
+
 export async function GET() {
   const base = 'https://cpps.franca.unesp.br';
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
@@ -29,7 +39,7 @@ export async function GET() {
   }
 
   const noticias = await getCollection('noticias');
-  const noticiaSlugs = [...new Set(noticias.map((entry) => entry.slug))];
+  const noticiaSlugs = [...new Set(noticias.map((entry) => getEntrySlug(entry)))];
   for (const path of buildLocalizedContentPaths(langs, 'noticias', noticiaSlugs)) {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
   }
@@ -40,9 +50,7 @@ export async function GET() {
   }
 
   const publicacoes = await getCollection('publicacoes');
-  const publicationSlugs = [
-    ...new Set(publicacoes.map((entry) => entry.slug || entry.id.replace(/\.[^/.]+$/, ''))),
-  ];
+  const publicationSlugs = [...new Set(publicacoes.map((entry) => getEntrySlug(entry)))];
   for (const path of buildLocalizedContentPaths(langs, 'publicacao', publicationSlugs)) {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
   }
@@ -56,7 +64,7 @@ export async function GET() {
   const atividades = await getCollection('atividades');
   for (const lang of langs) {
     for (const entry of atividades) {
-      urls.add(`/${lang}/wiki/${entry.slug}`);
+      urls.add(`/${lang}/wiki/${getEntrySlug(entry)}`);
     }
   }
 
@@ -64,8 +72,9 @@ export async function GET() {
   for (const lang of langs) {
     const basePath = `/${lang}/${routeTranslations.atendimento[lang]}`;
     for (const entry of atendimento) {
-      if (entry.slug === 'index') continue;
-      urls.add(`${basePath}/${entry.slug}`);
+      const slug = getEntrySlug(entry);
+      if (slug === 'index') continue;
+      urls.add(`${basePath}/${slug}`);
     }
   }
 
@@ -73,8 +82,9 @@ export async function GET() {
   for (const lang of langs) {
     const basePath = `/${lang}/${routeTranslations['editar-site'][lang]}`;
     for (const entry of editarSite) {
-      if (entry.slug === 'index') continue;
-      urls.add(`${basePath}/${entry.slug}`);
+      const slug = getEntrySlug(entry);
+      if (slug === 'index') continue;
+      urls.add(`${basePath}/${slug}`);
     }
   }
 
