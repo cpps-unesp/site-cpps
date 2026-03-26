@@ -1,0 +1,23 @@
+---
+import type { Language } from '../utils/i18n';
+
+function detectLang(request: Request): Language {
+  const supported: Language[] = ['pt', 'en', 'es'];
+
+  const cookies = request.headers.get('cookie') || '';
+  const cookie = cookies.match(/lang=(pt|en|es)/);
+  if (cookie && supported.includes(cookie[1] as Language)) {
+    return cookie[1] as Language;
+  }
+
+  const acceptLang = request.headers.get('accept-language') || '';
+  for (const part of acceptLang.split(',')) {
+    const code = part.trim().split(';')[0].split('-')[0].toLowerCase() as Language;
+    if (supported.includes(code)) return code;
+  }
+
+  return 'pt';
+}
+
+return Astro.redirect(`/${detectLang(Astro.request)}/`, 307);
+---
