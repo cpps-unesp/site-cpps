@@ -1,23 +1,53 @@
 ---
 import type { Language } from '../utils/i18n';
 
-const supported: Language[] = ['pt', 'en', 'es'];
-const slug = Astro.params.slug ?? '';
-const parts = slug.split('/').filter(Boolean);
-const hasLang = supported.includes(parts[0] as Language);
+const STATIC_EXT = /\.(ico|png|jpe?g|gif|svg|webp|avif|css|js|woff2?|ttf|eot|pdf|json|xml|txt|map)$/i;
+const SUPPORTED: Language[] = ['pt', 'en', 'es'];
 
-if (!hasLang) {
-  // Middleware should have already redirected, but as fallback:
-  return Astro.redirect(`/pt/${slug}`, 307);
+function detectLang(request: Request): Language {
+  const cookies = request.headers.get('cookie') || '';
+  const cookie = cookies.match(/lang=(pt|en|es)/);
+  if (cookie && SUPPORTED.includes(cookie[1] as Language)) return cookie[1] as Language;
+
+  const acceptLang = request.headers.get('accept-language') || '';
+  for (const part of acceptLang.split(',')) {
+    const [tag, q] = part.trim().split(';');
+    const code = tag.split('-')[0].toLowerCase() as Language;
+    if (SUPPORTED.includes(code)) return code;
+    void q;
+  }
+
+  return 'pt';
 }
 
-// Has lang prefix — try to serve the prerendered page first
+const slug = Astro.params.slug ?? '';
+const parts = slug.split('/').filter(Boolean);
+const hasLang = SUPPORTED.includes(parts[0] as Language);
 const env = (Astro.locals as any).runtime?.env;
+
+// Static files that bypassed _routes.json exclusions due to URL encoding
+if (STATIC_EXT.test(slug)) {
+  if (env?.ASSETS) {
+    let res = await env.ASSETS.fetch(new URL(`/${slug}`, Astro.url).toString());
+    if (!res.ok && hasLang) {
+      res = await env.ASSETS.fetch(new URL('/' + parts.slice(1).join('/'), Astro.url).toString());
+    }
+    if (res.ok) return new Response(res.body, { status: 200, headers: res.headers });
+  }
+  return new Response('Not found', { status: 404 });
+}
+
+// No lang prefix → detect and redirect
+if (!hasLang) {
+  const lang = detectLang(Astro.request);
+  return Astro.redirect(`/${lang}/${slug}`, 307);
+}
+
+// Has lang prefix — try to serve the prerendered page
 if (env?.ASSETS) {
   const pageRes = await env.ASSETS.fetch(new URL(`/${slug}`, Astro.url).toString());
-  if (pageRes.ok) {
-    return new Response(pageRes.body, { status: 200, headers: pageRes.headers });
-  }
+  if (pageRes.ok) return new Response(pageRes.body, { status: 200, headers: pageRes.headers });
+
   // Page doesn't exist → serve prerendered 404
   const notFoundRes = await env.ASSETS.fetch(new URL('/404', Astro.url).toString());
   if (notFoundRes.ok) {
