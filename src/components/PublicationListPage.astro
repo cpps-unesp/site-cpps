@@ -1,6 +1,7 @@
 ---
 import PublicationCard from './PublicationCard.astro';
 import PublicationFeatured from './PublicationFeatured.astro';
+import FaseTesteAlert from './FaseTesteAlert.astro';
 import { getCollection } from 'astro:content';
 import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
@@ -24,6 +25,7 @@ const publicationTypes = ['artigo', 'analise', 'material-didatico', 'texto-curto
 ---
 
 <section class="mx-auto max-w-screen-xl px-4 py-16 md:px-8">
+  <FaseTesteAlert lang={lang} area={locale.texts.header.publicacoes || 'Publicações'} />
   <header class="mb-12 text-center md:text-left">
     <h1 class="titulo text-primary mb-6 text-5xl sm:text-7xl">
       {locale.texts.header.publicacoes}

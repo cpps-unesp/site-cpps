@@ -1,0 +1,33 @@
+---
+import type { SupportedLang } from '../types/lang';
+
+interface Props {
+  lang: SupportedLang;
+  area?: string;
+}
+
+const { lang, area } = Astro.props as Props;
+
+const messages = {
+  pt: {
+    title: 'Em fase de testes',
+    body: 'Esta seção está em validação e pode sofrer ajustes.',
+  },
+  en: {
+    title: 'Testing phase',
+    body: 'This section is currently being validated and may change.',
+  },
+  es: {
+    title: 'En fase de pruebas',
+    body: 'Esta sección está en validación y puede recibir ajustes.',
+  },
+} as const;
+
+const current = messages[lang] ?? messages.pt;
+const areaLabel = area ? ` ${area}` : '';
+---
+
+<div class="alert alert-warning mb-8">
+  <i class="fa-solid fa-triangle-exclamation"></i>
+  <span><strong>{current.title}{areaLabel}:</strong> {current.body}</span>
+</div>

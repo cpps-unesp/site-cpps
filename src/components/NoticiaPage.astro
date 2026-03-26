@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import FaseTesteAlert from './FaseTesteAlert.astro';
 import NewsSidebar from './NewsSidebar.astro';
 import TranslationWarning from './TranslationWarning.astro';
 import { getCollection, render } from 'astro:content';
@@ -34,6 +35,7 @@ const langNoticias = allNoticias
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 const { title, date, image, tags, author, resumo } = post.data;
+const displayAuthor = author?.trim() || 'Equipe CPPS';
 const { Content } = await render(post);
 ---
 
@@ -51,6 +53,7 @@ const { Content } = await render(post);
     )
   }
   <main class="container mx-auto px-4 py-12">
+    <FaseTesteAlert lang={lang} area={locale.texts.header.noticias || 'Notícias'} />
     <div class="grid gap-12 lg:grid-cols-3">
       <!-- Article Content -->
       <article class="lg:col-span-2">
@@ -78,13 +81,9 @@ const { Content } = await render(post);
 
           <div class="border-base-200 flex items-center gap-4 border-y py-6 text-sm">
             <div class="flex flex-col">
-              {
-                author && (
-                  <span class="text-base-content font-bold">
-                    {locale.noticias?.by || 'Por'} {author}
-                  </span>
-                )
-              }
+              <span class="text-base-content font-bold">
+                {locale.noticias?.by || 'Por'} {displayAuthor}
+              </span>
               <span class="text-base-content/60">
                 {locale.publicacoes?.publishedIn || 'Publicado em'}
                 {

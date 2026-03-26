@@ -17,6 +17,7 @@ interface Props {
 }
 
 const { title, resumo, image, tags, slug, lang, date, author } = Astro.props;
+const displayAuthor = author?.trim() || 'Equipe CPPS';
 
 const translations = { pt, en, es };
 const t = translations[lang] || translations.pt;
@@ -66,14 +67,10 @@ const t = translations[lang] || translations.pt;
     >
       <span>
         {new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
-        {
-          author && (
-            <>
-              <span class="mx-2">•</span>
-              <span>{author}</span>
-            </>
-          )
-        }
+        <>
+          <span class="mx-2">•</span>
+          <span>{displayAuthor}</span>
+        </>
       </span>
       <a
         href={slug}

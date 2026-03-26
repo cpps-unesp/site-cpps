@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import FaseTesteAlert from './FaseTesteAlert.astro';
 import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
 import { getCollection, render } from 'astro:content';
@@ -35,6 +36,7 @@ const { data } = publication;
 const { Content } = await render(publication);
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
+const genericAuthor = 'Equipe CPPS';
 
 const formattedDate = new Intl.DateTimeFormat(lang, {
   year: 'numeric',
@@ -57,6 +59,7 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
     )
   }
   <article class="mx-auto max-w-screen-xl px-4 py-16 md:px-8">
+    <FaseTesteAlert lang={lang} area={locale.texts.header.publicacoes || 'Publicações'} />
     <header class="border-base-200 mb-16 border-b pb-12">
       <div class="mb-6 flex items-center gap-4">
         <a
@@ -108,19 +111,12 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
               {locale.publicacoes.authors}
             </h3>
             <ul class="space-y-4">
-              {
-                data.authors.map((author: string) => (
-                  <li>
-                    <a
-                      href={`/${lang}/publicacoes?author=${encodeURIComponent(author)}`}
-                      class="text-base-content hover:text-primary flex items-center gap-2 text-base font-bold transition-colors hover:underline"
-                    >
-                      <i class="fa-solid fa-user text-xs opacity-30" />
-                      {author}
-                    </a>
-                  </li>
-                ))
-              }
+              <li>
+                <span class="text-base-content flex items-center gap-2 text-base font-bold">
+                  <i class="fa-solid fa-user text-xs opacity-30" />
+                  {genericAuthor}
+                </span>
+              </li>
             </ul>
 
             {

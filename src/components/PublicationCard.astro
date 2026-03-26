@@ -13,6 +13,7 @@ const { data, slug } = publication;
 const locale = getTranslations(lang);
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
+const genericAuthor = 'Equipe CPPS';
 
 // Cores baseadas no tipo
 const typeColors: Record<string, string> = {
@@ -31,7 +32,7 @@ const formattedDate = new Intl.DateTimeFormat(lang, {
   day: 'numeric',
 }).format(data.date);
 
-const authorsList = data.authors.join(', ');
+const authorsList = genericAuthor;
 ---
 
 <div
@@ -60,19 +61,7 @@ const authorsList = data.authors.join(', ');
 
   <p class="text-base-content/80 mb-4 text-sm font-medium">
     <span class="font-normal opacity-50">{locale.publicacoes.authors}:</span>
-    {
-      data.authors.map((author: string, index: number) => (
-        <>
-          <a
-            href={`/${lang}/publicacoes?author=${encodeURIComponent(author)}`}
-            class="hover:text-primary transition-colors hover:underline"
-          >
-            {author}
-          </a>
-          {index < data.authors.length - 1 ? ', ' : ''}
-        </>
-      ))
-    }
+    <span class="ml-1">{genericAuthor}</span>
   </p>
 
   <p class="text-base-content/70 mb-6 line-clamp-3 flex-grow text-sm leading-relaxed">

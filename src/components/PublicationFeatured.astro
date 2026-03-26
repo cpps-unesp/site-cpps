@@ -11,6 +11,7 @@ interface Props {
 const { publication, lang } = Astro.props;
 const { data, slug } = publication;
 const locale = getTranslations(lang);
+const genericAuthor = 'Equipe CPPS';
 
 const typeLabel = locale.publicacoes.types[data.type] || data.type;
 ---
@@ -64,7 +65,7 @@ const typeLabel = locale.publicacoes.types[data.type] || data.type;
           <span class="text-xs font-bold tracking-tighter text-gray-400 uppercase"
             >{locale.publicacoes.authors}</span
           >
-          <span class="text-sm font-bold text-gray-800">{data.authors.join(', ')}</span>
+          <span class="text-sm font-bold text-gray-800">{genericAuthor}</span>
         </div>
         <a
           href={`/${lang}/publicacoes/${slug}`}

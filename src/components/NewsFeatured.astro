@@ -4,6 +4,7 @@ import { getTranslations } from '../utils/i18n';
 const { post, lang } = Astro.props;
 const locale = getTranslations(lang);
 const { title, resumo, image, tags, date, author } = post.data;
+const displayAuthor = author?.trim() || 'Equipe CPPS';
 const slugValue = post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
 const slug = `/${lang}/noticias/${slugValue}`;
 ---
@@ -46,16 +47,12 @@ const slug = `/${lang}/noticias/${slugValue}`;
             )
           }</span
         >
-        {
-          author && (
-            <>
-              <span class="h-1 w-1 rounded-full bg-current" />
-              <span>
-                {locale.noticias?.by || 'Por'} {author}
-              </span>
-            </>
-          )
-        }
+        <>
+          <span class="h-1 w-1 rounded-full bg-current" />
+          <span>
+            {locale.noticias?.by || 'Por'} {displayAuthor}
+          </span>
+        </>
       </div>
     </div>
   </div>

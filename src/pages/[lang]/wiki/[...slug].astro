@@ -3,6 +3,7 @@ export const prerender = true;
 
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FaseTesteAlert from '../../../components/FaseTesteAlert.astro';
 import Notice from '../../../components/atividades/Notice.astro';
 import Card from '../../../components/atividades/Card.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
@@ -52,6 +53,9 @@ const basePath = `/${lang}/wiki`;
     title={entry.data.title}
     description={entry.data.description}
   >
+    <Fragment slot="beforeContent">
+      <FaseTesteAlert lang={lang} area="Atividades" />
+    </Fragment>
     <Fragment slot="content">
       <Content components={{ Notice, Card, CardGrid, LinkCard, Steps }} />
     </Fragment>

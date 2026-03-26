@@ -2,6 +2,7 @@
 export const prerender = true;
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FaseTesteAlert from '../../../components/FaseTesteAlert.astro';
 import LinkCard from '../../../components/atividades/LinkCard.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
@@ -54,6 +55,7 @@ const orphanActivityPages = atividades
   lang={lang}
 >
   <div class="mx-auto max-w-screen-xl px-4 pt-8 pb-16 md:px-8 md:pt-12">
+    <FaseTesteAlert lang={lang} area="Atividades" />
     <header class="mx-auto mb-12 max-w-3xl text-center md:mb-14">
       <span class="text-primary mb-4 block text-sm font-bold tracking-widest uppercase"
         >Central de Atividades</span
