@@ -75,7 +75,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     }
 
     const newPath = `/${lang}${path === '/' ? '/' : path}`;
-    return redirect(newPath, 301);
+    return redirect(newPath, 307);
   } catch (err) {
     console.error('Middleware error:', err);
     // Em caso de QUALQUER falha, deixa a requisição passar
