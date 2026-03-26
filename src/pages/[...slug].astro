@@ -1,0 +1,35 @@
+---
+import type { Language } from '../utils/i18n';
+
+const supported: Language[] = ['pt', 'en', 'es'];
+const slug = Astro.params.slug ?? '';
+const parts = slug.split('/').filter(Boolean);
+const hasLang = supported.includes(parts[0] as Language);
+
+if (!hasLang) {
+  // Middleware should have already redirected, but as fallback:
+  return Astro.redirect(`/pt/${slug}`, 307);
+}
+
+// Has lang prefix — try to serve the prerendered page first
+const env = (Astro.locals as any).runtime?.env;
+if (env?.ASSETS) {
+  const pageRes = await env.ASSETS.fetch(new URL(`/${slug}`, Astro.url).toString());
+  if (pageRes.ok) {
+    return new Response(pageRes.body, { status: 200, headers: pageRes.headers });
+  }
+  // Page doesn't exist → serve prerendered 404
+  const notFoundRes = await env.ASSETS.fetch(new URL('/404', Astro.url).toString());
+  if (notFoundRes.ok) {
+    return new Response(notFoundRes.body, {
+      status: 404,
+      headers: { 'content-type': 'text/html; charset=utf-8' },
+    });
+  }
+}
+---
+<!doctype html>
+<html lang="pt">
+  <head><meta charset="utf-8"><title>404</title></head>
+  <body><h1>404 - Página não encontrada</h1></body>
+</html>
