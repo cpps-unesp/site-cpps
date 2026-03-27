@@ -177,16 +177,16 @@ function getSlug(membro: Membro): string {
                   <img
                     src={membro.foto}
                     alt={membro.nome}
-                    class="mb-6 h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale transition-transform duration-500 group-hover:scale-105 hover:opacity-100 hover:grayscale-0"
+                    class="h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale transition-transform duration-500 group-hover:scale-105 hover:opacity-100 hover:grayscale-0"
                   />
                   <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
                 </a>
               ) : (
-                <div class="relative">
+                <div class="relative mb-4">
                   <img
                     src={membro.foto}
                     alt={membro.nome}
-                    class="mb-6 h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale"
+                    class="h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale"
                   />
                   <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
                 </div>
