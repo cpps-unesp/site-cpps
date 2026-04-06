@@ -12,51 +12,145 @@ Este guia mostra como cadastrar e manter perfis da equipe em todos os idiomas do
 
 Os perfis ficam em `src/content/membros/`.
 
-## Tabela de campos
+## Nome do arquivo
 
-| Campo         | Obrigatório | Padrão | Exemplo                          |
-| ------------- | ----------- | ------ | -------------------------------- |
-| `title`       | Sim         | —      | `"Nome do membro"`              |
-| `lang`        | Sim         | —      | `"pt"` (`pt`, `en`, `es`)       |
-| `cargo`       | Sim         | —      | `"Pesquisadora"`                |
-| `foto`        | Não         | —      | `"/imagens/equipe/foto.jpg"`    |
-| `contribuicao` | Não         | —      | `"Pesquisa em humanidades..."`  |
-| `redes`       | Não         | —      | Lista de links com `tipo/url/icone` |
+Use o padrão: `nome-do-membro.{lang}.mdx`
 
-## Adicionando um novo membro
-
-1. Crie arquivos MDX no padrão:
+Cada idioma tem seu próprio arquivo, com o mesmo slug base:
 
 ```text
-nome-do-membro.pt.mdx
-nome-do-membro.en.mdx
-nome-do-membro.es.mdx
+marcelo-mariano.pt.mdx
+marcelo-mariano.en.mdx
+marcelo-mariano.es.mdx
 ```
 
-2. Use este template:
+<Notice type="warning">
+  O slug base (parte antes do idioma) deve ser **igual** nos três arquivos. É assim que o site sabe que são versões do mesmo perfil.
+</Notice>
+
+## Tabela de campos
+
+| Campo         | Obrigatório | Tipo       | Exemplo                                |
+|---------------|-------------|------------|----------------------------------------|
+| `title`       | Sim         | `string`   | `"Marcelo Passini Mariano"`           |
+| `lang`        | Sim         | `string`   | `"pt"` (`pt`, `en`, `es`)             |
+| `cargo`       | Sim         | `string`   | `"Pesquisadora"`                      |
+| `foto`        | Nao         | `string`   | `"/imagens/equipe/foto.jpg"`          |
+| `contribuicao`| Nao         | `string`   | `"Pesquisa em humanidades digitais"` |
+| `redes`       | Nao         | `array`    | Ver estrutura abaixo                   |
+
+## Campo `redes` (redes sociais)
+
+O campo `redes` é uma lista onde cada item tem três propriedades:
+
+| Propriedade | O que e                          | Exemplo                                   |
+|-------------|----------------------------------|-------------------------------------------|
+| `tipo`      | Nome da rede                     | `"lattes"`, `"email"`, `"orcid"`         |
+| `url`       | Link do perfil                   | `"http://lattes.cnpq.br/123456"`         |
+| `icone`     | Caminho do icone SVG             | `"/icons/lattes_icon.svg"`               |
+
+Exemplo no frontmatter:
+
+```yaml
+redes:
+  - tipo: 'lattes'
+    url: 'http://lattes.cnpq.br/1234567890'
+    icone: '/icons/lattes_icon.svg'
+  - tipo: 'email'
+    url: 'mailto:nome@unesp.br'
+    icone: '/icons/email_icon.svg'
+```
+
+<Notice type="info">
+  Os icones ficam em `public/icons/`. Se precisar adicionar um icone novo, faca upload de um arquivo `.svg` nessa pasta.
+</Notice>
+
+## Exemplo completo preenchido
 
 ```mdx
 ---
-title: 'Nome do membro'
+title: 'Ana Beatriz Silva'
 lang: 'pt'
-foto: '/imagens/equipe/foto.jpg'
-cargo: 'Cargo do membro'
+foto: '/imagens/equipe/ana-silva.jpg'
+cargo: 'Pesquisadora'
+contribuicao: 'Pesquisa em políticas públicas e análise de dados'
 redes:
   - tipo: 'lattes'
-    url: 'http://lattes.cnpq.br/...'
-    icone: '/imagens/logos/lattes_icon.svg'
-contribuicao: 'Descrição opcional'
+    url: 'http://lattes.cnpq.br/1234567890'
+    icone: '/icons/lattes_icon.svg'
+  - tipo: 'email'
+    url: 'mailto:ana.silva@unesp.br'
+    icone: '/icons/email_icon.svg'
 ---
 
-# Biografia
+## Biografia
 
-Texto da biografia...
+Ana Beatriz Silva e doutora em Ciencia Politica pela UNESP. Atua no CPPS
+desde 2022, coordenando projetos de analise de dados abertos governamentais.
+
+Suas areas de interesse incluem:
+
+- Politicas publicas baseadas em evidencias
+- Transparencia e dados abertos
+- Metodos quantitativos aplicados as ciencias sociais
+
+## Publicacoes recentes
+
+- **Analise de indicadores sociais** (2025) — Estudo sobre indicadores
+  municipais no estado de Sao Paulo.
+- **Guia pratico de R para ciencias sociais** (2024) — Material didatico
+  para iniciantes.
 ```
 
-3. Atualize a listagem principal da equipe em `src/i18n/locales/pt.json`.
+## Como adicionar a foto
 
-## Dicas
+As fotos ficam em `public/imagens/equipe/`. Use nomes em minusculas e com hifens.
 
-- Mantenha o mesmo slug base para os três idiomas.
-- Prefira imagens em proporção parecida com as já usadas na equipe.
-- Se usar `redes`, preencha cada item com `tipo`, `url` e `icone`.
+**Para adicionar pelo GitHub:**
+
+1. Acesse `public/imagens/equipe/` no repositorio.
+2. Clique em **"Add file" → "Upload files"**.
+3. Arraste ou selecione a foto.
+4. Faca o commit no seu branch.
+
+**No frontmatter**, referencie assim:
+
+```yaml
+foto: '/imagens/equipe/ana-silva.jpg'
+```
+
+<Notice type="tip">
+  Use fotos quadradas ou na proporcao 3:4 (ex: 300x400 px). Prefira `.jpg` ou `.webp`. O campo `foto` e opcional — se omitido, o perfil e exibido sem imagem.
+</Notice>
+
+## Atualizando a listagem da equipe
+
+Alem de criar os arquivos de perfil, e necessario adicionar o membro na listagem do site.
+
+A listagem principal fica em `src/i18n/locales/pt.json` (e nos equivalentes `en.json` e `es.json`). Procure a secao da equipe e adicione o novo membro.
+
+## Adicionando um novo membro (passo a passo)
+
+<Steps>
+
+### Prepare a foto
+
+Redimensione para aproximadamente 300x400 px e salve como `.jpg`. Faca upload para `public/imagens/equipe/`.
+
+### Crie o arquivo em portugues
+
+Crie `src/content/membros/nome-do-membro.pt.mdx` com o frontmatter completo e a biografia.
+
+### Crie as versoes em outros idiomas
+
+Copie o arquivo e ajuste `lang`, `cargo` e o texto da biografia para cada idioma (`en`, `es`).
+
+### Atualize a listagem
+
+Adicione o membro em `src/i18n/locales/pt.json`, `en.json` e `es.json`.
+
+### Teste
+
+Rode `npm run build` para verificar que nao ha erros.
+
+</Steps>

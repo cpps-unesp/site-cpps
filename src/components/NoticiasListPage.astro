@@ -64,6 +64,7 @@ if (tag) {
             </p>
           )
         }
+        <nav id="news-pagination" class="mt-10 flex items-center justify-center gap-2" aria-label="Paginação de notícias"></nav>
       </div>
 
       <div>
@@ -71,4 +72,67 @@ if (tag) {
       </div>
     </div>
   </main>
+
+<script>
+  const ITEMS_PER_PAGE = 10;
+
+  function setupNewsPagination() {
+    const grid = document.getElementById('news-grid');
+    const paginationEl = document.getElementById('news-pagination');
+    if (!grid || !paginationEl) return;
+
+    const cards = Array.from(grid.querySelectorAll('article'));
+    const totalPages = Math.ceil(cards.length / ITEMS_PER_PAGE);
+
+    if (totalPages <= 1) {
+      paginationEl.style.display = 'none';
+      return;
+    }
+
+    let currentPage = 1;
+
+    function showPage(page: number) {
+      currentPage = page;
+      const start = (page - 1) * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+      cards.forEach((card, i) => {
+        (card as HTMLElement).style.display = i >= start && i < end ? '' : 'none';
+      });
+      renderPagination();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderPagination() {
+      paginationEl!.innerHTML = '';
+
+      const prev = document.createElement('button');
+      prev.textContent = '←';
+      prev.disabled = currentPage === 1;
+      prev.className = 'btn btn-sm btn-outline';
+      prev.addEventListener('click', () => showPage(currentPage - 1));
+      paginationEl!.appendChild(prev);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = String(i);
+        btn.className = `btn btn-sm ${i === currentPage ? 'btn-primary' : 'btn-outline'}`;
+        btn.addEventListener('click', () => showPage(i));
+        paginationEl!.appendChild(btn);
+      }
+
+      const next = document.createElement('button');
+      next.textContent = '→';
+      next.disabled = currentPage === totalPages;
+      next.className = 'btn btn-sm btn-outline';
+      next.addEventListener('click', () => showPage(currentPage + 1));
+      paginationEl!.appendChild(next);
+    }
+
+    showPage(1);
+  }
+
+  setupNewsPagination();
+  document.addEventListener('astro:after-swap', setupNewsPagination);
+</script>
+
 </BaseLayout>

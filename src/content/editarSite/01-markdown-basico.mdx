@@ -1,0 +1,356 @@
+---
+title: Markdown e MDX
+description: Guia completo de sintaxe Markdown, MDX e YAML frontmatter para quem está começando.
+custom_slug:
+  pt: markdown-basico
+  en: markdown-basics
+  es: markdown-basico
+sidebar_order: 1
+sidebar_label: Markdown e MDX
+---
+
+Este guia ensina a sintaxe básica que você vai usar para escrever qualquer conteúdo no site: notícias, publicações, páginas de atividades, perfis da equipe, etc.
+
+## O que é Markdown?
+
+Markdown é uma forma simples de formatar texto usando caracteres comuns (como `#`, `*`, `-`). Você escreve em texto puro e o site transforma automaticamente em HTML bonito.
+
+Por exemplo, em vez de escrever código HTML assim:
+
+```html
+<h2>Meu título</h2>
+<p>Texto em <strong>negrito</strong> e <em>itálico</em>.</p>
+```
+
+Você escreve assim em Markdown:
+
+```markdown
+## Meu título
+
+Texto em **negrito** e _itálico_.
+```
+
+O resultado visual é o mesmo — mas o Markdown é muito mais fácil de ler e escrever.
+
+## Diferença entre `.md` e `.mdx`
+
+| Extensão | O que é | Quando usar |
+|----------|---------|-------------|
+| `.md` | Markdown puro | Textos simples sem componentes especiais |
+| `.mdx` | Markdown + componentes | Quando precisar de caixas de aviso (`<Notice>`), cards, etc. |
+
+Na prática, **use `.mdx` sempre**. Ele aceita tudo que o `.md` aceita e ainda permite usar componentes visuais extras. Todos os guias do site usam `.mdx`.
+
+<Notice type="tip">
+  Se você não pretende usar componentes especiais, pode usar `.md` sem problemas. Mas `.mdx` não dá erro mesmo sem componentes, então é a escolha mais segura.
+</Notice>
+
+---
+
+## O que é YAML frontmatter?
+
+Todo arquivo de conteúdo começa com um bloco chamado **frontmatter**. Ele fica entre três hífens (`---`) e define informações sobre a página (título, data, autor, etc.).
+
+```yaml
+---
+title: 'Minha página'
+date: 2026-04-15
+lang: 'pt'
+---
+```
+
+### Regras do frontmatter
+
+1. **Sempre** começa e termina com `---` (três hífens, sozinhos na linha).
+2. Cada campo segue o formato `campo: valor`.
+3. Textos devem ficar entre aspas simples: `title: 'Meu título'`.
+4. Datas ficam sem aspas: `date: 2026-04-15`.
+5. Listas usam colchetes: `tags: ['Tag 1', 'Tag 2']`.
+6. Booleanos (verdadeiro/falso) ficam sem aspas: `featured: true`.
+
+### Exemplo anotado
+
+```yaml
+---
+title: 'Workshop de Análise de Dados'   # Texto entre aspas
+date: 2026-04-15                         # Data sem aspas (formato YYYY-MM-DD)
+authors: ['Ana Silva', 'Bruno Costa']    # Lista entre colchetes
+tags: ['Dados', 'R']                     # Outra lista
+lang: 'pt'                               # Idioma: pt, en ou es
+featured: false                          # true ou false, sem aspas
+---
+```
+
+<Notice type="warning">
+  Se faltar um campo obrigatório ou o formato estiver errado (ex: esquecer os `---`), o site não vai compilar. Veja o guia de [Resolução de Problemas](./troubleshooting) para entender os erros mais comuns.
+</Notice>
+
+---
+
+## Sintaxe Markdown
+
+### Títulos
+
+Use `#` para criar títulos. Quanto mais `#`, menor o nível do título.
+
+```markdown
+# Título nível 1 (grande)
+## Título nível 2
+### Título nível 3
+#### Título nível 4
+```
+
+<Notice type="info">
+  Nas páginas do site, o título principal (`#`) geralmente vem do campo `title` do frontmatter. No corpo do texto, comece a partir de `##`.
+</Notice>
+
+### Parágrafos
+
+Basta escrever o texto normalmente. Para criar um novo parágrafo, deixe uma **linha em branco** entre eles.
+
+```markdown
+Este é o primeiro parágrafo.
+
+Este é o segundo parágrafo.
+```
+
+Se você não deixar a linha em branco, o texto continua no mesmo parágrafo:
+
+```markdown
+Esta linha
+e esta linha
+aparecem juntas no mesmo parágrafo.
+```
+
+### Negrito e itálico
+
+```markdown
+**texto em negrito**
+_texto em itálico_
+**_negrito e itálico juntos_**
+```
+
+Resultado: **texto em negrito**, _texto em itálico_, **_negrito e itálico juntos_**.
+
+### Listas
+
+**Lista com marcadores (não ordenada):**
+
+```markdown
+- Primeiro item
+- Segundo item
+  - Sub-item (use 2 espaços antes do `-`)
+  - Outro sub-item
+- Terceiro item
+```
+
+Resultado:
+
+- Primeiro item
+- Segundo item
+  - Sub-item
+  - Outro sub-item
+- Terceiro item
+
+**Lista numerada (ordenada):**
+
+```markdown
+1. Primeiro passo
+2. Segundo passo
+3. Terceiro passo
+```
+
+Resultado:
+
+1. Primeiro passo
+2. Segundo passo
+3. Terceiro passo
+
+### Links
+
+```markdown
+[Texto do link](https://exemplo.com)
+```
+
+Resultado: [Texto do link](https://exemplo.com)
+
+Para links internos do site, use caminhos relativos:
+
+```markdown
+[Veja o guia de Notícias](./noticias)
+```
+
+### Imagens
+
+```markdown
+![Descrição da imagem](/imagens/noticias/minha-foto.jpg)
+```
+
+A descrição entre `[ ]` é o texto alternativo (importante para acessibilidade). O caminho entre `( )` aponta para o arquivo da imagem.
+
+<Notice type="tip">
+  Imagens do site ficam em `public/imagens/`. O caminho no Markdown começa sem `public` — use `/imagens/...` direto.
+</Notice>
+
+### Código
+
+**Código inline** (dentro do texto): use crases simples.
+
+```markdown
+Use o comando `npm run build` para compilar.
+```
+
+Resultado: Use o comando `npm run build` para compilar.
+
+**Bloco de código**: use três crases, opcionalmente com a linguagem.
+
+````markdown
+```javascript
+const nome = 'CPPS';
+console.log(nome);
+```
+````
+
+Resultado:
+
+```javascript
+const nome = 'CPPS';
+console.log(nome);
+```
+
+Linguagens comuns: `javascript`, `python`, `bash`, `yaml`, `markdown`, `html`, `css`.
+
+### Tabelas
+
+```markdown
+| Coluna 1    | Coluna 2     | Coluna 3       |
+|-------------|--------------|----------------|
+| Dado A      | Dado B       | Dado C         |
+| Outro dado  | Mais um      | Último         |
+```
+
+Resultado:
+
+| Coluna 1    | Coluna 2     | Coluna 3       |
+|-------------|--------------|----------------|
+| Dado A      | Dado B       | Dado C         |
+| Outro dado  | Mais um      | Último         |
+
+<Notice type="info">
+  O alinhamento dos `|` não precisa ser perfeito — o importante é que cada linha tenha o mesmo número de colunas.
+</Notice>
+
+### Citações (blockquote)
+
+```markdown
+> Esta é uma citação.
+> Pode ter várias linhas.
+```
+
+Resultado:
+
+> Esta é uma citação.
+> Pode ter várias linhas.
+
+### Linha horizontal
+
+```markdown
+---
+```
+
+Cria uma linha divisória (como a que separa as seções deste guia). Cuidado: no topo do arquivo, `---` delimita o frontmatter. No meio do texto, vira uma linha horizontal.
+
+---
+
+## Componentes MDX
+
+Componentes são blocos visuais especiais que só funcionam em arquivos `.mdx`. Eles usam a mesma sintaxe de tags HTML, mas com nomes específicos.
+
+Para ver todos os componentes disponíveis com exemplos visuais, consulte o guia [Escrever](./escrever#componentes-mdx).
+
+Resumo rápido:
+
+| Componente | Para que serve | Exemplo |
+|------------|---------------|---------|
+| `<Notice>` | Caixas de aviso (info, dica, alerta, perigo) | `<Notice type="tip">Dica aqui</Notice>` |
+| `<Card>` | Card com título e ícone | `<Card title="Título" icon="📁">Texto</Card>` |
+| `<CardGrid>` | Grade de cards lado a lado | `<CardGrid columns={2}>...</CardGrid>` |
+| `<LinkCard>` | Card clicável com link | `<LinkCard title="Título" href="/url" />` |
+| `<Steps>` | Passo a passo numerado | Envolva títulos `###` com `<Steps>...</Steps>` |
+
+### Exemplo de componente Notice
+
+```mdx
+<Notice type="warning">
+  Atenção: este campo é obrigatório!
+</Notice>
+```
+
+Resultado:
+
+<Notice type="warning">
+  Atenção: este campo é obrigatório!
+</Notice>
+
+---
+
+## Estrutura completa de um arquivo
+
+Juntando tudo — frontmatter, Markdown e componentes — um arquivo `.mdx` típico fica assim:
+
+```mdx
+---
+title: 'Workshop de Dados Abertos'
+date: 2026-04-20
+resumo: 'Oficina prática sobre uso de dados abertos governamentais.'
+image: '/imagens/noticias/2026-04-20-workshop-dados.jpg'
+lang: 'pt'
+tags: ['Dados', 'Oficina']
+author: 'Equipe CPPS'
+featured: false
+---
+
+O Centro de Estudos de Políticas Públicas promoveu uma oficina sobre
+dados abertos no dia 20 de abril.
+
+## O que foi discutido
+
+Os participantes aprenderam a:
+
+- Acessar portais de dados abertos
+- Filtrar e baixar datasets
+- Realizar análises básicas em **R** e **Python**
+
+## Materiais
+
+| Material | Link |
+|----------|------|
+| Slides | [Baixar PDF](/arquivos/workshop-slides.pdf) |
+| Dataset | [Portal de dados](https://dados.gov.br) |
+
+> "Foi uma experiência muito produtiva para todos os envolvidos."
+> — Participante da oficina
+
+<Notice type="tip">
+  O próximo workshop será em maio. Fique atento às novidades!
+</Notice>
+```
+
+---
+
+## Resumo rápido
+
+| O que fazer | Sintaxe |
+|-------------|---------|
+| Título | `## Texto` |
+| Negrito | `**texto**` |
+| Itálico | `_texto_` |
+| Link | `[texto](url)` |
+| Imagem | `![descrição](caminho)` |
+| Lista | `- item` |
+| Lista numerada | `1. item` |
+| Código inline | `` `código` `` |
+| Bloco de código | ` ```linguagem ... ``` ` |
+| Tabela | `\| col1 \| col2 \|` |
+| Citação | `> texto` |
+| Aviso MDX | `<Notice type="tip">texto</Notice>` |

@@ -1,0 +1,194 @@
+---
+title: Resolucao de Problemas
+description: Erros comuns ao editar o site e como resolver cada um deles.
+custom_slug:
+  pt: troubleshooting
+  en: troubleshooting
+  es: solucion-de-problemas
+sidebar_order: 10
+sidebar_label: Problemas comuns
+---
+
+Este guia reune os erros mais frequentes ao editar conteudo do site e como resolver cada um.
+
+---
+
+## Erro de build: campo obrigatório faltando
+
+**Sintoma:** O build falha com uma mensagem parecida com:
+
+```
+[ERROR] noticias → "title" Required
+```
+
+**Causa:** Falta um campo obrigatório no frontmatter do arquivo.
+
+**Solucao:**
+
+1. Abra o arquivo indicado no erro.
+2. Verifique se todos os campos obrigatorios estao presentes. Consulte a tabela de campos do guia correspondente:
+   - [Noticias](./noticias#tabela-de-campos)
+   - [Publicacoes](./publicacoes#tabela-de-campos)
+   - [Membros](./membros-equipe#tabela-de-campos)
+3. Adicione o campo que esta faltando e tente novamente.
+
+---
+
+## Erro de build: tipo de publicacao invalido
+
+**Sintoma:**
+
+```
+[ERROR] publicacoes → Invalid enum value. Expected 'material-didatico' | 'tutorial'
+```
+
+**Causa:** O campo `type` tem um valor que nao e aceito (ex: `artigo`, `Artigo`, `analise`).
+
+**Solucao:** Use apenas um dos valores permitidos:
+
+- `material-didatico`
+- `tutorial`
+
+<Notice type="warning">
+  O valor e sensivel a maiusculas/minusculas. `Material-Didatico` nao funciona — use `material-didatico` (tudo em minusculas).
+</Notice>
+
+---
+
+## Erro de build: YAML mal formatado
+
+**Sintoma:**
+
+```
+[ERROR] YAMLException: bad indentation of a mapping entry
+```
+
+**Causa:** O frontmatter tem problemas de formatacao — geralmente indentacao errada, aspas faltando ou `---` ausente.
+
+**Solucao:** Verifique o frontmatter do arquivo:
+
+1. O bloco comeca e termina com `---` (tres hifens sozinhos na linha).
+2. Textos estao entre aspas simples: `title: 'Meu titulo'`.
+3. Nao ha tabulacoes (use espacos).
+4. Listas usam a indentacao correta:
+
+```yaml
+# Correto
+tags: ['Tag 1', 'Tag 2']
+
+# Correto (formato longo)
+tags:
+  - 'Tag 1'
+  - 'Tag 2'
+
+# Errado (faltam espacos)
+tags:
+-'Tag 1'
+-'Tag 2'
+```
+
+---
+
+## Imagem nao aparece
+
+**Sintoma:** O card ou a pagina mostra um espaco vazio onde deveria estar a imagem, ou aparece um icone de imagem quebrada.
+
+**Causas comuns e solucoes:**
+
+| Causa | Como verificar | Solucao |
+|-------|---------------|---------|
+| Caminho errado | Compare o caminho no frontmatter com o arquivo real | Corrija o caminho (ex: `/imagens/noticias/foto.jpg`) |
+| Arquivo nao existe | Procure o arquivo em `public/imagens/` | Faca upload da imagem na pasta correta |
+| Nome com espaco ou acento | Veja o nome do arquivo | Renomeie para minusculas com hifens (ex: `minha-foto.jpg`) |
+| Extensao errada | Verifique `.jpg` vs `.jpeg` vs `.png` | Use a extensao exata do arquivo |
+
+<Notice type="tip">
+  Lembre-se: o caminho no frontmatter **nao** inclui `public/`. Se o arquivo esta em `public/imagens/noticias/foto.jpg`, use `/imagens/noticias/foto.jpg`.
+</Notice>
+
+---
+
+## Pagina nao aparece no menu lateral
+
+**Sintoma:** Voce criou um arquivo mas ele nao aparece na sidebar (menu lateral).
+
+**Causas comuns:**
+
+1. **Arquivo na pasta errada** — Verifique se esta na colecao correta (`src/content/atividades/`, `src/content/editarSite/`, etc.).
+2. **Falta o campo `title`** — Sem titulo, a pagina nao tem nome para exibir no menu.
+3. **Cache do build** — Pare o servidor (`Ctrl+C`) e rode `npm run dev` novamente.
+
+Para controlar a posicao no menu, use:
+
+```yaml
+sidebar_order: 5          # Menor número = aparece antes
+sidebar_label: 'Nome curto' # Nome exibido no menu (se diferente do title)
+sidebar_section: 'Operação'  # Agrupa em uma seção do menu
+```
+
+---
+
+## CI falhou no Pull Request
+
+**Sintoma:** O check automatico do GitHub mostra um X vermelho no seu PR.
+
+**Como investigar:**
+
+1. No PR, clique em **"Details"** ao lado do check que falhou.
+2. Procure a linha com `[ERROR]` no log — ela indica o arquivo e o problema.
+3. Corrija o erro no seu branch e faca um novo commit.
+
+**Erros mais comuns no CI:**
+
+- Campo obrigatorio faltando (veja acima)
+- Tipo de publicacao invalido (veja acima)
+- YAML mal formatado (veja acima)
+- Link interno quebrado (o arquivo de destino nao existe)
+
+<Notice type="info">
+  O CI roda o mesmo `npm run build` que voce pode rodar no Codespaces. Se funcionar localmente, vai funcionar no CI.
+</Notice>
+
+---
+
+## Erro ao usar componente MDX em arquivo `.md`
+
+**Sintoma:** O componente aparece como texto puro na pagina (ex: voce ve `<Notice type="tip">` em vez de uma caixa de aviso).
+
+**Causa:** Componentes MDX so funcionam em arquivos `.mdx`, nao em `.md`.
+
+**Solucao:** Renomeie o arquivo de `.md` para `.mdx`:
+
+```text
+# Antes
+minha-pagina.md
+
+# Depois
+minha-pagina.mdx
+```
+
+---
+
+## Caracteres estranhos no texto
+
+**Sintoma:** O texto mostra caracteres como `Ã£`, `Ã©`, `Ã§` em vez de acentos.
+
+**Causa:** O arquivo nao esta salvo em UTF-8.
+
+**Solucao:**
+
+- **No VS Code:** Clique no canto inferior direito onde mostra a codificacao (ex: "ISO-8859-1") e troque para **UTF-8**.
+- **No GitHub:** O editor web ja usa UTF-8 por padrao — este erro geralmente nao acontece ao editar pelo navegador.
+
+---
+
+## Resumo rapido de solucoes
+
+| Problema | Primeira coisa a verificar |
+|----------|---------------------------|
+| Build falhou | Leia a mensagem de erro — ela indica o arquivo e o campo |
+| Imagem nao aparece | Confira o caminho no frontmatter e se o arquivo existe em `public/` |
+| Pagina fora do menu | Verifique pasta e campo `title` |
+| CI vermelho | Clique em "Details" e procure `[ERROR]` |
+| Componente nao funciona | O arquivo e `.mdx` (nao `.md`)? |
+| Acentos quebrados | Salve o arquivo como UTF-8 |

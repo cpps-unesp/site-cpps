@@ -142,35 +142,105 @@ const getTypeLabel = (type: string) => typeLabels[type] || formatPublicationType
     <i class="fa-solid fa-file-circle-xmark text-base-content/20 mb-4 block text-5xl"></i>
     <p class="text-base-content/50 text-xl font-bold italic">{locale.publicacoes.noResults}</p>
   </div>
+
+  <!-- Paginação -->
+  <nav id="pub-pagination" class="mt-10 flex items-center justify-center gap-2" aria-label="Paginação de publicações"></nav>
 </section>
 
 <script>
+  const ITEMS_PER_PAGE = 10;
+
   function setupFilters() {
     const searchInput = document.getElementById('search-input') as HTMLInputElement;
     const typeFilter = document.getElementById('type-filter') as HTMLSelectElement;
     const authorInput = document.getElementById('author-input') as HTMLInputElement;
-    const cards = document.querySelectorAll('.publication-card');
+    const cards = Array.from(document.querySelectorAll('.publication-card')) as HTMLElement[];
     const featuredSection = document.getElementById('featured-section');
     const noResults = document.getElementById('no-results');
+    const paginationEl = document.getElementById('pub-pagination');
 
     const urlParams = new URLSearchParams(window.location.search);
     const tagParam = urlParams.get('tag');
     const authorParam = urlParams.get('author');
     const typeParam = urlParams.get('type');
 
-    if (tagParam && searchInput) {
-      searchInput.value = tagParam;
-    }
-    if (authorParam && authorInput) {
-      authorInput.value = authorParam;
-    }
+    if (tagParam && searchInput) searchInput.value = tagParam;
+    if (authorParam && authorInput) authorInput.value = authorParam;
     if (typeParam && typeFilter) {
-      const optionExists = Array.from(typeFilter.options).some(
-        (option) => option.value === typeParam
-      );
-      if (optionExists) {
-        typeFilter.value = typeParam;
+      const optionExists = Array.from(typeFilter.options).some((o) => o.value === typeParam);
+      if (optionExists) typeFilter.value = typeParam;
+    }
+
+    let currentPage = 1;
+
+    function getMatchingCards(): HTMLElement[] {
+      const searchValue = searchInput.value.toLowerCase();
+      const typeValue = typeFilter.value;
+      const authorValue = authorInput.value.toLowerCase();
+
+      return cards.filter((card) => {
+        const title = card.dataset.title || '';
+        const type = card.dataset.type || '';
+        const authors = card.dataset.authors || '';
+        return (
+          title.includes(searchValue) &&
+          (typeValue === 'all' || type === typeValue) &&
+          authors.includes(authorValue)
+        );
+      });
+    }
+
+    function renderPagination(matching: HTMLElement[], total: number) {
+      if (!paginationEl) return;
+      const totalPages = Math.ceil(total / ITEMS_PER_PAGE);
+
+      if (totalPages <= 1) {
+        paginationEl.style.display = 'none';
+        return;
       }
+
+      paginationEl.style.display = 'flex';
+      paginationEl.innerHTML = '';
+
+      const prev = document.createElement('button');
+      prev.textContent = '←';
+      prev.disabled = currentPage === 1;
+      prev.className = 'btn btn-sm btn-outline';
+      prev.addEventListener('click', () => {
+        currentPage--;
+        applyPage(matching);
+      });
+      paginationEl.appendChild(prev);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.textContent = String(i);
+        btn.className = `btn btn-sm ${i === currentPage ? 'btn-primary' : 'btn-outline'}`;
+        btn.addEventListener('click', () => {
+          currentPage = i;
+          applyPage(matching);
+        });
+        paginationEl.appendChild(btn);
+      }
+
+      const next = document.createElement('button');
+      next.textContent = '→';
+      next.disabled = currentPage === Math.ceil(total / ITEMS_PER_PAGE);
+      next.className = 'btn btn-sm btn-outline';
+      next.addEventListener('click', () => {
+        currentPage++;
+        applyPage(matching);
+      });
+      paginationEl.appendChild(next);
+    }
+
+    function applyPage(matching: HTMLElement[]) {
+      const start = (currentPage - 1) * ITEMS_PER_PAGE;
+      const end = start + ITEMS_PER_PAGE;
+      cards.forEach((card) => (card.style.display = 'none'));
+      matching.slice(start, end).forEach((card) => (card.style.display = 'flex'));
+      renderPagination(matching, matching.length);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function filter() {
@@ -178,25 +248,8 @@ const getTypeLabel = (type: string) => typeLabels[type] || formatPublicationType
       const typeValue = typeFilter.value;
       const authorValue = authorInput.value.toLowerCase();
 
-      let visibleCount = 0;
-
-      cards.forEach((card) => {
-        const element = card as HTMLElement;
-        const title = element.dataset.title || '';
-        const type = element.dataset.type || '';
-        const authors = element.dataset.authors || '';
-
-        const matchesSearch = title.includes(searchValue);
-        const matchesType = typeValue === 'all' || type === typeValue;
-        const matchesAuthor = authors.includes(authorValue);
-
-        if (matchesSearch && matchesType && matchesAuthor) {
-          element.style.display = 'flex';
-          visibleCount++;
-        } else {
-          element.style.display = 'none';
-        }
-      });
+      const matching = getMatchingCards();
+      currentPage = 1;
 
       if (searchValue || typeValue !== 'all' || authorValue) {
         if (featuredSection) featuredSection.style.display = 'none';
@@ -205,21 +258,17 @@ const getTypeLabel = (type: string) => typeLabels[type] || formatPublicationType
       }
 
       if (noResults) {
-        if (visibleCount === 0) {
-          noResults.classList.remove('hidden');
-        } else {
-          noResults.classList.add('hidden');
-        }
+        noResults.classList.toggle('hidden', matching.length > 0);
       }
+
+      applyPage(matching);
     }
 
     searchInput?.addEventListener('input', filter);
     typeFilter?.addEventListener('change', filter);
     authorInput?.addEventListener('input', filter);
 
-    if (tagParam || authorParam || typeParam) {
-      filter();
-    }
+    filter();
   }
 
   setupFilters();

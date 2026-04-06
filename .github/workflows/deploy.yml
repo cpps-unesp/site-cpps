@@ -1,0 +1,109 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: npm
+
+      - name: Cache build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            .astro
+            dist
+          key: build-${{ hashFiles('src/**/*', 'public/**/*', 'astro.config.mjs', 'package-lock.json') }}
+          restore-keys: |
+            build-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run CI (Typecheck, Lint, Build)
+        run: npm run ci
+
+  deploy:
+    needs: ci
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: npm
+
+      - name: Cache build artifacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            .astro
+            dist
+          key: build-${{ hashFiles('src/**/*', 'public/**/*', 'astro.config.mjs', 'package-lock.json') }}
+          restore-keys: |
+            build-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy produção (main)
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx wrangler pages deploy dist \
+            --project-name site-cpps \
+            --branch main \
+            --commit-dirty=true
+
+      - name: Deploy preview (PR)
+        if: github.event_name == 'pull_request'
+        id: preview
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          SAFE_BRANCH=$(echo "${{ github.head_ref }}" | tr '[:upper:]' '[:lower:]' | tr '_/' '-' | cut -c1-28)
+          OUTPUT=$(npx wrangler pages deploy dist \
+            --project-name site-cpps \
+            --branch "$SAFE_BRANCH" \
+            --commit-dirty=true 2>&1)
+          echo "$OUTPUT"
+          URL=$(echo "$OUTPUT" | grep -oP 'https://[^\s]+\.pages\.dev[^\s]*' | head -1)
+          echo "url=$URL" >> "$GITHUB_OUTPUT"
+
+      - name: Comentar URL de preview no PR
+        if: github.event_name == 'pull_request' && steps.preview.outputs.url != ''
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const url = '${{ steps.preview.outputs.url }}';
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `### Preview do site\n\n✅ Deploy concluído!\n\n🔗 **URL de preview:** ${url}\n\n> Branch: \`${{ github.head_ref }}\``
+            });

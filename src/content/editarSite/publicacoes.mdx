@@ -12,6 +12,16 @@ Este guia explica como cadastrar e manter publicações seguindo os campos valid
 
 As publicações ficam em `src/content/publicacoes/`.
 
+## Nome do arquivo
+
+Use o padrão: `YYYY-MM-DD-{slug}.mdx`
+
+O idioma vai no frontmatter (`lang`), não no nome do arquivo.
+
+Exemplos:
+- `2026-04-15-gestao-de-dados.mdx`
+- `2026-04-15-introducao-ao-r.mdx`
+
 ## Estrutura de arquivos
 
 As publicações podem ser salvas diretamente em `src/content/publicacoes/`.
@@ -25,7 +35,7 @@ Use o campo `lang` no frontmatter para definir o idioma (`pt`, `en`, `es`).
 
 ## Frontmatter
 
-Cada arquivo deve conter:
+### Exemplo mínimo (só frontmatter)
 
 ```markdown
 ---
@@ -33,28 +43,63 @@ title: 'Título da publicação'
 date: 2024-02-15
 authors: ['Autor 1', 'Autor 2']
 summary: 'Resumo breve do trabalho.'
-tags: ['Democracia', 'Instituições']
-type: 'artigo'
+type: 'material-didatico'
 lang: 'pt'
-image: '/imagens/campus/entrada-unesp-franca.jpg'
-featured: true
-pdf_url: 'https://exemplo.com/artigo.pdf'
 ---
 ```
 
+### Exemplo completo (frontmatter + corpo)
+
+```mdx
+---
+title: 'Introdução ao R para Ciências Sociais'
+date: 2026-03-10
+authors: ['Ana Silva', 'Bruno Costa']
+summary: 'Material didático para primeiros passos com R aplicado a dados sociais.'
+tags: ['R', 'Estatística', 'Dados']
+type: 'material-didatico'
+lang: 'pt'
+image: '/imagens/publicacoes/2026-03-10-intro-r.jpg'
+featured: true
+pdf_url: '/arquivos/intro-r-ciencias-sociais.pdf'
+---
+
+Este material foi desenvolvido para auxiliar estudantes de ciências
+sociais que estão tendo o primeiro contato com a linguagem R.
+
+## Conteúdo abordado
+
+1. Instalação do R e RStudio
+2. Importação de dados (CSV, Excel)
+3. Manipulação com **dplyr**
+4. Visualização com **ggplot2**
+
+## Pré-requisitos
+
+- Computador com acesso à internet
+- Nenhum conhecimento prévio de programação é necessário
+
+## Como usar este material
+
+Baixe o PDF pelo link acima ou siga os capítulos diretamente nesta
+página. Cada seção inclui exercícios práticos com dados reais.
+
+> O material é atualizado semestralmente pela equipe do CPPS.
+```
+
+<Notice type="info">
+  Tudo que vem **abaixo** do segundo `---` é o corpo da publicação. Use Markdown normal: títulos (`##`), listas, links, negrito, etc. Veja o guia [Markdown e MDX](./markdown-basico) para referência completa.
+</Notice>
+
 ## Tipos aceitos (importante)
 
-O campo `type` é estrito. Use apenas um destes valores exatos:
+O campo `type` é estrito. Use apenas um destes valores:
 
-- `artigo`: artigos científicos ou acadêmicos.
-- `analise`: análises de conjuntura ou política.
-- `material-didatico`: apostilas, guias e tutoriais.
-- `texto-curto`: notas ou comunicados rápidos.
-- `texto-longo`: ensaios ou capítulos de livros.
+- `material-didatico`: apostilas, guias de estudo e materiais de apoio.
 - `tutorial`: conteúdos práticos passo a passo.
 
 <Notice type="warning">
-  Se você usar um tipo diferente destes (ex: "Artigo"), o site apresentará erro ao construir.
+  Se você usar qualquer outro valor (ex: `artigo`, `analise`), o site apresentará erro ao construir.
 </Notice>
 
 ## Como manter os tipos ao longo do tempo
@@ -91,7 +136,7 @@ Fluxo recomendado quando quiser adicionar, renomear ou remover tipos:
 | `date`     | Sim         | —      | `2024-02-15`                                         |
 | `authors`  | Sim         | —      | `['Autor 1', 'Autor 2']`                             |
 | `summary`  | Sim         | —      | `"Resumo breve do trabalho"`                        |
-| `type`     | Sim         | —      | `"artigo"`                                          |
+| `type`     | Sim         | —      | `"material-didatico"` ou `"tutorial"`               |
 | `lang`     | Sim         | —      | `"pt"`, `"en"`, `"es"`                            |
 | `tags`     | Não         | `[]`   | `['Democracia', 'Instituições']`                     |
 | `image`    | Não         | —      | `"/imagens/campus/entrada-unesp-franca.jpg"`        |
@@ -101,3 +146,23 @@ Fluxo recomendado quando quiser adicionar, renomear ou remover tipos:
 - `authors` deve ser uma lista de nomes entre colchetes.
 - Se não houver `image`, o card é exibido sem foto.
 - Use `featured: true` apenas em publicações que devem ganhar destaque.
+
+## Como adicionar imagens
+
+As imagens das publicações ficam em `public/imagens/publicacoes/` (crie a pasta se ainda não existir). Use nomes em minúsculas e com hífens.
+
+**Para adicionar uma imagem pelo GitHub:**
+
+1. Acesse `public/imagens/publicacoes/` no repositório (ou crie a pasta fazendo upload).
+2. Clique em **"Add file" → "Upload files"**.
+3. Faça o commit no seu branch.
+
+**No frontmatter**, referencie assim:
+
+```yaml
+image: '/imagens/publicacoes/2026-04-20-gestao-dados.jpg'
+```
+
+<Notice type="tip">
+  Use imagens na proporção 16:9 (ex: 1280×720 px). Prefira `.jpg` ou `.webp`. O campo `image` é opcional — se omitido, o card é exibido sem imagem.
+</Notice>
