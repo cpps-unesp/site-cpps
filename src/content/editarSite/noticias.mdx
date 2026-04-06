@@ -12,26 +12,71 @@ Este guia explica como criar, editar e publicar notícias mantendo consistência
 
 As notícias ficam em `src/content/noticias/`.
 
+## Nome do arquivo
+
+Use o padrão: `YYYY-MM-DD-{lang}-{slug}.mdx`
+
+Exemplos:
+- `2026-04-15-pt-workshop-dados.mdx`
+- `2026-04-15-en-data-workshop.mdx`
+
+O slug da URL é gerado automaticamente a partir da data e do título — não precisa coincidir exatamente com o nome do arquivo.
+
 ## Como criar uma nova notícia
 
 1. Crie um arquivo `.md` ou `.mdx` com nome curto e descritivo.
 2. Preencha o frontmatter.
 3. Escreva o conteúdo em Markdown abaixo do frontmatter.
 
-Exemplo:
+### Exemplo mínimo (só frontmatter)
 
 ```markdown
 ---
 title: 'Título da notícia'
 date: 2024-03-20
 resumo: 'Uma breve descrição para listagem.'
-tags: ['Categoria 1', 'Categoria 2']
 image: '/imagens/noticias/sua-imagem.jpg'
 lang: 'pt'
-author: 'Nome do autor'
-featured: false
 ---
 ```
+
+### Exemplo completo (frontmatter + corpo)
+
+```mdx
+---
+title: 'Oficina de Dados Abertos'
+date: 2026-04-20
+resumo: 'O CPPS realizou uma oficina prática sobre uso de dados governamentais.'
+tags: ['Dados', 'Oficina']
+image: '/imagens/noticias/2026-04-20-oficina-dados.jpg'
+lang: 'pt'
+author: 'Equipe CPPS'
+featured: false
+---
+
+O Centro de Estudos de Políticas Públicas promoveu no dia 20 de abril
+uma oficina sobre dados abertos para alunos de graduação e pós-graduação.
+
+## O que foi discutido
+
+Os participantes aprenderam a:
+
+- Acessar o [Portal de Dados Abertos](https://dados.gov.br)
+- Filtrar e baixar conjuntos de dados
+- Realizar análises básicas em **R** e **Python**
+
+## Próximos passos
+
+A próxima edição está prevista para maio. Interessados podem se
+inscrever pelo formulário da página de [atendimento](/pt/atendimento).
+
+> "Foi uma experiência muito produtiva para todos os envolvidos."
+> — Participante da oficina
+```
+
+<Notice type="info">
+  Tudo que vem **abaixo** do segundo `---` é o corpo da notícia. Use a sintaxe Markdown normal: títulos (`##`), listas, links, negrito, etc. Veja o guia [Markdown e MDX](./markdown-basico) para referência completa.
+</Notice>
 
 ## Tabela de campos
 
@@ -47,6 +92,27 @@ featured: false
 | `featured` | Não         | `false` | `true` ou `false`                     |
 
 - As imagens devem estar em `public/imagens/noticias/`.
+
+## Como adicionar imagens
+
+As imagens da notícia ficam na pasta `public/imagens/noticias/`. Use nomes de arquivo em minúsculas e com hífens (sem espaços ou acentos).
+
+**Para adicionar uma imagem pelo GitHub:**
+
+1. Acesse `public/imagens/noticias/` no repositório.
+2. Clique em **"Add file" → "Upload files"**.
+3. Arraste ou selecione a imagem do seu computador.
+4. Faça o commit no seu branch.
+
+**No frontmatter**, referencie a imagem assim:
+
+```yaml
+image: '/imagens/noticias/2026-04-20-oficina-dados.jpg'
+```
+
+<Notice type="tip">
+  Use imagens na proporção 16:9 (ex: 1280×720 px) para melhor exibição nos cards e no cabeçalho da notícia. Prefira arquivos `.jpg` ou `.webp` para menor tamanho.
+</Notice>
 
 ## Idiomas
 

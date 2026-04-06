@@ -1,0 +1,126 @@
+---
+title: Pré-visualizar alterações
+description: Como criar um branch, editar conteúdo e ver uma prévia do site antes de publicar.
+custom_slug:
+  pt: previsualizar-alteracoes
+  en: preview-changes
+  es: previsualizar-cambios
+sidebar_order: 4
+sidebar_label: Pré-visualizar alterações
+---
+
+Este guia explica como propor alterações ao site sem afetar a versão em produção, e como ver uma prévia do resultado antes que o conteúdo seja publicado.
+
+## Como funciona
+
+Quando você abre um Pull Request (PR) no GitHub, o sistema faz automaticamente um deploy de preview — uma cópia temporária do site com as suas alterações. Um bot posta o link no PR para que outra pessoa possa revisar antes de aprovar o merge.
+
+<Notice type="info">
+  Você não precisa instalar nada. Todo o processo pode ser feito pelo navegador — seja pelo editor do GitHub ou pelo Codespaces.
+</Notice>
+
+## Opções de editor
+
+### Editor simples do GitHub
+
+Ideal para criar ou editar um ou dois arquivos. Basta clicar no ícone de lápis (✏️) diretamente no arquivo.
+
+### GitHub Codespaces (recomendado para edições maiores)
+
+O Codespaces abre um VS Code completo no navegador, com o repositório já clonado. Permite editar vários arquivos ao mesmo tempo, ver a estrutura de pastas e rodar o servidor local para ver o site em tempo real.
+
+**Como abrir:**
+
+1. No repositório, clique em **"Code" → aba "Codespaces" → "Create codespace on main"** (ou no seu branch).
+2. Aguarde o ambiente carregar (1-2 minutos na primeira vez).
+3. No terminal integrado, rode:
+   ```
+   npm install
+   npm run dev
+   ```
+4. O VS Code abrirá um aviso para abrir o servidor no navegador — clique em **"Open in Browser"**.
+5. Você verá o site rodando localmente com as suas alterações em tempo real, lado a lado com o editor.
+
+## Passo a passo
+
+### 1. Criar um branch
+
+1. Acesse o repositório no GitHub.
+2. Clique no seletor de branch (onde aparece `main`) no canto superior esquerdo da lista de arquivos.
+3. Digite um nome descritivo para o seu branch, por exemplo: `conteudo/noticia-workshop-abril`.
+4. Clique em **"Create branch: conteudo/noticia-workshop-abril"**.
+
+<Notice type="tip">
+  Use o prefixo `conteudo/` para facilitar a identificação de branches de conteúdo.
+</Notice>
+
+### 2. Criar ou editar arquivos
+
+Ainda no GitHub, navegue até o arquivo que deseja criar ou editar.
+
+**Para criar um arquivo:**
+
+1. Acesse a pasta de destino (ex: `src/content/noticias/`).
+2. Clique em **"Add file" → "Create new file"**.
+3. Dê um nome ao arquivo seguindo a convenção correta (consulte os guias de [Notícias](./noticias) ou [Publicações](./publicacoes)).
+4. Cole ou escreva o conteúdo com o frontmatter correto.
+5. Role até o final da página e clique em **"Commit changes..."**.
+6. Certifique-se de que a opção **"Commit directly to the `conteudo/...` branch"** está selecionada.
+7. Clique em **"Commit changes"**.
+
+**Para editar um arquivo existente:**
+
+1. Abra o arquivo.
+2. Clique no ícone de lápis (✏️) no canto superior direito.
+3. Faça as alterações.
+4. Role até o final e commit no seu branch.
+
+### 3. Abrir um Pull Request
+
+1. Após o commit, o GitHub exibirá um aviso amarelo com o botão **"Compare & pull request"**. Clique nele.
+2. Preencha o título e uma breve descrição do que foi alterado.
+3. Clique em **"Create pull request"**.
+
+### 4. Aguardar o deploy de preview
+
+Após abrir o PR, o GitHub Actions irá:
+
+1. Verificar se o código está correto (typecheck, lint, build).
+2. Fazer o deploy de uma cópia do site com as suas alterações.
+3. Postar automaticamente um comentário no PR com o link de preview.
+
+O processo leva cerca de 2 a 5 minutos. O comentário terá a seguinte aparência:
+
+> ### Preview do site
+>
+> ✅ Deploy concluído!
+>
+> 🔗 **URL de preview:** `https://conteudo-noticia-workshop-abril.site-cpps.pages.dev`
+
+### 5. Revisar e solicitar aprovação
+
+1. Acesse o link de preview e verifique se o conteúdo está correto.
+2. Confirme o checklist abaixo antes de pedir revisão.
+3. Solicite revisão a um coordenador no campo **"Reviewers"** do PR.
+
+### 6. Responder às revisões
+
+O coordenador pode aprovar diretamente ou deixar comentários pedindo ajustes. O ciclo de revisão funciona assim:
+
+1. O coordenador comenta no PR indicando o que mudar (pode ser um comentário geral ou direto em uma linha específica do arquivo).
+2. Você faz as correções — editando os arquivos no mesmo branch (pelo editor do GitHub, Codespaces ou terminal).
+3. Ao fazer um novo commit no mesmo branch, o deploy de preview é atualizado automaticamente.
+4. Responda ao comentário no PR confirmando que o ajuste foi feito (ex: "corrigido no commit X").
+5. Repita até que o coordenador aprove.
+
+Após aprovação, o coordenador fará o merge e o conteúdo irá para produção automaticamente.
+
+---
+
+## Checklist antes de pedir revisão
+
+- [ ] O build passou (ícone verde ✅ nos checks do PR)
+- [ ] O conteúdo está correto na URL de preview
+- [ ] Imagens estão carregando corretamente
+- [ ] Títulos, datas e autores estão preenchidos
+- [ ] O idioma (`lang`) está correto no frontmatter

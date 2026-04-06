@@ -1,0 +1,97 @@
+---
+title: Início Rápido
+description: Fluxo resumido para adicionar notícias e publicações ao site do CPPS.
+custom_slug:
+  pt: inicio-rapido
+  en: quick-start
+  es: inicio-rapido
+sidebar_order: 0
+sidebar_label: Início Rápido
+---
+
+Este guia resume o que você precisa saber para começar a contribuir com o site.
+
+## O que você vai precisar
+
+- Uma conta no [GitHub](https://github.com)
+- Acesso ao repositório: **[github.com/cpps-unesp/site-cpps](https://github.com/cpps-unesp/site-cpps)**  
+  (peça ao coordenador se ainda não tiver acesso)
+
+Não é necessário instalar nada no computador.
+
+---
+
+## Receita rápida: adicionar uma notícia
+
+1. No repositório, abra a pasta `src/content/noticias/`.
+2. Crie um novo arquivo com o nome no formato `YYYY-MM-DD-pt-titulo-curto.mdx`  
+   (exemplo: `2026-04-20-pt-oficina-dados.mdx`).
+3. Cole o modelo abaixo e preencha os campos:
+
+```markdown
+---
+title: 'Título da notícia'
+date: 2026-04-20
+resumo: 'Resumo curto que aparece na listagem.'
+image: '/imagens/noticias/nome-da-imagem.jpg'
+lang: 'pt'
+tags: ['Tag 1']
+author: 'Seu Nome'
+featured: false
+---
+
+Escreva o conteúdo da notícia aqui em Markdown.
+```
+
+4. Faça o commit no seu branch, abra um PR e aguarde o link de preview.
+
+→ Guia completo: [Notícias](./noticias) | [Pré-visualizar alterações](./previsualizar-alteracoes)
+
+---
+
+## Receita rápida: adicionar uma publicação
+
+1. Abra a pasta `src/content/publicacoes/`.
+2. Crie um arquivo com o nome `YYYY-MM-DD-slug-descritivo.mdx`  
+   (exemplo: `2026-04-20-introducao-ao-r.mdx`).
+3. Cole o modelo abaixo e preencha:
+
+```markdown
+---
+title: 'Título da publicação'
+date: 2026-04-20
+authors: ['Seu Nome']
+summary: 'Resumo breve do conteúdo.'
+type: 'material-didatico'
+lang: 'pt'
+tags: ['Tag 1']
+featured: false
+---
+
+Escreva o conteúdo aqui em Markdown.
+```
+
+4. Faça o commit no seu branch, abra um PR e aguarde o link de preview.
+
+→ Guia completo: [Publicações](./publicacoes) | [Pré-visualizar alterações](./previsualizar-alteracoes)
+
+---
+
+## Tipos de publicação aceitos
+
+| Valor | Quando usar |
+|-------|------------|
+| `material-didatico` | Apostilas, guias e materiais de estudo |
+| `tutorial` | Conteúdos práticos passo a passo |
+
+---
+
+## Fluxo completo de contribuição
+
+```
+1. Crie um branch  →  2. Edite os arquivos  →  3. Abra um PR
+        ↓
+4. Aguarde o preview automático  →  5. Coordenador revisa  →  6. Merge
+```
+
+Precisa de mais detalhes sobre alguma etapa? Consulte os guias ao lado.
