@@ -12,7 +12,7 @@ const getNewsSlug = (post: (typeof noticias)[number]) =>
   post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
 ---
 
-<div class="grid gap-8 md:grid-cols-2">
+<div id="news-grid" class="grid gap-8 md:grid-cols-2">
   {
     noticias.map((post) => (
       <NoticiaCard
