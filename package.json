@@ -32,7 +32,7 @@
     "eslint-plugin-astro": "^1.5.0",
     "miniflare": "^4.20260401.0",
     "pagefind": "^1.4.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.7.2",
     "typescript": "^6.0.2",
