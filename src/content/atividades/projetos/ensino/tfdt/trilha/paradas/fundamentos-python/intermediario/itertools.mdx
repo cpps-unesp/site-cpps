@@ -3,3 +3,109 @@ title: Itertools
 sidebar_label: Itertools
 ---
 
+`itertools` é um módulo da biblioteca padrão (não precisa instalar) com funções para **iterar** sobre dados de modo eficiente: combinar listas, gerar combinações e agrupar por chaves.
+
+```python
+import itertools
+```
+
+## Encadear listas com `chain`
+
+Junta vários iteráveis sem criar uma lista intermediária na memória:
+
+```python
+import itertools
+
+paises_a = ["Brasil", "Argentina"]
+paises_b = ["Chile", "Uruguai"]
+
+todos = list(itertools.chain(paises_a, paises_b))
+# ['Brasil', 'Argentina', 'Chile', 'Uruguai']
+```
+
+## Repetir e ciclar
+
+```python
+list(itertools.repeat("CPPS", 3))
+# ['CPPS', 'CPPS', 'CPPS']
+
+# 'cycle' é infinito — combine com 'islice' ou um break
+ciclo = itertools.cycle(["A", "B", "C"])
+[next(ciclo) for _ in range(5)]
+# ['A', 'B', 'C', 'A', 'B']
+```
+
+## Combinações e permutações
+
+Úteis em análise combinatória ou para gerar pares para comparação:
+
+```python
+paises = ["Brasil", "Argentina", "Uruguai"]
+
+# Combinações de tamanho 2 (ordem não importa)
+list(itertools.combinations(paises, 2))
+# [('Brasil', 'Argentina'), ('Brasil', 'Uruguai'), ('Argentina', 'Uruguai')]
+
+# Permutações de tamanho 2 (ordem importa)
+list(itertools.permutations(paises, 2))
+# [('Brasil', 'Argentina'), ('Brasil', 'Uruguai'),
+#  ('Argentina', 'Brasil'), ('Argentina', 'Uruguai'), ...]
+
+# Produto cartesiano
+list(itertools.product([1, 2], ["a", "b"]))
+# [(1, 'a'), (1, 'b'), (2, 'a'), (2, 'b')]
+```
+
+## Agrupar por chave com `groupby`
+
+Atenção: `groupby` agrupa elementos **consecutivos** com a mesma chave — não como o `groupby` de SQL ou Pandas. Ordene antes:
+
+```python
+notas = [
+    {"ano": 2020, "titulo": "NOTA 1"},
+    {"ano": 2020, "titulo": "NOTA 2"},
+    {"ano": 2021, "titulo": "NOTA 3"},
+    {"ano": 2020, "titulo": "NOTA 4"},
+]
+
+notas.sort(key=lambda n: n["ano"])    # ordenar antes!
+
+for ano, grupo in itertools.groupby(notas, key=lambda n: n["ano"]):
+    titulos = [n["titulo"] for n in grupo]
+    print(ano, titulos)
+# 2020 ['NOTA 1', 'NOTA 2', 'NOTA 4']
+# 2021 ['NOTA 3']
+```
+
+## Fatiamento de iteradores
+
+`islice` permite "fatiar" um gerador como uma lista, sem materializá-lo:
+
+```python
+# 5 primeiros pares
+list(itertools.islice((x for x in range(1000) if x % 2 == 0), 5))
+# [0, 2, 4, 6, 8]
+```
+
+## Quando usar
+
+- Quando você precisa percorrer **muitos elementos** e não quer carregar tudo em memória.
+- Quando precisa de combinações/permutações sem escrever loops aninhados.
+- Quando quer agrupar dados ordenados em uma única passagem.
+
+Para a maioria das tarefas analíticas estruturadas, prefira **Pandas** — `groupby` do Pandas é mais simples e versátil. `itertools` brilha em scripts utilitários e em código que processa streams.
+
+## Referência rápida
+
+| Função | O que faz |
+| --- | --- |
+| `chain(a, b, ...)` | Concatena iteráveis |
+| `repeat(x, n)` | Repete `x` `n` vezes |
+| `cycle(iter)` | Ciclo infinito |
+| `combinations(iter, r)` | Combinações sem repetição |
+| `permutations(iter, r)` | Permutações |
+| `product(*iters)` | Produto cartesiano |
+| `groupby(iter, key)` | Agrupa consecutivos pela chave |
+| `islice(iter, start, stop)` | Fatiamento |
+| `accumulate(iter)` | Soma cumulativa |
+| `count(start, step)` | Contador infinito |

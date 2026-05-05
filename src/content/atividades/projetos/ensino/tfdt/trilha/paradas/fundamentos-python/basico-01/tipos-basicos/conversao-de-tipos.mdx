@@ -1,23 +1,115 @@
 ---
-title: Conversão de Tipos
+title: Conversão de tipos
 sidebar_label: Conversão de tipos
 ---
 
+Cada valor em Python tem um tipo associado: `int`, `float`, `str`, `bool`, `list`, etc. Em muitas situações é necessário **converter** um valor de um tipo para outro — por exemplo, ler um número como string e usá-lo em uma soma.
 
-- [Link](https://replit.com/@fparon/conversao-tipos) do Replit dessa parte
+- [Replit interativo desta página](https://replit.com/@fparon/conversao-tipos)
 
-```py
-'''
-Conversão de tipos de dados simples
-'''
-a = 'Brasil'
+## Verificar o tipo
+
+`type()` mostra o tipo de uma variável:
+
+```python
+a = "Brasil"
 b = 10
 c = 15.5
-print(type(a))
-print(type(b))
-print(type(c))
-print(int(c))
 
-b = str(b)
-print(type(b))
+print(type(a))    # <class 'str'>
+print(type(b))    # <class 'int'>
+print(type(c))    # <class 'float'>
 ```
+
+## Funções de conversão
+
+Cada tipo tem uma função homônima para converter:
+
+| Função | Converte para | Exemplo |
+| --- | --- | --- |
+| `int(x)` | Inteiro | `int("10")` → `10` |
+| `float(x)` | Decimal | `float("3.14")` → `3.14` |
+| `str(x)` | String | `str(42)` → `"42"` |
+| `bool(x)` | Booleano | `bool(0)` → `False`, `bool(1)` → `True` |
+| `list(x)` | Lista | `list("abc")` → `['a', 'b', 'c']` |
+| `tuple(x)` | Tupla | `tuple([1, 2])` → `(1, 2)` |
+| `set(x)` | Conjunto | `set("aabb")` → `{'a', 'b'}` |
+
+## Exemplos comuns
+
+### String → número
+
+```python
+texto = "42"
+numero = int(texto)
+print(numero + 8)        # 50
+
+# Decimais
+preco = float("19.90")
+```
+
+Quando o texto não representa um número válido, ocorre `ValueError`:
+
+```python
+int("4 2")      # ValueError: invalid literal for int() with base 10
+```
+
+### Número → string
+
+Necessário para concatenar com outras strings:
+
+```python
+ano = 2024
+mensagem = "Estamos em " + str(ano)
+
+# Mais elegante: f-string
+mensagem = f"Estamos em {ano}"
+```
+
+### Float → int (truncamento)
+
+`int()` aplicado a um float **descarta** a parte decimal — não arredonda:
+
+```python
+int(15.9)        # 15
+int(-15.9)       # -15
+
+# Para arredondar:
+round(15.9)      # 16
+round(15.4)      # 15
+```
+
+### Booleano e valores "falsos"
+
+`bool()` segue a noção de **truthiness** — cada tipo tem uma representação como verdadeiro ou falso:
+
+```python
+bool(0)          # False
+bool(1)          # True
+bool("")         # False  (string vazia)
+bool("texto")    # True
+bool([])         # False  (lista vazia)
+bool([0])        # True   (lista com elementos é True, mesmo com 0 dentro)
+bool(None)       # False
+```
+
+Isso explica por que em condicionais você pode escrever `if lista:` em vez de `if len(lista) > 0:` — Python avalia a "verdade" da própria lista.
+
+## Conversões em scraping
+
+Coleta web devolve tudo como string. A conversão acontece no momento certo, depois de validar:
+
+```python
+texto = "Número de nota é: 636/2008"
+ultimo = texto.strip().split()[-1]    # "636/2008"
+numero = int(ultimo.split("/")[0])    # 636
+ano = int(ultimo.split("/")[1])       # 2008
+```
+
+## Resumo
+
+- `type(x)` — descobre o tipo.
+- Funções homônimas (`int`, `float`, `str`, ...) — convertem.
+- Conversões inválidas geram `ValueError`.
+- `bool()` segue a regra de *truthiness*: vazios e zeros são `False`.
+- `int(float)` trunca; use `round()` para arredondar.

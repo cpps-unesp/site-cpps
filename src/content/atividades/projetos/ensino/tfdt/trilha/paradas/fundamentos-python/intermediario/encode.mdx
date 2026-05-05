@@ -1,7 +1,145 @@
 ---
-title: Encode
-sidebar_label: Encode
+title: Encoding e bytes
+sidebar_label: Encoding
 ---
 
+Quando você lê arquivos, faz scraping ou consome APIs, em algum momento aparece a pergunta: **qual a codificação?**. Esta página explica a diferença entre `str` e `bytes` em Python e como evitar os erros mais comuns.
 
-- [Explicação](https://archive.is/ZJrZz)
+## str vs bytes
+
+| Tipo | Representa | Como criar |
+| --- | --- | --- |
+| `str` | Texto (Unicode) | `"olá mundo"` |
+| `bytes` | Sequência de bytes | `b"hello"`, `"olá".encode("utf-8")` |
+
+Em Python 3, `str` é sempre Unicode. Toda vez que dados saem ou entram do programa (rede, disco), há uma conversão para bytes — e essa conversão precisa de uma **codificação**.
+
+## Encoding e decoding
+
+```python
+texto = "olá mundo"
+
+# Texto → bytes (encode)
+bytes_utf8 = texto.encode("utf-8")
+# b'ol\xc3\xa1 mundo'
+
+bytes_latin = texto.encode("latin-1")
+# b'ol\xe1 mundo'
+
+# Bytes → texto (decode)
+texto_de_volta = bytes_utf8.decode("utf-8")
+# 'olá mundo'
+```
+
+A regra: `encode` vai de texto para bytes; `decode` vai de bytes para texto.
+
+## UTF-8 é o padrão
+
+Use **UTF-8** sempre que tiver escolha. É o padrão da web, de novos arquivos, do JSON e da maioria dos bancos de dados modernos.
+
+```python
+with open("dados.txt", encoding="utf-8") as arquivo:
+    texto = arquivo.read()
+
+with open("saida.txt", "w", encoding="utf-8") as arquivo:
+    arquivo.write("olá")
+```
+
+<Notice type="warning">
+Sempre passe `encoding="utf-8"` ao abrir arquivos. O padrão depende do sistema operacional — em Windows pode ser `cp1252`, e isso quebra acentos quando o arquivo viaja para Linux.
+</Notice>
+
+## Erros comuns
+
+### `UnicodeDecodeError`
+
+Acontece quando você tenta decodificar bytes com a codificação errada:
+
+```python
+arquivo_antigo = open("dados.csv", encoding="utf-8")
+arquivo_antigo.read()
+# UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe1 in position 5
+```
+
+Soluções, em ordem de preferência:
+
+```python
+# 1. Tente outras codificações comuns
+open("dados.csv", encoding="latin-1")        # tudo passa, mas pode interpretar errado
+open("dados.csv", encoding="cp1252")         # comum em arquivos antigos do Excel/Windows
+
+# 2. Ignorar caracteres inválidos (perde informação)
+open("dados.csv", encoding="utf-8", errors="ignore")
+
+# 3. Substituir por '?' os bytes inválidos
+open("dados.csv", encoding="utf-8", errors="replace")
+```
+
+### Acentos virando "Ã©" ou "?"
+
+Sintoma de **dupla codificação**: o texto foi codificado em UTF-8 mas lido como latin-1 (ou vice-versa).
+
+```python
+texto = "Ã© Ã  vontade"   # como aparece
+# Solução: re-decodificar
+correto = texto.encode("latin-1").decode("utf-8")
+# 'é à vontade'
+```
+
+## Em scraping
+
+`requests` tenta detectar a codificação automaticamente. Em sites brasileiros antigos, a detecção pode falhar:
+
+```python
+resposta = requests.get(url)
+
+# Caso falhe a detecção
+resposta.encoding = "utf-8"   # força
+texto = resposta.text
+
+# Ou trabalhe direto com bytes
+bs = BeautifulSoup(resposta.content, "html.parser")  # 'content' é bytes
+```
+
+## Em JSON
+
+JSON é UTF-8 por padrão. O parâmetro `ensure_ascii=False` mantém os acentos legíveis no arquivo:
+
+```python
+import json
+
+dados = {"pais": "Brasil", "cidade": "São Paulo"}
+
+# Padrão: escapa acentos como ã
+json.dumps(dados)
+# '{"pais": "Brasil", "cidade": "S\\u00e3o Paulo"}'
+
+# Com acentos preservados
+json.dumps(dados, ensure_ascii=False)
+# '{"pais": "Brasil", "cidade": "São Paulo"}'
+```
+
+## Verificar codificação de um arquivo desconhecido
+
+A biblioteca `chardet` tenta adivinhar:
+
+```python
+import chardet
+
+with open("dados.csv", "rb") as f:
+    amostra = f.read(10000)
+
+resultado = chardet.detect(amostra)
+print(resultado)
+# {'encoding': 'ISO-8859-1', 'confidence': 0.73}
+```
+
+Use a sugestão como ponto de partida — não confie cegamente em arquivos pequenos.
+
+## Resumo
+
+- Em Python 3, **texto é `str` (Unicode)**, **dados externos são `bytes`**.
+- `encode()` vai de texto para bytes; `decode()` vai de bytes para texto.
+- Sempre que ler/escrever arquivos, passe `encoding="utf-8"`.
+- Em JSON, `ensure_ascii=False` para manter acentos legíveis.
+- Quando der erro, pense: "qual a codificação real do arquivo?".
