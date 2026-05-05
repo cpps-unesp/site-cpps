@@ -11,16 +11,22 @@ import LinkCard from '../../../components/atividades/LinkCard.astro';
 import Steps from '../../../components/atividades/Steps.astro';
 import DocsMdxPage from '../../../components/docs/DocsMdxPage.astro';
 import { buildAtividadesSidebarWithBase } from '../../../utils/atividadesSidebar';
-import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
+import { filterVisibleDocsEntries, getDocsEntrySlug } from '../../../utils/docsVisibility';
 import type { Language } from '../../../utils/i18n';
 
 export async function getStaticPaths() {
   const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
   const langs = ['pt', 'en', 'es'];
 
+  function toSlugParam(rawSlug: string): string | undefined {
+    if (!rawSlug || rawSlug === 'index') return undefined;
+    if (rawSlug.endsWith('/index')) return rawSlug.slice(0, -'/index'.length);
+    return rawSlug;
+  }
+
   return langs.flatMap((lang) => {
     return atividades.map((entry) => ({
-      params: { lang, slug: entry.slug === 'index' ? undefined : entry.slug },
+      params: { lang, slug: toSlugParam(getDocsEntrySlug(entry)) },
       props: { entry },
     }));
   });
