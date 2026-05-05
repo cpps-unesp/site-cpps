@@ -1,7 +1,149 @@
 ---
-title: Geração de Gráficos
-sidebar_label: Geração de Gráficos
+title: Geração de gráficos
+sidebar_label: Gráficos
+sidebar_order: 6
 ---
 
+Visualização é parte essencial da análise. Em Python, três bibliotecas dominam:
 
-[EM CONSTRUÇÃO]
+| Biblioteca | Quando usar |
+| --- | --- |
+| **Matplotlib** | Gráficos estáticos para relatórios (PDF, PNG). Maior controle visual. |
+| **Plotly Express** | Gráficos interativos para notebooks e dashboards. Sintaxe enxuta. |
+| **Seaborn** | Estatísticos prontos (boxplots, distribuições) sobre Matplotlib. |
+
+Pandas integra-se com todas via `df.plot()`.
+
+## Matplotlib — o básico
+
+```python
+import matplotlib.pyplot as plt
+
+s = df["ano"].value_counts().sort_index()
+s.plot(kind="bar")
+plt.title("Notas à imprensa por ano")
+plt.xlabel("Ano")
+plt.ylabel("Quantidade")
+plt.tight_layout()
+plt.show()
+```
+
+Tipos de gráfico via `kind`:
+
+| `kind` | Gráfico |
+| --- | --- |
+| `"line"` | Linha (padrão) |
+| `"bar"`, `"barh"` | Barras vertical/horizontal |
+| `"hist"` | Histograma |
+| `"box"` | Boxplot |
+| `"scatter"` | Dispersão (`x` e `y` obrigatórios) |
+| `"pie"` | Pizza |
+
+Salvar em arquivo em vez de mostrar:
+
+```python
+s.plot(kind="bar")
+plt.tight_layout()
+plt.savefig("notas_por_ano.png", dpi=150)
+plt.close()
+```
+
+## Plotly Express — interativo
+
+```python
+import plotly.express as px
+
+s = df["ano"].value_counts().sort_index().reset_index()
+s.columns = ["ano", "quantidade"]
+
+fig = px.bar(s, x="ano", y="quantidade", title="Notas à imprensa por ano")
+fig.show()
+```
+
+Gráficos Plotly suportam zoom, hover e podem ser exportados como HTML:
+
+```python
+fig.write_html("grafico.html")
+fig.write_image("grafico.png")  # requer 'kaleido'
+```
+
+## Caso real: notas do MRE por ano
+
+A partir do DataFrame carregado em [01-04](./01-04-trabalhando-com-arquivos):
+
+```python
+import pandas as pd
+import plotly.express as px
+
+# Converter coluna de string para datetime e extrair o ano
+df["ano"] = pd.to_datetime(df["data"]).dt.year
+
+# Contar e ordenar
+contagem = df["ano"].value_counts().sort_index()
+
+# Reformatar para Plotly
+dados = contagem.reset_index()
+dados.columns = ["ano", "quantidade"]
+
+# Gráfico
+fig = px.line(
+    dados,
+    x="ano",
+    y="quantidade",
+    title="Notas à imprensa do MRE por ano",
+    markers=True,
+)
+fig.show()
+```
+
+## Comparação entre categorias
+
+```python
+# Notas que mencionam países do Mercosul
+mercosul = ["Argentina", "Paraguai", "Uruguai", "Brasil"]
+
+for pais in mercosul:
+    df[f"menciona_{pais.lower()}"] = df["titulo"].str.contains(pais, case=False, na=False)
+
+contagem = {pais: df[f"menciona_{pais.lower()}"].sum() for pais in mercosul}
+fig = px.bar(
+    x=list(contagem.keys()),
+    y=list(contagem.values()),
+    title="Menções a países do Mercosul nos títulos",
+)
+fig.show()
+```
+
+## Histogramas e distribuições
+
+```python
+df["tamanho_titulo"] = df["titulo"].str.len()
+
+fig = px.histogram(df, x="tamanho_titulo", nbins=30, title="Tamanho dos títulos")
+fig.show()
+```
+
+## Múltiplos gráficos
+
+Com Matplotlib, para colocar vários gráficos lado a lado:
+
+```python
+fig, eixos = plt.subplots(1, 2, figsize=(12, 4))
+
+df["ano"].value_counts().sort_index().plot(kind="bar", ax=eixos[0])
+eixos[0].set_title("Notas por ano")
+
+df["tamanho_titulo"].plot(kind="hist", bins=30, ax=eixos[1])
+eixos[1].set_title("Distribuição de tamanhos de título")
+
+plt.tight_layout()
+plt.show()
+```
+
+## Boas práticas
+
+- **Sempre dê título e legendas aos eixos** — gráficos sem rótulos são inúteis fora do contexto imediato.
+- **Ordene categorias quando faz sentido** (anos crescentes, valores decrescentes).
+- **Cuidado com escalas**: barras truncadas em zero podem distorcer a percepção.
+- Para publicação acadêmica, prefira **Matplotlib** com tema configurado uma vez (`plt.style.use("seaborn-v0_8-whitegrid")`) e exporte em PDF ou SVG.
+- Para dashboards e exploração, **Plotly Express** é mais produtivo.

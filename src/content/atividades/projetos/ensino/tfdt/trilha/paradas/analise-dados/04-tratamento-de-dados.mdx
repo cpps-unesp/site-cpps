@@ -1,7 +1,166 @@
 ---
-title: Tratamento de Dados
-sidebar_label: Tratamento de DadosS
+title: Tratamento de dados
+sidebar_label: Tratamento
+sidebar_order: 8
 ---
 
+Dados reais raramente vêm prontos. Antes de gerar gráficos ou estatísticas, é preciso lidar com **valores faltantes**, **tipos errados**, **duplicatas** e **strings sujas**. Esta página reúne o conjunto mínimo de operações necessárias.
 
-[EM CONSTRUÇÃO]
+## Identificar valores faltantes
+
+```python
+df.isna()              # DataFrame booleano
+df.isna().sum()        # contagem por coluna
+df.isna().sum().sum()  # total no DataFrame
+df["coluna"].isna().any()  # tem algum NaN?
+```
+
+Pandas representa "vazio" como `NaN` (Not a Number) em colunas numéricas e como `None`/`NaN` em colunas `object`.
+
+## Remover valores faltantes
+
+```python
+df.dropna()                              # remove linhas com QUALQUER NaN
+df.dropna(subset=["data"])               # só considera a coluna 'data'
+df.dropna(thresh=5)                      # mantém linhas com pelo menos 5 não-nulos
+df.dropna(axis=1)                        # remove colunas com algum NaN
+```
+
+`dropna` devolve um novo DataFrame. Para modificar no lugar, passe `inplace=True`.
+
+## Preencher valores faltantes
+
+```python
+df.fillna(0)                             # tudo que for NaN vira 0
+df["horario"].fillna("00:00")            # uma coluna específica
+df.fillna({"horario": "00:00", "ano": 0})  # valores diferentes por coluna
+df["data"].fillna(method="ffill")        # propaga o último valor válido
+```
+
+A escolha entre `dropna` e `fillna` depende do volume e do significado dos dados faltantes. Para análises preliminares, `dropna` é mais seguro; para preservar tamanho da amostra, `fillna` com um valor sentinela.
+
+## Conversão de tipos
+
+`astype` para conversões diretas:
+
+```python
+df["ano"] = df["ano"].astype(int)
+df["preco"] = df["preco"].astype(float)
+df["categoria"] = df["categoria"].astype("category")
+```
+
+Para datas, use `pd.to_datetime` (mais robusto que `astype`):
+
+```python
+df["data"] = pd.to_datetime(df["data"], errors="coerce")
+# 'errors="coerce"' transforma valores inválidos em NaT em vez de erro
+```
+
+Acessar partes da data:
+
+```python
+df["data"].dt.year
+df["data"].dt.month
+df["data"].dt.day_of_week     # 0=segunda, 6=domingo
+df["data"].dt.strftime("%Y-%m")
+```
+
+## Duplicatas
+
+```python
+df.duplicated()                          # Series booleana
+df.duplicated(subset=["link"]).sum()     # quantas duplicatas pela coluna 'link'
+df.drop_duplicates()                     # remove linhas inteiras duplicadas
+df.drop_duplicates(subset=["link"], keep="first")  # mantém a primeira ocorrência
+```
+
+## Limpeza de strings com `.str`
+
+`.str` traz métodos de string aplicados elemento a elemento:
+
+```python
+df["titulo"] = df["titulo"].str.strip()
+df["titulo"] = df["titulo"].str.lower()
+df["titulo"] = df["titulo"].str.replace(r"\s+", " ", regex=True)
+df["titulo"] = df["titulo"].str.normalize("NFKD")  # remove acentos compostos
+```
+
+Métodos úteis:
+
+| Método | Para que serve |
+| --- | --- |
+| `.str.strip()` | Remove espaços nas pontas |
+| `.str.lower()` / `.str.upper()` | Caixa baixa / alta |
+| `.str.replace(antes, depois)` | Substituição |
+| `.str.contains(padrao)` | Booleana — contém o padrão? |
+| `.str.startswith` / `.str.endswith` | Prefixo/sufixo |
+| `.str.split(sep)` | Quebra em lista |
+| `.str.extract(regex)` | Extrai grupos de captura |
+
+Exemplo: extrair o número da nota a partir do título:
+
+```python
+df["numero"] = df["titulo"].str.extract(r"Nº\s*(\d+)")
+```
+
+## Renomear e reordenar
+
+```python
+df.rename(columns={"horario_atualizado": "horario_update"}, inplace=True)
+df = df[["titulo", "data", "horario", "link"]]   # subset e reordenação
+```
+
+## Agrupamento
+
+`groupby` é o operador analítico mais poderoso de Pandas:
+
+```python
+df["ano"] = pd.to_datetime(df["data"]).dt.year
+
+# Quantidade de notas por ano
+df.groupby("ano").size()
+
+# Média do tamanho do título por ano
+df["tamanho_titulo"] = df["titulo"].str.len()
+df.groupby("ano")["tamanho_titulo"].mean()
+
+# Agregações múltiplas
+df.groupby("ano").agg(
+    total=("titulo", "count"),
+    titulo_medio=("tamanho_titulo", "mean"),
+    titulo_max=("tamanho_titulo", "max"),
+)
+```
+
+## Pipeline típico
+
+A maioria dos scripts de tratamento segue esse roteiro:
+
+```python
+df = (
+    pd.read_json("notas_mre.json", orient="columns")
+      .pipe(lambda d: pd.json_normalize(d["_default"]))
+      .drop_duplicates(subset=["link"])
+      .assign(
+          data=lambda d: pd.to_datetime(d["data"], errors="coerce"),
+          titulo=lambda d: d["titulo"].str.strip(),
+          ano=lambda d: pd.to_datetime(d["data"], errors="coerce").dt.year,
+      )
+      .dropna(subset=["data"])
+      .sort_values("data")
+      .reset_index(drop=True)
+)
+```
+
+`pipe` e `assign` mantêm o fluxo encadeado e legível, evitando reatribuições intermediárias.
+
+## Resumo
+
+| Problema | Solução |
+| --- | --- |
+| Valores faltantes | `isna`, `dropna`, `fillna` |
+| Tipo errado | `astype`, `pd.to_datetime` |
+| Duplicatas | `duplicated`, `drop_duplicates` |
+| String suja | `.str.strip`, `.str.lower`, `.str.replace`, `.str.extract` |
+| Renomear | `rename(columns=...)` |
+| Agrupar e agregar | `groupby(...).agg(...)` |

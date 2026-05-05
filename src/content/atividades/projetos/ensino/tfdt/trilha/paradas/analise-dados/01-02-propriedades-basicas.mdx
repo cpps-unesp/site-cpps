@@ -1,7 +1,132 @@
 ---
-title: Propriedades Básicas
-sidebar_label: Propriedades Básicas
+title: Propriedades básicas
+sidebar_label: Propriedades básicas
+sidebar_order: 3
 ---
 
+Antes de qualquer análise, vale "olhar" o DataFrame: tamanho, nomes de colunas, tipos e amostra dos dados. Pandas oferece atalhos para todas essas inspeções.
 
-[EM CONSTRUÇÃO]
+Para os exemplos, supomos um DataFrame `df` carregado a partir do JSON de notas à imprensa do MRE (próximo capítulo cobre o carregamento).
+
+## Dimensão
+
+```python
+df.shape
+# (5040, 7)   →  5040 linhas, 7 colunas
+```
+
+`shape` é uma tupla — útil em mensagens e em validações (`assert df.shape[0] > 0`).
+
+## Colunas e índice
+
+```python
+df.columns
+# Index(['titulo', 'link', 'data', 'horario',
+#        'data_atualizada', 'horario_atualizado', 'paragrafos'],
+#       dtype='object')
+
+df.index
+# RangeIndex(start=0, stop=5040, step=1)
+```
+
+## Tipos de dados
+
+```python
+df.dtypes
+# titulo               object
+# link                 object
+# data                 object
+# horario              object
+# data_atualizada      object
+# horario_atualizado   object
+# paragrafos           object
+# dtype: object
+```
+
+`object` é o tipo "string ou misto". Para conseguir filtrar e ordenar por data, é preciso converter (ver [04 - Tratamento](./04-tratamento-de-dados)).
+
+| dtype Pandas | O que representa |
+| --- | --- |
+| `int64`, `int32` | Inteiros |
+| `float64`, `float32` | Decimais |
+| `object` | String ou tipos mistos |
+| `bool` | Booleano |
+| `datetime64[ns]` | Data e hora |
+| `category` | Categoria (string com poucos valores únicos) |
+
+## Amostragem
+
+```python
+df.head()       # 5 primeiras linhas
+df.head(2)      # 2 primeiras linhas
+df.tail(3)      # 3 últimas linhas
+df.sample(5)    # 5 linhas aleatórias
+```
+
+Útil para ter ideia do conteúdo sem imprimir milhares de linhas.
+
+## Sumário rápido
+
+```python
+df.info()
+# <class 'pandas.core.frame.DataFrame'>
+# RangeIndex: 5040 entries, 0 to 5039
+# Data columns (total 7 columns):
+#  #   Column              Non-Null Count  Dtype
+# ---  ------              --------------  -----
+#  0   titulo              5040 non-null   object
+#  ...
+```
+
+`info()` mostra: dimensão, nome e tipo de cada coluna, e a quantidade de **valores não-nulos** — chave para detectar dados faltantes.
+
+## Estatísticas descritivas
+
+```python
+df.describe()              # só colunas numéricas
+df.describe(include="all") # todas as colunas
+```
+
+Para colunas numéricas devolve `count`, `mean`, `std`, `min`, percentis e `max`. Para colunas `object` mostra `count`, `unique`, `top` (valor mais comum) e `freq`.
+
+## Contagem de valores únicos
+
+Em colunas categóricas, `value_counts()` é um dos métodos mais usados:
+
+```python
+df["data_atualizada"].value_counts().head(10)
+# 2023-01-15    8
+# 2023-03-22    7
+# ...
+```
+
+Combinado com `to_datetime` (próximo capítulo), permite ver a evolução temporal:
+
+```python
+df["ano"] = pd.to_datetime(df["data"]).dt.year
+df["ano"].value_counts().sort_index()
+# 2008    412
+# 2009    389
+# ...
+```
+
+## Verificação de nulos
+
+```python
+df.isna()           # DataFrame booleano (mesmo formato de df)
+df.isna().sum()     # quantos nulos por coluna
+df.dropna()         # remove linhas com qualquer nulo (ver capítulo 04)
+```
+
+`isna().sum()` deveria ser o **primeiro** comando depois de carregar dados de fonte desconhecida.
+
+## Resumo
+
+| Pergunta | Comando |
+| --- | --- |
+| Quantas linhas e colunas? | `df.shape` |
+| Quais colunas e tipos? | `df.dtypes` ou `df.info()` |
+| Como são os dados? | `df.head()`, `df.sample()` |
+| Resumo estatístico? | `df.describe()` |
+| Tem dados faltantes? | `df.isna().sum()` |
+| Quantos valores únicos numa coluna? | `df["coluna"].value_counts()` |

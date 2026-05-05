@@ -1,7 +1,140 @@
 ---
-title: Trabalhando com Arquivos
-sidebar_label: Trabalhando com Arquivos
+title: Trabalhando com arquivos
+sidebar_label: Arquivos (csv, json)
+sidebar_order: 5
 ---
 
+Pandas lê e escreve diretamente nos formatos mais comuns. Esta página foca em CSV e JSON — dois formatos centrais nas pipelines do CPPS.
 
-[EM CONSTRUÇÃO]
+## Ler CSV
+
+```python
+import pandas as pd
+
+df = pd.read_csv("dados.csv")
+```
+
+Argumentos frequentes:
+
+| Argumento | Para que serve |
+| --- | --- |
+| `sep=";"` | Separador (padrão é `,`) |
+| `encoding="utf-8"` | Codificação (use `"latin-1"` para arquivos antigos) |
+| `decimal=","` | Vírgula como separador decimal (formato BR) |
+| `parse_dates=["coluna"]` | Converte colunas de data ao ler |
+| `dtype={"col": str}` | Força o tipo de uma coluna |
+| `nrows=100` | Lê só as primeiras N linhas (útil para inspeção) |
+
+Exemplo com CSV brasileiro:
+
+```python
+df = pd.read_csv(
+    "vendas.csv",
+    sep=";",
+    decimal=",",
+    encoding="latin-1",
+    parse_dates=["data"],
+)
+```
+
+## Ler JSON simples
+
+JSON onde cada item é um registro:
+
+```python
+df = pd.read_json("registros.json", orient="records")
+```
+
+`orient` indica como o JSON está estruturado:
+
+| `orient` | Estrutura |
+| --- | --- |
+| `"records"` | `[{"a": 1}, {"a": 2}]` (lista de dicionários) |
+| `"columns"` | `{"a": [1, 2], "b": [3, 4]}` (dicionário de colunas) |
+| `"index"` | `{"0": {"a": 1}, "1": {"a": 2}}` |
+
+## Ler JSON aninhado (TinyDB)
+
+A trilha de [coleta](./../coleta-dados/05-armazenamento) gera arquivos no formato do `TinyDB`, que tem uma estrutura específica:
+
+```json
+{
+  "_default": {
+    "1": {"titulo": "NOTA 636/2008", "data": "2008-08-12"},
+    "2": {"titulo": "NOTA 637/2008", "data": "2008-08-13"}
+  }
+}
+```
+
+Para extrair os registros como tabela, use `json_normalize`:
+
+```python
+import pandas as pd
+
+df = pd.read_json("notas_mre.json", orient="columns")
+df = pd.json_normalize(df["_default"])
+df.shape
+# (5040, 7)
+```
+
+A primeira leitura traz a tabela com a coluna `_default` contendo os registros. `json_normalize` "achata" essa estrutura.
+
+<Notice type="tip">
+Quando trabalhar no Google Colab, monte o Drive antes de ler o arquivo:
+
+```python
+from google.colab import drive
+drive.mount('/content/gdrive', force_remount=True)
+
+caminho = "/content/gdrive/MyDrive/dados/notas_mre.json"
+df = pd.read_json(caminho, orient="columns")
+```
+</Notice>
+
+## Salvar arquivos
+
+```python
+df.to_csv("saida.csv", index=False, encoding="utf-8")
+df.to_json("saida.json", orient="records", force_ascii=False, indent=2)
+df.to_excel("saida.xlsx", index=False)        # requer 'openpyxl'
+df.to_parquet("saida.parquet")                # requer 'pyarrow'
+```
+
+| Argumento | Para que serve |
+| --- | --- |
+| `index=False` | Não escreve o índice como coluna (geralmente desejado) |
+| `force_ascii=False` | Mantém acentos no JSON |
+| `indent=2` | JSON formatado para leitura humana |
+
+## Outros formatos
+
+| Função | Lê |
+| --- | --- |
+| `pd.read_excel(...)` | Planilhas `.xlsx`/`.xls` (precisa `openpyxl` ou `xlrd`) |
+| `pd.read_parquet(...)` | Parquet (binário compacto, ideal para volumes grandes) |
+| `pd.read_html(...)` | Extrai todas as tabelas HTML de uma URL ou arquivo |
+| `pd.read_sql(...)` | Resultado de uma query SQL |
+
+`read_html` é particularmente útil em complemento ao scraping — quando a página alvo já tem tabelas HTML estruturadas, evita escrever parsing manual:
+
+```python
+tabelas = pd.read_html("https://exemplo.com/dados")
+df = tabelas[0]   # primeira tabela da página
+```
+
+## Padrão recomendado
+
+Em scripts reutilizáveis, encapsule o carregamento numa função e valide o resultado logo em seguida:
+
+```python
+def carregar_notas_mre(caminho):
+    df = pd.read_json(caminho, orient="columns")
+    df = pd.json_normalize(df["_default"])
+    assert "titulo" in df.columns, "Estrutura inesperada: falta a coluna 'titulo'"
+    return df
+
+
+df = carregar_notas_mre("notas_mre.json")
+print(df.shape)
+df.head()
+```
