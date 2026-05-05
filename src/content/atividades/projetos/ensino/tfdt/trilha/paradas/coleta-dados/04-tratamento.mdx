@@ -1,0 +1,115 @@
+---
+title: Tratamento de dados coletados
+sidebar_label: Tratamento
+sidebar_order: 4
+---
+
+Dados coletados raramente vêm prontos para análise. Texto bruto traz espaços extras, caracteres invisíveis, formatos heterogêneos e valores compostos que precisam ser separados. Esta página reúne as operações mais frequentes em scripts de coleta.
+
+## Limpeza básica de strings
+
+```python
+texto = "  NOTA À IMPRENSA Nº 636/2008  \n"
+
+texto.strip()                      # "NOTA À IMPRENSA Nº 636/2008"
+texto.lower()                      # "  nota à imprensa nº 636/2008  \n"
+texto.replace("À", "A")            # remove acentos pontuais
+" ".join(texto.split())            # colapsa múltiplos espaços
+```
+
+`strip()` é o mais comum no início — todo texto extraído com `.text` deve passar por ele.
+
+## Separar e indexar
+
+`split()` quebra a string e devolve uma lista. Combinado com índices, extrai partes específicas:
+
+```python
+texto = "Número de nota é: 636/2008"
+ultimo = texto.strip().split()[-1]   # "636/2008"
+numero = ultimo.split("/")[0]        # "636"
+ano = ultimo.split("/")[1]           # "2008"
+```
+
+<Notice type="tip">
+Use `split()` sem argumentos quando quiser dividir por qualquer espaço em branco (incluindo `\n` e tabs). Use `split("/")` quando o separador for específico.
+</Notice>
+
+## Conversão de tipos
+
+Coletas devolvem tudo como string. Converta no momento certo, depois de validar o formato:
+
+```python
+numero = int("636")           # 636
+preco = float("19,90".replace(",", "."))  # 19.9 (atenção ao locale)
+ativo = "true".lower() == "true"
+```
+
+## Datas e horas
+
+Converter strings em objetos `datetime` permite comparar, ordenar e formatar:
+
+```python
+from datetime import datetime
+
+data_str = "22/12/2018"
+data = datetime.strptime(data_str, "%d/%m/%Y")
+
+# Para o padrão ISO (recomendado para nomes de arquivos e bancos):
+data.strftime("%Y-%m-%d")   # "2018-12-22"
+```
+
+| Formato comum | Diretiva |
+| --- | --- |
+| `2018-12-22` | `%Y-%m-%d` |
+| `22/12/2018` | `%d/%m/%Y` |
+| `22 dez 2018` | `%d %b %Y` (locale-dependente) |
+| `2018-12-22 14:30:00` | `%Y-%m-%d %H:%M:%S` |
+
+## Lista por compreensão para extrair em lote
+
+Em vez de inicializar uma lista vazia e usar `append` em loop, prefira **list comprehension** quando a transformação é simples:
+
+```python
+# verboso
+paragrafos = []
+for p in corpo.find_all("p"):
+    paragrafos.append(p.text.strip())
+
+# enxuto
+paragrafos = [p.text.strip() for p in corpo.find_all("p")]
+```
+
+## Filtrar valores indesejados
+
+Após extrair, descarte vazios e duplicatas:
+
+```python
+paragrafos = [p.text.strip() for p in corpo.find_all("p") if p.text.strip()]
+links_unicos = list(dict.fromkeys(links))   # preserva ordem
+```
+
+## Normalização para chave única
+
+Em armazenamento (próximo capítulo), você precisará de uma **chave** que identifique cada registro de modo único. Uma boa chave é normalizada:
+
+```python
+def normalizar_link(url):
+    """Tira parâmetros opcionais para deduplicar URLs equivalentes."""
+    return url.split("?")[0].rstrip("/").lower()
+```
+
+Datas como nome de arquivo seguem a mesma lógica:
+
+```python
+nome_arquivo = f"{data.strftime('%Y-%m-%d')}.pdf"
+```
+
+## Resumo
+
+Antes de armazenar, todo dado coletado passa por:
+
+1. `strip()` e remoção de quebras de linha desnecessárias.
+2. Quebra em partes via `split()` quando a string é composta.
+3. Conversão para o tipo correto (`int`, `float`, `datetime`).
+4. Normalização para servir de chave única.
+5. Filtragem de vazios e duplicatas.

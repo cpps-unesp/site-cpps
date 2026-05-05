@@ -11,6 +11,13 @@ const baseRegex = new RegExp(`^${escapedBase}/?`);
 const parts = currentPath.replace(baseRegex, '').split('/').filter(Boolean);
 
 function formatLabel(str: string) {
+  const labelMap: Record<string, string> = {
+    tfdt: 'Formação em Dados',
+  };
+
+  const mapped = labelMap[str.toLowerCase()];
+  if (mapped) return mapped;
+
   return str.replace(/-/g, ' ').replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 ---

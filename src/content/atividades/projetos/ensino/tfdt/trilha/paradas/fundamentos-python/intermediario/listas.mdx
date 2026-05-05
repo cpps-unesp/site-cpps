@@ -1,5 +1,141 @@
 ---
-title: Compreensão de Listas
-sidebar_label: Compreensão de Listas
+title: Compreensão de listas
+sidebar_label: Compreensão de listas
 ---
 
+Compreensão de listas (*list comprehension*) é uma forma enxuta de **criar uma lista a partir de outra sequência**. Substitui um `for` + `append` por uma única expressão.
+
+## Forma básica
+
+A versão verbosa:
+
+```python
+quadrados = []
+for x in range(10):
+    quadrados.append(x * x)
+```
+
+A mesma coisa com compreensão:
+
+```python
+quadrados = [x * x for x in range(10)]
+# [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+```
+
+A estrutura é: `[expressão for variável in iterável]`.
+
+## Com filtro
+
+Adicionar um `if` ao final filtra os elementos:
+
+```python
+pares = [x for x in range(10) if x % 2 == 0]
+# [0, 2, 4, 6, 8]
+```
+
+A regra: `[expressão for variável in iterável if condição]`.
+
+## Com transformação condicional
+
+Para escolher entre dois valores, o `if/else` vai **antes** do `for`:
+
+```python
+classificacao = ["par" if x % 2 == 0 else "impar" for x in range(5)]
+# ['par', 'impar', 'par', 'impar', 'par']
+```
+
+<Notice type="warning">
+Cuidado para não confundir as duas posições do `if`:
+
+- `[x for x in lista if cond]` — filtra (mantém só onde cond é verdadeira).
+- `[a if cond else b for x in lista]` — escolhe entre `a` e `b` para cada elemento.
+</Notice>
+
+## Em scraping e análise
+
+Casos típicos do CPPS:
+
+```python
+# Extrair texto de cada parágrafo (aplicando strip)
+paragrafos = [p.text.strip() for p in soup.find_all("p")]
+
+# Filtrar parágrafos não vazios
+paragrafos = [p.text.strip() for p in soup.find_all("p") if p.text.strip()]
+
+# Construir lista de URLs paginadas
+links = [f"{url_base}{i}" for i in range(0, 5040, 30)]
+
+# Extrair só o ano de uma lista de datas
+anos = [int(d[:4]) for d in datas]
+```
+
+## Compreensão aninhada
+
+Funciona, mas use com moderação — passa rápido a ser ilegível:
+
+```python
+matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+# Achatar (transformar em lista única)
+plana = [item for linha in matriz for item in linha]
+# [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+A ordem dos `for` é a mesma de loops aninhados:
+
+```python
+# equivalente a:
+plana = []
+for linha in matriz:
+    for item in linha:
+        plana.append(item)
+```
+
+## Compreensões de outros tipos
+
+A mesma sintaxe vale para conjuntos e dicionários:
+
+```python
+# Set comprehension
+unicos = {x % 3 for x in range(10)}
+# {0, 1, 2}
+
+# Dict comprehension
+quadrados_dict = {x: x * x for x in range(5)}
+# {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+# Inverter um dicionário
+original = {"BR": 55, "AR": 54, "UY": 598}
+invertido = {v: k for k, v in original.items()}
+# {55: 'BR', 54: 'AR', 598: 'UY'}
+```
+
+## Geradores: parente próximo
+
+Trocar `[]` por `()` cria um **gerador** — calcula valores sob demanda, sem armazenar tudo na memória:
+
+```python
+# Lista — ocupa memória com 1 milhão de itens
+quadrados = [x * x for x in range(1_000_000)]
+
+# Gerador — não ocupa, calcula um a um
+quadrados = (x * x for x in range(1_000_000))
+
+# Iterar normalmente
+for q in quadrados:
+    if q > 100:
+        break
+```
+
+Geradores são essenciais quando você processa dados grandes (milhões de linhas) onde nem tudo cabe na memória ao mesmo tempo.
+
+## Quando preferir comprehension
+
+- Quando a transformação é **simples** (uma linha de expressão).
+- Quando o resultado realmente é uma lista, set ou dict.
+- Quando o filtro é direto.
+
+Quando **não** usar:
+- Lógica com múltiplos passos por elemento — use `for` normal, fica mais legível.
+- Efeitos colaterais (`print`, `append` em outra lista) — use `for`.
+- Quando o leitor precisa pausar para entender — sinal de que está complexa demais.

@@ -1,0 +1,134 @@
+---
+title: Armazenamento dos dados
+sidebar_label: Armazenamento
+sidebar_order: 5
+---
+
+Coletar é metade do trabalho. Para que os dados sejam **reaproveitáveis**, precisam ser persistidos em um formato estruturado, deduplicados e fáceis de consultar.
+
+## JSON: o formato mais simples
+
+JSON é texto puro, leve e legível. Para um arquivo único:
+
+```python
+import json
+
+dados = [
+    {"titulo": "NOTA Nº 636/2008", "data": "2008-08-12"},
+    {"titulo": "NOTA Nº 637/2008", "data": "2008-08-13"},
+]
+
+with open("notas_mre.json", "w", encoding="utf-8") as arquivo:
+    json.dump(dados, arquivo, indent=4, ensure_ascii=False)
+```
+
+| Argumento | Para que serve |
+| --- | --- |
+| `indent=4` | Quebra linhas e indenta — facilita leitura humana. |
+| `ensure_ascii=False` | Mantém acentos e caracteres não-ASCII sem escapar. |
+
+Para ler de volta:
+
+```python
+with open("notas_mre.json", encoding="utf-8") as arquivo:
+    dados = json.load(arquivo)
+```
+
+## TinyDB: JSON com superpoderes
+
+`TinyDB` é uma biblioteca que oferece API de banco de dados sobre um arquivo JSON. É ideal para projetos pequenos e médios — sem servidor, sem configuração.
+
+### Instalação
+
+```bash
+pip install tinydb
+```
+
+### Inserir registros
+
+```python
+from tinydb import TinyDB, Query
+
+bd = TinyDB("notas_mre.json", indent=4, ensure_ascii=False)
+
+bd.insert({
+    "titulo": "NOTA À IMPRENSA Nº 636/2008",
+    "link": "https://www.gov.br/.../nota-636-2008",
+    "data": "2008-08-12",
+    "horario": "14:30",
+    "paragrafos": ["Texto da nota...", "Segundo parágrafo..."],
+})
+```
+
+### Evitar duplicatas
+
+A cada execução do coletor, queremos inserir **apenas o que ainda não está no banco**. Use `Query` e o método `contains`:
+
+```python
+buscar = Query()
+
+if not bd.contains(buscar.link == link):
+    bd.insert({"titulo": titulo, "link": link, "data": data, ...})
+    print(f"Inserindo: {titulo}")
+else:
+    print(f"Já existe: {titulo}")
+```
+
+### Função reutilizável
+
+```python
+from tinydb import TinyDB, Query
+
+
+def inserir_bd(registro):
+    bd = TinyDB("notas_mre.json", indent=4, ensure_ascii=False)
+    buscar = Query()
+    if not bd.contains(buscar.link == registro["link"]):
+        bd.insert(registro)
+        return True
+    return False
+```
+
+<Notice type="warning">
+Abrir o `TinyDB` dentro de um loop é simples, mas ineficiente em volumes grandes. Para mais de algumas milhares de inserções, abra o banco **uma vez** e passe a referência para a função.
+</Notice>
+
+### Consultar e atualizar
+
+```python
+buscar = Query()
+
+# Todos os registros de 2008
+notas_2008 = bd.search(buscar.data.matches(r"^2008-"))
+
+# Atualizar um campo
+bd.update({"horario": "15:00"}, buscar.link == link)
+
+# Remover
+bd.remove(buscar.link == link)
+```
+
+## Arquivos binários (PDFs, imagens)
+
+Para baixar arquivos pesados, use `requests.get` em modo binário:
+
+```python
+resposta = requests.get(url_pdf, timeout=30)
+
+if resposta.status_code == 200:
+    with open(f"dados/{data_formatada}.pdf", "wb") as arquivo:
+        arquivo.write(resposta.content)
+```
+
+Combine com a normalização de datas para nomear os arquivos de modo previsível (ex: `2024-02-06.pdf`). Isso facilita os passos seguintes da pipeline (OCR, extração de texto, indexação).
+
+## Quando migrar para um banco "de verdade"
+
+Considere SQLite, PostgreSQL ou MongoDB quando:
+
+- Volume passar de algumas dezenas de milhares de registros.
+- Mais de uma pessoa precisar consultar simultaneamente.
+- Houver consultas analíticas complexas (joins, agregações).
+- Você precisar de transações e integridade referencial.
+
+Para os projetos típicos do CPPS na fase de coleta, **JSON + TinyDB** é suficiente; a migração para banco relacional acontece no estágio de análise.

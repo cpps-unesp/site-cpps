@@ -1,8 +1,181 @@
 ---
 title: Trabalhando com bibliotecas
-sidebar_label: Trabalhando com bibliotecas
+sidebar_label: Bibliotecas
 ---
 
+Uma **biblioteca** (ou *package*) é um conjunto de código pronto para reaproveitar. Em vez de implementar tudo do zero, você instala bibliotecas e usa funções já testadas. A linguagem Python tem um vasto ecossistema — desde a biblioteca padrão (já vem instalada) até dezenas de milhares de pacotes de terceiros no [PyPI](https://pypi.org).
 
-- TinyDB
-- python-dotenv
+## Biblioteca padrão
+
+Instalada com Python. Não precisa de `pip`. Exemplos usados nesta trilha:
+
+| Módulo | Para que serve |
+| --- | --- |
+| `os` | Variáveis de ambiente, caminhos de sistema |
+| `json` | Ler e escrever JSON |
+| `csv` | Ler e escrever CSV (sem Pandas) |
+| `datetime` | Datas e horas |
+| `pathlib` | Caminhos de arquivos modernos |
+| `itertools` | Iteração avançada (ver [itertools](../intermediario/itertools)) |
+| `re` | Expressões regulares |
+
+```python
+import json
+import datetime as dt
+from pathlib import Path
+
+agora = dt.datetime.now()
+caminho = Path("dados") / "saida.json"
+```
+
+## Bibliotecas de terceiros (PyPI)
+
+São instaladas via `pip` ou `conda`. Nesta trilha, as principais são:
+
+| Biblioteca | Onde é usada |
+| --- | --- |
+| `requests` | Requisições HTTP — ver [coleta](/pt/wiki/projetos/ensino/tfdt/trilha/paradas/coleta-dados/02-requests-bs4) |
+| `beautifulsoup4` | Parsing de HTML — `pip install beautifulsoup4`, importa como `bs4` |
+| `selenium` | Automação de navegador para páginas dinâmicas |
+| `tinydb` | Banco JSON simples — ver [armazenamento](/pt/wiki/projetos/ensino/tfdt/trilha/paradas/coleta-dados/05-armazenamento) |
+| `pandas` | Análise de dados — ver [análise](/pt/wiki/projetos/ensino/tfdt/trilha/paradas/analise-dados/01-00-conceitos-basicos) |
+| `numpy` | Cálculo numérico (base do Pandas) |
+| `matplotlib`, `plotly` | Gráficos |
+| `python-dotenv` | Carregar variáveis de ambiente de um arquivo `.env` |
+
+## Instalação
+
+### Com pip
+
+```bash
+pip install requests beautifulsoup4 pandas
+```
+
+`pip` baixa e instala no Python ativo. Para listar o que já está instalado:
+
+```bash
+pip list
+pip show requests       # detalhes da biblioteca
+```
+
+### Com conda
+
+```bash
+conda install -c conda-forge requests beautifulsoup4 pandas
+```
+
+`conda` é mais robusto para bibliotecas com dependências em C (NumPy, SciPy).
+
+### Em ambiente virtual (recomendado)
+
+Para não bagunçar o Python global, crie um ambiente virtual por projeto. Veja a [parada de ambiente](/pt/wiki/projetos/ensino/tfdt/trilha/paradas/ambiente/06-ambiente-virtual) para detalhes.
+
+## Importação
+
+Há três formas, em ordem de uso:
+
+```python
+# 1. Importa o módulo inteiro (verboso, explícito)
+import json
+dados = json.dumps({"a": 1})
+
+# 2. Importa com apelido (convenção da comunidade)
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import plotly.express as px
+
+# 3. Importa só o necessário
+from datetime import datetime, timedelta
+from pathlib import Path
+```
+
+<Notice type="warning">
+Evite `from biblioteca import *`. Polui o namespace e dificulta saber de onde cada função veio.
+</Notice>
+
+### Apelidos canônicos
+
+A comunidade convencionou apelidos — siga-os para que outras pessoas leiam seu código com facilidade:
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import plotly.express as px
+import seaborn as sns
+```
+
+## Variáveis de ambiente com `python-dotenv`
+
+Para guardar **credenciais** e **configurações** fora do código, use um arquivo `.env`:
+
+```ini
+# .env
+DB_PASSWORD=minhasenha
+API_KEY=abc123
+```
+
+E carregue no Python:
+
+```python
+import os
+from dotenv import load_dotenv
+
+load_dotenv()                       # carrega o .env
+
+senha = os.getenv("DB_PASSWORD")
+chave = os.getenv("API_KEY")
+```
+
+<Notice type="warning">
+Adicione `.env` ao `.gitignore` para não versionar credenciais. Versione apenas um `.env.example` com as chaves vazias, para outros desenvolvedores saberem o que precisam configurar.
+</Notice>
+
+## `requirements.txt` e `environment.yml`
+
+Para que outras pessoas reproduzam seu ambiente, declare as dependências em um arquivo:
+
+**`requirements.txt`** (pip):
+
+```
+requests>=2.31
+beautifulsoup4>=4.12
+pandas>=2.0
+```
+
+Instalar tudo de uma vez:
+
+```bash
+pip install -r requirements.txt
+```
+
+**`environment.yml`** (conda):
+
+```yaml
+name: meu-projeto
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - requests
+  - beautifulsoup4
+  - pandas
+```
+
+```bash
+conda env create -f environment.yml
+```
+
+## Pesquisar bibliotecas
+
+- [pypi.org](https://pypi.org) — repositório oficial.
+- [Awesome Python](https://github.com/vinta/awesome-python) — listas curadas.
+- [PyData](https://pydata.org/) — ecossistema científico.
+
+Antes de adotar uma biblioteca, verifique:
+
+- **Manutenção ativa**: último commit recente, issues respondidas.
+- **Documentação clara**: README com exemplos, não só docstrings.
+- **Adoção**: estrelas no GitHub e downloads no PyPI são bons indicadores.
+- **Licença**: compatível com o uso pretendido.

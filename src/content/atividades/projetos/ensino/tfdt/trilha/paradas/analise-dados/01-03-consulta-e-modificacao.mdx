@@ -1,7 +1,161 @@
 ---
-title: Consulta e Modificação dos Dados
-sidebar_label: Consulta e Modificação dos Dados
+title: Consulta e modificação
+sidebar_label: Consulta e modificação
+sidebar_order: 4
 ---
 
+Depois de inspecionar a estrutura, o próximo passo é **selecionar** subconjuntos relevantes e **modificar** o DataFrame para responder perguntas específicas.
 
-[EM CONSTRUÇÃO]
+## Seleção de colunas
+
+```python
+# Uma coluna (Series)
+df["titulo"]
+
+# Várias colunas (DataFrame)
+df[["titulo", "data", "horario"]]
+```
+
+## Seleção de linhas
+
+### Por posição (`.iloc`)
+
+```python
+df.iloc[0]            # primeira linha
+df.iloc[-1]           # última linha
+df.iloc[0:5]          # cinco primeiras linhas
+df.iloc[0:5, 0:2]     # cinco linhas, duas colunas
+```
+
+### Por rótulo de índice (`.loc`)
+
+```python
+df.loc[0]                              # rótulo 0
+df.loc[df["data"] == "2023-01-15"]     # filtro por valor
+df.loc[0, "titulo"]                    # uma célula
+df.loc[0:5, ["titulo", "data"]]        # fatiamento + colunas
+```
+
+<Notice type="tip">
+Use `.loc[]` quando o índice for significativo (datas, IDs); use `.iloc[]` quando quiser pegar "as primeiras N linhas" ou similar. Quando estiver em dúvida, `.loc[]` é mais legível.
+</Notice>
+
+## Filtros booleanos
+
+Toda comparação aplicada a uma coluna devolve uma `Series` booleana:
+
+```python
+df["data"] > "2020-01-01"
+# 0    False
+# 1    False
+# ...
+# 5039  True
+# Name: data, dtype: bool
+```
+
+Essa Series booleana pode ser usada para filtrar:
+
+```python
+notas_recentes = df[df["data"] > "2020-01-01"]
+```
+
+### Operadores lógicos
+
+Para combinar condições, use `&` (E), `|` (OU) e `~` (NÃO). **Sempre** com parênteses ao redor de cada condição:
+
+```python
+# Notas de 2020 que têm "Brasil" no título
+filtro = (df["data"] >= "2020-01-01") & (df["titulo"].str.contains("Brasil"))
+df[filtro]
+
+# Notas que NÃO são de 2024
+df[~(df["data"].str.startswith("2024"))]
+```
+
+| Operador Pandas | Equivalente Python | Significado |
+| --- | --- | --- |
+| `&` | `and` | E lógico |
+| `\|` | `or`  | OU lógico |
+| `~` | `not` | Negação |
+
+<Notice type="warning">
+Não use `and`, `or`, `not` em filtros de DataFrame — eles operam em valores escalares, não em séries inteiras. O resultado é um `ValueError`.
+</Notice>
+
+### `.isin()` para múltiplos valores
+
+```python
+anos_alvo = ["2020", "2021", "2022"]
+df[df["data"].str[:4].isin(anos_alvo)]
+```
+
+### `.str` para operações textuais
+
+`Series.str` aplica operações de string a cada elemento da coluna:
+
+```python
+df[df["titulo"].str.contains("Mercosul", case=False, na=False)]
+df[df["titulo"].str.startswith("NOTA")]
+df[df["titulo"].str.len() > 50]
+```
+
+`na=False` evita que valores `NaN` quebrem o filtro.
+
+## Modificação
+
+### Criar uma coluna
+
+```python
+df["ano"] = pd.to_datetime(df["data"]).dt.year
+df["mes"] = pd.to_datetime(df["data"]).dt.month
+df["titulo_curto"] = df["titulo"].str.slice(0, 30)
+```
+
+### Atualizar valores condicionalmente
+
+```python
+# Marcar notas longas
+df["longa"] = df["paragrafos"].str.len() > 5
+
+# Substituir valor específico
+df.loc[df["horario"] == "00:00", "horario"] = None
+```
+
+### Remover colunas e linhas
+
+```python
+df.drop(columns=["horario_atualizado"])           # devolve novo DataFrame
+df.drop(columns=["horario_atualizado"], inplace=True)  # modifica no lugar
+
+df.drop(index=[0, 1, 2])                          # remove linhas por rótulo
+df[df["titulo"] != "NA"]                          # filtragem como remoção
+```
+
+### Renomear colunas
+
+```python
+df.rename(columns={"horario": "hora_publicacao"}, inplace=True)
+df.columns = ["c1", "c2", "c3"]                   # substitui todas
+```
+
+## Ordenação
+
+```python
+df.sort_values("data")                             # crescente
+df.sort_values("data", ascending=False)            # decrescente
+df.sort_values(["ano", "mes"])                     # múltiplas chaves
+df.sort_index()                                    # por índice
+```
+
+## Resumo
+
+| Operação | Comando |
+| --- | --- |
+| Selecionar coluna | `df["c"]` ou `df[["c1", "c2"]]` |
+| Selecionar linha por posição | `df.iloc[i]` |
+| Selecionar linha por rótulo | `df.loc[r]` |
+| Filtrar | `df[df["c"] > x]` |
+| Combinar filtros | `df[(c1) & (c2)]` |
+| Adicionar coluna | `df["nova"] = ...` |
+| Remover coluna | `df.drop(columns=["c"])` |
+| Ordenar | `df.sort_values("c")` |

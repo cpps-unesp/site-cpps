@@ -1,7 +1,120 @@
 ---
-title: Pandas - Series e DataFrame
-sidebar_label: Pandas - Series e DataFrame
+title: Pandas — Series e DataFrame
+sidebar_label: Series e DataFrame
+sidebar_order: 2
 ---
 
+Pandas tem duas estruturas centrais: `Series` (vetor rotulado) e `DataFrame` (tabela rotulada). Praticamente toda análise em Python passa por uma delas.
 
-[EM CONSTRUÇÃO]
+## Series
+
+### Criar a partir de uma lista
+
+```python
+import pandas as pd
+
+s = pd.Series([10, 20, 30])
+# 0    10
+# 1    20
+# 2    30
+# dtype: int64
+```
+
+Por padrão, o índice é numérico (`0, 1, 2`). Definir índices nomeados torna o vetor mais expressivo:
+
+```python
+s = pd.Series([10, 20, 30], index=["a", "b", "c"], name="quantidade")
+s["b"]    # 20
+s.name    # "quantidade"
+s.index   # Index(['a', 'b', 'c'], dtype='object')
+s.values  # array([10, 20, 30])
+```
+
+### Criar a partir de um dicionário
+
+A chave vira índice:
+
+```python
+populacao = pd.Series({"SP": 46, "MG": 21, "RJ": 17})
+```
+
+### Operações vetorizadas
+
+Operações se aplicam elemento a elemento — sem `for`:
+
+```python
+s * 2          # multiplica todos
+s > 15         # Series booleana
+s[s > 15]      # filtra elementos > 15
+s.mean()       # média
+s.sum()        # soma
+```
+
+## DataFrame
+
+### Criar a partir de um dicionário de listas
+
+A forma mais comum de criação manual:
+
+```python
+df = pd.DataFrame({
+    "titulo": ["NOTA 636/2008", "NOTA 637/2008", "NOTA 638/2008"],
+    "data":   ["2008-08-12", "2008-08-13", "2008-08-14"],
+    "horario":["14:30", "10:15", "09:00"],
+})
+```
+
+Cada chave do dicionário vira uma coluna. Todas as listas precisam ter o mesmo tamanho.
+
+### Criar a partir de uma lista de dicionários
+
+Útil quando os dados vêm de uma API ou de scraping (cada item da lista é uma "linha"):
+
+```python
+registros = [
+    {"titulo": "NOTA 636/2008", "data": "2008-08-12", "horario": "14:30"},
+    {"titulo": "NOTA 637/2008", "data": "2008-08-13", "horario": "10:15"},
+]
+df = pd.DataFrame(registros)
+```
+
+### Acessar colunas
+
+Uma coluna é uma `Series`:
+
+```python
+df["titulo"]               # Series
+df.titulo                  # equivalente, sintaxe alternativa
+df[["titulo", "data"]]     # subset com várias colunas (DataFrame)
+```
+
+<Notice type="warning">
+`df.titulo` falha quando o nome da coluna contém espaços, hífens ou começa com número. `df["nome da coluna"]` funciona sempre — prefira o colchete.
+</Notice>
+
+### Acessar linhas
+
+Pandas tem dois acessadores principais:
+
+| Acessador | Indexa por | Exemplo |
+| --- | --- | --- |
+| `.loc[]` | **Rótulo** do índice | `df.loc[0]`, `df.loc[df["data"] > "2008-08-12"]` |
+| `.iloc[]` | **Posição** numérica | `df.iloc[0]`, `df.iloc[0:3]` |
+
+```python
+df.loc[0]              # primeira linha (índice rótulo 0)
+df.iloc[-1]            # última linha (posição -1)
+df.loc[0, "titulo"]    # célula específica
+```
+
+### Atributos básicos
+
+| Atributo | O que devolve |
+| --- | --- |
+| `df.shape` | Tupla `(linhas, colunas)` |
+| `df.columns` | Index com os nomes das colunas |
+| `df.index` | Index das linhas |
+| `df.dtypes` | Tipo de cada coluna |
+| `df.values` | Array NumPy com os dados (sem rótulos) |
+
+Os próximos capítulos exploram esses atributos com exemplos reais a partir do `notas_mre.json` produzido pela trilha de coleta.

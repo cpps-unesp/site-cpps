@@ -27,7 +27,7 @@ type BuildDocsSidebarOptions = {
 };
 
 const acronymMap: Record<string, string> = {
-  tfdt: 'TFDT',
+  tfdt: 'Formação em Dados',
   md: 'MD',
   ocr: 'OCR',
   css: 'CSS',

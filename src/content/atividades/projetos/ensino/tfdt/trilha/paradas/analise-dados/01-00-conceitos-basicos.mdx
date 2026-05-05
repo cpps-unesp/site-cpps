@@ -1,7 +1,88 @@
 ---
-title: Conceitos Básicos
-sidebar_label: Conceitos Básicos
+title: Conceitos básicos
+sidebar_label: Conceitos básicos
+sidebar_order: 1
 ---
 
+A análise de dados em Python é feita, na maioria dos casos, com duas bibliotecas: **NumPy** e **Pandas**. Bibliotecas auxiliares de visualização (Matplotlib, Plotly) entram em seguida.
 
-[EM CONSTRUÇÃO]
+## NumPy e Pandas: para que servem
+
+| Biblioteca | Foco | Estrutura central |
+| --- | --- | --- |
+| **NumPy** | Cálculo numérico vetorizado | `ndarray` (array N-dimensional) |
+| **Pandas** | Tabelas com rótulos, importação e manipulação | `Series` e `DataFrame` |
+
+NumPy é a base — Pandas usa NumPy por baixo. Para dados rotulados (planilhas, JSON, CSV), Pandas é o ponto de entrada.
+
+## Instalação
+
+```bash
+pip install numpy pandas matplotlib plotly
+```
+
+Ou, com `conda`, num `environment.yml`:
+
+```yaml
+dependencies:
+  - numpy
+  - pandas
+  - matplotlib
+  - plotly
+```
+
+## Imports padrão
+
+A comunidade convergiu em apelidos. Seguir a convenção facilita a leitura por outras pessoas:
+
+```python
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import plotly.express as px
+```
+
+## Series
+
+`Series` é um vetor unidimensional **rotulado** (cada valor tem um índice).
+
+```python
+notas = pd.Series([7.5, 8.0, 6.0], index=["Alice", "Bruno", "Carla"])
+print(notas)
+# Alice    7.5
+# Bruno    8.0
+# Carla    6.0
+# dtype: float64
+
+notas["Bruno"]  # 8.0
+notas.mean()    # 7.166...
+```
+
+## DataFrame
+
+`DataFrame` é uma tabela bidimensional — cada coluna é uma `Series`.
+
+```python
+df = pd.DataFrame({
+    "titulo": ["NOTA 636/2008", "NOTA 637/2008"],
+    "data": ["2008-08-12", "2008-08-13"],
+    "horario": ["14:30", "10:15"],
+})
+
+df
+#           titulo        data horario
+# 0  NOTA 636/2008  2008-08-12   14:30
+# 1  NOTA 637/2008  2008-08-13   10:15
+```
+
+Colunas, linhas e o objeto inteiro têm operações dedicadas — assunto dos próximos tópicos.
+
+## Conexão com a coleta
+
+O JSON gerado pela trilha de [coleta de dados](/pt/wiki/projetos/ensino/tfdt/trilha/paradas/coleta-dados/05-armazenamento) (ex: `notas_mre.json`) é o ponto de partida natural para análise. A partir desse arquivo, conseguimos:
+
+- Contar quantas notas foram publicadas por ano.
+- Filtrar notas por palavra-chave no título.
+- Visualizar a evolução temporal em gráficos.
+
+Esses exemplos serão usados ao longo dos próximos capítulos.
