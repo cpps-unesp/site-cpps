@@ -1,0 +1,113 @@
+---
+title: Requisições e parsing com BeautifulSoup
+sidebar_label: requests + BeautifulSoup
+sidebar_order: 2
+---
+
+`requests` faz a requisição HTTP e devolve o HTML da página. `BeautifulSoup` (do pacote `beautifulsoup4`, importado como `bs4`) recebe esse HTML e oferece uma API para localizar elementos.
+
+## Instalação
+
+```bash
+pip install requests beautifulsoup4
+```
+
+Ou, se você usa `conda`, adicione no `environment.yml`:
+
+```yaml
+dependencies:
+  - requests
+  - beautifulsoup4
+```
+
+## Função genérica de acesso
+
+Encapsular a requisição em uma função evita repetição e facilita testes:
+
+```python
+import requests
+from bs4 import BeautifulSoup
+
+
+def acessar_pagina(link):
+    """Baixa o HTML e devolve um objeto BeautifulSoup."""
+    resposta = requests.get(link)
+    bs = BeautifulSoup(resposta.text, "html.parser")
+    return bs
+```
+
+`html.parser` é o parser nativo do Python. Para HTML mal formado, considere `lxml` (`pip install lxml` e use `BeautifulSoup(..., "lxml")`).
+
+## Localizando elementos
+
+`BeautifulSoup` oferece dois métodos principais:
+
+| Método | Retorna | Uso |
+| --- | --- | --- |
+| `find(tag, attrs={...})` | O **primeiro** elemento que combina | Quando há um único elemento esperado. |
+| `find_all(tag, attrs={...})` | Uma **lista** de elementos | Quando há vários elementos repetidos. |
+
+Exemplo aplicado às notas à imprensa do MRE:
+
+```python
+pagina = acessar_pagina("https://www.gov.br/mre/pt-br/canais_atendimento/imprensa/notas-a-imprensa/notas-a-imprensa")
+
+# Localiza o contêiner principal e, dentro dele, todos os artigos.
+notas = pagina.find("div", attrs={"id": "content-core"}).find_all("article")
+
+print(len(notas))  # quantas notas há nesta página
+```
+
+## Lendo conteúdo e atributos
+
+Cada elemento devolvido por `BeautifulSoup` é navegável:
+
+```python
+for nota in notas:
+    # Texto de tags filhas
+    titulo = nota.h2.text.strip()
+
+    # Atributo de tag
+    link = nota.a["href"]
+
+    # Pesquisa interna ao elemento
+    subtitulo = nota.find("span", attrs={"class": "subtitle"}).text.strip()
+
+    print(titulo, link, subtitulo)
+```
+
+<Notice type="tip">
+`element.text` devolve o texto concatenado de todos os filhos. `strip()` remove espaços e quebras de linha nas pontas — quase sempre desejado em scraping.
+</Notice>
+
+## Encadeamento e busca interna
+
+Você pode encadear `find()`/`find_all()` quando o elemento procurado está aninhado dentro de outro já localizado:
+
+```python
+# Span de classe "value" dentro do span de classe "documentModified"
+tag_modificado = pagina.find("span", attrs={"class": "documentModified"})
+valor = tag_modificado.find("span", attrs={"class": "value"}).text.strip()
+```
+
+Para extrair todos os parágrafos do corpo do artigo:
+
+```python
+corpo = pagina.find("div", attrs={"property": "rnews:articleBody"})
+paragrafos = [p.text.strip() for p in corpo.find_all("p")]
+```
+
+## Quando usar seletores CSS
+
+`BeautifulSoup` também aceita seletores CSS via `select()` e `select_one()`:
+
+```python
+notas = pagina.select("div#content-core article")
+titulo = nota.select_one("h2").text.strip()
+```
+
+Use seletores CSS quando o caminho até o elemento for longo ou envolver classes encadeadas — o código fica mais legível.
+
+## Próximos passos
+
+Esta página cobre uma única requisição. Sites reais têm dezenas de páginas e elementos que nem sempre existem — o próximo capítulo trata de [paginação e tratamento de erros](./03-paginacao-e-erros).

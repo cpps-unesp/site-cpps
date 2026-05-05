@@ -1,0 +1,143 @@
+---
+title: Páginas dinâmicas com Selenium
+sidebar_label: Selenium
+sidebar_order: 6
+---
+
+Quando o conteúdo de interesse é renderizado por JavaScript **depois** que a página carrega, `requests` não enxerga esse conteúdo. A solução é usar um navegador automatizado: `Selenium` controla um Chrome (ou Firefox) real e permite interagir com a página como um usuário.
+
+## Instalação
+
+```bash
+pip install selenium webdriver-manager
+```
+
+`webdriver-manager` cuida de baixar o driver compatível com a versão do navegador instalado.
+
+## Estrutura mínima
+
+```python
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+from webdriver_manager.chrome import ChromeDriverManager
+from time import sleep
+
+
+def acessar_pagina_dinamica(link):
+    options = Options()
+    options.add_argument("--headless=new")        # sem janela visível
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+
+    navegador = webdriver.Chrome(
+        service=ChromeService(ChromeDriverManager().install()),
+        options=options,
+    )
+    navegador.get(link)
+    sleep(2)  # tempo para o JS carregar
+    return navegador
+```
+
+<Notice type="tip">
+`--headless=new` roda o Chrome sem abrir interface gráfica. Útil para servidores e CI. Em desenvolvimento, remova essa opção para **ver** o que o coletor está fazendo.
+</Notice>
+
+## Localizar elementos
+
+`Selenium` localiza elementos usando seletores via classe `By`:
+
+```python
+from selenium.webdriver.common.by import By
+
+# Por ID
+botao = navegador.find_element(By.ID, "button1")
+
+# Por seletor CSS
+campo_ano = navegador.find_element(By.CSS_SELECTOR, "#ano")
+
+# Vários elementos
+opcoes = campo_ano.find_elements(By.TAG_NAME, "option")
+```
+
+## Interagir com a página
+
+Diferente do `BeautifulSoup`, `Selenium` permite **clicar**, **digitar** e **submeter formulários**:
+
+```python
+# Selecionar um ano em um dropdown e clicar em Pesquisar
+opcoes_ano = navegador.find_element(By.CSS_SELECTOR, "#ano").find_elements(By.TAG_NAME, "option")
+opcoes_ano[0].click()
+
+navegador.find_element(By.CSS_SELECTOR, "#button1").click()
+sleep(2)
+```
+
+## Exemplo: baixar PDFs do Diário da Câmara
+
+O portal `imagem.camara.leg.br` exibe os Diários por ano. Para cada ano, é preciso clicar em "Pesquisar", esperar a renderização do calendário e extrair os links dos dias publicados:
+
+```python
+from datetime import datetime
+import requests
+
+def baixar_diarios_do_ano(navegador, indice_ano):
+    opcoes = navegador.find_element(By.CSS_SELECTOR, "#ano").find_elements(By.TAG_NAME, "option")
+    opcoes[indice_ano].click()
+    navegador.find_element(By.CSS_SELECTOR, "#button1").click()
+    sleep(2)
+
+    dias = navegador.find_elements(By.CSS_SELECTOR, ".calWeekDaySel, .calWeekEndSel")
+    print(f"{len(dias)} dias publicados neste ano")
+
+    for dia in dias:
+        href = dia.find_element(By.TAG_NAME, "a").get_attribute("href")
+        data_str = href.split("=")[-1]                              # "5/2/2019"
+        data = datetime.strptime(data_str, "%d/%m/%Y")
+        nome = data.strftime("%Y-%m-%d") + ".pdf"
+
+        url_final = obter_url_final_apos_redirecionamentos(href)
+        resposta = requests.get(url_final, timeout=60)
+        if resposta.ok:
+            with open(f"dados/{nome}", "wb") as f:
+                f.write(resposta.content)
+```
+
+## Esperas explícitas
+
+`sleep` fixo desperdiça tempo (ou falha quando a rede está lenta). Para casos sérios, prefira esperas explícitas:
+
+```python
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+espera = WebDriverWait(navegador, 10)
+elemento = espera.until(EC.presence_of_element_located((By.CSS_SELECTOR, "#ano")))
+```
+
+A espera retorna assim que a condição é satisfeita (até o timeout).
+
+## Encerrar sempre o navegador
+
+Cada `webdriver.Chrome()` abre um processo. Não esquecer de encerrar:
+
+```python
+try:
+    navegador = acessar_pagina_dinamica(link)
+    # ...
+finally:
+    navegador.quit()
+```
+
+Em scripts longos, considere reaproveitar uma única instância do navegador em vez de abrir uma a cada chamada.
+
+## Quando preferir BS4
+
+Selenium é mais lento e mais frágil do que `requests + BS4`. **Sempre tente primeiro a coleta estática.** Use Selenium apenas quando:
+
+- O conteúdo é injetado por JavaScript após o carregamento.
+- A navegação exige cliques, scroll ou login interativo.
+- O site usa proteção anti-bot que bloqueia clientes simples.
+
+Para coletas pesadas em páginas dinâmicas, considere também `Playwright` (API mais moderna) ou `Scrapy + scrapy-splash`.

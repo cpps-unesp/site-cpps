@@ -1,0 +1,71 @@
+---
+title: Conceitos iniciais
+sidebar_label: Conceitos iniciais
+sidebar_order: 1
+---
+
+A coleta automatizada de dados (web scraping) consiste em extrair informações de páginas web de forma programática. Antes de escrever qualquer código, é importante entender **como a página foi construída** e **qual estratégia de coleta é adequada**.
+
+## Estrutura de uma página web
+
+Toda página tem três camadas principais:
+
+- **HTML** — estrutura e conteúdo (parágrafos, tabelas, listas, links).
+- **CSS** — apresentação visual (cores, layout, fontes).
+- **JavaScript** — comportamento dinâmico (carregar dados sob demanda, reagir a cliques).
+
+Para coleta, o que importa é onde a informação **está representada** no momento em que você acessa a página.
+
+## Inspecionar a página
+
+A primeira tarefa antes de coletar dados é inspecionar a estrutura da página de origem. Use as ferramentas do navegador:
+
+- Clique com o botão direito sobre o elemento desejado e escolha **Inspecionar**.
+- Identifique a tag (`<div>`, `<article>`, `<h2>`, `<a>`, `<span>` etc.) e os atributos (`id`, `class`, `href`).
+- Anote o **caminho** até o elemento — ele será usado nas funções `find()` e `find_all()` ou em seletores CSS.
+
+Exemplo de elemento encontrado em uma nota à imprensa do MRE:
+
+```html
+<div id="content-core">
+  <article>
+    <h2>NOTA À IMPRENSA Nº 636/2008</h2>
+    <a href="/mre/.../nota-636-2008">Acessar</a>
+    <span class="subtitle">Número de nota: 636/2008</span>
+    <span class="summary-view-icon">2008-08-12</span>
+    <span class="summary-view-icon">14:30</span>
+  </article>
+</div>
+```
+
+A partir desse trecho, podemos planejar a extração: localizar `div#content-core`, percorrer cada `article` e ler `h2`, `a[href]`, `span.subtitle` e `span.summary-view-icon`.
+
+## Página estática vs. página dinâmica
+
+A escolha da ferramenta depende de como o conteúdo é entregue ao navegador:
+
+| Tipo de página | Como funciona | Ferramenta indicada |
+| --- | --- | --- |
+| Estática | O HTML já vem pronto na resposta do servidor. | `requests` + `BeautifulSoup` |
+| Dinâmica | O HTML é montado por JavaScript depois que a página carrega. | `Selenium` (ou outro navegador headless) |
+
+<Notice type="tip">
+Para descobrir se uma página é dinâmica, abra o **código-fonte** (Ctrl+U) e procure pelo conteúdo que você quer coletar. Se ele não estiver lá, mas aparecer ao inspecionar o elemento renderizado, a página é dinâmica.
+</Notice>
+
+## Ética e boas práticas
+
+- Verifique o arquivo `robots.txt` do site (ex: `https://exemplo.com/robots.txt`) — ele indica quais áreas o site solicita que não sejam acessadas por robôs.
+- Leia os termos de uso. Sites públicos geralmente permitem coleta acadêmica; sites comerciais podem ter restrições explícitas.
+- Não sobrecarregue o servidor: insira pausas (`time.sleep`) entre requisições e evite paralelismo agressivo.
+- Identifique seu robô em um `User-Agent` informativo quando possível.
+- Prefira APIs oficiais quando existirem.
+
+## Fontes de pesquisa frequentes no CPPS
+
+- Portais governamentais (`gov.br`, Câmara, Senado, MRE).
+- Hemerotecas e arquivos digitais.
+- Portais de revistas científicas e bases de teses.
+- Bases bibliográficas internacionais.
+
+Cada uma dessas fontes tem padrões próprios de marcação. Mapear esses padrões é o primeiro passo para escrever um coletor robusto.

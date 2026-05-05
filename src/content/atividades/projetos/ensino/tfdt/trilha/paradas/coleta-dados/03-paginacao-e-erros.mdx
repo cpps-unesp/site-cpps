@@ -1,0 +1,130 @@
+---
+title: Paginação e tratamento de erros
+sidebar_label: Paginação e erros
+sidebar_order: 3
+---
+
+Sites listam grandes volumes de informação em **páginas separadas**, e nem todo elemento esperado está sempre presente. Um coletor robusto precisa lidar com essas duas realidades.
+
+## Identificar o padrão de paginação
+
+Geralmente a URL da listagem aceita um parâmetro que indica o início da página. No portal de notas à imprensa do MRE, por exemplo:
+
+```
+https://www.gov.br/mre/.../notas-a-imprensa?b_start:int=0     # página 1
+https://www.gov.br/mre/.../notas-a-imprensa?b_start:int=30    # página 2
+https://www.gov.br/mre/.../notas-a-imprensa?b_start:int=60    # página 3
+...
+```
+
+Cada página exibe 30 notas. Para coletar todas as 5040 notas, basta variar o `b_start:int` em incrementos de 30.
+
+## Gerar a lista de URLs
+
+```python
+def percorrer_paginas(url_base, total=5040, por_pagina=30):
+    """Gera todas as URLs de paginação a partir de uma base."""
+    lista = []
+    contador = 0
+    while contador < total:
+        lista.append(url_base + str(contador))
+        contador += por_pagina
+    return lista
+
+
+url_base = "https://www.gov.br/mre/pt-br/canais_atendimento/imprensa/notas-a-imprensa/notas-a-imprensa?b_start:int="
+links = percorrer_paginas(url_base)
+print(len(links))  # 168 páginas
+```
+
+<Notice type="warning">
+Se você não souber o total de páginas, pare quando a página deixar de retornar resultados. Por exemplo: rode `find_all("article")` e, se a lista vier vazia, encerre o loop.
+</Notice>
+
+## Loop principal
+
+A coleta percorre cada URL e, dentro dela, cada item:
+
+```python
+def extrair_infos(lista_links):
+    for link in lista_links:
+        pagina = acessar_pagina(link)
+        notas = pagina.find("div", attrs={"id": "content-core"}).find_all("article")
+
+        for nota in notas:
+            titulo = nota.h2.text.strip()
+            link_nota = nota.a["href"]
+            print(titulo, link_nota)
+```
+
+## Tratamento de erros
+
+Nem todo `article` tem todos os campos esperados. Se um `<span class="subtitle">` não existir, `.text` é chamado em `None` e o programa quebra com `AttributeError`. Use `try/except` para casos previsíveis:
+
+```python
+try:
+    numero = nota.find("span", attrs={"class": "subtitle"}).text.strip().split()[-1]
+    numero = numero.split("/")[0]  # "636/2008" -> "636"
+except AttributeError as erro:
+    if str(erro) == "'NoneType' object has no attribute 'text'":
+        numero = "NA"
+    else:
+        raise  # outro AttributeError não esperado, deixa propagar
+```
+
+### Padrão recomendado
+
+Capturar **apenas** as exceções que você sabe explicar e deixar as demais subirem. Capturar `Exception` genérico esconde bugs.
+
+```python
+def extrair_numero(nota):
+    span = nota.find("span", attrs={"class": "subtitle"})
+    if span is None:
+        return "NA"
+    return span.text.strip().split()[-1].split("/")[0]
+```
+
+A versão acima evita o `try/except` ao testar antes se o elemento existe — frequentemente é mais legível.
+
+## Pausas entre requisições
+
+Para não sobrecarregar o servidor (e evitar bloqueio):
+
+```python
+from time import sleep
+
+for link in lista_links:
+    pagina = acessar_pagina(link)
+    # ... coleta ...
+    sleep(1)  # 1 segundo entre páginas
+```
+
+Em coletas grandes, considere intervalos aleatórios:
+
+```python
+import random
+sleep(random.uniform(0.5, 2.0))
+```
+
+## Resiliência a falhas de rede
+
+Requisições HTTP podem falhar. Para tornar o coletor tolerante:
+
+```python
+import requests
+from time import sleep
+
+
+def acessar_pagina_com_retry(link, tentativas=3, intervalo=2):
+    for tentativa in range(tentativas):
+        try:
+            resposta = requests.get(link, timeout=10)
+            resposta.raise_for_status()
+            return BeautifulSoup(resposta.text, "html.parser")
+        except (requests.RequestException, requests.HTTPError) as erro:
+            print(f"Erro em {link} ({tentativa + 1}/{tentativas}): {erro}")
+            sleep(intervalo)
+    raise RuntimeError(f"Falha ao acessar {link} após {tentativas} tentativas")
+```
+
+Em produção, frameworks como `Scrapy` já trazem essas capacidades prontas.
