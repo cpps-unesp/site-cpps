@@ -113,11 +113,18 @@ Encapsulamento diz respeito à proteção do acesso de algumas informações pre
 
 ### Herança e polimorfismo
 
-- Herança: receber funcionalidades e características de outra classe
+**Herança**
+A herança é um princípio que permite criar uma nova classe (chamada de classe filha) a partir de uma classe já existente (chamada de classe mãe ou superclasse). Utilisamos as classs para reaproveitar códigos, já que a classe filha herda automaticamente todos os atributos e métodos da classe mãe, além de poder adicionar novas características exclusivas.  
+**Polimorfismo** 
+Esta palavra significa "muitas formas". Na programação, ele ocorre quando modificamos os métodos herdados da classe mãe. Ou seja, utilizamos o mesmo nome de método, mas alteramos o seu comportamento interno para atender às necessidades específicas da nova classe. Assim, um mesmo comando pode gerar ações diferentes dependendo do objeto que o executa.
 
-- Polimorfismo: sobrescrever/modificar um método recebido como herança de outra classe
-
-- `self` utilizado sempre que queremos falar do exemplo
-- `cls` utilizado sempre que queremos falar com a classe
+**Diferença entre self e cls:**  
+- ```self```: Faz referência à instância (o objeto gerado). É utilizado sempre que queremos acessar, criar ou modificar atributos que pertencem àquele objeto em específico.  
+ 
+- ```cls```: Faz referência à própria classe. É utilizado (junto aos métodos de classe) sempre que precisamos manipular dados que pertencem ao "molde" geral, afetando a classe como um todo, independentemente dos objetos que já foram instanciados.  
 
 ### Herança múltipla e interfaces
+
+A herança múltipla ocorre quando uma classe filha recebe atributos e métodos de duas ou mais classes base (superclasses) simultaneamente. A linguagem Python suporta essa funcionalidade de forma nativa, permitindo a combinação de comportamentos de origens distintas.  
+A declaração é feita passando as classes base separadas por vírgula. Exemplo: class ClasseFilha(Mae1, Mae2):.  
+**MRO (Method Resolution Order - Ordem de Resolução de Métodos)**: Caso as classes base possuam métodos com o exato mesmo nome, o Python utiliza uma regra de prioridade para decidir qual executar. Essa busca ocorre da esquerda para a direita, com base na ordem em que as classes foram inseridas entre os parênteses.

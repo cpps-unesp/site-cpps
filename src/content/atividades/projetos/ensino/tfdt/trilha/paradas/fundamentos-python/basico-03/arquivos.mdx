@@ -26,14 +26,14 @@ with open('caminho_arquivo', 'modo_de_acesso', encoding='utf-8') as apelido:
 | `a`  | Abre o arquivo para escrita e insere os dados no final do arquivo. Se o arquivo não existir, será criado                                                   | `open('log.txt', 'a')` |
 | `+`  | Abre o arquivo para leitura e escrita. A escrita sempre ocorrerá no final do arquivo                                                                       | `open('data.csv', 'r+')` |
 
-| Método        | Descrição                                                                                                                                                                                                             | Exemplo               |
-| ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------- |
-| `read()`      | Lê todo o arquivo se nenhum argumento é fornecido. Caso um argumento do tipo `int` seja inserido, será retornado a quantidade de caracteres correspondentes ao `int` apontado                                         | `read()` e `read(10)` |
-| `readline()`  | Lê apenas uma linha do arquivo                                                                                                                                                                                        |                       |
-| `readlines()` | Lê o arquivo e transforma cada linha em um elemento de uma lista                                                                                                                                                      |                       |
-| `write()`     | `w` - modo utilizado caso o conteúdo do arquivo possa ser apagado;  `x` - para ter certeza que um novo arquivo será criado do zero |                       |
-| `append()`    |                                                                                                                                                                                                                       |                       |
 
+| Método        | Descrição                                                                                                                                                                         |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| read()      | Lê todo o arquivo se nenhum argumento é fornecido. Caso um argumento do tipo int seja inserido, será retornado a quantidade de caracteres correspondentes ao int apontado           |
+| readline()  | Lê apenas uma linha do arquivo                                                                                                                                                      |
+| readlines() | Lê o arquivo e transforma cada linha em um elemento de uma lista                                                                                                                    |
+| write()     | w - modo utilizado caso o conteúdo do arquivo possa ser apagado; x - para ter certeza que um novo arquivo será criado do zero                                                       |
+| append()    | a - se você quer adicionar conteúdo sem perder os dados já existentes no arquivo                                                                                                    |
 - Os métodos `read()` e `readlines()` não são indicados para uso se o arquivo for muito grande, pois eles colocam todo o conteúdo do arquivo na memória do computador.
 
 ```py
