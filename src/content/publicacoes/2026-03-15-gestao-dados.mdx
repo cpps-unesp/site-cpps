@@ -10,3 +10,129 @@ featured: false
 ---
 
 O gerenciamento de dados não é uma tarefa burocrática isolada; ele é um processo fundamental que se integra a cada fase da sua pesquisa. Pensar no ciclo de vida dos dados é como ter o roteiro completo de um filme antes de começar a filmar: você sabe o que vai acontecer, onde os dados serão guardados, e como o projeto terminará. Esse ciclo tem seis etapas principais e interconectadas: Planejar, Coletar, Processar, Preservar, Compartilhar e Reutilizar.
+
+
+
+# O Ciclo de Vida dos Dados de Pesquisa: Do Laboratório à Longevidade
+
+O gerenciamento de dados não é uma tarefa burocrática isolada; ele é um processo fundamental que se integra a cada fase da sua pesquisa. Pensar no ciclo de vida dos dados é como ter o roteiro completo de um filme antes de começar a filmar: você sabe o que vai acontecer, onde os dados serão guardados, e como o projeto terminará.
+
+Este ciclo possui seis etapas principais e interconectadas:
+
+1. **Planejar**
+2. **Coletar**
+3. **Processar**
+4. **Preservar**
+5. **Compartilhar**
+6. **Reutilizar**
+
+
+
+## 1. Planejar: A Planta Baixa do Seu Projeto
+
+A primeira e mais crítica etapa é o planejamento. É aqui que você define como seus dados serão criados, organizados, armazenados e disponibilizados. 
+
+> **Analogia:** Pense nisso como a planta baixa da sua casa: você não começa a construir sem saber onde ficarão as paredes ou as portas. 
+
+Um bom **Plano de Gestão de Dados (PGD)** te força a responder perguntas essenciais:
+- Que tipos de dados vou gerar? (e.g., entrevistas, planilhas, imagens)
+- Em que formatos eles estarão? (.docx, .csv, .jpg)
+- Qual será o volume estimado de dados?
+
+### Organização Prática
+- **Nomenclatura:** Use convenções claras, ex: `entrevista_participante01_v01.docx`.
+- **Regra 3-2-1 de Backup:** - **3** cópias dos dados.
+    - **2** mídias diferentes.
+    - **1** cópia em local externo (nuvem ou outro prédio).
+
+---
+
+## 2. Coletar: Trazendo a Teoria para a Realidade
+
+A fase de coleta é a materialização do planejado. O objetivo é garantir que os dados sejam gerados de forma organizada, minimizando o retrabalho.
+
+- **Pesquisa Qualitativa:** Transcrição de entrevistas, registro de formatos (.docx) e metadados.
+- **Pesquisa Quantitativa:** Exportação de dados brutos de questionários (ex: .csv).
+
+A tabela criada no planejamento torna-se seu *checklist* diário para registrar o tipo, formato e volume dos arquivos gerados.
+
+---
+
+## 3. Processar: Organizando o Caos em Informação
+
+Aqui, os dados brutos são transformados em informações limpas e estruturadas.
+
+### Ações Principais:
+* **Anonimização:** Remoção de informações sensíveis (nomes, CPFs) para proteção da privacidade.
+* **Limpeza de Dados:** Padronização de respostas (ex: "Sim" vs "sim") e tratamento de valores ausentes.
+* **Categorização:** Análise temática e rotulação de dados qualitativos.
+
+---
+
+## 4. Preservar: Garantindo a Longevidade da Sua Pesquisa
+
+A preservação foca em manter os dados acessíveis e íntegros por muitos anos.
+
+### Pilares da Preservação:
+1.  **Documentação:** Arquivos `README.txt` ou Dicionários de Dados que explicam o conteúdo.
+2.  **Formatos Abertos:** Migrar de formatos proprietários (.xlsx) para abertos (.csv) para evitar obsolescência tecnológica.
+3.  **Repositórios Institucionais:** Depositar dados em locais seguros (ex: Repositórios de Universidades, Zenodo) em vez de apenas HDs externos.
+
+---
+
+## 5. Compartilhar: Abrindo as Portas para a Ciência Aberta
+
+Compartilhar aumenta o impacto do seu trabalho. Para isso, os dados devem seguir os **Princípios FAIR**:
+
+| Princípio | Descrição | Ferramenta/Ação |
+| :--- | :--- | :--- |
+| **Findable** (Encontrável) | Devem ser facilmente achados por humanos e máquinas. | Uso de **DOI** (Digital Object Identifier). |
+| **Accessible** (Acessível) | Devem estar disponíveis em repositórios públicos. | Acesso Aberto (Open Access). |
+| **Interoperable** (Interoperável) | Devem "conversar" com outros sistemas. | Uso de formatos abertos e metadados padrão. |
+| **Reusable** (Reutilizável) | Devem ter licenças claras de uso. | Licenças **Creative Commons** (ex: CC BY). |
+
+---
+
+## 6. Reutilizar: O Verdadeiro Legado da Pesquisa
+
+A reutilização fecha o ciclo. Dados bem geridos permitem que:
+- Você mesmo retome a pesquisa anos depois sem dificuldades.
+- Outros pesquisadores validem seus resultados.
+- A ciência avance através de metanálises e novas descobertas baseadas em dados existentes.
+
+---
+
+## Guia de Formatos de Arquivo
+
+Abaixo, os formatos mais indicados para cada necessidade na gestão de dados:
+
+### 1. Texto e Documentação
+* `.txt` (Plain Text): Ideal para `README` e anotações simples. Alta preservação.
+* `.docx` (MS Word): Uso cotidiano. Para arquivamento, prefira converter para `.pdf/A` ou `.odt`.
+* `.pdf/A`: Versão específica para arquivamento e preservação digital.
+
+### 2. Planilhas e Dados Estruturados
+* `.csv`: O padrão ouro para intercâmbio de dados brutos. Universal.
+* `.xlsx`: Ótimo para análise e fórmulas, mas deve ser exportado para `.csv` para compartilhamento.
+
+### 3. Imagem e Gráficos
+* `.jpg`: Fotografias (compressão com perda).
+* `.png`: Gráficos e logos (sem perda, suporta transparência).
+* `.tiff`: Alta qualidade para preservação e impressão.
+* `.svg`: Imagens vetoriais (infográficos) que não perdem qualidade ao ampliar.
+
+### 4. Áudio e Vídeo
+* `.wav`: Áudio sem compressão (alta fidelidade para transcrições).
+* `.mp3`: Distribuição e consumo rápido.
+* `.mp4`: Formato universal para vídeos.
+
+### 5. Código e Dados de Sistemas
+* `.json` / `.xml`: Troca de dados entre sistemas e armazenamento de dados complexos.
+* `.zip` / `.rar`: Agrupamento de pacotes de dados para facilitar o download.
+
+---
+
+## Leituras Recomendadas
+
+* [O Ciclo de Vida dos Dados no Contexto da Pesquisa em UX](https://doi.org/10.5007/1518-2924.2023.e83434)
+* [O que é o gerenciamento do ciclo de vida de dados (DLM)? - IBM](https://www.ibm.com/br-pt/think/topics/data-lifecycle-management)
