@@ -10,7 +10,8 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "ci": "astro sync && npm run typecheck && npm run lint && npm run build",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "git config core.hooksPath .githooks"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.4",
