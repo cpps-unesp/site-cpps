@@ -14,8 +14,8 @@ with open('caminho_arquivo', 'modo_de_acesso', encoding='utf-8') as apelido:
 # o arquivo será fechado ao final do bloco with
 
 ```
-> Utilisamos o "with" para todo o bloco fechar após sua leitura. Do contrário, seria necessário indicarmos o comando '.close' ao final do código.  
-> Fazemos isso pois a codificação pode gerar erros se o arquivo não for fechado  devidamente. Com a instrução With, podemos encapsular o bloco que desejamos abrir e frachar, melhorando a estrutura do código.
+> Utilizamos o "with" para todo o bloco fechar após sua leitura. Do contrário, seria necessário indicarmos o comando '.close' ao final do código.  
+> Fazemos isso pois a codificação pode gerar erros se o arquivo não for fechado  devidamente. Com a instrução With, podemos encapsular o bloco que desejamos abrir e fechar, melhorando a estrutura do código.
 - O tipo de dado retornado pelo `read()` será sempre uma `str`
 
 | Modo | Descrição                                                                                                                                                  | Exemplo |
@@ -29,11 +29,11 @@ with open('caminho_arquivo', 'modo_de_acesso', encoding='utf-8') as apelido:
 
 | Método        | Descrição                                                                                                                                                                         |
 | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| read()      | Lê todo o arquivo se nenhum argumento é fornecido. Caso um argumento do tipo int seja inserido, será retornado a quantidade de caracteres correspondentes ao int apontado           |
-| readline()  | Lê apenas uma linha do arquivo                                                                                                                                                      |
-| readlines() | Lê o arquivo e transforma cada linha em um elemento de uma lista                                                                                                                    |
-| write()     | w - modo utilizado caso o conteúdo do arquivo possa ser apagado; x - para ter certeza que um novo arquivo será criado do zero                                                       |
-| append()    | a - se você quer adicionar conteúdo sem perder os dados já existentes no arquivo                                                                                                    |
+| `read()`      | Lê todo o arquivo se nenhum argumento é fornecido. Caso um argumento do tipo int seja inserido, será retornado a quantidade de caracteres correspondentes ao int apontado           |
+| `readline()`  | Lê apenas uma linha do arquivo                                                                                                                                                      |
+| `readlines()` | Lê o arquivo e transforma cada linha em um elemento de uma lista                                                                                                                    |
+| `write()`     | w - modo utilizado caso o conteúdo do arquivo possa ser apagado; x - para ter certeza que um novo arquivo será criado do zero                                                       |
+| `append()`    | a - se você quer adicionar conteúdo sem perder os dados já existentes no arquivo                                                                                                    |
 - Os métodos `read()` e `readlines()` não são indicados para uso se o arquivo for muito grande, pois eles colocam todo o conteúdo do arquivo na memória do computador.
 
 ```py
