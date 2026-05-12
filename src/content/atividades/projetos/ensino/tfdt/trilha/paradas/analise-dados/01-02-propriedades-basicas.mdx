@@ -27,7 +27,9 @@ df.columns
 
 df.index
 # RangeIndex(start=0, stop=5040, step=1)
-```
+```  
+```df.index``` Rotula as linhas do Data Frame (DF). Os rótulos podem ser qualuqer valor que se mantenha constante, como "strings" e valores inteiros.  
+```df.columns:```  Mostra os rótulos das colunas do DF. A sequência é imutável e pode ser usada para seleção de dados, renomeações e alinhamento do DF.
 
 ## Tipos de dados
 
@@ -87,7 +89,8 @@ df.describe()              # só colunas numéricas
 df.describe(include="all") # todas as colunas
 ```
 
-Para colunas numéricas devolve `count`, `mean`, `std`, `min`, percentis e `max`. Para colunas `object` mostra `count`, `unique`, `top` (valor mais comum) e `freq`.
+Para colunas numéricas devolve `count`, `mean`, `std`, `min`, percentis e `max`.  
+Para colunas `object` mostra `count`, `unique`, `top` (valor mais comum) e `freq`.
 
 ## Contagem de valores únicos
 
