@@ -1,1 +1,153 @@
-teste scanner 2
+---
+title: 'Guia de Digitalização: NAPS2 e Scantailor'
+date: 2026-11-05
+authors: ["Lígia Simplicio"]
+summary: 'Tutorial passo a passo sobre como digitalizar documentos com o scanner Avision FB5000, configurar OCR no NAPS2 e realizar o tratamento de imagens com Scantailor.'
+tags: ['digitalização', 'OCR', 'preservação digital', 'NAPS2', 'Scantailor']
+type: 'material-didatico'
+lang: 'pt'
+featured: true
+---
+
+# Guia do Scanner
+
+### Testes
+Escaneei 10 páginas, demorou 5 minutos. Olhando o resultado, percebi que seria bom refazer o escann de duas páginas para melhor qualidade.
+* Teste_PauloFreire.pdf
+* Teste_Myamoto.pdf
+* VIGEVANI_contecioso_brasil_estadosunidos_da_informatica.pdf
+
+---
+
+### 1. Introdução
+Atualmente o CPPS possui o scaner de mesa **Avision FB5000**, um equipamento que consegue digitalizar livros, documentos e imagens em alta resolução. Seu tamanho máximo é A3 e possuí a capacidade de digitalizar mais de um documento por vez. 
+
+O software que utilizamos é o **NAPS 2**, um programa universal para scaners, por meio deste podemos selecionar a qualidade do documento, o tamanho, editar, converter para vários formatos, como PDF e PNG e também sua melhor função, converter o texto para OCR.
+
+> **O que é OCR?** > OCR é a sigla para *Optical Character Recognition* (Reconhecimento Óptico de Caracteres).  
+> Esta tecnologia é capaz de identificar letras e números de uma imagem escaneada ou manuscrito e convertê-las para o formato de texto digital, assim seus scans serão textos editáveis.
+
+---
+
+### 2. O Scaner
+
+### 3. O NAPS 2
+
+**3.1 Início**
+
+![Tela inicial NAPS2](/imagens/snanner/image.png)
+
+Ao entrar no NAPS 2 pela primeira vez, você irá se deparar com essa tela inicial. Neste passo, é necessário clicar no botão **“Novo Perfil”**.
+
+Esta é a tela de criação de perfil:
+![Configuração Perfil](/imagens/snanner/NPAS2_ConfigPerfil.gif)
+
+Nesta tela, é necessário:
+* **Selecionar o Driver e o dispositivo:** Driver: TWAIN | Dispositivo: FB5000
+* **Tamanho do papel:** O ideal é o usuário selecionar a opção que condiz com o documento que será digitalizado. No exemplo foi utilizado um livro em tamanho próximo ao A4.
+* **Resolução:** 300dpi
+* **Qualidade:** Recomendamos “Escala de Cinza” para textos em preto e branco.
+
+**3.2 Escaneando**
+Após configurar o perfil, já é possível digitalizar seus documentos. Basta posicionar o livro na parte de vidro do aparelho, fechar a bandeija, aplicar um pouco de pressão na bandeija, para que toda superfície do texto entre em contato com o vidro, pressionar a tecla **“F2”**.
+
+Toda vez que uma página for virada, basta apertar a tecla **“F2”** e repetir o processo.
+
+**3.3 Edição & OCR**
+![Edição OCR](/imagens/snanner/Guia_NAPS2_OCR_Idioma.gif)
+
+---
+
+### 4. Salvando seu PDF
+
+**4.1 Salvamento rápido**
+* Clique no botão “Salvar PDF” e escolha uma pasta para salvar o documento.
+* Nomeie o documento e salve.
+
+![Salvamento Rápido](/imagens/snanner/Guia_NAPS2_Salvamento.gif)
+
+**4.2 Salvando com Metadados**
+
+**4.2.1 Por que salvar com metadados?** Metadados são dados sobre dados, semelhante à livros em uma biblioteca, seus arquivos podem ter informações como autor, palavras-chaves, assuntos… Tudo isso facilita na organização, busca e gerenciamentos de seus arquivos digitais. Essa prática é ainda mais útil ao publicar algo público na internet, pois ajuda outros usuários a encontrar e estudar os documentos on-line.
+
+**4.2.2** Para salvar seu arquivo com metadados inclusos, basta clicar na seta ao lado do botão de salvar, aparecerá uma tela para inserir os metadados e selecionar o local onde o arquivo ficará armazenado. Após realizar esses passos, basta clicar no OK e seu arquivo estará pronto e salvo no computador.
+
+![Salvamento com Metadados](/imagens/snanner/Guia_NAPS2_Metadados.gif)
+
+---
+
+# Scantailor
+
+### Preparando o arquivo
+Scantailor é um programa de tratamento de textos digitalizados, onde é possível melhorar a qualidade do texto deixando-o mais nítido e legível, consideramos que ao final do processo, o documento chega bem próximo à um e-book.
+
+Antes de abrir o Scantailor, é necessário criar uma pasta com todas as imagens digitalizadas. O programa irá “puxar” todos os arquivos e o mais importante e criará outra pasta chamada **“out”**, onde ficarão armazenadas as imagens tratadas ao final do processo.
+
+**IMPORTANTE:** Todas os arquivos scaneados deverão estar em um formato de imagem como PNG, JPG, TIF entre outros.
+
+> Vou usar de exemplo um livro do Vigevani. O livro já foi digitalizado, mas há algumas páginas borradas, tortas e quero separar as páginas duplas.
+
+### Iniciando o programa
+Ao abrir o Scantailor, deve-se criar um novo projeto e indicar o caminho da pasta onde estão as imagens digitalizadas.
+
+![Novo Projeto Scantailor](/imagens/snanner/Guia_SCANTAILOR_novo_projeto.gif)
+
+## 1. Corrigir Orientação
+Caso as páginas não estejam na orientação certa, gire para a direção certa e aplique em todas as páginas.
+
+![Corrigir Orientação](/imagens/snanner/Guia_SCANTAILOR_orientacao.gif)
+
+Após acertar a orientação, clique no botão de “play” do passo 1.
+
+## 2. Dividir páginas
+Nesta parte, o algoritmo identifica sozinho as páginas que precisam de divisão. Só basta apertar o “play” para ele separar.
+
+![Dividir Páginas](/imagens/snanner/Guia_SCANTAILOR_divisao.gif)
+
+> **Nota:** Não é necessário clicar em cada página, apenas estou fazendo isso para demonstrar o resultado. Mas é sempre válido conferir o resultado do processo.
+
+## 3. Alinhamento
+Esta é outra parte que o programa faz sozinho se a digitalização foi feita em um scanner de maneira adequada.
+
+## 4. Selecione o Conteúdo
+O algoritmo do Scantailor também é bom identificando o conteúdo das imagens, mas é válido voltar nesse passo para conferir se não há algo que foi deixado para trás.
+
+![Selecionar Conteúdo](/imagens/snanner/Guia_SCANTAILOR_conteudo.gif)
+
+### 4.1 Páginas em branco
+As páginas em branco podem causar alguns problemas, certifique-se em cada página branca tenha alguma caixa de seleção, não importa o tamanho. Se não houver nenhuma caixa, clique com o botão direito na página e clique em **“Criar uma caixa de seleção”**.
+
+![Páginas em Branco](/imagens/snanner/Guia_SCANTAILOR_pag_branca.gif)
+
+## 5. Margens
+Esta é a parte mais complicada, por padrão as páginas têm o mesmo tamanho de margem, mas em algumas seleções a margem pode ficar mais larga ou mais alta.
+
+**Exemplo:** Esta página está em um tamanho menor e sua seleção está errada. Assim é necessário voltar no passo anterior e selecionar o conteúdo manualmente:
+
+![Erro de Margem](/imagens/snanner/Guia_SCANTAILOR_exemplo.gif)
+
+### 5.1 Como identificar margens erradas
+Uma maneira fácil de identificar margens que precisem de alteração é selecionar a ordem de exibição. Esta opção fica do lado inferior direito, embaixo do visualizador das páginas. Selecionando esta ordenação, é possível ver quais margens estão mais altas e mais largas.
+
+![Identificar Margens](/imagens/snanner/Guia_SCANTAILOR_exemplo_margem.gif)
+
+> **Importante:** Durante sua edição, é possível que você desative a opção de edição sincronizada, para que seja possível alterar as margens individualmente.
+
+## 6. Saída
+
+**DPI:** Mude o DPI para 300.  
+**Modo:** Recomendamos utilizar Preto e branco, para tirar a textura do papel.  
+**Eliminar manchas:** Em casos que a página tem muitas manchas, utilize essa opção para limpar a página.
+
+![Eliminar Manchas](/imagens/snanner/Guia_SCANTAILOR_manchas.gif)
+
+## Finalizando
+Para terminar todo o processamento, apenas clique no botão **“play”** do passo 6 na saída.
+
+**Atenção:** O Scantailor **não salva em pdf**, as imagens serão salvas na pasta **“out”** que foi criada no começo do processo.
+
+![Pasta Out](/imagens/snanner/Guia_SCANTAILOR_pasta_out.gif)
+
+Para compilar todas as imagens e converter para PDF, vamos voltar ao NAPS 2. Como o programa já foi configurado, ele salvará tudo em um arquivo e irá aplicar o OCR e por fim, seu documento estará finalizado com a melhor qualidade possível.
+
+![Compilar NAPS2](/imagens/snanner/Guia_SCANTAILOR_compilar.gif)
