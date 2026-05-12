@@ -23,7 +23,7 @@ function detectLang(request: Request): Language {
 const slug = Astro.params.slug ?? '';
 const parts = slug.split('/').filter(Boolean);
 const hasLang = SUPPORTED.includes(parts[0] as Language);
-const env = Astro.locals.runtime?.env;
+import { env } from "cloudflare:workers";
 
 // Static files that bypassed _routes.json exclusions due to URL encoding
 if (STATIC_EXT.test(slug)) {
