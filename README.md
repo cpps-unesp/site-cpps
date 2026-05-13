@@ -110,7 +110,7 @@ Os arquivos estáticos serão gerados em `./dist/`
 
 ### Configurações importantes
 
-- O projeto usa `output: 'server'` com `@astrojs/cloudflare` para execução no runtime do Cloudflare.
+- O projeto usa `output: 'static'`. O deploy é feito automaticamente pela Cloudflare Pages a cada push (build_command: `npm run build`, destination_dir: `dist`).
 - Atualize a URL base em `astro.config.mjs`
 - Configure o sitemap em `pages/sitemap.xml.ts`
 - Ajuste as meta tags em `layouts/BaseLayout.astro`
