@@ -68,8 +68,15 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Prepara Worker para Pages (modo avançado)
-        run: cp dist/server/entry.mjs dist/client/_worker.js
+      - name: Bundle Worker para Pages (_worker.js)
+        run: |
+          npx esbuild dist/server/entry.mjs \
+            --bundle \
+            --outfile=dist/client/_worker.js \
+            --format=esm \
+            --platform=browser \
+            --conditions=worker \
+            --external:node:*
 
       - name: Deploy produção (main)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
