@@ -110,7 +110,7 @@ Os arquivos estáticos serão gerados em `./dist/`
 
 ### Configurações importantes
 
-- O projeto usa `output: 'static'`. O deploy é feito automaticamente pela Cloudflare Pages a cada push (build_command: `npm run build`, destination_dir: `dist`).
+- O projeto usa `output: 'static'`. O deploy é feito automaticamente pela Cloudflare Pages a cada push (build_command: `npm run build`, destination_dir: `dist`). Detalhes da arquitetura de deploy e como funciona o `public/_redirects`: [docs/deploy-e-redirects.md](docs/deploy-e-redirects.md).
 - Atualize a URL base em `astro.config.mjs`
 - Configure o sitemap em `pages/sitemap.xml.ts`
 - Ajuste as meta tags em `layouts/BaseLayout.astro`
