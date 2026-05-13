@@ -75,6 +75,7 @@ jobs:
             const path = 'dist/server/wrangler.json';
             const config = JSON.parse(fs.readFileSync(path, 'utf8'));
             config.pages_build_output_dir = '../client';
+            delete config.assets;
             fs.writeFileSync(path, JSON.stringify(config, null, 2));
           "
 
