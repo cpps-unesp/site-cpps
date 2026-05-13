@@ -63,18 +63,18 @@
 /es/atividades/*  /es/wiki/:splat  301
 
 # Raiz e paths sem prefixo de idioma → PT
-/  /pt/  307
-/atividades  /pt/atividades  307
-/atividades/*  /pt/atividades/:splat  307
-/wiki  /pt/wiki  307
-/wiki/*  /pt/wiki/:splat  307
-/iniciativas  /pt/iniciativas  307
-/iniciativas/*  /pt/iniciativas/:splat  307
-/institucional  /pt/institucional  307
-/institucional/*  /pt/institucional/:splat  307
-/noticias  /pt/noticias  307
-/noticias/*  /pt/noticias/:splat  307
-/publicacoes  /pt/publicacoes  307
-/publicacoes/*  /pt/publicacoes/:splat  307
-/atendimento  /pt/atendimento  307
-/atendimento/*  /pt/atendimento/:splat  307
+/  /pt/  301
+/atividades  /pt/atividades  301
+/atividades/*  /pt/atividades/:splat  301
+/wiki  /pt/wiki  301
+/wiki/*  /pt/wiki/:splat  301
+/iniciativas  /pt/iniciativas  301
+/iniciativas/*  /pt/iniciativas/:splat  301
+/institucional  /pt/institucional  301
+/institucional/*  /pt/institucional/:splat  301
+/noticias  /pt/noticias  301
+/noticias/*  /pt/noticias/:splat  301
+/publicacoes  /pt/publicacoes  301
+/publicacoes/*  /pt/publicacoes/:splat  301
+/atendimento  /pt/atendimento  301
+/atendimento/*  /pt/atendimento/:splat  301
