@@ -76,7 +76,8 @@ jobs:
             --format=esm \
             --platform=browser \
             --conditions=worker \
-            --external:node:*
+            --external:node:* \
+            --external:cloudflare:*
 
       - name: Deploy produção (main)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
