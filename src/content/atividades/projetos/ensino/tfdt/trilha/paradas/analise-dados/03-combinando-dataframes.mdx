@@ -7,12 +7,12 @@ sidebar_order: 7
 
 Para unirmos DataFrames podemos usar o `concat`, `join`,`merge`,`append`
 
-| Função | Une linhas | Une colunas |
-| ------ | ---------- | ----------- |
-| concat | sim        | sim         |
-| join   | não        | sim         |
-| merge  | não        | sim         |
-| append | sim        | não         |
+| Função | Une linhas | Une colunas | Observação |
+| ------ | ---------- | ----------- | ---------- |
+| concat | sim        | sim         | Mais versátil. Utilizando os parâmetros `(axis=0)` para unir linhas e `(axis=1)` para unir colunas  |
+| join   | não        | sim         | Une preferencialmente pelo índice. |
+| merge  | não        | sim         | Baseado em chaves (estilo SQL), usando on ou left_on/right_on |
+| append | sim        | não         | Método df.append foi descontinuado no Pandas. Para DataFrames, use pd.concat. O append continua existindo apenas como método nativo para listas do Python |
 
 ## `Concat` - Estrutura geral
 
@@ -25,13 +25,13 @@ variavel = pd.concat([df_01,df_02])
 | Parâmetro              | Opções                     | Explicação                                         |
 | ---------------------- | -------------------------- | -------------------------------------------------- |
 | `ignore_index`         | `True` ou `False`          |                                                    |
-| `axis`                 | `0` ou `1`                 |                                                    |
+| `axis`                 | `0` ou `1`                 | use 0 para unir linhas e 1 para unir colunas       |
 | `keys`                 |                            |                                                    |
 | `sort`                 | `True` ou `False`          | ordena em ordem alfabética as colunas do DataFrame |
 | `sort_values`          | `df.sort_values("coluna")` | ordenação por coluna específica                    |
 | `customizar_ordenação` | `df[lista_de_colunas]`     | customiza a ordem das colunas                      |
 
--falar sobre `verify_integrity`
+
 
 ```
 variavel = pd.concat([df_01,df_02],ignore_index=True)
@@ -46,38 +46,64 @@ variavel = pd.concat([df_01,df_02],ignore_index=True)
 | diferença      | `isin()` + indexação booleana    |
 | mesmo conteúdo | `equals()`                       |
 
+### União `concat()`
+
+A união combina todos os elementos de dois conjuntos. No Pandas, fazemos isso em dois passos:
 ```
 df_união=pd.concat([dataframe_01,dataframe_02], ignore_index=True)
 df_união.drop_duplicates()
 ```
+> ignore_index=True evita que os índices originais se repitam, criando uma nova sequência  
 
+`pd.concat` Empilha os DF um em cima do outro. 
+
+`drop_duplicates` Remove as linhas repetidas após a junção, garantindo que cada registro seja único.  
+
+### Intersecção
+Retorna os elementos presentes em ambos os DF combinados.  
+O método usado é o `merge()`, que une as chaves comuns, utilizando de parâmetros como `on`, `left_on` e `right_on`, que identificam as colunas que servirão de ligaçãp entre os dados.
 ```
 df_intersecção=dataframe_01.merge(dataframe_02)
 df_intersecção.drop_duplicates()
 ```
 
+### Diferença
+
+A diferença busca elementos que existem em um conjunto, mas não no outro.
+
+O método utilizado é o .isin(), ele compara os itens que estão em cada DF com a função  
+`== False`, criando uma máscara que seleciona apenas os "exclusivos" do segundo DataFrame.
 ```
 dataframe_02[dataframe_02.paises.isin(dataframe_01.paises)==False]
 ```
+
+### Igualdade 
+O método equals() serve para verificar se dois objetos do pandas possuem exatamente o mesmo conteúdo, a mesma estrutura e os mesmos tipos de dados. Diferente de uma comparação comum de igualdade que retorna uma tabela de valores booleanos, o equals retorna um único resultado verdadeiro ou falso para o objeto inteiro. 
 
 ```
 dataframe_01.equals(dataframe_03)
 ```
 
-## Junção
+Junção de Dados (Merge e Join)
+Para cruzar informações de tabelas diferentes, o Pandas utiliza principalmente o método merge, que realiza uniões de estilo banco de dados (SQL) baseadas em colunas específicas, chamadas de chaves. Enquanto o join é otimizado para unir tabelas pelos seus índices, o merge é a ferramenta mais flexível para alinhar dados através de colunas com nomes iguais (on) ou diferentes (left_on e right_on).  
+A lógica da junção é definida pelo parâmetro how, que determina quais dados serão preservados no resultado final:  
+**Junção Interna (how='inner')**: É a intersecção dos dados. O DataFrame resultante conterá apenas as linhas cujas chaves de ligação existam em ambos os DataFrames originais.  
+**Junção Esquerda (how='left')**: Define o primeiro DataFrame como a base principal. O resultado preserva todos os registros da esquerda, adicionando os dados da direita apenas onde houver correspondência. Se não houver par à direita, os campos serão preenchidos com valores nulos (NaN).  
+**Junção Direita (how='right')**: Funciona de forma inversa à esquerda, tratando o segundo DataFrame como a base principal e preservando todos os seus registros, independentemente de haver correspondência no primeiro.  
+**Junção Externa (how='outer')**: Representa a união total. O resultado mantém todos os registros de ambos os DataFrames. Onde houver correspondência, os dados são unidos; onde não houver, os espaços vazios de ambos os lados são preenchidos com nulos.  
 
-O join e o merge realizam a junção de DataFrames. Temos três tipos de junções:
 
-- junção natural: pode deixar o DataFrame mais largo e gera um DataFrame a partir da intersecção;
-- junção interna (inner join): utiliza `left_on` e `right_on`;
-- junção externa: left join, right join, full join (outer).
+| Tipo de Junção | O que permanece no DataFrame final? |
+|----------------|-------------------------------------|
+| **Inner** | Apenas o que é comum aos dois lados (Intersecção). |
+|**Left** | Tudo da esquerda + o que combinar da direita. |
+| **Right** | Tudo da direita + o que combinar da esquerda. |
+| **Outer**| Tudo de ambos os lados (União). |
 
-Em todas as junções os dados da intersecção dos DataFrames estarão presentes.
+## Garantindo a qualidade   
 
-- No `inner join` apenas a intersecção estará presente.
-- No `left join` além da intersecção os dados do DataFrame indicados a esquerda estarão presentes.
-- No `right join` além da intersecção os dados do DataFrame indicados a direita estarão presentes.
-- No `full join` além da intersecção, todos os dados da esquerda e da direita no DataFrame estarão presente.
+Com o 'verify_integrity, parâmetro de segurnaça exclusivo do `pd.concat()`, é possível verificar se existe índices duplicados, definindo este parâmetro como `True`. E se o sistema detectar que duas linhas possuem o mesmo índice, ele interrompe a operação e exibe um erro.
+ 
 
 ## Operadores de comparação
 
@@ -92,8 +118,8 @@ Em todas as junções os dados da intersecção dos DataFrames estarão presente
 
 ## Operadores lógicos
 
-| Operador | Significado                                               |
-| -------- | --------------------------------------------------------- | ----------------------------------------------------------------- |
-| `&`      | AND (retona True se todas as condições forem verdadeiras) |
-| `        | `                                                         | OR (retorna True se ao menos uma das condições forem verdadeiras) |
-| `!`      | NOT (retona True se a condição for False)                 |
+| Operador | Significado | Uso no Pandas |
+|----------|-------------|---------------|
+| **&**    | `AND`: Retorna True se todas as condições forem verdadeiras | (condicao1) & (condicao2)|
+| **\|** | OR: Retorna True se ao menos uma das condições for verdadeira |(condicao1) - (condicao2) |
+| **~** | NOT: Inverte o resultado (True vira False e vice-versa) | ~df['coluna'].isna() | 
