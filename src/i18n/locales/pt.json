@@ -322,6 +322,22 @@
     "titulo": "Café com Ciência",
     "descricao": "O Café com Ciência é uma iniciativa voltada a debater temas da agenda de pesquisa dos pesquisadores do Centro de Pesquisa Política e Social",
     "episodios": [
+    {
+        "id": "ep6-acesso-a-justica",
+        "icone": "🎙️",
+        "titulo": "Episódio 6: Acesso à Justiça Centrado nas Pessoas",
+        "descricao": "O encontro faborda o acesso à justiça sob uma perspectiva bottom-up e redistributiva, focando na superação de barreiras institucionais e sociais enfrentadas por grupos vulneráveis a partir da valorização de suas próprias narrativas e da mobilização do Direito.",
+        "materiais": [
+          {
+            "nome": "PDF",
+            "url": "https://drive.google.com/file/d/1ZCPR57aatP07mqUEr4DscJnEB2-VObx0/view?usp=drive_link"
+          },
+          {
+            "nome": "HTML",
+            "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt"
+          }
+        ]
+      },
       {
         "id": "ep5-autocratizacao-resiliencia",
         "icone": "🎙️",
@@ -330,7 +346,7 @@
         "materiais": [
           {
             "nome": "PDF",
-            "url": ""
+            "url": "https://drive.google.com/file/d/1xKF1ssIfC50r0bI5zzQvr63ukUab8tIM/view?usp=drive_link"
           },
           {
             "nome": "HTML",
@@ -346,7 +362,7 @@
         "materiais": [
           {
             "nome": "PDF",
-            "url": "https://exemplo.com/ep1.pdf"
+            "url": "https://drive.google.com/file/d/1qas-xOLC4u71tJUIQRbz5_3QT-JvT4a9/view?usp=drive_link"
           },
           {
             "nome": "HTML",
@@ -378,7 +394,7 @@
         "materiais": [
           {
             "nome": "PDF",
-            "url": "https://exemplo.com/ep1.pdf"
+            "url": "https://drive.google.com/file/d/1qEpkl6My5lC4vBY2iFsJjImi8qa__iDg/view?usp=drive_link"
           },
           {
             "nome": "HTML",
