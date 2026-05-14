@@ -10,12 +10,13 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "ci": "astro sync && npm run typecheck && npm run lint && npm run build",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "[ -d .git ] && git config core.hooksPath .githooks || true"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.4",
     "@tailwindcss/vite": "^4.2.4",
-    "astro": "^6.2.1",
+    "astro": "^6.3.1",
     "astro-pagefind": "^1.8.6",
     "daisyui": "^5.5.19",
     "marked": "^18.0.3",
@@ -26,17 +27,14 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/cloudflare": "^13.3.0",
-    "@types/node": "^25.6.0",
+    "@types/node": "^25.6.2",
     "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.7.0",
-    "miniflare": "^4.20260430.0",
     "pagefind": "^1.5.2",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.1",
-    "wrangler": "^4.87.0"
+    "typescript-eslint": "^8.59.2"
   }
 }
