@@ -30,22 +30,28 @@ const canonicalUrl = new URL(pathname || `/${lang}/`, Astro.site).toString();
 const pathParts = pathname.split('/').filter(Boolean);
 const hasLangInPath = isSupportedLang(pathParts[0] ?? '');
 const isLangHome = hasLangInPath && pathParts.length === 1;
+
+const localeMap: Record<Language, { hreflang: string; ogLocale: string }> = {
+  pt: { hreflang: 'pt-BR', ogLocale: 'pt_BR' },
+  en: { hreflang: 'en-US', ogLocale: 'en_US' },
+  es: { hreflang: 'es-ES', ogLocale: 'es_ES' },
+};
+
+const htmlLang = localeMap[lang].hreflang;
 const alternateHrefs = (['pt', 'en', 'es'] as Language[]).map((targetLang) => {
   const localizedPath = hasLangInPath
     ? getLocalizedPathFromPathname(pathname, targetLang)
     : `/${targetLang}/`;
 
   return {
-    lang: targetLang,
+    hreflang: localeMap[targetLang].hreflang,
     href: new URL(localizedPath, Astro.site).toString(),
   };
 });
 
-const ogLocale = lang === 'pt' ? 'pt_BR' : lang === 'en' ? 'en_US' : 'es_ES';
-const ogAlternateLocales = alternateHrefs
-  .map(({ lang: localeLang }) =>
-    localeLang === 'pt' ? 'pt_BR' : localeLang === 'en' ? 'en_US' : 'es_ES'
-  )
+const ogLocale = localeMap[lang].ogLocale;
+const ogAlternateLocales = (['pt', 'en', 'es'] as Language[])
+  .map((targetLang) => localeMap[targetLang].ogLocale)
   .filter((locale) => locale !== ogLocale);
 
 import Header from '../components/Header.astro';
@@ -57,7 +63,7 @@ import BackToTop from '../components/BackToTop.astro';
 import '../styles/global.css';
 ---
 
-<html lang={lang} dir="ltr">
+<html lang={htmlLang} dir="ltr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -83,8 +89,8 @@ import '../styles/global.css';
 
     <!-- ✅ SEO multilíngue -->
     {
-      alternateHrefs.map(({ lang: altLang, href }) => (
-        <link rel="alternate" hreflang={altLang} href={href} />
+      alternateHrefs.map(({ hreflang, href }) => (
+        <link rel="alternate" hreflang={hreflang} href={href} />
       ))
     }
     <link rel="alternate" hreflang="x-default" href={alternateHrefs[0].href} />
