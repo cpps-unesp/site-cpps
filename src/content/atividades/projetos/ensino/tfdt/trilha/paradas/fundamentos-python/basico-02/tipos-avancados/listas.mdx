@@ -20,29 +20,34 @@ sidebar_label: Listas
 
 - Se desejar classificar para retornar uma nova cópia de sua lista, em vez de modificar sua cópia original, você pode usar a sorted(my_list)função incorporada em sua lista para retornar uma nova list , classificada em ordem crescente (crescente). Ou use sorted(my_list, reverse=True)para criar uma nova listclassificação ao contrário, em ordem decrescente (ou decrescente). Esta operação não modificará a lista subjacente.
 
-| Ação                                                                                                     | Método                                        | retorno | possivel erro |
-| -------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------- | ------------- |
-| checar tamanho                                                                                           | `len(minha_lista)`                            | `int`   |               |
-| adicionar no final da lista                                                                              | `minha_lista.append(item)`                    |         |               |
-| adicionar itens de outra lista                                                                           | `minha_lista.extend(item)`                    |         |               |
-| saber indice do item                                                                                     | `minha_lista.index(item)`                     |         |               |
-| inserir em posição determinada da lista                                                                  | `minha_lista.insert(posição, item)`           |         |               |
-| remover item da lista                                                                                    | `minha_lista.remove(item)`                    |         |               |
-| remover o último item ou um item pelo indice                                                             | `minha_lista.pop()` ou `minha_lista.pop(pos)` |         |               |
-| exclui um elemento a partir de um determinado índice e remove fatias de uma lista                        | `del` `minha_lista[n1:n2]`                    |         |               |
-| remove todos os itens de uma lista                                                                       | `minha_lista.clear()`                         |         |               |
-| quantidades de vezes que determinado item aparece na lista                                               | `minha_lista.count(item)`                     |         |               |
-| copia a lista original e os novos elementos colocados na nova lista não são acrescidos na lista original | `minha_lista.copy()`                          |         |               |
-| classifica os elementos da lista em ordem crescente ou decrescente, muda a lista diretamente             | `minha_lista.sort()`                          |         |               |
-| não muda a lista, simplesmente ordena                                                                    | `sorted`(`minha_lista`)                       |         |               |
-| inverte os elementos da lista                                                                            | `minha_lista.reverse()`                       |         |               |
-| atualização na posição                                                                                   | minha_lista[posição] = `item`                 |         |               |
-| procurar item na lista                                                                                   | item in minha_lista                           |         |               |
+| Ação                                                                                                     | Método                                        | Retorno                   | Possível Erro |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------- | ------------- |
+| checar tamanho                                                                                           | `len(minha_lista)`                            | `int`                     | `-` |
+| adicionar no final da lista                                                                              | `minha_lista.append(item)`                    | `None`                    | `-` |
+| adicionar itens de outra lista                                                                           | `minha_lista.extend(item)`                    | `None`                    | `TypeError` (se o que foi passado não for uma lista/iterável) |
+| saber o índice do item                                                                                   | `minha_lista.index(item)`                     | `int`                     | `ValueError` (se o item não estiver na lista) |
+| inserir em posição determinada da lista                                                                  | `minha_lista.insert(posição, item)`           | `None`                    | `TypeError` (se a posição informada não for um número inteiro) |
+| remover item da lista                                                                                    | `minha_lista.remove(item)`                    | `None`                    | `ValueError` (se o item não estiver na lista) |
+| remover o último item ou um item pelo indice                                                             | `minha_lista.pop()` ou `minha_lista.pop(pos)` | O próprio `item` removido | `IndexError` (se a lista estiver vazia ou a posição não existir) |
+| exclui um elemento a partir de um determinado índice e remove fatias de uma lista                        | `del` `minha_lista[n1:n2]`                    | `None`                    | `IndexError` (se tentar excluir um índice que não existe) |
+| remove todos os itens de uma lista                                                                       | `minha_lista.clear()`                         | `None`                    | `-` |
+| quantidades de vezes que determinado item aparece na lista                                               | `minha_lista.count(item)`                     | `int`                     | `-` |
+| copia a lista original e os novos elementos colocados na nova lista não são acrescidos na lista original | `minha_lista.copy()`                          | `list` (uma nova lista)   | `-` |
+| classifica os elementos da lista em ordem crescente ou decrescente, muda a lista diretamente             | `minha_lista.sort()`                          | `None`                    | `TypeError` (se a lista misturar tipos que não se comparam, ex: `int` e `str`) |
+| não muda a lista, simplesmente ordena                                                                    | `sorted`(`minha_lista`)                       | `list` (uma nova lista)   | `TypeError` (se a lista misturar tipos que não se comparam) |
+| inverte os elementos da lista                                                                            | `minha_lista.reverse()`                       | `None`                    | `-` |
+| atualização na posição                                                                                   | `minha_lista[posição] = item`                 | `None`                    | `IndexError` (se a posição não existir na lista) |
+| procurar item na lista                                                                                   | `item in minha_lista`                         | `bool` (`True`/`False`)   | `-` |
 
+### Sobre o Retorno e os Possíveis Erros:
+**None** Muitos métodos retornam o valor nulo, "None". Isso ocorre porque esses métodos modificam diretamente a lista original, para haver algum retorno, seria necessário criar uma nova lista. Mas ao adicionar um novo item na lista com o ".append", por exemplo, e em seguida usar o .print(), o retorno será da lista atualizada com o novo item.
+`IndexError` Erro de endereço. Houve a tentativa de acessar uma posição que não existe.  
+`ValueError` Erro de valor. Houve a tentativa de modificar ou procurar um valor inexistente.  
+`TypeError` Erro de tipo.  Houve a tentativa de utilizar uma função em algo que ela não foi feita para fazer, por exemplo: ordenar ".sort()" em uma lista com números e palavras.   
 - As listas são ótimas para armazenar uma sequência ordenada de objetos. Lembre-se de que você pode ver o estado atual de sua lista a qualquer momento, digitando o próprio nome de sua lista. Verifique sua lista após cada operação para ver se ela mudou.
 
 - fatiamento de listas
-- utiliar os metodos
+- utilizar os metodos
 
 ### Avaliar
 
