@@ -31,13 +31,13 @@
     "rede2": "https://www.linkedin.com/in/rafaelrdealmeida/",
     "icone2": "/imagens/logos/linkedin_icon2.svg"
   },
-  "Joao_Vidal": {
+  "Leonardo_Vaz": {
     "ordem": 5,
-    "foto": "/imagens/equipe/Joao_Vidal.jpg",
-    "rede1": "https://www.linkedin.com/in/jo%C3%A3o-pedro-vidal-307b02148/",
+    "foto": "/imagens/equipe/leonardo.png",
+    "rede1": "http://www.linkedin.com/in/leonardo-samogim",
     "icone1": "/imagens/logos/linkedin_icon2.svg",
-    "rede2": "https://www.instagram.com/_vidaljp/",
-    "icone2": ""
+    "rede2": "http://lattes.cnpq.br/9616946465582096",
+    "icone2": "/imagens/logos/lattes.png"
   },
   "Caio_Palombo": {
     "ordem": 6,
