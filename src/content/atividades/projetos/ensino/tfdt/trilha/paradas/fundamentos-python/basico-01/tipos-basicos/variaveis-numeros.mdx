@@ -7,9 +7,13 @@ sidebar_label: Variáveis e Números
 - [Clique aqui](https://replit.com/@fparon/Variavel-e-numeros#main.py) para acessar o replit dessa página
 - Este tutorial abordará conceitos sobre variáveis, regras de nomeação, comentários, operadores de atribuição, palavras reservadas e números em Python.
 
+### Print
+
+Ao executarmos um código, na maioria das vezes, as coisas que escrevermos não vão aparecer diretamente no terminal. Para exibí-las devemos utilizar a ferramenta nativa Print, é a partir dela que podemos exibir os textos, valores e outros tipos de resposta em nossos terminais.
+
 ### Variáveis
 
-Uma variável é uma etiqueta que representa um valor específico. Podemos atribuir um valor a uma variável usando o operador de atribuição =, onde a variável está à esquerda e o valor à direita;
+Uma variável é uma etiqueta que representa um valor específico. Podemos atribuir um valor a uma variável usando o operador de atribuição " = " , onde a variável está à esquerda e o valor à direita;
 
 - A variável sempre estará à esquerda do operador `=` e o valor à direita do operador `=`;
 - É normal perguntarmos qual valor de determinada variável;
@@ -22,14 +26,14 @@ print(palavra)
 
 ```
 
-#### Regras para a nomeação de variáveis 📚
+### Regras para a nomeação de variáveis 📚
 
 Para definir os nomes das variáveis, precisamos seguir algumas regras:
 
 - Não podem ter espaço e devem começar com letra ou sublinhado
 - Não podem usar palavras reservadas ou identificadores internos que tenham finalidades importantes em Python
 - Por convenção, pede-se que se utilize apenas letras minúsculas e sublinhado para nomear as variáveis
-- Não podem conter caracteres especiais \(@, #, !\)
+- Não podem conter caracteres especiais (@, #, !)
 
 ### Comentários 💬
 
@@ -98,7 +102,8 @@ Há três tipos de dados básicos numéricos:
 | `float`   | Número decimal    | São números de ponto flutuante, positivos ou negativos; podem conter 1 ou mais casas decimais |
 | `complex` | Números complexos | São números em que a parte imaginária é representada pelo `j`                                 |
 
-- A função _built-in_ `print()` imprime na tela determinado valor. Já `type()` indica o tipo de dado do valor.
+- A função _built-in_ `print()` imprime na tela determinado valor.  
+Já `type()` indica o tipo de dado do valor.
 
 ```py
 numero_inteiro = 10
@@ -114,9 +119,10 @@ print(numero_complexo, type(numero_complexo))
 
 ---
 
-##### Valores e Tipos
+### Valores e Tipos
 
-- Valores
+**Valores** 
+
   - Atribuímos valores para as variáveis \(como n sendo igual a 1, no exemplo abaixo\)
   - Valores aparecerão na tela através do comando **print**
 
@@ -125,16 +131,16 @@ n = 3
 print(1+n)
 ```
 
-- Tipos
-  - "Classes" dos valores
-  - Definem o que o valor representa, ex.: 2 é representado por **int** , um número **int**eiro
+**Tipos**
 
+  - "Classes" dos valores
+  - Definem o que o valor representa, ex.: 2 é representado por **int** , um número **int**eiro  
 ```py
 type(2)
 <class 'int'>
 ```
 
-##### Atribuições
+### Atribuições
 
 Criamos variáveis que necessitam de certo valor
 
@@ -142,8 +148,8 @@ Criamos variáveis que necessitam de certo valor
 message = olá
 n = 13
 ```
-
-- Os nomes das variáveis não podem começar com números, conter caracteres especiais \(@, #, !\) ou ser uma palavra-chave do Python
+  
+* Os nomes das variáveis não podem começar com números, conter caracteres especiais \(@, #, !\) ou ser uma palavra-chave do Python  
 
 ```py
 a = 12bola #Erro de síntaxe
@@ -151,7 +157,7 @@ b = @trevo #Erro de síntaxe
 c = True #Erro de síntaxe
 ```
 
-##### Expressões
+### Expressões
 
 - Atribuição de valores e requisição das igualdades
 
@@ -171,7 +177,7 @@ olá, mundo!
 
 - Expressões não aparecem diretamente na tela, é necessário executar o comando **print** para acompanhar o processo
 
-##### Operações com _Strings_ 🔤
+### Operações com _Strings_ 🔤
 
 - São possíveis de serem executadas utilizando \+ e\*
 

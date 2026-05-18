@@ -27,6 +27,9 @@ plt.ylabel("Quantidade")
 plt.tight_layout()
 plt.show()
 ```
+Este bloco demonstra o uso da integração do Pandas com o Matplotlib para criar um gráfico de barras estático. O comando value_counts() organiza a frequência dos dados, enquanto o parâmetro kind="bar" define o formato visual
+. É fundamental o uso de plt.tight_layout() para garantir que os rótulos não sejam cortados e plt.show() para renderizar a imagem final e limpar as descrições de objetos do console
+.
 
 Tipos de gráfico via `kind`:
 
@@ -47,6 +50,9 @@ plt.tight_layout()
 plt.savefig("notas_por_ano.png", dpi=150)
 plt.close()
 ```
+Para exportar visualizações, utiliza-se a função plt.savefig(), especificando o nome do arquivo e a resolução (DPI)
+. Conforme as fontes, é crucial que este comando seja executado na mesma célula de código em que o gráfico foi gerado para que a captura da imagem ocorra corretamente antes do fechamento do processo com plt.close()
+.
 
 ## Plotly Express — interativo
 
@@ -59,6 +65,9 @@ s.columns = ["ano", "quantidade"]
 fig = px.bar(s, x="ano", y="quantidade", title="Notas à imprensa por ano")
 fig.show()
 ```
+Diferente das bibliotecas estáticas, o Plotly gera gráficos que permitem interação direta, como dar zoom em áreas específicas e visualizar detalhes ao passar o mouse (hover)
+. O código transforma uma série do Pandas em um DataFrame com reset_index() para que o Plotly possa mapear as colunas "ano" e "quantidade" nos eixos X e Y de forma explícita
+.
 
 Gráficos Plotly suportam zoom, hover e podem ser exportados como HTML:
 
@@ -66,6 +75,9 @@ Gráficos Plotly suportam zoom, hover e podem ser exportados como HTML:
 fig.write_html("grafico.html")
 fig.write_image("grafico.png")  # requer 'kaleido'
 ```
+Os gráficos interativos do Plotly podem ser preservados em sua totalidade através da função fig.write_html()
+. Isso cria um arquivo independente que mantém todas as funcionalidades de zoom e tooltips em qualquer navegador, sendo uma alternativa superior ao salvamento estático quando a análise exige exploração de dados detalhados
+.
 
 ## Caso real: notas do MRE por ano
 
@@ -95,6 +107,9 @@ fig = px.line(
 )
 fig.show()
 ```
+Este exemplo foca no tratamento de dados temporais, convertendo strings em objetos de data com pd.to_datetime para extrair o componente do ano
+. O uso de px.line com o parâmetro markers=True facilita a identificação de pontos de dados específicos ao longo de uma série temporal, unindo a clareza da linha de tendência com a precisão dos pontos individuais
+.
 
 ## Comparação entre categorias
 
@@ -113,6 +128,7 @@ fig = px.bar(
 )
 fig.show()
 ```
+Aqui, a lógica de programação é aplicada para criar colunas booleanas que identificam a presença de termos específicos nos títulos através de str.contains. A soma dessas menções gera um dicionário de contagens que é alimentado diretamente no px.bar, permitindo comparar o volume de publicações entre diferentes categorias geográficas de forma clara e visual.
 
 ## Histogramas e distribuições
 
@@ -122,7 +138,9 @@ df["tamanho_titulo"] = df["titulo"].str.len()
 fig = px.histogram(df, x="tamanho_titulo", nbins=30, title="Tamanho dos títulos")
 fig.show()
 ```
-
+O uso de px.histogram é ideal para analisar a distribuição de frequências, como o comprimento de textos
+. O parâmetro nbins define a sensibilidade do agrupamento, permitindo observar se existe uma padronização ou anomalia na concentração dos dados, como a predominância de títulos curtos ou longos
+.
 ## Múltiplos gráficos
 
 Com Matplotlib, para colocar vários gráficos lado a lado:
@@ -139,6 +157,10 @@ eixos[1].set_title("Distribuição de tamanhos de título")
 plt.tight_layout()
 plt.show()
 ```
+Para criar painéis complexos, utiliza-se o comando plt.subplots(), que divide a área de desenho em uma grade definida por linhas e colunas
+. Cada gráfico é direcionado para um eixo específico através do parâmetro ax=eixos[n], permitindo que visualizações de naturezas diferentes (como um gráfico de barras e um histograma) sejam exibidas e comparadas lado a lado em uma única figura
+.
+
 
 ## Boas práticas
 

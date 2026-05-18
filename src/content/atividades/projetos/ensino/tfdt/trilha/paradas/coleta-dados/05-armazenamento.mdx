@@ -20,6 +20,7 @@ dados = [
 
 with open("notas_mre.json", "w", encoding="utf-8") as arquivo:
     json.dump(dados, arquivo, indent=4, ensure_ascii=False)
+# open abre o documento com as especificações entre parênteses.
 ```
 
 | Argumento | Para que serve |
@@ -27,11 +28,17 @@ with open("notas_mre.json", "w", encoding="utf-8") as arquivo:
 | `indent=4` | Quebra linhas e indenta — facilita leitura humana. |
 | `ensure_ascii=False` | Mantém acentos e caracteres não-ASCII sem escapar. |
 
-Para ler de volta:
+  
+### O que é encoding?
+```"utf-8"```: Este é o método de encoding mais utilizado, a sigla UTF significa “Unicode Transformation Format” (Formato de Transformação Unicode).
+Unicode é uma especificação que atribúi um código à cada caractere, abranjendo todas as línguas. O "8" significa que valores em 8 bits são usados nessa codificação,
+agregadno várias conveniências à essa codificação.  
+Para entender melhor sobre o UTF, acesse o [**python.org**](https://docs.python.org/3/howto/unicode.html) 
+
 
 ```python
 with open("notas_mre.json", encoding="utf-8") as arquivo:
-    dados = json.load(arquivo)
+    dados = json.load(arquivo) # carrega o arquivo especificado 
 ```
 
 ## TinyDB: JSON com superpoderes

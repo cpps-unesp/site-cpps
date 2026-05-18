@@ -8,6 +8,15 @@ Dados reais raramente vêm prontos. Antes de gerar gráficos ou estatísticas, �
 
 ## Identificar valores faltantes
 
+Para detectar onde os dados estão faltando. As funções isna() e isnull() são ferramentas de alto nível projetadas especificamente para detectar valores ausentes em objetos do tipo array ou DataFrames.  
+
+`df.isna()` Gera um "mapa" booleano de todo o DataFrame, onde cada célula recebe True se estiver vazia e False se contiver um dado válido.  
+`df.isna().sum()` Como o valor True é tratado matematicamente como 1, esta linha soma os vazios de cada coluna, permitindo identificar rapidamente quais variáveis estão mais incompletas.  
+`df.isna().sum().sum()` Realiza uma soma total, retornando um único número que representa todos os valores faltantes no DataFrame inteiro.  
+`df["coluna"].isna().any()` É uma verificação rápida para saber se existe pelo menos um valor nulo em uma coluna específica. Em contrapartida, você pode usar notna() 
+para filtrar e manter apenas os registros que possuem dados válidos, como visto no processamento de currículos para gráficos.  
+.
+
 ```python
 df.isna()              # DataFrame booleano
 df.isna().sum()        # contagem por coluna
@@ -19,16 +28,32 @@ Pandas representa "vazio" como `NaN` (Not a Number) em colunas numéricas e como
 
 ## Remover valores faltantes
 
+Em muitos casos, registros incompletos podem causar erros em cálculos estatísticos ou impedir a geração de gráficos. O método **`dropna()`** é a solução para descartar essas informações.
+
+*   **`df.dropna()`**: Comando radical que remove qualquer linha que possua ao menos um valor nulo.
+*   **`subset=["data"]`**: Refina a remoção, descartando a linha apenas se o valor estiver faltando na coluna especificada (neste caso, "data").
+*   **`thresh=5`**: Define um "limiar" de tolerância; a linha só é excluída se tiver menos de 5 valores preenchidos.
+*   **`axis=1`**: Em vez de linhas, remove **colunas inteiras** que contenham valores nulos.
+
 ```python
 df.dropna()                              # remove linhas com QUALQUER NaN
 df.dropna(subset=["data"])               # só considera a coluna 'data'
 df.dropna(thresh=5)                      # mantém linhas com pelo menos 5 não-nulos
 df.dropna(axis=1)                        # remove colunas com algum NaN
 ```
+>**Nota sobre `inplace=True`**: Por padrão, o Pandas cria uma cópia nova ao remover dados. Para aplicar a mudança diretamente na variável original sem precisar de uma nova atribuição, utiliza-se o parâmetro `inplace=True`.
 
 `dropna` devolve um novo DataFrame. Para modificar no lugar, passe `inplace=True`.
 
 ## Preencher valores faltantes
+
+Quando não se quer descartar dados, utiliza-se o **`fillna()`**, que permite substituir os vazios por valores padrão ou calculados.  
+  
+*   **`df.fillna(0)`**: Substitui todos os `NaN` do DataFrame por zero, o que é comum em colunas financeiras ou de contagem.  
+*   **`df["horario"].fillna("00:00")`**: Aplica o preenchimento apenas em uma coluna específica, mantendo o restante do DataFrame intacto.  
+*   **Uso de dicionário**: Permite personalizar o preenchimento para cada coluna simultaneamente (ex: "00:00" para horários e 0 para anos).  
+*   **`method="ffill"` (Forward Fill)**: Técnica útil em séries temporais onde um valor vazio assume o dado do registro imediatamente anterior (propagação).  
+
 
 ```python
 df.fillna(0)                             # tudo que for NaN vira 0
@@ -36,10 +61,12 @@ df["horario"].fillna("00:00")            # uma coluna específica
 df.fillna({"horario": "00:00", "ano": 0})  # valores diferentes por coluna
 df["data"].fillna(method="ffill")        # propaga o último valor válido
 ```
-
-A escolha entre `dropna` e `fillna` depende do volume e do significado dos dados faltantes. Para análises preliminares, `dropna` é mais seguro; para preservar tamanho da amostra, `fillna` com um valor sentinela.
+>Observação: As informações sobre os parâmetros específicos de `dropna` (como `thresh`) e `fillna` (como `ffill`) são baseadas em práticas comuns de uso da biblioteca Pandas e, embora os métodos `isna`, `concat` e `merge` apareçam na documentação oficial fornecida, você pode querer consultar a documentação completa do Pandas para detalhes técnicos adicionais sobre esses parâmetros específicos.  
 
 ## Conversão de tipos
+
+O processo de **conversão de tipos** é fundamental para garantir que o Pandas realize cálculos, ordenações e visualizações corretamente. Enquanto o método `astype()` realiza conversões diretas para tipos básicos como inteiros ou categorias, a função **`pd.to_datetime()`** é a abordagem recomendada para lidar com datas, sendo capaz de transformar anos ou strings em objetos temporais robustos. Como visto na preparação de dados para gráficos de linha do tempo, a conversão para datetime permite que o Pandas entenda a cronologia dos eventos. Ao utilizar o parâmetro `errors="coerce"`, o sistema evita interrupções ao transformar dados inválidos em `NaT` (*Not a Time*), e o acessor **`.dt`** libera ferramentas para extrair partes específicas da data, como o ano ou o dia da semana, facilitando a criação de agrupamentos temporais.
+
 
 `astype` para conversões diretas:
 
@@ -67,6 +94,9 @@ df["data"].dt.strftime("%Y-%m")
 
 ## Duplicatas
 
+O gerenciamento de **duplicatas** é uma etapa vital da limpeza de dados para evitar contagens infladas ou análises redundantes em seus relatórios. O método `duplicated()` gera uma série booleana que identifica quais linhas são repetições de entradas anteriores, permitindo que você conte o volume de dados redundantes antes de decidir o que fazer com eles. Já o comando **`drop_duplicates()`** é a ferramenta para remover essas ocorrências, podendo ser aplicado a todas as colunas ou a um conjunto específico via parâmetro `subset`. Conforme discutimos anteriormente em operações de conjunto, este método é essencial para garantir a integridade dos dados após processos de união, como o `concat`, assegurando que cada registro seja único na base final.
+
+
 ```python
 df.duplicated()                          # Series booleana
 df.duplicated(subset=["link"]).sum()     # quantas duplicatas pela coluna 'link'
@@ -75,6 +105,8 @@ df.drop_duplicates(subset=["link"], keep="first")  # mantém a primeira ocorrên
 ```
 
 ## Limpeza de strings com `.str`
+
+A **limpeza de strings** através do acessor **`.str`** permite aplicar métodos de manipulação de texto a cada elemento de uma coluna de forma eficiente e vetorizada. Esse recurso é indispensável para padronizar dados textuais, como títulos de projetos ou nomes de pesquisadores, garantindo que buscas por palavras-chave (como o uso de `str.contains`) não falhem por inconsistências na digitação. Com ele, você pode remover espaços em branco (`strip`), padronizar letras minúsculas (`lower`) ou utilizar **Expressões Regulares (Regex)** para substituir padrões complexos de texto. Além disso, a normalização com `NFKD` resolve problemas comuns de codificação em acentos e caracteres especiais, o que é crucial para que o agrupamento de dados e a geração de índices textuais funcionem corretamente.
 
 `.str` traz métodos de string aplicados elemento a elemento:
 
@@ -105,12 +137,18 @@ df["numero"] = df["titulo"].str.extract(r"Nº\s*(\d+)")
 
 ## Renomear e reordenar
 
+A organização das colunas é essencial para manter o DataFrame legível e facilitar a exportação de relatórios. O método **`rename`** permite alterar nomes de colunas específicos através de um dicionário, onde a chave é o nome antigo e o valor é o novo; o uso do parâmetro `inplace=True` aplica a mudança diretamente no DataFrame original sem necessidade de reatribuição. Já a **reordenação e subset** são feitos ao passar uma lista de colunas entre colchetes, o que permite ao mesmo tempo filtrar apenas as variáveis de interesse e definir a sequência exata em que elas aparecerão na visualização.
+
+
 ```python
 df.rename(columns={"horario_atualizado": "horario_update"}, inplace=True)
 df = df[["titulo", "data", "horario", "link"]]   # subset e reordenação
 ```
 
 ## Agrupamento
+
+O **`groupby`** é considerado o operador analítico mais poderoso do Pandas por permitir a segmentação dos dados em grupos para a aplicação de cálculos estatísticos. Como vimos no exemplo de identificação de períodos suspeitos, ele "fatia" o DataFrame com base em uma categoria (como o ano) e permite realizar operações como o **`.size()`** para contar registros ou **`.mean()`** para calcular médias de valores numéricos. O uso do método **`.agg()`** eleva essa análise, permitindo realizar múltiplas operações simultâneas (como contar, extrair o valor médio e o máximo) e já nomear as colunas resultantes, o que economiza várias linhas de código.
+
 
 `groupby` é o operador analítico mais poderoso de Pandas:
 
@@ -133,6 +171,8 @@ df.groupby("ano").agg(
 ```
 
 ## Pipeline típico
+
+O uso de **pipelines** representa o estado da arte na escrita de código limpo com Pandas, permitindo que todo o tratamento de dados seja lido como uma sequência lógica de cima para baixo. Em vez de criar múltiplas variáveis intermediárias, utiliza-se o encadeamento de métodos onde o **`.pipe()`** aplica funções de transformação complexas e o **`.assign()`** cria ou modifica colunas mantendo o fluxo do objeto. Esse roteiro consolidado — que inclui carregar dados, remover duplicatas, converter tipos, tratar nulos e ordenar valores — garante que o resultado final seja um DataFrame pronto para análise, com um índice resetado e organizado cronologicamente.
 
 A maioria dos scripts de tratamento segue esse roteiro:
 

@@ -8,6 +8,8 @@ Dados coletados raramente vêm prontos para análise. Texto bruto traz espaços 
 
 ## Limpeza básica de strings
 
+A baixo estão os principáis métodos e a forma como eles retornam o texto coletado e tratado.
+
 ```python
 texto = "  NOTA À IMPRENSA Nº 636/2008  \n"
 
@@ -19,6 +21,14 @@ texto.replace("À", "A")            # remove acentos pontuais
 
 `strip()` é o mais comum no início — todo texto extraído com `.text` deve passar por ele.
 
+### **Descrição**
+
+| Método | Descrição |
+| ---    | ---       |
+| .strip() | remove os espaços em branco de uma string |
+| .lower() | torna todos os caracteres em  suas próprias versões em minusculo, perservando números e acentos. | 
+| .replace("atual", "novo") | Substitui o caractér ou a palavra entre as primeiras áspas por uma nova, indicada pelas segundas áspas. |
+| "X".join() | une todos is itens iteráveis em uma única string. |
 ## Separar e indexar
 
 `split()` quebra a string e devolve uma lista. Combinado com índices, extrai partes específicas:

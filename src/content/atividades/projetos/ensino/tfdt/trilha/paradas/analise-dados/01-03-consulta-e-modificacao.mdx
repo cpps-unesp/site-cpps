@@ -15,10 +15,12 @@ df["titulo"]
 # Várias colunas (DataFrame)
 df[["titulo", "data", "horario"]]
 ```
-
+> Estes comandos são usados para visualisar a coluna selecionada.
 ## Seleção de linhas
 
 ### Por posição (`.iloc`)
+
+Indexação baseada em números inteiros para seleção por posição.
 
 ```python
 df.iloc[0]            # primeira linha
@@ -26,8 +28,12 @@ df.iloc[-1]           # última linha
 df.iloc[0:5]          # cinco primeiras linhas
 df.iloc[0:5, 0:2]     # cinco linhas, duas colunas
 ```
+**Possível Erro**
+    **Index Error:** Caso o indexador solicirado estiver fora dos limites. 
 
 ### Por rótulo de índice (`.loc`)
+
+Indexação baseada em rótulos e também em matrizes booleanas.
 
 ```python
 df.loc[0]                              # rótulo 0
@@ -35,6 +41,9 @@ df.loc[df["data"] == "2023-01-15"]     # filtro por valor
 df.loc[0, "titulo"]                    # uma célula
 df.loc[0:5, ["titulo", "data"]]        # fatiamento + colunas
 ```
+**Possíveis Erros**  
+    **Key Error:** Se nenhum ítem for encontrado  
+    **Indexing Error:**  Ocorre quando uma chave indexada é fornecida, mas seu índice não é passível de alinhamento com o índice do DataFrame (frame index).  
 
 <Notice type="tip">
 Use `.loc[]` quando o índice for significativo (datas, IDs); use `.iloc[]` quando quiser pegar "as primeiras N linhas" ou similar. Quando estiver em dúvida, `.loc[]` é mais legível.
@@ -83,6 +92,7 @@ Não use `and`, `or`, `not` em filtros de DataFrame — eles operam em valores e
 </Notice>
 
 ### `.isin()` para múltiplos valores
+Este método compara todos os valores do DF com o valor especificado dentro dos parênteses. Caso esses valores existam, são retornados na forma de DF com as indicaçõe de `True` e `False`, este DF é chamado de "máscara booleana".
 
 ```python
 anos_alvo = ["2020", "2021", "2022"]
@@ -101,52 +111,90 @@ df[df["titulo"].str.len() > 50]
 
 `na=False` evita que valores `NaN` quebrem o filtro.
 
+Aqui está o conteúdo organizado e explicado em formato `.mdx`, ideal para a documentação do seu site no Astro.
+
+---
+
 ## Modificação
 
+A modificação de dados é o coração do Pandas. Ela permite transformar dados brutos em informações úteis para análise.
+
 ### Criar uma coluna
+
+Você pode criar novas colunas atribuindo valores a uma chave que ainda não existe no DataFrame.
+
+* **Extração de datas:** O método `pd.to_datetime` converte strings em objetos de data reais. O acessador `.dt` permite extrair partes específicas como `year` (ano) ou `month` (mês).
+* **Manipulação de texto:** O acessador `.str` permite tratar o conteúdo da coluna como strings. O `.slice(0, 30)` é útil para criar resumos ou títulos curtos, limitando a quantidade de caracteres.
 
 ```python
 df["ano"] = pd.to_datetime(df["data"]).dt.year
 df["mes"] = pd.to_datetime(df["data"]).dt.month
 df["titulo_curto"] = df["titulo"].str.slice(0, 30)
+
 ```
 
 ### Atualizar valores condicionalmente
 
+Muitas vezes, a criação ou alteração de uma coluna depende de uma regra lógica.
+
+* **Máscaras Booleanas:** No exemplo de `df["longa"]`, o Pandas cria uma coluna de `True/False` baseada no comprimento do texto.
+* **Uso do `.loc`:** Esta é a forma mais segura de alterar valores. O comando `df.loc[condição, coluna] = valor` localiza as linhas que atendem à condição e altera apenas a coluna especificada. É ideal para limpar dados, como substituir "00:00" por `None` (vazio).
+
 ```python
-# Marcar notas longas
+# Marcar notas longas (True se parágrafos > 5)
 df["longa"] = df["paragrafos"].str.len() > 5
 
-# Substituir valor específico
+# Substituir valor específico usando localização explícita
 df.loc[df["horario"] == "00:00", "horario"] = None
+
 ```
 
 ### Remover colunas e linhas
 
-```python
-df.drop(columns=["horario_atualizado"])           # devolve novo DataFrame
-df.drop(columns=["horario_atualizado"], inplace=True)  # modifica no lugar
+Existem duas formas principais de remover dados:
 
-df.drop(index=[0, 1, 2])                          # remove linhas por rótulo
-df[df["titulo"] != "NA"]                          # filtragem como remoção
+1. **`drop`**: Remove explicitamente pelo nome da coluna ou rótulo do índice.
+* `inplace=True`: Modifica o DataFrame original. Sem isso, o Pandas apenas te mostra como ficaria o resultado, mas não salva a alteração.
+
+
+2. **Filtragem**: Em vez de "apagar" o que você não quer, você cria um novo DataFrame contendo apenas o que você **quer manter**. É uma forma mais funcional e segura de trabalhar.
+
+```python
+df.drop(columns=["horario_atualizado"], inplace=True) # Modifica o arquivo atual
+
+# Remove as 3 primeiras linhas pelo índice
+df.drop(index=[0, 1, 2])
+
+# Filtro: mantém apenas onde o título não é "NA"
+df = df[df["titulo"] != "NA"]
+
 ```
 
 ### Renomear colunas
 
+* **`rename`**: Ideal para trocar o nome de apenas algumas colunas específicas usando um dicionário `{ "nome_antigo": "nome_novo" }`.
+* **Atribuição direta**: Ao usar `df.columns = [...]`, você deve fornecer uma lista com nomes para **todas** as colunas, na ordem exata.
+
 ```python
 df.rename(columns={"horario": "hora_publicacao"}, inplace=True)
-df.columns = ["c1", "c2", "c3"]                   # substitui todas
+
 ```
+
+---
 
 ## Ordenação
 
-```python
-df.sort_values("data")                             # crescente
-df.sort_values("data", ascending=False)            # decrescente
-df.sort_values(["ano", "mes"])                     # múltiplas chaves
-df.sort_index()                                    # por índice
-```
+A ordenação facilita a visualização de tendências temporais ou rankings.
 
+* **Crescente vs Decrescente**: Por padrão, o `sort_values` é crescente. Use `ascending=False` para inverter (ex: ver as datas mais recentes primeiro).
+* **Múltiplas chaves**: Você pode passar uma lista de colunas. O Pandas ordenará pela primeira e, em caso de empate, usará a segunda para desempatar.
+* **`sort_index`**: Útil quando você quer organizar o DataFrame pela sua "etiqueta" lateral (ID ou Data, caso a data seja o índice).
+
+```python
+df.sort_values(["ano", "mes"], ascending=[True, True]) # Ordena por ano e depois por mês
+df.sort_index() # Organiza pela ordem do índice (ex: 0, 1, 2...)
+
+```
 ## Resumo
 
 | Operação | Comando |

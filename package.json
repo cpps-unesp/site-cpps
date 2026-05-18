@@ -10,33 +10,34 @@
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
     "ci": "astro sync && npm run typecheck && npm run lint && npm run build",
-    "astro": "astro"
+    "astro": "astro",
+    "prepare": "[ -d .git ] && git config core.hooksPath .githooks || true"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.4",
-    "@tailwindcss/vite": "^4.2.4",
-    "astro": "^6.3.1",
+    "@astrojs/mdx": "^5.0.6",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.3",
     "astro-pagefind": "^1.8.6",
     "daisyui": "^5.5.19",
     "marked": "^18.0.3",
     "sharp": "^0.34.5",
     "slugify": "^1.6.9",
-    "tailwindcss": "^4.2.4",
+    "tailwindcss": "^4.3.0",
     "theme-change": "^2.5.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "@astrojs/cloudflare": "^13.5.0",
-    "@types/node": "^25.6.2",
+    "@types/node": "^25.8.0",
     "eslint": "^9.39.4",
     "eslint-plugin-astro": "^1.7.0",
-    "miniflare": "^4.20260507.1",
     "pagefind": "^1.5.2",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.2",
-    "wrangler": "^4.90.0"
+    "typescript-eslint": "^8.59.3"
+  },
+  "overrides": {
+    "vite": "^7.3.2"
   }
 }
