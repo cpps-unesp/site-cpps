@@ -35,7 +35,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.59.3"
+    "typescript-eslint": "^8.59.4"
   },
   "overrides": {
     "vite": "^7.3.2"
