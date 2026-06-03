@@ -90,35 +90,6 @@
     "porPeriodo": "Período",
     "projetosLista": [
       {
-        "id": "ruptura-metabolica-crise-capital",
-        "titulo": "Ruptura metabólica e crise estrutural do capital: o complexo minero-industrial em Minas Gerais e a tendência à eliminação das condições elementares da reprodução social",
-        "docente": "Frederico Daia Firmiano",
-        "periodo": "2023–2026",
-        "departamento": "Educação, Ciências Sociais e Políticas Públicas",
-        "status": "Em andamento",
-        "agencia": "CNPq",
-        "processo": "2022/02922-1",
-        "natureza": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
-        "valor": "R$ 174.353,54 + Quota de Bolsa Orçamentária (Mestrado: 2, IC: 8)",
-        "associados": "Alessandro Pinzani (UFSC), Leonardo Jorge da Hora Pereira (UFBA)",
-        "resumo": "O projeto investiga a pobreza como objeto da filosofia social, partindo da pergunta: em quais sentidos a pobreza, como experiência social negativa e multidimensional, pode contribuir para a crítica social? A pesquisa se organiza em quatro momentos: (1) análise da filosofia social, (2) estudo de teorias da pobreza, (3) investigação de abordagens das ciências sociais sobre grupos em privação, (4) síntese filosófica dos resultados para responder à questão central.",
-        "apoioCentro": [
-          "Indicação institucional do CPPS como centro associado",
-          "Divulgação em canais institucionais",
-          "Organização de atividades de extensão e eventos vinculados ao projeto"
-        ],
-        "mostrar": [
-          "resumo",
-          "docente",
-          "associados",
-          "periodo",
-          "agencia",
-          "processo",
-          "departamento",
-          "status"
-        ]
-      },
-      {
         "id": "critica-pobreza-filosofia-social",
         "titulo": "Crítica da pobreza como objeto da filosofia social",
         "docente": "Hélio Alexandre da Silva",
@@ -875,27 +846,7 @@
             }
           ]
         },
-        {
-          "id": "frederico-daia-firmiano",
-          "nome": "Frederico Daia Firmiano",
-          "cargo": "Professor Doutor",
-          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Atua no Curso de Graduação em Serviço Social — responsável pelas disciplinas de Fundamentos Sociológicos 1 e II. Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas da UNESP.",
-          "foto": "/imagens/equipe/Frederico_Firmiano.png",
-          "prioridade": "",
-          "status": "ativo",
-          "redes": [
-            {
-              "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/7151157247612663",
-              "icone": "/imagens/logos/lattes_icon.svg"
-            },
-            {
-              "tipo": "portal-docente-unesp",
-              "url": "https://unesp.br/portaldocentes/docentes/286098",
-              "icone": "/imagens/logos/logo-unesp-mapa.png"
-            }
-          ]
-        },
+        
         {
           "id": "helio-alexandre-silva",
           "nome": "Hélio Alexandre da Silva",
