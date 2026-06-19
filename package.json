@@ -16,7 +16,7 @@
   "dependencies": {
     "@astrojs/mdx": "^6.0.3",
     "@tailwindcss/vite": "^4.3.1",
-    "astro": "^6.4.6",
+    "astro": "^6.4.8",
     "astro-pagefind": "^2.0.0",
     "daisyui": "^5.5.23",
     "marked": "^18.0.5",
