@@ -23,7 +23,7 @@
     "sharp": "^0.35.2",
     "slugify": "^1.6.9",
     "tailwindcss": "^4.3.1",
-    "theme-change": "^2.5.0"
+    "theme-change": "^3.0.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
