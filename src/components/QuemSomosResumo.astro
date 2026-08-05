@@ -1,0 +1,46 @@
+---
+import routeTranslations from '../i18n/routeTranslations';
+import { renderMarkdown } from '../utils/markdown';
+import type { SupportedLang } from '../types/lang';
+
+interface Props {
+  lang: SupportedLang;
+  sobre?: {
+    'quem-somos'?: {
+      titulo?: string;
+      texto?: { check: boolean; conteudo: string }[];
+    };
+  };
+}
+
+const { lang, sobre } = Astro.props;
+const quemSomos = sobre?.['quem-somos'];
+
+// Só o primeiro parágrafo: a página institucional traz o texto completo.
+const resumo = quemSomos?.texto?.[0]?.conteudo;
+
+const labels = {
+  pt: 'Conheça o Centro',
+  en: 'About the Center',
+  es: 'Conozca el Centro',
+} as const;
+
+const sobrePath = routeTranslations['institucional/sobre'][lang];
+---
+
+{
+  resumo && (
+    <section class="bg-base-100 py-16">
+      <div class="mx-auto max-w-3xl px-4 text-center">
+        <h2 class="titulo text-primary mb-6">{quemSomos?.titulo}</h2>
+        <div class="paragrafo text-base-content/80 mb-8">
+          {/* eslint-disable-next-line astro/no-set-html-directive */}
+          <Fragment set:html={renderMarkdown(resumo)} />
+        </div>
+        <a href={`/${lang}/${sobrePath}`} class="btn btn-primary btn-outline">
+          {labels[lang] ?? labels.pt}
+        </a>
+      </div>
+    </section>
+  )
+}

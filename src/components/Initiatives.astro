@@ -1,4 +1,7 @@
 ---
+import routeTranslations from '../i18n/routeTranslations';
+import type { SupportedLang } from '../types/lang';
+
 type InitiativeItem = {
   link?: string;
   tipo?: string;
@@ -18,12 +21,16 @@ const {
   items?: InitiativeItem[];
 };
 
+// `link` é uma chave de rota (ex.: "iniciativas/parcerias"), traduzida por
+// idioma; URLs absolutas e caminhos crus continuam funcionando.
 function getUrl(link?: string) {
   const url = link || '';
   if (url.startsWith('http://') || url.startsWith('https://')) return url;
-  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
-  if (url.startsWith('/')) return `/${lang}${url}`;
-  return `/${lang}/${url}`;
+
+  const rota = url.replace(/^\/+/, '');
+  const traduzida = routeTranslations[rota]?.[lang as SupportedLang];
+
+  return `/${lang}/${traduzida ?? rota}`;
 }
 ---
 

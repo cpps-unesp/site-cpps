@@ -1,9 +1,135 @@
 ---
+import routeTranslations from '../i18n/routeTranslations';
+import type { SupportedLang } from '../types/lang';
+
+interface Props {
+  lang?: SupportedLang;
+  texts?: unknown;
+  githubPath?: string;
+}
+
+const { lang = 'pt' } = Astro.props;
 const currentYear = new Date().getFullYear();
+
+const labels = {
+  pt: {
+    contato: 'Contato',
+    navegacao: 'Navegação',
+    institucional: 'Institucional',
+    atendimento: 'Atendimento',
+    sobre: 'Sobre o Centro',
+    equipe: 'Equipe',
+    noticias: 'Notícias',
+    faculdade: 'FCHS/UNESP Franca',
+    unesp: 'Portal da UNESP',
+    github: 'Repositórios no GitHub',
+  },
+  en: {
+    contato: 'Contact',
+    navegacao: 'Navigation',
+    institucional: 'Institutional',
+    atendimento: 'Help desk',
+    sobre: 'About the Center',
+    equipe: 'Team',
+    noticias: 'News',
+    faculdade: 'FCHS/UNESP Franca',
+    unesp: 'UNESP portal',
+    github: 'GitHub repositories',
+  },
+  es: {
+    contato: 'Contacto',
+    navegacao: 'Navegación',
+    institucional: 'Institucional',
+    atendimento: 'Mesa de ayuda',
+    sobre: 'Sobre el Centro',
+    equipe: 'Equipo',
+    noticias: 'Noticias',
+    faculdade: 'FCHS/UNESP Franca',
+    unesp: 'Portal de la UNESP',
+    github: 'Repositorios en GitHub',
+  },
+} as const;
+
+const t = labels[lang] ?? labels.pt;
+const rota = (chave: string) => `/${lang}/${routeTranslations[chave][lang]}`;
+const email = 'atendimento.cpps@unesp.br';
 ---
 
-<footer class="mt-auto bg-[#2E3F46] p-8 text-white" data-pagefind-ignore>
-  <div class="mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-4 md:flex-row">
-    <p>&copy; {currentYear} CPPS - Centro de Pesquisa Política e Social</p>
+<footer class="mt-auto bg-[#2E3F46] text-white" data-pagefind-ignore>
+  <div class="mx-auto grid max-w-screen-xl gap-10 px-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
+    <div class="sm:col-span-2 lg:col-span-1">
+      <p class="mb-3 text-lg font-bold">CPPS</p>
+      <p class="text-sm leading-relaxed text-white/70">
+        Centro de Pesquisa Política e Social — Faculdade de Ciências Humanas e Sociais, UNESP,
+        Franca/SP.
+      </p>
+    </div>
+
+    <div>
+      <p class="mb-3 font-semibold">{t.contato}</p>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li>
+          <a class="hover:text-white hover:underline" href={`mailto:${email}`}>{email}</a>
+        </li>
+        <li>
+          <a class="hover:text-white hover:underline" href={rota('atendimento')}>{t.atendimento}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="mb-3 font-semibold">{t.navegacao}</p>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li>
+          <a class="hover:text-white hover:underline" href={rota('institucional/sobre')}>
+            {t.sobre}
+          </a>
+        </li>
+        <li>
+          <a class="hover:text-white hover:underline" href={rota('institucional/equipe')}>
+            {t.equipe}
+          </a>
+        </li>
+        <li>
+          <a class="hover:text-white hover:underline" href={rota('noticias')}>{t.noticias}</a>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <p class="mb-3 font-semibold">{t.institucional}</p>
+      <ul class="space-y-2 text-sm text-white/70">
+        <li>
+          <a
+            class="hover:text-white hover:underline"
+            href="https://www.franca.unesp.br/"
+            target="_blank"
+            rel="noopener noreferrer">{t.faculdade}</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:text-white hover:underline"
+            href="https://unesp.br/"
+            target="_blank"
+            rel="noopener noreferrer">{t.unesp}</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:text-white hover:underline"
+            href="https://github.com/cpps-unesp"
+            target="_blank"
+            rel="noopener noreferrer">{t.github}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <p class="mx-auto max-w-screen-xl px-8 py-6 text-sm text-white/60">
+      &copy; {currentYear} CPPS — Centro de Pesquisa Política e Social
+    </p>
   </div>
 </footer>
