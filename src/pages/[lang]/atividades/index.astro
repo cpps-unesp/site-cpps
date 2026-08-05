@@ -7,9 +7,8 @@ import LinkCard from '../../../components/atividades/LinkCard.astro';
 import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
 import type { Language } from '../../../utils/i18n';
-import { buildAtividadesSidebarWithBase } from '../../../utils/atividadesSidebar';
-import { filterVisibleDocsEntries, getDocsEntrySlug } from '../../../utils/docsVisibility';
-import type { SidebarItem } from '../../../types/docs';
+import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
+import SecaoEmReformulacao from '../../../components/SecaoEmReformulacao.astro';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'pt' } }, { params: { lang: 'en' } }, { params: { lang: 'es' } }];
@@ -19,33 +18,6 @@ const lang = (Astro.params.lang ?? 'pt') as Language;
 const wikiBasePath = `/${lang}/wiki`;
 
 const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
-const sidebar = buildAtividadesSidebarWithBase(atividades, '/wiki');
-
-function normalizeWikiUrl(path: string): string {
-  const normalized = path.replace(/\/+$/, '');
-  return normalized.endsWith('/index') ? normalized.slice(0, -6) : normalized;
-}
-
-function flattenSidebarUrls(items: SidebarItem[]): string[] {
-  return items.flatMap((item) => {
-    const current = item.url && item.url.startsWith('/wiki') ? [normalizeWikiUrl(item.url)] : [];
-    const nested = item.items ? flattenSidebarUrls(item.items) : [];
-    return [...current, ...nested];
-  });
-}
-
-const sidebarUrls = new Set(flattenSidebarUrls(sidebar));
-
-const orphanActivityPages = atividades
-  .map((entry) => {
-    const entrySlug = getDocsEntrySlug(entry, lang);
-    return {
-      routePath: normalizeWikiUrl(`/wiki/${entrySlug}`),
-      title: entry.data.title || entrySlug,
-    };
-  })
-  .filter((entry) => !sidebarUrls.has(entry.routePath))
-  .sort((a, b) => a.routePath.localeCompare(b.routePath, 'pt-BR'));
 ---
 
 <BaseLayout
@@ -55,6 +27,9 @@ const orphanActivityPages = atividades
   lang={lang}
 >
   <div class="mx-auto max-w-screen-xl px-4 pt-8 pb-16 md:px-8 md:pt-12">
+    {atividades.length === 0 && <SecaoEmReformulacao lang={lang} />}
+    {atividades.length > 0 && (
+    <Fragment>
     <FaseTesteAlert lang={lang} area="Atividades" />
     <header class="mx-auto mb-12 max-w-3xl text-center md:mb-14">
       <span class="text-primary mb-4 block text-sm font-bold tracking-widest uppercase"
@@ -121,43 +96,6 @@ const orphanActivityPages = atividades
           leitura.
         </Notice>
 
-        <section class="border-base-300 bg-base-100 rounded-3xl border shadow-sm">
-          <div class="p-6 md:p-8">
-            <h2 class="mini-titulo mb-3">Paginas de atividades fora do menu</h2>
-            {
-              orphanActivityPages.length > 0 ? (
-                <>
-                  <p class="text-base-content/70 mb-4">
-                    Encontramos {orphanActivityPages.length} paginas que existem no conteudo, mas
-                    ainda nao aparecem no menu lateral.
-                  </p>
-                  <details class="collapse-plus border-base-300 bg-base-200/40 collapse border">
-                    <summary class="collapse-title font-semibold">Ver lista completa</summary>
-                    <div class="collapse-content">
-                      <ul class="columns-1 gap-6 space-y-2 text-sm sm:columns-2">
-                        {orphanActivityPages.map((page) => (
-                          <li class="break-inside-avoid">
-                            <a
-                              href={`/${lang}${page.routePath}`}
-                              class="link link-hover text-primary"
-                              title={page.routePath}
-                            >
-                              {page.title}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </details>
-                </>
-              ) : (
-                <p class="text-success font-medium">
-                  Todas as paginas de atividades ja estao representadas no menu lateral.
-                </p>
-              )
-            }
-          </div>
-        </section>
       </section>
 
       <aside class="space-y-8">
@@ -192,5 +130,7 @@ const orphanActivityPages = atividades
         </div>
       </aside>
     </div>
+    </Fragment>
+    )}
   </div>
 </BaseLayout>

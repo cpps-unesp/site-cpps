@@ -27,12 +27,19 @@ export async function GET() {
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
   const urls = new Set<string>();
 
+  const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
+
   for (const lang of langs) {
     urls.add(`/${lang}/`);
-    urls.add(`/${lang}/atividades`);
-    urls.add(`/${lang}/wiki`);
     urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
     urls.add(`/${lang}/${routeTranslations['editar-site'][lang]}`);
+
+    // Enquanto a seção estiver despublicada, as páginas de entrada não têm
+    // conteúdo para oferecer e ficam fora do sitemap.
+    if (atividades.length > 0) {
+      urls.add(`/${lang}/atividades`);
+      urls.add(`/${lang}/wiki`);
+    }
   }
 
   for (const path of buildRouteTranslationPaths(langs)) {
@@ -50,7 +57,7 @@ export async function GET() {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
   }
 
-  const publicacoes = await getCollection('publicacoes');
+  const publicacoes = await getCollection('publicacoes', ({ data }) => data.draft !== true);
   const publicationSlugs = [...new Set(publicacoes.map((entry) => getEntrySlug(entry)))];
   for (const path of buildLocalizedContentPaths(langs, 'publicacao', publicationSlugs)) {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
@@ -62,7 +69,6 @@ export async function GET() {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
   }
 
-  const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
   for (const lang of langs) {
     for (const entry of atividades) {
       const slug = getDocsEntrySlug(entry, lang);

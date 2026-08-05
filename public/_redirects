@@ -1,3 +1,12 @@
+# Seções despublicadas temporariamente (302 = temporário, preserva a indexação)
+# Reverter junto com a remoção do `draft: true` no conteúdo.
+/pt/wiki/*  /pt/atividades  302
+/en/wiki/*  /en/atividades  302
+/es/wiki/*  /es/atividades  302
+/pt/publicacoes/*  /pt/publicacoes  302
+/en/publications/*  /en/publications  302
+/es/publicaciones/*  /es/publicaciones  302
+
 # Aliases legados de /atividades → /wiki
 /pt/atividades/geral/info/processo-seletivo  /pt/wiki/infos-gerais/03processo  301
 /en/atividades/geral/info/processo-seletivo  /en/wiki/infos-gerais/03processo  301

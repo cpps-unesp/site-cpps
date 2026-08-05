@@ -2,6 +2,7 @@
 title: Estágio
 description: informações sobre o ingresso o estágio pelo cengtro de pesquisa
 slug: estagio
+draft: true
 ---
 
 ### Oportunidades de Estágio
