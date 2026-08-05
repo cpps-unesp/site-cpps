@@ -1,15 +1,15 @@
 ---
 import NoticiaCard from './NoticiaCard.astro';
 import type { CollectionEntry } from 'astro:content';
+import type { SupportedLang } from '../types/lang';
+import { getNoticiaUrl } from '../utils/noticiaSlug';
 
 interface Props {
   noticias: CollectionEntry<'noticias'>[];
-  lang: string;
+  lang: SupportedLang;
 }
 
 const { noticias, lang } = Astro.props;
-const getNewsSlug = (post: (typeof noticias)[number]) =>
-  post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
 ---
 
 <div id="news-grid" class="grid gap-8 md:grid-cols-2">
@@ -20,7 +20,7 @@ const getNewsSlug = (post: (typeof noticias)[number]) =>
         resumo={post.data.resumo}
         image={post.data.image}
         tags={post.data.tags}
-        slug={`/${lang}/noticias/${getNewsSlug(post)}`}
+        slug={getNoticiaUrl(post, lang)}
         lang={lang}
         date={post.data.date}
         author={post.data.author}

@@ -2,10 +2,12 @@
 import slugify from 'slugify';
 import { getTranslations, type Language } from '../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
+import type { SupportedLang } from '../types/lang';
+import { getNoticiaUrl } from '../utils/noticiaSlug';
 
 interface Props {
   noticias: CollectionEntry<'noticias'>[];
-  lang: string;
+  lang: SupportedLang;
 }
 
 const { noticias, lang } = Astro.props;
@@ -13,8 +15,6 @@ const locale = getTranslations(lang as Language);
 
 // Get all unique tags
 const allTags = [...new Set(noticias.flatMap((post) => post.data.tags || []))].sort();
-const getNewsSlug = (post: CollectionEntry<'noticias'>) =>
-  post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
 
 // Get recent posts (excluding featured if we want, but let's just show top 5)
 const recentPosts = noticias.slice(0, 5);
@@ -66,7 +66,7 @@ const recentPosts = noticias.slice(0, 5);
     <div class="mt-2 space-y-4">
       {
         recentPosts.map((post) => (
-          <a href={`/${lang}/noticias/${getNewsSlug(post)}`} class="group block">
+          <a href={getNoticiaUrl(post, lang)} class="group block">
             <p class="text-base-content/60 mb-1 text-xs">
               {new Date(post.data.date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
             </p>

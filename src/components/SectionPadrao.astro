@@ -1,6 +1,15 @@
 ---
 import TextoComCheck from './TextoComCheck.astro';
 import CheckIcon from '../icons/CheckIcon.astro';
+
+interface Props {
+  titulo: string;
+  texto: { check: boolean; conteudo: string }[];
+  imagem: string;
+  departamentos?: string[] | null;
+  reverse?: boolean;
+}
+
 const { titulo, texto, imagem, departamentos = null, reverse = false } = Astro.props;
 ---
 

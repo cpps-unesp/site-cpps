@@ -19,7 +19,7 @@ const langNoticias = allNoticias
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 
 let displayedNoticias = langNoticias;
-let featuredPost = null;
+let featuredPost: (typeof langNoticias)[number] | null = null;
 let titlePage = locale.texts.header.noticias || 'Notícias';
 
 if (tag) {
@@ -68,7 +68,7 @@ if (tag) {
       </div>
 
       <div>
-        <NewsSidebar noticias={langNoticias} lang={lang} texts={locale.texts} />
+        <NewsSidebar noticias={langNoticias} lang={lang} />
       </div>
     </div>
   </main>

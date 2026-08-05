@@ -3,12 +3,25 @@
 import TextoComCheck from './TextoComCheck.astro';
 import CheckIcon from '../icons/CheckIcon.astro';
 
+export interface Bloco {
+  titulo: string;
+  texto: { check: boolean; conteudo: string }[];
+  imagem: string | string[];
+  departamentos?: string[];
+  intercalar?: boolean;
+  reverse?: boolean;
+}
+
+interface Props {
+  blocos: Record<string, Bloco>;
+}
+
 const { blocos } = Astro.props;
 ---
 
 <section class="mt-16 space-y-24 px-4 md:px-8 lg:px-16">
   {
-    Object.entries(blocos).map(([key, bloco], index) => {
+    Object.values(blocos).map((bloco, index) => {
       const aplicarReverse = bloco.intercalar ? index % 2 === 1 : (bloco.reverse ?? false);
 
       // Garante que imagem seja sempre array
@@ -17,7 +30,6 @@ const { blocos } = Astro.props;
       return (
         <div
           class={`mx-auto flex max-w-7xl flex-col md:flex-row ${aplicarReverse ? 'md:flex-row-reverse' : ''} items-center gap-8`}
-          key={key}
         >
           {/* Coluna de texto */}
           <div class="md:w-7/12">
@@ -39,9 +51,8 @@ const { blocos } = Astro.props;
 
           {/* Coluna fixa de imagens */}
           <div class="flex flex-col items-center justify-center gap-6 md:w-5/12">
-            {imagens.map((imgSrc, i) => (
+            {imagens.map((imgSrc) => (
               <img
-                key={i}
                 src={imgSrc}
                 alt={`Imagem ilustrativa de ${bloco.titulo}`}
                 class="w-full max-w-sm rounded-xl transition duration-300 ease-in-out md:max-w-md"

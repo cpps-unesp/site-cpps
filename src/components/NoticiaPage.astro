@@ -8,6 +8,7 @@ import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
 import slugify from 'slugify';
+import { getNoticiaSlug } from '../utils/noticiaSlug';
 
 const { lang, slug } = Astro.props as { lang: SupportedLang; slug: string };
 const locale = getTranslations(lang);
@@ -16,9 +17,7 @@ const noticiasRoute = routeTranslations['noticias'][lang as SupportedLang];
 const rawSlug = slug.replace(`${noticiasRoute}/`, '');
 
 const allNoticias = await getCollection('noticias');
-const getNewsSlug = (post: (typeof allNoticias)[number]) =>
-  post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
-const relatedPosts = allNoticias.filter((p) => getNewsSlug(p) === rawSlug);
+const relatedPosts = allNoticias.filter((p) => getNoticiaSlug(p) === rawSlug);
 
 const availableLangs = relatedPosts.map((p) => p.data.lang);
 const isTranslationMissing = relatedPosts.length > 0 && !availableLangs.includes(lang);
@@ -133,7 +132,7 @@ const { Content } = await render(post);
 
       <!-- Sidebar -->
       <aside>
-        <NewsSidebar noticias={langNoticias} lang={lang} texts={locale.texts} />
+        <NewsSidebar noticias={langNoticias} lang={lang} />
       </aside>
     </div>
   </main>
