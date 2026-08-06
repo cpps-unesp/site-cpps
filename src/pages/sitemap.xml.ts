@@ -10,6 +10,7 @@ import {
   getMembroSlugFromEntryId,
 } from '../utils/catchAllRouting';
 import routeTranslations from '../i18n/routeTranslations';
+import { filterVisibleDocsEntries, getDocsEntrySlug } from '../utils/docsVisibility';
 
 function getEntrySlug(entry: { id: string; data?: Record<string, unknown> }): string {
   const slugFromData = entry.data?.slug;
@@ -61,28 +62,30 @@ export async function GET() {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
   }
 
-  const atividades = await getCollection('atividades');
+  const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
   for (const lang of langs) {
     for (const entry of atividades) {
-      urls.add(`/${lang}/wiki/${getEntrySlug(entry)}`);
+      const slug = getDocsEntrySlug(entry, lang);
+      if (slug === 'index') continue;
+      urls.add(`/${lang}/wiki/${slug}`);
     }
   }
 
-  const atendimento = await getCollection('atendimento');
+  const atendimento = filterVisibleDocsEntries(await getCollection('atendimento'));
   for (const lang of langs) {
     const basePath = `/${lang}/${routeTranslations.atendimento[lang]}`;
     for (const entry of atendimento) {
-      const slug = getEntrySlug(entry);
+      const slug = getDocsEntrySlug(entry, lang);
       if (slug === 'index') continue;
       urls.add(`${basePath}/${slug}`);
     }
   }
 
-  const editarSite = await getCollection('editarSite');
+  const editarSite = filterVisibleDocsEntries(await getCollection('editarSite'));
   for (const lang of langs) {
     const basePath = `/${lang}/${routeTranslations['editar-site'][lang]}`;
     for (const entry of editarSite) {
-      const slug = getEntrySlug(entry);
+      const slug = getDocsEntrySlug(entry, lang);
       if (slug === 'index') continue;
       urls.add(`${basePath}/${slug}`);
     }

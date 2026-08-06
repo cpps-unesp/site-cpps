@@ -8,7 +8,7 @@
     "preview": "astro preview",
     "lint": "eslint .",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && astro check",
     "ci": "astro sync && npm run typecheck && npm run lint && npm run build",
     "astro": "astro",
     "prepare": "[ -d .git ] && git config core.hooksPath .githooks || true"

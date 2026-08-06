@@ -1,6 +1,18 @@
 ---
+interface Projeto {
+  icone: string;
+  titulo: string;
+  descricao: string;
+}
+
+interface Props {
+  projetos: {
+    titulo: string;
+    lista: Projeto[];
+  };
+}
+
 const { projetos } = Astro.props;
-// projetos = { titulo: string, lista: [ { icone, titulo, descricao } ] }
 ---
 
 <section class="mt-16">

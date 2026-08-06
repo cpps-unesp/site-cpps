@@ -1,12 +1,12 @@
 ---
 import { getTranslations } from '../utils/i18n';
+import { getNoticiaUrl } from '../utils/noticiaSlug';
 
 const { post, lang } = Astro.props;
 const locale = getTranslations(lang);
 const { title, resumo, image, tags, date, author } = post.data;
 const displayAuthor = author?.trim() || 'Equipe CPPS';
-const slugValue = post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
-const slug = `/${lang}/noticias/${slugValue}`;
+const slug = getNoticiaUrl(post, lang);
 ---
 
 <div class="group bg-base-100 relative mb-12 overflow-hidden rounded-2xl shadow-xl">
