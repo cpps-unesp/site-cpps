@@ -1,5 +1,5 @@
 ---
-import slugify from 'slugify';
+import { getNoticiaCategoriaUrl } from '../utils/noticiaSlug';
 import pt from '../i18n/locales/pt.json';
 import en from '../i18n/locales/en.json';
 import es from '../i18n/locales/es.json';
@@ -43,7 +43,7 @@ const t = translations[lang] || translations.pt;
       {
         tags.map((tag: string) => (
           <a
-            href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+            href={getNoticiaCategoriaUrl(tag, lang)}
             class="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline"
           >
             {tag}

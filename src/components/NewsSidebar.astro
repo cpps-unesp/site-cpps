@@ -3,7 +3,7 @@ import slugify from 'slugify';
 import { getTranslations, type Language } from '../utils/i18n';
 import type { CollectionEntry } from 'astro:content';
 import type { SupportedLang } from '../types/lang';
-import { getNoticiaUrl } from '../utils/noticiaSlug';
+import { getNoticiaCategoriaUrl, getNoticiaUrl } from '../utils/noticiaSlug';
 
 interface Props {
   noticias: CollectionEntry<'noticias'>[];
@@ -48,7 +48,7 @@ const recentPosts = noticias.slice(0, 5);
       {
         allTags.map((tag: string) => (
           <a
-            href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+            href={getNoticiaCategoriaUrl(tag, lang)}
             class="bg-secondary/10 text-secondary hover:bg-secondary rounded-full px-3 py-1 text-sm font-medium transition-colors hover:text-white"
           >
             {tag}

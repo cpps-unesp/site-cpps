@@ -8,7 +8,7 @@ import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
 import slugify from 'slugify';
-import { getNoticiaSlug } from '../utils/noticiaSlug';
+import { getNoticiaCategoriaUrl, getNoticiaSlug } from '../utils/noticiaSlug';
 
 const { lang, slug } = Astro.props as { lang: SupportedLang; slug: string };
 const locale = getTranslations(lang);
@@ -61,7 +61,7 @@ const { Content } = await render(post);
             {
               tags.map((tag: string) => (
                 <a
-                  href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+                  href={getNoticiaCategoriaUrl(tag, lang)}
                   class="text-primary text-xs font-bold tracking-widest uppercase hover:underline"
                 >
                   {tag}
@@ -119,7 +119,7 @@ const { Content } = await render(post);
             {
               tags.map((tag: string) => (
                 <a
-                  href={`/${lang}/noticias/categoria/${slugify(tag, { lower: true, strict: true })}`}
+                  href={getNoticiaCategoriaUrl(tag, lang)}
                   class="badge badge-outline badge-primary px-3 py-3"
                 >
                   {tag}

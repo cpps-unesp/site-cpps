@@ -65,7 +65,9 @@ export async function GET() {
   const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
   for (const lang of langs) {
     for (const entry of atividades) {
-      urls.add(`/${lang}/wiki/${getDocsEntrySlug(entry, lang)}`);
+      const slug = getDocsEntrySlug(entry, lang);
+      if (slug === 'index') continue;
+      urls.add(`/${lang}/wiki/${slug}`);
     }
   }
 
