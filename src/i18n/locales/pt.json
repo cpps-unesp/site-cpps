@@ -1120,7 +1120,7 @@
         "icon": "👥💬",
         "title": "Café com Ciência ",
         "tipo": "ciência",
-        "link": "/iniciativas/cafe-com-ciencia",
+        "link": "iniciativas/cafe-com-ciencia",
         "description": "Seminário mensal voltado a debater temas relacionados a agendas de pesquisa dos docentes da FCHS/UNESP/Franca"
       },
       {
@@ -1128,7 +1128,7 @@
         "icon": "🗃️",
         "title": "Projetos de dados",
         "tipo": "dados",
-        "link": "/iniciativas/cafe-com-ciencia",
+        "link": "iniciativas/projetos-de-dados",
         "description": "Os projetos de dados são iniciativas que visam coletar, tratar, analisar e, quando possível, disponibilizar dados relevantes para as pesquisas"
       },
       {
@@ -1136,7 +1136,7 @@
         "icon": "👩🏻‍💻",
         "title": "Auxílio à Pesquisa",
         "tipo": "Pesquisa",
-        "link": "/iniciativas/cafe-com-ciencia",
+        "link": "iniciativas/projetos-de-pesquisa",
         "description": "Apoio a preparação e execução de projetos de pesquisas"
       },
       {
@@ -1144,7 +1144,7 @@
         "icon": "📚",
         "title": "Material de Apoio",
         "tipo": "apoio",
-        "link": "/iniciativas/cafe-com-ciencia",
+        "link": "iniciativas/material-de-apoio",
         "description": "Realização de oficinas, material de apoio e cursos que incentivem e auxiliem uma melhor incorporação de ferramentas tecnológicas nas atividades de pesquisa."
       },
       {
@@ -1152,7 +1152,7 @@
         "icon": "⚙️",
         "title": "Soluções Tecnológicas",
         "tipo": "sistemas",
-        "link": "/iniciativas/cafe-com-ciencia",
+        "link": "iniciativas/solucoes-tecnologicas",
         "description": "Promover uma melhor utilização dos recursos computacionais, bem como a implementação e o desenvolvimento de software e serviços voltados para as pesquisas "
       },
       {
@@ -1160,7 +1160,7 @@
         "icon": "🫱🏽‍🫲🏼",
         "title": "Cooperação e Parceiras",
         "tipo": "apoio",
-        "link": "/iniciativas/cafe-com-ciencia",
+        "link": "iniciativas/parcerias",
         "description": "Apoio para a cooperação científica e no estabelecimentos de parceirias, nacionais e internacionais, voltadas para o desenvolvimento de pesquisas"
       }
     ]
