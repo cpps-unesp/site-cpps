@@ -1,4 +1,5 @@
 ---
+import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 
 interface Props {
@@ -7,21 +8,26 @@ interface Props {
 
 const { lang } = Astro.props as Props;
 
+const atendimentoPath = routeTranslations.atendimento[lang];
+
 const messages = {
   pt: {
     title: 'Seção em reformulação',
     body: 'Estamos revisando o conteúdo desta seção e ela voltará ao ar por etapas. Enquanto isso, use a busca ou fale com a equipe pelo atendimento.',
     cta: 'Voltar à página inicial',
+    ctaAtendimento: 'Falar com a equipe',
   },
   en: {
     title: 'Section under review',
     body: 'We are revising the content of this section, which will return in stages. In the meantime, use the search or contact the team through the help desk.',
     cta: 'Back to the homepage',
+    ctaAtendimento: 'Contact the team',
   },
   es: {
     title: 'Sección en reformulación',
     body: 'Estamos revisando el contenido de esta sección y volverá por etapas. Mientras tanto, use la búsqueda o hable con el equipo mediante la mesa de ayuda.',
     cta: 'Volver a la página de inicio',
+    ctaAtendimento: 'Hablar con el equipo',
   },
 } as const;
 
@@ -29,7 +35,10 @@ const current = messages[lang] ?? messages.pt;
 ---
 
 <div class="mx-auto max-w-2xl py-16 text-center">
-  <h2 class="text-primary mb-4 text-3xl font-bold">{current.title}</h2>
+  <h1 class="text-primary mb-4 text-3xl font-bold">{current.title}</h1>
   <p class="text-base-content/80 mb-8">{current.body}</p>
-  <a href={`/${lang}/`} class="btn btn-primary btn-outline">{current.cta}</a>
+  <div class="flex flex-wrap justify-center gap-3">
+    <a href={`/${lang}/`} class="btn btn-primary btn-outline">{current.cta}</a>
+    <a href={`/${lang}/${atendimentoPath}`} class="btn btn-ghost">{current.ctaAtendimento}</a>
+  </div>
 </div>

@@ -1,11 +1,16 @@
-# Seções despublicadas temporariamente (302 = temporário, preserva a indexação)
-# Reverter junto com a remoção do `draft: true` no conteúdo.
+# Seções despublicadas temporariamente (302 = temporário, preserva a indexação).
+# Reverter junto com a remoção do `draft: true`, NO MESMO DEPLOY: enquanto estas
+# regras existirem, as páginas restauradas continuam sendo redirecionadas.
+#
+# Cuidado ao editar: o Cloudflare Pages canonicaliza /x para /x/ (308), e o
+# curinga /x/* casa também com /x/ (splat vazio). Por isso o destino nunca pode
+# ficar sob o prefixo redirecionado — /x/* -> /x é loop infinito.
+/pt/wiki  /pt/atividades  302
+/en/wiki  /en/atividades  302
+/es/wiki  /es/atividades  302
 /pt/wiki/*  /pt/atividades  302
 /en/wiki/*  /en/atividades  302
 /es/wiki/*  /es/atividades  302
-/pt/publicacoes/*  /pt/publicacoes  302
-/en/publications/*  /en/publications  302
-/es/publicaciones/*  /es/publicaciones  302
 
 # Aliases legados de /atividades → /wiki
 /pt/atividades/geral/info/processo-seletivo  /pt/wiki/infos-gerais/03processo  301
@@ -67,9 +72,11 @@
 /es/atividades/projetos/ensino/acesso-remoto/instrucao-inicial  /es/wiki/projetos/ensino/acessoremoto/instruir  301
 
 # Atividades genérico → Wiki (mesmo slug)
-/pt/atividades/*  /pt/wiki/:splat  301
-/en/atividades/*  /en/wiki/:splat  301
-/es/atividades/*  /es/wiki/:splat  301
+# Desativado enquanto a wiki está fora do ar: apontaria para páginas inexistentes
+# e fecharia loop com o 302 de /wiki/* acima. Restaurar junto com a seção.
+# /pt/atividades/*  /pt/wiki/:splat  301
+# /en/atividades/*  /en/wiki/:splat  301
+# /es/atividades/*  /es/wiki/:splat  301
 
 # Raiz e paths sem prefixo de idioma → PT
 /  /pt/  301

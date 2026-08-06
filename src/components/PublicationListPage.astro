@@ -160,6 +160,10 @@ const getTypeLabel = (type: string) => typeLabels[type] || formatPublicationType
     const searchInput = document.getElementById('search-input') as HTMLInputElement;
     const typeFilter = document.getElementById('type-filter') as HTMLSelectElement;
     const authorInput = document.getElementById('author-input') as HTMLInputElement;
+
+    // O script é injetado sempre que o componente renderiza, inclusive quando a
+    // seção exibe só o aviso de reformulação e os filtros não existem no DOM.
+    if (!searchInput || !typeFilter || !authorInput) return;
     const cards = Array.from(document.querySelectorAll('.publication-card')) as HTMLElement[];
     const featuredSection = document.getElementById('featured-section');
     const noResults = document.getElementById('no-results');
