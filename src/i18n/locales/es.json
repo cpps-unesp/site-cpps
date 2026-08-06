@@ -309,92 +309,91 @@
     "categorias": {
       "Coordenação": [
         {
-          "id": "fernanda-mello-santanna",
-          "cargo": "Coordinadora General",
-          "descricao": "Responsable de la supervisión general del proyecto."
+          "id": "helio-alexandre-silva",
+          "cargo": "Coordinador General",
+          "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas."
         },
         {
           "id": "marcelo-passini-mariano",
           "cargo": "Líder",
-          "descricao": "Responsable de la supervisión general del proyecto."
+          "descricao": "Departamento de Relaciones Internacionales."
         },
         {
           "id": "thais-amoroso-paschoal",
           "cargo": "Vice-Líder",
-          "descricao": "Responsable de la supervisión general del proyecto."
+          "descricao": "Departamento de Derecho Privado, de Proceso Civil y del Trabajo."
         }
       ],
       "Pesquisadores": [
         {
           "id": "murilo-gaspardo",
-          "cargo": "Investigador",
-          "descricao": ""
+          "cargo": "Profesor Asociado",
+          "descricao": "Departamento de Derecho Público."
         },
         {
           "id": "agnaldo-sousa-barbosa",
           "cargo": "Profesor Asociado",
-          "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas. Carrera de Derecho — responsable de las asignaturas de 'Sociología General y Jurídica' y 'Cuestión Social y Políticas Públicas'. Docente permanente del Programa de Posgrado en Planificación y Análisis de Políticas Públicas y del Programa de Posgrado en Servicio Social de la UNESP. Docente colaborador del Programa de Posgrado en Derecho de la UNESP."
+          "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas."
         },
         {
           "id": "almir-mantovani",
           "cargo": "Profesor Doctor",
-          "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas. Carrera de Derecho — responsable de las asignaturas de metodología de la investigación jurídica y metodología de la investigación científica. Carrera de Relaciones Internacionales - responsable de la asignatura 'métodos cuantitativos en relaciones internacionales'. Docente permanente del Campus de Franca del Programa de Posgrado en Planificación y Análisis de Políticas Públicas de la UNESP."
+          "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas."
         },
         {
           "id": "ana-gabriela-mendes-braga",
           "cargo": "Profesora Doctora",
-          "descricao": "Departamento de Derecho Público. Carrera de Derecho — responsable de las asignaturas de Derecho Penal I y II y Proceso Penal IV. Docente permanente del Programa de Posgrado en Derecho de la UNESP."
+          "descricao": "Departamento de Derecho Público."
         },
         {
           "id": "bruno-bastos-oliveira",
           "cargo": "Profesor Doctor",
-          "descricao": "Departamento de Derecho Público. Carrera de Derecho — responsable de las asignaturas de Derecho Tributario y Financiero. Docente permanente del Programa de Posgrado en Derecho de la UNESP."
+          "descricao": "Departamento de Derecho Público."
         },
         {
           "id": "edvania-angela-souza",
           "cargo": "Profesora Doctora",
-          "descricao": "Departamento de Servicio Social. Carrera de Servicio Social — responsable de las asignaturas Servicio Social y Legislación Social I y II, Proceso Educativo en Servicio Social (PESS), Prácticas Supervisadas, Trabajo de Fin de Grado (TCC) y optativas eventuales. Docente permanente del Programa de Posgrado en Servicio Social de la UNESP y Docente Colaboradora del Programa de Posgrado en Servicio Social y Política Social de la UNIFESP-BS."
+          "descricao": "Departamento de Servicio Social."
         },
         {
           "id": "fernanda-oliveira-sarreta",
           "cargo": "Profesora Asociada",
-          "descricao": "Departamento de Servicio Social. Carrera de Servicio Social — responsable de las asignaturas de Fundamentos Teóricos y Metodológicos del Servicio Social VII y VIII. Docente permanente del Programa de Posgrado en Servicio Social de la UNESP."
+          "descricao": "Departamento de Servicio Social."
         },
-        
         {
-          "id": "helio-alexandre-silva",
-          "cargo": "Profesor Doctor",
-          "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas. Carrera de Relaciones Internacionales — responsable de las asignaturas de Ética y Filosofía de las Ciencias Humanas. Docente permanente del Programa de Posgrado en Planificación y Análisis de Políticas Públicas y del Programa de Posgrado en Filosofía de la UNESP."
+          "id": "fernanda-mello-santanna",
+          "cargo": "Profesora Doctora",
+          "descricao": "Departamento de Relaciones Internacionales."
         },
         {
           "id": "jose-duarte-neto",
           "cargo": "Profesor Doctor",
-          "descricao": "Departamento de Derecho Público. Carrera de Derecho — responsable de las asignaturas de Derecho Constitucional I y II en la Carrera de Derecho de la FCHS - UNESP - Campus de Franca. Docente permanente del Programa de Posgrado en Derecho de la UNESP."
+          "descricao": "Departamento de Derecho Público."
         },
         {
           "id": "karina-anhezini-araujo",
           "cargo": "Profesora Doctora",
-          "descricao": "Departamento de Historia. Carrera de Historia — responsable de las asignaturas de Metodología de la Historia e Historia de la Historiografía Brasileña. Docente Permanente del Programa de Posgrado en Historia de la UNESP."
+          "descricao": "Departamento de Historia."
         },
         {
           "id": "luciana-lopes-canavez",
           "cargo": "Profesora Doctora",
-          "descricao": "Departamento de Derecho Privado, Proceso Civil y del Trabajo. Carrera de Derecho — responsable de las asignaturas de Derecho Civil y Derecho de la Propiedad Intelectual. Docente permanente del Programa de Posgrado en Derecho de la UNESP."
+          "descricao": "Departamento de Derecho Privado, de Proceso Civil y del Trabajo."
         },
         {
           "id": "marilia-carolina-pimenta",
           "cargo": "Profesora Doctora",
-          "descricao": "Departamento de Relaciones Internacionales. Carrera de Relaciones Internacionales — responsable de las asignaturas de Introducción a las Relaciones Internacionales y Seguridad Internacional. Docente permanente del Programa Interinstitucional (UNESP, UNICAMP y PUC-SP) de Posgrado en Relaciones Internacionales San Tiago Dantas."
+          "descricao": "Departamento de Relaciones Internacionales."
         },
         {
           "id": "ricardo-alexandre-ferreira",
           "cargo": "Profesor Asociado",
-          "descricao": "Departamento de Historia. Carrera de Historia, responsable del conjunto de asignaturas: Historia Moderna I y II. Docente permanente del Programa de Posgrado en Historia de la UNESP."
+          "descricao": "Departamento de Historia."
         },
         {
           "id": "regina-claudia-laisner",
           "cargo": "Profesora Doctora",
-          "descricao": "Departamento de Relaciones Internacionales. Carrera de Relaciones Internacionales — responsable de las asignaturas de Formación Política y Económica de Brasil y Teoría Política. Docente permanente del Programa de Posgrado en Derecho de la UNESP."
+          "descricao": "Departamento de Relaciones Internacionales."
         }
       ],
       "Estagiários": [

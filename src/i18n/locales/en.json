@@ -309,92 +309,91 @@
     "categorias": {
       "Coordenação": [
         {
-          "id": "fernanda-mello-santanna",
+          "id": "helio-alexandre-silva",
           "cargo": "General Coordinator",
-          "descricao": "Responsible for the overall supervision of the project."
+          "descricao": "Department of Education, Social Sciences and Public Policies."
         },
         {
           "id": "marcelo-passini-mariano",
           "cargo": "Leader",
-          "descricao": "Responsible for the overall supervision of the project."
+          "descricao": "Department of International Relations."
         },
         {
           "id": "thais-amoroso-paschoal",
           "cargo": "Deputy Leader",
-          "descricao": "Responsible for the overall supervision of the project."
+          "descricao": "Department of Private Law, Civil Procedure and Labor Law."
         }
       ],
       "Pesquisadores": [
         {
           "id": "murilo-gaspardo",
-          "cargo": "Researcher",
-          "descricao": ""
+          "cargo": "Associate Professor",
+          "descricao": "Department of Public Law."
         },
         {
           "id": "agnaldo-sousa-barbosa",
           "cargo": "Associate Professor",
-          "descricao": "Department of Education, Social Sciences and Public Policies. Undergraduate Law Program — responsible for the courses 'General and Legal Sociology' and 'Social Issues and Public Policies'. Permanent faculty member of the Graduate Program in Planning and Analysis of Public Policies and the Graduate Program in Social Work at UNESP. Collaborating faculty member of the Graduate Program in Law at UNESP."
+          "descricao": "Department of Education, Social Sciences and Public Policies."
         },
         {
           "id": "almir-mantovani",
           "cargo": "Professor",
-          "descricao": "Department of Education, Social Sciences and Public Policies. Undergraduate Law Program — responsible for the courses on legal research methodology and scientific research methodology. Undergraduate International Relations Program - responsible for the course 'quantitative methods in international relations'. Permanent faculty member at the Franca Campus of the Graduate Program in Planning and Analysis of Public Policies at UNESP."
+          "descricao": "Department of Education, Social Sciences and Public Policies."
         },
         {
           "id": "ana-gabriela-mendes-braga",
           "cargo": "Professor",
-          "descricao": "Department of Public Law. Undergraduate Law Program — responsible for the courses of Criminal Law I and II and Criminal Procedure IV. Permanent faculty member of the Graduate Program in Law at UNESP."
+          "descricao": "Department of Public Law."
         },
         {
           "id": "bruno-bastos-oliveira",
           "cargo": "Professor",
-          "descricao": "Department of Public Law. Undergraduate Law Program — responsible for the courses of Tax and Financial Law. Permanent faculty member of the Graduate Program in Law at UNESP."
+          "descricao": "Department of Public Law."
         },
         {
           "id": "edvania-angela-souza",
           "cargo": "Professor",
-          "descricao": "Department of Social Work. Undergraduate Social Work Program — responsible for the courses Social Work and Social Legislation I and II, Educative Process in Social Work (PESS), Supervised Internship, Final Paper (TCC), and occasional electives. Permanent faculty member of the Graduate Program in Social Work at UNESP and Collaborating Professor of the Graduate Program in Social Work and Social Policy at UNIFESP-BS."
+          "descricao": "Department of Social Work."
         },
         {
           "id": "fernanda-oliveira-sarreta",
           "cargo": "Associate Professor",
-          "descricao": "Department of Social Work. Undergraduate Social Work Program — responsible for the courses on Theoretical and Methodological Foundations of Social Work VII and VIII. Permanent faculty member of the Graduate Program in Social Work at UNESP."
+          "descricao": "Department of Social Work."
         },
-        
         {
-          "id": "helio-alexandre-silva",
+          "id": "fernanda-mello-santanna",
           "cargo": "Professor",
-          "descricao": "Department of Education, Social Sciences and Public Policies. Undergraduate International Relations Program — responsible for the courses on Ethics and Philosophy of Human Sciences. Permanent faculty member of the Graduate Program in Planning and Analysis of Public Policies and the Graduate Program in Philosophy at UNESP."
+          "descricao": "Department of International Relations."
         },
         {
           "id": "jose-duarte-neto",
           "cargo": "Professor",
-          "descricao": "Department of Public Law. Undergraduate Law Program — responsible for the courses Constitutional Law I and II in the Law Program at FCHS - UNESP - Franca Campus. Permanent faculty member of the Graduate Program in Law at UNESP."
+          "descricao": "Department of Public Law."
         },
         {
           "id": "karina-anhezini-araujo",
           "cargo": "Professor",
-          "descricao": "Department of History. Undergraduate History Program — responsible for the courses on Methodology of History and History of Brazilian Historiography. Permanent faculty member of the Graduate Program in History at UNESP."
+          "descricao": "Department of History."
         },
         {
           "id": "luciana-lopes-canavez",
           "cargo": "Professor",
-          "descricao": "Department of Private Law, Civil Procedure and Labor Law. Undergraduate Law Program — responsible for the courses on Civil Law and Intellectual Property Law. Permanent faculty member of the Graduate Program in Law at UNESP."
+          "descricao": "Department of Private Law, Civil Procedure and Labor Law."
         },
         {
           "id": "marilia-carolina-pimenta",
           "cargo": "Professor",
-          "descricao": "Department of International Relations. Undergraduate International Relations Program — responsible for the courses Introduction to International Relations and International Security. Permanent faculty member of the Interinstitutional Graduate Program (UNESP, UNICAMP, and PUC-SP) in International Relations San Tiago Dantas."
+          "descricao": "Department of International Relations."
         },
         {
           "id": "ricardo-alexandre-ferreira",
           "cargo": "Associate Professor",
-          "descricao": "Department of History. Undergraduate History Program, responsible for the set of courses: Modern History I and II. Permanent faculty member of the Graduate Program in History at UNESP."
+          "descricao": "Department of History."
         },
         {
           "id": "regina-claudia-laisner",
           "cargo": "Professor",
-          "descricao": "Department of International Relations. Undergraduate International Relations Program — responsible for the courses Political and Economic Formation of Brazil and Political Theory. Permanent faculty member of the Graduate Program in Law at UNESP."
+          "descricao": "Department of International Relations."
         }
       ],
       "Estagiários": [
