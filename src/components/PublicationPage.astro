@@ -15,7 +15,7 @@ interface Props {
 const { lang, slug } = Astro.props;
 const locale = getTranslations(lang);
 
-const allPublications = await getCollection('publicacoes');
+const allPublications = await getCollection('publicacoes', ({ data }) => data.draft !== true);
 const relatedPubs = allPublications.filter(
   (p) =>
     p.id.replace(/\.[^/.]+$/, '') === slug || p.id === slug || p.id === `${slug}.md` || p.id === `${slug}.mdx`

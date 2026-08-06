@@ -48,7 +48,7 @@ export async function getStaticPaths() {
   paths.push(...buildLocalizedContentPaths(langs, 'noticias', uniqueNoticiasSlugs));
 
   // Publicações individuais (todos os idiomas para permitir fallback)
-  const allPublicacoes = await getCollection('publicacoes');
+  const allPublicacoes = await getCollection('publicacoes', ({ data }) => data.draft !== true);
   const uniquePubSlugs = [...new Set(allPublicacoes.map((p) => p.id.replace(/\.[^/.]+$/, '')))];
   paths.push(...buildLocalizedContentPaths(langs, 'publicacao', uniquePubSlugs));
 

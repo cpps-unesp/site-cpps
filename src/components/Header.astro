@@ -43,12 +43,6 @@ const h = texts.header ?? {};
         </li>
 
         <li>
-          <a class="hover:text-primary transition" href={`/${lang}/atividades`}>
-            {h.atividades}
-          </a>
-        </li>
-
-        <li>
           <a
             class="hover:text-primary transition"
             href={`/${lang}/${getTranslatedPath('noticias', lang)}`}
@@ -102,11 +96,6 @@ const h = texts.header ?? {};
             <li>
               <a href={`/${lang}/${getTranslatedPath('iniciativas/cafe-com-ciencia', lang)}`}
                 >{h.cafe}</a
-              >
-            </li>
-            <li>
-              <a href={`/${lang}/${getTranslatedPath('iniciativas/publicacoes', lang)}`}
-                >{h.publicacoes}</a
               >
             </li>
             <li>
@@ -175,7 +164,6 @@ const h = texts.header ?? {};
     <div id="menu-mobile" class="mt-2 hidden lg:hidden">
       <ul class="flex flex-col gap-2 text-base font-semibold">
         <li><a href={`/${lang}/`}>{h.home}</a></li>
-        <li><a href={`/${lang}/atividades`}>{h.atividades}</a></li>
         <li><a href={`/${lang}/${getTranslatedPath('noticias', lang)}`}>{h.noticias}</a></li>
         <li>
           <details>
@@ -204,11 +192,6 @@ const h = texts.header ?? {};
               <li>
                 <a href={`/${lang}/${getTranslatedPath('iniciativas/cafe-com-ciencia', lang)}`}
                   >{h.cafe}</a
-                >
-              </li>
-              <li>
-                <a href={`/${lang}/${getTranslatedPath('iniciativas/publicacoes', lang)}`}
-                  >{h.publicacoes}</a
                 >
               </li>
               <li>

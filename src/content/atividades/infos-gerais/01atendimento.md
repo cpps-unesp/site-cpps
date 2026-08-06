@@ -2,6 +2,7 @@
 title: Atendimento e Suporte aos docentes e discentes
 description: Aqui está todas as informações para supoprte à comunidade acadêmica
 slug: atendimento
+draft: true
 ---
 
 #### Veja abaixo as maneiras de entrar em contato com a equipe do LabRI/UNESP:
