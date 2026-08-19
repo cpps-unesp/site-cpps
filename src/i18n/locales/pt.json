@@ -294,8 +294,15 @@
     "descricao": "O Café com Ciência é uma iniciativa voltada a debater temas da agenda de pesquisa dos pesquisadores do Centro de Pesquisa Política e Social",
     "episodios": [
       {
+        "id": "ep-regiao-administrativa-franca",
+        "numero": 9,
+        "icone": "🎙️",
+        "titulo": "Região Administrativa de Franca: conectando saberes e políticas públicas",
+        "descricao": "O encontro abordou os desafios e as potencialidades da Região Administrativa de Franca na articulação entre conhecimento acadêmico e políticas públicas. Exposição da Profa. Dra. Regina Cláudia Laisner."
+      },
+      {
         "id": "ep6-acesso-a-justica",
-        "numero": 6,
+        "numero": 8,
         "icone": "🎙️",
         "titulo": "Acesso à Justiça Centrado nas Pessoas",
         "descricao": "O encontro aborda o acesso à justiça sob uma perspectiva bottom-up e redistributiva, focando na superação de barreiras institucionais e sociais enfrentadas por grupos vulneráveis a partir da valorização de suas próprias narrativas e da mobilização do Direito.",
@@ -305,6 +312,20 @@
             "url": "https://drive.google.com/file/d/1ZCPR57aatP07mqUEr4DscJnEB2-VObx0/view?usp=drive_link"
           }
         ]
+      },
+      {
+        "id": "ep-acesso-justica-mobilizacao",
+        "numero": 7,
+        "icone": "🎙️",
+        "titulo": "Acesso à justiça, mobilização do direito e vulnerabilidades",
+        "descricao": "O encontro debateu a relação entre o acesso ao Judiciário e a mobilização de direitos por grupos em situação de vulnerabilidade. Exposição da Profa. Dra. Thaís Amoroso Paschoal, com mediação do Prof. Dr. Agnaldo de Sousa Barbosa."
+      },
+      {
+        "id": "ep-critica-pobreza",
+        "numero": 6,
+        "icone": "🎙️",
+        "titulo": "Crítica da pobreza como objeto da filosofia social",
+        "descricao": "O encontro propôs uma reflexão filosófica sobre a pobreza, abordando-a como objeto central da filosofia social contemporânea. Exposição do Prof. Dr. Hélio Alexandre da Silva, com mediação do Prof. Dr. Marcelo Passini Mariano."
       },
       {
         "id": "ep5-autocratizacao-resiliencia",
@@ -337,14 +358,8 @@
         ]
       },
       {
-        "id": "ep3-articulacao-pesquisa",
-        "numero": 3,
-        "icone": "🎙️",
-        "titulo": "Discussão para articulação entre os professores sobre possibilidades de pesquisa"
-      },
-      {
         "id": "ep2-cop30-transicao-energetica",
-        "numero": 2,
+        "numero": 3,
         "icone": "🎙️",
         "titulo": "A COP 30 e a Transição Energética Justa",
         "descricao": "O encontro propôs uma análise crítica da COP e da transição energética, defendendo a necessidade de uma abordagem mais justa, inclusiva e decolonial, que enfrente as desigualdades históricas e estruturais em vez de apenas focar em soluções técnicas e mercantis.",
@@ -354,6 +369,12 @@
             "url": "https://drive.google.com/file/d/1qEpkl6My5lC4vBY2iFsJjImi8qa__iDg/view?usp=drive_link"
           }
         ]
+      },
+      {
+        "id": "ep3-articulacao-pesquisa",
+        "numero": 2,
+        "icone": "🎙️",
+        "titulo": "Discussão para articulação entre os professores sobre possibilidades de pesquisa"
       },
       {
         "id": "ep1-novo-governo-trump",

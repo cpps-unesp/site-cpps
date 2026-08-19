@@ -175,9 +175,31 @@
     "descricao": "Coffee with Science is an initiative aimed at discussing themes from the research agenda of the researchers at the Center for Political and Social Research.",
     "episodios": [
       {
+        "id": "ep-regiao-administrativa-franca",
+        "numero": 9,
+        "icone": "🎙️",
+        "titulo": "The Franca Administrative Region: Connecting Knowledge and Public Policy",
+        "descricao": "The meeting addressed the challenges and potential of the Franca Administrative Region in linking academic knowledge and public policy. Presented by Prof. Regina Cláudia Laisner."
+      },
+      {
         "id": "ep6-acesso-a-justica",
         "titulo": "People-Centered Access to Justice",
-        "descricao": "The meeting addresses access to justice from a bottom-up, redistributive perspective, focusing on overcoming the institutional and social barriers faced by vulnerable groups by valuing their own narratives and mobilizing the law."
+        "descricao": "The meeting addresses access to justice from a bottom-up, redistributive perspective, focusing on overcoming the institutional and social barriers faced by vulnerable groups by valuing their own narratives and mobilizing the law.",
+        "numero": 8
+      },
+      {
+        "id": "ep-acesso-justica-mobilizacao",
+        "numero": 7,
+        "icone": "🎙️",
+        "titulo": "Access to Justice, Legal Mobilization and Vulnerabilities",
+        "descricao": "The meeting discussed the relationship between access to the judiciary and the mobilization of rights by groups in situations of vulnerability. Presented by Prof. Thaís Amoroso Paschoal, moderated by Prof. Agnaldo de Sousa Barbosa."
+      },
+      {
+        "id": "ep-critica-pobreza",
+        "numero": 6,
+        "icone": "🎙️",
+        "titulo": "Critique of Poverty as an Object of Social Philosophy",
+        "descricao": "The meeting proposed a philosophical reflection on poverty, approaching it as a central object of contemporary social philosophy. Presented by Prof. Hélio Alexandre da Silva, moderated by Prof. Marcelo Passini Mariano."
       },
       {
         "id": "ep5-autocratizacao-resiliencia",
@@ -192,15 +214,15 @@
         "descricao": "The meeting addressed the complexity of artificial intelligence governance on the global stage, highlighting the challenges and Brazil's position as a major consumer and actor with a history of regulatory influence, but which faces the difficult question of how to balance technological dependence, development, and sovereignty in a rapidly evolving field with a high concentration of power."
       },
       {
-        "id": "ep3-articulacao-pesquisa",
-        "numero": 3,
-        "titulo": "Discussion for articulation among professors about research possibilities"
-      },
-      {
         "id": "ep2-cop30-transicao-energetica",
-        "numero": 2,
+        "numero": 3,
         "titulo": "COP 30 and the Just Energy Transition",
         "descricao": "The meeting proposed a critical analysis of the COP and the energy transition, advocating for a more just, inclusive, and decolonial approach that confronts historical and structural inequalities instead of just focusing on technical and market-based solutions."
+      },
+      {
+        "id": "ep3-articulacao-pesquisa",
+        "numero": 2,
+        "titulo": "Discussion for articulation among professors about research possibilities"
       },
       {
         "id": "ep1-novo-governo-trump",
