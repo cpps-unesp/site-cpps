@@ -293,7 +293,7 @@
     "titulo": "Café com Ciência",
     "descricao": "O Café com Ciência é uma iniciativa voltada a debater temas da agenda de pesquisa dos pesquisadores do Centro de Pesquisa Política e Social",
     "episodios": [
-    {
+      {
         "id": "ep6-acesso-a-justica",
         "icone": "🎙️",
         "titulo": "Episódio 6: Acesso à Justiça Centrado nas Pessoas",
@@ -620,27 +620,22 @@
     "categorias": {
       "Coordenação": [
         {
-          "id": "fernanda-mello-santanna",
-          "nome": " Fernanda Mello Sant’Anna",
-          "cargo": "Coordenadora Geral",
-          "descricao": "Responsável pela supervisão geral do projeto",
-          "foto": "/imagens/equipe/fernanda_mello.png",
+          "id": "helio-alexandre-silva",
+          "nome": "Hélio Alexandre da Silva",
+          "cargo": "Coordenador Geral",
+          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas.",
+          "foto": "/imagens/equipe/Hélio_Silva.png",
           "prioridade": 1,
           "status": "ativo",
           "redes": [
             {
               "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/6759610800922658",
+              "url": "http://lattes.cnpq.br/4826365546594429",
               "icone": "/imagens/logos/lattes_icon.svg"
             },
             {
-              "tipo": "linkedin",
-              "url": "https://br.linkedin.com/in/fernanda-mello-sant-anna-79b8882b3",
-              "icone": "/imagens/logos/linkedin_icon.svg"
-            },
-            {
               "tipo": "portal-docente-unesp",
-              "url": "https://unesp.br/portaldocentes/docentes/175836",
+              "url": "https://unesp.br/portaldocentes/docentes/72044",
               "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
@@ -649,7 +644,7 @@
           "id": "marcelo-passini-mariano",
           "nome": "Marcelo Passini Mariano",
           "cargo": "Líder",
-          "descricao": "Responsável pela supervisão geral do projeto.",
+          "descricao": "Departamento de Relações Internacionais.",
           "foto": "/imagens/equipe/Marcelo_Mariano.jpg",
           "prioridade": "",
           "status": "ativo",
@@ -670,7 +665,7 @@
           "id": "thais-amoroso-paschoal",
           "nome": "Thais Amoroso Paschoal",
           "cargo": "Vice Líder",
-          "descricao": "Responsável pela supervisão geral do projeto.",
+          "descricao": "Departamento de Direito Privado, de Processo Civil e do Trabalho.",
           "foto": "/imagens/equipe/Thais_Amoroso.jpg",
           "prioridade": "",
           "status": "ativo",
@@ -697,8 +692,8 @@
         {
           "id": "murilo-gaspardo",
           "nome": "Murilo Gaspardo",
-          "cargo": "Pesquisador",
-          "descricao": "",
+          "cargo": "Professor Associado",
+          "descricao": "Departamento de Direito Público.",
           "foto": "/imagens/equipe/Murilo_Gaspardo.jpg",
           "prioridade": "",
           "status": "ativo",
@@ -724,7 +719,7 @@
           "id": "agnaldo-sousa-barbosa",
           "nome": "Agnaldo de Sousa Barbosa",
           "cargo": "Professor Associado",
-          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Direito — responsável pelas disciplinas de “Sociologia Geral e Jurídica e Direito” e “Questão Social e Políticas Públicas\". Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas e do Programa de Pós-Graduação em Serviço Social da UNESP, Docente colaborador do Programa de Pós-Graduação em Direito da UNESP.",
+          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas.",
           "foto": "/imagens/equipe/Agnaldo_Barbosa.jpeg",
           "prioridade": "",
           "status": "ativo",
@@ -745,7 +740,7 @@
           "id": "almir-mantovani",
           "nome": "Almir Mantovani",
           "cargo": "Professor Doutor",
-          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Direito — responsável pelas disciplinas de metodologia da pesquisa jurídica e metodologia da pesquisa científica. Curso de Graduação em Relações Internacionais - responsável pela disciplina “métodos quantitativos em relações internacionais”. Docente permanente Câmpus de Franca do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas da UNESP.",
+          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas.",
           "foto": "/imagens/equipe/Almir Mantovani.jpeg",
           "prioridade": "",
           "status": "ativo",
@@ -766,7 +761,7 @@
           "id": "ana-gabriela-mendes-braga",
           "nome": "Ana Gabriela Mendes Braga",
           "cargo": "Professora Doutora",
-          "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Penal I e II e Processo Penal IV. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "descricao": "Departamento de Direito Público.",
           "foto": "/imagens/equipe/Ana _Braga.png",
           "prioridade": 3,
           "status": "ativo",
@@ -787,7 +782,7 @@
           "id": "bruno-bastos-oliveira",
           "nome": "Bruno Bastos de Oliveira",
           "cargo": "Professor Doutor",
-          "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Tributário e Financeiro. Docente permanente do Programa de Pós-Graduação Direito da UNESP.",
+          "descricao": "Departamento de Direito Público.",
           "foto": "/imagens/equipe/Bruno_Oliveira.png",
           "prioridade": 4,
           "status": "ativo",
@@ -808,7 +803,7 @@
           "id": "edvania-angela-souza",
           "nome": "Edvânia Ângela de Souza",
           "cargo": "Professora Doutora",
-          "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas Serviço Social e Legislação Social I e II, Processo Educativo em Serviço Social (PESS), Estágio Supervisionado, Trabalho e Conclusão de Curso (TCC) e eventuais optativas. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP e Docente Colaboradora do Programa de Pós-Graduação em Serviço Social e Política Social da UNIFESP-BS.",
+          "descricao": "Departamento de Serviço Social.",
           "foto": "/imagens/equipe/Edvania_Angela.png",
           "prioridade": 5,
           "status": "ativo",
@@ -829,7 +824,7 @@
           "id": "fernanda-oliveira-sarreta",
           "nome": "Fernanda de Oliveira Sarreta",
           "cargo": "Professora Associada",
-          "descricao": "Departamento de Serviço Social. Curso de Graduação em Serviço Social — responsável pelas disciplinas de FTMSS Fundamentos Teóricos e Metodológicos do Serviço Social VII e VIII. Docente permanente do Programa de Pós-Graduação em Serviço Social da UNESP.",
+          "descricao": "Departamento de Serviço Social.",
           "foto": "/imagens/equipe/Fernanda_Sarreta.png",
           "prioridade": "",
           "status": "ativo",
@@ -846,24 +841,28 @@
             }
           ]
         },
-        
         {
-          "id": "helio-alexandre-silva",
-          "nome": "Hélio Alexandre da Silva",
-          "cargo": "Professor Doutor",
-          "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Ética e Filosofia das Ciências Humanas. Docente permanente do Programa de Pós-Graduação em Planejamento e Análise de Políticas Públicas e do Programa de Pós-graduação em Filosofia da UNESP.",
-          "foto": "/imagens/equipe/Hélio_Silva.png",
+          "id": "fernanda-mello-santanna",
+          "nome": "Fernanda Mello Sant’Anna",
+          "cargo": "Professora Doutora",
+          "descricao": "Departamento de Relações Internacionais.",
+          "foto": "/imagens/equipe/fernanda_mello.png",
           "prioridade": "",
           "status": "ativo",
           "redes": [
             {
               "tipo": "lattes",
-              "url": "http://lattes.cnpq.br/4826365546594429",
+              "url": "http://lattes.cnpq.br/6759610800922658",
               "icone": "/imagens/logos/lattes_icon.svg"
             },
             {
+              "tipo": "linkedin",
+              "url": "https://br.linkedin.com/in/fernanda-mello-sant-anna-79b8882b3",
+              "icone": "/imagens/logos/linkedin_icon.svg"
+            },
+            {
               "tipo": "portal-docente-unesp",
-              "url": "https://unesp.br/portaldocentes/docentes/72044",
+              "url": "https://unesp.br/portaldocentes/docentes/175836",
               "icone": "/imagens/logos/logo-unesp-mapa.png"
             }
           ]
@@ -872,7 +871,7 @@
           "id": "jose-duarte-neto",
           "nome": "José Duarte Neto",
           "cargo": "Professor Doutor",
-          "descricao": "Departamento de Direito Público. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Constitucional II e II na Graduação do Curso de Direito da FCHS - UNESP - Câmpus de Franca. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "descricao": "Departamento de Direito Público.",
           "foto": "/imagens/equipe/Jose_Neto.png",
           "prioridade": "",
           "status": "ativo",
@@ -893,7 +892,7 @@
           "id": "karina-anhezini-araujo",
           "nome": "Karina Anhezini de Araujo",
           "cargo": "Professora Doutora",
-          "descricao": "Departamento de História. Curso de Graduação em História — responsável pelas disciplinas de Metodologia da História e História da Historiografia Brasileira. Docente Permanente do Programa de Pós-Graduação em História da UNESP.",
+          "descricao": "Departamento de História.",
           "foto": "/imagens/equipe/Karina_Araujo.png",
           "prioridade": "",
           "status": "ativo",
@@ -914,7 +913,7 @@
           "id": "luciana-lopes-canavez",
           "nome": "Luciana Lopes Canavez",
           "cargo": "Professora Doutora",
-          "descricao": "Departamento de Direito Privado, Processo Civil e do Trabalho. Curso de Graduação em Direito — responsável pelas disciplinas de Direito Civil e Direito da Propriedade Intelectual. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "descricao": "Departamento de Direito Privado, de Processo Civil e do Trabalho.",
           "foto": "/imagens/equipe/Luciana_Lopes.png",
           "prioridade": "",
           "status": "ativo",
@@ -935,7 +934,7 @@
           "id": "marilia-carolina-pimenta",
           "nome": "Marília Carolina Barbosa de Souza Pimenta",
           "cargo": "Professora Doutora",
-          "descricao": "Departamento de Relações Internacionais. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Introdução às Relações Internacionais e Segurança Internacional. Docente permanente do Programa Interinstitucional (UNESP, UNICAMP e PUC-SP) de Pós-graduação em Relações Internacionais San Tiago Dantas.",
+          "descricao": "Departamento de Relações Internacionais.",
           "foto": "/imagens/equipe/Marilia_Pimenta.png",
           "prioridade": "",
           "status": "ativo",
@@ -956,7 +955,7 @@
           "id": "ricardo-alexandre-ferreira",
           "nome": "Ricardo Alexandre Ferreira",
           "cargo": "Professor Associado",
-          "descricao": "Departamento de História. Curso de Graduação em História, responsável pelo conjunto de disciplinas: História Moderna I e II. Docente permanente do Programa de Pós-Graduação em História da UNESP.",
+          "descricao": "Departamento de História.",
           "foto": "/imagens/equipe/Ricardo_Ferreira.png",
           "prioridade": "",
           "status": "ativo",
@@ -977,7 +976,7 @@
           "id": "regina-claudia-laisner",
           "nome": "Regina Cláudia Laisner",
           "cargo": "Professora Doutora",
-          "descricao": "Departamento de Relações Internacionais. Curso de Graduação em Relações Internacionais — responsável pelas disciplinas de Formação Política e Econômica do Brasil e Teoria Política. Docente permanente do Programa de Pós-Graduação em Direito da UNESP.",
+          "descricao": "Departamento de Relações Internacionais.",
           "foto": "/imagens/equipe/Regina_Laisner.png",
           "prioridade": "",
           "status": "ativo",
