@@ -1,68 +1,104 @@
 ---
+import type { SupportedLang } from '../types/lang';
+
 type CafeMaterial = {
-  nome: string;
+  tipo: string;
   url: string;
 };
 
 type CafeEpisodio = {
+  id?: string;
+  numero?: number;
   titulo: string;
-  descricao: string;
+  descricao?: string;
   materiais?: CafeMaterial[];
 };
 
 type CafeData = {
   titulo: string;
   descricao: string;
+  episodioLabel?: string;
+  materiais?: Record<string, string>;
   episodios: CafeEpisodio[];
 };
 
-const { cafe, lang } = Astro.props as { cafe: CafeData; lang?: string };
+const { cafe, lang } = Astro.props as { cafe: CafeData; lang?: SupportedLang };
 
-function buildUrl(url?: string) {
-  if (!url || url.startsWith('http')) return url;
-  if (!lang) return url;
+const rotuloMaterial = cafe.materiais ?? {};
+const rotuloEpisodio = cafe.episodioLabel ?? 'Episódio';
+
+// Do mais recente para o mais antigo.
+const episodios = [...(cafe.episodios ?? [])].sort((a, b) => (b.numero ?? 0) - (a.numero ?? 0));
+
+function buildUrl(url: string) {
+  if (url.startsWith('http') || !lang) return url;
   if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
-  if (url.startsWith('/')) return `/${lang}${url}`;
-  return `/${lang}/${url}`;
+  return url.startsWith('/') ? `/${lang}${url}` : `/${lang}/${url}`;
 }
 ---
 
-<section class="mt-16 space-y-16">
-  <div class="text-center">
-    <h2 class="mb-4 text-4xl font-extrabold">{cafe.titulo}</h2>
-    <p class="text-base-content mx-auto max-w-2xl">{cafe.descricao}</p>
-  </div>
+<section class="mx-auto max-w-5xl px-4 py-12 md:px-8 md:py-16">
+  <header class="mb-12 md:mb-16">
+    <h1 class="titulo text-primary mb-4">{cafe.titulo}</h1>
+    <div class="bg-primary mb-6 h-1.5 w-20"></div>
+    <p class="subtitulo max-w-2xl">{cafe.descricao}</p>
+  </header>
 
-  <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+  <ol class="space-y-5 md:space-y-6">
     {
-      cafe.episodios.map((episodio: CafeEpisodio) => (
-        <div class="bg-base-100 flex flex-col space-y-4 rounded-xl p-6 shadow-md transition-shadow hover:shadow-lg">
-          <div class="flex justify-center">
-            <img
-              src="/imagens/logos/logo-unesp-mapa.svg"
-              alt="Logo UNESP Mapa"
-              class="h-16 w-16 object-contain"
-            />
-          </div>
-          <h3 class="text-lg font-bold">{episodio.titulo}</h3>
-          <p class="text-base-content text-sm">{episodio.descricao}</p>
-
-          {Array.isArray(episodio.materiais) && episodio.materiais.length > 0 && (
-            <div class="mt-2 flex flex-wrap gap-2">
-              {episodio.materiais.map((mat: CafeMaterial) => (
-                <a
-                  href={buildUrl(mat.url)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="border-base-content hover:bg-base-200 rounded border px-3 py-1 text-xs font-bold uppercase transition-colors"
-                >
-                  {mat.nome}
-                </a>
-              ))}
+      episodios.map((episodio) => (
+        <li class="border-base-300 bg-base-100 overflow-hidden rounded-2xl border shadow-sm transition-shadow hover:shadow-md">
+          <article class="flex flex-col gap-5 p-6 sm:flex-row sm:gap-7 md:p-8">
+            <div class="border-base-300 flex shrink-0 items-baseline gap-2 border-b pb-4 sm:w-28 sm:flex-col sm:items-start sm:gap-0 sm:border-r sm:border-b-0 sm:pr-6 sm:pb-0">
+              <span class="text-base-content/50 text-xs font-bold tracking-widest uppercase">
+                {rotuloEpisodio}
+              </span>
+              <span class="text-primary text-4xl leading-none font-black sm:text-6xl">
+                {episodio.numero}
+              </span>
             </div>
-          )}
-        </div>
+
+            <div class="min-w-0 flex-1">
+              <h2 class="text-base-content mb-3 text-xl leading-snug font-bold md:text-2xl">
+                {episodio.titulo}
+              </h2>
+
+              {episodio.descricao && (
+                <p class="text-base-content/75 mb-5 text-base leading-relaxed">
+                  {episodio.descricao}
+                </p>
+              )}
+
+              {episodio.materiais && episodio.materiais.length > 0 && (
+                <div class="flex flex-wrap gap-2">
+                  {episodio.materiais.map((material) => (
+                    <a
+                      href={buildUrl(material.url)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn btn-sm btn-outline btn-primary normal-case"
+                    >
+                      {rotuloMaterial[material.tipo] ?? material.tipo}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        </li>
       ))
     }
-  </div>
+  </ol>
 </section>
+
+<style>
+  /* Os títulos dos episódios são longos e acadêmicos: a fonte de display do
+     site é caixa-alta e prejudicaria a leitura. A regra global de títulos fica
+     fora de camada e por isso vence os utilitários do Tailwind — o ajuste
+     precisa vir daqui. */
+  h2 {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+</style>

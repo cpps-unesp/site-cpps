@@ -175,29 +175,66 @@
     "descricao": "Café con Ciencia es una iniciativa orientada a debatir temas de la agenda de investigación de los investigadores del Centro de Investigación Política y Social.",
     "episodios": [
       {
+        "id": "ep-regiao-administrativa-franca",
+        "numero": 9,
+        "icone": "🎙️",
+        "titulo": "Región Administrativa de Franca: conectando saberes y políticas públicas",
+        "descricao": "El encuentro abordó los desafíos y las potencialidades de la Región Administrativa de Franca en la articulación entre conocimiento académico y políticas públicas. Exposición de la Profa. Dra. Regina Cláudia Laisner."
+      },
+      {
+        "id": "ep6-acesso-a-justica",
+        "titulo": "Acceso a la Justicia Centrado en las Personas",
+        "descricao": "El encuentro aborda el acceso a la justicia desde una perspectiva bottom-up y redistributiva, con foco en la superación de las barreras institucionales y sociales que enfrentan los grupos vulnerables, a partir de la valorización de sus propias narrativas y de la movilización del Derecho.",
+        "numero": 8
+      },
+      {
+        "id": "ep-acesso-justica-mobilizacao",
+        "numero": 7,
+        "icone": "🎙️",
+        "titulo": "Acceso a la justicia, movilización del derecho y vulnerabilidades",
+        "descricao": "El encuentro debatió la relación entre el acceso al Poder Judicial y la movilización de derechos por parte de grupos en situación de vulnerabilidad. Exposición de la Profa. Dra. Thaís Amoroso Paschoal, con mediación del Prof. Dr. Agnaldo de Sousa Barbosa."
+      },
+      {
+        "id": "ep-critica-pobreza",
+        "numero": 6,
+        "icone": "🎙️",
+        "titulo": "Crítica de la pobreza como objeto de la filosofía social",
+        "descricao": "El encuentro propuso una reflexión filosófica sobre la pobreza, abordándola como objeto central de la filosofía social contemporánea. Exposición del Prof. Dr. Hélio Alexandre da Silva, con mediación del Prof. Dr. Marcelo Passini Mariano."
+      },
+      {
         "id": "ep5-autocratizacao-resiliencia",
-        "titulo": "Episodio 5: Autocratización y Resiliencia Democrática en Brasil (2019-2023)",
-        "descricao": "El encuentro proporcionó una visión general de los desafíos de la gobernanza de la IA, con un enfoque especial en el complejo papel de Brasil en este escenario global."
+        "numero": 5,
+        "titulo": "Autocratización y Resiliencia Democrática en Brasil (2019-2023)",
+        "descricao": "El encuentro analizó el proceso de autocratización en Brasil durante el Gobierno de Bolsonaro y la respuesta de las instituciones para asegurar la resiliencia democrática, combinando una revisión de la literatura de Ciencia Política y Derecho con un estudio empírico de los arreglos jurídico-institucionales."
       },
       {
         "id": "ep4-brasil-governanca-ia",
-        "titulo": "Episodio 4: Brasil y la Gobernanza Global de la Inteligencia Artificial",
+        "numero": 4,
+        "titulo": "Brasil y la Gobernanza Global de la Inteligencia Artificial",
         "descricao": "La reunión abordó la complejidad de la gobernanza de la inteligencia artificial en el escenario global, destacando los desafíos y la posición de Brasil como un gran consumidor y actor con un historial de influencia regulatoria, pero que enfrenta la difícil cuestión de cómo equilibrar la dependencia tecnológica, el desarrollo y la soberanía en un campo de rápida evolución y concentración de poder."
       },
       {
-        "id": "ep3-articulacao-pesquisa",
-        "titulo": "Episodio 3: Discusión para la articulación entre profesores sobre posibilidades de investigación"
-      },
-      {
         "id": "ep2-cop30-transicao-energetica",
-        "titulo": "Episodio 2: La COP 30 y la Transición Energética Justa",
+        "numero": 3,
+        "titulo": "La COP 30 y la Transición Energética Justa",
         "descricao": "El encuentro propuso un análisis crítico de la COP y de la transición energética, defendiendo la necesidad de un enfoque más justo, inclusivo y decolonial, que enfrente las desigualdades históricas y estructurales en lugar de centrarse únicamente en soluciones técnicas y de mercado."
       },
       {
+        "id": "ep3-articulacao-pesquisa",
+        "numero": 2,
+        "titulo": "Discusión para la articulación entre profesores sobre posibilidades de investigación"
+      },
+      {
         "id": "ep1-novo-governo-trump",
-        "titulo": "Episodio 1: El nuevo Gobierno de Trump y sus repercusiones para Brasil: geopolítica, democracia, economía y cambios climáticos"
+        "numero": 1,
+        "titulo": "El nuevo Gobierno de Trump y sus repercusiones para Brasil: geopolítica, democracia, economía y cambios climáticos"
       }
-    ]
+    ],
+    "materiais": {
+      "transcricao": "Transcripción",
+      "artigo": "Artículo relacionado"
+    },
+    "episodioLabel": "Episodio"
   },
   "documentos": {
     "titulo": "Documentos, Informes y Afines",
