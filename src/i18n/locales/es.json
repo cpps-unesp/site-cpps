@@ -176,28 +176,38 @@
     "episodios": [
       {
         "id": "ep5-autocratizacao-resiliencia",
-        "titulo": "Episodio 5: Autocratización y Resiliencia Democrática en Brasil (2019-2023)",
+        "numero": 5,
+        "titulo": "Autocratización y Resiliencia Democrática en Brasil (2019-2023)",
         "descricao": "El encuentro proporcionó una visión general de los desafíos de la gobernanza de la IA, con un enfoque especial en el complejo papel de Brasil en este escenario global."
       },
       {
         "id": "ep4-brasil-governanca-ia",
-        "titulo": "Episodio 4: Brasil y la Gobernanza Global de la Inteligencia Artificial",
+        "numero": 4,
+        "titulo": "Brasil y la Gobernanza Global de la Inteligencia Artificial",
         "descricao": "La reunión abordó la complejidad de la gobernanza de la inteligencia artificial en el escenario global, destacando los desafíos y la posición de Brasil como un gran consumidor y actor con un historial de influencia regulatoria, pero que enfrenta la difícil cuestión de cómo equilibrar la dependencia tecnológica, el desarrollo y la soberanía en un campo de rápida evolución y concentración de poder."
       },
       {
         "id": "ep3-articulacao-pesquisa",
-        "titulo": "Episodio 3: Discusión para la articulación entre profesores sobre posibilidades de investigación"
+        "numero": 3,
+        "titulo": "Discusión para la articulación entre profesores sobre posibilidades de investigación"
       },
       {
         "id": "ep2-cop30-transicao-energetica",
-        "titulo": "Episodio 2: La COP 30 y la Transición Energética Justa",
+        "numero": 2,
+        "titulo": "La COP 30 y la Transición Energética Justa",
         "descricao": "El encuentro propuso un análisis crítico de la COP y de la transición energética, defendiendo la necesidad de un enfoque más justo, inclusivo y decolonial, que enfrente las desigualdades históricas y estructurales en lugar de centrarse únicamente en soluciones técnicas y de mercado."
       },
       {
         "id": "ep1-novo-governo-trump",
-        "titulo": "Episodio 1: El nuevo Gobierno de Trump y sus repercusiones para Brasil: geopolítica, democracia, economía y cambios climáticos"
+        "numero": 1,
+        "titulo": "El nuevo Gobierno de Trump y sus repercusiones para Brasil: geopolítica, democracia, economía y cambios climáticos"
       }
-    ]
+    ],
+    "materiais": {
+      "transcricao": "Transcripción",
+      "artigo": "Artículo relacionado"
+    },
+    "episodioLabel": "Episodio"
   },
   "documentos": {
     "titulo": "Documentos, Informes y Afines",

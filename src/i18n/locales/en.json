@@ -176,28 +176,38 @@
     "episodios": [
       {
         "id": "ep5-autocratizacao-resiliencia",
-        "titulo": "Episode 5: Autocratization and Democratic Resilience in Brazil (2019-2023)",
+        "numero": 5,
+        "titulo": "Autocratization and Democratic Resilience in Brazil (2019-2023)",
         "descricao": "The meeting provided a comprehensive overview of the challenges of AI governance, with a special focus on Brazil's complex role in this global scenario."
       },
       {
         "id": "ep4-brasil-governanca-ia",
-        "titulo": "Episode 4: Brazil and the Global Governance of Artificial Intelligence",
+        "numero": 4,
+        "titulo": "Brazil and the Global Governance of Artificial Intelligence",
         "descricao": "The meeting addressed the complexity of artificial intelligence governance on the global stage, highlighting the challenges and Brazil's position as a major consumer and actor with a history of regulatory influence, but which faces the difficult question of how to balance technological dependence, development, and sovereignty in a rapidly evolving field with a high concentration of power."
       },
       {
         "id": "ep3-articulacao-pesquisa",
-        "titulo": "Episode 3: Discussion for articulation among professors about research possibilities"
+        "numero": 3,
+        "titulo": "Discussion for articulation among professors about research possibilities"
       },
       {
         "id": "ep2-cop30-transicao-energetica",
-        "titulo": "Episode 2: COP 30 and the Just Energy Transition",
+        "numero": 2,
+        "titulo": "COP 30 and the Just Energy Transition",
         "descricao": "The meeting proposed a critical analysis of the COP and the energy transition, advocating for a more just, inclusive, and decolonial approach that confronts historical and structural inequalities instead of just focusing on technical and market-based solutions."
       },
       {
         "id": "ep1-novo-governo-trump",
-        "titulo": "Episode 1: The new Trump Administration and its repercussions for Brazil: geopolitics, democracy, economy, and climate change"
+        "numero": 1,
+        "titulo": "The new Trump Administration and its repercussions for Brazil: geopolitics, democracy, economy, and climate change"
       }
-    ]
+    ],
+    "materiais": {
+      "transcricao": "Transcript",
+      "artigo": "Related article"
+    },
+    "episodioLabel": "Episode"
   },
   "documentos": {
     "titulo": "Documents, Reports, and Related Items",

@@ -295,101 +295,82 @@
     "episodios": [
       {
         "id": "ep6-acesso-a-justica",
+        "numero": 6,
         "icone": "🎙️",
-        "titulo": "Episódio 6: Acesso à Justiça Centrado nas Pessoas",
-        "descricao": "O encontro faborda o acesso à justiça sob uma perspectiva bottom-up e redistributiva, focando na superação de barreiras institucionais e sociais enfrentadas por grupos vulneráveis a partir da valorização de suas próprias narrativas e da mobilização do Direito.",
+        "titulo": "Acesso à Justiça Centrado nas Pessoas",
+        "descricao": "O encontro aborda o acesso à justiça sob uma perspectiva bottom-up e redistributiva, focando na superação de barreiras institucionais e sociais enfrentadas por grupos vulneráveis a partir da valorização de suas próprias narrativas e da mobilização do Direito.",
         "materiais": [
           {
-            "nome": "PDF",
+            "tipo": "transcricao",
             "url": "https://drive.google.com/file/d/1ZCPR57aatP07mqUEr4DscJnEB2-VObx0/view?usp=drive_link"
           },
           {
-            "nome": "HTML",
+            "tipo": "artigo",
             "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt"
           }
         ]
       },
       {
         "id": "ep5-autocratizacao-resiliencia",
+        "numero": 5,
         "icone": "🎙️",
-        "titulo": "Episódio 5: Autocratização e Resiliência Democrática no Brasil (2019-2023)",
+        "titulo": "Autocratização e Resiliência Democrática no Brasil (2019-2023)",
         "descricao": "O encontro forneceu um panorama abrangente sobre os desafios da governança da IA, com um foco especial no complexo papel do Brasil nesse cenário global.",
         "materiais": [
           {
-            "nome": "PDF",
+            "tipo": "transcricao",
             "url": "https://drive.google.com/file/d/1xKF1ssIfC50r0bI5zzQvr63ukUab8tIM/view?usp=drive_link"
           },
           {
-            "nome": "HTML",
+            "tipo": "artigo",
             "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt"
           }
         ]
       },
       {
         "id": "ep4-brasil-governanca-ia",
+        "numero": 4,
         "icone": "🎙️",
-        "titulo": "Episódio 4: O Brasil e a Governança Global de Inteligência Artificial",
+        "titulo": "O Brasil e a Governança Global de Inteligência Artificial",
         "descricao": "A reunião abordou a complexidade da governança da inteligência artificial no cenário global, destacando os desafios e o posicionamento do Brasil como um grande consumidor e ator com histórico de influência regulatória, mas que enfrenta a difícil questão de como equilibrar dependência tecnológica, desenvolvimento e soberania em um campo de rápida evolução e concentração de poder.",
         "materiais": [
           {
-            "nome": "PDF",
+            "tipo": "transcricao",
             "url": "https://drive.google.com/file/d/1qas-xOLC4u71tJUIQRbz5_3QT-JvT4a9/view?usp=drive_link"
-          },
-          {
-            "nome": "HTML",
-            "url": "https://exemplo.com/ep1.html"
           }
         ]
       },
       {
         "id": "ep3-articulacao-pesquisa",
+        "numero": 3,
         "icone": "🎙️",
-        "titulo": "Episódio 3: Discussão para articulação entre os professores sobre possibilidades de pesquisa",
-        "descricao": "",
-        "materiais": [
-          {
-            "nome": "PDF",
-            "url": "https://exemplo.com/ep1.pdf"
-          },
-          {
-            "nome": "HTML",
-            "url": "https://exemplo.com/ep1.html"
-          }
-        ]
+        "titulo": "Discussão para articulação entre os professores sobre possibilidades de pesquisa"
       },
       {
         "id": "ep2-cop30-transicao-energetica",
+        "numero": 2,
         "icone": "🎙️",
-        "titulo": "Episódio 2: A COP 30 e a Transição Energética Justa",
+        "titulo": "A COP 30 e a Transição Energética Justa",
         "descricao": "O encontro propôs uma análise crítica da COP e da transição energética, defendendo a necessidade de uma abordagem mais justa, inclusiva e decolonial, que enfrente as desigualdades históricas e estruturais em vez de apenas focar em soluções técnicas e mercantis.",
         "materiais": [
           {
-            "nome": "PDF",
+            "tipo": "transcricao",
             "url": "https://drive.google.com/file/d/1qEpkl6My5lC4vBY2iFsJjImi8qa__iDg/view?usp=drive_link"
-          },
-          {
-            "nome": "HTML",
-            "url": "https://exemplo.com/ep1.html"
           }
         ]
       },
       {
         "id": "ep1-novo-governo-trump",
+        "numero": 1,
         "icone": "🎙️",
-        "titulo": "Episódio 1: O novo Governo Trump e suas repercussões para o Brasil: geopolítica, democracia, economia e mudanças climáticas",
-        "descricao": "",
-        "materiais": [
-          {
-            "nome": "PDF",
-            "url": "https://exemplo.com/ep1.pdf"
-          },
-          {
-            "nome": "HTML",
-            "url": "https://exemplo.com/ep1.html"
-          }
-        ]
+        "titulo": "O novo Governo Trump e suas repercussões para o Brasil: geopolítica, democracia, economia e mudanças climáticas"
       }
-    ]
+    ],
+    "materiais": {
+      "transcricao": "Transcrição",
+      "artigo": "Artigo relacionado"
+    },
+    "episodioLabel": "Episódio"
   },
   "documentos": {
     "titulo": "Documentos, Relatórios e Afins",
