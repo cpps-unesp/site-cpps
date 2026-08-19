@@ -2,6 +2,7 @@
 title: Oportunidade de Estágio
 description: Explicação sobre as vagas e as oportunidades
 slug: processo
+draft: true
 ---
 
 ### Oportunidades de Estágio

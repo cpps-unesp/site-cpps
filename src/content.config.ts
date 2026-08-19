@@ -44,6 +44,7 @@ const publicacoes = defineCollection({
     image: z.string().optional(),
     featured: z.boolean().optional().default(false),
     pdf_url: z.string().optional(),
+    draft: z.boolean().optional().default(false),
   }),
 });
 
