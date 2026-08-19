@@ -3,54 +3,62 @@ import { getCollection } from 'astro:content';
 import NoticiaCard from './NoticiaCard.astro';
 import routeTranslations from '../i18n/routeTranslations';
 import { getTranslations } from '../utils/i18n';
+import { getNoticiaUrl } from '../utils/noticiaSlug';
+import type { SupportedLang } from '../types/lang';
+
+interface Props {
+  lang: SupportedLang;
+  title?: string;
+}
 
 const { lang, title } = Astro.props;
 const locale = getTranslations(lang);
 
 const allNoticias = await getCollection('noticias');
-const recentNoticias = allNoticias
-  .filter((post) => post.data.lang === lang)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3);
+const byDate = (a: (typeof allNoticias)[number], b: (typeof allNoticias)[number]) =>
+  b.data.date.getTime() - a.data.date.getTime();
 
-const getNewsSlug = (post: (typeof allNoticias)[number]) =>
-  post.slug || post.data.slug || post.id.replace(/\.[^/.]+$/, '');
+// Sem notícias traduzidas, exibe as em português: a página de destino já mostra
+// o aviso de tradução ausente.
+const noticiasDoIdioma = allNoticias.filter((post) => post.data.lang === lang);
+const fonte = noticiasDoIdioma.length > 0 ? noticiasDoIdioma : allNoticias.filter((post) => post.data.lang === 'pt');
 
-if (recentNoticias.length === 0) return null;
+const recentNoticias = [...fonte].sort(byDate).slice(0, 3);
 
-const noticiasPath =
-  routeTranslations['noticias'][lang as keyof (typeof routeTranslations)['noticias']];
+const noticiasPath = routeTranslations.noticias[lang];
 ---
 
-<section class="bg-base-200/50 py-16">
-  <div class="container mx-auto px-4">
-    <div class="mb-10 flex items-end justify-between">
-      <div>
-        <h2 class="text-primary mb-2 text-4xl font-bold">
-          {title || locale.noticias?.recent || 'Últimas Notícias'}
-        </h2>
-        <div class="bg-primary h-1.5 w-20"></div>
-      </div>
-      <a href={`/${lang}/${noticiasPath}`} class="btn btn-primary btn-outline">
-        {locale.noticias?.allNews || 'Ver Todas'}
-      </a>
-    </div>
+{
+  recentNoticias.length > 0 && (
+    <section class="bg-base-200/50 py-16">
+      <div class="container mx-auto px-4">
+        <div class="mb-10 flex items-end justify-between">
+          <div>
+            <h2 class="text-primary mb-2 text-4xl font-bold">
+              {title || locale.noticias?.recent || 'Últimas Notícias'}
+            </h2>
+            <div class="bg-primary h-1.5 w-20" />
+          </div>
+          <a href={`/${lang}/${noticiasPath}`} class="btn btn-primary btn-outline">
+            {locale.noticias?.allNews || 'Ver Todas'}
+          </a>
+        </div>
 
-    <div class="grid gap-8 md:grid-cols-3">
-      {
-        recentNoticias.map((post) => (
-          <NoticiaCard
-            title={post.data.title}
-            resumo={post.data.resumo}
-            image={post.data.image}
-            tags={post.data.tags}
-            slug={`/${lang}/noticias/${getNewsSlug(post)}`}
-            lang={lang}
-            date={post.data.date}
-            author={post.data.author}
-          />
-        ))
-      }
-    </div>
-  </div>
-</section>
+        <div class="grid gap-8 md:grid-cols-3">
+          {recentNoticias.map((post) => (
+            <NoticiaCard
+              title={post.data.title}
+              resumo={post.data.resumo}
+              image={post.data.image}
+              tags={post.data.tags}
+              slug={getNoticiaUrl(post, lang)}
+              lang={lang}
+              date={post.data.date}
+              author={post.data.author}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

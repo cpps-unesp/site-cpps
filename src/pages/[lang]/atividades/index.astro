@@ -8,7 +8,7 @@ import CardGrid from '../../../components/atividades/CardGrid.astro';
 import Notice from '../../../components/atividades/Notice.astro';
 import type { Language } from '../../../utils/i18n';
 import { buildAtividadesSidebarWithBase } from '../../../utils/atividadesSidebar';
-import { filterVisibleDocsEntries } from '../../../utils/docsVisibility';
+import { filterVisibleDocsEntries, getDocsEntrySlug } from '../../../utils/docsVisibility';
 import type { SidebarItem } from '../../../types/docs';
 
 export function getStaticPaths() {
@@ -38,10 +38,10 @@ const sidebarUrls = new Set(flattenSidebarUrls(sidebar));
 
 const orphanActivityPages = atividades
   .map((entry) => {
-    const routePath = normalizeWikiUrl(`/wiki/${entry.slug}`);
+    const entrySlug = getDocsEntrySlug(entry, lang);
     return {
-      routePath,
-      title: entry.data.title || entry.slug,
+      routePath: normalizeWikiUrl(`/wiki/${entrySlug}`),
+      title: entry.data.title || entrySlug,
     };
   })
   .filter((entry) => !sidebarUrls.has(entry.routePath))
