@@ -175,10 +175,15 @@
     "descricao": "Coffee with Science is an initiative aimed at discussing themes from the research agenda of the researchers at the Center for Political and Social Research.",
     "episodios": [
       {
+        "id": "ep6-acesso-a-justica",
+        "titulo": "People-Centered Access to Justice",
+        "descricao": "The meeting addresses access to justice from a bottom-up, redistributive perspective, focusing on overcoming the institutional and social barriers faced by vulnerable groups by valuing their own narratives and mobilizing the law."
+      },
+      {
         "id": "ep5-autocratizacao-resiliencia",
         "numero": 5,
         "titulo": "Autocratization and Democratic Resilience in Brazil (2019-2023)",
-        "descricao": "The meeting provided a comprehensive overview of the challenges of AI governance, with a special focus on Brazil's complex role in this global scenario."
+        "descricao": "The meeting examined the process of autocratization in Brazil under the Bolsonaro administration and the institutional response that safeguarded democratic resilience, combining a review of the Political Science and Law literature with an empirical study of legal and institutional arrangements."
       },
       {
         "id": "ep4-brasil-governanca-ia",

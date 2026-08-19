@@ -303,10 +303,6 @@
           {
             "tipo": "transcricao",
             "url": "https://drive.google.com/file/d/1ZCPR57aatP07mqUEr4DscJnEB2-VObx0/view?usp=drive_link"
-          },
-          {
-            "tipo": "artigo",
-            "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt"
           }
         ]
       },
@@ -315,7 +311,7 @@
         "numero": 5,
         "icone": "🎙️",
         "titulo": "Autocratização e Resiliência Democrática no Brasil (2019-2023)",
-        "descricao": "O encontro forneceu um panorama abrangente sobre os desafios da governança da IA, com um foco especial no complexo papel do Brasil nesse cenário global.",
+        "descricao": "O encontro analisou o processo de autocratização no Brasil durante o Governo Bolsonaro e a resposta das instituições para assegurar a resiliência democrática, combinando revisão da literatura de Ciência Política e Direito com estudo empírico dos arranjos jurídico-institucionais.",
         "materiais": [
           {
             "tipo": "transcricao",

@@ -175,10 +175,15 @@
     "descricao": "Café con Ciencia es una iniciativa orientada a debatir temas de la agenda de investigación de los investigadores del Centro de Investigación Política y Social.",
     "episodios": [
       {
+        "id": "ep6-acesso-a-justica",
+        "titulo": "Acceso a la Justicia Centrado en las Personas",
+        "descricao": "El encuentro aborda el acceso a la justicia desde una perspectiva bottom-up y redistributiva, con foco en la superación de las barreras institucionales y sociales que enfrentan los grupos vulnerables, a partir de la valorización de sus propias narrativas y de la movilización del Derecho."
+      },
+      {
         "id": "ep5-autocratizacao-resiliencia",
         "numero": 5,
         "titulo": "Autocratización y Resiliencia Democrática en Brasil (2019-2023)",
-        "descricao": "El encuentro proporcionó una visión general de los desafíos de la gobernanza de la IA, con un enfoque especial en el complejo papel de Brasil en este escenario global."
+        "descricao": "El encuentro analizó el proceso de autocratización en Brasil durante el Gobierno de Bolsonaro y la respuesta de las instituciones para asegurar la resiliencia democrática, combinando una revisión de la literatura de Ciencia Política y Derecho con un estudio empírico de los arreglos jurídico-institucionales."
       },
       {
         "id": "ep4-brasil-governanca-ia",
