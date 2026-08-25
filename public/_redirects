@@ -1,82 +1,69 @@
-# Seções despublicadas temporariamente (302 = temporário, preserva a indexação).
-# Reverter junto com a remoção do `draft: true`, NO MESMO DEPLOY: enquanto estas
-# regras existirem, as páginas restauradas continuam sendo redirecionadas.
+# Seções fora do ar (302 = temporário, preserva a indexação).
+# Reverter no MESMO deploy em que o conteúdo voltar: enquanto estas regras
+# existirem, as páginas restauradas continuam sendo redirecionadas.
 #
-# Cuidado ao editar: o Cloudflare Pages canonicaliza /x para /x/ (308), e o
-# curinga /x/* casa também com /x/ (splat vazio). Por isso o destino nunca pode
-# ficar sob o prefixo redirecionado — /x/* -> /x é loop infinito.
-/pt/wiki  /pt/atividades  302
-/en/wiki  /en/atividades  302
-/es/wiki  /es/atividades  302
-/pt/wiki/*  /pt/atividades  302
-/en/wiki/*  /en/atividades  302
-/es/wiki/*  /es/atividades  302
+# O destino é sempre a home do idioma, nunca um caminho sob o prefixo
+# redirecionado: o Cloudflare Pages canonicaliza /x para /x/ (308) e o curinga
+# /x/* casa também com /x/ (splat vazio), então /x/* -> /x seria loop infinito.
 
-# Aliases legados de /atividades → /wiki
-/pt/atividades/geral/info/processo-seletivo  /pt/wiki/infos-gerais/03processo  301
-/en/atividades/geral/info/processo-seletivo  /en/wiki/infos-gerais/03processo  301
-/es/atividades/geral/info/processo-seletivo  /es/wiki/infos-gerais/03processo  301
-/pt/atividades/geral/info/estagio-voluntario  /pt/wiki/infos-gerais/04voluntario  301
-/en/atividades/geral/info/estagio-voluntario  /en/wiki/infos-gerais/04voluntario  301
-/es/atividades/geral/info/estagio-voluntario  /es/wiki/infos-gerais/04voluntario  301
-/pt/atividades/projetos/sistemas/site/markdown/geral  /pt/wiki/projetos/sistemas/websites/markdown/01-geral  301
-/en/atividades/projetos/sistemas/site/markdown/geral  /en/wiki/projetos/sistemas/websites/markdown/01-geral  301
-/es/atividades/projetos/sistemas/site/markdown/geral  /es/wiki/projetos/sistemas/websites/markdown/01-geral  301
-/pt/atividades/projetos/sistemas/site/editar/static  /pt/wiki/projetos/sistemas/websites/editar/07-infos-estaticas  301
-/en/atividades/projetos/sistemas/site/editar/static  /en/wiki/projetos/sistemas/websites/editar/07-infos-estaticas  301
-/es/atividades/projetos/sistemas/site/editar/static  /es/wiki/projetos/sistemas/websites/editar/07-infos-estaticas  301
-/pt/atividades/equipe  /pt/wiki/projetos/sistemas/websites/editar/03-equipe  301
-/en/atividades/equipe  /en/wiki/projetos/sistemas/websites/editar/03-equipe  301
-/es/atividades/equipe  /es/wiki/projetos/sistemas/websites/editar/03-equipe  301
-/pt/atividades/projetos/ensino/trilha-dados/ambiente/intro  /pt/wiki/projetos/ensino/tfdt/trilha/paradas/ambiente/01-intro  301
-/en/atividades/projetos/ensino/trilha-dados/ambiente/intro  /en/wiki/projetos/ensino/tfdt/trilha/paradas/ambiente/01-intro  301
-/es/atividades/projetos/ensino/trilha-dados/ambiente/intro  /es/wiki/projetos/ensino/tfdt/trilha/paradas/ambiente/01-intro  301
-/pt/atividades/projetos/ensino/trilha-dados/linguagens/python/intro  /pt/wiki/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/01-intro  301
-/en/atividades/projetos/ensino/trilha-dados/linguagens/python/intro  /en/wiki/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/01-intro  301
-/es/atividades/projetos/ensino/trilha-dados/linguagens/python/intro  /es/wiki/projetos/ensino/tfdt/trilha/paradas/fundamentos-python/01-intro  301
-/pt/atividades/projetos/ensino/trilha-dados/coleta-dados/intro  /pt/wiki/projetos/ensino/tfdt/trilha/paradas/coleta-dados/intro  301
-/en/atividades/projetos/ensino/trilha-dados/coleta-dados/intro  /en/wiki/projetos/ensino/tfdt/trilha/paradas/coleta-dados/intro  301
-/es/atividades/projetos/ensino/trilha-dados/coleta-dados/intro  /es/wiki/projetos/ensino/tfdt/trilha/paradas/coleta-dados/intro  301
-/pt/atividades/projetos/ensino/trilha-dados/analise-dados/intro  /pt/wiki/projetos/ensino/tfdt/trilha/paradas/analise-dados/00-intro  301
-/en/atividades/projetos/ensino/trilha-dados/analise-dados/intro  /en/wiki/projetos/ensino/tfdt/trilha/paradas/analise-dados/00-intro  301
-/es/atividades/projetos/ensino/trilha-dados/analise-dados/intro  /es/wiki/projetos/ensino/tfdt/trilha/paradas/analise-dados/00-intro  301
-/pt/atividades/projetos/ensino/trilha-dados/banco-dados/intro  /pt/wiki/projetos/ensino/tfdt/trilha/paradas/banco-dados/intro  301
-/en/atividades/projetos/ensino/trilha-dados/banco-dados/intro  /en/wiki/projetos/ensino/tfdt/trilha/paradas/banco-dados/intro  301
-/es/atividades/projetos/ensino/trilha-dados/banco-dados/intro  /es/wiki/projetos/ensino/tfdt/trilha/paradas/banco-dados/intro  301
-/pt/atividades/projetos/ensino/trilha-dados/metodos-quanti/intro  /pt/wiki/projetos/ensino/tfdt/trilha/paradas/metodos-quanti/intro  301
-/en/atividades/projetos/ensino/trilha-dados/metodos-quanti/intro  /en/wiki/projetos/ensino/tfdt/trilha/paradas/metodos-quanti/intro  301
-/es/atividades/projetos/ensino/trilha-dados/metodos-quanti/intro  /es/wiki/projetos/ensino/tfdt/trilha/paradas/metodos-quanti/intro  301
-/pt/atividades/projetos/ensino/tec-digitais/conhecimentos/intro  /pt/wiki/projetos/ensino/tecnologiasdigitais/conhecimentos/intro  301
-/en/atividades/projetos/ensino/tec-digitais/conhecimentos/intro  /en/wiki/projetos/ensino/tecnologiasdigitais/conhecimentos/intro  301
-/es/atividades/projetos/ensino/tec-digitais/conhecimentos/intro  /es/wiki/projetos/ensino/tecnologiasdigitais/conhecimentos/intro  301
-/pt/atividades/projetos/ensino/tec-digitais/anotacoes/intro  /pt/wiki/projetos/ensino/tecnologiasdigitais/anotacoes/intro  301
-/en/atividades/projetos/ensino/tec-digitais/anotacoes/intro  /en/wiki/projetos/ensino/tecnologiasdigitais/anotacoes/intro  301
-/es/atividades/projetos/ensino/tec-digitais/anotacoes/intro  /es/wiki/projetos/ensino/tecnologiasdigitais/anotacoes/intro  301
-/pt/atividades/projetos/ensino/tec-digitais/edicao-texto/intro  /pt/wiki/projetos/ensino/tecnologiasdigitais/edicao-texto/intro  301
-/en/atividades/projetos/ensino/tec-digitais/edicao-texto/intro  /en/wiki/projetos/ensino/tecnologiasdigitais/edicao-texto/intro  301
-/es/atividades/projetos/ensino/tec-digitais/edicao-texto/intro  /es/wiki/projetos/ensino/tecnologiasdigitais/edicao-texto/intro  301
-/pt/atividades/projetos/ensino/tec-digitais/buscadores/intro  /pt/wiki/projetos/ensino/tecnologiasdigitais/buscadores/intro  301
-/en/atividades/projetos/ensino/tec-digitais/buscadores/intro  /en/wiki/projetos/ensino/tecnologiasdigitais/buscadores/intro  301
-/es/atividades/projetos/ensino/tec-digitais/buscadores/intro  /es/wiki/projetos/ensino/tecnologiasdigitais/buscadores/intro  301
-/pt/atividades/projetos/ensino/tec-digitais/audio/intro  /pt/wiki/projetos/ensino/tecnologiasdigitais/audio/intro  301
-/en/atividades/projetos/ensino/tec-digitais/audio/intro  /en/wiki/projetos/ensino/tecnologiasdigitais/audio/intro  301
-/es/atividades/projetos/ensino/tec-digitais/audio/intro  /es/wiki/projetos/ensino/tecnologiasdigitais/audio/intro  301
-/pt/atividades/projetos/ensino/acesso-remoto/explicar  /pt/wiki/projetos/ensino/acessoremoto/explicar  301
-/en/atividades/projetos/ensino/acesso-remoto/explicar  /en/wiki/projetos/ensino/acessoremoto/explicar  301
-/es/atividades/projetos/ensino/acesso-remoto/explicar  /es/wiki/projetos/ensino/acessoremoto/explicar  301
-/pt/atividades/projetos/ensino/acesso-remoto/solicitar-acesso  /pt/wiki/projetos/ensino/acessoremoto/solicitar-acesso  301
-/en/atividades/projetos/ensino/acesso-remoto/solicitar-acesso  /en/wiki/projetos/ensino/acessoremoto/solicitar-acesso  301
-/es/atividades/projetos/ensino/acesso-remoto/solicitar-acesso  /es/wiki/projetos/ensino/acessoremoto/solicitar-acesso  301
-/pt/atividades/projetos/ensino/acesso-remoto/instrucao-inicial  /pt/wiki/projetos/ensino/acessoremoto/instruir  301
-/en/atividades/projetos/ensino/acesso-remoto/instrucao-inicial  /en/wiki/projetos/ensino/acessoremoto/instruir  301
-/es/atividades/projetos/ensino/acesso-remoto/instrucao-inicial  /es/wiki/projetos/ensino/acessoremoto/instruir  301
+/pt/wiki  /pt/  302
+/pt/wiki/*  /pt/  302
+/pt/atividades  /pt/  302
+/pt/atividades/*  /pt/  302
+/pt/busca  /pt/  302
+/pt/busca/*  /pt/  302
+/pt/busca2  /pt/  302
+/pt/busca2/*  /pt/  302
+/pt/atendimento  /pt/  302
+/pt/atendimento/*  /pt/  302
+/pt/editar-site  /pt/  302
+/pt/editar-site/*  /pt/  302
+/pt/publicacoes  /pt/  302
+/pt/publicacoes/*  /pt/  302
+/pt/iniciativas/publicacoes  /pt/  302
+/pt/iniciativas/publicacoes/*  /pt/  302
 
-# Atividades genérico → Wiki (mesmo slug)
-# Desativado enquanto a wiki está fora do ar: apontaria para páginas inexistentes
-# e fecharia loop com o 302 de /wiki/* acima. Restaurar junto com a seção.
-# /pt/atividades/*  /pt/wiki/:splat  301
-# /en/atividades/*  /en/wiki/:splat  301
-# /es/atividades/*  /es/wiki/:splat  301
+/en/wiki  /en/  302
+/en/wiki/*  /en/  302
+/en/atividades  /en/  302
+/en/atividades/*  /en/  302
+/en/busca  /en/  302
+/en/busca/*  /en/  302
+/en/busca2  /en/  302
+/en/busca2/*  /en/  302
+/en/help-desk  /en/  302
+/en/help-desk/*  /en/  302
+/en/editar-site  /en/  302
+/en/editar-site/*  /en/  302
+/en/publications  /en/  302
+/en/publications/*  /en/  302
+/en/initiatives/publications  /en/  302
+/en/initiatives/publications/*  /en/  302
+
+/es/wiki  /es/  302
+/es/wiki/*  /es/  302
+/es/atividades  /es/  302
+/es/atividades/*  /es/  302
+/es/busca  /es/  302
+/es/busca/*  /es/  302
+/es/busca2  /es/  302
+/es/busca2/*  /es/  302
+/es/mesa-de-ayuda  /es/  302
+/es/mesa-de-ayuda/*  /es/  302
+/es/editar-site  /es/  302
+/es/editar-site/*  /es/  302
+/es/publicaciones  /es/  302
+/es/publicaciones/*  /es/  302
+/es/iniciativas/publicaciones  /es/  302
+/es/iniciativas/publicaciones/*  /es/  302
+
+# Página pessoal de membro despublicada
+/pt/marcelo-passini-marianopt  /pt/institucional/equipe  302
+/pt/marcelo-passini-marianopt/*  /pt/institucional/equipe  302
+/en/marcelo-passini-marianopt  /en/institutional/team  302
+/en/marcelo-passini-marianopt/*  /en/institutional/team  302
+/es/marcelo-passini-marianopt  /es/institucional/equipo  302
+/es/marcelo-passini-marianopt/*  /es/institucional/equipo  302
 
 # Raiz e paths sem prefixo de idioma → PT
 /  /pt/  301

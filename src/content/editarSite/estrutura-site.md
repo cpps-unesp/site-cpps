@@ -1,3 +1,8 @@
+---
+title: Estrutura das Seções do Site
+draft: true
+---
+
 # Estrutura das Seções do Site
 
 ## Compartilhamentos Principais

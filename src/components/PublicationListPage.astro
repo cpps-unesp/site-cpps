@@ -6,7 +6,6 @@ import { getCollection } from 'astro:content';
 import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
 import { PUBLICATION_TYPES, formatPublicationTypeLabel } from '../config/publicationTypes';
-import SecaoEmReformulacao from './SecaoEmReformulacao.astro';
 
 interface Props {
   lang: SupportedLang;
@@ -29,9 +28,6 @@ const getTypeLabel = (type: string) => typeLabels[type] || formatPublicationType
 ---
 
 <section class="mx-auto max-w-screen-xl px-4 py-16 md:px-8">
-  {allPublications.length === 0 && <SecaoEmReformulacao lang={lang} />}
-  {allPublications.length > 0 && (
-  <Fragment>
   <FaseTesteAlert lang={lang} area={locale.texts.header.publicacoes || 'Publicações'} />
   <header class="mb-12 text-center md:text-left">
     <h1 class="titulo text-primary mb-6 text-5xl sm:text-7xl">
@@ -149,8 +145,6 @@ const getTypeLabel = (type: string) => typeLabels[type] || formatPublicationType
 
   <!-- Paginação -->
   <nav id="pub-pagination" class="mt-10 flex items-center justify-center gap-2" aria-label="Paginação de publicações"></nav>
-  </Fragment>
-  )}
 </section>
 
 <script>

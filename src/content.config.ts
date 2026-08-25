@@ -59,6 +59,7 @@ const membros = defineCollection({
       lang: z.enum(['pt', 'en', 'es']),
       foto: z.string().optional(),
       cargo: z.string(),
+      draft: z.boolean().optional().default(false),
       contribuicao: z.string().optional(),
       redes: z
         .array(

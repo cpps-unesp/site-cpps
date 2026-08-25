@@ -28,14 +28,20 @@ export async function GET() {
   const urls = new Set<string>();
 
   const atividades = filterVisibleDocsEntries(await getCollection('atividades'));
+  const atendimento = filterVisibleDocsEntries(await getCollection('atendimento'));
+  const editarSite = filterVisibleDocsEntries(await getCollection('editarSite'));
 
+  // Seções despublicadas não têm página de entrada: só entram no sitemap
+  // quando voltarem a ter conteúdo visível.
   for (const lang of langs) {
     urls.add(`/${lang}/`);
-    urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
-    urls.add(`/${lang}/${routeTranslations['editar-site'][lang]}`);
 
-    // Enquanto a seção estiver despublicada, as páginas de entrada não têm
-    // conteúdo para oferecer e ficam fora do sitemap.
+    if (atendimento.length > 0) {
+      urls.add(`/${lang}/${routeTranslations.atendimento[lang]}`);
+    }
+    if (editarSite.length > 0) {
+      urls.add(`/${lang}/${routeTranslations['editar-site'][lang]}`);
+    }
     if (atividades.length > 0) {
       urls.add(`/${lang}/atividades`);
       urls.add(`/${lang}/wiki`);
@@ -57,13 +63,7 @@ export async function GET() {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
   }
 
-  const publicacoes = await getCollection('publicacoes', ({ data }) => data.draft !== true);
-  const publicationSlugs = [...new Set(publicacoes.map((entry) => getEntrySlug(entry)))];
-  for (const path of buildLocalizedContentPaths(langs, 'publicacao', publicationSlugs)) {
-    urls.add(`/${path.params.lang}/${path.params.slug}`);
-  }
-
-  const membros = await getCollection('membros');
+  const membros = await getCollection('membros', ({ data }) => data.draft !== true);
   const memberSlugs = [...new Set(membros.map((entry) => getMembroSlugFromEntryId(entry.id)))];
   for (const path of buildMembroPaths(langs, memberSlugs)) {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
@@ -77,7 +77,6 @@ export async function GET() {
     }
   }
 
-  const atendimento = filterVisibleDocsEntries(await getCollection('atendimento'));
   for (const lang of langs) {
     const basePath = `/${lang}/${routeTranslations.atendimento[lang]}`;
     for (const entry of atendimento) {
@@ -87,7 +86,6 @@ export async function GET() {
     }
   }
 
-  const editarSite = filterVisibleDocsEntries(await getCollection('editarSite'));
   for (const lang of langs) {
     const basePath = `/${lang}/${routeTranslations['editar-site'][lang]}`;
     for (const entry of editarSite) {
