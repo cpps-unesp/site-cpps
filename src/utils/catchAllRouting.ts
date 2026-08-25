@@ -11,7 +11,6 @@ export function buildRouteTranslationPaths(langs: SupportedLang[]): RoutePath[] 
     'iniciativas/projetos-de-pesquisa',
     'iniciativas/projetos-de-dados',
     'iniciativas/cafe-com-ciencia',
-    'iniciativas/publicacoes',
     'iniciativas/material-de-apoio',
     'iniciativas/oficinas',
     'iniciativas/solucoes-tecnologicas',
@@ -20,7 +19,6 @@ export function buildRouteTranslationPaths(langs: SupportedLang[]): RoutePath[] 
     'institucional/equipe',
     'institucional/documentos',
     'noticias',
-    'publicacao',
   ];
 
   for (const routeKey of catchAllRouteKeys) {

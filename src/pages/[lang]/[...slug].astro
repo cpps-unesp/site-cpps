@@ -18,8 +18,6 @@ import IniciativasProjetosDePesquisaSection from '../../components/IniciativasPr
 
 import NoticiaPage from '../../components/NoticiaPage.astro';
 import NoticiasListPage from '../../components/NoticiasListPage.astro';
-import PublicationListPage from '../../components/PublicationListPage.astro';
-import PublicationPage from '../../components/PublicationPage.astro';
 import TranslationWarning from '../../components/TranslationWarning.astro';
 import routeTranslations from '../../i18n/routeTranslations';
 import { getCollection, render } from 'astro:content';
@@ -48,16 +46,13 @@ export async function getStaticPaths() {
   paths.push(...buildLocalizedContentPaths(langs, 'noticias', uniqueNoticiasSlugs));
 
   // Publicações individuais (todos os idiomas para permitir fallback)
-  const allPublicacoes = await getCollection('publicacoes', ({ data }) => data.draft !== true);
-  const uniquePubSlugs = [...new Set(allPublicacoes.map((p) => p.id.replace(/\.[^/.]+$/, '')))];
-  paths.push(...buildLocalizedContentPaths(langs, 'publicacao', uniquePubSlugs));
 
   // Categorias de notícias
   const tags = [...new Set(allNoticias.flatMap((n) => n.data.tags || []))];
   paths.push(...buildNewsCategoryPaths(langs, tags));
 
   // Membros (todos os idiomas para permitir fallback)
-  const allMembros = await getCollection('membros');
+  const allMembros = await getCollection('membros', ({ data }) => data.draft !== true);
   const uniqueMembroSlugs = [...new Set(allMembros.map((m) => getMembroSlugFromEntryId(m.id)))];
   paths.push(...buildMembroPaths(langs, uniqueMembroSlugs));
 
@@ -79,10 +74,8 @@ const isNoticiasCategory = slugPath.startsWith(`${noticiasPrefix}/categoria/`);
 const isNoticia =
   slugPath.startsWith(`${noticiasPrefix}/`) && !isNoticiasList && !isNoticiasCategory;
 
-const publicacoesPrefix = routeTranslations['publicacao'][currentLang];
-const isPublication = slugPath.startsWith(`${publicacoesPrefix}/`);
 
-const allMembros = await getCollection('membros');
+const allMembros = await getCollection('membros', ({ data }) => data.draft !== true);
 const membroEntries = allMembros.filter((entry) => getMembroSlugFromEntryId(entry.id) === slugPath);
 
 const availableLangs = membroEntries.map((e) => e.data.lang);
@@ -112,8 +105,6 @@ const originalKey = findOriginalKey(slugPath, currentLang);
     />
   ) : isNoticia ? (
     <NoticiaPage lang={currentLang} slug={slugPath} />
-  ) : isPublication ? (
-    <PublicationPage lang={currentLang} slug={slugPath.replace(`${publicacoesPrefix}/`, '')} />
   ) : membroSelecionado ? (
     <BaseLayout
       lang={currentLang}
@@ -175,9 +166,6 @@ const originalKey = findOriginalKey(slugPath, currentLang);
           // Iniciativas
           case 'iniciativas/cafe-com-ciencia':
             return <CafeComCienciaSection cafe={cafe} lang={currentLang} />;
-          case 'iniciativas/publicacoes':
-          case 'publicacao':
-            return <PublicationListPage lang={currentLang} />;
           case 'iniciativas/material-de-apoio':
             return <IniciativasMaterialApoioSection texts={texts} />;
           case 'iniciativas/oficinas':

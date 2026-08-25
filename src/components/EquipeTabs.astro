@@ -31,7 +31,7 @@ const inativos = props.inativos ?? [];
 const lang = props.lang ?? 'pt';
 const texts = props.texts ?? {};
 
-const membrosCollection = await getCollection('membros');
+const membrosCollection = await getCollection('membros', ({ data }) => data.draft !== true);
 const membrosDisponiveis = new Set(
   membrosCollection
     .filter((entry) => entry.id.endsWith(`.${lang}.mdx`))
