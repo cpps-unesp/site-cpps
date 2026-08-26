@@ -298,7 +298,13 @@
         "numero": 9,
         "icone": "🎙️",
         "titulo": "Região Administrativa de Franca: conectando saberes e políticas públicas",
-        "descricao": "O encontro abordou os desafios e as potencialidades da Região Administrativa de Franca na articulação entre conhecimento acadêmico e políticas públicas. Exposição da Profa. Dra. Regina Cláudia Laisner."
+        "descricao": "O encontro abordou os desafios e as potencialidades da Região Administrativa de Franca na articulação entre conhecimento acadêmico e políticas públicas. Exposição da Profa. Dra. Regina Cláudia Laisner.",
+        "materiais": [
+          {
+            "tipo": "transcricao",
+            "url": "https://drive.google.com/file/d/1gpj_W2CxkzkFw9XF6_68W4eYu2HpZJ-i/view"
+          }
+        ]
       },
       {
         "id": "ep6-acesso-a-justica",
@@ -325,7 +331,13 @@
         "numero": 6,
         "icone": "🎙️",
         "titulo": "Crítica da pobreza como objeto da filosofia social",
-        "descricao": "O encontro propôs uma reflexão filosófica sobre a pobreza, abordando-a como objeto central da filosofia social contemporânea. Exposição do Prof. Dr. Hélio Alexandre da Silva, com mediação do Prof. Dr. Marcelo Passini Mariano."
+        "descricao": "O encontro propôs uma reflexão filosófica sobre a pobreza, abordando-a como objeto central da filosofia social contemporânea. Exposição do Prof. Dr. Hélio Alexandre da Silva, com mediação do Prof. Dr. Marcelo Passini Mariano.",
+        "materiais": [
+          {
+            "tipo": "transcricao",
+            "url": "https://drive.google.com/file/d/1kDmjPkhPBLSSRCwZtD0SAI47KKP7K92k/view"
+          }
+        ]
       },
       {
         "id": "ep5-autocratizacao-resiliencia",
