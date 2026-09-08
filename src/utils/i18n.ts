@@ -1,24 +1,34 @@
 import ptCommon from '../i18n/locales/pt.json';
-import ptHome from '../content/tina-pages/home/pt.json';
-import ptSobre from '../content/tina-pages/sobre/pt.json';
-import ptEquipe from '../content/tina-pages/equipe/pt.json';
-import ptDocumentos from '../content/tina-pages/documentos/pt.json';
-
 import enCommon from '../i18n/locales/en.json';
-import enHome from '../content/tina-pages/home/en.json';
-import enSobre from '../content/tina-pages/sobre/en.json';
-import enEquipe from '../content/tina-pages/equipe/en.json';
-import enDocumentos from '../content/tina-pages/documentos/en.json';
-
 import esCommon from '../i18n/locales/es.json';
-import esHome from '../content/tina-pages/home/es.json';
-import esSobre from '../content/tina-pages/sobre/es.json';
-import esEquipe from '../content/tina-pages/equipe/es.json';
-import esDocumentos from '../content/tina-pages/documentos/es.json';
 
-const pt = { ...ptCommon, ...ptHome, sobre: ptSobre, equipe: ptEquipe, documentos: ptDocumentos };
-const en = { ...enCommon, ...enHome, sobre: enSobre, equipe: enEquipe, documentos: enDocumentos };
-const es = { ...esCommon, ...esHome, sobre: esSobre, equipe: esEquipe, documentos: esDocumentos };
+// `home` é field-based no Tina (1 documento, cada campo de texto vira
+// {pt,en,es} — ver src/lib/tina/pages.ts). Este módulo não lida com
+// metadados de edição visual (não é consumido pelos componentes editáveis,
+// só por título/meta de página e afins), então achatamos aqui mesmo.
+import homeDoc from '../content/tina-pages/home/index.json';
+
+type HomeLang = 'pt' | 'en' | 'es';
+function flattenHome(lang: HomeLang) {
+  return {
+    titulo: homeDoc.titulo[lang],
+    descricao: homeDoc.descricao[lang],
+    identidade: homeDoc.identidade,
+    hero: {
+      title: homeDoc.hero.title[lang],
+      description: homeDoc.hero.description[lang],
+      link: homeDoc.hero.link,
+      button: {
+        text: homeDoc.hero.button.text[lang],
+        url: homeDoc.hero.button.url,
+      },
+    },
+  };
+}
+
+const pt = { ...ptCommon, ...flattenHome('pt') };
+const en = { ...enCommon, ...flattenHome('en') };
+const es = { ...esCommon, ...flattenHome('es') };
 
 const translations = {
   pt,
