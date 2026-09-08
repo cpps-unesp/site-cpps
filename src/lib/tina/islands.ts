@@ -68,7 +68,7 @@ export const islands: IslandRegistry = {
     component: SobreBody,
     wrapper: { tag: 'div', className: 'contents' },
     propsFromData: (data) => ({
-      data: (data as { doc: unknown }).doc,
+      data,
     }),
   },
   equipe: {
