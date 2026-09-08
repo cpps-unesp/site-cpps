@@ -3,24 +3,25 @@
 import CheckIcon from '../icons/CheckIcon.astro';
 import { renderMarkdown } from '../utils/markdown';
 import { tinaField } from '@tinacms/astro/tina-field';
+import { normalizeLang, type Localized } from '../lib/tina/pages';
 
 interface Props {
   texto: {
     check: boolean;
-    conteudo: string;
+    conteudo: Localized;
   }[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  tinaParent?: any;
+  lang?: string;
 }
 
-const { texto, tinaParent } = Astro.props;
+const { texto, lang: langProp } = Astro.props;
+const lang = normalizeLang(langProp ?? 'pt');
 ---
 
 {
-  texto.map((par, idx) => (
+  texto.map((par) => (
     <div
       class="mb-4 flex items-start"
-      data-tina-field={(tinaParent && tinaField(tinaParent, 'texto', idx)) || undefined}
+      data-tina-field={tinaField(par.conteudo, lang) || undefined}
     >
       {par.check ? (
         <div class="mt-1 mr-3 flex-shrink-0">
@@ -31,7 +32,7 @@ const { texto, tinaParent } = Astro.props;
       )}
       <div class="paragrafo text-justify hyphens-auto">
         {/* eslint-disable-next-line astro/no-set-html-directive */}
-        <Fragment set:html={renderMarkdown(par.conteudo)} />
+        <Fragment set:html={renderMarkdown(par.conteudo[lang])} />
       </div>
     </div>
   ))

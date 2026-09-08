@@ -1,34 +1,36 @@
 ---
 import { tinaField } from '@tinacms/astro/tina-field';
+import { normalizeLang, type Localized } from '../lib/tina/pages';
 
 type Card = {
-  titulo: string;
-  descricao: string;
-  link: string;
+  titulo: Localized;
+  descricao: Localized;
+  link: Localized;
 };
 
 interface Props {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  data: any;
+  data: { titulo?: Localized; descricao?: Localized; cards?: Card[] } | null | undefined;
+  lang?: string;
 }
 
-const { data } = Astro.props;
+const { data, lang: langProp } = Astro.props;
+const lang = normalizeLang(langProp ?? 'pt');
 const cards: Card[] = data?.cards ?? [];
 ---
 
 <section class="mx-auto max-w-6xl space-y-12 px-4 py-16">
   <h1
     class="text-primary text-3xl font-bold"
-    data-tina-field={tinaField(data, 'titulo') || undefined}
+    data-tina-field={(data?.titulo && tinaField(data.titulo, lang)) || undefined}
   >
-    {data?.titulo ?? 'Projetos'}
+    {data?.titulo?.[lang] ?? 'Projetos'}
   </h1>
   <p
     class="text-base-content"
-    data-tina-field={tinaField(data, 'descricao') || undefined}
+    data-tina-field={(data?.descricao && tinaField(data.descricao, lang)) || undefined}
   >
     {
-      data?.descricao ??
+      data?.descricao?.[lang] ??
         'Conheça os projetos desenvolvidos pelo CPPS nas áreas de pesquisa e dados aplicados às ciências sociais e humanas.'
     }
   </p>
@@ -39,20 +41,20 @@ const cards: Card[] = data?.cards ?? [];
         <div class="border-base-300 bg-base-100 rounded-xl border p-6 shadow-sm transition hover:shadow">
           <h2
             class="mb-2 text-xl font-semibold"
-            data-tina-field={tinaField(card, 'titulo') || undefined}
+            data-tina-field={tinaField(card.titulo, lang) || undefined}
           >
-            {card.titulo}
+            {card.titulo[lang]}
           </h2>
           <p
             class="text-base-content mb-4"
-            data-tina-field={tinaField(card, 'descricao') || undefined}
+            data-tina-field={tinaField(card.descricao, lang) || undefined}
           >
-            {card.descricao}
+            {card.descricao[lang]}
           </p>
           <a
             class="btn btn-sm btn-primary"
-            href={card.link}
-            data-tina-field={tinaField(card, 'link') || undefined}
+            href={card.link[lang]}
+            data-tina-field={tinaField(card.link, lang) || undefined}
           >
             Ver mais
           </a>

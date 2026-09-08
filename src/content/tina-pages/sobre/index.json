@@ -1,0 +1,169 @@
+{
+  "quem_somos": {
+    "titulo": {
+      "pt": "O Centro de Pesquisa Política e Social",
+      "en": "The Center for Political and Social Research",
+      "es": "El Centro de Investigación Política y Social"
+    },
+    "reverse": false,
+    "texto": [
+      {
+        "conteudo": {
+          "pt": "Somos um Centro de Pesquisa, modalidade de [Centro Interdepartamental](https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020), da Universidade Estadual Paulista (UNESP) localizado na cidade de Franca. Reunimos os pesquisadores dos seis departamentos da [Faculdade de Ciências Humanas e Sociais (FCHS)](https://www.franca.unesp.br/).",
+          "en": "We are a Research Center, under the [Interdepartmental Center](https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020) modality, of the São Paulo State University (UNESP) located in the city of Franca. We bring together researchers from the six departments of the [Faculty of Human and Social Sciences (FCHS)](https://www.franca.unesp.br/).",
+          "es": "Somos un Centro de Investigación, en la modalidad de [Centro Interdepartamental](https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020), de la Universidad Estadual Paulista (UNESP) ubicado en la ciudad de Franca. Reunimos a los investigadores de los seis departamentos de la [Facultad de Ciencias Humanas y Sociales (FCHS)](https://www.franca.unesp.br/)."
+        },
+        "check": false
+      },
+      {
+        "conteudo": {
+          "pt": "Buscamos coordenar e promover a colaboração entre as diversas iniciativas de pesquisa existentes, transcendendo as fronteiras convencionais das disciplinas acadêmicas. Tal estrutura favorece uma análise mais integrada dos fenômenos sociais e políticos, ampliando a capacidade de compreensão e resposta às complexidades do cenário contemporâneo.",
+          "en": "We seek to coordinate and promote collaboration among various existing research initiatives, transcending the conventional boundaries of academic disciplines. Such a structure fosters a more integrated analysis of social and political phenomena, enhancing the ability to understand and respond to the complexities of the contemporary scenario.",
+          "es": "Buscamos coordinar y promover la colaboración entre las diversas iniciativas de investigación existentes, trascendiendo las fronteras convencionales de las disciplinas académicas. Dicha estructura favorece un análisis más integrado de los fenómenos sociales y políticos, ampliando la capacidad de comprensión y respuesta a las complejidades del escenario contemporáneo."
+        },
+        "check": false
+      }
+    ],
+    "departamentos": [
+      "Departamento de Direito Privado, de Processo Civil e do Trabalho",
+      "Departamento de Direito Público",
+      "Departamento de Educação, Ciências Sociais e Políticas Públicas",
+      "Departamento de Relações Internacionais",
+      "Departamento de História",
+      "Departamento de Serviço Social"
+    ],
+    "imagem": [
+      "/imagens/campus/entrada-unesp-franca.jpg",
+      "/imagens/campus/entrada-unesp-franca2.jpg"
+    ]
+  },
+  "objetivos": {
+    "titulo": {
+      "pt": "Objetivos",
+      "en": "Objectives",
+      "es": "Objetivos"
+    },
+    "reverse": true,
+    "texto": [
+      {
+        "conteudo": {
+          "pt": "Fomentar a integração do conhecimento produzido em diversas áreas acadêmicas, oferecendo uma visão mais abrangente e detalhada dos processos sociais e políticos",
+          "en": "To foster the integration of knowledge produced in various academic areas, offering a more comprehensive and detailed view of social and political processes.",
+          "es": "Fomentar la integración del conocimiento producido en diversas áreas académicas, ofreciendo una visión más amplia y detallada de los procesos sociales y políticos."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "Para isso, o Centro busca promover uma colaboração intensa entre os pesquisadores e fará uso de metodologias avançadas e infraestrutura de pesquisa adequada, que facilitem análises interdisciplinares. Essa abordagem visa ampliar a capacidade analítica e propositiva da universidade, contribuindo para o avanço do conhecimento acadêmico e a elaboração de políticas públicas bem fundamentadas e alicerçadas em evidências científicas.",
+          "en": "To achieve this, the Center aims to promote intense collaboration among researchers and will use advanced methodologies and adequate research infrastructure to facilitate interdisciplinary analyses. This approach aims to expand the university's analytical and propositional capacity, contributing to the advancement of academic knowledge and the development of well-founded, evidence-based public policies.",
+          "es": "Para ello, el Centro busca promover una intensa colaboración entre los investigadores y hará uso de metodologías avanzadas e infraestructura de investigación adecuada que faciliten los análisis interdisciplinarios. Este enfoque tiene como objetivo ampliar la capacidad analítica y propositiva de la universidad, contribuyendo al avance del conocimiento académico y a la elaboración de políticas públicas bien fundamentadas y basadas en evidencia científica."
+        },
+        "check": false
+      },
+      {
+        "conteudo": {
+          "pt": "Disseminar a utilização de ferramentas, técnicas e métodos das Humanidades Digitais e Ciências Sociais Computacionais na análise dos dados produzidos e avaliados pelas pesquisas, alinhando-se às boas práticas da Ciência Aberta.",
+          "en": "To disseminate the use of tools, techniques, and methods from the Digital Humanities and Computational Social Sciences in the analysis of data produced and evaluated by research, aligning with the best practices of Open Science.",
+          "es": "Difundir el uso de herramientas, técnicas y métodos de las Humanidades Digitales y las Ciencias Sociales Computacionales en el análisis de los datos producidos y evaluados por las investigaciones, alineándose con las buenas prácticas de la Ciencia Abierta."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "Para isso, o Centro procura oferecer infraestrutura computacional adequada e uma gestão eficiente de dados, assegurando sua acessibilidade, reutilização e preservação a longo prazo, ao mesmo tempo em que fomenta a inovação metodológica.",
+          "en": "To this end, the Center seeks to provide adequate computational infrastructure and efficient data management, ensuring its accessibility, reusability, and long-term preservation, while fostering methodological innovation.",
+          "es": "Para ello, el Centro busca ofrecer una infraestructura computacional adecuada y una gestión eficiente de los datos, asegurando su accesibilidad, reutilización y preservación a largo plazo, al mismo tiempo que fomenta la innovación metodológica."
+        },
+        "check": false
+      }
+    ],
+    "departamentos": [],
+    "imagem": [
+      "/imagens/campus/entrada-unesp-franca3.jpg",
+      "/imagens/campus/unesp-franca-blocos-1-e-2-central-de-aulas.jpg"
+    ]
+  },
+  "objetivosEspecificos": {
+    "titulo": {
+      "pt": "Objetivos Específicos",
+      "en": "Specific Objectives",
+      "es": "Objetivos Específicos"
+    },
+    "reverse": false,
+    "texto": [
+      {
+        "conteudo": {
+          "pt": "**Realização e organização de eventos acadêmicos**: organizar uma variedade de atividades acadêmicas, incluindo pesquisas, cursos, conferências, colóquios, programas e seminários, promovendo a integração entre diferentes instâncias acadêmicas e administrativas da UNESP.",
+          "en": "**Organization of academic events**: Organize a variety of academic activities, including research, courses, conferences, colloquia, programs, and seminars, promoting integration among different academic and administrative bodies of UNESP.",
+          "es": "**Realización y organización de eventos académicos**: organizar una variedad de actividades académicas, incluyendo investigaciones, cursos, conferencias, coloquios, programas y seminarios, promoviendo la integración entre diferentes instancias académicas y administrativas de la UNESP."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "**Formação, aperfeiçoamento e incentivo à participação em pesquisa**: promover a formação e o aperfeiçoamento de pesquisadores, incentivando a participação ativa de acadêmicos e colaboradores de diversas instâncias em pesquisas realizadas pela FCHS.",
+          "en": "**Training, development, and encouragement of research participation**: Promote the training and development of researchers, encouraging the active participation of academics and collaborators from various instances in research conducted by FCHS.",
+          "es": "**Formación, perfeccionamiento e incentivo a la participación en investigación**: promover la formación y el perfeccionamiento de investigadores, incentivando la participación activa de académicos y colaboradores de diversas instancias en investigaciones realizadas por la FCHS."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "**Estímulo à colaboração internacional, intercâmbio e cooperação**: facilitar a colaboração internacional e estabelecer parcerias estratégicas para expandir as oportunidades de pesquisa conjunta e atividades de extensão. Utilizar essas colaborações para disseminar novas ideias e perspectivas, estimulando o debate intelectual e a inovação. Além disso, promover o intercâmbio e a cooperação para superar barreiras geográficas, fomentando um ambiente de pesquisa colaborativo e inclusivo.",
+          "en": "**Stimulation of international collaboration, exchange, and cooperation**: Facilitate international collaboration and establish strategic partnerships to expand opportunities for joint research and extension activities. Use these collaborations to disseminate new ideas and perspectives, stimulating intellectual debate and innovation. Furthermore, promote exchange and cooperation to overcome geographical barriers, fostering a collaborative and inclusive research environment.",
+          "es": "**Estímulo a la colaboración internacional, intercambio y cooperación**: facilitar la colaboración internacional y establecer alianzas estratégicas para ampliar las oportunidades de investigación conjunta y actividades de extensión. Utilizar estas colaboraciones para difundir nuevas ideas y perspectivas, estimulando el debate intelectual y la innovación. Además, promover el intercambio y la cooperación para superar barreras geográficas, fomentando un ambiente de investigación colaborativo e inclusivo."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "**Publicação e disseminação de pesquisas**: promover a publicação e a disseminação de pesquisas, aumentando a acessibilidade e o impacto global dos estudos realizados.",
+          "en": "**Publication and dissemination of research**: Promote the publication and dissemination of research, increasing the accessibility and global impact of the studies conducted.",
+          "es": "**Publicación y difusión de investigaciones**: promover la publicación y difusión de investigaciones, aumentando la accesibilidad y el impacto global de los estudios realizados."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "**Suporte a atividades acadêmicas com infraestrutura computacional**: propiciar espaços físicos e virtuais que permitam a realização de atividades de ensino, pesquisa e extensão, especialmente aquelas que exigem intensa utilização de infraestrutura computacional.",
+          "en": "**Support for academic activities with computational infrastructure**: Provide physical and virtual spaces that allow for teaching, research, and extension activities, especially those requiring intensive use of computational infrastructure.",
+          "es": "**Apoyo a actividades académicas con infraestructura computacional**: proporcionar espacios físicos y virtuales que permitan la realización de actividades de enseñanza, investigación y extensión, especialmente aquellas que requieren un uso intensivo de infraestructura computacional."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "**Desenvolvimento e adaptação de ferramentas para pesquisa**: estimular a criação e adaptação de ferramentas que facilitam a análise de grandes volumes de dados, possibilitando estudos mais profundos sobre cultura, política e sociedade.",
+          "en": "**Development and adaptation of research tools**: Encourage the creation and adaptation of tools that facilitate the analysis of large volumes of data, enabling deeper studies on culture, politics, and society.",
+          "es": "**Desarrollo y adaptación de herramientas para la investigación**: estimular la creación y adaptación de herramientas que faciliten el análisis de grandes volúmenes de datos, posibilitando estudios más profundos sobre cultura, política y sociedad."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "**Capacitação em humanidades digitais**: promover o treinamento de discentes e docentes no uso de novos instrumentos de coleta, organização, armazenamento, análise e divulgação de dados, orientado pela lógica da ciência e dados abertos.",
+          "en": "**Training in digital humanities**: Promote the training of students and faculty in the use of new instruments for data collection, organization, storage, analysis, and dissemination, guided by the logic of open science and open data.",
+          "es": "**Capacitación en humanidades digitales**: promover la formación de estudiantes y docentes en el uso de nuevos instrumentos de recolección, organización, almacenamiento, análisis y divulgación de datos, orientado por la lógica de la ciencia y los datos abiertos."
+        },
+        "check": true
+      },
+      {
+        "conteudo": {
+          "pt": "**Gestão de dados de pesquisa**: implementar práticas de gestão de dados para assegurar a acessibilidade, reutilização e preservação a longo prazo dos dados de pesquisa, fortalecendo a integridade e sustentabilidade dos projetos acadêmicos.",
+          "en": "**Research data management**: Implement data management practices to ensure the accessibility, reusability, and long-term preservation of research data, strengthening the integrity and sustainability of academic projects.",
+          "es": "**Gestión de datos de investigación**: implementar prácticas de gestión de datos para asegurar la accesibilidad, reutilización y preservación a largo plazo de los datos de investigación, fortaleciendo la integridad y sostenibilidad de los proyectos académicos."
+        },
+        "check": true
+      }
+    ],
+    "departamentos": [],
+    "imagem": [
+      "/imagens/campus/unesp-franca-congregacao.jpg",
+      "/imagens/campus/unesp-franca-corredor-da-central-de-aula-1.jpg",
+      "/imagens/campus/unesp-franca-cpps-sala-reunao.jpg",
+      "/imagens/campus/unesp-franca-salas-aula2.jpg",
+      "/imagens/campus/unesp-franca-biblioteca2.jpg"
+    ]
+  }
+}

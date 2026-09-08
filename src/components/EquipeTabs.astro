@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import IconSocial from './IconSocial.astro';
 import { tinaField } from '@tinacms/astro/tina-field';
+import { normalizeLang, type Localized } from '../lib/tina/pages';
 
 // Types for members and social networks
 type Rede = {
@@ -14,9 +15,9 @@ type Membro = {
   nome: string;
   foto?: string;
   redes?: Rede[];
-  cargo?: string;
-  descricao?: string;
-  contribuicao?: string;
+  cargo?: Localized;
+  descricao?: Localized;
+  contribuicao?: Localized;
 };
 
 // Typed props (infer from parent usage). ativos is an array of [categoria, membros[]]
@@ -30,7 +31,7 @@ const props = Astro.props as {
 
 const ativos = props.ativos ?? [];
 const inativos = props.inativos ?? [];
-const lang = props.lang ?? 'pt';
+const lang = normalizeLang(props.lang ?? 'pt');
 const texts = props.texts ?? {};
 
 // Na rota da island (re-render do editor) a lista vem pronta via props,
@@ -161,22 +162,22 @@ function getSlug(membro: Membro): string {
               </h3>
               <p
                 class="text-neutral mb-1 text-[12px]"
-                data-tina-field={tinaField(membro, 'cargo') || undefined}
+                data-tina-field={(membro.cargo && tinaField(membro.cargo, lang)) || undefined}
               >
-                {membro.cargo}
+                {membro.cargo?.[lang]}
               </p>
               <p
                 class="text-base-content text-[12px]"
-                data-tina-field={tinaField(membro, 'descricao') || undefined}
+                data-tina-field={(membro.descricao && tinaField(membro.descricao, lang)) || undefined}
               >
-                {membro.descricao}
+                {membro.descricao?.[lang]}
               </p>
               {membro.contribuicao && (
                 <p
                   class="text-base-content mt-2 text-[12px] italic"
-                  data-tina-field={tinaField(membro, 'contribuicao') || undefined}
+                  data-tina-field={tinaField(membro.contribuicao, lang) || undefined}
                 >
-                  {membro.contribuicao}
+                  {membro.contribuicao[lang]}
                 </p>
               )}
             </div>
@@ -245,22 +246,22 @@ function getSlug(membro: Membro): string {
               </h3>
               <p
                 class="text-neutral mb-1 text-[12px]"
-                data-tina-field={tinaField(membro, 'cargo') || undefined}
+                data-tina-field={(membro.cargo && tinaField(membro.cargo, lang)) || undefined}
               >
-                {membro.cargo}
+                {membro.cargo?.[lang]}
               </p>
               <p
                 class="text-base-content text-[12px]"
-                data-tina-field={tinaField(membro, 'descricao') || undefined}
+                data-tina-field={(membro.descricao && tinaField(membro.descricao, lang)) || undefined}
               >
-                {membro.descricao}
+                {membro.descricao?.[lang]}
               </p>
               {membro.contribuicao && (
                 <p
                   class="text-base-content mt-2 text-[12px] italic"
-                  data-tina-field={tinaField(membro, 'contribuicao') || undefined}
+                  data-tina-field={tinaField(membro.contribuicao, lang) || undefined}
                 >
-                  {membro.contribuicao}
+                  {membro.contribuicao[lang]}
                 </p>
               )}
             </div>

@@ -3,10 +3,11 @@
 import TextoComCheck from './TextoComCheck.astro';
 import CheckIcon from '../icons/CheckIcon.astro';
 import { tinaField } from '@tinacms/astro/tina-field';
+import { normalizeLang, type Localized } from '../lib/tina/pages';
 
 export type Bloco = {
-  titulo: string;
-  texto: { check: boolean; conteudo: string }[];
+  titulo: Localized;
+  texto: { check: boolean; conteudo: Localized }[];
   imagem: string | string[];
   departamentos?: string[];
   intercalar?: boolean;
@@ -15,9 +16,11 @@ export type Bloco = {
 
 interface Props {
   blocos: Record<string, Bloco>;
+  lang?: string;
 }
 
-const { blocos } = Astro.props;
+const { blocos, lang: langProp } = Astro.props;
+const lang = normalizeLang(langProp ?? 'pt');
 ---
 
 <section class="mt-16 space-y-24 px-4 md:px-8 lg:px-16">
@@ -34,8 +37,8 @@ const { blocos } = Astro.props;
         >
           {/* Coluna de texto */}
           <div class="md:w-7/12">
-            <h2 class="text-primary mb-6 text-4xl font-extrabold" data-tina-field={tinaField(bloco, 'titulo') || undefined}>{bloco.titulo}</h2>
-            <TextoComCheck texto={bloco.texto} tinaParent={bloco} />
+            <h2 class="text-primary mb-6 text-4xl font-extrabold" data-tina-field={tinaField(bloco.titulo, lang) || undefined}>{bloco.titulo[lang]}</h2>
+            <TextoComCheck texto={bloco.texto} lang={lang} />
 
             {bloco.departamentos && (
               <ul class="mt-6 list-none space-y-4 pl-8">
@@ -55,7 +58,7 @@ const { blocos } = Astro.props;
             {imagens.map((imgSrc, imgIdx) => (
               <img
                 src={imgSrc}
-                alt={`Imagem ilustrativa de ${bloco.titulo}`}
+                alt={`Imagem ilustrativa de ${bloco.titulo[lang]}`}
                 class="w-full max-w-sm rounded-xl transition duration-300 ease-in-out md:max-w-md"
                 loading="lazy"
                 data-tina-field={tinaField(bloco, 'imagem', imgIdx) || undefined}

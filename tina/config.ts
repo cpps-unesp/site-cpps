@@ -2,20 +2,6 @@ import { defineConfig } from "tinacms";
 import type { TinaField } from "tinacms";
 import { routeTranslations } from "../src/i18n/routes";
 
-// Idioma a partir do nome do arquivo (pt.json, en.json, es.json…).
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function docLang(document: any): "pt" | "en" | "es" {
-  const base = String(document?._sys?.filename ?? "pt").replace(/\.(json|md|mdx)$/, "");
-  return base === "en" || base === "es" ? base : "pt";
-}
-
-// Abre o documento no editor visual, na página e idioma correspondentes.
-// Sem `router`, o clique abre só o editor de formulário.
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-function rotearHome({ document }: any): string {
-  return `/${docLang(document)}/`;
-}
-
 type PaginaInstitucional =
   | "institucional/sobre"
   | "institucional/equipe"
@@ -29,15 +15,49 @@ type PaginaInstitucional =
   | "iniciativas/parcerias"
   | "iniciativas/solucoes-tecnologicas";
 
-function rotearInstitucional(
-  key: PaginaInstitucional,
-): // eslint-disable-next-line @typescript-eslint/no-explicit-any
-({ document }: any) => string {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return ({ document }: any): string => {
-    const lang = docLang(document);
-    return `/${lang}/${routeTranslations[key][lang]}`;
-  };
+// Todas as collections são field-based (1 documento com {pt,en,es} por
+// campo, sem "um arquivo por idioma") — não há como inferir o idioma do
+// documento, então o preview do admin abre sempre em pt. Para editar en/es
+// visualmente: usar o seletor de idioma da própria página dentro do preview
+// (o form permanece o mesmo, já que o documento é único).
+function rotearInstitucionalPt(key: PaginaInstitucional): () => string {
+  return (): string => `/pt/${routeTranslations[key].pt}`;
+}
+
+function rotearHomePt(): string {
+  return "/pt/";
+}
+
+// i18n "field-based": cada campo de texto vira um objeto com um subcampo por
+// idioma, dentro do MESMO documento. Ver docs/tinacms-i18n-field-based.md
+// (a escrever) e o plano de migração para a classificação completa de quais
+// campos são localizados vs. compartilhados entre idiomas.
+const LANGS = [
+  { code: "pt", label: "Português" },
+  { code: "en", label: "English" },
+  { code: "es", label: "Español" },
+] as const;
+
+// Campo único localizado (string, number, boolean simples).
+function localized(name: string, label: string, leaf: Omit<TinaField, "name" | "label">): TinaField {
+  return {
+    type: "object",
+    name,
+    label,
+    fields: LANGS.map(({ code, label: langLabel }) => ({ ...leaf, name: code, label: langLabel })) as TinaField[],
+  } as TinaField;
+}
+
+// Lista cujo ITEM é localizado (ex.: equipe.intro, hoje string[]). A lista
+// continua única e compartilhada entre idiomas; cada item vira {pt,en,es}.
+function localizedList(name: string, label: string, leaf: Omit<TinaField, "name" | "label">): TinaField {
+  return {
+    type: "object",
+    name,
+    label,
+    list: true,
+    fields: LANGS.map(({ code, label: langLabel }) => ({ ...leaf, name: code, label: langLabel })) as TinaField[],
+  } as TinaField;
 }
 
 // Your hosting provider likely exposes this as an environment variable
@@ -48,7 +68,7 @@ const branch =
   "main";
 
 const textoBlocoFields: TinaField[] = [
-  { type: "string", name: "conteudo", label: "Conteúdo", ui: { component: "textarea" } },
+  localized("conteudo", "Conteúdo", { type: "string", ui: { component: "textarea" } }),
   { type: "boolean", name: "check", label: "Ícone de Check" },
 ];
 
@@ -59,7 +79,7 @@ function secaoSobre(label: string, name: string, nameOverride?: string): TinaFie
     ...(nameOverride ? { nameOverride } : {}),
     label,
     fields: [
-      { type: "string", name: "titulo", label: "Título" },
+      localized("titulo", "Título", { type: "string" }),
       { type: "boolean", name: "reverse", label: "Inverter Layout" },
       {
         type: "object", name: "texto", label: "Textos", list: true,
@@ -72,11 +92,11 @@ function secaoSobre(label: string, name: string, nameOverride?: string): TinaFie
 }
 
 const membroFields: TinaField[] = [
-  { type: "string", name: "id", label: "ID (usado nas traduções)" },
+  { type: "string", name: "id", label: "ID (interno, não editar)" },
   { type: "string", name: "nome", label: "Nome" },
-  { type: "string", name: "cargo", label: "Cargo" },
-  { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
-  { type: "string", name: "contribuicao", label: "Contribuição", ui: { component: "textarea" } },
+  localized("cargo", "Cargo", { type: "string" }),
+  localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
+  localized("contribuicao", "Contribuição", { type: "string", ui: { component: "textarea" } }),
   { type: "image", name: "foto", label: "Foto" },
   { type: "string", name: "prioridade", label: "Prioridade (número; vazio = ordem alfabética)" },
   { type: "string", name: "status", label: "Status (ativo/inativo)", options: ["ativo", "inativo"] },
@@ -174,21 +194,11 @@ export default defineConfig({
             create: false,
             delete: false,
           },
-          router: rotearHome,
+          router: rotearHomePt,
         },
         fields: [
-          {
-            type: "string",
-            name: "titulo",
-            label: "Título do Site",
-            required: true,
-          },
-          {
-            type: "string",
-            name: "descricao",
-            label: "Descrição do Site",
-            ui: { component: "textarea" },
-          },
+          localized("titulo", "Título do Site", { type: "string" }),
+          localized("descricao", "Descrição do Site", { type: "string", ui: { component: "textarea" } }),
           {
             type: "object",
             name: "identidade",
@@ -202,27 +212,23 @@ export default defineConfig({
             name: "hero",
             label: "Hero Section",
             fields: [
-              {
+              localized("title", "Título", {
                 type: "string",
-                name: "title",
-                label: "Título",
                 ui: { component: "textarea" },
                 description: "Aceita HTML: <br> quebra linha; mantenha as tags ao editar o texto.",
-              },
-              {
+              }),
+              localized("description", "Descrição", {
                 type: "string",
-                name: "description",
-                label: "Descrição",
                 ui: { component: "textarea" },
                 description: "Aceita HTML (<span>, <a>); mantenha as tags ao editar o texto.",
-              },
+              }),
               { type: "image", name: "link", label: "Imagem de Fundo" },
               {
                 type: "object",
                 name: "button",
                 label: "Botão",
                 fields: [
-                  { type: "string", name: "text", label: "Texto" },
+                  localized("text", "Texto", { type: "string" }),
                   { type: "string", name: "url", label: "Link" },
                 ],
               },
@@ -237,7 +243,7 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("institucional/sobre"),
+          router: rotearInstitucionalPt("institucional/sobre"),
         },
         fields: [
           secaoSobre("Seção Quem Somos", "quem_somos"),
@@ -252,15 +258,15 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("institucional/equipe"),
+          router: rotearInstitucionalPt("institucional/equipe"),
         },
         fields: [
-          { type: "string", name: "title", label: "Título" },
-          {
-            type: "string", name: "intro", label: "Introdução", list: true,
+          localized("title", "Título", { type: "string" }),
+          localizedList("intro", "Introdução", {
+            type: "string",
             ui: { component: "textarea" },
             description: "Aceita HTML (<br>); mantenha as tags ao editar o texto.",
-          },
+          }),
           {
             type: "object",
             name: "categorias",
@@ -280,27 +286,27 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("institucional/documentos"),
+          router: rotearInstitucionalPt("institucional/documentos"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          {
-            type: "string", name: "descricao", label: "Descrição",
-            ui: { component: "textarea" },
-          },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
           {
             type: "object", name: "grupos", label: "Grupos de Documentos", list: true,
+            ui: {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              itemProps: (item: any) => ({
+                label: item?.titulo?.pt || item?.id || "Novo grupo",
+              }),
+            },
             fields: [
-              { type: "string", name: "id", label: "ID (usado nas traduções)" },
-              { type: "string", name: "titulo", label: "Título" },
-              {
-                type: "string", name: "descricao", label: "Descrição",
-                ui: { component: "textarea" },
-              },
+              { type: "string", name: "id", label: "ID (interno, não editar)" },
+              localized("titulo", "Título", { type: "string" }),
+              localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
               {
                 type: "object", name: "arquivos", label: "Arquivos", list: true,
                 fields: [
-                  { type: "string", name: "nome", label: "Nome" },
+                  localized("nome", "Nome", { type: "string" }),
                   {
                     type: "object", name: "formatos", label: "Formatos", list: true,
                     fields: [
@@ -321,32 +327,38 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("iniciativas/cafe-com-ciencia"),
+          router: rotearInstitucionalPt("iniciativas/cafe-com-ciencia"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
-          { type: "string", name: "episodioLabel", label: "Rótulo do episódio" },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
+          localized("episodioLabel", "Rótulo do episódio", { type: "string" }),
           {
             type: "object", name: "materiais", label: "Rótulos dos materiais",
             fields: [
-              { type: "string", name: "transcricao", label: "Transcrição" },
-              { type: "string", name: "artigo", label: "Artigo" },
+              localized("transcricao", "Transcrição", { type: "string" }),
+              localized("artigo", "Artigo", { type: "string" }),
             ],
           },
           {
             type: "object", name: "episodios", label: "Episódios", list: true,
+            ui: {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              itemProps: (item: any) => ({
+                label: item?.titulo?.pt || item?.id || "Novo episódio",
+              }),
+            },
             fields: [
-              { type: "string", name: "id", label: "ID (usado nas traduções)" },
+              { type: "string", name: "id", label: "ID (interno, não editar)" },
               { type: "number", name: "numero", label: "Número" },
               { type: "string", name: "icone", label: "Ícone (emoji)" },
-              { type: "string", name: "titulo", label: "Título" },
-              { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
+              localized("titulo", "Título", { type: "string" }),
+              localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
               {
                 type: "object", name: "materiais", label: "Materiais", list: true,
                 fields: [
                   { type: "string", name: "tipo", label: "Tipo" },
-                  { type: "string", name: "url", label: "URL" },
+                  localized("url", "URL", { type: "string" }),
                 ],
               },
             ],
@@ -360,31 +372,37 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("iniciativas/projetos-de-pesquisa"),
+          router: rotearInstitucionalPt("iniciativas/projetos-de-pesquisa"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
-          { type: "string", name: "ordenarPor", label: "Rótulo 'Ordenar por'" },
-          { type: "string", name: "porTitulo", label: "Rótulo 'Título'" },
-          { type: "string", name: "porDocente", label: "Rótulo 'Docente'" },
-          { type: "string", name: "porPeriodo", label: "Rótulo 'Período'" },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
+          localized("ordenarPor", "Rótulo 'Ordenar por'", { type: "string" }),
+          localized("porTitulo", "Rótulo 'Título'", { type: "string" }),
+          localized("porDocente", "Rótulo 'Docente'", { type: "string" }),
+          localized("porPeriodo", "Rótulo 'Período'", { type: "string" }),
           {
             type: "object", name: "projetos", label: "Projetos", list: true,
+            ui: {
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+              itemProps: (item: any) => ({
+                label: item?.titulo?.pt || item?.id || "Novo projeto",
+              }),
+            },
             fields: [
-              { type: "string", name: "id", label: "ID (usado nas traduções)" },
-              { type: "string", name: "titulo", label: "Título" },
+              { type: "string", name: "id", label: "ID (interno, não editar)" },
+              localized("titulo", "Título", { type: "string" }),
               { type: "string", name: "docente", label: "Docente" },
               { type: "string", name: "periodo", label: "Período" },
-              { type: "string", name: "departamento", label: "Departamento" },
-              { type: "string", name: "status", label: "Status" },
+              localized("departamento", "Departamento", { type: "string" }),
+              localized("status", "Status", { type: "string" }),
               { type: "string", name: "agencia", label: "Agência" },
               { type: "string", name: "processo", label: "Processo" },
-              { type: "string", name: "natureza", label: "Natureza" },
+              localized("natureza", "Natureza", { type: "string" }),
               { type: "string", name: "valor", label: "Valor" },
               { type: "string", name: "associados", label: "Associados", list: true },
-              { type: "string", name: "resumo", label: "Resumo", ui: { component: "textarea" } },
-              { type: "string", name: "apoioCentro", label: "Apoio do Centro", list: true },
+              localized("resumo", "Resumo", { type: "string", ui: { component: "textarea" } }),
+              localizedList("apoioCentro", "Apoio do Centro", { type: "string" }),
               { type: "string", name: "mostrar", label: "Campos visíveis", list: true },
             ],
           },
@@ -397,11 +415,11 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("iniciativas/material-de-apoio"),
+          router: rotearInstitucionalPt("iniciativas/material-de-apoio"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
         ],
       },
       {
@@ -411,11 +429,11 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("iniciativas/oficinas"),
+          router: rotearInstitucionalPt("iniciativas/oficinas"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
         ],
       },
       {
@@ -425,17 +443,17 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("iniciativas/projetos"),
+          router: rotearInstitucionalPt("iniciativas/projetos"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
           {
             type: "object", name: "cards", label: "Cartões", list: true,
             fields: [
-              { type: "string", name: "titulo", label: "Título" },
-              { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
-              { type: "string", name: "link", label: "Link" },
+              localized("titulo", "Título", { type: "string" }),
+              localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
+              localized("link", "Link", { type: "string" }),
             ],
           },
         ],
@@ -447,11 +465,11 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("iniciativas/projetos-de-dados"),
+          router: rotearInstitucionalPt("iniciativas/projetos-de-dados"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
         ],
       },
       {
@@ -461,11 +479,11 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("iniciativas/parcerias"),
+          router: rotearInstitucionalPt("iniciativas/parcerias"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
         ],
       },
       {
@@ -475,11 +493,11 @@ export default defineConfig({
         format: "json",
         ui: {
           allowedActions: { create: false, delete: false },
-          router: rotearInstitucional("iniciativas/solucoes-tecnologicas"),
+          router: rotearInstitucionalPt("iniciativas/solucoes-tecnologicas"),
         },
         fields: [
-          { type: "string", name: "titulo", label: "Título" },
-          { type: "string", name: "descricao", label: "Descrição", ui: { component: "textarea" } },
+          localized("titulo", "Título", { type: "string" }),
+          localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
         ],
       },
     ],

@@ -7,73 +7,39 @@
 import { requestWithMetadata } from '@tinacms/astro/data';
 import client from '../../../tina/__generated__/client';
 
-import ptHome from '../../content/tina-pages/home/pt.json';
-import enHome from '../../content/tina-pages/home/en.json';
-import esHome from '../../content/tina-pages/home/es.json';
-import ptSobre from '../../content/tina-pages/sobre/pt.json';
-import enSobre from '../../content/tina-pages/sobre/en.json';
-import esSobre from '../../content/tina-pages/sobre/es.json';
-import ptEquipe from '../../content/tina-pages/equipe/pt.json';
-import enEquipe from '../../content/tina-pages/equipe/en.json';
-import esEquipe from '../../content/tina-pages/equipe/es.json';
-import ptDocumentos from '../../content/tina-pages/documentos/pt.json';
-import enDocumentos from '../../content/tina-pages/documentos/en.json';
-import esDocumentos from '../../content/tina-pages/documentos/es.json';
-import ptCafe from '../../content/tina-pages/cafe/pt.json';
-import enCafe from '../../content/tina-pages/cafe/en.json';
-import esCafe from '../../content/tina-pages/cafe/es.json';
-import ptInicPesquisa from '../../content/tina-pages/inic-pesquisa/pt.json';
-import enInicPesquisa from '../../content/tina-pages/inic-pesquisa/en.json';
-import esInicPesquisa from '../../content/tina-pages/inic-pesquisa/es.json';
-import ptInicMaterial from '../../content/tina-pages/inic-material/pt.json';
-import enInicMaterial from '../../content/tina-pages/inic-material/en.json';
-import esInicMaterial from '../../content/tina-pages/inic-material/es.json';
-import ptInicOficinas from '../../content/tina-pages/inic-oficinas/pt.json';
-import enInicOficinas from '../../content/tina-pages/inic-oficinas/en.json';
-import esInicOficinas from '../../content/tina-pages/inic-oficinas/es.json';
-import ptInicProjetos from '../../content/tina-pages/inic-projetos/pt.json';
-import enInicProjetos from '../../content/tina-pages/inic-projetos/en.json';
-import esInicProjetos from '../../content/tina-pages/inic-projetos/es.json';
-import ptInicDados from '../../content/tina-pages/inic-dados/pt.json';
-import enInicDados from '../../content/tina-pages/inic-dados/en.json';
-import esInicDados from '../../content/tina-pages/inic-dados/es.json';
-import ptInicParcerias from '../../content/tina-pages/inic-parcerias/pt.json';
-import enInicParcerias from '../../content/tina-pages/inic-parcerias/en.json';
-import esInicParcerias from '../../content/tina-pages/inic-parcerias/es.json';
-import ptInicSolucoes from '../../content/tina-pages/inic-solucoes/pt.json';
-import enInicSolucoes from '../../content/tina-pages/inic-solucoes/en.json';
-import esInicSolucoes from '../../content/tina-pages/inic-solucoes/es.json';
+import homeDoc from '../../content/tina-pages/home/index.json';
+import sobreDoc from '../../content/tina-pages/sobre/index.json';
+import equipeDoc from '../../content/tina-pages/equipe/index.json';
+import documentosDoc from '../../content/tina-pages/documentos/index.json';
+import cafeDoc from '../../content/tina-pages/cafe/index.json';
+import inicPesquisaDoc from '../../content/tina-pages/inic-pesquisa/index.json';
+import inicMaterialDoc from '../../content/tina-pages/inic-material/index.json';
+import inicOficinasDoc from '../../content/tina-pages/inic-oficinas/index.json';
+import inicProjetosDoc from '../../content/tina-pages/inic-projetos/index.json';
+import inicDadosDoc from '../../content/tina-pages/inic-dados/index.json';
+import inicParceriasDoc from '../../content/tina-pages/inic-parcerias/index.json';
+import inicSolucoesDoc from '../../content/tina-pages/inic-solucoes/index.json';
 
 
 export type TinaLang = 'pt' | 'en' | 'es';
-
-const statics = {
-  home: { pt: ptHome, en: enHome, es: esHome },
-  sobre: { pt: ptSobre, en: enSobre, es: esSobre },
-  equipe: { pt: ptEquipe, en: enEquipe, es: esEquipe },
-  documentos: { pt: ptDocumentos, en: enDocumentos, es: esDocumentos },
-  cafe: { pt: ptCafe, en: enCafe, es: esCafe },
-  inic_pesquisa: { pt: ptInicPesquisa, en: enInicPesquisa, es: esInicPesquisa },
-  inic_material: { pt: ptInicMaterial, en: enInicMaterial, es: esInicMaterial },
-  inic_oficinas: { pt: ptInicOficinas, en: enInicOficinas, es: esInicOficinas },
-  inic_projetos: { pt: ptInicProjetos, en: enInicProjetos, es: esInicProjetos },
-  inic_dados: { pt: ptInicDados, en: enInicDados, es: esInicDados },
-  inic_parcerias: { pt: ptInicParcerias, en: enInicParcerias, es: esInicParcerias },
-  inic_solucoes: { pt: ptInicSolucoes, en: enInicSolucoes, es: esInicSolucoes },
-} as const;
+export type Localized = { pt: string; en: string; es: string };
 
 export function normalizeLang(lang: string): TinaLang {
   return lang === 'en' || lang === 'es' ? lang : 'pt';
 }
 
+// Collections já migradas para o schema field-based: 1 documento fixo
+// (`index.json`), sem depender de `lang` para o `relativePath`. Cada campo
+// de texto já vem como {pt,en,es} com metadados do Tina preservados — quem
+// resolve o idioma é o componente, não este loader (ver plano de migração).
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function getDoc(collection: keyof typeof statics, lang: string, fallback?: any): Promise<any> {
-  const query = client.queries[collection];
+async function getFieldBasedDoc(collection: string, fallback: any): Promise<any> {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const query = (client.queries as any)[collection];
   if (typeof query === 'function') {
     try {
       const res = await requestWithMetadata(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (query as any)({ relativePath: `${normalizeLang(lang)}.json` }),
+        query({ relativePath: 'index.json' }),
         { priority: 'primary' },
       );
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -83,67 +49,67 @@ async function getDoc(collection: keyof typeof statics, lang: string, fallback?:
       // Tina indisponível — cai para o fallback estático abaixo.
     }
   }
-  return fallback ?? statics[collection][normalizeLang(lang)];
+  return fallback;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getHome(lang: string, fallback?: any): Promise<any> {
-  return getDoc('home', lang, fallback);
+export function getHome(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('home', fallback ?? homeDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getSobre(lang: string, fallback?: any): Promise<any> {
-  return getDoc('sobre', lang, fallback);
+export function getSobre(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('sobre', fallback ?? sobreDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getEquipe(lang: string, fallback?: any): Promise<any> {
-  return getDoc('equipe', lang, fallback);
+export function getEquipe(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('equipe', fallback ?? equipeDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getDocumentos(lang: string, fallback?: any): Promise<any> {
-  return getDoc('documentos', lang, fallback);
+export function getDocumentos(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('documentos', fallback ?? documentosDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getCafe(lang: string, fallback?: any): Promise<any> {
-  return getDoc('cafe', lang, fallback);
+export function getCafe(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('cafe', fallback ?? cafeDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getInicPesquisa(lang: string, fallback?: any): Promise<any> {
-  return getDoc('inic_pesquisa', lang, fallback);
+export function getInicPesquisa(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('inic_pesquisa', fallback ?? inicPesquisaDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getInicMaterial(lang: string, fallback?: any): Promise<any> {
-  return getDoc('inic_material', lang, fallback);
+export function getInicMaterial(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('inic_material', fallback ?? inicMaterialDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getInicOficinas(lang: string, fallback?: any): Promise<any> {
-  return getDoc('inic_oficinas', lang, fallback);
+export function getInicOficinas(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('inic_oficinas', fallback ?? inicOficinasDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getInicProjetos(lang: string, fallback?: any): Promise<any> {
-  return getDoc('inic_projetos', lang, fallback);
+export function getInicProjetos(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('inic_projetos', fallback ?? inicProjetosDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getInicDados(lang: string, fallback?: any): Promise<any> {
-  return getDoc('inic_dados', lang, fallback);
+export function getInicDados(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('inic_dados', fallback ?? inicDadosDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getInicParcerias(lang: string, fallback?: any): Promise<any> {
-  return getDoc('inic_parcerias', lang, fallback);
+export function getInicParcerias(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('inic_parcerias', fallback ?? inicParceriasDoc);
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function getInicSolucoes(lang: string, fallback?: any): Promise<any> {
-  return getDoc('inic_solucoes', lang, fallback);
+export function getInicSolucoes(_lang: string, fallback?: any): Promise<any> {
+  return getFieldBasedDoc('inic_solucoes', fallback ?? inicSolucoesDoc);
 }
 
 

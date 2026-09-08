@@ -1,6 +1,7 @@
 ---
 import { getTranslatedPath } from '../utils/getTranslatedPath';
 import { tinaField } from '@tinacms/astro/tina-field';
+import { normalizeLang } from '../lib/tina/pages';
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -8,7 +9,8 @@ interface Props {
   lang?: string;
 }
 
-const { heroData, lang = 'pt' } = Astro.props;
+const { heroData, lang: langProp = 'pt' } = Astro.props;
+const lang = normalizeLang(langProp);
 const logoSrc = heroData?.identidade?.logo ?? '/imagens/logos/cpps/logo-cpps-01_rev_1.png';
 ---
 
@@ -47,10 +49,10 @@ const logoSrc = heroData?.identidade?.logo ?? '/imagens/logos/cpps/logo-cpps-01_
         />
         <h1
           class="titulo text-base-content z-10 mt-4 text-3xl leading-tight sm:mt-0 sm:text-5xl md:text-6xl"
-          data-tina-field={tinaField(heroData?.hero, 'title') || undefined}
+          data-tina-field={(heroData?.hero?.title && tinaField(heroData.hero.title, lang)) || undefined}
         >
           {/* eslint-disable-next-line astro/no-set-html-directive */}
-          <Fragment set:html={heroData?.hero.title} />
+          <Fragment set:html={heroData?.hero?.title?.[lang]} />
         </h1>
       </div>
 
@@ -58,10 +60,10 @@ const logoSrc = heroData?.identidade?.logo ?? '/imagens/logos/cpps/logo-cpps-01_
       <div class="w-full max-w-2xl px-2 text-center sm:px-0 sm:text-left">
         <p
           class="text-base-content mb-6 text-base leading-relaxed md:text-lg"
-          data-tina-field={tinaField(heroData?.hero, 'description') || undefined}
+          data-tina-field={(heroData?.hero?.description && tinaField(heroData.hero.description, lang)) || undefined}
         >
           {/* eslint-disable-next-line astro/no-set-html-directive */}
-          <Fragment set:html={heroData?.hero.description} />
+          <Fragment set:html={heroData?.hero?.description?.[lang]} />
         </p>
 
         <!-- Botão -->
@@ -71,7 +73,9 @@ const logoSrc = heroData?.identidade?.logo ?? '/imagens/logos/cpps/logo-cpps-01_
           {
             heroData?.hero.button && (
               <a
-                data-tina-field={tinaField(heroData?.hero?.button, 'text') || undefined}
+                data-tina-field={
+                  (heroData?.hero?.button?.text && tinaField(heroData.hero.button.text, lang)) || undefined
+                }
                 href={(() => {
                   const url = heroData.hero.button.url || '';
                   if (url.startsWith('http://') || url.startsWith('https://')) return url;
@@ -85,7 +89,7 @@ const logoSrc = heroData?.identidade?.logo ?? '/imagens/logos/cpps/logo-cpps-01_
                 class="btn btn-primary px-6 py-3 text-lg whitespace-nowrap shadow-lg"
                 style="color: white;"
               >
-                {heroData.hero.button.text}
+                {heroData.hero.button.text?.[lang]}
               </a>
             )
           }

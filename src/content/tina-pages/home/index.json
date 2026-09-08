@@ -1,0 +1,36 @@
+{
+  "titulo": {
+    "pt": "UNESP Franca | Centro de Pesquisa Política e Social",
+    "en": "UNESP Franca | Center for Political and Social Research",
+    "es": "UNESP Franca | Centro de Investigación Política y Social"
+  },
+  "descricao": {
+    "pt": "Centro de Pesquisa Política e Social da Universidade Estadual Paulista (UNESP), câmpus Franca",
+    "en": "Center for Political and Social Research of the São Paulo State University (UNESP), Franca campus",
+    "es": "Centro de Investigación Política y Social de la Universidad Estadual Paulista (UNESP), campus Franca"
+  },
+  "identidade": {
+    "logo": "/imagens/logos/cpps/logo-cpps-01_rev_1.png"
+  },
+  "hero": {
+    "title": {
+      "pt": "Centro de Pesquisa<br class='hidden sm:inline' /> Política e Social",
+      "en": "Center for Political<br class='hidden sm:inline' /> and Social Research",
+      "es": "Centro de Investigación<br class='hidden sm:inline' /> Política y Social"
+    },
+    "description": {
+      "pt": "Apoia a execução de pesquisas na <span class='text-primary font-semibold bg-white px-1 rounded'>Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)</span>, localizado no município de Franca/SP.",
+      "en": "Supports the execution of research at the <span class='text-primary font-semibold bg-white px-1 rounded'>Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the city of Franca/SP.",
+      "es": "Apoya la ejecución de investigaciones en la <span class='text-primary font-semibold bg-white px-1 rounded'>Facultad de Ciencias Humanas y Sociales (FCHS) de la Universidad Estadual Paulista (UNESP)</span>, ubicada en la ciudad de Franca/SP."
+    },
+    "link": "/imagens/campus/entrada-unesp-franca.jpg",
+    "button": {
+      "text": {
+        "pt": "Saiba mais",
+        "en": "Learn more",
+        "es": "Saber más"
+      },
+      "url": "institucional/sobre"
+    }
+  }
+}

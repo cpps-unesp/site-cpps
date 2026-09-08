@@ -82,7 +82,7 @@ const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? 
 const slugArray = slugPath.split('/');
 
 const locale = getTranslations(currentLang);
-const { titulo, descricao, texts, equipe, sobre, documentos } = locale;
+const { titulo, descricao, texts } = locale;
 
 const noticiasPrefix = routeTranslations['noticias'][currentLang];
 const isNoticiasList = slugPath === noticiasPrefix;
@@ -119,9 +119,9 @@ const isDocumentos = originalKey === 'institucional/documentos';
 let sobreDoc = null;
 let equipeDoc = null;
 let documentosDoc = null;
-if (isSobre) sobreDoc = await getSobre(currentLang, sobre);
-if (isEquipe) equipeDoc = await getEquipe(currentLang, equipe);
-if (isDocumentos) documentosDoc = await getDocumentos(currentLang, documentos);
+if (isSobre) sobreDoc = await getSobre(currentLang);
+if (isEquipe) equipeDoc = await getEquipe(currentLang);
+if (isDocumentos) documentosDoc = await getDocumentos(currentLang);
 
 const isCafe = originalKey === 'iniciativas/cafe-com-ciencia';
 const isMaterial = originalKey === 'iniciativas/material-de-apoio';
@@ -226,7 +226,7 @@ if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
                 params={{ lang: currentLang }}
                 primary
               >
-                <SobreBody data={sobreDoc} />
+                <SobreBody data={sobreDoc} lang={currentLang} />
               </TinaIsland>
             );
           case 'institucional/documentos':
@@ -263,7 +263,7 @@ if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
                 params={{ lang: currentLang }}
                 primary
               >
-                <IniciativasMaterialApoioSection data={materialDoc} />
+                <IniciativasMaterialApoioSection data={materialDoc} lang={currentLang} />
               </TinaIsland>
             );
           case 'iniciativas/oficinas':
@@ -274,7 +274,7 @@ if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
                 params={{ lang: currentLang }}
                 primary
               >
-                <IniciativasOficinasSection data={oficinasDoc} />
+                <IniciativasOficinasSection data={oficinasDoc} lang={currentLang} />
               </TinaIsland>
             );
           case 'iniciativas/projetos':
@@ -285,7 +285,7 @@ if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
                 params={{ lang: currentLang }}
                 primary
               >
-                <IniciativasProjetosSection data={projetosDoc} />
+                <IniciativasProjetosSection data={projetosDoc} lang={currentLang} />
               </TinaIsland>
             );
           case 'iniciativas/projetos-de-pesquisa':
@@ -297,9 +297,9 @@ if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
                   params={{ lang: currentLang }}
                   primary
                 >
-                  <ProjetosPesquisaHeader data={pesquisaDoc} />
+                  <ProjetosPesquisaHeader data={pesquisaDoc} lang={currentLang} />
                 </TinaIsland>
-                <IniciativasProjetosDePesquisaSection data={pesquisaDoc} hideHeader />
+                <IniciativasProjetosDePesquisaSection data={pesquisaDoc} lang={currentLang} hideHeader />
               </>
             );
           case 'iniciativas/projetos-de-dados':
@@ -310,7 +310,7 @@ if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
                 params={{ lang: currentLang }}
                 primary
               >
-                <IniciativasProjetosDeDadosSection data={dadosDoc} />
+                <IniciativasProjetosDeDadosSection data={dadosDoc} lang={currentLang} />
               </TinaIsland>
             );
           case 'iniciativas/parcerias':
@@ -321,7 +321,7 @@ if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
                 params={{ lang: currentLang }}
                 primary
               >
-                <IniciativasParceiriasSection data={parceriasDoc} />
+                <IniciativasParceiriasSection data={parceriasDoc} lang={currentLang} />
               </TinaIsland>
             );
           case 'iniciativas/solucoes-tecnologicas':
@@ -332,7 +332,7 @@ if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
                 params={{ lang: currentLang }}
                 primary
               >
-                <IniciativasSolucoesTecnologicasSection data={solucoesDoc} />
+                <IniciativasSolucoesTecnologicasSection data={solucoesDoc} lang={currentLang} />
               </TinaIsland>
             );
 

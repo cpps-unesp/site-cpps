@@ -1,33 +1,36 @@
 ---
+type Localized = { pt: string; en: string; es: string };
+
 type DocumentoFormato = {
   tipo: string;
   url: string;
 };
 
 type DocumentoArquivo = {
-  nome: string;
+  nome: Localized;
   formatos: DocumentoFormato[];
 };
 
 type DocumentoGrupo = {
-  titulo: string;
-  descricao: string;
+  titulo: Localized;
+  descricao: Localized;
   arquivos: DocumentoArquivo[];
 };
 
 import { tinaField } from '@tinacms/astro/tina-field';
+import { normalizeLang } from '../lib/tina/pages';
 
 type DocumentosData = {
-  titulo: string;
-  descricao: string;
+  titulo: Localized;
+  descricao: Localized;
   grupos: DocumentoGrupo[];
 };
 
-const { documentos, lang } = Astro.props as { documentos: DocumentosData; lang?: string };
+const { documentos, lang: langProp } = Astro.props as { documentos: DocumentosData; lang?: string };
+const lang = normalizeLang(langProp ?? 'pt');
 
 function buildUrl(url?: string) {
   if (!url || url.startsWith('http')) return url;
-  if (!lang) return url;
   if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
   if (url.startsWith('/')) return `/${lang}${url}`;
   return `/${lang}/${url}`;
@@ -37,15 +40,15 @@ function buildUrl(url?: string) {
 <section class="mx-auto mt-16 mb-32 max-w-7xl space-y-12 px-4 md:px-8 lg:px-16">
   <h1
     class="titulo text-primary mb-8 text-center"
-    data-tina-field={tinaField(documentos, 'titulo') || undefined}
+    data-tina-field={tinaField(documentos.titulo, lang) || undefined}
   >
-    {documentos.titulo}
+    {documentos.titulo[lang]}
   </h1>
   <p
     class="paragrafo mb-16 text-center"
-    data-tina-field={tinaField(documentos, 'descricao') || undefined}
+    data-tina-field={tinaField(documentos.descricao, lang) || undefined}
   >
-    {documentos.descricao}
+    {documentos.descricao[lang]}
   </p>
 
   <div class="flex flex-wrap justify-center gap-10">
@@ -54,15 +57,15 @@ function buildUrl(url?: string) {
         <div class="bg-base-100 flex w-[28rem] flex-col gap-4 rounded-xl p-8 shadow-md">
           <h2
             class="mb-2 text-2xl font-semibold"
-            data-tina-field={tinaField(grupo, 'titulo') || undefined}
+            data-tina-field={tinaField(grupo.titulo, lang) || undefined}
           >
-            {grupo.titulo}
+            {grupo.titulo[lang]}
           </h2>
           <p
             class="paragrafo text-sm"
-            data-tina-field={tinaField(grupo, 'descricao') || undefined}
+            data-tina-field={tinaField(grupo.descricao, lang) || undefined}
           >
-            {grupo.descricao}
+            {grupo.descricao[lang]}
           </p>
 
           <ul class="mt-4 space-y-3">
@@ -70,9 +73,9 @@ function buildUrl(url?: string) {
               <li>
                 <div
                   class="font-semibold"
-                  data-tina-field={tinaField(arquivo, 'nome') || undefined}
+                  data-tina-field={tinaField(arquivo.nome, lang) || undefined}
                 >
-                  {arquivo.nome}
+                  {arquivo.nome[lang]}
                 </div>
                 <div class="mt-1 flex flex-wrap gap-2">
                   {arquivo.formatos.map((formato: DocumentoFormato) => (

@@ -1,32 +1,34 @@
 ---
 import type { SupportedLang } from '../types/lang';
 import { tinaField } from '@tinacms/astro/tina-field';
+import { normalizeLang, type Localized } from '../lib/tina/pages';
 
 type CafeMaterial = {
   tipo: string;
-  url: string;
+  url: Localized;
 };
 
 type CafeEpisodio = {
   id?: string;
   numero?: number;
-  titulo: string;
-  descricao?: string;
+  titulo: Localized;
+  descricao?: Localized;
   materiais?: CafeMaterial[];
 };
 
 type CafeData = {
-  titulo: string;
-  descricao: string;
-  episodioLabel?: string;
-  materiais?: Record<string, string>;
+  titulo: Localized;
+  descricao: Localized;
+  episodioLabel?: Localized;
+  materiais?: { transcricao?: Localized; artigo?: Localized };
   episodios: CafeEpisodio[];
 };
 
-const { cafe, lang } = Astro.props as { cafe: CafeData; lang?: SupportedLang };
+const { cafe, lang: langProp } = Astro.props as { cafe: CafeData; lang?: SupportedLang };
+const lang = normalizeLang(langProp ?? 'pt');
 
 const rotuloMaterial = cafe.materiais ?? {};
-const rotuloEpisodio = cafe.episodioLabel ?? 'Episódio';
+const rotuloEpisodio = cafe.episodioLabel?.[lang] ?? 'Episódio';
 
 // Do mais recente para o mais antigo.
 const episodios = [...(cafe.episodios ?? [])].sort((a, b) => (b.numero ?? 0) - (a.numero ?? 0));
@@ -42,16 +44,16 @@ function buildUrl(url: string) {
   <header class="mb-12 md:mb-16">
     <h1
       class="titulo text-primary mb-4"
-      data-tina-field={tinaField(cafe, 'titulo') || undefined}
+      data-tina-field={tinaField(cafe.titulo, lang) || undefined}
     >
-      {cafe.titulo}
+      {cafe.titulo[lang]}
     </h1>
     <div class="bg-primary mb-6 h-1.5 w-20"></div>
     <p
       class="subtitulo max-w-2xl"
-      data-tina-field={tinaField(cafe, 'descricao') || undefined}
+      data-tina-field={tinaField(cafe.descricao, lang) || undefined}
     >
-      {cafe.descricao}
+      {cafe.descricao[lang]}
     </p>
   </header>
 
@@ -75,17 +77,17 @@ function buildUrl(url: string) {
             <div class="min-w-0 flex-1">
               <h2
                 class="text-base-content mb-3 text-xl leading-snug font-bold md:text-2xl"
-                data-tina-field={tinaField(episodio, 'titulo') || undefined}
+                data-tina-field={tinaField(episodio.titulo, lang) || undefined}
               >
-                {episodio.titulo}
+                {episodio.titulo[lang]}
               </h2>
 
-              {episodio.descricao && (
+              {episodio.descricao?.[lang] && (
                 <p
                   class="text-base-content/75 mb-5 text-base leading-relaxed"
-                  data-tina-field={tinaField(episodio, 'descricao') || undefined}
+                  data-tina-field={tinaField(episodio.descricao, lang) || undefined}
                 >
-                  {episodio.descricao}
+                  {episodio.descricao[lang]}
                 </p>
               )}
 
@@ -93,13 +95,13 @@ function buildUrl(url: string) {
                 <div class="flex flex-wrap gap-2">
                   {episodio.materiais.map((material) => (
                     <a
-                      href={buildUrl(material.url)}
+                      href={buildUrl(material.url[lang])}
                       target="_blank"
                       rel="noopener noreferrer"
                       class="btn btn-sm btn-outline btn-primary normal-case"
                       data-tina-field={tinaField(material, 'tipo') || undefined}
                     >
-                      {rotuloMaterial[material.tipo] ?? material.tipo}
+                      {rotuloMaterial[material.tipo as 'transcricao' | 'artigo']?.[lang] ?? material.tipo}
                     </a>
                   ))}
                 </div>

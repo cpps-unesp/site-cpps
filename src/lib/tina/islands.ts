@@ -67,8 +67,9 @@ export const islands: IslandRegistry = {
     fetch: (_request, params) => getSobre(langOf(params)),
     component: SobreBody,
     wrapper: { tag: 'div', className: 'contents' },
-    propsFromData: (data) => ({
+    propsFromData: (data, params) => ({
       data,
+      lang: langOf(params),
     }),
   },
   equipe: {
@@ -121,56 +122,63 @@ export const islands: IslandRegistry = {
     fetch: (_request, params) => getInicPesquisa(langOf(params)),
     component: ProjetosPesquisaHeader,
     wrapper: { tag: 'div', className: 'contents' },
-    propsFromData: (data) => ({
+    propsFromData: (data, params) => ({
       data,
+      lang: langOf(params),
     }),
   },
   material: {
     fetch: (_request, params) => getInicMaterial(langOf(params)),
     component: IniciativasMaterialApoioSection,
     wrapper: { tag: 'div', className: 'contents' },
-    propsFromData: (data) => ({
+    propsFromData: (data, params) => ({
       data,
+      lang: langOf(params),
     }),
   },
   oficinas: {
     fetch: (_request, params) => getInicOficinas(langOf(params)),
     component: IniciativasOficinasSection,
     wrapper: { tag: 'div', className: 'contents' },
-    propsFromData: (data) => ({
+    propsFromData: (data, params) => ({
       data,
+      lang: langOf(params),
     }),
   },
   projetos: {
     fetch: (_request, params) => getInicProjetos(langOf(params)),
     component: IniciativasProjetosSection,
     wrapper: { tag: 'div', className: 'contents' },
-    propsFromData: (data) => ({
+    propsFromData: (data, params) => ({
       data,
+      lang: langOf(params),
     }),
   },
   dados: {
     fetch: (_request, params) => getInicDados(langOf(params)),
     component: IniciativasProjetosDeDadosSection,
     wrapper: { tag: 'div', className: 'contents' },
-    propsFromData: (data) => ({
+    propsFromData: (data, params) => ({
       data,
+      lang: langOf(params),
     }),
   },
   parcerias: {
     fetch: (_request, params) => getInicParcerias(langOf(params)),
     component: IniciativasParceiriasSection,
     wrapper: { tag: 'div', className: 'contents' },
-    propsFromData: (data) => ({
+    propsFromData: (data, params) => ({
       data,
+      lang: langOf(params),
     }),
   },
   solucoes: {
     fetch: (_request, params) => getInicSolucoes(langOf(params)),
     component: IniciativasSolucoesTecnologicasSection,
     wrapper: { tag: 'div', className: 'contents' },
-    propsFromData: (data) => ({
+    propsFromData: (data, params) => ({
       data,
+      lang: langOf(params),
     }),
   },
 };

@@ -2,6 +2,7 @@
 import { ordenarPorPrioridadeOuNome } from '../utils/ordenar';
 import EquipeTabs from '../components/EquipeTabs.astro';
 import { tinaField } from '@tinacms/astro/tina-field';
+import { normalizeLang, type Localized } from '../lib/tina/pages';
 
 interface Membro {
   nome: string;
@@ -9,17 +10,17 @@ interface Membro {
   prioridade?: number | string;
   slug?: string;
   foto?: string;
-  cargo?: string;
-  descricao?: string;
-  contribuicao?: string;
+  cargo?: Localized;
+  descricao?: Localized;
+  contribuicao?: Localized;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   redes?: any[];
   [key: string]: unknown;
 }
 
 type EquipeData = {
-  title: string;
-  intro?: string[];
+  title: Localized;
+  intro?: Localized[];
   categorias?: Record<string, Membro[]>;
 }
 
@@ -32,7 +33,7 @@ interface Props {
 }
 
 const { equipe, texts } = Astro.props;
-const lang = Astro.props.lang ?? Astro.params.lang ?? 'pt';
+const lang = normalizeLang(Astro.props.lang ?? Astro.params.lang ?? 'pt');
 
 // Organiza os membros ativos por categoria
 const ativosPorCategoria = Object.entries((equipe.categorias as Record<string, Membro[]>) ?? {}).map(
@@ -56,15 +57,15 @@ const inativosOrdenados = ordenarPorPrioridadeOuNome(inativosTodos, 'prioridade'
 ---
 
 <section class="mx-auto mt-16 max-w-screen-xl px-4 md:px-8">
-  <h1 class="titulo text-primary mb-8 text-center" data-tina-field={tinaField(equipe, 'title') || undefined}>{equipe.title}</h1>
+  <h1 class="titulo text-primary mb-8 text-center" data-tina-field={tinaField(equipe.title, lang) || undefined}>{equipe.title[lang]}</h1>
 
   {
     equipe.intro && equipe.intro.length > 0 && (
       <div class="text-base-content mx-auto mb-10 max-w-3xl space-y-4 text-center">
-        {equipe.intro.map((paragrafo: string, introIdx: number) => (
-          <p class="paragrafo [&>a]:text-primary hover:[&>a]:text-secondary text-[clamp(0.95rem,1vw+0.2rem,1.125rem)] leading-relaxed transition [&>a]:underline" data-tina-field={tinaField(equipe, 'intro', introIdx) || undefined}>
+        {equipe.intro.map((paragrafo: Localized) => (
+          <p class="paragrafo [&>a]:text-primary hover:[&>a]:text-secondary text-[clamp(0.95rem,1vw+0.2rem,1.125rem)] leading-relaxed transition [&>a]:underline" data-tina-field={tinaField(paragrafo, lang) || undefined}>
             {/* eslint-disable-next-line astro/no-set-html-directive */}
-            <Fragment set:html={paragrafo} />
+            <Fragment set:html={paragrafo[lang]} />
           </p>
         ))}
       </div>

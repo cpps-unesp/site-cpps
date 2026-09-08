@@ -1,0 +1,588 @@
+{
+  "titulo": {
+    "pt": "Projetos de Pesquisa",
+    "en": "Research Projects",
+    "es": "Proyectos de Investigación"
+  },
+  "descricao": {
+    "pt": "Projetos desenvolvidos por docentes e associados ao CPPS, com apoio de agências de fomento.",
+    "en": "Projects developed by professors and associates of CPPS, with support from funding agencies.",
+    "es": "Proyectos desarrollados por docentes y asociados al CPPS, con apoyo de agencias de fomento."
+  },
+  "ordenarPor": {
+    "pt": "Ordenar por",
+    "en": "Sort by",
+    "es": "Ordenar por"
+  },
+  "porTitulo": {
+    "pt": "Título",
+    "en": "Title",
+    "es": "Título"
+  },
+  "porDocente": {
+    "pt": "Docente",
+    "en": "Professor",
+    "es": "Docente"
+  },
+  "porPeriodo": {
+    "pt": "Período",
+    "en": "Period",
+    "es": "Período"
+  },
+  "projetos": [
+    {
+      "id": "critica-pobreza-filosofia-social",
+      "titulo": {
+        "pt": "Crítica da pobreza como objeto da filosofia social",
+        "en": "Crítica da pobreza como objeto da filosofia social",
+        "es": "Crítica da pobreza como objeto da filosofia social"
+      },
+      "docente": "Hélio Alexandre da Silva",
+      "periodo": "2022-2024",
+      "agencia": "FAPESP",
+      "processo": "2022/02922-1",
+      "valor": "R$ 174.353,54 + Quota de Bolsa Orçamentária: Mestrado: 02; Iniciação Científica: 08",
+      "associados": [
+        "Alessandro Pinzani (UFSC)",
+        "Leonardo Jorge da Hora Pereira (UFBA)"
+      ],
+      "mostrar": [],
+      "departamento": {
+        "pt": "Departamento de Educação, Ciências Sociais e Políticas Públicas",
+        "en": "Department of Education, Social Sciences and Public Policies",
+        "es": "Departamento de Educación, Ciencias Sociales y Políticas Públicas"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
+        "en": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)",
+        "es": "Programas Especiais / PNGP — Programa Nova Geração de Pesquisadores / PI — Auxílio à Pesquisa — Projeto Inicial — Chamada de Propostas (2022)"
+      },
+      "resumo": {
+        "pt": "O projeto investiga a pobreza como objeto da filosofia social, questionando como essa experiência negativa e multidimensional pode contribuir para a crítica social. A pesquisa se organiza em quatro etapas: análise da filosofia social, estudo de teorias da pobreza, investigação de abordagens das ciências sociais e, por fim, uma síntese filosófica para responder à questão central.",
+        "en": "The project investigates poverty as an object of social philosophy, questioning how this negative and multidimensional experience can contribute to social critique. The research is organized into four stages: analysis of social philosophy, study of poverty theories, investigation of social sciences approaches, and finally, a philosophical synthesis to answer the central question.",
+        "es": "El proyecto investiga la pobreza como objeto de la filosofía social, cuestionando cómo esta experiencia negativa y multidimensional puede contribuir a la crítica social. La investigación se organiza en cuatro etapas: análisis de la filosofía social, estudio de teorías de la pobreza, investigación de enfoques de las ciencias sociales y, finalmente, una síntesis filosófica para responder a la pregunta central."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "crise-democracia-arranjos-juridicos",
+      "titulo": {
+        "pt": "Crise da democracia e arranjos jurídico-institucionais: uma análise a partir das relações entre a política e o direito",
+        "en": "Crise da democracia e arranjos jurídico-institucionais: uma análise a partir das relações entre a política e o direito",
+        "es": "Crise da democracia e arranjos jurídico-institucionais: uma análise a partir das relações entre a política e o direito"
+      },
+      "docente": "Murilo Gaspardo",
+      "periodo": "2020-2024",
+      "agencia": "FAPESP",
+      "processo": "2020/03785-2",
+      "valor": "R$ 73.418,08 + Quota de Bolsa Orçamentária: Bolsa de Treinamento Técnico TT-1 — 04",
+      "associados": [
+        "Maria Paula Dallari Bucci (FDUSP/USP)",
+        "Carolina Gabas Stuchi (CECS/UFABC)",
+        "Daniel Campos de Carvalho Campus (CO/UNIFESP)",
+        "Ester Gammardella Rizzi (EACH/USP)",
+        "José Duarte Neto (FCHS/UNESP)",
+        "Rubens Beçak (FDRP/USP)",
+        "Vanessa Corsetti Gonçalves Teixeira (FCHS/UNESP)",
+        "Vivian Grace Fernândez-Dávila Urquidi (EACH/USP)"
+      ],
+      "mostrar": [],
+      "departamento": {
+        "pt": "Departamento de Direito Público",
+        "en": "Department of Public Law",
+        "es": "Departamento de Derecho Público"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "Auxílio à Pesquisa — Regular",
+        "en": "Auxílio à Pesquisa — Regular",
+        "es": "Auxílio à Pesquisa — Regular"
+      },
+      "resumo": {
+        "pt": "Investiga como os arranjos jurídico-institucionais brasileiros, em correlação com fatores políticos e socioeconômicos, explicam a crise da democracia no país. Os objetivos incluem mapear a produção bibliográfica sobre o tema, analisar criticamente os arranjos jurídicos nacionais e compará-los com os de outros países (Chile, EUA, Reino Unido) para formular hipóteses sobre as especificidades da crise brasileira.",
+        "en": "Investigates how Brazilian legal-institutional arrangements, in correlation with political and socioeconomic factors, explain the country's democratic crisis. The objectives include mapping the bibliographic production on the subject, critically analyzing national legal arrangements, and comparing them with those of other countries (Chile, USA, UK) to formulate hypotheses about the specificities of the Brazilian crisis.",
+        "es": "Investiga cómo los arreglos jurídico-institucionales brasileños, en correlación con factores políticos y socioeconómicos, explican la crisis de la democracia en el país. Los objetivos incluyen mapear la producción bibliográfica sobre el tema, analizar críticamente los arreglos jurídicos nacionales y compararlos con los de otros países (Chile, EE. UU., Reino Unido) para formular hipótesis sobre las especificidades de la crisis brasileña."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "crises-democracia-brasileira-pos-2013",
+      "titulo": {
+        "pt": "Crises da democracia brasileira pós-2013: mapeamento conceitual e empírico a partir das conexões entre Direito e Política",
+        "en": "Crises da democracia brasileira pós-2013: mapeamento conceitual e empírico a partir das conexões entre Direito e Política",
+        "es": "Crises da democracia brasileira pós-2013: mapeamento conceitual e empírico a partir das conexões entre Direito e Política"
+      },
+      "docente": "Murilo Gaspardo",
+      "periodo": "2021-2023",
+      "agencia": "CNPq",
+      "processo": "404237/2021-5",
+      "valor": "R$ 34.600,00 incluída 01 Quota de Bolsa de Longa Duração IC — 24 meses",
+      "associados": [],
+      "mostrar": [],
+      "departamento": {
+        "pt": "Departamento de Direito Público",
+        "en": "Department of Public Law",
+        "es": "Departamento de Derecho Público"
+      },
+      "status": {
+        "pt": "Concluído",
+        "en": "Completed",
+        "es": "Finalizado"
+      },
+      "natureza": {
+        "pt": "Chamada CNPq/MCTWFNDCT No 18/2021 — Universal — Faixa A — Grupos Emergentes",
+        "en": "Chamada CNPq/MCTWFNDCT No 18/2021 — Universal — Faixa A — Grupos Emergentes",
+        "es": "Chamada CNPq/MCTWFNDCT No 18/2021 — Universal — Faixa A — Grupos Emergentes"
+      },
+      "resumo": {
+        "pt": "Analisa os limites e a adequação do conceito de 'crise' para descrever o regime político brasileiro desde 2013. A pesquisa busca organizar o debate, mapear o uso do conceito na literatura jurídica e política, e confrontar a análise teórica com um estudo das respostas institucionais do Congresso Nacional à suposta crise.",
+        "en": "Analyzes the limits and adequacy of the concept of 'crisis' to describe the Brazilian political regime since 2013. The research seeks to organize the debate, map the use of the concept in legal and political literature, and confront the theoretical analysis with a study of the institutional responses of the National Congress to the supposed crisis.",
+        "es": "Analiza los límites y la adecuación del concepto de 'crisis' para describir el régimen político brasileño desde 2013. La investigación busca organizar el debate, mapear el uso del concepto en la literatura jurídica y política, y confrontar el análisis teórico con un estudio de las respuestas institucionales del Congreso Nacional a la supuesta crisis."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "em-costas-negras-nucleo-pesquisa",
+      "titulo": {
+        "pt": "Em costas negras: núcleo de pesquisa em história e cultura africana e afro-brasileira da UNESP",
+        "en": "Em costas negras: núcleo de pesquisa em história e cultura africana e afro-brasileira da UNESP",
+        "es": "Em costas negras: núcleo de pesquisa em história e cultura africana e afro-brasileira da UNESP"
+      },
+      "docente": "Ricardo Alexandre Ferreira",
+      "periodo": "2023-2025",
+      "agencia": "CNPq",
+      "processo": "420440/2023-2",
+      "valor": "R$ 20.000,00",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "agencia",
+        "processo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de História",
+        "en": "Department of History",
+        "es": "Departamento de Historia"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "Chamada CNPg/MCTI No 10/2023 — Chamada Universal — Faixa A — Grupos Emergentes",
+        "en": "Chamada CNPg/MCTI No 10/2023 — Chamada Universal — Faixa A — Grupos Emergentes",
+        "es": "Chamada CNPg/MCTI No 10/2023 — Chamada Universal — Faixa A — Grupos Emergentes"
+      },
+      "resumo": {
+        "pt": "Visa criar um centro de pesquisa em história e cultura africana e afro-brasileira no nordeste paulista. O objetivo principal é organizar o acervo bibliográfico e documental doado pelo historiador Manolo Garcia Florentino, envolvendo a higienização, catalogação e acondicionamento de mais de 2.000 volumes para torná-los acessíveis à pesquisa.",
+        "en": "Aims to create a research center on African and Afro-Brazilian history and culture in the northeast of São Paulo state. The main objective is to organize the bibliographic and documentary collection donated by historian Manolo Garcia Florentino, involving the cleaning, cataloging, and storage of over 2,000 volumes to make them accessible for research.",
+        "es": "Tiene como objetivo crear un centro de investigación en historia y cultura africana y afrobrasileña en el noreste paulista. El objetivo principal es organizar el acervo bibliográfico y documental donado por el historiador Manolo Garcia Florentino, lo que implica la higienización, catalogación y acondicionamiento de más de 2.000 volúmenes para hacerlos accesibles a la investigación."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "politica-outros-meios-mobilizacao-juridica",
+      "titulo": {
+        "pt": "A política por outros meios (?): a mobilização jurídica como estratégia para a conquista e efetivação de direitos no Brasil e na América Latina",
+        "en": "A política por outros meios (?): a mobilização jurídica como estratégia para a conquista e efetivação de direitos no Brasil e na América Latina",
+        "es": "A política por outros meios (?): a mobilização jurídica como estratégia para a conquista e efetivação de direitos no Brasil e na América Latina"
+      },
+      "docente": "Agnaldo de Sousa Barbosa",
+      "periodo": "2023-2025",
+      "agencia": "",
+      "processo": "",
+      "valor": "",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de Educação, Ciências Sociais e Políticas Públicas",
+        "en": "Department of Education, Social Sciences and Public Policies",
+        "es": "Departamento de Educación, Ciencias Sociales y Políticas Públicas"
+      },
+      "status": {
+        "pt": "Concluído",
+        "en": "Completed",
+        "es": "Finalizado"
+      },
+      "natureza": {
+        "pt": ".",
+        "en": ".",
+        "es": "."
+      },
+      "resumo": {
+        "pt": "Investiga a mobilização do direito como estratégia de luta política no Brasil e na América Latina nas últimas três décadas. O projeto busca compreender por que os tribunais se tornaram um caminho estratégico, a natureza dos conflitos levados à justiça, os enquadramentos legais utilizados e os efeitos de mobilização e contramobilização gerados.",
+        "en": "Investigates the mobilization of law as a strategy for political struggle in Brazil and Latin America over the last three decades. The project seeks to understand why courts have become a strategic path, the nature of conflicts brought to justice, the legal frameworks used, and the effects of mobilization and counter-mobilization generated.",
+        "es": "Investiga la movilización del derecho como estrategia de lucha política en Brasil y América Latina en las últimas tres décadas. El proyecto busca comprender por qué los tribunales se han convertido en un camino estratégico, la naturaleza de los conflictos llevados a la justicia, los marcos legales utilizados y los efectos de movilización y contramovilización generados."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "feminist-judgments-projects",
+      "titulo": {
+        "pt": "Feminist Judgments Projects (Projetos de Julgamentos Feministas",
+        "en": "Feminist Judgments Projects (Projetos de Julgamentos Feministas",
+        "es": "Feminist Judgments Projects (Projetos de Julgamentos Feministas"
+      },
+      "docente": "Ana Gabriela Mendes Braga",
+      "periodo": "2021-2022",
+      "agencia": "",
+      "processo": "",
+      "valor": "",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de Direito Público",
+        "en": "Department of Public Law",
+        "es": "Departamento de Derecho Público"
+      },
+      "status": {
+        "pt": "Concluído",
+        "en": "Completed",
+        "es": "Finalizado"
+      },
+      "natureza": {
+        "pt": "",
+        "en": "",
+        "es": ""
+      },
+      "resumo": {
+        "pt": "Inspirado em projetos internacionais, o projeto brasileiro 'Reescrevendo Decisões Judiciais em Perspectivas Feministas' reúne uma rede de mais de 60 acadêmicas e juristas para reescrever decisões judiciais significativas sob a ótica de metodologias feministas e antirracistas. O objetivo é fortalecer a crítica jurídica feminista e analisar seu impacto potencial nas decisões judiciais.",
+        "en": "Inspired by international projects, the Brazilian project 'Rewriting Judicial Decisions from Feminist Perspectives' brings together a network of over 60 academics and jurists to rewrite significant judicial decisions from the perspective of feminist and anti-racist methodologies. The goal is to strengthen feminist legal critique and analyze its potential impact on judicial decisions.",
+        "es": "Inspirado en proyectos internacionales, el proyecto brasileño 'Reescribiendo Decisiones Judiciales en Perspectivas Feministas' reúne una red de más de 60 académicas y juristas para reescribir decisiones judiciales significativas bajo la óptica de metodologías feministas y antirracistas. El objetivo es fortalecer la crítica jurídica feminista y analizar su impacto potencial en las decisiones judiciales."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "crise-democratica-sistema-presidencialista",
+      "titulo": {
+        "pt": "Crise Democrática e Sistema de Governo Presidencialista: estudo dos arranjos e da dinâmica entre poderes para uma reengenharia constitucional",
+        "en": "Crise Democrática e Sistema de Governo Presidencialista: estudo dos arranjos e da dinâmica entre poderes para uma reengenharia constitucional",
+        "es": "Crise Democrática e Sistema de Governo Presidencialista: estudo dos arranjos e da dinâmica entre poderes para uma reengenharia constitucional"
+      },
+      "docente": "José Duarte Neto",
+      "periodo": "2020 - Atual",
+      "agencia": "",
+      "processo": "",
+      "valor": "",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de Direito Público",
+        "en": "Department of Public Law",
+        "es": "Departamento de Derecho Público"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "",
+        "en": "",
+        "es": ""
+      },
+      "resumo": {
+        "pt": "Busca compreender a crise democrática global a partir do Direito Constitucional, mapeando o debate e sistematizando a produção sobre o tema. O projeto investiga o impacto do populismo no presidencialismo brasileiro e na dinâmica entre os poderes, questionando sobre a possibilidade de transformações no sistema de governo, como a adoção do semipresidencialismo.",
+        "en": "Seeks to understand the global democratic crisis from the perspective of Constitutional Law, mapping the debate and systematizing the production on the topic. The project investigates the impact of populism on Brazilian presidentialism and the dynamics between the powers, questioning the possibility of transformations in the system of government, such as the adoption of semi-presidentialism.",
+        "es": "Busca comprender la crisis democrática global desde el Derecho Constitucional, mapeando el debate y sistematizando la producción sobre el tema. El proyecto investiga el impacto del populismo en el presidencialismo brasileño y en la dinámica entre los poderes, cuestionando la posibilidad de transformaciones en el sistema de gobierno, como la adopción del semipresidencialismo."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "historia-primeira-metade-seculo-xx",
+      "titulo": {
+        "pt": "História da primeira metade do século XX: a construção de outros sentidos para o passado da nação",
+        "en": "História da primeira metade do século XX: a construção de outros sentidos para o passado da nação",
+        "es": "História da primeira metade do século XX: a construção de outros sentidos para o passado da nação"
+      },
+      "docente": "Karina Anhezini de Araújo",
+      "periodo": "",
+      "agencia": "",
+      "processo": "",
+      "valor": "",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de História",
+        "en": "Department of History",
+        "es": "Departamento de Historia"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "",
+        "en": "",
+        "es": ""
+      },
+      "resumo": {
+        "pt": "Problematiza como a história do Brasil foi, em grande parte, construída como uma história da expansão paulista. O projeto analisa a 'bandeirologia' na primeira metade do século XX, investigando como se formulou um saber que definiu São Paulo e o 'paulista' como centrais, construindo uma retórica sobre as habilidades especiais deste povo e território.",
+        "en": "Problematizes how the history of Brazil has largely been constructed as a history of São Paulo's expansion. The project analyzes 'bandeirologia' in the first half of the 20th century, investigating how a body of knowledge was formulated that defined São Paulo and the 'paulista' as central, constructing a rhetoric about the special abilities of this people and territory.",
+        "es": "Cuestiona cómo la historia de Brasil ha sido, en gran parte, construida como una historia de la expansión paulista. El proyecto analiza la 'bandeirologia' en la primera mitad del siglo XX, investigando cómo se formuló un saber que definió a São Paulo y al 'paulista' como centrales, construyendo una retórica sobre las habilidades especiales de este pueblo y territorio."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "emu-equipamentos-humanidades-digitais",
+      "titulo": {
+        "pt": "EMU: Aquisição de equipamentos com redundância, bom desempenho (CPU e GPU) e armazenamento escalável para as Humanidades Digitais",
+        "en": "EMU: Aquisição de equipamentos com redundância, bom desempenho (CPU e GPU) e armazenamento escalável para as Humanidades Digitais",
+        "es": "EMU: Aquisição de equipamentos com redundância, bom desempenho (CPU e GPU) e armazenamento escalável para as Humanidades Digitais"
+      },
+      "docente": "Marcelo Passini Mariano",
+      "periodo": "09/2024 - 08/2027",
+      "agencia": "FAPESP",
+      "processo": "24/03051-0",
+      "valor": "676.415,98",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "agencia",
+        "processo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de Relações Internacionais",
+        "en": "Department of International Relations",
+        "es": "Departamento de Relaciones Internacionales"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "Pesquisa",
+        "en": "Pesquisa",
+        "es": "Pesquisa"
+      },
+      "resumo": {
+        "pt": "O objetivo deste projeto é viabilizar um investimento na infraestrutura computacional do Instituto de Política Pública e Relações Internacionais (IPPRI/UNESP). O projeto propõe a aquisição de equipamentos com redundância, com alto desempenho (CPU e GPU) e capacidade de armazenamento escaláveis. Com esses recursos, será possível ampliar e abrir novos horizontes para coletar, processar, analisar e visualizar grandes volumes de dados. Além disso, o projeto busca promover a colaboração e o intercâmbio de conhecimento entre pesquisadores, ampliando o acesso e a disseminação das humanidades digitais não apenas no Estado de São Paulo, mas também em outras regiões. Em nosso comitê de usuários, além de representantes paulistas (INCT-INEU, UNESP, UNICAMP, UNIFESP), temos representantes da Universidade de Brasília (UnB) e da Universidade Federal de Uberlândia (UFU). A fundamentação deste pedido de aquisição de equipamento multiusuário é o avanço da infraestrutura de pesquisa nas humanidades, propiciando maior capacidade de processamento em CPU e GPU, armazenamento em rede, serviços e ambientes de análise e visualização de grandes bases de dados, permitindo o desenvolvimento de pesquisas mais complexas e inovadoras. Com isso, será possível ampliar os horizontes da área em um contexto em que as humanidades enfrentam um desafio crescente: o volume e a complexidade dos dados disponíveis. Dados textuais, audiovisuais, e de redes sociais se proliferam rapidamente, mas são difíceis de serem processados, analisados e interpretados pelo pesquisador sem o auxílio computacional adequado.",
+        "en": "The objective of this project is to enable an investment in the computational infrastructure of the Institute of Public Policy and International Relations (IPPRI/UNESP). The project proposes the acquisition of equipment with redundancy, high performance (CPU and GPU), and scalable storage capacity. With these resources, it will be possible to expand and open new horizons for collecting, processing, analyzing, and visualizing large volumes of data. Additionally, the project aims to promote collaboration and knowledge exchange among researchers, expanding access and dissemination of digital humanities not only in the State of São Paulo but also in other regions. Our user committee includes representatives from São Paulo (INCT-INEU, UNESP, UNICAMP, UNIFESP), as well as from the University of Brasília (UnB) and the Federal University of Uberlândia (UFU). The rationale for this multi-user equipment acquisition request is the advancement of research infrastructure in the humanities, providing greater processing capacity in CPU and GPU, network storage, services, and environments for analyzing and visualizing large databases, allowing for the development of more complex and innovative research. This will broaden the horizons of the field in a context where the humanities face a growing challenge: the volume and complexity of available data. Textual, audiovisual, and social media data proliferate rapidly but are difficult for researchers to process, analyze, and interpret without adequate computational assistance.",
+        "es": "El objetivo de este proyecto es viabilizar una inversión en la infraestructura computacional del Instituto de Política Pública y Relaciones Internacionales (IPPRI/UNESP). El proyecto propone la adquisición de equipos con redundancia, alto rendimiento (CPU y GPU) y capacidad de almacenamiento escalable. Con estos recursos, será posible ampliar y abrir nuevos horizontes para recolectar, procesar, analizar y visualizar grandes volúmenes de datos. Además, el proyecto busca promover la colaboración y el intercambio de conocimiento entre investigadores, ampliando el acceso y la difusión de las humanidades digitales no solo en el Estado de São Paulo, sino también en otras regiones. En nuestro comité de usuarios, además de representantes paulistas (INCT-INEU, UNESP, UNICAMP, UNIFESP), tenemos representantes de la Universidad de Brasilia (UnB) y de la Universidad Federal de Uberlândia (UFU). La fundamentación de esta solicitud de adquisición de equipo multiusuario es el avance de la infraestructura de investigación en las humanidades, proporcionando mayor capacidad de procesamiento en CPU y GPU, almacenamiento en red, servicios y entornos de análisis y visualización de grandes bases de datos, permitiendo el desarrollo de investigaciones más complejas e innovadoras. Con esto, será posible ampliar los horizontes del área en un contexto en que las humanidades enfrentan un desafío creciente: el volumen y la complejidad de los datos disponibles. Datos textuales, audiovisuales y de redes sociales proliferan rápidamente, pero son difíciles de procesar, analizar e interpretar por el investigador sin la ayuda computacional adecuada."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "monitoramento-politica-externa-brasileira",
+      "titulo": {
+        "pt": "Monitoramento e avaliação da política externa brasileira: uma proposta preliminar para uma rotina geral",
+        "en": "Monitoramento e avaliação da política externa brasileira: uma proposta preliminar para uma rotina geral",
+        "es": "Monitoramento e avaliação da política externa brasileira: uma proposta preliminar para uma rotina geral"
+      },
+      "docente": "Marcelo Passini Mariano",
+      "periodo": "2021 - 2025",
+      "agencia": "IPEA",
+      "processo": "",
+      "valor": "",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de Relações Internacionais",
+        "en": "Department of International Relations",
+        "es": "Departamento de Relaciones Internacionales"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "Pesquisa",
+        "en": "Pesquisa",
+        "es": "Pesquisa"
+      },
+      "resumo": {
+        "pt": "Objetiva desenvolver um conjunto de instrumentos de monitoramento e avaliação aplicáveis a qualquer estratégia da política externa brasileira. A intenção é criar uma rotina comum para comparar resultados de políticas passadas e avaliar as futuras, preenchendo uma lacuna na Análise de Política Externa e promovendo a prestação de contas à sociedade.",
+        "en": "Aims to develop a set of monitoring and evaluation tools applicable to any Brazilian foreign policy strategy. The intention is to create a common routine to compare results of past policies and evaluate future ones, filling a gap in Foreign Policy Analysis and promoting accountability to society.",
+        "es": "Busca desarrollar un conjunto de instrumentos de monitoreo y evaluación aplicables a cualquier estrategia de la política exterior brasileña. La intención es crear una rutina común para comparar resultados de políticas pasadas y evaluar las futuras, llenando un vacío en el Análisis de Política Exterior y promoviendo la rendición de cuentas a la sociedad."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "newpereubra-ue-brasil",
+      "titulo": {
+        "pt": "NEWPEREUBRA — New Perspectives on European Union-Brazil Relations: Challenges and Opportunities",
+        "en": "NEWPEREUBRA — New Perspectives on European Union-Brazil Relations: Challenges and Opportunities",
+        "es": "NEWPEREUBRA — New Perspectives on European Union-Brazil Relations: Challenges and Opportunities"
+      },
+      "docente": "Marília Carolina Barbosa de Souza Pimenta",
+      "periodo": "2022 - 2025",
+      "agencia": "",
+      "processo": "",
+      "valor": "",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de Relações Internacionais",
+        "en": "Department of International Relations",
+        "es": "Departamento de Relaciones Internacionales"
+      },
+      "status": {
+        "pt": "Concluído",
+        "en": "Completed",
+        "es": "Finalizado"
+      },
+      "natureza": {
+        "pt": "Pesquisa",
+        "en": "Pesquisa",
+        "es": "Pesquisa"
+      },
+      "resumo": {
+        "pt": "Este Módulo Jean Monnet visa ensinar a estudantes brasileiros sobre os conceitos, políticas e o papel global da União Europeia, focando na relação UE-Brasil. O projeto aborda cinco áreas: UE como ator global, democracia e direitos humanos, energia e desenvolvimento sustentável, comércio e investimentos, e segurança regional, combinando conhecimento teórico e aplicado.",
+        "en": "This Jean Monnet Module aims to teach Brazilian students about the concepts, policies, and global role of the European Union, focusing on the EU-Brazil relationship. The project addresses five areas: the EU as a global actor, democracy and human rights, energy and sustainable development, trade and investment, and regional security, combining theoretical and applied knowledge.",
+        "es": "Este Módulo Jean Monnet tiene como objetivo enseñar a estudiantes brasileños sobre los conceptos, políticas y el papel global de la Unión Europea, centrándose en la relación UE-Brasil. El proyecto aborda cinco áreas: la UE como actor global, democracia y derechos humanos, energía y desarrollo sostenible, comercio e inversiones, y seguridad regional, combinando conocimiento teórico y aplicado."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "consorcio-nordeste-desenvolvimento-sustentavel",
+      "titulo": {
+        "pt": "Consórcio do Nordeste: desenvolvimento sustentável ou insustentável?",
+        "en": "Consórcio do Nordeste: desenvolvimento sustentável ou insustentável?",
+        "es": "Consórcio do Nordeste: desenvolvimento sustentável ou insustentável?"
+      },
+      "docente": "Regina Cláudia Laisner",
+      "periodo": "2023 - Atual",
+      "agencia": "",
+      "processo": "",
+      "valor": "",
+      "associados": [],
+      "mostrar": [
+        "resumo",
+        "docente",
+        "periodo",
+        "departamento",
+        "status"
+      ],
+      "departamento": {
+        "pt": "Departamento de Relações Internacionais",
+        "en": "Department of International Relations",
+        "es": "Departamento de Relaciones Internacionales"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "Pesquisa",
+        "en": "Pesquisa",
+        "es": "Pesquisa"
+      },
+      "resumo": {
+        "pt": "Este projeto analisa o Consórcio do Nordeste com foco crítico no conceito de 'desenvolvimento sustentável' que orienta suas ações. A pesquisa busca identificar se a concepção adotada se alinha ao crescimento econômico tradicional ou a uma transição para uma sociedade ecologicamente justa, analisando os projetos do Consórcio a partir de dados e entrevistas.",
+        "en": "This project analyzes the Northeast Consortium with a critical focus on the concept of 'sustainable development' that guides its actions. The research seeks to identify whether the adopted conception aligns with traditional economic growth or a transition to an ecologically just society, analyzing the Consortium's projects based on data and interviews.",
+        "es": "Este proyecto analiza el Consorcio del Nordeste con un enfoque crítico en el concepto de 'desarrollo sostenible' que orienta sus acciones. La investigación busca identificar si la concepción adoptada se alinea con el crecimiento económico tradicional o con una transición hacia una sociedad ecológicamente justa, analizando los proyectos del Consorcio a partir de datos y entrevistas."
+      },
+      "apoioCentro": []
+    },
+    {
+      "id": "ruptura-metabolica-crise-capital",
+      "titulo": {
+        "pt": "",
+        "en": "",
+        "es": ""
+      },
+      "docente": "",
+      "periodo": "",
+      "agencia": "",
+      "processo": "",
+      "valor": "",
+      "associados": [],
+      "mostrar": [],
+      "departamento": {
+        "pt": "Departamento de Educação, Ciências Sociais e Políticas Públicas",
+        "en": "Education, Social Sciences and Public Policies",
+        "es": "Educación, Ciencias Sociales y Políticas Públicas"
+      },
+      "status": {
+        "pt": "Em andamento",
+        "en": "In progress",
+        "es": "En curso"
+      },
+      "natureza": {
+        "pt": "",
+        "en": "",
+        "es": ""
+      },
+      "resumo": {
+        "pt": "O projeto investiga a pobreza como objeto da filosofia social, partindo da pergunta: de que maneiras a pobreza, como experiência social negativa e multidimensional, pode contribuir para a crítica social? A pesquisa está organizada em quatro momentos: (1) análise da filosofia social, (2) estudo das teorias sobre pobreza, (3) investigação das abordagens das ciências sociais sobre grupos em situação de privação, (4) síntese filosófica dos resultados para responder à questão central.",
+        "en": "The project investigates poverty as an object of social philosophy, starting from the question: in what ways can poverty, as a negative and multidimensional social experience, contribute to social critique? The research is organized into four moments: (1) analysis of social philosophy, (2) study of poverty theories, (3) investigation of social sciences approaches to groups in deprivation, (4) philosophical synthesis of the results to answer the central question.",
+        "es": "El proyecto investiga la pobreza como objeto de la filosofía social, partiendo de la pregunta: ¿de qué maneras la pobreza, como experiencia social negativa y multidimensional, puede contribuir a la crítica social? La investigación se organiza en cuatro momentos: (1) análisis de la filosofía social, (2) estudio de teorías de la pobreza, (3) investigación de enfoques de las ciencias sociales sobre grupos en privación, (4) síntesis filosófica de los resultados para responder a la pregunta central."
+      },
+      "apoioCentro": [
+        {
+          "pt": "Indicação institucional do CPPS como centro associado",
+          "en": "Institutional endorsement of CPPS as an associated center",
+          "es": "Indicación institucional del CPPS como centro asociado"
+        },
+        {
+          "pt": "Divulgação em canais institucionais",
+          "en": "Dissemination through institutional channels",
+          "es": "Divulgación en canales institucionales"
+        },
+        {
+          "pt": "Organização de atividades de extensão e eventos vinculados ao projeto",
+          "en": "Organization of extension activities and events linked to the project",
+          "es": "Organización de actividades de extensión y eventos vinculados al proyecto"
+        }
+      ]
+    }
+  ]
+}

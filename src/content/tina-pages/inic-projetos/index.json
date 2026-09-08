@@ -1,0 +1,48 @@
+{
+  "titulo": {
+    "pt": "Projetos",
+    "en": "Projects",
+    "es": "Proyectos"
+  },
+  "descricao": {
+    "pt": "Conheça os projetos desenvolvidos pelo CPPS nas áreas de pesquisa e dados aplicados às ciências sociais e humanas.",
+    "en": "Conheça os projetos desenvolvidos pelo CPPS nas áreas de pesquisa e dados aplicados às ciências sociais e humanas.",
+    "es": "Conheça os projetos desenvolvidos pelo CPPS nas áreas de pesquisa e dados aplicados às ciências sociais e humanas."
+  },
+  "cards": [
+    {
+      "titulo": {
+        "pt": "Projetos de Pesquisa",
+        "en": "Projetos de Pesquisa",
+        "es": "Projetos de Pesquisa"
+      },
+      "descricao": {
+        "pt": "Projetos científicos em andamento ou concluídos, conduzidos por pesquisadores do CPPS em parceria com outras instituições.",
+        "en": "Projetos científicos em andamento ou concluídos, conduzidos por pesquisadores do CPPS em parceria com outras instituições.",
+        "es": "Projetos científicos em andamento ou concluídos, conduzidos por pesquisadores do CPPS em parceria com outras instituições."
+      },
+      "link": {
+        "pt": "/pt/iniciativas/projetos-de-pesquisa",
+        "en": "/en/iniciativas/projetos-de-pesquisa",
+        "es": "/es/iniciativas/projetos-de-pesquisa"
+      }
+    },
+    {
+      "titulo": {
+        "pt": "Projetos de Dados",
+        "en": "Projetos de Dados",
+        "es": "Projetos de Dados"
+      },
+      "descricao": {
+        "pt": "Iniciativas voltadas à estruturação, tratamento e disponibilização de dados sociais, políticos e econômicos.",
+        "en": "Iniciativas voltadas à estruturação, tratamento e disponibilização de dados sociais, políticos e econômicos.",
+        "es": "Iniciativas voltadas à estruturação, tratamento e disponibilização de dados sociais, políticos e econômicos."
+      },
+      "link": {
+        "pt": "/pt/iniciativas/projetos-de-dados",
+        "en": "/en/iniciativas/projetos-de-dados",
+        "es": "/es/iniciativas/projetos-de-dados"
+      }
+    }
+  ]
+}

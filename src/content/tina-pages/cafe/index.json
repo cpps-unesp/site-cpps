@@ -1,0 +1,237 @@
+{
+  "titulo": {
+    "pt": "Café com Ciência",
+    "en": "Coffee with Science",
+    "es": "Café con Ciencia"
+  },
+  "descricao": {
+    "pt": "O Café com Ciência é uma iniciativa voltada a debater temas da agenda de pesquisa dos pesquisadores do Centro de Pesquisa Política e Social",
+    "en": "Coffee with Science is an initiative aimed at discussing themes from the research agenda of the researchers at the Center for Political and Social Research.",
+    "es": "Café con Ciencia es una iniciativa orientada a debatir temas de la agenda de investigación de los investigadores del Centro de Investigación Política y Social."
+  },
+  "episodioLabel": {
+    "pt": "Episódio",
+    "en": "Episode",
+    "es": "Episodio"
+  },
+  "materiais": {
+    "transcricao": {
+      "pt": "Transcrição",
+      "en": "Transcript",
+      "es": "Transcripción"
+    },
+    "artigo": {
+      "pt": "Artigo relacionado",
+      "en": "Related article",
+      "es": "Artículo relacionado"
+    }
+  },
+  "episodios": [
+    {
+      "id": "ep-regiao-administrativa-franca",
+      "numero": 9,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "Região Administrativa de Franca: conectando saberes e políticas públicas",
+        "en": "The Franca Administrative Region: Connecting Knowledge and Public Policy",
+        "es": "Región Administrativa de Franca: conectando saberes y políticas públicas"
+      },
+      "descricao": {
+        "pt": "O encontro abordou os desafios e as potencialidades da Região Administrativa de Franca na articulação entre conhecimento acadêmico e políticas públicas. Exposição da Profa. Dra. Regina Cláudia Laisner.",
+        "en": "The meeting addressed the challenges and potential of the Franca Administrative Region in linking academic knowledge and public policy. Presented by Prof. Regina Cláudia Laisner.",
+        "es": "El encuentro abordó los desafíos y las potencialidades de la Región Administrativa de Franca en la articulación entre conocimiento académico y políticas públicas. Exposición de la Profa. Dra. Regina Cláudia Laisner."
+      },
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": {
+            "pt": "https://drive.google.com/file/d/1gpj_W2CxkzkFw9XF6_68W4eYu2HpZJ-i/view",
+            "en": "https://drive.google.com/file/d/1gpj_W2CxkzkFw9XF6_68W4eYu2HpZJ-i/view",
+            "es": "https://drive.google.com/file/d/1gpj_W2CxkzkFw9XF6_68W4eYu2HpZJ-i/view"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep6-acesso-a-justica",
+      "numero": 8,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "Acesso à Justiça Centrado nas Pessoas",
+        "en": "People-Centered Access to Justice",
+        "es": "Acceso a la Justicia Centrado en las Personas"
+      },
+      "descricao": {
+        "pt": "O encontro aborda o acesso à justiça sob uma perspectiva bottom-up e redistributiva, focando na superação de barreiras institucionais e sociais enfrentadas por grupos vulneráveis a partir da valorização de suas próprias narrativas e da mobilização do Direito.",
+        "en": "The meeting addresses access to justice from a bottom-up, redistributive perspective, focusing on overcoming the institutional and social barriers faced by vulnerable groups by valuing their own narratives and mobilizing the law.",
+        "es": "El encuentro aborda el acceso a la justicia desde una perspectiva bottom-up y redistributiva, con foco en la superación de las barreras institucionales y sociales que enfrentan los grupos vulnerables, a partir de la valorización de sus propias narrativas y de la movilización del Derecho."
+      },
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": {
+            "pt": "https://drive.google.com/file/d/1ZCPR57aatP07mqUEr4DscJnEB2-VObx0/view?usp=drive_link",
+            "en": "https://drive.google.com/file/d/1ZCPR57aatP07mqUEr4DscJnEB2-VObx0/view?usp=drive_link",
+            "es": "https://drive.google.com/file/d/1ZCPR57aatP07mqUEr4DscJnEB2-VObx0/view?usp=drive_link"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep-acesso-justica-mobilizacao",
+      "numero": 7,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "Acesso à justiça, mobilização do direito e vulnerabilidades",
+        "en": "Access to Justice, Legal Mobilization and Vulnerabilities",
+        "es": "Acceso a la justicia, movilización del derecho y vulnerabilidades"
+      },
+      "descricao": {
+        "pt": "O encontro debateu a relação entre o acesso ao Judiciário e a mobilização de direitos por grupos em situação de vulnerabilidade. Exposição da Profa. Dra. Thaís Amoroso Paschoal, com mediação do Prof. Dr. Agnaldo de Sousa Barbosa.",
+        "en": "The meeting discussed the relationship between access to the judiciary and the mobilization of rights by groups in situations of vulnerability. Presented by Prof. Thaís Amoroso Paschoal, moderated by Prof. Agnaldo de Sousa Barbosa.",
+        "es": "El encuentro debatió la relación entre el acceso al Poder Judicial y la movilización de derechos por parte de grupos en situación de vulnerabilidad. Exposición de la Profa. Dra. Thaís Amoroso Paschoal, con mediación del Prof. Dr. Agnaldo de Sousa Barbosa."
+      },
+      "materiais": []
+    },
+    {
+      "id": "ep-critica-pobreza",
+      "numero": 6,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "Crítica da pobreza como objeto da filosofia social",
+        "en": "Critique of Poverty as an Object of Social Philosophy",
+        "es": "Crítica de la pobreza como objeto de la filosofía social"
+      },
+      "descricao": {
+        "pt": "O encontro propôs uma reflexão filosófica sobre a pobreza, abordando-a como objeto central da filosofia social contemporânea. Exposição do Prof. Dr. Hélio Alexandre da Silva, com mediação do Prof. Dr. Marcelo Passini Mariano.",
+        "en": "The meeting proposed a philosophical reflection on poverty, approaching it as a central object of contemporary social philosophy. Presented by Prof. Hélio Alexandre da Silva, moderated by Prof. Marcelo Passini Mariano.",
+        "es": "El encuentro propuso una reflexión filosófica sobre la pobreza, abordándola como objeto central de la filosofía social contemporánea. Exposición del Prof. Dr. Hélio Alexandre da Silva, con mediación del Prof. Dr. Marcelo Passini Mariano."
+      },
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": {
+            "pt": "https://drive.google.com/file/d/1kDmjPkhPBLSSRCwZtD0SAI47KKP7K92k/view",
+            "en": "https://drive.google.com/file/d/1kDmjPkhPBLSSRCwZtD0SAI47KKP7K92k/view",
+            "es": "https://drive.google.com/file/d/1kDmjPkhPBLSSRCwZtD0SAI47KKP7K92k/view"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep5-autocratizacao-resiliencia",
+      "numero": 5,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "Autocratização e Resiliência Democrática no Brasil (2019-2023)",
+        "en": "Autocratization and Democratic Resilience in Brazil (2019-2023)",
+        "es": "Autocratización y Resiliencia Democrática en Brasil (2019-2023)"
+      },
+      "descricao": {
+        "pt": "O encontro analisou o processo de autocratização no Brasil durante o Governo Bolsonaro e a resposta das instituições para assegurar a resiliência democrática, combinando revisão da literatura de Ciência Política e Direito com estudo empírico dos arranjos jurídico-institucionais.",
+        "en": "The meeting examined the process of autocratization in Brazil under the Bolsonaro administration and the institutional response that safeguarded democratic resilience, combining a review of the Political Science and Law literature with an empirical study of legal and institutional arrangements.",
+        "es": "El encuentro analizó el proceso de autocratización en Brasil durante el Gobierno de Bolsonaro y la respuesta de las instituciones para asegurar la resiliencia democrática, combinando una revisión de la literatura de Ciencia Política y Derecho con un estudio empírico de los arreglos jurídico-institucionales."
+      },
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": {
+            "pt": "https://drive.google.com/file/d/1xKF1ssIfC50r0bI5zzQvr63ukUab8tIM/view?usp=drive_link",
+            "en": "https://drive.google.com/file/d/1xKF1ssIfC50r0bI5zzQvr63ukUab8tIM/view?usp=drive_link",
+            "es": "https://drive.google.com/file/d/1xKF1ssIfC50r0bI5zzQvr63ukUab8tIM/view?usp=drive_link"
+          }
+        },
+        {
+          "tipo": "artigo",
+          "url": {
+            "pt": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt",
+            "en": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt",
+            "es": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep4-brasil-governanca-ia",
+      "numero": 4,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "O Brasil e a Governança Global de Inteligência Artificial",
+        "en": "Brazil and the Global Governance of Artificial Intelligence",
+        "es": "Brasil y la Gobernanza Global de la Inteligencia Artificial"
+      },
+      "descricao": {
+        "pt": "A reunião abordou a complexidade da governança da inteligência artificial no cenário global, destacando os desafios e o posicionamento do Brasil como um grande consumidor e ator com histórico de influência regulatória, mas que enfrenta a difícil questão de como equilibrar dependência tecnológica, desenvolvimento e soberania em um campo de rápida evolução e concentração de poder.",
+        "en": "The meeting addressed the complexity of artificial intelligence governance on the global stage, highlighting the challenges and Brazil's position as a major consumer and actor with a history of regulatory influence, but which faces the difficult question of how to balance technological dependence, development, and sovereignty in a rapidly evolving field with a high concentration of power.",
+        "es": "La reunión abordó la complejidad de la gobernanza de la inteligencia artificial en el escenario global, destacando los desafíos y la posición de Brasil como un gran consumidor y actor con un historial de influencia regulatoria, pero que enfrenta la difícil cuestión de cómo equilibrar la dependencia tecnológica, el desarrollo y la soberanía en un campo de rápida evolución y concentración de poder."
+      },
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": {
+            "pt": "https://drive.google.com/file/d/1qas-xOLC4u71tJUIQRbz5_3QT-JvT4a9/view?usp=drive_link",
+            "en": "https://drive.google.com/file/d/1qas-xOLC4u71tJUIQRbz5_3QT-JvT4a9/view?usp=drive_link",
+            "es": "https://drive.google.com/file/d/1qas-xOLC4u71tJUIQRbz5_3QT-JvT4a9/view?usp=drive_link"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep2-cop30-transicao-energetica",
+      "numero": 3,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "A COP 30 e a Transição Energética Justa",
+        "en": "COP 30 and the Just Energy Transition",
+        "es": "La COP 30 y la Transición Energética Justa"
+      },
+      "descricao": {
+        "pt": "O encontro propôs uma análise crítica da COP e da transição energética, defendendo a necessidade de uma abordagem mais justa, inclusiva e decolonial, que enfrente as desigualdades históricas e estruturais em vez de apenas focar em soluções técnicas e mercantis.",
+        "en": "The meeting proposed a critical analysis of the COP and the energy transition, advocating for a more just, inclusive, and decolonial approach that confronts historical and structural inequalities instead of just focusing on technical and market-based solutions.",
+        "es": "El encuentro propuso un análisis crítico de la COP y de la transición energética, defendiendo la necesidad de un enfoque más justo, inclusivo y decolonial, que enfrente las desigualdades históricas y estructurales en lugar de centrarse únicamente en soluciones técnicas y de mercado."
+      },
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": {
+            "pt": "https://drive.google.com/file/d/1qEpkl6My5lC4vBY2iFsJjImi8qa__iDg/view?usp=drive_link",
+            "en": "https://drive.google.com/file/d/1qEpkl6My5lC4vBY2iFsJjImi8qa__iDg/view?usp=drive_link",
+            "es": "https://drive.google.com/file/d/1qEpkl6My5lC4vBY2iFsJjImi8qa__iDg/view?usp=drive_link"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ep3-articulacao-pesquisa",
+      "numero": 2,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "Discussão para articulação entre os professores sobre possibilidades de pesquisa",
+        "en": "Discussion for articulation among professors about research possibilities",
+        "es": "Discusión para la articulación entre profesores sobre posibilidades de investigación"
+      },
+      "descricao": {
+        "pt": "",
+        "en": "",
+        "es": ""
+      },
+      "materiais": []
+    },
+    {
+      "id": "ep1-novo-governo-trump",
+      "numero": 1,
+      "icone": "🎙️",
+      "titulo": {
+        "pt": "O novo Governo Trump e suas repercussões para o Brasil: geopolítica, democracia, economia e mudanças climáticas",
+        "en": "The new Trump Administration and its repercussions for Brazil: geopolitics, democracy, economy, and climate change",
+        "es": "El nuevo Gobierno de Trump y sus repercusiones para Brasil: geopolítica, democracia, economía y cambios climáticos"
+      },
+      "descricao": {
+        "pt": "",
+        "en": "",
+        "es": ""
+      },
+      "materiais": []
+    }
+  ]
+}
