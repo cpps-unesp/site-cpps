@@ -1,37 +1,63 @@
 ---
-const { texts } = Astro.props;
+import { tinaField } from '@tinacms/astro/tina-field';
+
+type Card = {
+  titulo: string;
+  descricao: string;
+  link: string;
+};
+
+interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+}
+
+const { data } = Astro.props;
+const cards: Card[] = data?.cards ?? [];
 ---
 
 <section class="mx-auto max-w-6xl space-y-12 px-4 py-16">
-  <h1 class="text-primary text-3xl font-bold">
-    {texts?.iniciativas?.projetos ?? 'Projetos'}
+  <h1
+    class="text-primary text-3xl font-bold"
+    data-tina-field={tinaField(data, 'titulo') || undefined}
+  >
+    {data?.titulo ?? 'Projetos'}
   </h1>
-  <p class="text-base-content">
-    Conheça os projetos desenvolvidos pelo CPPS nas áreas de pesquisa e dados aplicados às ciências
-    sociais e humanas.
+  <p
+    class="text-base-content"
+    data-tina-field={tinaField(data, 'descricao') || undefined}
+  >
+    {
+      data?.descricao ??
+        'Conheça os projetos desenvolvidos pelo CPPS nas áreas de pesquisa e dados aplicados às ciências sociais e humanas.'
+    }
   </p>
 
   <div class="grid gap-8 md:grid-cols-2">
-    <div
-      class="border-base-300 bg-base-100 rounded-xl border p-6 shadow-sm transition hover:shadow"
-    >
-      <h2 class="mb-2 text-xl font-semibold">Projetos de Pesquisa</h2>
-      <p class="text-base-content mb-4">
-        Projetos científicos em andamento ou concluídos, conduzidos por pesquisadores do CPPS em
-        parceria com outras instituições.
-      </p>
-      <a class="btn btn-sm btn-primary" href="/pt/iniciativas/projetos-de-pesquisa"> Ver mais </a>
-    </div>
-
-    <div
-      class="border-base-300 bg-base-100 rounded-xl border p-6 shadow-sm transition hover:shadow"
-    >
-      <h2 class="mb-2 text-xl font-semibold">Projetos de Dados</h2>
-      <p class="text-base-content mb-4">
-        Iniciativas voltadas à estruturação, tratamento e disponibilização de dados sociais,
-        políticos e econômicos.
-      </p>
-      <a class="btn btn-sm btn-primary" href="/pt/iniciativas/projetos-de-dados"> Ver mais </a>
-    </div>
+    {
+      cards.map((card) => (
+        <div class="border-base-300 bg-base-100 rounded-xl border p-6 shadow-sm transition hover:shadow">
+          <h2
+            class="mb-2 text-xl font-semibold"
+            data-tina-field={tinaField(card, 'titulo') || undefined}
+          >
+            {card.titulo}
+          </h2>
+          <p
+            class="text-base-content mb-4"
+            data-tina-field={tinaField(card, 'descricao') || undefined}
+          >
+            {card.descricao}
+          </p>
+          <a
+            class="btn btn-sm btn-primary"
+            href={card.link}
+            data-tina-field={tinaField(card, 'link') || undefined}
+          >
+            Ver mais
+          </a>
+        </div>
+      ))
+    }
   </div>
 </section>

@@ -1,12 +1,25 @@
 ---
-const { texts } = Astro.props;
+import { tinaField } from '@tinacms/astro/tina-field';
+
+interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+}
+
+const { data } = Astro.props;
 ---
 
 <section class="mx-auto max-w-4xl space-y-6 px-4 py-16">
-  <h1 class="text-primary text-3xl font-bold">
-    {texts?.iniciativas?.oficinas ?? 'Oficinas e Treinamentos'}
+  <h1
+    class="text-primary text-3xl font-bold"
+    data-tina-field={tinaField(data, 'titulo') || undefined}
+  >
+    {data?.titulo ?? 'Oficinas e Treinamentos'}
   </h1>
-  <p class="text-base-content">
-    Informações sobre oficinas, cursos e formações oferecidas pelo CPPS.
+  <p
+    class="text-base-content"
+    data-tina-field={tinaField(data, 'descricao') || undefined}
+  >
+    {data?.descricao ?? 'Informações sobre oficinas, cursos e formações oferecidas pelo CPPS.'}
   </p>
 </section>

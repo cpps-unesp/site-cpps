@@ -1,0 +1,20 @@
+---
+// Corpo editável da página Equipe: normaliza as chaves do Tina
+// (`coordenacao`) para as do JSON (`Coordenação`) e renderiza a seção.
+import EquipeSection from '../EquipeSection.astro';
+import { toEquipeData } from '../../lib/tina/pages';
+
+interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  texts?: any;
+  lang?: string;
+  membroSlugs?: string[];
+}
+
+const { data, texts, lang, membroSlugs } = Astro.props as Props;
+const equipe = toEquipeData(data);
+---
+
+<EquipeSection equipe={equipe} texts={texts} lang={lang} membroSlugs={membroSlugs} />

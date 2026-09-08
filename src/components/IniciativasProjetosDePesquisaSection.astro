@@ -1,7 +1,22 @@
 ---
-const { iniciativas, projetos = [] } = Astro.props;
+import { tinaField } from '@tinacms/astro/tina-field';
+import ProjetosPesquisaHeader from './ProjetosPesquisaHeader.astro';
 
-const projetosData = iniciativas?.projetosLista || projetos || [];
+interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+  hideHeader?: boolean;
+}
+
+const { data, hideHeader = false } = Astro.props;
+
+const projetosData = data?.projetos || [];
+const rotulos = {
+  ordenarPor: data?.ordenarPor ?? 'Ordenar por',
+  porTitulo: data?.porTitulo ?? 'Título',
+  porDocente: data?.porDocente ?? 'Docente',
+  porPeriodo: data?.porPeriodo ?? 'Período',
+};
 
 const url = new URL(Astro.request.url);
 const ordemValida = ['titulo', 'docente', 'periodo'];
@@ -11,26 +26,25 @@ const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : 'titulo';
 ---
 
 <section class="mx-auto max-w-5xl space-y-8 px-4 py-16">
-  <div class="mb-8 text-center">
-    <h1 class="text-primary mb-4 text-4xl font-bold">
-      {iniciativas?.projetosDePesquisa ?? 'Projetos de Pesquisa'}
-    </h1>
-    <p class="text-base-content mx-auto max-w-3xl text-lg">
-      {
-        iniciativas?.descricaoProjetosDePesquisa ??
-          'Projetos desenvolvidos por docentes e associados ao CPPS.'
-      }
-    </p>
-  </div>
+  {!hideHeader && <ProjetosPesquisaHeader data={data} />}
 
   <div class="bg-base-200 mb-4 flex flex-wrap items-center justify-start gap-4 rounded-lg p-4">
-    <span class="text-base-content font-semibold">
-      {iniciativas?.ordenarPor ?? 'Ordenar por'}:
+    <span
+      class="text-base-content font-semibold"
+      data-tina-field={tinaField(data, 'ordenarPor') || undefined}
+    >
+      {rotulos.ordenarPor}:
     </span>
     <div class="btn-group" id="ordenacao-botoes">
-      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('titulo')">Título</button>
-      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('docente')">Docente</button>
-      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('periodo')">Período</button>
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('titulo')">
+        {rotulos.porTitulo}
+      </button>
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('docente')">
+        {rotulos.porDocente}
+      </button>
+      <button class="btn btn-sm btn-outline" onclick="ordenarProjetos('periodo')">
+        {rotulos.porPeriodo}
+      </button>
     </div>
   </div>
 
@@ -107,7 +121,7 @@ const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : 'titulo';
   </div>
 </section>
 
-<script is:inline define:vars={{ projetosData, ordemInicial }}>
+<script is:inline define:vars={{ projetosData, ordemInicial, rotulos }}>
   const allProjects = projetosData || [];
   let currentSort = ordemInicial || 'titulo';
   let currentOrder = 'asc';
@@ -254,7 +268,11 @@ const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : 'titulo';
     document.querySelectorAll('#ordenacao-botoes button').forEach((btn) => {
       const criterio = btn.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
       const label =
-        criterio === 'titulo' ? 'Título' : criterio === 'docente' ? 'Docente' : 'Período';
+        criterio === 'titulo'
+          ? rotulos.porTitulo
+          : criterio === 'docente'
+            ? rotulos.porDocente
+            : rotulos.porPeriodo;
 
       if (criterio === criterioAtivo) {
         btn.className = 'btn btn-sm btn-primary';

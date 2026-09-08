@@ -1,5 +1,6 @@
 ---
 import type { SupportedLang } from '../types/lang';
+import { tinaField } from '@tinacms/astro/tina-field';
 
 type CafeMaterial = {
   tipo: string;
@@ -39,9 +40,19 @@ function buildUrl(url: string) {
 
 <section class="mx-auto max-w-5xl px-4 py-12 md:px-8 md:py-16">
   <header class="mb-12 md:mb-16">
-    <h1 class="titulo text-primary mb-4">{cafe.titulo}</h1>
+    <h1
+      class="titulo text-primary mb-4"
+      data-tina-field={tinaField(cafe, 'titulo') || undefined}
+    >
+      {cafe.titulo}
+    </h1>
     <div class="bg-primary mb-6 h-1.5 w-20"></div>
-    <p class="subtitulo max-w-2xl">{cafe.descricao}</p>
+    <p
+      class="subtitulo max-w-2xl"
+      data-tina-field={tinaField(cafe, 'descricao') || undefined}
+    >
+      {cafe.descricao}
+    </p>
   </header>
 
   <ol class="space-y-5 md:space-y-6">
@@ -53,18 +64,27 @@ function buildUrl(url: string) {
               <span class="text-base-content/50 text-xs font-bold tracking-widest uppercase">
                 {rotuloEpisodio}
               </span>
-              <span class="text-primary text-4xl leading-none font-black sm:text-6xl">
+              <span
+                class="text-primary text-4xl leading-none font-black sm:text-6xl"
+                data-tina-field={tinaField(episodio, 'numero') || undefined}
+              >
                 {episodio.numero}
               </span>
             </div>
 
             <div class="min-w-0 flex-1">
-              <h2 class="text-base-content mb-3 text-xl leading-snug font-bold md:text-2xl">
+              <h2
+                class="text-base-content mb-3 text-xl leading-snug font-bold md:text-2xl"
+                data-tina-field={tinaField(episodio, 'titulo') || undefined}
+              >
                 {episodio.titulo}
               </h2>
 
               {episodio.descricao && (
-                <p class="text-base-content/75 mb-5 text-base leading-relaxed">
+                <p
+                  class="text-base-content/75 mb-5 text-base leading-relaxed"
+                  data-tina-field={tinaField(episodio, 'descricao') || undefined}
+                >
                   {episodio.descricao}
                 </p>
               )}
@@ -77,6 +97,7 @@ function buildUrl(url: string) {
                       target="_blank"
                       rel="noopener noreferrer"
                       class="btn btn-sm btn-outline btn-primary normal-case"
+                      data-tina-field={tinaField(material, 'tipo') || undefined}
                     >
                       {rotuloMaterial[material.tipo] ?? material.tipo}
                     </a>

@@ -1,0 +1,112 @@
+{
+  "titulo": "Coffee with Science",
+  "descricao": "Coffee with Science is an initiative aimed at discussing themes from the research agenda of the researchers at the Center for Political and Social Research.",
+  "episodios": [
+    {
+      "id": "ep-regiao-administrativa-franca",
+      "numero": 9,
+      "icone": "🎙️",
+      "titulo": "The Franca Administrative Region: Connecting Knowledge and Public Policy",
+      "descricao": "The meeting addressed the challenges and potential of the Franca Administrative Region in linking academic knowledge and public policy. Presented by Prof. Regina Cláudia Laisner.",
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": "https://drive.google.com/file/d/1gpj_W2CxkzkFw9XF6_68W4eYu2HpZJ-i/view"
+        }
+      ]
+    },
+    {
+      "id": "ep6-acesso-a-justica",
+      "numero": 8,
+      "icone": "🎙️",
+      "titulo": "People-Centered Access to Justice",
+      "descricao": "The meeting addresses access to justice from a bottom-up, redistributive perspective, focusing on overcoming the institutional and social barriers faced by vulnerable groups by valuing their own narratives and mobilizing the law.",
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": "https://drive.google.com/file/d/1ZCPR57aatP07mqUEr4DscJnEB2-VObx0/view?usp=drive_link"
+        }
+      ]
+    },
+    {
+      "id": "ep-acesso-justica-mobilizacao",
+      "numero": 7,
+      "icone": "🎙️",
+      "titulo": "Access to Justice, Legal Mobilization and Vulnerabilities",
+      "descricao": "The meeting discussed the relationship between access to the judiciary and the mobilization of rights by groups in situations of vulnerability. Presented by Prof. Thaís Amoroso Paschoal, moderated by Prof. Agnaldo de Sousa Barbosa."
+    },
+    {
+      "id": "ep-critica-pobreza",
+      "numero": 6,
+      "icone": "🎙️",
+      "titulo": "Critique of Poverty as an Object of Social Philosophy",
+      "descricao": "The meeting proposed a philosophical reflection on poverty, approaching it as a central object of contemporary social philosophy. Presented by Prof. Hélio Alexandre da Silva, moderated by Prof. Marcelo Passini Mariano.",
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": "https://drive.google.com/file/d/1kDmjPkhPBLSSRCwZtD0SAI47KKP7K92k/view"
+        }
+      ]
+    },
+    {
+      "id": "ep5-autocratizacao-resiliencia",
+      "numero": 5,
+      "icone": "🎙️",
+      "titulo": "Autocratization and Democratic Resilience in Brazil (2019-2023)",
+      "descricao": "The meeting examined the process of autocratization in Brazil under the Bolsonaro administration and the institutional response that safeguarded democratic resilience, combining a review of the Political Science and Law literature with an empirical study of legal and institutional arrangements.",
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": "https://drive.google.com/file/d/1xKF1ssIfC50r0bI5zzQvr63ukUab8tIM/view?usp=drive_link"
+        },
+        {
+          "tipo": "artigo",
+          "url": "https://www.scielo.br/j/rdgv/a/9VdtjCT6VmkXfmwmxcZj35N/?format=pdf&lang=pt"
+        }
+      ]
+    },
+    {
+      "id": "ep4-brasil-governanca-ia",
+      "numero": 4,
+      "icone": "🎙️",
+      "titulo": "Brazil and the Global Governance of Artificial Intelligence",
+      "descricao": "The meeting addressed the complexity of artificial intelligence governance on the global stage, highlighting the challenges and Brazil's position as a major consumer and actor with a history of regulatory influence, but which faces the difficult question of how to balance technological dependence, development, and sovereignty in a rapidly evolving field with a high concentration of power.",
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": "https://drive.google.com/file/d/1qas-xOLC4u71tJUIQRbz5_3QT-JvT4a9/view?usp=drive_link"
+        }
+      ]
+    },
+    {
+      "id": "ep2-cop30-transicao-energetica",
+      "numero": 3,
+      "icone": "🎙️",
+      "titulo": "COP 30 and the Just Energy Transition",
+      "descricao": "The meeting proposed a critical analysis of the COP and the energy transition, advocating for a more just, inclusive, and decolonial approach that confronts historical and structural inequalities instead of just focusing on technical and market-based solutions.",
+      "materiais": [
+        {
+          "tipo": "transcricao",
+          "url": "https://drive.google.com/file/d/1qEpkl6My5lC4vBY2iFsJjImi8qa__iDg/view?usp=drive_link"
+        }
+      ]
+    },
+    {
+      "id": "ep3-articulacao-pesquisa",
+      "numero": 2,
+      "icone": "🎙️",
+      "titulo": "Discussion for articulation among professors about research possibilities"
+    },
+    {
+      "id": "ep1-novo-governo-trump",
+      "numero": 1,
+      "icone": "🎙️",
+      "titulo": "The new Trump Administration and its repercussions for Brazil: geopolitics, democracy, economy, and climate change"
+    }
+  ],
+  "materiais": {
+    "transcricao": "Transcript",
+    "artigo": "Related article"
+  },
+  "episodioLabel": "Episode"
+}

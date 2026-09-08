@@ -8,6 +8,9 @@ import ProdutosSection from '../../components/ProdutosSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import { getTranslations } from '../../utils/i18n';
 import type { SupportedLang } from '../../types/lang';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import { islands } from '../../lib/tina/islands';
+import { getHome } from '../../lib/tina/pages';
 
 export function getStaticPaths() {
   return [{ params: { lang: 'pt' } }, { params: { lang: 'en' } }, { params: { lang: 'es' } }];
@@ -29,6 +32,8 @@ const {
   atividadesPesquisa,
   produtos,
 } = locale;
+
+const homeDoc = await getHome(currentLang, locale);
 ---
 
 <BaseLayout
@@ -39,7 +44,14 @@ const {
   identidade={locale.identidade}
   githubPath="src/pages/[lang]/index.astro"
 >
-  <Hero heroData={locale} lang={currentLang} />
+  <TinaIsland
+    name="home"
+    wrapper={islands.home.wrapper}
+    params={{ lang: currentLang }}
+    primary
+  >
+    <Hero heroData={homeDoc} lang={currentLang} />
+  </TinaIsland>
 
   {
     atividadesPesquisa && (

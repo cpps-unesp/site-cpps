@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import IconSocial from './IconSocial.astro';
+import { tinaField } from '@tinacms/astro/tina-field';
 
 // Types for members and social networks
 type Rede = {
@@ -24,6 +25,7 @@ const props = Astro.props as {
   inativos?: Membro[];
   lang?: string;
   texts?: Record<string, string>;
+  membroSlugs?: string[];
 };
 
 const ativos = props.ativos ?? [];
@@ -31,20 +33,25 @@ const inativos = props.inativos ?? [];
 const lang = props.lang ?? 'pt';
 const texts = props.texts ?? {};
 
-const membrosCollection = await getCollection('membros', ({ data }) => data.draft !== true);
-const membrosDisponiveis = new Set(
-  membrosCollection
-    .filter((entry) => entry.id.endsWith(`.${lang}.mdx`))
-    .map((entry) => {
-      // pop() can be undefined; guard with optional chaining and fallback
-      const last =
-        entry.id
-          .split('/')
-          .pop()
-          ?.replace(/\.(pt|en|es)\.mdx$/, '') ?? '';
-      return last;
-    })
-);
+// Na rota da island (re-render do editor) a lista vem pronta via props,
+// pois o container experimental pode não resolver content collections.
+const membrosDisponiveis: Set<string> = Array.isArray(props.membroSlugs)
+  ? new Set(props.membroSlugs)
+  : new Set(
+      (
+        await getCollection('membros', ({ data }) => data.draft !== true)
+      )
+        .filter((entry) => entry.id.endsWith(`.${lang}.mdx`))
+        .map((entry) => {
+          // pop() can be undefined; guard with optional chaining and fallback
+          const last =
+            entry.id
+              .split('/')
+              .pop()
+              ?.replace(/\.(pt|en|es)\.mdx$/, '') ?? '';
+          return last;
+        })
+    );
 
 function getSlug(membro: Membro): string {
   return membro.slug?.trim() || membro.nome.toLowerCase().replace(/\s+/g, '-');
@@ -118,6 +125,7 @@ function getSlug(membro: Membro): string {
                   <img
                     src={membro.foto}
                     alt={membro.nome}
+                    data-tina-field={tinaField(membro, 'foto') || undefined}
                     class="mb-6 h-40 w-40 rounded-2xl object-cover shadow-lg transition-transform duration-500 group-hover:scale-105"
                   />
                   <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
@@ -127,6 +135,7 @@ function getSlug(membro: Membro): string {
                   <img
                     src={membro.foto}
                     alt={membro.nome}
+                    data-tina-field={tinaField(membro, 'foto') || undefined}
                     class="h-40 w-40 rounded-2xl object-cover shadow-lg"
                   />
                   <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
@@ -134,18 +143,41 @@ function getSlug(membro: Membro): string {
               )}
 
               {membro.redes && membro.redes.length > 0 && (
-                <div class="mb-2 flex justify-center space-x-4">
+                <div
+                  class="mb-2 flex justify-center space-x-4"
+                  data-tina-field={tinaField(membro, 'redes') || undefined}
+                >
                   {membro.redes.slice(0, 3).map((rede) => (
                     <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
                   ))}
                 </div>
               )}
 
-              <h3 class="font-display text-primary mb-1 text-[20px]">{membro.nome}</h3>
-              <p class="text-neutral mb-1 text-[12px]">{membro.cargo}</p>
-              <p class="text-base-content text-[12px]">{membro.descricao}</p>
+              <h3
+                class="font-display text-primary mb-1 text-[20px]"
+                data-tina-field={tinaField(membro, 'nome') || undefined}
+              >
+                {membro.nome}
+              </h3>
+              <p
+                class="text-neutral mb-1 text-[12px]"
+                data-tina-field={tinaField(membro, 'cargo') || undefined}
+              >
+                {membro.cargo}
+              </p>
+              <p
+                class="text-base-content text-[12px]"
+                data-tina-field={tinaField(membro, 'descricao') || undefined}
+              >
+                {membro.descricao}
+              </p>
               {membro.contribuicao && (
-                <p class="text-base-content mt-2 text-[12px] italic">{membro.contribuicao}</p>
+                <p
+                  class="text-base-content mt-2 text-[12px] italic"
+                  data-tina-field={tinaField(membro, 'contribuicao') || undefined}
+                >
+                  {membro.contribuicao}
+                </p>
               )}
             </div>
           );
@@ -177,6 +209,7 @@ function getSlug(membro: Membro): string {
                   <img
                     src={membro.foto}
                     alt={membro.nome}
+                    data-tina-field={tinaField(membro, 'foto') || undefined}
                     class="h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale transition-transform duration-500 group-hover:scale-105 hover:opacity-100 hover:grayscale-0"
                   />
                   <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
@@ -186,6 +219,7 @@ function getSlug(membro: Membro): string {
                   <img
                     src={membro.foto}
                     alt={membro.nome}
+                    data-tina-field={tinaField(membro, 'foto') || undefined}
                     class="h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale"
                   />
                   <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
@@ -193,18 +227,41 @@ function getSlug(membro: Membro): string {
               )}
 
               {membro.redes && membro.redes.length > 0 && (
-                <div class="mb-2 flex justify-center space-x-4">
+                <div
+                  class="mb-2 flex justify-center space-x-4"
+                  data-tina-field={tinaField(membro, 'redes') || undefined}
+                >
                   {membro.redes.slice(0, 3).map((rede) => (
                     <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
                   ))}
                 </div>
               )}
 
-              <h3 class="font-display text-primary mb-1 text-[20px]">{membro.nome}</h3>
-              <p class="text-neutral mb-1 text-[12px]">{membro.cargo}</p>
-              <p class="text-base-content text-[12px]">{membro.descricao}</p>
+              <h3
+                class="font-display text-primary mb-1 text-[20px]"
+                data-tina-field={tinaField(membro, 'nome') || undefined}
+              >
+                {membro.nome}
+              </h3>
+              <p
+                class="text-neutral mb-1 text-[12px]"
+                data-tina-field={tinaField(membro, 'cargo') || undefined}
+              >
+                {membro.cargo}
+              </p>
+              <p
+                class="text-base-content text-[12px]"
+                data-tina-field={tinaField(membro, 'descricao') || undefined}
+              >
+                {membro.descricao}
+              </p>
               {membro.contribuicao && (
-                <p class="text-base-content mt-2 text-[12px] italic">{membro.contribuicao}</p>
+                <p
+                  class="text-base-content mt-2 text-[12px] italic"
+                  data-tina-field={tinaField(membro, 'contribuicao') || undefined}
+                >
+                  {membro.contribuicao}
+                </p>
               )}
             </div>
           );

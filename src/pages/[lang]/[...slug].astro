@@ -3,8 +3,6 @@ export const prerender = true;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
-import EquipeSection from '../../components/EquipeSection.astro';
-import SobreSection from '../../components/BlocoSection.astro';
 import CafeComCienciaSection from '../../components/CafeComCienciaSection.astro';
 import DocumentosSection from '../../components/DocumentosSection.astro';
 
@@ -19,6 +17,24 @@ import IniciativasProjetosDePesquisaSection from '../../components/IniciativasPr
 import NoticiaPage from '../../components/NoticiaPage.astro';
 import NoticiasListPage from '../../components/NoticiasListPage.astro';
 import TranslationWarning from '../../components/TranslationWarning.astro';
+import ProjetosPesquisaHeader from '../../components/ProjetosPesquisaHeader.astro';
+import TinaIsland from '@tinacms/astro/TinaIsland.astro';
+import SobreBody from '../../components/tina/SobreBody.astro';
+import EquipeBody from '../../components/tina/EquipeBody.astro';
+import { islands } from '../../lib/tina/islands';
+import {
+  getCafe,
+  getDocumentos,
+  getEquipe,
+  getInicDados,
+  getInicMaterial,
+  getInicOficinas,
+  getInicParcerias,
+  getInicPesquisa,
+  getInicProjetos,
+  getInicSolucoes,
+  getSobre,
+} from '../../lib/tina/pages';
 import routeTranslations from '../../i18n/routeTranslations';
 import { getCollection, render } from 'astro:content';
 import type { SupportedLang } from '../../types/lang';
@@ -66,7 +82,7 @@ const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? 
 const slugArray = slugPath.split('/');
 
 const locale = getTranslations(currentLang);
-const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } = locale;
+const { titulo, descricao, texts, equipe, sobre, documentos } = locale;
 
 const noticiasPrefix = routeTranslations['noticias'][currentLang];
 const isNoticiasList = slugPath === noticiasPrefix;
@@ -95,6 +111,43 @@ if (membroSelecionado) {
 }
 
 const originalKey = findOriginalKey(slugPath, currentLang);
+
+const isSobre = originalKey === 'institucional/sobre';
+const isEquipe = originalKey === 'institucional/equipe';
+const isDocumentos = originalKey === 'institucional/documentos';
+
+let sobreDoc = null;
+let equipeDoc = null;
+let documentosDoc = null;
+if (isSobre) sobreDoc = await getSobre(currentLang, sobre);
+if (isEquipe) equipeDoc = await getEquipe(currentLang, equipe);
+if (isDocumentos) documentosDoc = await getDocumentos(currentLang, documentos);
+
+const isCafe = originalKey === 'iniciativas/cafe-com-ciencia';
+const isMaterial = originalKey === 'iniciativas/material-de-apoio';
+const isOficinas = originalKey === 'iniciativas/oficinas';
+const isProjetos = originalKey === 'iniciativas/projetos';
+const isPesquisa = originalKey === 'iniciativas/projetos-de-pesquisa';
+const isDados = originalKey === 'iniciativas/projetos-de-dados';
+const isParcerias = originalKey === 'iniciativas/parcerias';
+const isSolucoes = originalKey === 'iniciativas/solucoes-tecnologicas';
+
+let cafeDoc = null;
+let materialDoc = null;
+let oficinasDoc = null;
+let projetosDoc = null;
+let pesquisaDoc = null;
+let dadosDoc = null;
+let parceriasDoc = null;
+let solucoesDoc = null;
+if (isCafe) cafeDoc = await getCafe(currentLang);
+if (isMaterial) materialDoc = await getInicMaterial(currentLang);
+if (isOficinas) oficinasDoc = await getInicOficinas(currentLang);
+if (isProjetos) projetosDoc = await getInicProjetos(currentLang);
+if (isPesquisa) pesquisaDoc = await getInicPesquisa(currentLang);
+if (isDados) dadosDoc = await getInicDados(currentLang);
+if (isParcerias) parceriasDoc = await getInicParcerias(currentLang);
+if (isSolucoes) solucoesDoc = await getInicSolucoes(currentLang);
 ---
 
 {
@@ -155,37 +208,133 @@ const originalKey = findOriginalKey(slugPath, currentLang);
       {(() => {
         switch (originalKey) {
           case 'institucional/equipe':
-            return <EquipeSection equipe={equipe} texts={texts} />;
+            return (
+              <TinaIsland
+                name="equipe"
+                wrapper={islands.equipe.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <EquipeBody data={equipeDoc} texts={texts} lang={currentLang} />
+              </TinaIsland>
+            );
           case 'institucional/sobre':
-            return <SobreSection blocos={sobre} />;
+            return (
+              <TinaIsland
+                name="sobre"
+                wrapper={islands.sobre.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <SobreBody data={sobreDoc} />
+              </TinaIsland>
+            );
           case 'institucional/documentos':
-            return <DocumentosSection documentos={documentos} lang={currentLang} />;
+            return (
+              <TinaIsland
+                name="documentos"
+                wrapper={islands.documentos.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <DocumentosSection documentos={documentosDoc} lang={currentLang} />
+              </TinaIsland>
+            );
           case 'noticias':
             return <NoticiasListPage lang={currentLang} />;
 
           // Iniciativas
           case 'iniciativas/cafe-com-ciencia':
-            return <CafeComCienciaSection cafe={cafe} lang={currentLang} />;
+            return (
+              <TinaIsland
+                name="cafe"
+                wrapper={islands.cafe.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <CafeComCienciaSection cafe={cafeDoc} lang={currentLang} />
+              </TinaIsland>
+            );
           case 'iniciativas/material-de-apoio':
-            return <IniciativasMaterialApoioSection texts={texts} />;
+            return (
+              <TinaIsland
+                name="material"
+                wrapper={islands.material.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <IniciativasMaterialApoioSection data={materialDoc} />
+              </TinaIsland>
+            );
           case 'iniciativas/oficinas':
-            return <IniciativasOficinasSection texts={texts} />;
+            return (
+              <TinaIsland
+                name="oficinas"
+                wrapper={islands.oficinas.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <IniciativasOficinasSection data={oficinasDoc} />
+              </TinaIsland>
+            );
           case 'iniciativas/projetos':
-            return <IniciativasProjetosSection texts={texts} />;
+            return (
+              <TinaIsland
+                name="projetos"
+                wrapper={islands.projetos.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <IniciativasProjetosSection data={projetosDoc} />
+              </TinaIsland>
+            );
           case 'iniciativas/projetos-de-pesquisa':
             return (
-              <IniciativasProjetosDePesquisaSection
-                texts={texts}
-                projetos={iniciativas.projetosLista}
-                iniciativas={iniciativas}
-              />
+              <>
+                <TinaIsland
+                  name="pesquisa"
+                  wrapper={islands.pesquisa.wrapper}
+                  params={{ lang: currentLang }}
+                  primary
+                >
+                  <ProjetosPesquisaHeader data={pesquisaDoc} />
+                </TinaIsland>
+                <IniciativasProjetosDePesquisaSection data={pesquisaDoc} hideHeader />
+              </>
             );
           case 'iniciativas/projetos-de-dados':
-            return <IniciativasProjetosDeDadosSection texts={texts} />;
+            return (
+              <TinaIsland
+                name="dados"
+                wrapper={islands.dados.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <IniciativasProjetosDeDadosSection data={dadosDoc} />
+              </TinaIsland>
+            );
           case 'iniciativas/parcerias':
-            return <IniciativasParceiriasSection texts={texts} />;
+            return (
+              <TinaIsland
+                name="parcerias"
+                wrapper={islands.parcerias.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <IniciativasParceiriasSection data={parceriasDoc} />
+              </TinaIsland>
+            );
           case 'iniciativas/solucoes-tecnologicas':
-            return <IniciativasSolucoesTecnologicasSection texts={texts} />;
+            return (
+              <TinaIsland
+                name="solucoes"
+                wrapper={islands.solucoes.wrapper}
+                params={{ lang: currentLang }}
+                primary
+              >
+                <IniciativasSolucoesTecnologicasSection data={solucoesDoc} />
+              </TinaIsland>
+            );
 
           default:
             return (

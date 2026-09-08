@@ -2,20 +2,26 @@
 // src/components/TextoComCheck.astro
 import CheckIcon from '../icons/CheckIcon.astro';
 import { renderMarkdown } from '../utils/markdown';
+import { tinaField } from '@tinacms/astro/tina-field';
 
 interface Props {
   texto: {
     check: boolean;
     conteudo: string;
   }[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  tinaParent?: any;
 }
 
-const { texto } = Astro.props;
+const { texto, tinaParent } = Astro.props;
 ---
 
 {
-  texto.map((par) => (
-    <div class="mb-4 flex items-start">
+  texto.map((par, idx) => (
+    <div
+      class="mb-4 flex items-start"
+      data-tina-field={(tinaParent && tinaField(tinaParent, 'texto', idx)) || undefined}
+    >
       {par.check ? (
         <div class="mt-1 mr-3 flex-shrink-0">
           <CheckIcon size={24} color="#22c55e" />

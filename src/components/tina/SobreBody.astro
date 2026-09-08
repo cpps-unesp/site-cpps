@@ -1,0 +1,15 @@
+---
+// Corpo editável da página Sobre: normaliza as chaves do Tina
+// (`quem_somos`) para as do JSON (`quem-somos`) e renderiza os blocos.
+import BlocoSection from '../BlocoSection.astro';
+import { toSobreBlocos } from '../../lib/tina/pages';
+import ptSobre from '../../content/tina-pages/sobre/pt.json';
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const { data } = Astro.props as { data: any };
+// Rede de segurança: doc nulo (ex.: resposta parcial do CMS) renderiza o
+// conteúdo estático em vez de uma seção vazia silenciosa.
+const blocos = toSobreBlocos(data ?? ptSobre);
+---
+
+<BlocoSection blocos={blocos} />

@@ -1,0 +1,25 @@
+---
+import { tinaField } from '@tinacms/astro/tina-field';
+
+interface Props {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data: any;
+}
+
+const { data } = Astro.props;
+---
+
+<div class="mb-8 text-center">
+  <h1
+    class="text-primary mb-4 text-4xl font-bold"
+    data-tina-field={tinaField(data, 'titulo') || undefined}
+  >
+    {data?.titulo ?? 'Projetos de Pesquisa'}
+  </h1>
+  <p
+    class="text-base-content mx-auto max-w-3xl text-lg"
+    data-tina-field={tinaField(data, 'descricao') || undefined}
+  >
+    {data?.descricao ?? 'Projetos desenvolvidos por docentes e associados ao CPPS.'}
+  </p>
+</div>
