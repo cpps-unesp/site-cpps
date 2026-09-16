@@ -14,7 +14,10 @@ permissions:
 jobs:
   dependabot-auto-merge:
     # Exige Dependabot como autor do PR e do evento: um push humano na branch
-    # do Dependabot não deve ser aprovado automaticamente.
+    # do Dependabot não deve ser aprovado automaticamente. Não é preciso
+    # cancelar um auto-merge ativado antes: o ruleset de main descarta a
+    # aprovação a cada push (dismiss_stale_reviews_on_push), e sem nova
+    # aprovação o PR não entra.
     if: >-
       github.event.pull_request.user.login == 'dependabot[bot]' &&
       github.actor == 'dependabot[bot]'
@@ -53,7 +56,9 @@ jobs:
           DEPS: ${{ steps.metadata.outputs.updated-dependencies-json }}
 
       # Sem o check `ci` obrigatório, `gh pr merge --auto` faz merge na hora,
-      # sem esperar o CI. Falha em vez de aprovar nesse caso.
+      # sem esperar o CI. Falha em vez de aprovar nesse caso. O endpoint de
+      # rules é público em repo público; em repo privado a chamada falha e o
+      # job também para.
       - name: Exigir o check ci na branch base
         if: steps.decisao.outputs.auto == 'true'
         run: |
