@@ -38,8 +38,12 @@ const LANGS = [
   { code: "es", label: "Español" },
 ] as const;
 
-// Campo único localizado (string, number, boolean simples).
-function localized(name: string, label: string, leaf: Omit<TinaField, "name" | "label">): TinaField {
+// Campo único localizado (string, number, boolean, rich-text...).
+// `leaf` aceita qualquer spec de campo folha — `Omit<TinaField,...>` não
+// funciona bem aqui porque TinaField é uma união e o TS colapsa as
+// propriedades específicas de cada variante (ex.: `overrides` do rich-text).
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function localized(name: string, label: string, leaf: Record<string, any>): TinaField {
   return {
     type: "object",
     name,
@@ -48,9 +52,10 @@ function localized(name: string, label: string, leaf: Omit<TinaField, "name" | "
   } as TinaField;
 }
 
-// Lista cujo ITEM é localizado (ex.: equipe.intro, hoje string[]). A lista
-// continua única e compartilhada entre idiomas; cada item vira {pt,en,es}.
-function localizedList(name: string, label: string, leaf: Omit<TinaField, "name" | "label">): TinaField {
+// Lista cujo ITEM é localizado. A lista continua única e compartilhada
+// entre idiomas; cada item vira {pt,en,es}.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function localizedList(name: string, label: string, leaf: Record<string, any>): TinaField {
   return {
     type: "object",
     name,
@@ -153,38 +158,6 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "post",
-        label: "Posts (demo tinacms-demo)",
-        path: "content/posts",
-        format: "md",
-        ui: {
-          router: (): string => "/tinacms-demo",
-        },
-        fields: [
-          { type: "string", name: "title", label: "Título", required: true },
-          { type: "string", name: "eyebrow", label: "Subtítulo" },
-          { type: "rich-text", name: "body", label: "Corpo", isBody: true },
-          {
-            type: "object",
-            name: "ctaPrimary",
-            label: "CTA primário",
-            fields: [
-              { type: "string", name: "label", label: "Texto" },
-              { type: "string", name: "href", label: "Link" },
-            ],
-          },
-          {
-            type: "object",
-            name: "ctaSecondary",
-            label: "CTA secundário",
-            fields: [
-              { type: "string", name: "label", label: "Texto" },
-              { type: "string", name: "href", label: "Link" },
-            ],
-          },
-        ],
-      },
-      {
         name: "home",
         label: "Página Inicial (Home)",
         path: "src/content/tina-pages/home",
@@ -195,6 +168,7 @@ export default defineConfig({
             delete: false,
           },
           router: rotearHomePt,
+          global: true,
         },
         fields: [
           localized("titulo", "Título do Site", { type: "string" }),
@@ -213,14 +187,26 @@ export default defineConfig({
             label: "Hero Section",
             fields: [
               localized("title", "Título", {
-                type: "string",
-                ui: { component: "textarea" },
-                description: "Aceita HTML: <br> quebra linha; mantenha as tags ao editar o texto.",
+                type: "rich-text",
+                description: "Shift+Enter insere uma quebra de linha (só aparece em telas maiores).",
               }),
               localized("description", "Descrição", {
-                type: "string",
-                ui: { component: "textarea" },
-                description: "Aceita HTML (<span>, <a>); mantenha as tags ao editar o texto.",
+                type: "rich-text",
+                description:
+                  "Pra dar ênfase num trecho: botão de embed (ou digite /) → \"Destaque\" → escreva o texto.",
+                // Em collections JSON o Tina assume parser "markdown", que não
+                // lê JSX — e o template inline abaixo é um elemento JSX.
+                parser: { type: "mdx" },
+                templates: [
+                  {
+                    name: "Destaque",
+                    label: "Destaque",
+                    inline: true,
+                    fields: [
+                      { type: "string", name: "texto", label: "Texto destacado", required: true },
+                    ],
+                  },
+                ],
               }),
               { type: "image", name: "link", label: "Imagem de Fundo" },
               {
@@ -244,6 +230,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: false, delete: false },
           router: rotearInstitucionalPt("institucional/sobre"),
+          global: true,
         },
         fields: [
           secaoSobre("Seção Quem Somos", "quem_somos"),
@@ -262,10 +249,9 @@ export default defineConfig({
         },
         fields: [
           localized("title", "Título", { type: "string" }),
-          localizedList("intro", "Introdução", {
-            type: "string",
-            ui: { component: "textarea" },
-            description: "Aceita HTML (<br>); mantenha as tags ao editar o texto.",
+          localized("intro", "Introdução", {
+            type: "rich-text",
+            description: "Shift+Enter insere uma quebra de linha (só aparece em telas maiores).",
           }),
           {
             type: "object",
@@ -416,6 +402,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: false, delete: false },
           router: rotearInstitucionalPt("iniciativas/material-de-apoio"),
+          global: true,
         },
         fields: [
           localized("titulo", "Título", { type: "string" }),
@@ -430,6 +417,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: false, delete: false },
           router: rotearInstitucionalPt("iniciativas/oficinas"),
+          global: true,
         },
         fields: [
           localized("titulo", "Título", { type: "string" }),
@@ -466,6 +454,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: false, delete: false },
           router: rotearInstitucionalPt("iniciativas/projetos-de-dados"),
+          global: true,
         },
         fields: [
           localized("titulo", "Título", { type: "string" }),
@@ -480,6 +469,7 @@ export default defineConfig({
         ui: {
           allowedActions: { create: false, delete: false },
           router: rotearInstitucionalPt("iniciativas/parcerias"),
+          global: true,
         },
         fields: [
           localized("titulo", "Título", { type: "string" }),
@@ -494,10 +484,43 @@ export default defineConfig({
         ui: {
           allowedActions: { create: false, delete: false },
           router: rotearInstitucionalPt("iniciativas/solucoes-tecnologicas"),
+          global: true,
         },
         fields: [
           localized("titulo", "Título", { type: "string" }),
           localized("descricao", "Descrição", { type: "string", ui: { component: "textarea" } }),
+        ],
+      },
+      {
+        name: "post",
+        label: "Posts (demo tinacms-demo)",
+        path: "content/posts",
+        format: "md",
+        ui: {
+          router: (): string => "/tinacms-demo",
+        },
+        fields: [
+          { type: "string", name: "title", label: "Título", required: true },
+          { type: "string", name: "eyebrow", label: "Subtítulo" },
+          { type: "rich-text", name: "body", label: "Corpo", isBody: true },
+          {
+            type: "object",
+            name: "ctaPrimary",
+            label: "CTA primário",
+            fields: [
+              { type: "string", name: "label", label: "Texto" },
+              { type: "string", name: "href", label: "Link" },
+            ],
+          },
+          {
+            type: "object",
+            name: "ctaSecondary",
+            label: "CTA secundário",
+            fields: [
+              { type: "string", name: "label", label: "Texto" },
+              { type: "string", name: "href", label: "Link" },
+            ],
+          },
         ],
       },
     ],

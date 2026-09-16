@@ -1,0 +1,9 @@
+---
+// Override de `p` pro <TinaMarkdown> da introdução da equipe: mantém as
+// classes visuais que o parágrafo já tinha antes da migração pra rich-text.
+---
+<p
+  class="paragrafo [&>a]:text-primary hover:[&>a]:text-secondary text-[clamp(0.95rem,1vw+0.2rem,1.125rem)] leading-relaxed transition [&>a]:underline"
+>
+  <slot />
+</p>

@@ -14,14 +14,14 @@
   },
   "hero": {
     "title": {
-      "pt": "Centro de Pesquisa<br class='hidden sm:inline' /> Política e Social",
-      "en": "Center for Political<br class='hidden sm:inline' /> and Social Research",
-      "es": "Centro de Investigación<br class='hidden sm:inline' /> Política y Social"
+      "pt": "Centro de Pesquisa\\\n Política e Social",
+      "en": "Center for Political\\\n and Social Research",
+      "es": "Centro de Investigación\\\n Política y Social"
     },
     "description": {
-      "pt": "Apoia a execução de pesquisas na <span class='text-primary font-semibold bg-white px-1 rounded'>Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)</span>, localizado no município de Franca/SP.",
-      "en": "Supports the execution of research at the <span class='text-primary font-semibold bg-white px-1 rounded'>Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)</span>, located in the city of Franca/SP.",
-      "es": "Apoya la ejecución de investigaciones en la <span class='text-primary font-semibold bg-white px-1 rounded'>Facultad de Ciencias Humanas y Sociales (FCHS) de la Universidad Estadual Paulista (UNESP)</span>, ubicada en la ciudad de Franca/SP."
+      "pt": "Apoia a execução de pesquisas na <Destaque texto=\"Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)\" />, localizado no município de Franca/SP.",
+      "en": "Supports the execution of research at the <Destaque texto=\"Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)\" />, located in the city of Franca/SP.",
+      "es": "Apoya la ejecución de investigaciones en la <Destaque texto=\"Facultad de Ciencias Humanas y Sociales (FCHS) de la Universidad Estadual Paulista (UNESP)\" />, ubicada en la ciudad de Franca/SP."
     },
     "link": "/imagens/campus/entrada-unesp-franca.jpg",
     "button": {

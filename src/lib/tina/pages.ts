@@ -7,9 +7,9 @@
 import { requestWithMetadata } from '@tinacms/astro/data';
 import client from '../../../tina/__generated__/client';
 
-import homeDoc from '../../content/tina-pages/home/index.json';
+import homeDocRaw from '../../content/tina-pages/home/index.json';
 import sobreDoc from '../../content/tina-pages/sobre/index.json';
-import equipeDoc from '../../content/tina-pages/equipe/index.json';
+import equipeDocRaw from '../../content/tina-pages/equipe/index.json';
 import documentosDoc from '../../content/tina-pages/documentos/index.json';
 import cafeDoc from '../../content/tina-pages/cafe/index.json';
 import inicPesquisaDoc from '../../content/tina-pages/inic-pesquisa/index.json';
@@ -27,6 +27,68 @@ export type Localized = { pt: string; en: string; es: string };
 export function normalizeLang(lang: string): TinaLang {
   return lang === 'en' || lang === 'es' ? lang : 'pt';
 }
+
+// Campos rich-text guardam uma STRING markdown/MDX no JSON (é o que o Tina
+// lê/escreve de verdade — confirmado lendo `@tinacms/mdx`), não uma AST
+// pronta. No caminho ao vivo, o GraphQL do Tina já devolve a AST (fez o
+// parse por trás). No fallback estático (JSON puro, sem o content API),
+// ninguém faz esse parse — por isso convertemos aqui, só para os 2 padrões
+// que nós mesmos geramos (quebra de linha via Shift+Enter e o template inline
+// "Destaque"), sem depender de nenhum pacote interno do Tina.
+const BREAK_MARKDOWN = '\\\n';
+// Template inline "Destaque" (ver tina/config.ts): `<Destaque texto="..." />`.
+const DESTAQUE_RE = /<Destaque texto="([^"]*)" \/>/;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function richTextFallbackFromBreak(md: string): any {
+  const idx = md.indexOf(BREAK_MARKDOWN);
+  if (idx === -1) {
+    return { type: 'root', children: [{ type: 'p', children: [{ type: 'text', text: md }] }] };
+  }
+  const before = md.slice(0, idx);
+  const after = md.slice(idx + BREAK_MARKDOWN.length);
+  return {
+    type: 'root',
+    children: [
+      { type: 'p', children: [{ type: 'text', text: before }, { type: 'break' }, { type: 'text', text: after }] },
+    ],
+  };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function richTextFallbackFromDestaque(md: string): any {
+  const match = md.match(DESTAQUE_RE);
+  if (!match || match.index === undefined) {
+    return { type: 'root', children: [{ type: 'p', children: [{ type: 'text', text: md }] }] };
+  }
+  const before = md.slice(0, match.index);
+  const after = md.slice(match.index + match[0].length);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const children: any[] = [];
+  if (before) children.push({ type: 'text', text: before });
+  children.push({ type: 'mdxJsxTextElement', name: 'Destaque', props: { texto: match[1] }, children: [] });
+  if (after) children.push({ type: 'text', text: after });
+  return { type: 'root', children: [{ type: 'p', children }] };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function mapLangs(obj: Record<TinaLang, string>, fn: (md: string) => any): Record<TinaLang, unknown> {
+  return { pt: fn(obj.pt), en: fn(obj.en), es: fn(obj.es) };
+}
+
+const homeDoc = {
+  ...homeDocRaw,
+  hero: {
+    ...homeDocRaw.hero,
+    title: mapLangs(homeDocRaw.hero.title, richTextFallbackFromBreak),
+    description: mapLangs(homeDocRaw.hero.description, richTextFallbackFromDestaque),
+  },
+};
+
+const equipeDoc = {
+  ...equipeDocRaw,
+  intro: mapLangs(equipeDocRaw.intro, richTextFallbackFromBreak),
+};
 
 // Collections já migradas para o schema field-based: 1 documento fixo
 // (`index.json`), sem depender de `lang` para o `relativePath`. Cada campo

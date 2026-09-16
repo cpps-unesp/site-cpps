@@ -1,6 +1,10 @@
 ---
 import { getTranslatedPath } from '../utils/getTranslatedPath';
 import { tinaField } from '@tinacms/astro/tina-field';
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import RichTextInline from './tina/RichTextInline.astro';
+import QuebraResponsiva from './tina/QuebraResponsiva.astro';
+import Destaque from './tina/Destaque.astro';
 import { normalizeLang } from '../lib/tina/pages';
 
 interface Props {
@@ -51,8 +55,10 @@ const logoSrc = heroData?.identidade?.logo ?? '/imagens/logos/cpps/logo-cpps-01_
           class="titulo text-base-content z-10 mt-4 text-3xl leading-tight sm:mt-0 sm:text-5xl md:text-6xl"
           data-tina-field={(heroData?.hero?.title && tinaField(heroData.hero.title, lang)) || undefined}
         >
-          {/* eslint-disable-next-line astro/no-set-html-directive */}
-          <Fragment set:html={heroData?.hero?.title?.[lang]} />
+          <TinaMarkdown
+            content={heroData?.hero?.title?.[lang]}
+            components={{ p: RichTextInline, break: QuebraResponsiva }}
+          />
         </h1>
       </div>
 
@@ -62,8 +68,10 @@ const logoSrc = heroData?.identidade?.logo ?? '/imagens/logos/cpps/logo-cpps-01_
           class="text-base-content mb-6 text-base leading-relaxed md:text-lg"
           data-tina-field={(heroData?.hero?.description && tinaField(heroData.hero.description, lang)) || undefined}
         >
-          {/* eslint-disable-next-line astro/no-set-html-directive */}
-          <Fragment set:html={heroData?.hero?.description?.[lang]} />
+          <TinaMarkdown
+            content={heroData?.hero?.description?.[lang]}
+            components={{ p: RichTextInline, Destaque }}
+          />
         </p>
 
         <!-- Botão -->

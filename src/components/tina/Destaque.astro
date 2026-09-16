@@ -1,0 +1,11 @@
+---
+// Template inline "Destaque" do rich-text (ver tina/config.ts). Recebe o
+// campo `texto` do template como prop e reproduz o visual do antigo <span>
+// que ficava hardcoded no HTML do hero.
+interface Props {
+  texto?: string;
+}
+
+const { texto = '' } = Astro.props;
+---
+<span class="text-primary font-semibold bg-white px-1 rounded">{texto}</span>

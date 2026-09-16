@@ -4,13 +4,11 @@
     "en": "Team",
     "es": "Equipo"
   },
-  "intro": [
-    {
-      "pt": "Conheça as pessoas que colaboram e pesquisam no<br class='hidden sm:inline' /> Centro de Pesquisa Política e Social",
-      "en": "Meet the people who collaborate and research at the<br class='hidden sm:inline' /> Center for Political and Social Research",
-      "es": "Conozca a las personas que colaboran e investigan en el<br class='hidden sm:inline' /> Centro de Investigación Política y Social"
-    }
-  ],
+  "intro": {
+    "pt": "Conheça as pessoas que colaboram e pesquisam no\\\n Centro de Pesquisa Política e Social",
+    "en": "Meet the people who collaborate and research at the\\\n Center for Political and Social Research",
+    "es": "Conozca a las personas que colaboran e investigan en el\\\n Centro de Investigación Política y Social"
+  },
   "categorias": {
     "Coordenação": [
       {

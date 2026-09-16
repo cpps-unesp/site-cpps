@@ -2,6 +2,9 @@
 import { ordenarPorPrioridadeOuNome } from '../utils/ordenar';
 import EquipeTabs from '../components/EquipeTabs.astro';
 import { tinaField } from '@tinacms/astro/tina-field';
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import ParagrafoIntroEquipe from './tina/ParagrafoIntroEquipe.astro';
+import QuebraResponsiva from './tina/QuebraResponsiva.astro';
 import { normalizeLang, type Localized } from '../lib/tina/pages';
 
 interface Membro {
@@ -20,7 +23,7 @@ interface Membro {
 
 type EquipeData = {
   title: Localized;
-  intro?: Localized[];
+  intro?: Localized;
   categorias?: Record<string, Membro[]>;
 }
 
@@ -60,14 +63,15 @@ const inativosOrdenados = ordenarPorPrioridadeOuNome(inativosTodos, 'prioridade'
   <h1 class="titulo text-primary mb-8 text-center" data-tina-field={tinaField(equipe.title, lang) || undefined}>{equipe.title[lang]}</h1>
 
   {
-    equipe.intro && equipe.intro.length > 0 && (
-      <div class="text-base-content mx-auto mb-10 max-w-3xl space-y-4 text-center">
-        {equipe.intro.map((paragrafo: Localized) => (
-          <p class="paragrafo [&>a]:text-primary hover:[&>a]:text-secondary text-[clamp(0.95rem,1vw+0.2rem,1.125rem)] leading-relaxed transition [&>a]:underline" data-tina-field={tinaField(paragrafo, lang) || undefined}>
-            {/* eslint-disable-next-line astro/no-set-html-directive */}
-            <Fragment set:html={paragrafo[lang]} />
-          </p>
-        ))}
+    equipe.intro && (
+      <div
+        class="text-base-content mx-auto mb-10 max-w-3xl space-y-4 text-center"
+        data-tina-field={tinaField(equipe.intro, lang) || undefined}
+      >
+        <TinaMarkdown
+          content={equipe.intro[lang]}
+          components={{ p: ParagrafoIntroEquipe, break: QuebraResponsiva }}
+        />
       </div>
     )
   }
