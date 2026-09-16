@@ -98,6 +98,15 @@ npm run preview       # Preview do build
 npm run ci            # Typecheck + build (pipeline local)
 ```
 
+## Atualização de dependências
+
+O Dependabot abre um PR por dependência toda semana ([.github/dependabot.yml](.github/dependabot.yml)):
+
+- **Patch e minor de npm**, inclusive correções de segurança de dependências indiretas, entram sozinhos quando o check `ci` passa ([dependabot-auto-merge.yml](.github/workflows/dependabot-auto-merge.yml)).
+- **Precisam de revisão humana:** majors, minors de pacotes 0.x (como `sharp`, em que o minor quebra compatibilidade) e atualizações de GitHub Actions.
+- Versões incompatíveis conhecidas ficam em `ignore`, com o motivo comentado.
+- O auto-merge depende do check `ci` obrigatório no ruleset da `main`. Sem ele, o workflow falha em vez de aprovar.
+
 ## Deploy
 
 ### Build para produção

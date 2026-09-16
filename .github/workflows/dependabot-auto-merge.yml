@@ -1,5 +1,8 @@
 name: 'Dependabot: Auto Merge'
 
+# pull_request_target roda com o token do repositório base (em `pull_request`
+# os PRs do Dependabot recebem token somente leitura). É seguro aqui porque o
+# job não faz checkout nem executa código do PR.
 on:
   pull_request_target:
     types: [opened, reopened, synchronize]
@@ -10,30 +13,66 @@ permissions:
 
 jobs:
   dependabot-auto-merge:
-    if: github.actor == 'dependabot[bot]'
+    # Exige Dependabot como autor do PR e do evento: um push humano na branch
+    # do Dependabot não deve ser aprovado automaticamente.
+    if: >-
+      github.event.pull_request.user.login == 'dependabot[bot]' &&
+      github.actor == 'dependabot[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Fetch Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
 
-      - name: Auto-approve Dependabot PR
-        if: >-
-          steps.metadata.outputs.update-type == 'version-update:semver-minor' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-patch'
-        uses: hmarr/auto-approve-action@v4
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      # Entra sozinho: pacote npm, patch ou minor, e nenhum minor em pacote 0.x
+      # (em 0.y.z o minor quebra compatibilidade; ^0.35 não aceita 0.36).
+      # Sem versão anterior conhecida, o minor também fica para revisão.
+      - name: Decidir se o PR entra sozinho
+        id: decisao
+        run: |
+          if [ "$ECOSYSTEM" != 'npm_and_yarn' ]; then
+            echo "::notice::Ecossistema $ECOSYSTEM fica para revisão humana."
+            echo 'auto=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ "$UPDATE_TYPE" != 'version-update:semver-patch' ] && [ "$UPDATE_TYPE" != 'version-update:semver-minor' ]; then
+            echo "::notice::Atualização ${UPDATE_TYPE:-sem tipo} fica para revisão humana."
+            echo 'auto=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          zero_minor="$(jq -r '[.[] | select(.updateType == "version-update:semver-minor" and ((.prevVersion // "0.") | test("^v?0\\."))) | .dependencyName] | join(", ")' <<< "$DEPS")"
+          if [ -n "$zero_minor" ]; then
+            echo "::notice::Minor em pacote 0.x ($zero_minor) fica para revisão humana."
+            echo 'auto=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          echo 'auto=true' >> "$GITHUB_OUTPUT"
+        env:
+          ECOSYSTEM: ${{ steps.metadata.outputs.package-ecosystem }}
+          UPDATE_TYPE: ${{ steps.metadata.outputs.update-type }}
+          DEPS: ${{ steps.metadata.outputs.updated-dependencies-json }}
 
-      - name: Enable auto-merge for eligible PRs
-        if: >-
-          (steps.metadata.outputs.update-type == 'version-update:semver-minor' ||
-          steps.metadata.outputs.update-type == 'version-update:semver-patch') &&
-          startsWith(steps.metadata.outputs.dependency-type, 'direct')
-        uses: peter-evans/enable-pull-request-automerge@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          merge-method: squash
-          pull-request-number: ${{ github.event.pull_request.number }}
+      # Sem o check `ci` obrigatório, `gh pr merge --auto` faz merge na hora,
+      # sem esperar o CI. Falha em vez de aprovar nesse caso.
+      - name: Exigir o check ci na branch base
+        if: steps.decisao.outputs.auto == 'true'
+        run: |
+          required="$(gh api "repos/$REPO/rules/branches/$BASE_REF" \
+            --jq 'any(.[]; .type == "required_status_checks" and any(.parameters.required_status_checks[]; .context == "ci"))')"
+          if [ "$required" != 'true' ]; then
+            echo "::error::$BASE_REF não exige o check ci; auto-merge cancelado."
+            exit 1
+          fi
+        env:
+          REPO: ${{ github.repository }}
+          BASE_REF: ${{ github.event.pull_request.base.ref }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Aprovar e ativar auto-merge
+        if: steps.decisao.outputs.auto == 'true'
+        run: |
+          gh pr review --approve "$PR_URL"
+          gh pr merge --auto --squash "$PR_URL"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
