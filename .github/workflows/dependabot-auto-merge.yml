@@ -27,12 +27,25 @@ jobs:
         id: metadata
         uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
 
-      # Entra sozinho: pacote npm, patch ou minor, e nenhum minor em pacote 0.x
-      # (em 0.y.z o minor quebra compatibilidade; ^0.35 não aceita 0.36).
-      # Sem versão anterior conhecida, o minor também fica para revisão.
+      # Entra sozinho:
+      #  - github-actions, qualquer tipo de atualização. O raio de dano é só o
+      #    CI, nunca o site publicado, e um CI quebrado bloqueia merge em vez de
+      #    publicar defeito. O risco de tag móvel sequestrada não se aplica:
+      #    todas as actions são fixadas por SHA, e o passo "Actions fixadas por
+      #    SHA" do check `ci` reprova o PR que reintroduzir uma tag.
+      #  - npm, patch ou minor, e nenhum minor em pacote 0.x (em 0.y.z o minor
+      #    quebra compatibilidade; ^0.35 não aceita 0.36). Sem versão anterior
+      #    conhecida, o minor também fica para revisão.
+      # Major de npm nunca entra sozinho: o Astro 6->7 (#349) precisou de gente
+      # para descobrir que um override de vite guardava o build.
       - name: Decidir se o PR entra sozinho
         id: decisao
         run: |
+          if [ "$ECOSYSTEM" = 'github-actions' ]; then
+            echo "::notice::Atualização de action: entra sozinho se o check ci passar."
+            echo 'auto=true' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           if [ "$ECOSYSTEM" != 'npm_and_yarn' ]; then
             echo "::notice::Ecossistema $ECOSYSTEM fica para revisão humana."
             echo 'auto=false' >> "$GITHUB_OUTPUT"

@@ -37,7 +37,10 @@ updates:
         update-types:
           - 'version-update:semver-major'
 
-  # Mantém atualizados os SHAs das actions. Esses PRs nunca entram sozinhos.
+  # Mantém atualizados os SHAs das actions. Esses PRs entram sozinhos quando o
+  # check `ci` passa (ver workflows/dependabot-auto-merge.yml): o raio de dano é
+  # só o CI, e o passo "Actions fixadas por SHA" do `ci` garante que nenhuma
+  # volte a apontar para tag móvel.
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:

@@ -11,16 +11,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+      # É o que sustenta o auto-merge de atualizações de action: fixada por SHA,
+      # a tag não pode ser reapontada para código hostil depois da revisão. Se um
+      # PR reintroduzir uma tag móvel, este passo reprova e o auto-merge para.
+      - name: Actions fixadas por SHA
+        run: |
+          soltas="$(grep -rnE '^[[:space:]]*(-[[:space:]]*)?uses:[[:space:]]*[^.]' .github/workflows/ \
+            | grep -vE 'uses:[[:space:]]*[^@]+@[0-9a-f]{40}([[:space:]]|$)' || true)"
+          if [ -n "$soltas" ]; then
+            echo "::error::Action sem SHA de 40 caracteres. Fixe por commit e anote a tag em comentário."
+            echo "$soltas"
+            exit 1
+          fi
+          echo "Todas as actions estão fixadas por SHA."
 
       - name: Setup Node
-        uses: actions/setup-node@v7
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7
         with:
           node-version: 'lts/*'
           cache: npm
 
       - name: Cache build artifacts
-        uses: actions/cache@v6
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
         with:
           path: |
             .astro
