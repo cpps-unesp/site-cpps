@@ -1,0 +1,110 @@
+name: 'Dependabot: PRs parados'
+
+# O auto-merge cobre o que é seguro sozinho (npm patch/minor e actions). O que
+# sobra — major de npm e minor de pacote 0.x — espera revisão humana, e foi
+# exatamente aí que a fila cresceu sem ninguém saber: em setembro de 2026 cinco
+# PRs ficaram uma semana parados, e um deles corrigia um RCE crítico no Astro.
+# Este job não decide nada; só torna a fila visível.
+
+on:
+  schedule:
+    # Segunda, 12:00 UTC (09:00 em Brasília).
+    - cron: '0 12 * * 1'
+  workflow_dispatch:
+    inputs:
+      dias:
+        description: 'Idade mínima, em dias, para o PR entrar na lista'
+        required: false
+        default: '3'
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: read
+
+env:
+  DIAS: ${{ github.event.inputs.dias || '3' }}
+  TITULO: 'Dependabot: PRs esperando revisão'
+
+jobs:
+  listar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Levantar PRs parados
+        id: levantar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          limite="$(date -u -d "-${DIAS} days" +%Y-%m-%dT%H:%M:%SZ)"
+
+          # `gh pr list` não traz a idade pronta; o filtro é feito no jq.
+          gh pr list --repo "$REPO" --state open --author 'app/dependabot' \
+            --limit 100 \
+            --json number,title,createdAt,url,statusCheckRollup \
+            > prs.json
+
+          jq --arg limite "$limite" '
+            [ .[]
+              | select(.createdAt <= $limite)
+              | { numero: .number, titulo: .title, url: .url, criado: .createdAt[:10],
+                  ci: ([ .statusCheckRollup[]?
+                         | select((.name // .context) == "ci")
+                         | (.conclusion // .state) ] | first // "sem check") }
+            ] | sort_by(.criado)' prs.json > parados.json
+
+          n="$(jq 'length' parados.json)"
+          echo "quantidade=$n" >> "$GITHUB_OUTPUT"
+          echo "::notice::$n PR(s) do Dependabot com mais de $DIAS dia(s)."
+
+          {
+            echo "Levantado em $(date -u +'%Y-%m-%d %H:%M UTC'), considerando PRs abertos há mais de **$DIAS dia(s)**."
+            echo
+            if [ "$n" -eq 0 ]; then
+              echo "Nenhum PR do Dependabot esperando revisão. Nada a fazer."
+            else
+              echo "| PR | Aberto em | check \`ci\` | Título |"
+              echo "|---|---|---|---|"
+              jq -r '.[] | "| [#\(.numero)](\(.url)) | \(.criado) | \(.ci) | \(.titulo) |"' parados.json
+              echo
+              echo "O auto-merge deixa para revisão humana o **major de npm** e o **minor de pacote 0.x**."
+              echo "Se algum destes corrige vulnerabilidade, ele fura a fila:"
+              echo "confira em [Dependabot alerts](https://github.com/${REPO}/security/dependabot)."
+            fi
+            echo
+            echo "<sub>Gerado por \`.github/workflows/dependabot-parados.yml\`.</sub>"
+          } > corpo.md
+
+      - name: Abrir ou atualizar a issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          QUANTIDADE: ${{ steps.levantar.outputs.quantidade }}
+        run: |
+          set -euo pipefail
+          existente="$(gh issue list --repo "$REPO" --state open --search "\"$TITULO\" in:title" \
+            --limit 1 --json number --jq '.[0].number // empty')"
+
+          # Sem nada parado: fecha a issue aberta, se houver, e não cria outra.
+          if [ "$QUANTIDADE" -eq 0 ]; then
+            if [ -n "$existente" ]; then
+              gh issue comment "$existente" --repo "$REPO" --body-file corpo.md
+              gh issue close "$existente" --repo "$REPO" --reason completed
+              echo "Fila vazia: issue #$existente fechada."
+            else
+              echo "Fila vazia e nenhuma issue aberta. Nada a fazer."
+            fi
+            exit 0
+          fi
+
+          if [ -n "$existente" ]; then
+            gh issue edit "$existente" --repo "$REPO" --body-file corpo.md
+            gh issue comment "$existente" --repo "$REPO" \
+              --body "Atualizado: **$QUANTIDADE** PR(s) esperando revisão."
+            echo "Issue #$existente atualizada."
+          else
+            gh issue create --repo "$REPO" --title "$TITULO" --body-file corpo.md \
+              --label dependencies
+            echo "Issue criada."
+          fi
