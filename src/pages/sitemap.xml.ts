@@ -12,6 +12,15 @@ import { getNoticiasSitemapPaths } from '../utils/noticias';
 import routeTranslations from '../i18n/routeTranslations';
 import { filterVisibleDocsEntries, getDocsEntrySlug } from '../utils/docsVisibility';
 
+function escaparXml(texto: string): string {
+  return texto
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
 export async function GET() {
   const base = 'https://cpps.franca.unesp.br';
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
@@ -85,7 +94,7 @@ export async function GET() {
       const priority = normalizedPath.split('/').filter(Boolean).length <= 1 ? '1.0' : '0.8';
       return `
       <url>
-        <loc>${base}${normalizedPath}</loc>
+        <loc>${escaparXml(base + normalizedPath)}</loc>
         <changefreq>weekly</changefreq>
         <priority>${priority}</priority>
       </url>`;
@@ -99,6 +108,7 @@ export async function GET() {
   return new Response(sitemap, {
     headers: {
       'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=3600',
     },
   });
 }

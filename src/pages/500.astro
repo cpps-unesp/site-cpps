@@ -1,0 +1,120 @@
+---
+export const prerender = true;
+
+import { getTranslations, type Language } from '../utils/i18n';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SearchModal from '../components/SearchModal.astro';
+import BackToTop from '../components/BackToTop.astro';
+
+import '../styles/global.css';
+
+// Página de erro 500, gerada no build: o adapter da Cloudflare a serve quando a
+// renderização falha (o D1 fora do ar, por exemplo), em vez de um erro cru. Em
+// português; o idioma da URL troca o texto no navegador, como na 404.
+const lang: Language = 'pt';
+const t = getTranslations(lang);
+
+const titulo = t.titulo;
+const descricao = t.descricao;
+const texts = t.texts;
+const identidade = t.identidade;
+---
+
+<html lang={lang} dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Erro no servidor | {titulo}</title>
+    <link rel="icon" href="/imagens/logos/cpps/favicon.ico" />
+    <meta name="description" content={descricao} />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Performance com fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script is:inline>
+      (function () {
+        const THEME_STORAGE_KEY = 'theme';
+        const DEFAULT_THEME_CHOICE = 'system';
+        const storedChoice = localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME_CHOICE;
+        let themeToApply = storedChoice;
+        if (storedChoice === 'system') {
+          themeToApply = window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+        }
+        document.documentElement.setAttribute('data-theme', themeToApply);
+      })();
+    </script>
+  </head>
+
+  <body class="bg-base-100 text-base-content">
+    <Header lang={lang} texts={texts} identidade={identidade} />
+
+    <main class="flex-1 pt-24">
+      <section class="flex min-h-[60vh] items-center justify-center px-4">
+        <div class="max-w-lg text-center">
+          <h1 class="font-heading text-primary mb-4 text-8xl font-bold">500</h1>
+          <h2 id="erro-titulo" class="font-heading mb-4 text-3xl font-semibold">Erro no servidor</h2>
+          <p id="erro-descricao" class="text-base-content/70 mb-8 text-lg">
+            Não foi possível carregar esta página agora. Tente de novo em alguns minutos.
+          </p>
+          <a id="back-home-link" href={`/${lang}/`} class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-house mr-2"></i>
+            <span id="back-home-text">{texts.backToHome}</span>
+          </a>
+
+        </div>
+      </section>
+    </main>
+
+    <Footer lang={lang} texts={texts} />
+    <BackToTop lang={lang} />
+    <SearchModal lang={lang} texts={texts} />
+    <script type="module" src="/scripts/themeSwitcher.js"></script>
+    <script is:inline>
+      (function () {
+        const i18n = {
+          en: {
+            titulo: 'UNESP Franca | Center for Political and Social Research',
+            erro: 'Server error',
+            descricao: 'This page could not be loaded right now. Please try again in a few minutes.',
+            backToHome: 'Back to home',
+          },
+          es: {
+            titulo: 'UNESP Franca | Centro de Investigación Política y Social',
+            erro: 'Error del servidor',
+            descricao: 'No fue posible cargar esta página ahora. Inténtalo de nuevo en unos minutos.',
+            backToHome: 'Volver al inicio',
+          },
+        };
+        const cookieMatch = document.cookie.match(/lang=(en|es)/);
+        const pathLang = location.pathname.split('/')[1];
+        const lang = (cookieMatch && cookieMatch[1]) || (['en', 'es'].includes(pathLang) ? pathLang : null);
+        if (lang) {
+          const t = i18n[lang];
+          document.documentElement.lang = lang;
+          document.title = t.erro + ' | ' + t.titulo;
+          document.getElementById('erro-titulo').textContent = t.erro;
+          document.getElementById('erro-descricao').textContent = t.descricao;
+          document.getElementById('back-home-text').textContent = t.backToHome;
+          document.getElementById('back-home-link').href = '/' + lang + '/';
+        }
+      })();
+    </script>
+  </body>
+</html>

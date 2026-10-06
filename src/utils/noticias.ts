@@ -1,4 +1,4 @@
-import { getEmDashCollection, getEmDashEntry } from 'emdash';
+import { getEmDashCollection, getEmDashEntry, getTerm } from 'emdash';
 import type { PortableTextBlock } from 'emdash';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
@@ -61,12 +61,13 @@ async function listNoticias(lang: SupportedLang) {
   return { noticias: entries.map(toNoticia), error };
 }
 
+// O slug vem do admin e o EmDash não restringe os caracteres: codifica para a URL.
 export function getNoticiaUrl(slug: string, lang: SupportedLang): string {
-  return `/${lang}/${routeTranslations.noticias[lang]}/${slug}`;
+  return `/${lang}/${routeTranslations.noticias[lang]}/${encodeURIComponent(slug)}`;
 }
 
 export function getNoticiaCategoriaUrl(tagSlug: string, lang: SupportedLang): string {
-  return `/${lang}/${routeTranslations.noticias[lang]}/categoria/${tagSlug}`;
+  return `/${lang}/${routeTranslations.noticias[lang]}/categoria/${encodeURIComponent(tagSlug)}`;
 }
 
 export function formatNoticiaDate(
@@ -79,7 +80,7 @@ export function formatNoticiaDate(
 }
 
 export type NoticiasRoute =
-  | { kind: 'list'; lang: SupportedLang; noticias: Noticia[]; tag: string | null }
+  | { kind: 'list'; lang: SupportedLang; noticias: Noticia[]; tag: NoticiaTag | null }
   | {
       kind: 'detail';
       lang: SupportedLang;
@@ -117,7 +118,18 @@ export async function resolveNoticiasRoute(
   }
 
   if (slugParts.length === 2 && slugParts[0] === 'categoria') {
-    return { kind: 'list', lang, noticias, tag: slugParts[1] };
+    // Só etiquetas que existem no EmDash; sem isso, qualquer texto na URL virava
+    // título de página com status 200. O getTerm cai para pt sem tradução.
+    try {
+      const termo = await getTerm(TAXONOMIA_TAGS, slugParts[1], {
+        locale: lang,
+        includeCounts: false,
+      });
+      if (!termo) return { kind: 'not-found' };
+      return { kind: 'list', lang, noticias, tag: { slug: termo.slug, label: termo.label } };
+    } catch (erro) {
+      return { kind: 'error', error: erro instanceof Error ? erro : new Error(String(erro)) };
+    }
   }
 
   if (slugParts.length !== 1) return { kind: 'not-found' };
@@ -138,16 +150,23 @@ export async function resolveNoticiasRoute(
   };
 }
 
+// Sem tradução, a notícia em pt também é servida em /en/ e /es/ (com aviso), como
+// na versão estática do site, e o hreflang de cada página aponta para lá: essas
+// URLs entram no sitemap. Uma falha ao ler o EmDash sobe como erro, em vez de
+// tirar as notícias do sitemap em silêncio.
 export async function getNoticiasSitemapPaths(): Promise<string[]> {
   const paths: string[] = [];
+  const emPt = await listNoticias('pt');
+  if (emPt.error) throw emPt.error;
   for (const lang of LANGS) {
+    const doIdioma = lang === 'pt' ? emPt : await listNoticias(lang);
+    if (doIdioma.error) throw doIdioma.error;
+    const noticias = [...emPt.noticias, ...doIdioma.noticias];
     paths.push(`/${lang}/${routeTranslations.noticias[lang]}`);
-    const { noticias } = await listNoticias(lang);
-    for (const noticia of noticias) {
-      paths.push(getNoticiaUrl(noticia.slug, lang));
+    for (const slug of new Set(noticias.map((noticia) => noticia.slug))) {
+      paths.push(getNoticiaUrl(slug, lang));
     }
-    const tagSlugs = new Set(noticias.flatMap((noticia) => noticia.tags.map((tag) => tag.slug)));
-    for (const tagSlug of tagSlugs) {
+    for (const tagSlug of new Set(noticias.flatMap((noticia) => noticia.tags.map((tag) => tag.slug)))) {
       paths.push(getNoticiaCategoriaUrl(tagSlug, lang));
     }
   }

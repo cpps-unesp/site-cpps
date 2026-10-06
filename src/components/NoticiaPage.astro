@@ -30,7 +30,8 @@ const { title, date, image, imageAlt, tags, author, resumo, content } = noticia;
   descricao={resumo}
   texts={locale.texts}
   identidade={locale.identidade}
-  githubPath="src/pages/[lang]/noticias/[...slug].astro"
+  githubPath={isPreview ? undefined : 'src/pages/[lang]/noticias/[...slug].astro'}
+  naoIndexar={isPreview}
 >
   {
     isTranslationMissing && (

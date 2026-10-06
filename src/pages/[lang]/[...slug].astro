@@ -34,6 +34,7 @@ import {
   getProjetosDePesquisa,
   getSobre,
 } from '../../utils/conteudo';
+import { getNoticiaUrl } from '../../utils/noticias';
 
 // ✅ Lógica de roteamento e carregamento
 const langs: SupportedLang[] = ['pt', 'en', 'es'];
@@ -44,6 +45,17 @@ const currentLang = Astro.params.lang as SupportedLang;
 const slugParam = Astro.params.slug;
 const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? '');
 const slugArray = slugPath.split('/');
+
+// O EmDash monta a URL das traduções juntando o idioma ao urlPattern da coleção
+// (/pt/noticias/{slug}), então a pré-visualização de uma notícia em inglês sai
+// como /en/pt/noticias/<slug>. Leva para a URL de verdade, mantendo o ?_preview=.
+const noticiaComPrefixoPt = /^pt\/noticias\/([^/]+)\/?$/.exec(slugPath);
+if (currentLang !== 'pt' && noticiaComPrefixoPt) {
+  return Astro.redirect(
+    `${getNoticiaUrl(noticiaComPrefixoPt[1], currentLang)}${Astro.url.search}`,
+    302
+  );
+}
 
 const locale = getTranslations(currentLang);
 const { titulo, descricao, texts } = locale;

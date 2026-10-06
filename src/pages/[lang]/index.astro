@@ -14,8 +14,10 @@ import type { SupportedLang } from '../../types/lang';
 const currentLang = (Astro.params.lang ?? 'pt') as SupportedLang;
 
 const allowedLangs = ['pt', 'en', 'es'];
+// Qualquer outro primeiro segmento (/xx/, /wp-login.php...) é 404, como no site
+// estático: redirecionar fazia cada robô renderizar a home inteira.
 if (!allowedLangs.includes(currentLang)) {
-  return Astro.redirect('/pt/');
+  return new Response(null, { status: 404 });
 }
 
 const locale = getTranslations(currentLang);

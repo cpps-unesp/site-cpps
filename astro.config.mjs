@@ -43,6 +43,15 @@ export default defineConfig({
     emdash({
       database: d1({ binding: 'DB' }),
       storage: r2({ binding: 'MEDIA' }),
+      // Desligada por segurança. Para quem está logado como autor ou acima, a barra
+      // é injetada no primeiro `</body>` do HTML (html.replace), e o Astro não
+      // escapa `<` em atributos: um título publicado com `</body>` põe a barra
+      // dentro de um <meta> e vira XSS contra o admin, que fica na mesma origem.
+      // O site ainda não usa a edição visual (atributos `entry.edit`), única coisa
+      // que depende da barra. Religar só quando o EmDash injetar no último
+      // `</body>`. O modo 'client' é pior: injeta o script de inicialização do mesmo
+      // jeito, para todos os visitantes.
+      toolbar: false,
     }),
   ],
 });

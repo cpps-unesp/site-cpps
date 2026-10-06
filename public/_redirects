@@ -1,83 +1,91 @@
+# Ordem: primeiro todas as regras exatas, depois as com curinga (*). O Workers
+# Static Assets trata como dinâmica toda regra que vem depois da primeira com
+# curinga, aceita no máximo 100 dinâmicas e ignora em silêncio o resto do
+# arquivo. Cada regra exata tem o seu par com curinga na segunda parte.
+
 # Seções fora do ar (302 = temporário, preserva a indexação).
 # Reverter no MESMO deploy em que o conteúdo voltar: enquanto estas regras
 # existirem, as páginas restauradas continuam sendo redirecionadas.
 #
 # O destino é sempre a home do idioma, nunca um caminho sob o prefixo
-# redirecionado: o Cloudflare Pages canonicaliza /x para /x/ (308) e o curinga
+# redirecionado: o Cloudflare canonicaliza /x para /x/ (308) e o curinga
 # /x/* casa também com /x/ (splat vazio), então /x/* -> /x seria loop infinito.
 
 /pt/wiki  /pt/  302
-/pt/wiki/*  /pt/  302
 /pt/atividades  /pt/  302
-/pt/atividades/*  /pt/  302
 /pt/busca  /pt/  302
-/pt/busca/*  /pt/  302
 /pt/busca2  /pt/  302
-/pt/busca2/*  /pt/  302
 /pt/atendimento  /pt/  302
-/pt/atendimento/*  /pt/  302
 /pt/editar-site  /pt/  302
-/pt/editar-site/*  /pt/  302
 /pt/publicacoes  /pt/  302
-/pt/publicacoes/*  /pt/  302
 /pt/iniciativas/publicacoes  /pt/  302
-/pt/iniciativas/publicacoes/*  /pt/  302
 
 /en/wiki  /en/  302
-/en/wiki/*  /en/  302
 /en/atividades  /en/  302
-/en/atividades/*  /en/  302
 /en/busca  /en/  302
-/en/busca/*  /en/  302
 /en/busca2  /en/  302
-/en/busca2/*  /en/  302
 /en/help-desk  /en/  302
-/en/help-desk/*  /en/  302
 /en/editar-site  /en/  302
-/en/editar-site/*  /en/  302
 /en/publications  /en/  302
-/en/publications/*  /en/  302
 /en/initiatives/publications  /en/  302
-/en/initiatives/publications/*  /en/  302
 
 /es/wiki  /es/  302
-/es/wiki/*  /es/  302
 /es/atividades  /es/  302
-/es/atividades/*  /es/  302
 /es/busca  /es/  302
-/es/busca/*  /es/  302
 /es/busca2  /es/  302
-/es/busca2/*  /es/  302
 /es/mesa-de-ayuda  /es/  302
-/es/mesa-de-ayuda/*  /es/  302
 /es/editar-site  /es/  302
-/es/editar-site/*  /es/  302
 /es/publicaciones  /es/  302
-/es/publicaciones/*  /es/  302
 /es/iniciativas/publicaciones  /es/  302
-/es/iniciativas/publicaciones/*  /es/  302
 
 # Página pessoal de membro despublicada
 /pt/marcelo-passini-marianopt  /pt/institucional/equipe  302
-/pt/marcelo-passini-marianopt/*  /pt/institucional/equipe  302
 /en/marcelo-passini-marianopt  /en/institutional/team  302
-/en/marcelo-passini-marianopt/*  /en/institutional/team  302
 /es/marcelo-passini-marianopt  /es/institucional/equipo  302
-/es/marcelo-passini-marianopt/*  /es/institucional/equipo  302
 
 # Raiz e paths sem prefixo de idioma → PT
 /  /pt/  301
 /atividades  /pt/atividades  301
-/atividades/*  /pt/atividades/:splat  301
 /wiki  /pt/wiki  301
-/wiki/*  /pt/wiki/:splat  301
 /iniciativas  /pt/iniciativas  301
-/iniciativas/*  /pt/iniciativas/:splat  301
 /institucional  /pt/institucional  301
-/institucional/*  /pt/institucional/:splat  301
 /noticias  /pt/noticias  301
-/noticias/*  /pt/noticias/:splat  301
 /publicacoes  /pt/publicacoes  301
-/publicacoes/*  /pt/publicacoes/:splat  301
 /atendimento  /pt/atendimento  301
+
+# Curingas, na mesma ordem das regras exatas acima.
+
+/pt/wiki/*  /pt/  302
+/pt/atividades/*  /pt/  302
+/pt/busca/*  /pt/  302
+/pt/busca2/*  /pt/  302
+/pt/atendimento/*  /pt/  302
+/pt/editar-site/*  /pt/  302
+/pt/publicacoes/*  /pt/  302
+/pt/iniciativas/publicacoes/*  /pt/  302
+/en/wiki/*  /en/  302
+/en/atividades/*  /en/  302
+/en/busca/*  /en/  302
+/en/busca2/*  /en/  302
+/en/help-desk/*  /en/  302
+/en/editar-site/*  /en/  302
+/en/publications/*  /en/  302
+/en/initiatives/publications/*  /en/  302
+/es/wiki/*  /es/  302
+/es/atividades/*  /es/  302
+/es/busca/*  /es/  302
+/es/busca2/*  /es/  302
+/es/mesa-de-ayuda/*  /es/  302
+/es/editar-site/*  /es/  302
+/es/publicaciones/*  /es/  302
+/es/iniciativas/publicaciones/*  /es/  302
+/pt/marcelo-passini-marianopt/*  /pt/institucional/equipe  302
+/en/marcelo-passini-marianopt/*  /en/institutional/team  302
+/es/marcelo-passini-marianopt/*  /es/institucional/equipo  302
+/atividades/*  /pt/atividades/:splat  301
+/wiki/*  /pt/wiki/:splat  301
+/iniciativas/*  /pt/iniciativas/:splat  301
+/institucional/*  /pt/institucional/:splat  301
+/noticias/*  /pt/noticias/:splat  301
+/publicacoes/*  /pt/publicacoes/:splat  301
 /atendimento/*  /pt/atendimento/:splat  301

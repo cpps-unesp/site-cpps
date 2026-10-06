@@ -6,13 +6,13 @@ import NewsGrid from './NewsGrid.astro';
 import NewsSidebar from './NewsSidebar.astro';
 import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
-import type { Noticia } from '../utils/noticias';
+import type { Noticia, NoticiaTag } from '../utils/noticias';
 
 interface Props {
   lang: SupportedLang;
   // Notícias do idioma, da mais recente para a mais antiga.
   noticias: Noticia[];
-  tag?: string | null;
+  tag?: NoticiaTag | null;
 }
 
 const { lang, noticias: langNoticias, tag = null } = Astro.props;
@@ -23,10 +23,8 @@ let featuredPost: Noticia | null = null;
 let titlePage = locale.texts.header.noticias || 'Notícias';
 
 if (tag) {
-  displayedNoticias = langNoticias.filter((post) => post.tags.some((t) => t.slug === tag));
-  const actualTagName =
-    displayedNoticias[0]?.tags.find((t) => t.slug === tag)?.label || tag;
-  titlePage = `${titlePage}: ${actualTagName}`;
+  displayedNoticias = langNoticias.filter((post) => post.tags.some((t) => t.slug === tag.slug));
+  titlePage = `${titlePage}: ${tag.label}`;
 } else {
   // Logic for featured post only on main news page
   featuredPost = langNoticias.find((post) => post.featured) || langNoticias[0] || null;
