@@ -14,9 +14,10 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       # Fixada por SHA, a action não pode ser trocada por código hostil depois
-      # da revisão: a tag é móvel, o commit não. O script lê o YAML em vez de
-      # usar regex, que não enxerga flow mapping, chave entre aspas nem valor na
-      # linha seguinte (ver .github/scripts/checa-actions-fixadas.py).
+      # da revisão: a tag é móvel, o commit não. O passo pega tag colada por
+      # engano e regressão, mas não substitui a revisão: o PR roda a versão do
+      # script que ele mesmo traz, e o script não confere se o SHA é da action
+      # (ver .github/scripts/checa-actions-fixadas.py).
       - name: Actions fixadas por SHA
         run: python3 .github/scripts/checa-actions-fixadas.py
 
