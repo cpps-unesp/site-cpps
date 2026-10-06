@@ -135,7 +135,8 @@
       "sortOrder": 2,
       "supports": [
         "drafts",
-        "revisions"
+        "revisions",
+        "search"
       ],
       "titleField": "title",
       "admin": {
@@ -148,7 +149,8 @@
           "slug": "title",
           "label": "Título",
           "type": "string",
-          "required": true
+          "required": true,
+          "searchable": true
         },
         {
           "slug": "ordem",
@@ -169,6 +171,7 @@
           "slug": "paragrafos",
           "label": "Parágrafos",
           "type": "repeater",
+          "searchable": true,
           "validation": {
             "subFields": [
               {
@@ -189,6 +192,7 @@
           "slug": "lista",
           "label": "Lista com ✓",
           "type": "repeater",
+          "searchable": true,
           "validation": {
             "subFields": [
               {
@@ -251,17 +255,20 @@
         {
           "slug": "cargo",
           "label": "Cargo",
-          "type": "string"
+          "type": "string",
+          "searchable": true
         },
         {
           "slug": "descricao",
           "label": "Descrição",
-          "type": "text"
+          "type": "text",
+          "searchable": true
         },
         {
           "slug": "contribuicao",
           "label": "Contribuição",
-          "type": "text"
+          "type": "text",
+          "searchable": true
         },
         {
           "slug": "foto",
@@ -341,7 +348,8 @@
       "sortOrder": 4,
       "supports": [
         "drafts",
-        "revisions"
+        "revisions",
+        "search"
       ],
       "titleField": "title",
       "admin": {
@@ -354,12 +362,14 @@
           "slug": "title",
           "label": "Título",
           "type": "string",
-          "required": true
+          "required": true,
+          "searchable": true
         },
         {
           "slug": "descricao",
           "label": "Descrição",
-          "type": "text"
+          "type": "text",
+          "searchable": true
         },
         {
           "slug": "ordem",
@@ -509,6 +519,7 @@
           "slug": "docente",
           "label": "Docente",
           "type": "string",
+          "searchable": true,
           "translatable": false
         },
         {
@@ -520,7 +531,8 @@
         {
           "slug": "departamento",
           "label": "Departamento",
-          "type": "string"
+          "type": "string",
+          "searchable": true
         },
         {
           "slug": "situacao",

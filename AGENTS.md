@@ -15,7 +15,7 @@
 
 - Install dependencies: `npm install`
 - Dev server: `npm run dev` (Astro dev)
-- Production build: `npm run build` (Astro build + Pagefind index)
+- Production build: `npm run build` (Astro build)
 - Local EmDash: `npm run dev` simulates D1/R2 in `.wrangler/`; first visit to `http://localhost:4321/_emdash/admin` runs setup (choose "Sample content" to import `seed/seed.json`)
 - Built Worker locally: `npm run build && npx wrangler dev`
 - Preview build: `npm run preview`
@@ -130,7 +130,7 @@
 
 - Output goes to `dist/client/` (static assets) and `dist/server/` (Worker + generated `wrangler.json`).
 - Deploy: Cloudflare Workers (see `docs/deploy-e-redirects.md`).
-- Pagefind indexes are generated during `npm run build`.
+- Site search uses EmDash (`/_emdash/api/search`) from `src/components/SearchModal.astro`; collections need `supports: ["search"]` and `searchable` fields in `seed/seed.json`.
 
 ## Known Gaps / TODO (for maintainers)
 

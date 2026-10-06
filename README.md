@@ -12,7 +12,7 @@ Site institucional do Centro de Pesquisa Política e Social da Faculdade de Ciê
 - **[TypeScript](https://www.typescriptlang.org/)** - JavaScript com tipagem estática
 - **[Tailwind CSS](https://tailwindcss.com/)** + **[DaisyUI](https://daisyui.com/)** - Estilização e componentes UI
 - **[MDX](https://mdxjs.com/)** - Markdown com componentes
-- **[Pagefind](https://pagefind.app/)** - Busca estática no site
+- **[EmDash](https://emdashcms.com/)** - CMS do conteúdo editável, com a busca do site
 
 ## Pré-requisitos
 
@@ -110,7 +110,7 @@ O site suporta temas claro e escuro, com detecção automática do sistema. Os t
 
 ## Busca
 
-A busca é implementada com Pagefind e indexa automaticamente todo o conteúdo do site durante o build.
+A busca usa o índice do EmDash (`/_emdash/api/search`): encontra notícias, equipe, Sobre, documentos, episódios do Café com Ciência e projetos assim que são publicados, no idioma da página e, sem tradução, em português. O modal fica em `src/components/SearchModal.astro`. As páginas que não vêm do EmDash (demais Iniciativas, wiki) não entram na busca.
 
 ## Scripts Disponíveis
 

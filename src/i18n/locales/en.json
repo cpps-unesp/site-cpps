@@ -28,6 +28,12 @@
       "projetosDePesquisa": "Research Projects",
       "projetosDeDados": "Data Projects",
       "buscar": "Search"
+    },
+    "busca": {
+      "placeholder": "Type to search...",
+      "buscando": "Searching...",
+      "semResultados": "No results found.",
+      "fechar": "Press ESC to close"
     }
   },
   "noticias": {

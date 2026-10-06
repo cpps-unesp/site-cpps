@@ -133,7 +133,7 @@ import '../styles/global.css';
   <body class="bg-base-100 text-base-content">
     <Header lang={lang} texts={pageTexts} identidade={pageIdentidade} />
 
-    <main class:list={[isLangHome ? 'pt-0' : 'pt-20 md:pt-24', 'flex-1']} data-pagefind-body>
+    <main class:list={[isLangHome ? 'pt-0' : 'pt-20 md:pt-24', 'flex-1']}>
       <slot />
       {
         githubPath && (
@@ -145,7 +145,7 @@ import '../styles/global.css';
     </main>
     <Footer lang={lang} texts={pageTexts} githubPath={githubPath} />
     <BackToTop lang={lang} />
-    <SearchModal texts={pageTexts} />
+    <SearchModal lang={lang} texts={pageTexts} />
     <script type="module" src="/scripts/themeSwitcher.js"></script>
   </body>
 </html>

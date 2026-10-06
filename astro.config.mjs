@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
-import pagefind from 'astro-pagefind';
 import mdx from '@astrojs/mdx';
 import cloudflare from '@astrojs/cloudflare';
 import react from '@astrojs/react';
@@ -27,7 +26,6 @@ export default defineConfig({
   },
 
   integrations: [
-    pagefind(),
     mdx(),
     react(),
     emdash({

@@ -31,6 +31,12 @@
       "projetosDePesquisa": "Projetos de Pesquisa",
       "projetosDeDados": "Projetos de Dados",
       "buscar": "Buscar"
+    },
+    "busca": {
+      "placeholder": "Digite para buscar...",
+      "buscando": "Buscando...",
+      "semResultados": "Nenhum resultado encontrado.",
+      "fechar": "Pressione ESC para fechar"
     }
   },
   "noticias": {

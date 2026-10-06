@@ -28,6 +28,12 @@
       "projetosDePesquisa": "Proyectos de Investigación",
       "projetosDeDados": "Proyectos de Datos",
       "buscar": "Buscar"
+    },
+    "busca": {
+      "placeholder": "Escribe para buscar...",
+      "buscando": "Buscando...",
+      "semResultados": "No se encontraron resultados.",
+      "fechar": "Presiona ESC para cerrar"
     }
   },
   "noticias": {
