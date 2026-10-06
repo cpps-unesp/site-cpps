@@ -83,7 +83,7 @@ const { Content } = await render(post);
                 {locale.noticias?.by || 'Por'} {displayAuthor}
               </span>
               <span class="text-base-content/60">
-                {locale.publicacoes?.publishedIn || 'Publicado em'}
+                {locale.publicacoes?.publishedIn || 'Publicado em'}{' '}
                 {
                   new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', {
                     day: 'numeric',
