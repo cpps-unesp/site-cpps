@@ -2,9 +2,11 @@ import { getEmDashCollection, getEmDashEntry } from 'emdash';
 import type { PortableTextBlock } from 'emdash';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
+import { urlDaImagem, type MediaUrlResolver } from './conteudo';
 
 // Notícias vêm do EmDash (coleção `noticias`, definida em seed/seed.json) e são
 // renderizadas sob demanda: o que é publicado no admin aparece no próximo acesso.
+// Cada idioma é uma tradução da notícia no EmDash.
 
 const LANGS: SupportedLang[] = ['pt', 'en', 'es'];
 const TAXONOMIA_TAGS = 'tag';
@@ -29,31 +31,20 @@ export type Noticia = {
 
 type NoticiaEntry = NonNullable<Awaited<ReturnType<typeof getEmDashEntry<'noticias'>>>['entry']>;
 
-// Resolve a URL pública de um arquivo do storage do EmDash (local, S3, R2...).
-export type MediaUrlResolver = ((storageKey: string) => string) | undefined;
-
 function isSupportedLang(value: string | undefined): value is SupportedLang {
   return LANGS.includes(value as SupportedLang);
 }
 
-function getImageUrl(image: NoticiaEntry['data']['image'], resolveMedia: MediaUrlResolver): string {
-  if (!image) return IMAGEM_PADRAO;
-  const storageKey = typeof image.meta?.storageKey === 'string' ? image.meta.storageKey : '';
-  if (storageKey) {
-    return resolveMedia ? resolveMedia(storageKey) : `/_emdash/api/media/file/${storageKey}`;
-  }
-  return image.src || IMAGEM_PADRAO;
-}
-
 function toNoticia(entry: NoticiaEntry, resolveMedia: MediaUrlResolver): Noticia {
   const { data } = entry;
+  const locale = (data as { locale?: string }).locale;
   return {
     slug: data.slug ?? entry.id,
     title: data.title,
     date: new Date(data.date),
-    lang: data.lang,
+    lang: isSupportedLang(locale) ? locale : 'pt',
     resumo: data.resumo,
-    image: getImageUrl(data.image, resolveMedia),
+    image: urlDaImagem(data.image, resolveMedia, IMAGEM_PADRAO),
     imageAlt: data.image?.alt || data.title,
     tags: (data.terms?.[TAXONOMIA_TAGS] ?? []).map(({ slug, label }) => ({ slug, label })),
     author: data.author?.trim() || AUTOR_PADRAO,
@@ -64,7 +55,7 @@ function toNoticia(entry: NoticiaEntry, resolveMedia: MediaUrlResolver): Noticia
 
 async function listNoticias(lang: SupportedLang, resolveMedia: MediaUrlResolver) {
   const { entries, error } = await getEmDashCollection('noticias', {
-    where: { lang },
+    locale: lang,
     orderBy: { date: 'desc' },
   });
   return { noticias: entries.map((entry) => toNoticia(entry, resolveMedia)), error };
@@ -132,7 +123,10 @@ export async function resolveNoticiasRoute(
 
   if (slugParts.length !== 1) return { kind: 'not-found' };
 
-  const { entry, error: entryError, isPreview } = await getEmDashEntry('noticias', slugParts[0]);
+  // Sem tradução no idioma pedido, o EmDash devolve a versão em pt.
+  const { entry, error: entryError, isPreview } = await getEmDashEntry('noticias', slugParts[0], {
+    locale: lang,
+  });
   if (entryError) return { kind: 'error', error: entryError };
   if (!entry) return { kind: 'not-found' };
 

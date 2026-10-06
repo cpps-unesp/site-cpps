@@ -5,13 +5,125 @@
 
 import type { BylineSummary, ContentBylineCredit, TaxonomyTerm, PortableTextBlock } from "emdash";
 
+export interface Pagina {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  introducao?: string;
+  imagem?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
+  botao_texto?: string;
+  botao_link?: string;
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface Sobre {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  ordem: number;
+  invertido?: boolean;
+  paragrafos?: { "texto": string; "check"?: boolean | null }[];
+  lista?: { "item": string }[];
+  imagens?: { "imagem": { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } } }[];
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface Equipe {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  cargo?: string;
+  descricao?: string;
+  contribuicao?: string;
+  foto?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
+  categoria: "Coordenação" | "Pesquisadores" | "Estagiários";
+  prioridade?: number;
+  ativo?: boolean;
+  redes?: { "tipo": string; "url": string }[];
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface Documento {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  descricao?: string;
+  ordem: number;
+  arquivos?: { "nome"?: string | null; "tipo": string; "url": string }[];
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface CafeEpisodio {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  numero: number;
+  icone?: string;
+  descricao?: string;
+  materiais?: { "tipo": string; "url": string }[];
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
+export interface Projeto {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  docente?: string;
+  periodo?: string;
+  departamento?: string;
+  situacao?: string;
+  agencia?: string;
+  processo?: string;
+  natureza?: string;
+  valor?: string;
+  associados?: { "nome": string }[];
+  resumo?: string;
+  mostrar?: ("docente" | "departamento" | "associados" | "status" | "periodo" | "agencia" | "processo" | "resumo")[];
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 export interface Noticia {
   id: string;
   slug: string | null;
   status: string;
   title: string;
   date: string;
-  lang: "pt" | "en" | "es";
   resumo: string;
   image?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
   author?: string;
@@ -27,6 +139,12 @@ export interface Noticia {
 
 declare module "emdash" {
   interface EmDashCollections {
+    paginas: Pagina;
+    sobre: Sobre;
+    equipe: Equipe;
+    documentos: Documento;
+    cafe_episodios: CafeEpisodio;
+    projetos: Projeto;
     noticias: Noticia;
   }
 }

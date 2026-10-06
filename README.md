@@ -64,20 +64,34 @@ site-cpps/
 └── package.json
 ```
 
-## Notícias (EmDash)
+## Conteúdo editável (EmDash)
 
-As notícias são editadas no [EmDash](https://emdashcms.com), em `/_emdash/admin`, e as páginas de notícias são renderizadas a cada acesso: o que é publicado no admin aparece no site sem novo build. O resto do site continua pré-renderizado.
+O conteúdo abaixo é editado no [EmDash](https://emdashcms.com), em `/_emdash/admin`, e as páginas são renderizadas a cada acesso: o que é publicado no admin aparece no site sem novo build.
+
+| No admin | Página do site |
+|---|---|
+| Notícias | Notícias (lista, categorias e notícia) |
+| Institucional > Páginas | Título e texto de abertura da Home, Equipe, Documentos, Café com Ciência e Projetos de Pesquisa |
+| Institucional > Sobre | Blocos da página Sobre |
+| Institucional > Equipe | Pessoas da página Equipe |
+| Institucional > Documentos | Documentos |
+| Iniciativas > Café com Ciência | Episódios |
+| Iniciativas > Projetos de Pesquisa | Projetos |
+
+Cada item tem versões em pt, en e es (painel **Translations** no admin). Sem tradução, o site mostra a versão em português. Nome, foto, links e outros dados que não dependem do idioma são compartilhados entre as versões.
+
+Continuam no repositório: os textos de interface em `src/i18n/locales/*.json`, as demais páginas de Iniciativas, a wiki e os guias em `src/content/`, e as páginas pessoais em `src/content/membros/`.
 
 Para rodar localmente:
 
 ```bash
 npm install
 npx emdash secrets generate --write .env   # uma vez; o .env não vai para o Git
-npx emdash seed                            # cria data.db com o modelo e as notícias atuais
+npx emdash seed                            # cria data.db com os modelos e o conteúdo atual
 npm run dev
 ```
 
-Abra `http://localhost:4321/_emdash/admin`, crie sua conta e registre uma passkey. O modelo de conteúdo (campos da notícia e categorias) fica em `seed/seed.json`. O banco (`data.db`) e as imagens enviadas (`uploads/`) ficam só na sua máquina.
+Abra `http://localhost:4321/_emdash/admin`, crie sua conta e registre uma passkey. Os modelos de conteúdo (campos de cada coleção) ficam em `seed/seed.json`. O banco (`data.db`) e as imagens enviadas (`uploads/`) ficam só na sua máquina.
 
 ## Internacionalização
 

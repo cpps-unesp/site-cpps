@@ -15,6 +15,13 @@ export default defineConfig({
   // Só as rotas do EmDash (admin, API e notícias) rodam sob demanda.
   output: 'server',
   adapter: node({ mode: 'standalone' }),
+  // Idiomas do conteúdo no EmDash. As URLs /pt/, /en/ e /es/ continuam sendo
+  // resolvidas pelas rotas [lang] do site, por isso o roteamento é manual.
+  i18n: {
+    defaultLocale: 'pt',
+    locales: ['pt', 'en', 'es'],
+    routing: 'manual',
+  },
   vite: {
     plugins: [tailwindcss()],
   },

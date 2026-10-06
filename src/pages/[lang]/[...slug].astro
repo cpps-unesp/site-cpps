@@ -1,5 +1,7 @@
 ---
-export const prerender = true;
+// Sob demanda: Equipe, Sobre, Documentos, Café com Ciência e Projetos de Pesquisa
+// vêm do EmDash. As outras páginas daqui continuam usando os JSON de idioma.
+export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -21,35 +23,30 @@ import { getCollection, render } from 'astro:content';
 import type { SupportedLang } from '../../types/lang';
 import { getTranslations } from '../../utils/i18n';
 import {
-  buildMembroPaths,
   buildRouteTranslationPaths,
   findOriginalKey,
   getMembroSlugFromEntryId,
 } from '../../utils/catchAllRouting';
-
-// ✅ Exporta os caminhos possíveis para páginas estáticas
-export async function getStaticPaths() {
-  const langs: SupportedLang[] = ['pt', 'en', 'es'];
-  const paths = buildRouteTranslationPaths(langs);
-
-  // Notícias ficam fora daqui: vêm do EmDash em src/pages/[lang]/noticias e /news.
-
-  // Membros (todos os idiomas para permitir fallback)
-  const allMembros = await getCollection('membros', ({ data }) => data.draft !== true);
-  const uniqueMembroSlugs = [...new Set(allMembros.map((m) => getMembroSlugFromEntryId(m.id)))];
-  paths.push(...buildMembroPaths(langs, uniqueMembroSlugs));
-
-  return paths;
-}
+import {
+  getCafe,
+  getDocumentos,
+  getEquipe,
+  getProjetosDePesquisa,
+  getSobre,
+} from '../../utils/conteudo';
 
 // ✅ Lógica de roteamento e carregamento
-const currentLang = (Astro.params.lang as SupportedLang) ?? 'pt';
+const langs: SupportedLang[] = ['pt', 'en', 'es'];
+if (!langs.includes(Astro.params.lang as SupportedLang)) {
+  return new Response(null, { status: 404 });
+}
+const currentLang = Astro.params.lang as SupportedLang;
 const slugParam = Astro.params.slug;
 const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? '');
 const slugArray = slugPath.split('/');
 
 const locale = getTranslations(currentLang);
-const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } = locale;
+const { titulo, descricao, texts } = locale;
 
 const allMembros = await getCollection('membros', ({ data }) => data.draft !== true);
 const membroEntries = allMembros.filter((entry) => getMembroSlugFromEntryId(entry.id) === slugPath);
@@ -71,6 +68,25 @@ if (membroSelecionado) {
 }
 
 const originalKey = findOriginalKey(slugPath, currentLang);
+const rotasDoIdioma = new Set(buildRouteTranslationPaths([currentLang]).map((p) => p.params.slug));
+
+// Resposta 404 sem corpo: o Astro serve a página src/pages/404.astro.
+if (!membroSelecionado && !rotasDoIdioma.has(slugPath)) {
+  return new Response(null, { status: 404 });
+}
+
+const resolveMedia = Astro.locals.emdash?.getPublicMediaUrl;
+const equipe =
+  originalKey === 'institucional/equipe' ? await getEquipe(currentLang, resolveMedia) : null;
+const sobre =
+  originalKey === 'institucional/sobre' ? await getSobre(currentLang, resolveMedia) : null;
+const documentos =
+  originalKey === 'institucional/documentos' ? await getDocumentos(currentLang) : null;
+const cafe = originalKey === 'iniciativas/cafe-com-ciencia' ? await getCafe(currentLang) : null;
+const projetos =
+  originalKey === 'iniciativas/projetos-de-pesquisa'
+    ? await getProjetosDePesquisa(currentLang)
+    : null;
 ---
 
 {
@@ -124,14 +140,14 @@ const originalKey = findOriginalKey(slugPath, currentLang);
       {(() => {
         switch (originalKey) {
           case 'institucional/equipe':
-            return <EquipeSection equipe={equipe} texts={texts} />;
+            return equipe && <EquipeSection equipe={equipe} texts={texts} />;
           case 'institucional/sobre':
-            return <SobreSection blocos={sobre} />;
+            return sobre && <SobreSection blocos={sobre} />;
           case 'institucional/documentos':
-            return <DocumentosSection documentos={documentos} lang={currentLang} />;
+            return documentos && <DocumentosSection documentos={documentos} lang={currentLang} />;
           // Iniciativas
           case 'iniciativas/cafe-com-ciencia':
-            return <CafeComCienciaSection cafe={cafe} lang={currentLang} />;
+            return cafe && <CafeComCienciaSection cafe={cafe} lang={currentLang} />;
           case 'iniciativas/material-de-apoio':
             return <IniciativasMaterialApoioSection texts={texts} />;
           case 'iniciativas/oficinas':
@@ -140,11 +156,13 @@ const originalKey = findOriginalKey(slugPath, currentLang);
             return <IniciativasProjetosSection texts={texts} />;
           case 'iniciativas/projetos-de-pesquisa':
             return (
-              <IniciativasProjetosDePesquisaSection
-                texts={texts}
-                projetos={iniciativas.projetosLista}
-                iniciativas={iniciativas}
-              />
+              projetos && (
+                <IniciativasProjetosDePesquisaSection
+                  texts={texts}
+                  projetos={projetos.projetosLista}
+                  iniciativas={projetos}
+                />
+              )
             );
           case 'iniciativas/projetos-de-dados':
             return <IniciativasProjetosDeDadosSection texts={texts} />;

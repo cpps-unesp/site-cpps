@@ -1,5 +1,6 @@
 ---
-export const prerender = true;
+// Sob demanda: o hero vem do EmDash (Páginas > home).
+export const prerender = false;
 
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
@@ -7,11 +8,8 @@ import AtividadesSection from '../../components/AtividadesSection.astro';
 import ProdutosSection from '../../components/ProdutosSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
 import { getTranslations } from '../../utils/i18n';
+import { getHero } from '../../utils/conteudo';
 import type { SupportedLang } from '../../types/lang';
-
-export function getStaticPaths() {
-  return [{ params: { lang: 'pt' } }, { params: { lang: 'en' } }, { params: { lang: 'es' } }];
-}
 
 const currentLang = (Astro.params.lang ?? 'pt') as SupportedLang;
 
@@ -21,9 +19,9 @@ if (!allowedLangs.includes(currentLang)) {
 }
 
 const locale = getTranslations(currentLang);
+const hero = await getHero(currentLang, Astro.locals.emdash?.getPublicMediaUrl);
 
 const {
-  hero,
   titulo,
   descricao,
   atividadesPesquisa,
@@ -39,7 +37,7 @@ const {
   identidade={locale.identidade}
   githubPath="src/pages/[lang]/index.astro"
 >
-  <Hero heroData={locale} lang={currentLang} />
+  <Hero heroData={{ hero }} lang={currentLang} />
 
   {
     atividadesPesquisa && (

@@ -42,7 +42,7 @@ const { heroData, lang = 'pt' } = Astro.props;
           class="z-10 h-32 w-auto sm:h-48 md:h-64"
         />
         <h1
-          class="titulo text-base-content z-10 mt-4 text-3xl leading-tight sm:mt-0 sm:text-5xl md:text-6xl"
+          class="titulo text-base-content z-10 mt-4 text-3xl leading-tight text-balance sm:mt-0 sm:max-w-[9em] sm:text-5xl md:text-6xl"
         >
           {/* eslint-disable-next-line astro/no-set-html-directive */}
           <Fragment set:html={heroData?.hero.title} />
