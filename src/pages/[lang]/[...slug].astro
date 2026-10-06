@@ -75,11 +75,10 @@ if (!membroSelecionado && !rotasDoIdioma.has(slugPath)) {
   return new Response(null, { status: 404 });
 }
 
-const resolveMedia = Astro.locals.emdash?.getPublicMediaUrl;
 const equipe =
-  originalKey === 'institucional/equipe' ? await getEquipe(currentLang, resolveMedia) : null;
+  originalKey === 'institucional/equipe' ? await getEquipe(currentLang) : null;
 const sobre =
-  originalKey === 'institucional/sobre' ? await getSobre(currentLang, resolveMedia) : null;
+  originalKey === 'institucional/sobre' ? await getSobre(currentLang) : null;
 const documentos =
   originalKey === 'institucional/documentos' ? await getDocumentos(currentLang) : null;
 const cafe = originalKey === 'iniciativas/cafe-com-ciencia' ? await getCafe(currentLang) : null;

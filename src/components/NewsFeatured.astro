@@ -1,4 +1,5 @@
 ---
+import { Image } from 'emdash/ui';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
 import { formatNoticiaDate, getNoticiaUrl, type Noticia } from '../utils/noticias';
@@ -17,9 +18,10 @@ const slug = getNoticiaUrl(post.slug, lang);
 <div class="group bg-base-100 relative mb-12 overflow-hidden rounded-2xl shadow-xl">
   <div class="grid gap-0 md:grid-cols-2">
     <div class="relative h-64 overflow-hidden md:h-auto">
-      <img
-        src={image}
+      <Image
+        image={image}
         alt={imageAlt}
+        priority
         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
     </div>

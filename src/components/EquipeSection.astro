@@ -1,13 +1,14 @@
 ---
 import { ordenarPorPrioridadeOuNome } from '../utils/ordenar';
 import EquipeTabs from '../components/EquipeTabs.astro';
+import type { Imagem } from '../utils/conteudo';
 
 interface Membro {
   nome: string;
   status?: string;
   prioridade?: number | string;
   slug?: string;
-  foto?: string;
+  foto?: Imagem;
   cargo?: string;
   descricao?: string;
   contribuicao?: string;

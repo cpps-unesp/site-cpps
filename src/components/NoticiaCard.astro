@@ -1,4 +1,6 @@
 ---
+import { Image } from 'emdash/ui';
+import type { Imagem } from '../utils/conteudo';
 import { formatNoticiaDate, getNoticiaCategoriaUrl, type NoticiaTag } from '../utils/noticias';
 import pt from '../i18n/locales/pt.json';
 import en from '../i18n/locales/en.json';
@@ -7,7 +9,7 @@ import es from '../i18n/locales/es.json';
 interface Props {
   title: string;
   resumo: string;
-  image: string;
+  image: Imagem;
   imageAlt?: string;
   tags: NoticiaTag[];
   slug: string;
@@ -28,8 +30,8 @@ const t = translations[lang] || translations.pt;
   class="bg-base-100 group border-base-200 flex h-full flex-col overflow-hidden rounded-2xl border shadow-md transition-all duration-300 hover:shadow-xl"
 >
   <a href={slug} class="relative block aspect-video overflow-hidden">
-    <img
-      src={image}
+    <Image
+      image={image}
       alt={imageAlt ?? title}
       class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
     />

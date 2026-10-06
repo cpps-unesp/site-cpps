@@ -1,4 +1,5 @@
 import { getEmDashCollection, getEmDashEntry } from 'emdash';
+import type { ImageValue } from 'emdash';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from './i18n';
 
@@ -9,23 +10,10 @@ import { getTranslations } from './i18n';
 
 const IDIOMA_PADRAO: SupportedLang = 'pt';
 
-// Resolve a URL pública de um arquivo do storage do EmDash (local, S3, R2...).
-export type MediaUrlResolver = ((storageKey: string) => string) | undefined;
-
-type ImagemEmDash = { src?: string; meta?: Record<string, unknown> } | null | undefined;
-
-export function urlDaImagem(
-  imagem: ImagemEmDash,
-  resolveMedia: MediaUrlResolver,
-  padrao = ''
-): string {
-  if (!imagem) return padrao;
-  const storageKey = typeof imagem.meta?.storageKey === 'string' ? imagem.meta.storageKey : '';
-  if (storageKey) {
-    return resolveMedia ? resolveMedia(storageKey) : `/_emdash/api/media/file/${storageKey}`;
-  }
-  return imagem.src || padrao;
-}
+// O que o componente <Image> de emdash/ui recebe: o valor de um campo de imagem
+// do EmDash ou o caminho de um arquivo de public/. O componente resolve a URL,
+// gera o srcset e respeita o ponto focal escolhido no admin.
+export type Imagem = ImageValue | string;
 
 type Colecao = 'paginas' | 'sobre' | 'equipe' | 'documentos' | 'cafe_episodios' | 'projetos';
 type EntradaComGrupo = { data: { id: string; translationGroup?: string | null } };
@@ -87,7 +75,7 @@ function textoParaParagrafos(texto: string | undefined, classeDestaque: string):
     );
 }
 
-export async function getHero(lang: SupportedLang, resolveMedia: MediaUrlResolver) {
+export async function getHero(lang: SupportedLang) {
   const pagina = await getPagina('home', lang);
   return {
     title: escapeHtml(pagina?.title ?? ''),
@@ -98,7 +86,7 @@ export async function getHero(lang: SupportedLang, resolveMedia: MediaUrlResolve
     button: pagina?.botao_texto
       ? { url: pagina.botao_link ?? '', text: pagina.botao_texto }
       : undefined,
-    link: urlDaImagem(pagina?.imagem, resolveMedia),
+    imagem: pagina?.imagem,
   };
 }
 
@@ -108,13 +96,13 @@ type MembroEquipe = {
   cargo?: string;
   descricao?: string;
   contribuicao?: string;
-  foto: string;
+  foto?: Imagem;
   prioridade?: number;
   status: 'ativo' | 'inativo';
   redes: { tipo: string; url: string }[];
 };
 
-export async function getEquipe(lang: SupportedLang, resolveMedia: MediaUrlResolver) {
+export async function getEquipe(lang: SupportedLang) {
   const [pagina, pessoas] = await Promise.all([
     getPagina('equipe', lang),
     listarTraduzido('equipe', lang),
@@ -133,7 +121,7 @@ export async function getEquipe(lang: SupportedLang, resolveMedia: MediaUrlResol
       cargo: data.cargo,
       descricao: data.descricao,
       contribuicao: data.contribuicao,
-      foto: urlDaImagem(data.foto, resolveMedia),
+      foto: data.foto,
       prioridade: data.prioridade,
       status: data.ativo === false ? 'inativo' : 'ativo',
       redes: data.redes ?? [],
@@ -149,7 +137,7 @@ export async function getEquipe(lang: SupportedLang, resolveMedia: MediaUrlResol
   };
 }
 
-export async function getSobre(lang: SupportedLang, resolveMedia: MediaUrlResolver) {
+export async function getSobre(lang: SupportedLang) {
   const blocos = await listarTraduzido('sobre', lang);
   return Object.fromEntries(
     blocos
@@ -161,7 +149,7 @@ export async function getSobre(lang: SupportedLang, resolveMedia: MediaUrlResolv
           reverse: data.invertido ?? false,
           texto: (data.paragrafos ?? []).map((p) => ({ conteudo: p.texto, check: p.check ?? false })),
           departamentos: data.lista && data.lista.length > 0 ? data.lista.map((l) => l.item) : undefined,
-          imagem: (data.imagens ?? []).map((i) => urlDaImagem(i.imagem, resolveMedia)),
+          imagem: (data.imagens ?? []).map((i) => i.imagem).filter((i) => i !== undefined),
         },
       ])
   );

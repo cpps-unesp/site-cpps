@@ -2,11 +2,13 @@
 // src/components/BlocoSection.astro
 import TextoComCheck from './TextoComCheck.astro';
 import CheckIcon from '../icons/CheckIcon.astro';
+import { Image } from 'emdash/ui';
+import type { Imagem } from '../utils/conteudo';
 
 export interface Bloco {
   titulo: string;
   texto: { check: boolean; conteudo: string }[];
-  imagem: string | string[];
+  imagem: Imagem | Imagem[];
   departamentos?: string[];
   intercalar?: boolean;
   reverse?: boolean;
@@ -51,10 +53,10 @@ const { blocos } = Astro.props;
 
           {/* Coluna fixa de imagens */}
           <div class="flex flex-col items-center justify-center gap-6 md:w-5/12">
-            {imagens.map((imgSrc) => (
-              <img
-                src={imgSrc}
-                alt={`Imagem ilustrativa de ${bloco.titulo}`}
+            {imagens.map((imagem) => (
+              <Image
+                image={imagem}
+                alt={(typeof imagem === 'object' && imagem.alt) || `Imagem ilustrativa de ${bloco.titulo}`}
                 class="w-full max-w-sm rounded-xl transition duration-300 ease-in-out md:max-w-md"
                 loading="lazy"
               />

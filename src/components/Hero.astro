@@ -1,4 +1,5 @@
 ---
+import { Image } from 'emdash/ui';
 import { getTranslatedPath } from '../utils/getTranslatedPath';
 
 interface Props {
@@ -10,10 +11,15 @@ interface Props {
 const { heroData, lang = 'pt' } = Astro.props;
 ---
 
-<section
-  class="relative z-0 min-h-[100dvh] w-full bg-cover bg-center bg-no-repeat sm:bg-top"
-  style={`background-image: url('${heroData?.hero.link}')`}
->
+<section class="relative z-0 min-h-[100dvh] w-full overflow-hidden">
+  <!-- Imagem de fundo (no admin: Páginas › home › Imagem). Decorativa, por isso alt vazio. -->
+  <Image
+    image={heroData?.hero.imagem}
+    alt=""
+    priority
+    class="absolute inset-0 z-0 h-full w-full object-cover object-center sm:object-top"
+  />
+
   <!-- 🔳 Overlay em mobile usando base-100 para adaptação automática ao tema -->
   <div
     class="from-base-100 via-base-100/90 to-base-100/80 absolute inset-0 z-0 bg-gradient-to-b sm:hidden"

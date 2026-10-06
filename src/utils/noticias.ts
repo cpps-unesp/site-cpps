@@ -2,7 +2,7 @@ import { getEmDashCollection, getEmDashEntry } from 'emdash';
 import type { PortableTextBlock } from 'emdash';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
-import { urlDaImagem, type MediaUrlResolver } from './conteudo';
+import type { Imagem } from './conteudo';
 
 // Notícias vêm do EmDash (coleção `noticias`, definida em seed/seed.json) e são
 // renderizadas sob demanda: o que é publicado no admin aparece no próximo acesso.
@@ -21,7 +21,7 @@ export type Noticia = {
   date: Date;
   lang: SupportedLang;
   resumo: string;
-  image: string;
+  image: Imagem;
   imageAlt: string;
   tags: NoticiaTag[];
   author: string;
@@ -35,7 +35,7 @@ function isSupportedLang(value: string | undefined): value is SupportedLang {
   return LANGS.includes(value as SupportedLang);
 }
 
-function toNoticia(entry: NoticiaEntry, resolveMedia: MediaUrlResolver): Noticia {
+function toNoticia(entry: NoticiaEntry): Noticia {
   const { data } = entry;
   const locale = (data as { locale?: string }).locale;
   return {
@@ -44,7 +44,7 @@ function toNoticia(entry: NoticiaEntry, resolveMedia: MediaUrlResolver): Noticia
     date: new Date(data.date),
     lang: isSupportedLang(locale) ? locale : 'pt',
     resumo: data.resumo,
-    image: urlDaImagem(data.image, resolveMedia, IMAGEM_PADRAO),
+    image: data.image ?? IMAGEM_PADRAO,
     imageAlt: data.image?.alt || data.title,
     tags: (data.terms?.[TAXONOMIA_TAGS] ?? []).map(({ slug, label }) => ({ slug, label })),
     author: data.author?.trim() || AUTOR_PADRAO,
@@ -53,12 +53,12 @@ function toNoticia(entry: NoticiaEntry, resolveMedia: MediaUrlResolver): Noticia
   };
 }
 
-async function listNoticias(lang: SupportedLang, resolveMedia: MediaUrlResolver) {
+async function listNoticias(lang: SupportedLang) {
   const { entries, error } = await getEmDashCollection('noticias', {
     locale: lang,
     orderBy: { date: 'desc' },
   });
-  return { noticias: entries.map((entry) => toNoticia(entry, resolveMedia)), error };
+  return { noticias: entries.map(toNoticia), error };
 }
 
 export function getNoticiaUrl(slug: string, lang: SupportedLang): string {
@@ -98,8 +98,7 @@ export type NoticiasRoute =
 export async function resolveNoticiasRoute(
   langParam: string | undefined,
   segment: string,
-  slugParam: string | undefined,
-  resolveMedia: MediaUrlResolver
+  slugParam: string | undefined
 ): Promise<NoticiasRoute> {
   if (!isSupportedLang(langParam)) return { kind: 'not-found' };
   const lang = langParam;
@@ -110,7 +109,7 @@ export async function resolveNoticiasRoute(
     return { kind: 'redirect', location: `/${lang}/${expectedSegment}/${slugParts.join('/')}` };
   }
 
-  const { noticias, error } = await listNoticias(lang, resolveMedia);
+  const { noticias, error } = await listNoticias(lang);
   if (error) return { kind: 'error', error };
 
   if (slugParts.length === 0) {
@@ -133,7 +132,7 @@ export async function resolveNoticiasRoute(
   return {
     kind: 'detail',
     lang,
-    noticia: toNoticia(entry, resolveMedia),
+    noticia: toNoticia(entry),
     noticiasDoIdioma: noticias,
     isPreview,
   };
@@ -143,7 +142,7 @@ export async function getNoticiasSitemapPaths(): Promise<string[]> {
   const paths: string[] = [];
   for (const lang of LANGS) {
     paths.push(`/${lang}/${routeTranslations.noticias[lang]}`);
-    const { noticias } = await listNoticias(lang, undefined);
+    const { noticias } = await listNoticias(lang);
     for (const noticia of noticias) {
       paths.push(getNoticiaUrl(noticia.slug, lang));
     }

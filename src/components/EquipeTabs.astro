@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'emdash/ui';
+import type { Imagem } from '../utils/conteudo';
 import IconSocial from './IconSocial.astro';
 
 // Types for members and social networks
@@ -11,7 +13,7 @@ type Rede = {
 type Membro = {
   slug?: string;
   nome: string;
-  foto?: string;
+  foto?: Imagem;
   redes?: Rede[];
   cargo?: string;
   descricao?: string;
@@ -115,8 +117,8 @@ function getSlug(membro: Membro): string {
 
               {temPagina ? (
                 <a href={`/${lang}/${slug}`} class="relative block">
-                  <img
-                    src={membro.foto}
+                  <Image
+                    image={membro.foto}
                     alt={membro.nome}
                     class="mb-6 h-40 w-40 rounded-2xl object-cover shadow-lg transition-transform duration-500 group-hover:scale-105"
                   />
@@ -124,8 +126,8 @@ function getSlug(membro: Membro): string {
                 </a>
               ) : (
                 <div class="relative mb-4">
-                  <img
-                    src={membro.foto}
+                  <Image
+                    image={membro.foto}
                     alt={membro.nome}
                     class="h-40 w-40 rounded-2xl object-cover shadow-lg"
                   />
@@ -174,8 +176,8 @@ function getSlug(membro: Membro): string {
               )}
               {temPagina ? (
                 <a href={`/${lang}/${slug}`} class="relative block">
-                  <img
-                    src={membro.foto}
+                  <Image
+                    image={membro.foto}
                     alt={membro.nome}
                     class="h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale transition-transform duration-500 group-hover:scale-105 hover:opacity-100 hover:grayscale-0"
                   />
@@ -183,8 +185,8 @@ function getSlug(membro: Membro): string {
                 </a>
               ) : (
                 <div class="relative mb-4">
-                  <img
-                    src={membro.foto}
+                  <Image
+                    image={membro.foto}
                     alt={membro.nome}
                     class="h-40 w-40 rounded-2xl object-cover opacity-60 shadow-lg grayscale"
                   />
