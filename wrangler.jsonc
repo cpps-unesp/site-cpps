@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cpps-site",
+  "main": "./src/worker.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Banco do EmDash. No primeiro deploy o Wrangler cria o banco com este nome.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cpps-site",
+    },
+  ],
+
+  // Imagens e arquivos enviados pelo admin.
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "cpps-site-media",
+    },
+  ],
+
+  // Publicação agendada, backups e manutenção do EmDash.
+  "triggers": { "crons": ["* * * * *"] },
+}

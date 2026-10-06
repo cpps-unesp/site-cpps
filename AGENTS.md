@@ -4,8 +4,8 @@
 
 ## Project Snapshot
 
-- Framework: Astro (server output + `@astrojs/node`; every existing page sets `prerender = true`).
-- CMS: EmDash manages news, team, about, documents, Café com Ciência, research projects and page intros (SQLite `data.db`), rendered on demand.
+- Framework: Astro (server output + `@astrojs/cloudflare`): a Cloudflare Worker (`wrangler.jsonc`, `src/worker.ts`) with D1 (`DB`) and R2 (`MEDIA`).
+- CMS: EmDash manages news, team, about, documents, Café com Ciência, research projects and page intros (stored in D1), rendered on demand.
 - i18n: Astro `i18n` with `routing: 'manual'` (+ pass-through `src/middleware.ts`) only feeds EmDash's pt/en/es translations; URLs still come from the `[lang]` routes.
 - Styling: Tailwind CSS + DaisyUI themes.
 - Content: MDX + Astro content collections.
@@ -16,7 +16,8 @@
 - Install dependencies: `npm install`
 - Dev server: `npm run dev` (Astro dev)
 - Production build: `npm run build` (Astro build + Pagefind index)
-- EmDash local DB: `npx emdash seed` (applies `seed/seed.json` to `data.db`); admin at `/_emdash/admin`
+- Local EmDash: `npm run dev` simulates D1/R2 in `.wrangler/`; first visit to `http://localhost:4321/_emdash/admin` runs setup (choose "Sample content" to import `seed/seed.json`)
+- Built Worker locally: `npm run build && npx wrangler dev`
 - Preview build: `npm run preview`
 - Astro CLI: `npm run astro`
 - Single test: not available (no test runner configured)
@@ -127,7 +128,8 @@
 
 ## Build Output & Search
 
-- Output goes to `dist/client/` (static files) and `dist/server/` (Node server).
+- Output goes to `dist/client/` (static assets) and `dist/server/` (Worker + generated `wrangler.json`).
+- Deploy: Cloudflare Workers (see `docs/deploy-e-redirects.md`).
 - Pagefind indexes are generated during `npm run build`.
 
 ## Known Gaps / TODO (for maintainers)

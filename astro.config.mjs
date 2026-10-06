@@ -3,18 +3,18 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import pagefind from 'astro-pagefind';
 import mdx from '@astrojs/mdx';
-import node from '@astrojs/node';
+import cloudflare from '@astrojs/cloudflare';
 import react from '@astrojs/react';
-import emdash, { local } from 'emdash/astro';
-import { sqlite } from 'emdash/db';
+import emdash from 'emdash/astro';
+import { d1, r2 } from '@emdash-cms/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://cpps.franca.unesp.br',
-  // As páginas existentes continuam pré-renderizadas (`prerender = true`).
-  // Só as rotas do EmDash (admin, API e notícias) rodam sob demanda.
+  // Cloudflare Workers: as páginas que não leem o EmDash continuam pré-renderizadas
+  // (`prerender = true`); as que leem rodam no Worker. Recursos em wrangler.jsonc.
   output: 'server',
-  adapter: node({ mode: 'standalone' }),
+  adapter: cloudflare(),
   // Idiomas do conteúdo no EmDash. As URLs /pt/, /en/ e /es/ continuam sendo
   // resolvidas pelas rotas [lang] do site, por isso o roteamento é manual.
   i18n: {
@@ -31,11 +31,8 @@ export default defineConfig({
     mdx(),
     react(),
     emdash({
-      database: sqlite({ url: 'file:./data.db' }),
-      storage: local({
-        directory: './uploads',
-        baseUrl: '/_emdash/api/media/file',
-      }),
+      database: d1({ binding: 'DB' }),
+      storage: r2({ binding: 'MEDIA' }),
     }),
   ],
 });

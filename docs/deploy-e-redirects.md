@@ -4,26 +4,49 @@ Como o site é publicado e como os redirects de URL são gerenciados.
 
 ## Arquitetura de deploy
 
-O site é um conjunto de arquivos HTML estáticos gerados em build time (`output: 'static'` no `astro.config.mjs`). Não há servidor de aplicação nem Worker — toda página é pré-renderizada.
+O site roda inteiro na Cloudflare, como um **Worker** (`output: 'server'` com o adapter `@astrojs/cloudflare`):
 
-### Pipeline
+| Recurso | Binding | Para quê |
+|---|---|---|
+| Worker `cpps-site` | — | Renderiza as páginas que leem o EmDash e serve o admin em `/_emdash/admin` |
+| Static Assets | `ASSETS` | Arquivos de `dist/client/` (imagens de `public/`, CSS, JS, índice do Pagefind, páginas pré-renderizadas e `_redirects`) |
+| D1 `cpps-site` | `DB` | Banco do EmDash (conteúdo, usuários, traduções) |
+| R2 `cpps-site-media` | `MEDIA` | Imagens e arquivos enviados pelo admin |
+| KV (criado pelo adapter) | `SESSION` | Sessões de login do admin |
+| Images | `IMAGES` | Redimensionamento das imagens do R2 |
+| Cron Trigger (a cada minuto) | — | Publicação agendada, backups e manutenção do EmDash |
 
-1. **Push para o GitHub** em qualquer branch dispara o deploy.
-2. **Cloudflare Pages** (integração nativa com o repositório) detecta o push e roda:
-   - `npm run build` — gera os arquivos em `dist/` (HTML + assets + `_redirects` + pagefind)
-   - Publica `dist/` no CDN global da Cloudflare
-3. A branch `main` vai para produção (`cpps.franca.unesp.br`). Outras branches geram preview deploys em `<hash>.site-cpps.pages.dev`.
+A configuração fica em `wrangler.jsonc`; o build gera a versão completa em `dist/server/wrangler.json`. A entrada do Worker é `src/worker.ts`.
 
-A configuração fica no painel da Cloudflare → Workers & Pages → `site-cpps` → Settings → Builds & deployments:
+### Primeiro deploy (uma vez, com uma conta da Cloudflare do CPPS)
+
+1. `npx wrangler login`
+2. `npm run build && npx wrangler deploy` — na primeira vez o Wrangler cria o banco D1, o bucket R2 e o KV de sessões com os nomes do `wrangler.jsonc`.
+3. Gere a chave de criptografia do EmDash e guarde uma cópia em local seguro (perdê-la torna ilegíveis os segredos de plugins guardados no banco):
+   ```bash
+   npx emdash secrets generate          # mostra a chave
+   npx wrangler secret put EMDASH_ENCRYPTION_KEY
+   ```
+4. Confira o Worker no endereço `https://cpps-site.<sua-conta>.workers.dev`. As páginas que vêm do EmDash ficam sem conteúdo até o passo 6.
+5. Aponte `cpps.franca.unesp.br` para o Worker. O hostname já passa pela Cloudflare (CNAME para `proxy.cppsunesp.org`, na zona `cppsunesp.org`): no painel dessa zona, troque o destino do projeto Pages `site-cpps` para o Worker `cpps-site` (por exemplo, uma rota de Worker `cpps.franca.unesp.br/*`).
+6. Abra `https://cpps.franca.unesp.br/_emdash/admin` e conclua o assistente: título do site, **Sample content** (importa notícias, equipe, projetos, páginas e traduções de `seed/seed.json`, baixando as imagens de `public/`), conta e passkey. Faça isso já no domínio final: a passkey fica presa ao domínio em que foi criada.
+
+### Deploys seguintes (Workers Builds)
+
+No painel: Workers & Pages → `cpps-site` (o Worker) → Settings → Builds → conectar o repositório `cpps-unesp/site-cpps`:
 
 - **Build command:** `npm run build`
-- **Build output directory:** `dist`
+- **Deploy command:** `npx wrangler deploy`
 - **Production branch:** `main`
-- **Preview branches:** todas (`*`)
+- **Builds de outras branches:** `npx wrangler versions upload` (gera uma URL de preview sem afetar produção)
 
-> **Importante:** não existe `.github/workflows/deploy.yml`. O deploy via GitHub Actions foi removido porque duplicava o trabalho da integração nativa da Cloudflare. O workflow que sobrou (`ci.yml`) só roda typecheck/lint/build como validação em PRs — não faz deploy.
+Depois que o domínio estiver no Worker, desconecte e apague o projeto **Pages** `site-cpps`, que não sabe publicar este formato.
 
-## Histórico: por que migrei de SSR para estático
+Deploys seguintes não mexem no conteúdo do banco. Mudanças no modelo de conteúdo (`seed/seed.json`) depois do site no ar seguem o guia [Evolving a Deployed Site](https://docs.emdashcms.com/deployment/schema-evolution/).
+
+> O workflow `ci.yml` continua só validando PRs (typecheck, lint e build); não faz deploy.
+
+## Histórico: a fase estática (antes do EmDash)
 
 Anteriormente o site usava `output: 'server'` com o adapter `@astrojs/cloudflare`, executando como Cloudflare Worker. Funcionava, mas:
 
@@ -45,7 +68,7 @@ A degradação é pequena porque:
 
 ## Arquivo `public/_redirects`
 
-Sintaxe da Cloudflare Pages. Cada linha é uma regra: `origem destino código`.
+Sintaxe dos Static Assets da Cloudflare (a mesma do Pages). Cada linha é uma regra: `origem destino código`.
 
 - `*` em qualquer posição vira `:splat` no destino
 - Placeholders nomeados (`:lang`) também funcionam, mas não são usados aqui — preferimos rules explícitas por idioma para evitar matches indesejados
@@ -92,8 +115,8 @@ Garantem que URLs sem `/pt/`, `/en/`, `/es/` ainda funcionem, redirecionando par
 
 1. Edite `public/_redirects` na ordem certa (mais específico antes do mais genérico).
 2. Use `301` para mudanças permanentes (renomeação, reorganização), `307` apenas para casos temporários (ex: feature em testes A/B).
-3. Faça `npm run build` e confirme que `dist/_redirects` foi gerado corretamente.
-4. Push para `main` — a Cloudflare faz o deploy automaticamente em ~1-2 minutos.
+3. Faça `npm run build` e confirme que `dist/client/_redirects` foi gerado corretamente. Os Static Assets do Worker aplicam o arquivo antes de chamar o Worker; `npx wrangler dev` mostra as regras carregadas.
+4. Push para `main` — o Workers Builds faz o deploy automaticamente.
 
 Para testar a propagação:
 ```bash
