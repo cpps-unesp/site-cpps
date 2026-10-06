@@ -1,12 +1,17 @@
 ---
+import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
-import { getNoticiaUrl } from '../utils/noticiaSlug';
+import { formatNoticiaDate, getNoticiaUrl, type Noticia } from '../utils/noticias';
+
+interface Props {
+  post: Noticia;
+  lang: SupportedLang;
+}
 
 const { post, lang } = Astro.props;
 const locale = getTranslations(lang);
-const { title, resumo, image, tags, date, author } = post.data;
-const displayAuthor = author?.trim() || 'Equipe CPPS';
-const slug = getNoticiaUrl(post, lang);
+const { title, resumo, image, imageAlt, tags, date, author } = post;
+const slug = getNoticiaUrl(post.slug, lang);
 ---
 
 <div class="group bg-base-100 relative mb-12 overflow-hidden rounded-2xl shadow-xl">
@@ -14,16 +19,16 @@ const slug = getNoticiaUrl(post, lang);
     <div class="relative h-64 overflow-hidden md:h-auto">
       <img
         src={image}
-        alt={title}
+        alt={imageAlt}
         class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
       />
     </div>
     <div class="bg-primary text-primary-content flex flex-col justify-center p-8 md:p-12">
       <div class="mb-4 flex flex-wrap gap-2">
         {
-          tags.map((tag: string) => (
+          tags.map((tag) => (
             <span class="rounded bg-white/20 px-2 py-1 text-xs font-bold tracking-wider uppercase">
-              {tag}
+              {tag.label}
             </span>
           ))
         }
@@ -40,17 +45,11 @@ const slug = getNoticiaUrl(post, lang);
       </p>
 
       <div class="flex items-center gap-4 text-sm font-medium opacity-80">
-        <span
-          >{
-            new Date(date).toLocaleDateString(
-              lang === 'pt' ? 'pt-BR' : lang === 'en' ? 'en-US' : 'es-ES'
-            )
-          }</span
-        >
+        <span>{formatNoticiaDate(date, lang)}</span>
         <>
           <span class="h-1 w-1 rounded-full bg-current" />
           <span>
-            {locale.noticias?.by || 'Por'} {displayAuthor}
+            {locale.noticias?.by || 'Por'} {author}
           </span>
         </>
       </div>

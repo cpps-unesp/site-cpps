@@ -16,17 +16,12 @@ import IniciativasProjetosSection from '../../components/IniciativasProjetosSect
 import IniciativasProjetosDeDadosSection from '../../components/IniciativasProjetosDeDadosSection.astro';
 import IniciativasProjetosDePesquisaSection from '../../components/IniciativasProjetosDePesquisaSection.astro';
 
-import NoticiaPage from '../../components/NoticiaPage.astro';
-import NoticiasListPage from '../../components/NoticiasListPage.astro';
 import TranslationWarning from '../../components/TranslationWarning.astro';
-import routeTranslations from '../../i18n/routeTranslations';
 import { getCollection, render } from 'astro:content';
 import type { SupportedLang } from '../../types/lang';
 import { getTranslations } from '../../utils/i18n';
 import {
-  buildLocalizedContentPaths,
   buildMembroPaths,
-  buildNewsCategoryPaths,
   buildRouteTranslationPaths,
   findOriginalKey,
   getMembroSlugFromEntryId,
@@ -34,22 +29,10 @@ import {
 
 // ✅ Exporta os caminhos possíveis para páginas estáticas
 export async function getStaticPaths() {
-  const getNoticiaSlug = (entry: Awaited<ReturnType<typeof getCollection<'noticias'>>>[number]) =>
-    entry.data.slug || entry.id.replace(/\.[^/.]+$/, '');
-
   const langs: SupportedLang[] = ['pt', 'en', 'es'];
   const paths = buildRouteTranslationPaths(langs);
 
-  // Notícias individuais (todos os idiomas para permitir fallback)
-  const allNoticias = await getCollection('noticias');
-  const uniqueNoticiasSlugs = [...new Set(allNoticias.map(getNoticiaSlug).filter(Boolean))];
-  paths.push(...buildLocalizedContentPaths(langs, 'noticias', uniqueNoticiasSlugs));
-
-  // Publicações individuais (todos os idiomas para permitir fallback)
-
-  // Categorias de notícias
-  const tags = [...new Set(allNoticias.flatMap((n) => n.data.tags || []))];
-  paths.push(...buildNewsCategoryPaths(langs, tags));
+  // Notícias ficam fora daqui: vêm do EmDash em src/pages/[lang]/noticias e /news.
 
   // Membros (todos os idiomas para permitir fallback)
   const allMembros = await getCollection('membros', ({ data }) => data.draft !== true);
@@ -67,13 +50,6 @@ const slugArray = slugPath.split('/');
 
 const locale = getTranslations(currentLang);
 const { titulo, descricao, texts, equipe, sobre, iniciativas, cafe, documentos } = locale;
-
-const noticiasPrefix = routeTranslations['noticias'][currentLang];
-const isNoticiasList = slugPath === noticiasPrefix;
-const isNoticiasCategory = slugPath.startsWith(`${noticiasPrefix}/categoria/`);
-const isNoticia =
-  slugPath.startsWith(`${noticiasPrefix}/`) && !isNoticiasList && !isNoticiasCategory;
-
 
 const allMembros = await getCollection('membros', ({ data }) => data.draft !== true);
 const membroEntries = allMembros.filter((entry) => getMembroSlugFromEntryId(entry.id) === slugPath);
@@ -98,14 +74,7 @@ const originalKey = findOriginalKey(slugPath, currentLang);
 ---
 
 {
-  isNoticiasList || isNoticiasCategory ? (
-    <NoticiasListPage
-      lang={currentLang}
-      tag={isNoticiasCategory ? slugPath.split('/').pop() : undefined}
-    />
-  ) : isNoticia ? (
-    <NoticiaPage lang={currentLang} slug={slugPath} />
-  ) : membroSelecionado ? (
+  membroSelecionado ? (
     <BaseLayout
       lang={currentLang}
       titulo={membroSelecionado.data.title}
@@ -143,7 +112,7 @@ const originalKey = findOriginalKey(slugPath, currentLang);
   ) : (
     <BaseLayout
       lang={currentLang}
-      titulo={originalKey === 'noticias' ? (texts.noticias?.title ?? 'Notícias') : titulo}
+      titulo={titulo}
       descricao={descricao}
       texts={texts}
       githubPath="src/pages/[lang]/[...slug].astro"
@@ -160,9 +129,6 @@ const originalKey = findOriginalKey(slugPath, currentLang);
             return <SobreSection blocos={sobre} />;
           case 'institucional/documentos':
             return <DocumentosSection documentos={documentos} lang={currentLang} />;
-          case 'noticias':
-            return <NoticiasListPage lang={currentLang} />;
-
           // Iniciativas
           case 'iniciativas/cafe-com-ciencia':
             return <CafeComCienciaSection cafe={cafe} lang={currentLang} />;

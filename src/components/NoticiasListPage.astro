@@ -4,37 +4,33 @@ import FaseTesteAlert from './FaseTesteAlert.astro';
 import NewsFeatured from './NewsFeatured.astro';
 import NewsGrid from './NewsGrid.astro';
 import NewsSidebar from './NewsSidebar.astro';
-import { getCollection } from 'astro:content';
 import { getTranslations } from '../utils/i18n';
 import type { SupportedLang } from '../types/lang';
-import slugify from 'slugify';
+import type { Noticia } from '../utils/noticias';
 
-const { lang, tag = null } = Astro.props as { lang: SupportedLang; tag?: string | null };
+interface Props {
+  lang: SupportedLang;
+  // Notícias do idioma, da mais recente para a mais antiga.
+  noticias: Noticia[];
+  tag?: string | null;
+}
+
+const { lang, noticias: langNoticias, tag = null } = Astro.props;
 const locale = getTranslations(lang);
 
-const allNoticias = await getCollection('noticias');
-
-const langNoticias = allNoticias
-  .filter((post) => post.data.lang === lang)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
-
 let displayedNoticias = langNoticias;
-let featuredPost: (typeof langNoticias)[number] | null = null;
+let featuredPost: Noticia | null = null;
 let titlePage = locale.texts.header.noticias || 'Notícias';
 
 if (tag) {
-  displayedNoticias = langNoticias.filter((post) =>
-    post.data.tags?.some((t) => slugify(t, { lower: true, strict: true }) === tag)
-  );
+  displayedNoticias = langNoticias.filter((post) => post.tags.some((t) => t.slug === tag));
   const actualTagName =
-    displayedNoticias[0]?.data.tags.find(
-      (t) => slugify(t, { lower: true, strict: true }) === tag
-    ) || tag;
+    displayedNoticias[0]?.tags.find((t) => t.slug === tag)?.label || tag;
   titlePage = `${titlePage}: ${actualTagName}`;
 } else {
   // Logic for featured post only on main news page
-  featuredPost = langNoticias.find((post) => post.data.featured) || langNoticias[0];
-  displayedNoticias = langNoticias.filter((post) => post.id !== featuredPost?.id);
+  featuredPost = langNoticias.find((post) => post.featured) || langNoticias[0] || null;
+  displayedNoticias = langNoticias.filter((post) => post.slug !== featuredPost?.slug);
 }
 ---
 

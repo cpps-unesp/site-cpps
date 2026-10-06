@@ -46,7 +46,6 @@ site-cpps/
 │   ├── components/       # Componentes reutilizáveis
 │   ├── content/         # Conteúdo em MDX
 │   │   ├── membros/     # Perfis dos membros da equipe
-│   │   ├── noticias/    # Posts de notícias
 │   │   ├── publicacoes/ # Publicações acadêmicas
 │   │   └── atividades/  # Wiki e material didático
 │   ├── i18n/           # Internacionalização
@@ -64,6 +63,21 @@ site-cpps/
 ├── src/styles/global.css # Configuração do Tailwind + DaisyUI
 └── package.json
 ```
+
+## Notícias (EmDash)
+
+As notícias são editadas no [EmDash](https://emdashcms.com), em `/_emdash/admin`, e as páginas de notícias são renderizadas a cada acesso: o que é publicado no admin aparece no site sem novo build. O resto do site continua pré-renderizado.
+
+Para rodar localmente:
+
+```bash
+npm install
+npx emdash secrets generate --write .env   # uma vez; o .env não vai para o Git
+npx emdash seed                            # cria data.db com o modelo e as notícias atuais
+npm run dev
+```
+
+Abra `http://localhost:4321/_emdash/admin`, crie sua conta e registre uma passkey. O modelo de conteúdo (campos da notícia e categorias) fica em `seed/seed.json`. O banco (`data.db`) e as imagens enviadas (`uploads/`) ficam só na sua máquina.
 
 ## Internacionalização
 
@@ -115,11 +129,12 @@ O Dependabot abre um PR por dependência toda semana ([.github/dependabot.yml](.
 npm run build
 ```
 
-Os arquivos estáticos serão gerados em `./dist/`
+Os arquivos estáticos são gerados em `./dist/client/` e o servidor Node em `./dist/server/` (`node dist/server/entry.mjs`).
 
 ### Configurações importantes
 
-- O projeto usa `output: 'static'`. O deploy é feito automaticamente pela Cloudflare Pages a cada push (build_command: `npm run build`, destination_dir: `dist`). Detalhes da arquitetura de deploy e como funciona o `public/_redirects`: [docs/deploy-e-redirects.md](docs/deploy-e-redirects.md).
+- **Atenção:** com o EmDash o site passou a precisar de servidor (`output: 'server'`, adapter Node). O deploy estático descrito abaixo ainda não foi adaptado.
+- Até a adoção do EmDash o projeto usava `output: 'static'`. O deploy é feito automaticamente pela Cloudflare Pages a cada push (build_command: `npm run build`, destination_dir: `dist`). Detalhes da arquitetura de deploy e como funciona o `public/_redirects`: [docs/deploy-e-redirects.md](docs/deploy-e-redirects.md).
 - Atualize a URL base em `astro.config.mjs`
 - Configure o sitemap em `pages/sitemap.xml.ts`
 - Ajuste as meta tags em `layouts/BaseLayout.astro`

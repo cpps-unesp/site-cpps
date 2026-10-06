@@ -1,0 +1,24 @@
+---
+// Renderizada sob demanda: o conteúdo vem do EmDash (/_emdash/admin).
+export const prerender = false;
+
+import NoticiasRoute from '../../../components/NoticiasRoute.astro';
+import { resolveNoticiasRoute } from '../../../utils/noticias';
+
+const route = await resolveNoticiasRoute(
+  Astro.params.lang,
+  'noticias',
+  Astro.params.slug,
+  Astro.locals.emdash?.getPublicMediaUrl
+);
+
+if (route.kind === 'redirect') return Astro.redirect(route.location, 301);
+// Resposta 404 sem corpo: o Astro serve a página src/pages/404.astro.
+if (route.kind === 'not-found') return new Response(null, { status: 404 });
+if (route.kind === 'error') {
+  console.error('Falha ao carregar notícias do EmDash:', route.error);
+  return new Response('Não foi possível carregar as notícias.', { status: 500 });
+}
+---
+
+<NoticiasRoute route={route} />

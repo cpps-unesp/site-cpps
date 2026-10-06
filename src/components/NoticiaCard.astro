@@ -1,5 +1,5 @@
 ---
-import { getNoticiaCategoriaUrl } from '../utils/noticiaSlug';
+import { formatNoticiaDate, getNoticiaCategoriaUrl, type NoticiaTag } from '../utils/noticias';
 import pt from '../i18n/locales/pt.json';
 import en from '../i18n/locales/en.json';
 import es from '../i18n/locales/es.json';
@@ -8,15 +8,16 @@ interface Props {
   title: string;
   resumo: string;
   image: string;
-  tags: string[];
+  imageAlt?: string;
+  tags: NoticiaTag[];
   slug: string;
   lang: 'pt' | 'en' | 'es';
-  date: string | Date;
+  date: Date;
   author?: string;
   featured?: boolean;
 }
 
-const { title, resumo, image, tags, slug, lang, date, author } = Astro.props;
+const { title, resumo, image, imageAlt, tags, slug, lang, date, author } = Astro.props;
 const displayAuthor = author?.trim() || 'Equipe CPPS';
 
 const translations = { pt, en, es };
@@ -29,7 +30,7 @@ const t = translations[lang] || translations.pt;
   <a href={slug} class="relative block aspect-video overflow-hidden">
     <img
       src={image}
-      alt={title}
+      alt={imageAlt ?? title}
       class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
     />
     <div
@@ -41,12 +42,12 @@ const t = translations[lang] || translations.pt;
   <div class="flex flex-1 flex-col p-6">
     <div class="mb-4 flex flex-wrap gap-2">
       {
-        tags.map((tag: string) => (
+        tags.map((tag) => (
           <a
-            href={getNoticiaCategoriaUrl(tag, lang)}
+            href={getNoticiaCategoriaUrl(tag.slug, lang)}
             class="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline"
           >
-            {tag}
+            {tag.label}
           </a>
         ))
       }
@@ -66,7 +67,7 @@ const t = translations[lang] || translations.pt;
       class="border-base-100 text-base-content/60 flex items-center justify-between border-t pt-4 text-xs"
     >
       <span>
-        {new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
+        {formatNoticiaDate(date, lang)}
         <>
           <span class="mx-2">•</span>
           <span>{displayAuthor}</span>

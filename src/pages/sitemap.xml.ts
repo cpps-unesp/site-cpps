@@ -1,26 +1,16 @@
-export const prerender = true;
+// Sob demanda para incluir as notícias publicadas no EmDash.
+export const prerender = false;
 
 import { getCollection } from 'astro:content';
 import type { SupportedLang } from '../types/lang';
 import {
-  buildLocalizedContentPaths,
   buildMembroPaths,
-  buildNewsCategoryPaths,
   buildRouteTranslationPaths,
   getMembroSlugFromEntryId,
 } from '../utils/catchAllRouting';
+import { getNoticiasSitemapPaths } from '../utils/noticias';
 import routeTranslations from '../i18n/routeTranslations';
 import { filterVisibleDocsEntries, getDocsEntrySlug } from '../utils/docsVisibility';
-
-function getEntrySlug(entry: { id: string; data?: Record<string, unknown> }): string {
-  const slugFromData = entry.data?.slug;
-
-  if (typeof slugFromData === 'string' && slugFromData.length > 0) {
-    return slugFromData;
-  }
-
-  return entry.id.replace(/\.[^/.]+$/, '');
-}
 
 export async function GET() {
   const base = 'https://cpps.franca.unesp.br';
@@ -52,15 +42,8 @@ export async function GET() {
     urls.add(`/${path.params.lang}/${path.params.slug}`);
   }
 
-  const noticias = await getCollection('noticias');
-  const noticiaSlugs = [...new Set(noticias.map((entry) => getEntrySlug(entry)))];
-  for (const path of buildLocalizedContentPaths(langs, 'noticias', noticiaSlugs)) {
-    urls.add(`/${path.params.lang}/${path.params.slug}`);
-  }
-
-  const tags = [...new Set(noticias.flatMap((entry) => entry.data.tags || []))];
-  for (const path of buildNewsCategoryPaths(langs, tags)) {
-    urls.add(`/${path.params.lang}/${path.params.slug}`);
+  for (const path of await getNoticiasSitemapPaths()) {
+    urls.add(path);
   }
 
   const membros = await getCollection('membros', ({ data }) => data.draft !== true);

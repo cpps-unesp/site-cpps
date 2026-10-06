@@ -1,0 +1,204 @@
+{
+  "$schema": "https://emdashcms.com/seed.schema.json",
+  "version": "1",
+  "meta": {
+    "name": "CPPS",
+    "description": "Notícias do Centro de Pesquisa Política e Social (UNESP Franca)",
+    "author": "CPPS"
+  },
+  "settings": {
+    "title": "CPPS - Centro de Pesquisa Política e Social",
+    "tagline": "FCHS/UNESP Franca",
+    "timezone": "America/Sao_Paulo"
+  },
+  "collections": [
+    {
+      "slug": "noticias",
+      "label": "Notícias",
+      "labelSingular": "Notícia",
+      "description": "Notícias publicadas em /noticias, /news e /noticias (pt, en, es).",
+      "icon": "newspaper",
+      "supports": ["drafts", "revisions", "preview", "search"],
+      "urlPattern": "/pt/noticias/{slug}",
+      "titleField": "title",
+      "dateField": "date",
+      "admin": {
+        "listColumns": ["date", "lang", "featured"]
+      },
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Título",
+          "type": "string",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "date",
+          "label": "Data",
+          "type": "datetime",
+          "required": true,
+          "indexed": true
+        },
+        {
+          "slug": "lang",
+          "label": "Idioma",
+          "type": "select",
+          "required": true,
+          "indexed": true,
+          "defaultValue": "pt",
+          "validation": { "options": ["pt", "en", "es"] }
+        },
+        {
+          "slug": "resumo",
+          "label": "Resumo",
+          "type": "text",
+          "required": true,
+          "searchable": true
+        },
+        {
+          "slug": "image",
+          "label": "Imagem de capa",
+          "type": "image"
+        },
+        {
+          "slug": "author",
+          "label": "Autor(a)",
+          "type": "string"
+        },
+        {
+          "slug": "featured",
+          "label": "Destaque",
+          "type": "boolean",
+          "defaultValue": false
+        },
+        {
+          "slug": "content",
+          "label": "Conteúdo",
+          "type": "portableText",
+          "searchable": true
+        }
+      ]
+    }
+  ],
+  "taxonomies": [
+    {
+      "name": "tag",
+      "label": "Categorias",
+      "labelSingular": "Categoria",
+      "hierarchical": false,
+      "collections": ["noticias"],
+      "terms": [
+        { "slug": "cafe-com-ciencia", "label": "Café com Ciência" },
+        { "slug": "relacoes-internacionais", "label": "Relações Internacionais" },
+        { "slug": "bolsa", "label": "Bolsa" },
+        { "slug": "iniciacao-cientifica", "label": "Iniciação Científica" }
+      ]
+    }
+  ],
+  "content": {
+    "noticias": [
+      {
+        "id": "noticia-cafe-ciencia-2026-03",
+        "slug": "2026-03-25-acesso-a-justica-centrado-nas-pessoas",
+        "status": "published",
+        "data": {
+          "title": "Acesso à justiça centrado nas pessoas",
+          "date": "2026-03-25T12:00:00.000Z",
+          "lang": "pt",
+          "resumo": "Sétimo Café com Ciência debateu o tema \"Acesso à justiça centrado nas pessoas\", com exposição da Profa. Dra. Thaís Amoroso Paschoal.",
+          "image": {
+            "$media": {
+              "url": "https://cpps.franca.unesp.br/imagens/noticias/2026-03-26-cafe-com-ciencia.png",
+              "filename": "2026-03-26-cafe-com-ciencia.png",
+              "alt": "Café com Ciência: Acesso à justiça centrado nas pessoas"
+            }
+          },
+          "author": "Rafael de Almeida",
+          "featured": false,
+          "content": [
+            {
+              "_type": "block",
+              "_key": "c1",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                { "_type": "span", "_key": "c1a", "text": "No ", "marks": [] },
+                { "_type": "span", "_key": "c1b", "text": "Café com Ciência", "marks": ["strong"] },
+                {
+                  "_type": "span",
+                  "_key": "c1c",
+                  "text": ", realizado em 25 de março de 2026, tivemos a oportunidade de debater o tema ",
+                  "marks": []
+                },
+                {
+                  "_type": "span",
+                  "_key": "c1d",
+                  "text": "\"Acesso à justiça centrado nas pessoas\"",
+                  "marks": ["strong"]
+                },
+                {
+                  "_type": "span",
+                  "_key": "c1e",
+                  "text": ", com exposição da Profa. Dra. Thaís Amoroso Paschoal e mediação do Prof. Dr. Agnaldo de Sousa Barbosa.",
+                  "marks": []
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "c2",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "c2a",
+                  "text": "O evento é um espaço de integração e troca de conhecimentos entre pesquisadores e docentes de nossa unidade.",
+                  "marks": []
+                }
+              ]
+            }
+          ]
+        },
+        "taxonomies": {
+          "tag": ["cafe-com-ciencia"]
+        }
+      },
+      {
+        "id": "noticia-bolsa-ic-2026-03",
+        "slug": "2026-03-26-selecao-de-bolsista-de-iniciacao-cientifica",
+        "status": "published",
+        "data": {
+          "title": "Seleção de Bolsista de Iniciação Científica",
+          "date": "2026-03-26T12:00:00.000Z",
+          "lang": "pt",
+          "resumo": "Bolsa de iniciação científica para estudante de relações internacionais",
+          "image": {
+            "$media": {
+              "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca2.jpg",
+              "filename": "entrada-unesp-franca2.jpg",
+              "alt": "Entrada do campus da UNESP Franca"
+            }
+          },
+          "author": "Rafael de Almeida",
+          "featured": false,
+          "content": [
+            {
+              "_type": "block",
+              "_key": "b1",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                { "_type": "span", "_key": "b1a", "text": "Oportunidade de Bolsa", "marks": [] }
+              ]
+            }
+          ]
+        },
+        "taxonomies": {
+          "tag": ["relacoes-internacionais", "bolsa", "iniciacao-cientifica"]
+        }
+      }
+    ]
+  }
+}

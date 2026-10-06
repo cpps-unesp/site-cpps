@@ -1,4 +1,3 @@
-import slugify from 'slugify';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 
@@ -18,7 +17,6 @@ export function buildRouteTranslationPaths(langs: SupportedLang[]): RoutePath[] 
     'institucional/sobre',
     'institucional/equipe',
     'institucional/documentos',
-    'noticias',
   ];
 
   for (const routeKey of catchAllRouteKeys) {
@@ -28,47 +26,6 @@ export function buildRouteTranslationPaths(langs: SupportedLang[]): RoutePath[] 
       if (typeof slugValue === 'string') {
         paths.push({ params: { lang, slug: slugValue } });
       }
-    }
-  }
-
-  return paths;
-}
-
-export function buildLocalizedContentPaths(
-  langs: SupportedLang[],
-  routeKey: 'noticias' | 'publicacao',
-  slugs: string[]
-): RoutePath[] {
-  const paths: RoutePath[] = [];
-
-  for (const slug of slugs) {
-    for (const lang of langs) {
-      const prefix = routeTranslations[routeKey][lang];
-      paths.push({
-        params: {
-          lang,
-          slug: `${prefix}/${slug}`,
-        },
-      });
-    }
-  }
-
-  return paths;
-}
-
-export function buildNewsCategoryPaths(langs: SupportedLang[], tags: string[]): RoutePath[] {
-  const paths: RoutePath[] = [];
-
-  for (const lang of langs) {
-    const prefix = routeTranslations.noticias[lang];
-    for (const tag of tags) {
-      const tagSlug = slugify(tag, { lower: true, strict: true });
-      paths.push({
-        params: {
-          lang,
-          slug: `${prefix}/categoria/${tagSlug}`,
-        },
-      });
     }
   }
 

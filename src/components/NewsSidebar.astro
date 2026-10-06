@@ -1,11 +1,16 @@
 ---
 import { getTranslations, type Language } from '../utils/i18n';
-import type { CollectionEntry } from 'astro:content';
 import type { SupportedLang } from '../types/lang';
-import { getNoticiaCategoriaUrl, getNoticiaUrl } from '../utils/noticiaSlug';
+import {
+  formatNoticiaDate,
+  getNoticiaCategoriaUrl,
+  getNoticiaUrl,
+  type Noticia,
+  type NoticiaTag,
+} from '../utils/noticias';
 
 interface Props {
-  noticias: CollectionEntry<'noticias'>[];
+  noticias: Noticia[];
   lang: SupportedLang;
 }
 
@@ -13,7 +18,10 @@ const { noticias, lang } = Astro.props;
 const locale = getTranslations(lang as Language);
 
 // Get all unique tags
-const allTags = [...new Set(noticias.flatMap((post) => post.data.tags || []))].sort();
+const tagsBySlug = new Map<string, NoticiaTag>(
+  noticias.flatMap((post) => post.tags).map((tag) => [tag.slug, tag])
+);
+const allTags = [...tagsBySlug.values()].sort((a, b) => a.label.localeCompare(b.label, 'pt-BR'));
 
 // Get recent posts (excluding featured if we want, but let's just show top 5)
 const recentPosts = noticias.slice(0, 5);
@@ -45,12 +53,12 @@ const recentPosts = noticias.slice(0, 5);
     </h3>
     <div class="mt-2 flex flex-wrap gap-2">
       {
-        allTags.map((tag: string) => (
+        allTags.map((tag) => (
           <a
-            href={getNoticiaCategoriaUrl(tag, lang)}
+            href={getNoticiaCategoriaUrl(tag.slug, lang)}
             class="bg-secondary/10 text-secondary hover:bg-secondary rounded-full px-3 py-1 text-sm font-medium transition-colors hover:text-white"
           >
-            {tag}
+            {tag.label}
           </a>
         ))
       }
@@ -65,12 +73,10 @@ const recentPosts = noticias.slice(0, 5);
     <div class="mt-2 space-y-4">
       {
         recentPosts.map((post) => (
-          <a href={getNoticiaUrl(post, lang)} class="group block">
-            <p class="text-base-content/60 mb-1 text-xs">
-              {new Date(post.data.date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
-            </p>
+          <a href={getNoticiaUrl(post.slug, lang)} class="group block">
+            <p class="text-base-content/60 mb-1 text-xs">{formatNoticiaDate(post.date, lang)}</p>
             <h4 class="group-hover:text-primary line-clamp-2 text-base font-bold transition-colors">
-              {post.data.title}
+              {post.title}
             </h4>
           </a>
         ))

@@ -1,0 +1,24 @@
+---
+import NoticiaPage from './NoticiaPage.astro';
+import NoticiasListPage from './NoticiasListPage.astro';
+import type { NoticiasRoute } from '../utils/noticias';
+
+interface Props {
+  route: Extract<NoticiasRoute, { kind: 'list' | 'detail' }>;
+}
+
+const { route } = Astro.props;
+---
+
+{
+  route.kind === 'list' ? (
+    <NoticiasListPage lang={route.lang} noticias={route.noticias} tag={route.tag} />
+  ) : (
+    <NoticiaPage
+      lang={route.lang}
+      noticia={route.noticia}
+      noticiasDoIdioma={route.noticiasDoIdioma}
+      isPreview={route.isPreview}
+    />
+  )
+}

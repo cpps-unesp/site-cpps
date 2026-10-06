@@ -1,40 +1,27 @@
 ---
+import { PortableText } from 'emdash/ui';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FaseTesteAlert from './FaseTesteAlert.astro';
 import NewsSidebar from './NewsSidebar.astro';
 import TranslationWarning from './TranslationWarning.astro';
-import { getCollection, render } from 'astro:content';
-import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from '../utils/i18n';
-import { getNoticiaCategoriaUrl, getNoticiaSlug } from '../utils/noticiaSlug';
+import { formatNoticiaDate, getNoticiaCategoriaUrl, type Noticia } from '../utils/noticias';
 
-const { lang, slug } = Astro.props as { lang: SupportedLang; slug: string };
-const locale = getTranslations(lang);
-
-const noticiasRoute = routeTranslations['noticias'][lang as SupportedLang];
-const rawSlug = slug.replace(`${noticiasRoute}/`, '');
-
-const allNoticias = await getCollection('noticias');
-const relatedPosts = allNoticias.filter((p) => getNoticiaSlug(p) === rawSlug);
-
-const availableLangs = relatedPosts.map((p) => p.data.lang);
-const isTranslationMissing = relatedPosts.length > 0 && !availableLangs.includes(lang);
-
-let post = relatedPosts.find((p) => p.data.lang === lang);
-
-if (!post && relatedPosts.length > 0) {
-  post = relatedPosts.find((p) => p.data.lang === 'pt') || relatedPosts[0];
+interface Props {
+  lang: SupportedLang;
+  noticia: Noticia;
+  // Notícias do idioma da página, para a barra lateral.
+  noticiasDoIdioma: Noticia[];
+  isPreview?: boolean;
 }
 
-if (!post) throw new Error(`Notícia não encontrada: ${slug}`);
-const langNoticias = allNoticias
-  .filter((p) => p.data.lang === lang)
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const { lang, noticia, noticiasDoIdioma, isPreview = false } = Astro.props;
+const locale = getTranslations(lang);
 
-const { title, date, image, tags, author, resumo } = post.data;
-const displayAuthor = author?.trim() || 'Equipe CPPS';
-const { Content } = await render(post);
+const isTranslationMissing = noticia.lang !== lang;
+
+const { title, date, image, imageAlt, tags, author, resumo, content } = noticia;
 ---
 
 <BaseLayout
@@ -43,27 +30,33 @@ const { Content } = await render(post);
   descricao={resumo}
   texts={locale.texts}
   identidade={locale.identidade}
-  githubPath={`src/content/noticias/${post.id}`}
 >
   {
     isTranslationMissing && (
-      <TranslationWarning availableLangs={availableLangs} currentLang={lang} texts={locale.texts} />
+      <TranslationWarning availableLangs={[noticia.lang]} currentLang={lang} texts={locale.texts} />
     )
   }
   <main class="container mx-auto px-4 py-12">
     <FaseTesteAlert lang={lang} area={locale.texts.header.noticias || 'Notícias'} />
+    {
+      isPreview && (
+        <div role="status" class="alert alert-warning mb-8">
+          Pré-visualização: esta versão ainda não foi publicada.
+        </div>
+      )
+    }
     <div class="grid gap-12 lg:grid-cols-3">
       <!-- Article Content -->
       <article class="lg:col-span-2">
         <header class="mb-8">
           <div class="mb-4 flex flex-wrap gap-2">
             {
-              tags.map((tag: string) => (
+              tags.map((tag) => (
                 <a
-                  href={getNoticiaCategoriaUrl(tag, lang)}
+                  href={getNoticiaCategoriaUrl(tag.slug, lang)}
                   class="text-primary text-xs font-bold tracking-widest uppercase hover:underline"
                 >
-                  {tag}
+                  {tag.label}
                 </a>
               ))
             }
@@ -80,17 +73,11 @@ const { Content } = await render(post);
           <div class="border-base-200 flex items-center gap-4 border-y py-6 text-sm">
             <div class="flex flex-col">
               <span class="text-base-content font-bold">
-                {locale.noticias?.by || 'Por'} {displayAuthor}
+                {locale.noticias?.by || 'Por'} {author}
               </span>
               <span class="text-base-content/60">
                 {locale.publicacoes?.publishedIn || 'Publicado em'}{' '}
-                {
-                  new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  })
-                }
+                {formatNoticiaDate(date, lang, { day: 'numeric', month: 'long', year: 'numeric' })}
               </span>
             </div>
           </div>
@@ -99,7 +86,7 @@ const { Content } = await render(post);
         {
           image && (
             <figure class="mb-10">
-              <img src={image} alt={title} class="w-full rounded-2xl shadow-lg" />
+              <img src={image} alt={imageAlt} class="w-full rounded-2xl shadow-lg" />
             </figure>
           )
         }
@@ -107,7 +94,7 @@ const { Content } = await render(post);
         <div
           class="prose prose-lg prose-headings:text-primary prose-headings:font-bold prose-p:text-base-content/90 prose-p:leading-relaxed prose-p:text-justify prose-a:text-primary prose-a:no-underline hover:prose-a:underline prose-img:rounded-xl prose-img:shadow-md max-w-none"
         >
-          <Content />
+          <PortableText value={content} />
         </div>
 
         <footer class="border-base-200 mt-12 border-t pt-8">
@@ -116,12 +103,12 @@ const { Content } = await render(post);
               >{locale.noticias?.tags || 'Tags'}:</span
             >
             {
-              tags.map((tag: string) => (
+              tags.map((tag) => (
                 <a
-                  href={getNoticiaCategoriaUrl(tag, lang)}
+                  href={getNoticiaCategoriaUrl(tag.slug, lang)}
                   class="badge badge-outline badge-primary px-3 py-3"
                 >
-                  {tag}
+                  {tag.label}
                 </a>
               ))
             }
@@ -131,7 +118,7 @@ const { Content } = await render(post);
 
       <!-- Sidebar -->
       <aside>
-        <NewsSidebar noticias={langNoticias} lang={lang} />
+        <NewsSidebar noticias={noticiasDoIdioma} lang={lang} />
       </aside>
     </div>
   </main>
