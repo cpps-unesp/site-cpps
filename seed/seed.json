@@ -47,7 +47,8 @@
           "label": "Data",
           "type": "datetime",
           "required": true,
-          "indexed": true
+          "indexed": true,
+          "translatable": false
         },
         {
           "slug": "resumo",
@@ -70,7 +71,8 @@
           "slug": "featured",
           "label": "Destaque",
           "type": "boolean",
-          "defaultValue": false
+          "defaultValue": false,
+          "translatable": false
         },
         {
           "slug": "content",
@@ -317,15 +319,13 @@
                 "label": "Tipo",
                 "type": "select",
                 "required": true,
-                "validation": {
-                  "options": [
-                    "lattes",
-                    "orcid",
-                    "linkedin",
-                    "portal-docente-unesp",
-                    "instagram"
-                  ]
-                }
+                "options": [
+                  "lattes",
+                  "orcid",
+                  "linkedin",
+                  "portal-docente-unesp",
+                  "instagram"
+                ]
               },
               {
                 "slug": "url",
@@ -468,12 +468,10 @@
                 "label": "Tipo",
                 "type": "select",
                 "required": true,
-                "validation": {
-                  "options": [
-                    "transcricao",
-                    "artigo"
-                  ]
-                }
+                "options": [
+                  "transcricao",
+                  "artigo"
+                ]
               },
               {
                 "slug": "url",
@@ -646,7 +644,7 @@
           "resumo": "Sétimo Café com Ciência debateu o tema \"Acesso à justiça centrado nas pessoas\", com exposição da Profa. Dra. Thaís Amoroso Paschoal.",
           "image": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/noticias/2026-03-26-cafe-com-ciencia.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/noticias/2026-03-26-cafe-com-ciencia.png",
               "filename": "2026-03-26-cafe-com-ciencia.png",
               "alt": "Café com Ciência: Acesso à justiça centrado nas pessoas"
             }
@@ -729,7 +727,7 @@
           "resumo": "Bolsa de iniciação científica para estudante de relações internacionais",
           "image": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca2.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca2.jpg",
               "filename": "entrada-unesp-franca2.jpg",
               "alt": "Entrada do campus da UNESP Franca"
             }
@@ -774,7 +772,7 @@
           "introducao": "Apoia a execução de pesquisas na **Faculdade de Ciências Humanas e Sociais (FCHS) da Universidade Estadual Paulista (UNESP)**, localizado no município de Franca/SP.",
           "imagem": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca.jpg",
               "filename": "entrada-unesp-franca.jpg",
               "alt": "Entrada do campus da UNESP Franca"
             }
@@ -794,7 +792,7 @@
           "introducao": "Supports the execution of research at the **Faculty of Human and Social Sciences (FCHS) of the São Paulo State University (UNESP)**, located in the city of Franca/SP.",
           "imagem": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca.jpg",
               "filename": "entrada-unesp-franca.jpg",
               "alt": "Entrada do campus da UNESP Franca"
             }
@@ -814,7 +812,7 @@
           "introducao": "Apoya la ejecución de investigaciones en la **Facultad de Ciencias Humanas y Sociales (FCHS) de la Universidad Estadual Paulista (UNESP)**, ubicada en la ciudad de Franca/SP.",
           "imagem": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca.jpg",
               "filename": "entrada-unesp-franca.jpg",
               "alt": "Entrada do campus da UNESP Franca"
             }
@@ -964,7 +962,7 @@
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/H%C3%A9lio_Silva.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/H%C3%A9lio_Silva.png",
               "filename": "Hélio_Silva.png",
               "alt": "Hélio Alexandre da Silva"
             }
@@ -996,7 +994,7 @@
           "descricao": "Department of Education, Social Sciences and Public Policies.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/H%C3%A9lio_Silva.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/H%C3%A9lio_Silva.png",
               "filename": "Hélio_Silva.png",
               "alt": "Hélio Alexandre da Silva"
             }
@@ -1028,7 +1026,7 @@
           "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/H%C3%A9lio_Silva.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/H%C3%A9lio_Silva.png",
               "filename": "Hélio_Silva.png",
               "alt": "Hélio Alexandre da Silva"
             }
@@ -1059,7 +1057,7 @@
           "descricao": "Departamento de Relações Internacionais.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Marcelo_Mariano.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Marcelo_Mariano.jpg",
               "filename": "Marcelo_Mariano.jpg",
               "alt": "Marcelo Passini Mariano"
             }
@@ -1069,7 +1067,7 @@
           "redes": [
             {
               "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/3505849964932313"
+              "url": "http://lattes.cnpq.br/3505849964932313"
             },
             {
               "tipo": "portal-docente-unesp",
@@ -1090,7 +1088,7 @@
           "descricao": "Department of International Relations.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Marcelo_Mariano.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Marcelo_Mariano.jpg",
               "filename": "Marcelo_Mariano.jpg",
               "alt": "Marcelo Passini Mariano"
             }
@@ -1100,7 +1098,7 @@
           "redes": [
             {
               "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/3505849964932313"
+              "url": "http://lattes.cnpq.br/3505849964932313"
             },
             {
               "tipo": "portal-docente-unesp",
@@ -1121,7 +1119,7 @@
           "descricao": "Departamento de Relaciones Internacionales.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Marcelo_Mariano.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Marcelo_Mariano.jpg",
               "filename": "Marcelo_Mariano.jpg",
               "alt": "Marcelo Passini Mariano"
             }
@@ -1131,7 +1129,7 @@
           "redes": [
             {
               "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/3505849964932313"
+              "url": "http://lattes.cnpq.br/3505849964932313"
             },
             {
               "tipo": "portal-docente-unesp",
@@ -1151,7 +1149,7 @@
           "descricao": "Departamento de Direito Privado, de Processo Civil e do Trabalho.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Thais_Amoroso.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Thais_Amoroso.jpg",
               "filename": "Thais_Amoroso.jpg",
               "alt": "Thais Amoroso Paschoal"
             }
@@ -1186,7 +1184,7 @@
           "descricao": "Department of Private Law, Civil Procedure and Labor Law.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Thais_Amoroso.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Thais_Amoroso.jpg",
               "filename": "Thais_Amoroso.jpg",
               "alt": "Thais Amoroso Paschoal"
             }
@@ -1221,7 +1219,7 @@
           "descricao": "Departamento de Derecho Privado, de Proceso Civil y del Trabajo.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Thais_Amoroso.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Thais_Amoroso.jpg",
               "filename": "Thais_Amoroso.jpg",
               "alt": "Thais Amoroso Paschoal"
             }
@@ -1255,7 +1253,7 @@
           "descricao": "Departamento de Direito Público.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Murilo_Gaspardo.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Murilo_Gaspardo.jpg",
               "filename": "Murilo_Gaspardo.jpg",
               "alt": "Murilo Gaspardo"
             }
@@ -1290,7 +1288,7 @@
           "descricao": "Department of Public Law.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Murilo_Gaspardo.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Murilo_Gaspardo.jpg",
               "filename": "Murilo_Gaspardo.jpg",
               "alt": "Murilo Gaspardo"
             }
@@ -1325,7 +1323,7 @@
           "descricao": "Departamento de Derecho Público.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Murilo_Gaspardo.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Murilo_Gaspardo.jpg",
               "filename": "Murilo_Gaspardo.jpg",
               "alt": "Murilo Gaspardo"
             }
@@ -1359,7 +1357,7 @@
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Agnaldo_Barbosa.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Agnaldo_Barbosa.jpeg",
               "filename": "Agnaldo_Barbosa.jpeg",
               "alt": "Agnaldo de Sousa Barbosa"
             }
@@ -1390,7 +1388,7 @@
           "descricao": "Department of Education, Social Sciences and Public Policies.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Agnaldo_Barbosa.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Agnaldo_Barbosa.jpeg",
               "filename": "Agnaldo_Barbosa.jpeg",
               "alt": "Agnaldo de Sousa Barbosa"
             }
@@ -1421,7 +1419,7 @@
           "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Agnaldo_Barbosa.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Agnaldo_Barbosa.jpeg",
               "filename": "Agnaldo_Barbosa.jpeg",
               "alt": "Agnaldo de Sousa Barbosa"
             }
@@ -1451,7 +1449,7 @@
           "descricao": "Departamento de Educação, Ciências Sociais e Políticas Públicas.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Almir%20Mantovani.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Almir%20Mantovani.jpeg",
               "filename": "Almir Mantovani.jpeg",
               "alt": "Almir Mantovani"
             }
@@ -1482,7 +1480,7 @@
           "descricao": "Department of Education, Social Sciences and Public Policies.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Almir%20Mantovani.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Almir%20Mantovani.jpeg",
               "filename": "Almir Mantovani.jpeg",
               "alt": "Almir Mantovani"
             }
@@ -1513,7 +1511,7 @@
           "descricao": "Departamento de Educación, Ciencias Sociales y Políticas Públicas.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Almir%20Mantovani.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Almir%20Mantovani.jpeg",
               "filename": "Almir Mantovani.jpeg",
               "alt": "Almir Mantovani"
             }
@@ -1543,7 +1541,7 @@
           "descricao": "Departamento de Direito Público.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Ana%20_Braga.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Ana%20_Braga.png",
               "filename": "Ana _Braga.png",
               "alt": "Ana Gabriela Mendes Braga"
             }
@@ -1575,7 +1573,7 @@
           "descricao": "Department of Public Law.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Ana%20_Braga.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Ana%20_Braga.png",
               "filename": "Ana _Braga.png",
               "alt": "Ana Gabriela Mendes Braga"
             }
@@ -1607,7 +1605,7 @@
           "descricao": "Departamento de Derecho Público.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Ana%20_Braga.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Ana%20_Braga.png",
               "filename": "Ana _Braga.png",
               "alt": "Ana Gabriela Mendes Braga"
             }
@@ -1638,7 +1636,7 @@
           "descricao": "Departamento de Direito Público.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Bruno_Oliveira.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Bruno_Oliveira.png",
               "filename": "Bruno_Oliveira.png",
               "alt": "Bruno Bastos de Oliveira"
             }
@@ -1670,7 +1668,7 @@
           "descricao": "Department of Public Law.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Bruno_Oliveira.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Bruno_Oliveira.png",
               "filename": "Bruno_Oliveira.png",
               "alt": "Bruno Bastos de Oliveira"
             }
@@ -1702,7 +1700,7 @@
           "descricao": "Departamento de Derecho Público.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Bruno_Oliveira.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Bruno_Oliveira.png",
               "filename": "Bruno_Oliveira.png",
               "alt": "Bruno Bastos de Oliveira"
             }
@@ -1733,7 +1731,7 @@
           "descricao": "Departamento de Serviço Social.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Edvania_Angela.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Edvania_Angela.png",
               "filename": "Edvania_Angela.png",
               "alt": "Edvânia Ângela de Souza"
             }
@@ -1765,7 +1763,7 @@
           "descricao": "Department of Social Work.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Edvania_Angela.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Edvania_Angela.png",
               "filename": "Edvania_Angela.png",
               "alt": "Edvânia Ângela de Souza"
             }
@@ -1797,7 +1795,7 @@
           "descricao": "Departamento de Servicio Social.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Edvania_Angela.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Edvania_Angela.png",
               "filename": "Edvania_Angela.png",
               "alt": "Edvânia Ângela de Souza"
             }
@@ -1828,7 +1826,7 @@
           "descricao": "Departamento de Serviço Social.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Fernanda_Sarreta.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Fernanda_Sarreta.png",
               "filename": "Fernanda_Sarreta.png",
               "alt": "Fernanda de Oliveira Sarreta"
             }
@@ -1859,7 +1857,7 @@
           "descricao": "Department of Social Work.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Fernanda_Sarreta.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Fernanda_Sarreta.png",
               "filename": "Fernanda_Sarreta.png",
               "alt": "Fernanda de Oliveira Sarreta"
             }
@@ -1890,7 +1888,7 @@
           "descricao": "Departamento de Servicio Social.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Fernanda_Sarreta.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Fernanda_Sarreta.png",
               "filename": "Fernanda_Sarreta.png",
               "alt": "Fernanda de Oliveira Sarreta"
             }
@@ -1920,7 +1918,7 @@
           "descricao": "Departamento de Relações Internacionais.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/fernanda_mello.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/fernanda_mello.png",
               "filename": "fernanda_mello.png",
               "alt": "Fernanda Mello Sant’Anna"
             }
@@ -1955,7 +1953,7 @@
           "descricao": "Department of International Relations.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/fernanda_mello.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/fernanda_mello.png",
               "filename": "fernanda_mello.png",
               "alt": "Fernanda Mello Sant’Anna"
             }
@@ -1990,7 +1988,7 @@
           "descricao": "Departamento de Relaciones Internacionales.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/fernanda_mello.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/fernanda_mello.png",
               "filename": "fernanda_mello.png",
               "alt": "Fernanda Mello Sant’Anna"
             }
@@ -2024,7 +2022,7 @@
           "descricao": "Departamento de Direito Público.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Jose_Neto.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Jose_Neto.png",
               "filename": "Jose_Neto.png",
               "alt": "José Duarte Neto"
             }
@@ -2055,7 +2053,7 @@
           "descricao": "Department of Public Law.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Jose_Neto.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Jose_Neto.png",
               "filename": "Jose_Neto.png",
               "alt": "José Duarte Neto"
             }
@@ -2086,7 +2084,7 @@
           "descricao": "Departamento de Derecho Público.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Jose_Neto.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Jose_Neto.png",
               "filename": "Jose_Neto.png",
               "alt": "José Duarte Neto"
             }
@@ -2116,7 +2114,7 @@
           "descricao": "Departamento de História.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Karina_Araujo.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Karina_Araujo.png",
               "filename": "Karina_Araujo.png",
               "alt": "Karina Anhezini de Araujo"
             }
@@ -2147,7 +2145,7 @@
           "descricao": "Department of History.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Karina_Araujo.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Karina_Araujo.png",
               "filename": "Karina_Araujo.png",
               "alt": "Karina Anhezini de Araujo"
             }
@@ -2178,7 +2176,7 @@
           "descricao": "Departamento de Historia.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Karina_Araujo.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Karina_Araujo.png",
               "filename": "Karina_Araujo.png",
               "alt": "Karina Anhezini de Araujo"
             }
@@ -2208,7 +2206,7 @@
           "descricao": "Departamento de Direito Privado, de Processo Civil e do Trabalho.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Luciana_Lopes.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Luciana_Lopes.png",
               "filename": "Luciana_Lopes.png",
               "alt": "Luciana Lopes Canavez"
             }
@@ -2239,7 +2237,7 @@
           "descricao": "Department of Private Law, Civil Procedure and Labor Law.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Luciana_Lopes.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Luciana_Lopes.png",
               "filename": "Luciana_Lopes.png",
               "alt": "Luciana Lopes Canavez"
             }
@@ -2270,7 +2268,7 @@
           "descricao": "Departamento de Derecho Privado, de Proceso Civil y del Trabajo.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Luciana_Lopes.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Luciana_Lopes.png",
               "filename": "Luciana_Lopes.png",
               "alt": "Luciana Lopes Canavez"
             }
@@ -2300,7 +2298,7 @@
           "descricao": "Departamento de Relações Internacionais.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Marilia_Pimenta.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Marilia_Pimenta.png",
               "filename": "Marilia_Pimenta.png",
               "alt": "Marília Carolina Barbosa de Souza Pimenta"
             }
@@ -2331,7 +2329,7 @@
           "descricao": "Department of International Relations.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Marilia_Pimenta.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Marilia_Pimenta.png",
               "filename": "Marilia_Pimenta.png",
               "alt": "Marília Carolina Barbosa de Souza Pimenta"
             }
@@ -2362,7 +2360,7 @@
           "descricao": "Departamento de Relaciones Internacionales.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Marilia_Pimenta.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Marilia_Pimenta.png",
               "filename": "Marilia_Pimenta.png",
               "alt": "Marília Carolina Barbosa de Souza Pimenta"
             }
@@ -2392,7 +2390,7 @@
           "descricao": "Departamento de História.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Ricardo_Ferreira.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Ricardo_Ferreira.png",
               "filename": "Ricardo_Ferreira.png",
               "alt": "Ricardo Alexandre Ferreira"
             }
@@ -2423,7 +2421,7 @@
           "descricao": "Department of History.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Ricardo_Ferreira.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Ricardo_Ferreira.png",
               "filename": "Ricardo_Ferreira.png",
               "alt": "Ricardo Alexandre Ferreira"
             }
@@ -2454,7 +2452,7 @@
           "descricao": "Departamento de Historia.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Ricardo_Ferreira.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Ricardo_Ferreira.png",
               "filename": "Ricardo_Ferreira.png",
               "alt": "Ricardo Alexandre Ferreira"
             }
@@ -2484,7 +2482,7 @@
           "descricao": "Departamento de Relações Internacionais.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Regina_Laisner.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Regina_Laisner.png",
               "filename": "Regina_Laisner.png",
               "alt": "Regina Cláudia Laisner"
             }
@@ -2515,7 +2513,7 @@
           "descricao": "Department of International Relations.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Regina_Laisner.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Regina_Laisner.png",
               "filename": "Regina_Laisner.png",
               "alt": "Regina Cláudia Laisner"
             }
@@ -2546,7 +2544,7 @@
           "descricao": "Departamento de Relaciones Internacionales.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Regina_Laisner.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Regina_Laisner.png",
               "filename": "Regina_Laisner.png",
               "alt": "Regina Cláudia Laisner"
             }
@@ -2576,7 +2574,7 @@
           "descricao": "Graduanda em Serviço Social na Unesp Franca e Membro ativo do CPPS",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/ligia_simplicio.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/ligia_simplicio.jpeg",
               "filename": "ligia_simplicio.jpeg",
               "alt": "Ligia Simplicio"
             }
@@ -2586,7 +2584,7 @@
           "redes": [
             {
               "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/9979622141210229"
+              "url": "http://lattes.cnpq.br/9979622141210229"
             },
             {
               "tipo": "instagram",
@@ -2607,7 +2605,7 @@
           "descricao": "Undergraduate student in Social Work at Unesp Franca and active member of CPPS.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/ligia_simplicio.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/ligia_simplicio.jpeg",
               "filename": "ligia_simplicio.jpeg",
               "alt": "Ligia Simplicio"
             }
@@ -2617,7 +2615,7 @@
           "redes": [
             {
               "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/9979622141210229"
+              "url": "http://lattes.cnpq.br/9979622141210229"
             },
             {
               "tipo": "instagram",
@@ -2638,7 +2636,7 @@
           "descricao": "Estudiante de grado en Servicio Social en Unesp Franca y miembro activo del CPPS.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/ligia_simplicio.jpeg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/ligia_simplicio.jpeg",
               "filename": "ligia_simplicio.jpeg",
               "alt": "Ligia Simplicio"
             }
@@ -2648,7 +2646,7 @@
           "redes": [
             {
               "tipo": "lattes",
-              "url": " http://lattes.cnpq.br/9979622141210229"
+              "url": "http://lattes.cnpq.br/9979622141210229"
             },
             {
               "tipo": "instagram",
@@ -2668,7 +2666,7 @@
           "descricao": "Graduando em Direito na Unesp Franca e Membro ativo do CPPS",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Joao_Vidal.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Joao_Vidal.jpg",
               "filename": "Joao_Vidal.jpg",
               "alt": "João Pedro Dias Vidal"
             }
@@ -2699,7 +2697,7 @@
           "descricao": "Undergraduate student in Law at Unesp Franca and active member of CPPS.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Joao_Vidal.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Joao_Vidal.jpg",
               "filename": "Joao_Vidal.jpg",
               "alt": "João Pedro Dias Vidal"
             }
@@ -2730,7 +2728,7 @@
           "descricao": "Estudiante de grado en Derecho en Unesp Franca y miembro activo del CPPS.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Joao_Vidal.jpg",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Joao_Vidal.jpg",
               "filename": "Joao_Vidal.jpg",
               "alt": "João Pedro Dias Vidal"
             }
@@ -2760,7 +2758,7 @@
           "descricao": "Graduando em história na Unesp Franca e Membro ativo do CPPS",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/caio_tomaz.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/caio_tomaz.png",
               "filename": "caio_tomaz.png",
               "alt": "Caio Tomaz Palombo"
             }
@@ -2791,7 +2789,7 @@
           "descricao": "Undergraduate student in History at Unesp Franca and active member of CPPS.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/caio_tomaz.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/caio_tomaz.png",
               "filename": "caio_tomaz.png",
               "alt": "Caio Tomaz Palombo"
             }
@@ -2822,7 +2820,7 @@
           "descricao": "Estudiante de grado en Historia en Unesp Franca y miembro activo del CPPS.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/caio_tomaz.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/caio_tomaz.png",
               "filename": "caio_tomaz.png",
               "alt": "Caio Tomaz Palombo"
             }
@@ -2852,7 +2850,7 @@
           "descricao": "Graduando em Relações Internacionais na Unesp Franca e Membro ativo do CPPS",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Mavi.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Mavi.png",
               "filename": "Mavi.png",
               "alt": "Mavi Silva"
             }
@@ -2860,10 +2858,6 @@
           "categoria": "Estagiários",
           "ativo": true,
           "redes": [
-            {
-              "tipo": "lattes",
-              "url": ""
-            },
             {
               "tipo": "instagram",
               "url": "https://www.instagram.com/maviobservando/"
@@ -2883,7 +2877,7 @@
           "descricao": "Undergraduate student in International Relations at Unesp Franca and active member of CPPS.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Mavi.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Mavi.png",
               "filename": "Mavi.png",
               "alt": "Mavi Silva"
             }
@@ -2891,10 +2885,6 @@
           "categoria": "Estagiários",
           "ativo": true,
           "redes": [
-            {
-              "tipo": "lattes",
-              "url": ""
-            },
             {
               "tipo": "instagram",
               "url": "https://www.instagram.com/maviobservando/"
@@ -2914,7 +2904,7 @@
           "descricao": "Estudiante de grado en Relaciones Internacionales en Unesp Franca y miembro activo del CPPS.",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/Mavi.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/Mavi.png",
               "filename": "Mavi.png",
               "alt": "Mavi Silva"
             }
@@ -2922,10 +2912,6 @@
           "categoria": "Estagiários",
           "ativo": true,
           "redes": [
-            {
-              "tipo": "lattes",
-              "url": ""
-            },
             {
               "tipo": "instagram",
               "url": "https://www.instagram.com/maviobservando/"
@@ -2944,7 +2930,7 @@
           "descricao": "Graduando em Direito na Unesp Franca e Membro ativo do CPPS",
           "foto": {
             "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/leonardo.png",
+              "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/equipe/leonardo.png",
               "filename": "leonardo.png",
               "alt": "Leonardo Vaz Samogim"
             }
@@ -2973,13 +2959,6 @@
           "cargo": "Estagiário Remunerada (Relações Internacionais)",
           "descricao": "Graduando em Relações Internacionais na Unesp Franca",
           "contribuicao": "Auxilio na transição do CPPS",
-          "foto": {
-            "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/00-person.svg",
-              "filename": "00-person.svg",
-              "alt": "Breno Andreazza"
-            }
-          },
           "categoria": "Estagiários",
           "ativo": false,
           "redes": []
@@ -2996,13 +2975,6 @@
           "cargo": "Paid Intern (International Relations)",
           "descricao": "Undergraduate student in International Relations at Unesp Franca.",
           "contribuicao": "Assisted in the CPPS transition.",
-          "foto": {
-            "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/00-person.svg",
-              "filename": "00-person.svg",
-              "alt": "Breno Andreazza"
-            }
-          },
           "categoria": "Estagiários",
           "ativo": false,
           "redes": []
@@ -3019,13 +2991,6 @@
           "cargo": "Becario Remunerado (Relaciones Internacionales)",
           "descricao": "Estudiante de grado en Relaciones Internacionales en Unesp Franca.",
           "contribuicao": "Ayudó en la transición del CPPS.",
-          "foto": {
-            "$media": {
-              "url": "https://cpps.franca.unesp.br/imagens/equipe/00-person.svg",
-              "filename": "00-person.svg",
-              "alt": "Breno Andreazza"
-            }
-          },
           "categoria": "Estagiários",
           "ativo": false,
           "redes": []
@@ -4565,7 +4530,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca.jpg",
                   "filename": "entrada-unesp-franca.jpg",
                   "alt": "Imagem ilustrativa de O Centro de Pesquisa Política e Social"
                 }
@@ -4574,7 +4539,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca2.jpg",
                   "filename": "entrada-unesp-franca2.jpg",
                   "alt": "Imagem ilustrativa de O Centro de Pesquisa Política e Social"
                 }
@@ -4627,7 +4592,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca.jpg",
                   "filename": "entrada-unesp-franca.jpg",
                   "alt": "Imagem ilustrativa de O Centro de Pesquisa Política e Social"
                 }
@@ -4636,7 +4601,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca2.jpg",
                   "filename": "entrada-unesp-franca2.jpg",
                   "alt": "Imagem ilustrativa de O Centro de Pesquisa Política e Social"
                 }
@@ -4689,7 +4654,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca.jpg",
                   "filename": "entrada-unesp-franca.jpg",
                   "alt": "Imagem ilustrativa de O Centro de Pesquisa Política e Social"
                 }
@@ -4698,7 +4663,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca2.jpg",
                   "filename": "entrada-unesp-franca2.jpg",
                   "alt": "Imagem ilustrativa de O Centro de Pesquisa Política e Social"
                 }
@@ -4739,7 +4704,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca3.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca3.jpg",
                   "filename": "entrada-unesp-franca3.jpg",
                   "alt": "Imagem ilustrativa de Objetivos"
                 }
@@ -4748,7 +4713,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
                   "filename": "unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
                   "alt": "Imagem ilustrativa de Objetivos"
                 }
@@ -4790,7 +4755,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca3.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca3.jpg",
                   "filename": "entrada-unesp-franca3.jpg",
                   "alt": "Imagem ilustrativa de Objetivos"
                 }
@@ -4799,7 +4764,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
                   "filename": "unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
                   "alt": "Imagem ilustrativa de Objetivos"
                 }
@@ -4841,7 +4806,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/entrada-unesp-franca3.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/entrada-unesp-franca3.jpg",
                   "filename": "entrada-unesp-franca3.jpg",
                   "alt": "Imagem ilustrativa de Objetivos"
                 }
@@ -4850,7 +4815,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
                   "filename": "unesp-franca-blocos-1-e-2-central-de-aulas.jpg",
                   "alt": "Imagem ilustrativa de Objetivos"
                 }
@@ -4907,7 +4872,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-congregacao.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-congregacao.jpg",
                   "filename": "unesp-franca-congregacao.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -4916,7 +4881,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-corredor-da-central-de-aula-1.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-corredor-da-central-de-aula-1.jpg",
                   "filename": "unesp-franca-corredor-da-central-de-aula-1.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -4925,7 +4890,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-cpps-sala-reunao.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-cpps-sala-reunao.jpg",
                   "filename": "unesp-franca-cpps-sala-reunao.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -4934,7 +4899,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-salas-aula2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-salas-aula2.jpg",
                   "filename": "unesp-franca-salas-aula2.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -4943,7 +4908,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-biblioteca2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-biblioteca2.jpg",
                   "filename": "unesp-franca-biblioteca2.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5001,7 +4966,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-congregacao.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-congregacao.jpg",
                   "filename": "unesp-franca-congregacao.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5010,7 +4975,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-corredor-da-central-de-aula-1.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-corredor-da-central-de-aula-1.jpg",
                   "filename": "unesp-franca-corredor-da-central-de-aula-1.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5019,7 +4984,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-cpps-sala-reunao.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-cpps-sala-reunao.jpg",
                   "filename": "unesp-franca-cpps-sala-reunao.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5028,7 +4993,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-salas-aula2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-salas-aula2.jpg",
                   "filename": "unesp-franca-salas-aula2.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5037,7 +5002,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-biblioteca2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-biblioteca2.jpg",
                   "filename": "unesp-franca-biblioteca2.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5095,7 +5060,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-congregacao.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-congregacao.jpg",
                   "filename": "unesp-franca-congregacao.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5104,7 +5069,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-corredor-da-central-de-aula-1.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-corredor-da-central-de-aula-1.jpg",
                   "filename": "unesp-franca-corredor-da-central-de-aula-1.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5113,7 +5078,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-cpps-sala-reunao.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-cpps-sala-reunao.jpg",
                   "filename": "unesp-franca-cpps-sala-reunao.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5122,7 +5087,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-salas-aula2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-salas-aula2.jpg",
                   "filename": "unesp-franca-salas-aula2.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }
@@ -5131,7 +5096,7 @@
             {
               "imagem": {
                 "$media": {
-                  "url": "https://cpps.franca.unesp.br/imagens/campus/unesp-franca-biblioteca2.jpg",
+                  "url": "https://cdn.jsdelivr.net/gh/cpps-unesp/site-cpps@b0df741/public/imagens/campus/unesp-franca-biblioteca2.jpg",
                   "filename": "unesp-franca-biblioteca2.jpg",
                   "alt": "Imagem ilustrativa de Objetivos Específicos"
                 }

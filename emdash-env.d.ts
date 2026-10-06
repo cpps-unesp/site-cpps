@@ -52,7 +52,7 @@ export interface Equipe {
   categoria: "Coordenação" | "Pesquisadores" | "Estagiários";
   prioridade?: number;
   ativo?: boolean;
-  redes?: { "tipo": string; "url": string }[];
+  redes?: { "tipo": "lattes" | "orcid" | "linkedin" | "portal-docente-unesp" | "instagram"; "url": string }[];
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;
@@ -85,7 +85,7 @@ export interface CafeEpisodio {
   numero: number;
   icone?: string;
   descricao?: string;
-  materiais?: { "tipo": string; "url": string }[];
+  materiais?: { "tipo": "transcricao" | "artigo"; "url": string }[];
   createdAt: Date;
   updatedAt: Date;
   publishedAt: Date | null;

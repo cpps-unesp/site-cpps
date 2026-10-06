@@ -15,6 +15,9 @@ const IDIOMA_PADRAO: SupportedLang = 'pt';
 // gera o srcset e respeita o ponto focal escolhido no admin.
 export type Imagem = ImageValue | string;
 
+// Quem não tem foto no admin aparece com o avatar genérico.
+const FOTO_PADRAO = '/imagens/equipe/00-person.svg';
+
 type Colecao = 'paginas' | 'sobre' | 'equipe' | 'documentos' | 'cafe_episodios' | 'projetos';
 type EntradaComGrupo = { data: { id: string; translationGroup?: string | null } };
 
@@ -121,7 +124,7 @@ export async function getEquipe(lang: SupportedLang) {
       cargo: data.cargo,
       descricao: data.descricao,
       contribuicao: data.contribuicao,
-      foto: data.foto,
+      foto: data.foto ?? FOTO_PADRAO,
       prioridade: data.prioridade,
       status: data.ativo === false ? 'inativo' : 'ativo',
       redes: data.redes ?? [],
