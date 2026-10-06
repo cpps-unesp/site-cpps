@@ -5,6 +5,16 @@
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
 
+  // Endereço público do site. O EmDash usa como origem do login (a passkey fica
+  // presa a este domínio), da proteção CSRF, do robots.txt e do sitemap. Precisa
+  // estar aqui antes do primeiro setup: sem ele, o setup grava como origem o
+  // endereço em que rodou (o workers.dev, por exemplo). Não usar `siteUrl` no
+  // astro.config.mjs: ele vai embutido em todo build, inclusive nos previews.
+  // No desenvolvimento local, o .env sobrescreve (ver README).
+  "vars": {
+    "EMDASH_SITE_URL": "https://cpps.franca.unesp.br",
+  },
+
   // Banco do EmDash. No primeiro deploy o Wrangler cria o banco com este nome.
   "d1_databases": [
     {
@@ -21,6 +31,17 @@
     },
   ],
 
-  // Publicação agendada, backups e manutenção do EmDash.
-  "triggers": { "crons": ["* * * * *"] },
+  // Publicação agendada, backups e manutenção do EmDash. De hora em hora, e não a
+  // cada minuto como no guia, por causa de dois problemas do emdash 1.1.0 no
+  // plano gratuito: a limpeza do log de 404 lê a tabela inteira a cada execução e
+  // pode esgotar a cota diária de leituras do D1 (emdash-cms/emdash#3748), e as
+  // execuções em isolate frio passam dos 10 ms de CPU e se perdem (#3858). As
+  // correções (#3753 e #3861) saem na próxima versão; depois dela, voltar para
+  // algo como "*/15 * * * *". O valor precisa ser o mesmo de `generalCron` em
+  // src/worker.ts.
+  "triggers": { "crons": ["0 * * * *"] },
+
+  // Logs e métricas do Worker, inclusive o tempo de CPU por requisição (o plano
+  // gratuito tem limite de 10 ms). Veja com `npx wrangler tail` ou no painel.
+  "observability": { "enabled": true },
 }

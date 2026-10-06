@@ -86,11 +86,17 @@ Para rodar localmente:
 
 ```bash
 npm install
-npx emdash secrets generate --write .env   # uma vez; o .env não vai para o Git
+# Uma vez; o .env não vai para o Git.
+npx emdash secrets generate --write .env
+echo 'EMDASH_SITE_URL=http://localhost:4321' >> .env
 npm run dev
 ```
 
-Abra `http://localhost:4321/_emdash/admin` (use `localhost`, não `127.0.0.1`: passkeys não funcionam em endereço IP) e conclua o assistente escolhendo **Sample content**, que importa o conteúdo atual de `seed/seed.json`. Depois crie sua conta e registre uma passkey. O banco (D1) e as imagens (R2) locais são simulados pelo Wrangler em `.wrangler/`; apague essa pasta para começar do zero.
+O `EMDASH_SITE_URL` do `.env` sobrescreve o do `wrangler.jsonc`, que aponta para o domínio de produção. Sem ele, o login local falha: a passkey ficaria presa ao domínio de produção. Se usar outra porta, ajuste o endereço.
+
+Abra `http://localhost:4321/_emdash/admin` (use `localhost`, não `127.0.0.1`: passkeys não funcionam em endereço IP) e conclua o assistente escolhendo **Sample content**, que importa o conteúdo de `seed/seed.json`. Depois crie sua conta e registre uma passkey. Para entrar sem passkey no desenvolvimento, use `http://localhost:4321/_emdash/api/setup/dev-bypass?redirect=/_emdash/admin`.
+
+O banco (D1) e as imagens (R2) locais são simulados pelo Wrangler em `.wrangler/`; apague essa pasta para começar do zero. O assistente baixa as imagens do seed pela internet e, se um download falha, grava o campo vazio sem avisar: se alguma imagem não aparecer depois do assistente, confira a rede (DNS lento basta), apague `.wrangler/` e refaça.
 
 ## Internacionalização
 
@@ -130,7 +136,7 @@ npm run ci            # Typecheck + build (pipeline local)
 O Dependabot abre um PR por dependência toda semana ([.github/dependabot.yml](.github/dependabot.yml)):
 
 - **Patch e minor de npm**, inclusive correções de segurança de dependências indiretas, entram sozinhos quando o check `ci` passa ([dependabot-auto-merge.yml](.github/workflows/dependabot-auto-merge.yml)).
-- **Precisam de revisão humana:** majors, minors de pacotes 0.x (como `sharp`, em que o minor quebra compatibilidade) e atualizações de GitHub Actions.
+- **Precisam de revisão humana:** majors, minors de pacotes 0.x (como `sharp`, em que o minor quebra compatibilidade), atualizações de GitHub Actions e qualquer versão do EmDash (`emdash`, `@emdash-cms/*`), do Astro (`astro`, `@astrojs/*`) e do Wrangler. Nesses três, o merge vira deploy, e uma versão nova do EmDash migra o banco de produção no primeiro acesso; siga o roteiro de [docs/deploy-e-redirects.md](docs/deploy-e-redirects.md).
 - Versões incompatíveis conhecidas ficam em `ignore`, com o motivo comentado.
 - O auto-merge depende do check `ci` obrigatório no ruleset da `main`. Sem ele, o workflow falha em vez de aprovar.
 

@@ -52,6 +52,12 @@ export default defineConfig({
       // `</body>`. O modo 'client' é pior: injeta o script de inicialização do mesmo
       // jeito, para todos os visitantes.
       toolbar: false,
+      // O admin usa as fontes do sistema: sem isso, o build baixa a Noto Sans do
+      // Google Fonts e falha quando a rede falha.
+      fonts: false,
+      // O aviso de nova versão no admin só aparece depois de 7 dias, o mesmo
+      // intervalo que o Dependabot espera (cooldown em .github/dependabot.yml).
+      updateCheck: { minimumReleaseAge: '7d' },
     }),
   ],
 });

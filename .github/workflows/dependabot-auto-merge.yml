@@ -29,7 +29,8 @@ jobs:
 
       # Entra sozinho: pacote npm, patch ou minor, e nenhum minor em pacote 0.x
       # (em 0.y.z o minor quebra compatibilidade; ^0.35 não aceita 0.36).
-      # Sem versão anterior conhecida, o minor também fica para revisão.
+      # Sem versão anterior conhecida, o minor também fica para revisão. EmDash,
+      # Astro e Wrangler nunca entram sozinhos (ver o fim deste passo).
       - name: Decidir se o PR entra sozinho
         id: decisao
         run: |
@@ -46,6 +47,16 @@ jobs:
           zero_minor="$(jq -r '[.[] | select(.updateType == "version-update:semver-minor" and ((.prevVersion // "0.") | test("^v?0\\."))) | .dependencyName] | join(", ")' <<< "$DEPS")"
           if [ -n "$zero_minor" ]; then
             echo "::notice::Minor em pacote 0.x ($zero_minor) fica para revisão humana."
+            echo 'auto=false' >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          # EmDash, Astro e Wrangler ficam para revisão humana mesmo em patch: o
+          # merge na main vira deploy, e uma versão nova do EmDash migra o banco D1
+          # de produção no primeiro acesso, sem volta. O CI só faz build, não pega
+          # isso. O roteiro de atualização está em docs/deploy-e-redirects.md.
+          plataforma="$(jq -r '[.[] | .dependencyName | select(. == "emdash" or . == "astro" or . == "wrangler" or startswith("@emdash-cms/") or startswith("@astrojs/"))] | join(", ")' <<< "$DEPS")"
+          if [ -n "$plataforma" ]; then
+            echo "::notice::$plataforma fica para revisão humana (deploy com migração de banco)."
             echo 'auto=false' >> "$GITHUB_OUTPUT"
             exit 0
           fi

@@ -1,7 +1,8 @@
 version: 2
 updates:
   # Um PR por dependência; patch e minor entram sozinhos quando o check `ci`
-  # passa (ver workflows/dependabot-auto-merge.yml). Sem `groups` de propósito:
+  # passa (ver workflows/dependabot-auto-merge.yml), menos EmDash, Astro e
+  # Wrangler, que esperam revisão. Sem `groups` de propósito:
   # com um PR de grupo aberto o Dependabot deixa de abrir PRs de major
   # (dependabot-core#14202).
   - package-ecosystem: 'npm'

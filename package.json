@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit && astro check",
-    "ci": "astro sync && npm run typecheck && npm run lint && npm run build",
+    "seed:check": "emdash seed seed/seed.json --validate",
+    "ci": "npm run seed:check && astro sync && npm run typecheck && npm run lint && npm run build",
     "astro": "astro",
     "prepare": "[ -d .git ] && git config core.hooksPath .githooks || true"
   },
