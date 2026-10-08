@@ -55,6 +55,7 @@ const noticiasPath = routeTranslations.noticias[lang];
               lang={lang}
               date={post.date}
               author={post.author}
+              edit={post.lang === lang ? post.edit : undefined}
             />
           ))}
         </div>

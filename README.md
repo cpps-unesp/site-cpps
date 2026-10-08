@@ -80,6 +80,8 @@ O conteúdo abaixo é editado no [EmDash](https://emdashcms.com), em `/_emdash/a
 
 Cada item tem versões em pt, en e es (painel **Translations** no admin). Sem tradução, o site mostra a versão em português. Nome, foto, links e outros dados que não dependem do idioma são compartilhados entre as versões.
 
+**Edição visual.** Quem entra no admin como autor ou acima vê uma barra do EmDash ao navegar pelo site. Com o modo de edição ligado na barra, um clique num título, nome, cargo ou resumo edita o texto ali mesmo; numa imagem, abre a biblioteca de mídia; no corpo de uma notícia, abre o editor de texto na página. Listas (parágrafos do Sobre, redes, arquivos, materiais) e textos com formatação abrem o item no admin. As mudanças ficam em rascunho até alguém publicar pela barra ou pelo admin. Páginas em en ou es que mostram o português por falta de tradução não são editáveis por ali, para ninguém sobrescrever o português sem querer: use o painel **Translations** no admin. Os Projetos de Pesquisa são editados só pelo admin, porque a lista é montada no navegador.
+
 Continuam no repositório: os textos de interface em `src/i18n/locales/*.json`, as demais páginas de Iniciativas, a wiki e os guias em `src/content/`, e as páginas pessoais em `src/content/membros/`.
 
 Para rodar localmente:

@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import { Image } from 'emdash/ui';
+import type { EditProxy } from 'emdash';
 import type { Imagem } from '../utils/conteudo';
 import IconSocial from './IconSocial.astro';
 
@@ -18,6 +19,8 @@ type Membro = {
   cargo?: string;
   descricao?: string;
   contribuicao?: string;
+  // Edição visual (ver `edicao` em ../utils/conteudo).
+  edit?: EditProxy;
 };
 
 // Typed props (infer from parent usage). ativos is an array of [categoria, membros[]]
@@ -116,7 +119,7 @@ function getSlug(membro: Membro): string {
               )}
 
               {temPagina ? (
-                <a href={`/${lang}/${slug}`} class="relative block">
+                <a {...membro.edit?.foto} href={`/${lang}/${slug}`} class="relative block">
                   <Image
                     image={membro.foto}
                     alt={membro.nome}
@@ -125,7 +128,7 @@ function getSlug(membro: Membro): string {
                   <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
                 </a>
               ) : (
-                <div class="relative mb-4">
+                <div {...membro.edit?.foto} class="relative mb-4">
                   <Image
                     image={membro.foto}
                     alt={membro.nome}
@@ -136,18 +139,26 @@ function getSlug(membro: Membro): string {
               )}
 
               {membro.redes && membro.redes.length > 0 && (
-                <div class="mb-2 flex justify-center space-x-4">
+                <div {...membro.edit?.redes} class="mb-2 flex justify-center space-x-4">
                   {membro.redes.slice(0, 3).map((rede) => (
                     <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
                   ))}
                 </div>
               )}
 
-              <h3 class="font-display text-primary mb-1 text-[20px]">{membro.nome}</h3>
-              <p class="text-neutral mb-1 text-[12px]">{membro.cargo}</p>
-              <p class="text-base-content text-[12px]">{membro.descricao}</p>
+              <h3 {...membro.edit?.title} class="font-display text-primary mb-1 text-[20px]">
+                {membro.nome}
+              </h3>
+              <p {...membro.edit?.cargo} class="text-neutral mb-1 text-[12px]">
+                {membro.cargo}
+              </p>
+              <p {...membro.edit?.descricao} class="text-base-content text-[12px]">
+                {membro.descricao}
+              </p>
               {membro.contribuicao && (
-                <p class="text-base-content mt-2 text-[12px] italic">{membro.contribuicao}</p>
+                <p {...membro.edit?.contribuicao} class="text-base-content mt-2 text-[12px] italic">
+                  {membro.contribuicao}
+                </p>
               )}
             </div>
           );
@@ -175,7 +186,7 @@ function getSlug(membro: Membro): string {
                 </a>
               )}
               {temPagina ? (
-                <a href={`/${lang}/${slug}`} class="relative block">
+                <a {...membro.edit?.foto} href={`/${lang}/${slug}`} class="relative block">
                   <Image
                     image={membro.foto}
                     alt={membro.nome}
@@ -184,7 +195,7 @@ function getSlug(membro: Membro): string {
                   <div class="absolute inset-0 rounded-2xl ring-1 ring-black/10 ring-inset" />
                 </a>
               ) : (
-                <div class="relative mb-4">
+                <div {...membro.edit?.foto} class="relative mb-4">
                   <Image
                     image={membro.foto}
                     alt={membro.nome}
@@ -195,18 +206,26 @@ function getSlug(membro: Membro): string {
               )}
 
               {membro.redes && membro.redes.length > 0 && (
-                <div class="mb-2 flex justify-center space-x-4">
+                <div {...membro.edit?.redes} class="mb-2 flex justify-center space-x-4">
                   {membro.redes.slice(0, 3).map((rede) => (
                     <IconSocial tipo={rede.tipo} url={rede.url} tamanho="text-xl" />
                   ))}
                 </div>
               )}
 
-              <h3 class="font-display text-primary mb-1 text-[20px]">{membro.nome}</h3>
-              <p class="text-neutral mb-1 text-[12px]">{membro.cargo}</p>
-              <p class="text-base-content text-[12px]">{membro.descricao}</p>
+              <h3 {...membro.edit?.title} class="font-display text-primary mb-1 text-[20px]">
+                {membro.nome}
+              </h3>
+              <p {...membro.edit?.cargo} class="text-neutral mb-1 text-[12px]">
+                {membro.cargo}
+              </p>
+              <p {...membro.edit?.descricao} class="text-base-content text-[12px]">
+                {membro.descricao}
+              </p>
               {membro.contribuicao && (
-                <p class="text-base-content mt-2 text-[12px] italic">{membro.contribuicao}</p>
+                <p {...membro.edit?.contribuicao} class="text-base-content mt-2 text-[12px] italic">
+                  {membro.contribuicao}
+                </p>
               )}
             </div>
           );

@@ -1,5 +1,5 @@
 import { getEmDashCollection, getEmDashEntry } from 'emdash';
-import type { ImageValue } from 'emdash';
+import type { EditProxy, ImageValue } from 'emdash';
 import type { SupportedLang } from '../types/lang';
 import { getTranslations } from './i18n';
 
@@ -47,11 +47,26 @@ async function listarTraduzido<C extends Colecao>(colecao: C, lang: SupportedLan
   return [...mescladas, ...traduzidas.entries.filter((entry) => !usados.has(grupo(entry)))];
 }
 
+// Edição visual do EmDash: os componentes espalham `{...edit?.campo}` no elemento
+// que mostra o campo, e o editor logado, no modo de edição, clica nele para editar
+// ali mesmo. Para visitantes não sai atributo nenhum. Só ganha anotação o que está
+// no idioma da página: um item mostrado em pt numa página en ou es (falta
+// tradução) fica sem, para o editor não sobrescrever o português a partir dela.
+type EntradaEditavel = { edit: EditProxy; data: object };
+
+export function edicao(
+  entrada: EntradaEditavel | null | undefined,
+  lang: SupportedLang
+): EditProxy | undefined {
+  const locale = (entrada?.data as { locale?: string } | undefined)?.locale;
+  return entrada && locale === lang ? entrada.edit : undefined;
+}
+
 // getEmDashEntry já cai para pt quando falta a tradução.
 async function getPagina(slug: string, lang: SupportedLang) {
   const { entry, error } = await getEmDashEntry('paginas', slug, { locale: lang });
   if (error) throw error;
-  return entry?.data ?? null;
+  return { pagina: entry?.data ?? null, edicaoPagina: edicao(entry, lang) };
 }
 
 function escapeHtml(texto: string): string {
@@ -79,8 +94,9 @@ function textoParaParagrafos(texto: string | undefined, classeDestaque: string):
 }
 
 export async function getHero(lang: SupportedLang) {
-  const pagina = await getPagina('home', lang);
+  const { pagina, edicaoPagina } = await getPagina('home', lang);
   return {
+    edit: edicaoPagina,
     title: escapeHtml(pagina?.title ?? ''),
     description: textoParaParagrafos(
       pagina?.introducao,
@@ -103,10 +119,11 @@ type MembroEquipe = {
   prioridade?: number;
   status: 'ativo' | 'inativo';
   redes: { tipo: string; url: string }[];
+  edit?: EditProxy;
 };
 
 export async function getEquipe(lang: SupportedLang) {
-  const [pagina, pessoas] = await Promise.all([
+  const [{ pagina, edicaoPagina }, pessoas] = await Promise.all([
     getPagina('equipe', lang),
     listarTraduzido('equipe', lang),
   ]);
@@ -117,8 +134,10 @@ export async function getEquipe(lang: SupportedLang) {
     Pesquisadores: [],
     Estagiários: [],
   };
-  for (const { data } of pessoas) {
+  for (const pessoa of pessoas) {
+    const { data } = pessoa;
     (categorias[data.categoria] ??= []).push({
+      edit: edicao(pessoa, lang),
       slug: data.slug ?? undefined,
       nome: data.title,
       cargo: data.cargo,
@@ -132,6 +151,7 @@ export async function getEquipe(lang: SupportedLang) {
   }
 
   return {
+    edit: edicaoPagina,
     title: pagina?.title ?? '',
     intro: textoParaParagrafos(pagina?.introducao, 'font-semibold'),
     categorias: Object.fromEntries(
@@ -145,31 +165,37 @@ export async function getSobre(lang: SupportedLang) {
   return Object.fromEntries(
     blocos
       .sort((a, b) => a.data.ordem - b.data.ordem)
-      .map(({ data }) => [
-        data.slug ?? data.id,
-        {
-          titulo: data.title,
-          reverse: data.invertido ?? false,
-          texto: (data.paragrafos ?? []).map((p) => ({ conteudo: p.texto, check: p.check ?? false })),
-          departamentos: data.lista && data.lista.length > 0 ? data.lista.map((l) => l.item) : undefined,
-          imagem: (data.imagens ?? []).map((i) => i.imagem).filter((i) => i !== undefined),
-        },
-      ])
+      .map((bloco) => {
+        const { data } = bloco;
+        return [
+          data.slug ?? data.id,
+          {
+            edit: edicao(bloco, lang),
+            titulo: data.title,
+            reverse: data.invertido ?? false,
+            texto: (data.paragrafos ?? []).map((p) => ({ conteudo: p.texto, check: p.check ?? false })),
+            departamentos: data.lista && data.lista.length > 0 ? data.lista.map((l) => l.item) : undefined,
+            imagem: (data.imagens ?? []).map((i) => i.imagem).filter((i) => i !== undefined),
+          },
+        ];
+      })
   );
 }
 
 export async function getDocumentos(lang: SupportedLang) {
-  const [pagina, documentos] = await Promise.all([
+  const [{ pagina, edicaoPagina }, documentos] = await Promise.all([
     getPagina('documentos', lang),
     listarTraduzido('documentos', lang),
   ]);
 
   return {
+    edit: edicaoPagina,
     titulo: pagina?.title ?? '',
     descricao: pagina?.introducao ?? '',
     grupos: documentos
       .sort((a, b) => a.data.ordem - b.data.ordem)
-      .map(({ data }) => {
+      .map((documento) => {
+        const { data } = documento;
         // Linhas seguidas com o mesmo nome formam um arquivo com vários formatos.
         const arquivos: { nome: string; formatos: { tipo: string; url: string }[] }[] = [];
         for (const linha of data.arquivos ?? []) {
@@ -179,13 +205,18 @@ export async function getDocumentos(lang: SupportedLang) {
           if (ultimo && ultimo.nome === nome) ultimo.formatos.push(formato);
           else arquivos.push({ nome, formatos: [formato] });
         }
-        return { titulo: data.title, descricao: data.descricao ?? '', arquivos };
+        return {
+          edit: edicao(documento, lang),
+          titulo: data.title,
+          descricao: data.descricao ?? '',
+          arquivos,
+        };
       }),
   };
 }
 
 export async function getCafe(lang: SupportedLang) {
-  const [pagina, episodios] = await Promise.all([
+  const [{ pagina, edicaoPagina }, episodios] = await Promise.all([
     getPagina('cafe-com-ciencia', lang),
     listarTraduzido('cafe_episodios', lang),
   ]);
@@ -193,21 +224,26 @@ export async function getCafe(lang: SupportedLang) {
 
   return {
     ...cafe,
+    edit: edicaoPagina,
     titulo: pagina?.title ?? '',
     descricao: pagina?.introducao ?? '',
-    episodios: episodios.map(({ data }) => ({
-      id: data.slug ?? data.id,
-      numero: data.numero,
-      icone: data.icone,
-      titulo: data.title,
-      descricao: data.descricao,
-      materiais: data.materiais ?? [],
-    })),
+    episodios: episodios.map((episodio) => {
+      const { data } = episodio;
+      return {
+        edit: edicao(episodio, lang),
+        id: data.slug ?? data.id,
+        numero: data.numero,
+        icone: data.icone,
+        titulo: data.title,
+        descricao: data.descricao,
+        materiais: data.materiais ?? [],
+      };
+    }),
   };
 }
 
 export async function getProjetosDePesquisa(lang: SupportedLang) {
-  const [pagina, projetos] = await Promise.all([
+  const [{ pagina, edicaoPagina }, projetos] = await Promise.all([
     getPagina('projetos-de-pesquisa', lang),
     listarTraduzido('projetos', lang),
   ]);
@@ -215,6 +251,9 @@ export async function getProjetosDePesquisa(lang: SupportedLang) {
 
   return {
     ...iniciativas,
+    // Só o título e a introdução da página: a lista de projetos é montada no
+    // navegador, fora do alcance das anotações; cada projeto se edita no admin.
+    edit: edicaoPagina,
     projetosDePesquisa: pagina?.title,
     descricaoProjetosDePesquisa: pagina?.introducao,
     projetosLista: projetos.map(({ data }) => ({

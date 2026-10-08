@@ -1,5 +1,6 @@
 ---
 import { Image } from 'emdash/ui';
+import type { EditProxy } from 'emdash';
 import type { Imagem } from '../utils/conteudo';
 import { formatNoticiaDate, getNoticiaCategoriaUrl, type NoticiaTag } from '../utils/noticias';
 import pt from '../i18n/locales/pt.json';
@@ -17,9 +18,11 @@ interface Props {
   date: Date;
   author?: string;
   featured?: boolean;
+  // Edição visual: só para notícias no idioma da página.
+  edit?: EditProxy;
 }
 
-const { title, resumo, image, imageAlt, tags, slug, lang, date, author } = Astro.props;
+const { title, resumo, image, imageAlt, tags, slug, lang, date, author, edit } = Astro.props;
 const displayAuthor = author?.trim() || 'Equipe CPPS';
 
 const translations = { pt, en, es };
@@ -29,7 +32,7 @@ const t = translations[lang] || translations.pt;
 <article
   class="bg-base-100 group border-base-200 flex h-full flex-col overflow-hidden rounded-2xl border shadow-md transition-all duration-300 hover:shadow-xl"
 >
-  <a href={slug} class="relative block aspect-video overflow-hidden">
+  <a {...edit?.image} href={slug} class="relative block aspect-video overflow-hidden">
     <Image
       image={image}
       alt={imageAlt ?? title}
@@ -58,10 +61,10 @@ const t = translations[lang] || translations.pt;
     <h3
       class="text-base-content group-hover:text-primary mb-3 line-clamp-2 text-xl font-bold transition-colors"
     >
-      <a href={slug}>{title}</a>
+      <a href={slug}><span {...edit?.title}>{title}</span></a>
     </h3>
 
-    <p class="text-base-content/70 mb-6 line-clamp-3 flex-1 text-sm">
+    <p {...edit?.resumo} class="text-base-content/70 mb-6 line-clamp-3 flex-1 text-sm">
       {resumo}
     </p>
 

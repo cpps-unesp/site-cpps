@@ -1,5 +1,5 @@
 import { getEmDashCollection, getEmDashEntry, getTerm } from 'emdash';
-import type { PortableTextBlock } from 'emdash';
+import type { EditProxy, PortableTextBlock } from 'emdash';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
 import type { Imagem } from './conteudo';
@@ -27,6 +27,10 @@ export type Noticia = {
   author: string;
   featured: boolean;
   content: PortableTextBlock[];
+  // Edição visual (ver `edicao` em ./conteudo): as listas só trazem notícias no
+  // idioma da página; a página da notícia descarta a anotação quando mostra a
+  // versão em pt por falta de tradução.
+  edit: EditProxy;
 };
 
 type NoticiaEntry = NonNullable<Awaited<ReturnType<typeof getEmDashEntry<'noticias'>>>['entry']>;
@@ -51,6 +55,7 @@ function toNoticia(entry: NoticiaEntry): Noticia {
     author: data.author?.trim() || AUTOR_PADRAO,
     featured: data.featured ?? false,
     content: data.content ?? [],
+    edit: entry.edit,
   };
 }
 

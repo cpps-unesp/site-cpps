@@ -1,4 +1,5 @@
 ---
+import type { EditProxy } from 'emdash';
 import type { SupportedLang } from '../types/lang';
 
 type CafeMaterial = {
@@ -7,6 +8,7 @@ type CafeMaterial = {
 };
 
 type CafeEpisodio = {
+  edit?: EditProxy;
   id?: string;
   numero?: number;
   titulo: string;
@@ -15,6 +17,8 @@ type CafeEpisodio = {
 };
 
 type CafeData = {
+  // Edição visual (Páginas › cafe-com-ciencia e a coleção de episódios, no admin).
+  edit?: EditProxy;
   titulo: string;
   descricao: string;
   episodioLabel?: string;
@@ -39,9 +43,9 @@ function buildUrl(url: string) {
 
 <section class="mx-auto max-w-5xl px-4 py-12 md:px-8 md:py-16">
   <header class="mb-12 md:mb-16">
-    <h1 class="titulo text-primary mb-4">{cafe.titulo}</h1>
+    <h1 {...cafe.edit?.title} class="titulo text-primary mb-4">{cafe.titulo}</h1>
     <div class="bg-primary mb-6 h-1.5 w-20"></div>
-    <p class="subtitulo max-w-2xl">{cafe.descricao}</p>
+    <p {...cafe.edit?.introducao} class="subtitulo max-w-2xl">{cafe.descricao}</p>
   </header>
 
   <ol class="space-y-5 md:space-y-6">
@@ -53,24 +57,30 @@ function buildUrl(url: string) {
               <span class="text-base-content/50 text-xs font-bold tracking-widest uppercase">
                 {rotuloEpisodio}
               </span>
-              <span class="text-primary text-4xl leading-none font-black sm:text-6xl">
+              <span
+                {...episodio.edit?.numero}
+                class="text-primary text-4xl leading-none font-black sm:text-6xl"
+              >
                 {episodio.numero}
               </span>
             </div>
 
             <div class="min-w-0 flex-1">
-              <h2 class="text-base-content mb-3 text-xl leading-snug font-bold md:text-2xl">
+              <h2
+                {...episodio.edit?.title}
+                class="text-base-content mb-3 text-xl leading-snug font-bold md:text-2xl"
+              >
                 {episodio.titulo}
               </h2>
 
               {episodio.descricao && (
-                <p class="text-base-content/75 mb-5 text-base leading-relaxed">
+                <p {...episodio.edit?.descricao} class="text-base-content/75 mb-5 text-base leading-relaxed">
                   {episodio.descricao}
                 </p>
               )}
 
               {episodio.materiais && episodio.materiais.length > 0 && (
-                <div class="flex flex-wrap gap-2">
+                <div {...episodio.edit?.materiais} class="flex flex-wrap gap-2">
                   {episodio.materiais.map((material) => (
                     <a
                       href={buildUrl(material.url)}

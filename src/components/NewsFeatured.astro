@@ -12,12 +12,14 @@ interface Props {
 const { post, lang } = Astro.props;
 const locale = getTranslations(lang);
 const { title, resumo, image, imageAlt, tags, date, author } = post;
+// Edição visual: só para notícias no idioma da página.
+const edit = post.lang === lang ? post.edit : undefined;
 const slug = getNoticiaUrl(post.slug, lang);
 ---
 
 <div class="group bg-base-100 relative mb-12 overflow-hidden rounded-2xl shadow-xl">
   <div class="grid gap-0 md:grid-cols-2">
-    <div class="relative h-64 overflow-hidden md:h-auto">
+    <div {...edit?.image} class="relative h-64 overflow-hidden md:h-auto">
       <Image
         image={image}
         alt={imageAlt}
@@ -37,12 +39,12 @@ const slug = getNoticiaUrl(post.slug, lang);
       </div>
 
       <a href={slug} class="hover:underline">
-        <h2 class="mb-4 text-3xl leading-tight font-bold md:text-5xl">
+        <h2 {...edit?.title} class="mb-4 text-3xl leading-tight font-bold md:text-5xl">
           {title}
         </h2>
       </a>
 
-      <p class="mb-6 line-clamp-3 text-lg opacity-90">
+      <p {...edit?.resumo} class="mb-6 line-clamp-3 text-lg opacity-90">
         {resumo}
       </p>
 

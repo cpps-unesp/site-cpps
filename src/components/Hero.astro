@@ -9,9 +9,12 @@ interface Props {
 }
 
 const { heroData, lang = 'pt' } = Astro.props;
+// Edição visual (Páginas › home). A marca da imagem fica na seção inteira: o fundo
+// está atrás dos gradientes, e um clique fora do texto escolhe a imagem.
+const edit = heroData?.hero.edit;
 ---
 
-<section class="relative z-0 min-h-[100dvh] w-full overflow-hidden">
+<section {...edit?.imagem} class="relative z-0 min-h-[100dvh] w-full overflow-hidden">
   <!-- Imagem de fundo (no admin: Páginas › home › Imagem). Decorativa, por isso alt vazio. -->
   <Image
     image={heroData?.hero.imagem}
@@ -48,6 +51,7 @@ const { heroData, lang = 'pt' } = Astro.props;
           class="z-10 h-32 w-auto sm:h-48 md:h-64"
         />
         <h1
+          {...edit?.title}
           class="titulo text-base-content z-10 mt-4 text-3xl leading-tight text-balance sm:mt-0 sm:max-w-[9em] sm:text-5xl md:text-6xl"
         >
           {/* eslint-disable-next-line astro/no-set-html-directive */}
@@ -58,6 +62,7 @@ const { heroData, lang = 'pt' } = Astro.props;
       <!-- Descrição -->
       <div class="w-full max-w-2xl px-2 text-center sm:px-0 sm:text-left">
         <p
+          {...edit?.introducao}
           class="text-base-content mb-6 text-base leading-relaxed md:text-lg"
         >
           {/* eslint-disable-next-line astro/no-set-html-directive */}
@@ -84,7 +89,7 @@ const { heroData, lang = 'pt' } = Astro.props;
                 class="btn btn-primary px-6 py-3 text-lg whitespace-nowrap shadow-lg"
                 style="color: white;"
               >
-                {heroData.hero.button.text}
+                <span {...edit?.botao_texto}>{heroData.hero.button.text}</span>
               </a>
             )
           }
