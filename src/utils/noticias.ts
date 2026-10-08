@@ -39,7 +39,8 @@ function toNoticia(entry: NoticiaEntry): Noticia {
   const { data } = entry;
   const locale = (data as { locale?: string }).locale;
   return {
-    slug: data.slug ?? entry.id,
+    // Nunca `entry.id`: desde o EmDash 1.2 ele leva o prefixo do idioma (en/<slug>).
+    slug: data.slug ?? data.id,
     title: data.title,
     date: new Date(data.date),
     lang: isSupportedLang(locale) ? locale : 'pt',

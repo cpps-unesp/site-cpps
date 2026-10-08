@@ -14,7 +14,7 @@ O site roda inteiro na Cloudflare, como um **Worker** (`output: 'server'` com o 
 | R2 `cpps-site-media` | `MEDIA` | Imagens e arquivos enviados pelo admin |
 | KV (criado pelo adapter) | `SESSION` | Sessões de login do admin |
 | Images | `IMAGES` | Redimensiona as imagens do R2 (`/_image?...`), criado pelo adapter |
-| Cron Trigger (de hora em hora) | — | Publicação agendada, backups e manutenção do EmDash (ver [Cron](#cron-e-publicação-agendada)) |
+| Cron Trigger (a cada minuto) | — | Publicação agendada, backups e manutenção do EmDash (ver [Cron](#cron-e-publicação-agendada)) |
 
 A configuração fica em `wrangler.jsonc`; o build gera a versão completa em `dist/server/wrangler.json`. A entrada do Worker é `src/worker.ts`.
 
@@ -78,18 +78,19 @@ Deploys seguintes não mexem no conteúdo do banco. Mudanças no modelo de conte
 
 Uma versão nova do EmDash pode trazer migrações do banco. Elas rodam sozinhas no primeiro acesso depois do deploy, só andam para frente, e voltar o código para a versão anterior não as desfaz. Por isso o Dependabot não faz merge sozinho de `emdash`, `@emdash-cms/*`, `astro`, `@astrojs/*` nem `wrangler`.
 
-1. Atualize `emdash` e `@emdash-cms/cloudflare` **juntos** (o segundo exige a versão exata do primeiro), num PR só: `npm install emdash@X.Y.Z @emdash-cms/cloudflare@X.Y.Z`. Se o Dependabot abriu um PR para cada um, junte os dois.
-2. Leia as notas da versão em https://github.com/emdash-cms/emdash/releases, principalmente as migrações novas.
+1. Numa branch, rode `npx upgrade-emdash@latest` (a ferramenta oficial, desde a 1.2). Ele atualiza juntos `emdash` e `@emdash-cms/cloudflare` (o segundo exige a versão exata do primeiro), roda o npm e escreve `.emdash/UPGRADE.md` com as entradas do changelog entre as duas versões e as migrações novas. Se o Dependabot abriu um PR para cada pacote, feche os dois e use este caminho.
+   - O comando também instala skills de agente de IA em `.agents/` e `.claude/`, mais um `skills-lock.json`. Não faça commit delas sem decidir: mudam o comportamento de quem usa assistentes de IA no repositório.
+2. Leia o `.emdash/UPGRADE.md` (fora do Git) e ajuste o que cada entrada pedir. As notas também saem no blog, em https://emdashcms.com/blog.
 3. Teste localmente com `npm run dev` (o banco local também migra) e rode `npm run ci`.
-4. Antes do merge, anote o ponto de restauração do banco: `npx wrangler d1 time-travel info cpps-site`.
+4. Se houver migração nova, antes do merge anote o ponto de restauração do banco: `npx wrangler d1 time-travel info cpps-site`.
 5. Faça o merge e acompanhe o primeiro acesso com `npx wrangler tail`. Confira a página inicial, uma notícia, a busca e o login no admin.
 6. Se algo der errado: restaure o banco com `npx wrangler d1 time-travel restore cpps-site --bookmark=<o bookmark do passo 4>` e volte o Worker para a versão anterior (Workers → `cpps-site` → Deployments). No plano gratuito o Time Travel cobre só os últimos 7 dias.
 
 ## Cron e publicação agendada
 
-O guia do EmDash usa `* * * * *`. Aqui o cron roda **de hora em hora** (`0 * * * *`, em `wrangler.jsonc` e em `src/worker.ts`) por causa de dois problemas do emdash 1.1.0 no plano gratuito: a limpeza do log de 404 lê a tabela inteira a cada execução e pode esgotar as 5 milhões de leituras diárias do D1, derrubando todas as consultas do site até a meia-noite UTC ([#3748](https://github.com/emdash-cms/emdash/issues/3748)); e as execuções em isolate frio passam dos 10 ms de CPU e se perdem ([#3858](https://github.com/emdash-cms/emdash/issues/3858)). As correções já foram aceitas e saem na próxima versão; depois dela, volte para algo como `*/15 * * * *`, sempre com a mesma expressão nos dois arquivos.
+O cron roda a cada minuto (`* * * * *` em `wrangler.jsonc`), como no guia do EmDash: é o que publica as notícias agendadas no horário. Até a 1.1 isso era arriscado no plano gratuito: a limpeza do log de 404 lia a tabela inteira a cada execução e podia esgotar as 5 milhões de leituras diárias do D1, derrubando todas as consultas do site até a meia-noite UTC ([#3748](https://github.com/emdash-cms/emdash/issues/3748)), e as execuções em isolate frio passavam dos 10 ms de CPU e se perdiam ([#3858](https://github.com/emdash-cms/emdash/issues/3858)). Desde a 1.2, essa limpeza roda uma vez por hora e só quando a tabela passa do limite; a publicação agendada continua a cada minuto.
 
-Consequência: uma notícia agendada entra no ar até uma hora depois do horário marcado, e o painel pode mostrar "Scheduled publishing needs attention" nesse intervalo.
+Para outro intervalo, use a mesma expressão em `triggers.crons` e em `createScheduledHandler({ generalCron })`, em `src/worker.ts`. Pensando em vários sites, o que pesa é o limite de 5 Cron Triggers por conta no plano gratuito, não a frequência.
 
 ## Backups
 

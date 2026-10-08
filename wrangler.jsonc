@@ -31,15 +31,12 @@
     },
   ],
 
-  // Publicação agendada, backups e manutenção do EmDash. De hora em hora, e não a
-  // cada minuto como no guia, por causa de dois problemas do emdash 1.1.0 no
-  // plano gratuito: a limpeza do log de 404 lê a tabela inteira a cada execução e
-  // pode esgotar a cota diária de leituras do D1 (emdash-cms/emdash#3748), e as
-  // execuções em isolate frio passam dos 10 ms de CPU e se perdem (#3858). As
-  // correções (#3753 e #3861) saem na próxima versão; depois dela, voltar para
-  // algo como "*/15 * * * *". O valor precisa ser o mesmo de `generalCron` em
-  // src/worker.ts.
-  "triggers": { "crons": ["0 * * * *"] },
+  // Publicação agendada, backups e manutenção do EmDash, a cada minuto como no
+  // guia. Desde a 1.2, a limpeza pesada roda só uma vez por hora (até a 1.1 ela
+  // rodava a cada minuto e, no plano gratuito, podia esgotar as leituras do D1 e
+  // estourar os 10 ms de CPU: emdash-cms/emdash#3748 e #3858). Para trocar o
+  // intervalo, passe a mesma expressão a `createScheduledHandler` em src/worker.ts.
+  "triggers": { "crons": ["* * * * *"] },
 
   // Logs e métricas do Worker, inclusive o tempo de CPU por requisição (o plano
   // gratuito tem limite de 10 ms). Veja com `npx wrangler tail` ou no painel.

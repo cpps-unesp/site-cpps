@@ -34,3 +34,5 @@ public/.assetsignore
 
 # emdash (gerado no build; banco e mídia locais ficam em .wrangler/)
 .emdash/migrations.json
+# roteiro que o `npx upgrade-emdash` gera a cada atualização, com caminhos locais
+.emdash/UPGRADE.md

@@ -6,7 +6,8 @@ export { PluginBridge };
 
 export default {
   ...handler,
-  // A mesma expressão de `triggers.crons` no wrangler.jsonc: o EmDash ignora
-  // qualquer outra (e diz por quê no log).
-  scheduled: createScheduledHandler({ generalCron: '0 * * * *' }),
+  // Sem argumento, roda a cada disparo de `triggers.crons` (no wrangler.jsonc, a
+  // cada minuto). O guia do EmDash pede, para outro intervalo, a mesma expressão
+  // em `{ generalCron: '<expressão>' }` e em `triggers.crons`.
+  scheduled: createScheduledHandler(),
 } satisfies ExportedHandler;

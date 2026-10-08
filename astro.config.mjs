@@ -18,8 +18,11 @@ export default defineConfig({
   adapter: cloudflare(),
   // Autoriza o serviço de imagens a redimensionar a mídia do EmDash servida pelo
   // próprio domínio. Sem isso, em produção as imagens saem no tamanho original. O
-  // EmDash só registra esse padrão sozinho quando recebe `siteUrl`, mas `siteUrl`
-  // também fixa a origem do login por passkey e quebraria o admin em localhost.
+  // EmDash registra esse padrão sozinho com `siteUrl` (que fixaria a origem do
+  // login por passkey e quebraria o admin em localhost) ou, desde a 1.2, com
+  // EMDASH_SITE_URL no ambiente do build; o nosso fica nas vars do wrangler.jsonc,
+  // que só valem com o Worker rodando. Num build de teste, passe EMDASH_SITE_URL
+  // com o endereço de teste para as imagens dele também serem otimizadas.
   // Em `astro dev` o EmDash já autoriza a mídia de qualquer origem.
   image: {
     remotePatterns: [
@@ -43,18 +46,16 @@ export default defineConfig({
     emdash({
       database: d1({ binding: 'DB' }),
       storage: r2({ binding: 'MEDIA' }),
-      // Desligada por segurança. Para quem está logado como autor ou acima, a barra
-      // é injetada no primeiro `</body>` do HTML (html.replace), e o Astro não
-      // escapa `<` em atributos: um título publicado com `</body>` põe a barra
-      // dentro de um <meta> e vira XSS contra o admin, que fica na mesma origem.
-      // O site ainda não usa a edição visual (atributos `entry.edit`), única coisa
-      // que depende da barra. Religar só quando o EmDash injetar no último
-      // `</body>`. O modo 'client' é pior: injeta o script de inicialização do mesmo
-      // jeito, para todos os visitantes.
-      toolbar: false,
+      // A barra de edição para quem está logado fica no padrão ('server'). Até a
+      // 1.1 ela era injetada no primeiro `</body>` do HTML, e um título publicado
+      // com `</body>` a punha dentro de um atributo (XSS contra o admin); a 1.2
+      // injeta no último (emdash-cms/emdash#3681). Não usar 'client', que injeta um
+      // script para todos os visitantes.
       // O admin usa as fontes do sistema: sem isso, o build baixa a Noto Sans do
       // Google Fonts e falha quando a rede falha.
       fonts: false,
+      // Só português no admin (o inglês sempre vai junto, como reserva).
+      admin: { locales: ['pt-BR'] },
       // O aviso de nova versão no admin só aparece depois de 7 dias, o mesmo
       // intervalo que o Dependabot espera (cooldown em .github/dependabot.yml).
       updateCheck: { minimumReleaseAge: '7d' },
