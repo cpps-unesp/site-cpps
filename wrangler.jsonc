@@ -41,4 +41,18 @@
   // Logs e métricas do Worker, inclusive o tempo de CPU por requisição (o plano
   // gratuito tem limite de 10 ms). Veja com `npx wrangler tail` ou no painel.
   "observability": { "enabled": true },
+
+  // Ambiente de teste: outro Worker (cpps-site-teste), com banco, bucket e sessões
+  // próprios, num endereço workers.dev. Um ambiente não herda bindings nem vars
+  // daqui de cima, então nada aponta para a produção, e sem EMDASH_SITE_URL o
+  // setup usa o próprio endereço de teste. Build com CLOUDFLARE_ENV=teste; ver
+  // "Ambiente de teste" em docs/deploy-e-redirects.md.
+  "env": {
+    "teste": {
+      "d1_databases": [{ "binding": "DB", "database_name": "cpps-site-teste" }],
+      "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "cpps-site-teste-media" }],
+      "triggers": { "crons": ["* * * * *"] },
+      "observability": { "enabled": true },
+    },
+  },
 }

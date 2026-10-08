@@ -25,6 +25,25 @@ A configuração fica em `wrangler.jsonc`; o build gera a versão completa em `d
 - **Login.** No plano gratuito o Worker não envia e-mail: não há link mágico nem recuperação de conta por e-mail, e convites são copiados à mão. Cada pessoa entra com passkey. Tenha **pelo menos dois administradores**: se o único perder a passkey, a saída é mexer direto no banco. Uma alternativa é o Cloudflare Access (gratuito até 50 pessoas), que pode substituir a passkey e mandar código por e-mail; ver o guia [Deploy to Cloudflare](https://docs.emdashcms.com/deployment/cloudflare/) do EmDash.
 - **Papéis.** Admin (50) gerencia usuários e o modelo de conteúdo: só para quem mantém o site. Editor (40) publica tudo: coordenação e professores. Author (30) publica o próprio conteúdo e Contributor (20) só cria rascunhos: estudantes.
 
+## Ambiente de teste
+
+Antes do primeiro deploy de verdade, e para testar mudanças grandes depois, dá para publicar a branch como um site separado: o Worker `cpps-site-teste`, com banco, bucket e sessões próprios, num endereço `https://cpps-site-teste.<subdomínio>.workers.dev`. Ele não toca no domínio nem na produção: o bloco `env.teste` do `wrangler.jsonc` não herda bindings nem vars. Enquanto existir, ocupa 1 dos 5 crons e 1 dos 10 bancos da conta gratuita.
+
+1. Com o login feito (`npx wrangler login`) e o R2 ativado, faça o build do ambiente de teste e publique:
+   ```bash
+   CLOUDFLARE_ENV=teste npm run build
+   npx wrangler deploy
+   ```
+   Confira na saída o nome **`cpps-site-teste`**: sem o `CLOUDFLARE_ENV=teste`, o mesmo comando publica a produção. Na primeira vez, o Wrangler cria o banco `cpps-site-teste`, o bucket `cpps-site-teste-media` e o KV de sessões, e mostra o endereço do teste.
+2. Para as imagens também serem otimizadas no teste, refaça o build com o endereço que o deploy mostrou e publique de novo:
+   ```bash
+   CLOUDFLARE_ENV=teste EMDASH_SITE_URL=https://cpps-site-teste.<subdomínio>.workers.dev npm run build
+   npx wrangler deploy
+   ```
+3. Logo em seguida, abra `/_emdash/admin` no endereço de teste e conclua o assistente com **Sample content**. O endereço é público, e quem concluir primeiro vira administrador do site de teste.
+4. Confira as páginas, o login, um upload de imagem e a busca. Acompanhe os erros e o cron com `npx wrangler tail cpps-site-teste`, e o tempo de CPU de cada página em Workers → `cpps-site-teste` → Observability (o limite gratuito é 10 ms).
+5. Para apagar tudo depois: `npx wrangler delete --name cpps-site-teste`, `npx wrangler d1 delete cpps-site-teste`, esvazie o bucket pelo painel e rode `npx wrangler r2 bucket delete cpps-site-teste-media`; o KV de sessões aparece em `npx wrangler kv namespace list` e sai com `npx wrangler kv namespace delete --namespace-id <id>`.
+
 ## Primeiro deploy
 
 Uma vez, com uma conta da Cloudflare do CPPS. A ordem importa: enquanto o assistente de configuração não for concluído, **quem abrir `/_emdash/admin` primeiro vira administrador**.
