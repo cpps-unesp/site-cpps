@@ -87,7 +87,7 @@
       "slug": "paginas",
       "label": "Páginas",
       "labelSingular": "Página",
-      "description": "Título e texto de abertura da Home, Equipe, Documentos, Café com Ciência e Projetos de Pesquisa.",
+      "description": "Título e texto de abertura da Home, Equipe, Documentos, Café com Ciência e Projetos de Pesquisa. As pessoas, os documentos, os episódios e os projetos ficam nas coleções próprias, em Institucional e Iniciativas.",
       "icon": "file-text",
       "group": "Institucional",
       "sortOrder": 1,
@@ -95,6 +95,7 @@
         "drafts",
         "revisions"
       ],
+      "urlPattern": "/pt/{slug}",
       "titleField": "title",
       "fields": [
         {
@@ -140,6 +141,7 @@
         "revisions",
         "search"
       ],
+      "urlPattern": "/pt/institucional/sobre#{slug}",
       "titleField": "title",
       "admin": {
         "listColumns": [
@@ -237,6 +239,7 @@
         "revisions",
         "search"
       ],
+      "urlPattern": "/pt/institucional/equipe#{slug}",
       "titleField": "title",
       "admin": {
         "listColumns": [
@@ -351,6 +354,7 @@
         "revisions",
         "search"
       ],
+      "urlPattern": "/pt/institucional/documentos#{slug}",
       "titleField": "title",
       "admin": {
         "listColumns": [
@@ -421,6 +425,7 @@
         "revisions",
         "search"
       ],
+      "urlPattern": "/pt/iniciativas/cafe-com-ciencia#{slug}",
       "titleField": "title",
       "admin": {
         "listColumns": [
@@ -497,6 +502,7 @@
         "revisions",
         "search"
       ],
+      "urlPattern": "/pt/iniciativas/projetos-de-pesquisa#{slug}",
       "titleField": "title",
       "admin": {
         "listColumns": [

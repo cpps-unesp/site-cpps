@@ -25,6 +25,7 @@ import { getTranslations } from '../../utils/i18n';
 import {
   buildRouteTranslationPaths,
   findOriginalKey,
+  getCaminhoDoAdmin,
   getMembroSlugFromEntryId,
 } from '../../utils/catchAllRouting';
 import {
@@ -34,7 +35,6 @@ import {
   getProjetosDePesquisa,
   getSobre,
 } from '../../utils/conteudo';
-import { getNoticiaUrl } from '../../utils/noticias';
 
 // ✅ Lógica de roteamento e carregamento
 const langs: SupportedLang[] = ['pt', 'en', 'es'];
@@ -46,15 +46,11 @@ const slugParam = Astro.params.slug;
 const slugPath = Array.isArray(slugParam) ? slugParam.join('/') : (slugParam ?? '');
 const slugArray = slugPath.split('/');
 
-// O EmDash monta a URL das traduções juntando o idioma ao urlPattern da coleção
-// (/pt/noticias/{slug}), então a pré-visualização de uma notícia em inglês sai
-// como /en/pt/noticias/<slug>. Leva para a URL de verdade, mantendo o ?_preview=.
-const noticiaComPrefixoPt = /^pt\/noticias\/([^/]+)\/?$/.exec(slugPath);
-if (currentLang !== 'pt' && noticiaComPrefixoPt) {
-  return Astro.redirect(
-    `${getNoticiaUrl(noticiaComPrefixoPt[1], currentLang)}${Astro.url.search}`,
-    302
-  );
+// Links "Visualização ao vivo" e de pré-visualização do admin do EmDash: leva para a
+// página de verdade no idioma, mantendo o ?_preview= (ver getCaminhoDoAdmin).
+const caminhoDoAdmin = getCaminhoDoAdmin(currentLang, slugPath);
+if (caminhoDoAdmin) {
+  return Astro.redirect(`${caminhoDoAdmin}${Astro.url.search}`, 302);
 }
 
 const locale = getTranslations(currentLang);
