@@ -20,9 +20,9 @@ export default defineConfig({
   // próprio domínio. Sem isso, em produção as imagens saem no tamanho original. O
   // EmDash registra esse padrão sozinho com `siteUrl` (que fixaria a origem do
   // login por passkey e quebraria o admin em localhost) ou, desde a 1.2, com
-  // EMDASH_SITE_URL no ambiente do build; o nosso fica nas vars do wrangler.jsonc,
-  // que só valem com o Worker rodando. Num build de teste, passe EMDASH_SITE_URL
-  // com o endereço de teste para as imagens dele também serem otimizadas.
+  // EMDASH_SITE_URL no ambiente do build. Nos endereços workers.dev (a produção
+  // até a migração e o teste), passe EMDASH_SITE_URL no build com o endereço,
+  // para as imagens deles também serem otimizadas.
   // Em `astro dev` o EmDash já autoriza a mídia de qualquer origem.
   image: {
     remotePatterns: [

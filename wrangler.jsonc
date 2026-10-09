@@ -5,22 +5,20 @@
   "compatibility_date": "2026-10-01",
   "compatibility_flags": ["nodejs_compat"],
 
-  // Endereço público do site. O EmDash usa como origem do login (a passkey fica
-  // presa a este domínio), da proteção CSRF, do robots.txt e do sitemap. Precisa
-  // estar aqui antes do primeiro setup: sem ele, o setup grava como origem o
-  // endereço em que rodou (o workers.dev, por exemplo). Não usar `siteUrl` no
-  // astro.config.mjs: ele vai embutido em todo build, inclusive nos previews.
-  // No desenvolvimento local, o .env sobrescreve (ver README).
-  "vars": {
-    "EMDASH_SITE_URL": "https://cpps.franca.unesp.br",
-  },
+  // Endereço do site: sem EMDASH_SITE_URL fixo. Até a migração, a produção atende
+  // em https://cpps-site.cpps-franca.workers.dev; a troca para o domínio é feita
+  // pelo admin (Settings → General → Change domain), como no guia "Move to a New
+  // Domain" do EmDash, e cada pessoa passa o login para o domínio com "Continue
+  // on…". Com o endereço fixo aqui, a passkey ficaria presa a ele e o login no
+  // workers.dev pararia na hora da troca. Não usar `siteUrl` no astro.config.mjs:
+  // ele vai embutido em todo build, inclusive nos previews.
 
-  // Banco do EmDash. Antes do primeiro deploy, crie-o na região ENAM e ponha aqui
-  // o database_id ("Primeiro deploy" em docs/deploy-e-redirects.md).
+  // Banco do EmDash, criado na região ENAM, a que o placement abaixo mira.
   "d1_databases": [
     {
       "binding": "DB",
       "database_name": "cpps-site",
+      "database_id": "0e04b343-d0ed-4082-85c7-013d0f65c8f3",
     },
   ],
 
