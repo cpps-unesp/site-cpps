@@ -15,7 +15,8 @@
     "EMDASH_SITE_URL": "https://cpps.franca.unesp.br",
   },
 
-  // Banco do EmDash. No primeiro deploy o Wrangler cria o banco com este nome.
+  // Banco do EmDash. Antes do primeiro deploy, crie-o na região ENAM e ponha aqui
+  // o database_id ("Primeiro deploy" em docs/deploy-e-redirects.md).
   "d1_databases": [
     {
       "binding": "DB",
@@ -42,14 +43,34 @@
   // gratuito tem limite de 10 ms). Veja com `npx wrangler tail` ou no painel.
   "observability": { "enabled": true },
 
+  // Roda o Worker perto do banco D1, que fica no leste da América do Norte (ENAM;
+  // confira com `npx wrangler d1 info <banco>`). Cada página faz dezenas de
+  // consultas ao banco: sem isto, o Worker rodava em São Paulo, cada consulta ia
+  // e voltava até lá, e as páginas levavam mais de 15 s no ambiente de teste. Ver
+  // "Place the Worker near D1" no guia de deploy do EmDash. Os arquivos estáticos
+  // continuam saindo do ponto da Cloudflare mais perto do visitante.
+  "placement": { "mode": "targeted", "region": "aws:us-east-1" },
+
   // Ambiente de teste: outro Worker (cpps-site-teste), com banco, bucket e sessões
-  // próprios, num endereço workers.dev. Um ambiente não herda bindings nem vars
-  // daqui de cima, então nada aponta para a produção, e sem EMDASH_SITE_URL o
-  // setup usa o próprio endereço de teste. Build com CLOUDFLARE_ENV=teste; ver
-  // "Ambiente de teste" em docs/deploy-e-redirects.md.
+  // próprios, em https://cpps-site-teste.cpps-franca.workers.dev. Um ambiente não
+  // herda bindings nem vars daqui de cima, então nada aponta para a produção. O
+  // placement vale para os dois. Build com CLOUDFLARE_ENV=teste; ver "Ambiente de
+  // teste" em docs/deploy-e-redirects.md.
   "env": {
     "teste": {
-      "d1_databases": [{ "binding": "DB", "database_name": "cpps-site-teste" }],
+      // A passkey de quem entra no admin de teste fica presa a este endereço.
+      "vars": {
+        "EMDASH_SITE_URL": "https://cpps-site-teste.cpps-franca.workers.dev",
+      },
+      // O ID fica aqui porque o deploy a partir do build do Astro não o grava de
+      // volta neste arquivo, e o token do Workers Builds não tem permissão de D1.
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "cpps-site-teste",
+          "database_id": "c6ddbf65-5edd-428b-bd83-ab301e0a4e43",
+        },
+      ],
       "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "cpps-site-teste-media" }],
       "triggers": { "crons": ["* * * * *"] },
       "observability": { "enabled": true },
