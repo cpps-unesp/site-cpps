@@ -78,7 +78,7 @@ O conteúdo abaixo é editado no [EmDash](https://emdashcms.com), em `/_emdash/a
 | Iniciativas > Café com Ciência | Episódios |
 | Iniciativas > Projetos de Pesquisa | Projetos |
 
-Cada item tem versões em pt, en e es (painel **Translations** no admin). Sem tradução, o site mostra a versão em português. Nome, foto, links e outros dados que não dependem do idioma são compartilhados entre as versões.
+Cada item tem versões em pt, en e es (painel **Translations** no admin). Sem tradução, o site mostra a versão em português. O botão **Visualização ao vivo** abre a página do site em que o item aparece, no idioma da versão. Nome, foto, links e outros dados que não dependem do idioma são compartilhados entre as versões.
 
 **Edição visual.** Quem entra no admin como autor ou acima vê uma barra do EmDash ao navegar pelo site. Com o modo de edição ligado na barra, um clique num título, nome, cargo ou resumo edita o texto ali mesmo; numa imagem, abre a biblioteca de mídia; no corpo de uma notícia, abre o editor de texto na página. Listas (parágrafos do Sobre, redes, arquivos, materiais) e textos com formatação abrem o item no admin. As mudanças ficam em rascunho até alguém publicar pela barra ou pelo admin. Páginas em en ou es que mostram o português por falta de tradução não são editáveis por ali, para ninguém sobrescrever o português sem querer: use o painel **Translations** no admin. Os Projetos de Pesquisa são editados só pelo admin, porque a lista é montada no navegador.
 
@@ -99,6 +99,8 @@ O `EMDASH_SITE_URL` do `.env` sobrescreve o do `wrangler.jsonc`, que aponta para
 Abra `http://localhost:4321/_emdash/admin` (use `localhost`, não `127.0.0.1`: passkeys não funcionam em endereço IP) e conclua o assistente escolhendo **Sample content**, que importa o conteúdo de `seed/seed.json`. Depois crie sua conta e registre uma passkey. Para entrar sem passkey no desenvolvimento, use `http://localhost:4321/_emdash/api/setup/dev-bypass?redirect=/_emdash/admin`.
 
 O banco (D1) e as imagens (R2) locais são simulados pelo Wrangler em `.wrangler/`; apague essa pasta para começar do zero. O assistente baixa as imagens do seed pela internet e, se um download falha, grava o campo vazio sem avisar: se alguma imagem não aparecer depois do assistente, confira a rede (DNS lento basta), apague `.wrangler/` e refaça.
+
+**Site de teste.** Esta branch está publicada em https://cpps-site-teste.cpps-franca.workers.dev, um ambiente separado da produção, com banco, imagens e admin próprios. Como foi montado e o que já foi medido: [docs/ambiente-de-teste.md](docs/ambiente-de-teste.md).
 
 ## Internacionalização
 
