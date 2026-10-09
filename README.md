@@ -90,17 +90,14 @@ Para rodar localmente:
 npm install
 # Uma vez; o .env não vai para o Git.
 npx emdash secrets generate --write .env
-echo 'EMDASH_SITE_URL=http://localhost:4321' >> .env
 npm run dev
 ```
-
-O `EMDASH_SITE_URL` do `.env` sobrescreve o do `wrangler.jsonc`, que aponta para o domínio de produção. Sem ele, o login local falha: a passkey ficaria presa ao domínio de produção. Se usar outra porta, ajuste o endereço.
 
 Abra `http://localhost:4321/_emdash/admin` (use `localhost`, não `127.0.0.1`: passkeys não funcionam em endereço IP) e conclua o assistente escolhendo **Sample content**, que importa o conteúdo de `seed/seed.json`. Depois crie sua conta e registre uma passkey. Para entrar sem passkey no desenvolvimento, use `http://localhost:4321/_emdash/api/setup/dev-bypass?redirect=/_emdash/admin`.
 
 O banco (D1) e as imagens (R2) locais são simulados pelo Wrangler em `.wrangler/`; apague essa pasta para começar do zero. O assistente baixa as imagens do seed pela internet e, se um download falha, grava o campo vazio sem avisar: se alguma imagem não aparecer depois do assistente, confira a rede (DNS lento basta), apague `.wrangler/` e refaça.
 
-**Site de teste.** Esta branch está publicada em https://cpps-site-teste.cpps-franca.workers.dev, um ambiente separado da produção, com banco, imagens e admin próprios. Como foi montado e o que já foi medido: [docs/ambiente-de-teste.md](docs/ambiente-de-teste.md).
+**Site novo.** O site com o EmDash já está no ar em https://cpps-site.cpps-franca.workers.dev, e é lá que o conteúdo é editado; o endereço oficial continua no site atual até a migração ([docs/deploy-e-redirects.md](docs/deploy-e-redirects.md#produção-antes-do-domínio)). Para experimentar sem mexer no conteúdo de verdade, há um ambiente de teste separado: [docs/ambiente-de-teste.md](docs/ambiente-de-teste.md).
 
 ## Internacionalização
 

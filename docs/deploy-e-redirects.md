@@ -18,47 +18,49 @@ O site roda inteiro na Cloudflare, como um **Worker** (`output: 'server'` com o 
 
 A configuração fica em `wrangler.jsonc`; o build gera a versão completa em `dist/server/wrangler.json`. A entrada do Worker é `src/worker.ts`.
 
-## Antes do primeiro deploy
+## Conta, limites e login
 
 - **Conta e limites do plano gratuito.** Os limites do Workers Free são por conta, não por site: 5 Cron Triggers, 10 bancos D1, 100 mil requisições por dia, 10 ms de CPU por requisição, 5 milhões de linhas lidas e 100 mil escritas por dia no D1, mil escritas por dia no KV e 5 mil transformações de imagem por mês. O CPPS cabe sozinho; dezenas de sites numa mesma conta gratuita não cabem (o sexto já fica sem cron). Antes do segundo site, decida entre uma conta por grupo de pesquisa ou o Workers Paid (US$ 5/mês por conta). No ambiente de teste, as páginas gastaram 15 ms de CPU na mediana e até 153 ms, acima dos 10 ms do plano gratuito ([ambiente-de-teste.md](ambiente-de-teste.md#tempo-e-cpu)).
-- **R2.** Ative a assinatura do R2 no painel (Storage & databases → R2) antes do primeiro deploy. O uso do site fica dentro da faixa gratuita, mas sem a assinatura o Wrangler não cria o bucket.
 - **Login.** No plano gratuito o Worker não envia e-mail: não há link mágico nem recuperação de conta por e-mail, e convites são copiados à mão. Cada pessoa entra com passkey. Tenha **pelo menos dois administradores**: se o único perder a passkey, a saída é mexer direto no banco. Uma alternativa é o Cloudflare Access (gratuito até 50 pessoas), que pode substituir a passkey e mandar código por e-mail; ver o guia [Deploy to Cloudflare](https://docs.emdashcms.com/deployment/cloudflare/) do EmDash.
 - **Papéis.** Admin (50) gerencia usuários e o modelo de conteúdo: só para quem mantém o site. Editor (40) publica tudo: coordenação e professores. Author (30) publica o próprio conteúdo e Contributor (20) só cria rascunhos: estudantes.
 
 ## Ambiente de teste
 
-A branch do EmDash está publicada como um site separado em https://cpps-site-teste.cpps-franca.workers.dev: o Worker `cpps-site-teste`, com banco, bucket e sessões próprios (bloco `env.teste` do `wrangler.jsonc`, que não herda bindings nem vars da produção). Serve para testar mudanças grandes, como uma atualização do EmDash, antes de irem para o ar. Enquanto existir, ocupa 1 dos 5 crons e 1 dos 10 bancos da conta gratuita.
+Para experimentar sem mexer no conteúdo de verdade, há um site separado em https://cpps-site-teste.cpps-franca.workers.dev: o Worker `cpps-site-teste`, com banco, bucket e sessões próprios (bloco `env.teste` do `wrangler.jsonc`, que não herda bindings nem vars da produção). Serve para testar mudanças grandes, como uma atualização do EmDash, e para ensaiar a migração para o domínio. Enquanto existir, ocupa 1 dos 5 crons e 1 dos 10 bancos da conta gratuita.
 
 Como foi montado, como publicar uma versão nova, o que o teste mostrou e como apagar tudo: [ambiente-de-teste.md](ambiente-de-teste.md).
 
-## Primeiro deploy
+## Produção antes do domínio
 
-Uma vez, com uma conta da Cloudflare do CPPS. A ordem importa: enquanto o assistente de configuração não for concluído, **quem abrir `/_emdash/admin` primeiro vira administrador**.
+Desde 09/10/2026 o site com o EmDash está no ar em https://cpps-site.cpps-franca.workers.dev, e é lá que o conteúdo é editado. O endereço oficial, `cpps.franca.unesp.br`, continua apontando para o Pages até a [migração](#migração-para-o-domínio); até lá, o que for publicado no site atual precisa ser repetido aqui.
 
-1. `npx wrangler login`, ou um token da API (ver [Credenciais](ambiente-de-teste.md#credenciais)).
-2. Crie o banco na região que o *placement* do `wrangler.jsonc` mira, a ENAM (leste da América do Norte; o D1 não roda na América do Sul):
+| Recurso | Nome |
+|---|---|
+| Worker | `cpps-site` |
+| Banco D1 | `cpps-site`, na região ENAM |
+| Bucket R2 | `cpps-site-media` |
+| KV de sessões | `cpps-site-session` |
+
+Como foi montado, para refazer em outro site:
+
+1. Crie o banco na região que o *placement* do `wrangler.jsonc` mira e ponha o `database_id` no `wrangler.jsonc`, com commit (não é segredo): o deploy a partir do build do Astro não grava o ID de volta, e o token que o Workers Builds cria não tem permissão de D1.
    ```bash
    npx wrangler d1 create cpps-site --location enam
    ```
-   Ponha o `database_id` que o comando mostra no bloco `d1_databases` do `wrangler.jsonc` e **faça commit** (não é segredo): o deploy a partir do build do Astro não grava o ID de volta no arquivo, e o token que o Workers Builds cria não tem permissão de D1.
-3. `npm run build && npx wrangler deploy`. Na primeira vez o Wrangler cria o bucket R2 e o KV de sessões.
-4. Gere a chave de criptografia do EmDash e guarde uma cópia em local seguro (perdê-la torna ilegíveis os segredos guardados no banco):
+2. Faça o build com o endereço workers.dev, para o serviço de imagens aceitar a mídia de lá:
    ```bash
-   npx emdash secrets generate          # mostra a chave
-   npx wrangler secret put EMDASH_ENCRYPTION_KEY
+   EMDASH_SITE_URL=https://cpps-site.cpps-franca.workers.dev npm run build
    ```
-5. Abra `https://cpps-site.<sua-conta>.workers.dev` e espere a resposta, sem interromper: o primeiro acesso aplica as migrações do banco (90 na versão 1.2, uns 15 s). Se depois as páginas continuarem sem conteúdo e `npx wrangler tail cpps-site` mostrar `MigrationLockHeldError`, a migração foi interrompida; ver [Migrações no primeiro acesso](ambiente-de-teste.md#migrações-no-primeiro-acesso). As páginas que vêm do EmDash ficam vazias até o passo 8. O assistente não chega ao fim nesse endereço: o `EMDASH_SITE_URL` do `wrangler.jsonc` prende a passkey ao domínio final, então ninguém cria o administrador pelo workers.dev.
-6. **Feche o admin para todo mundo menos você.** Na zona `cppsunesp.org`, crie uma regra de WAF (Security → WAF → Custom rules, disponível no plano gratuito) com a ação *Block* e a expressão abaixo, trocando o IP pelo seu (veja em https://ifconfig.me):
+3. Publique trancado. Com um endereço que o navegador recusa, ninguém consegue criar o administrador enquanto você confere o Worker. Na primeira vez, o Wrangler cria o bucket e o KV; nos primeiros instantes, um Worker novo com *placement* pode responder com o erro 1042.
+   ```bash
+   npx wrangler deploy --var EMDASH_SITE_URL:https://cpps-site.invalid
    ```
-   (http.host eq "cpps.franca.unesp.br" and starts_with(http.request.uri.path, "/_emdash/") and ip.src ne 203.0.113.10)
+4. Abra uma página e espere a resposta, sem interromper: o primeiro acesso, ou o cron, aplica as migrações do banco. Confira se as 90 da versão 1.2 estão lá e se a trava está livre (`is_locked` igual a 0); se ela ficar presa, veja [Migrações no primeiro acesso](ambiente-de-teste.md#migrações-no-primeiro-acesso).
+   ```bash
+   npx wrangler d1 execute cpps-site --remote --command "SELECT COUNT(*) FROM _emdash_migrations; SELECT is_locked FROM _emdash_migrations_lock"
    ```
-   Durante a troca, a busca do site fica fora do ar para os outros visitantes, porque usa `/_emdash/api/search`.
-7. Aponte `cpps.franca.unesp.br` para o Worker. O hostname é um custom hostname do Cloudflare for SaaS (CNAME para `proxy.cppsunesp.org`, na zona `cppsunesp.org`), então use uma **rota**, não um *custom domain*. Acrescente ao `wrangler.jsonc` e faça o deploy:
-   ```jsonc
-   "routes": [{ "pattern": "cpps.franca.unesp.br/*", "zone_name": "cppsunesp.org" }],
-   ```
-8. Logo em seguida, abra `https://cpps.franca.unesp.br/_emdash/admin` e conclua o assistente: título do site, **Sample content** (importa notícias, equipe, projetos, páginas e traduções de `seed/seed.json`), conta e passkey. As imagens do seed são baixadas do jsDelivr, a partir do repositório público.
-9. Confira se nenhuma imagem ficou para trás. Se um download falha, o EmDash grava o campo vazio sem avisar. A consulta abaixo deve voltar vazia:
+5. Destranque com `npx wrangler deploy`, sem o `--var`, e logo em seguida conclua a configuração em `/_emdash/admin`: título, **Sample content** (importa notícias, equipe, projetos, páginas e traduções de `seed/seed.json`, com as imagens baixadas do jsDelivr), conta e chave de acesso.
+6. Confira se nenhuma imagem ficou para trás. Se um download falha, o EmDash grava o campo vazio sem avisar. A consulta abaixo deve voltar vazia:
    ```bash
    npx wrangler d1 execute cpps-site --remote --command "
      SELECT 'equipe', slug, locale FROM ec_equipe WHERE (foto IS NULL OR foto = '') AND slug <> 'breno-andreazza'
@@ -66,11 +68,32 @@ Uma vez, com uma conta da Cloudflare do CPPS. A ordem importa: enquanto o assist
      UNION ALL SELECT 'sobre', slug, locale FROM ec_sobre WHERE imagens LIKE '%\"imagem\":null%'
      UNION ALL SELECT 'noticias', slug, locale FROM ec_noticias WHERE image IS NULL OR image = ''"
    ```
-10. Apague a regra de WAF do passo 6. Acrescente `"workers_dev": false` ao `wrangler.jsonc` e faça o deploy, para o site só responder no domínio.
-11. Crie o segundo administrador e meça o custo real antes de confiar no plano gratuito: em Workers → `cpps-site` → Observability, confira o tempo de CPU das páginas. O limite gratuito é 10 ms; no ambiente de teste, a mediana foi 15 ms e o máximo, 153 ms. Confira também a região do banco (`npx wrangler d1 info cpps-site`): se não for ENAM, ajuste o *placement* do `wrangler.jsonc`.
-12. Rode `npx emdash doctor` para conferir a ligação do cron com o Worker.
+7. Gere a chave de criptografia do EmDash e guarde uma cópia em local seguro (perdê-la torna ilegíveis os segredos de plugins guardados no banco):
+   ```bash
+   npx emdash secrets generate          # mostra a chave
+   npx wrangler secret put EMDASH_ENCRYPTION_KEY
+   ```
+8. Convide pelo menos mais um administrador (Usuários → Convidar usuário).
 
-Depois que o domínio estiver no Worker e o site conferido, desconecte e apague o projeto **Pages** `site-cpps`, que não sabe publicar este formato.
+Falta fazer os passos 7 e 8.
+
+O `wrangler.jsonc` não fixa `EMDASH_SITE_URL` na produção: cada chave de acesso vale para o endereço em que foi criada, e o login no workers.dev continua funcionando durante a migração. Conferido em 09/10/2026: as 57 páginas do sitemap respondem com o mesmo status do site atual, com as diferenças de texto já esperadas ([ambiente-de-teste.md](ambiente-de-teste.md#conteúdo-igual-ao-site-atual)), e o servidor leva 60 ms por página na mediana.
+
+## Migração para o domínio
+
+Quando o conteúdo estiver pronto, como no guia [Move to a New Domain](https://docs.emdashcms.com/guides/change-domain/) do EmDash. Ensaie antes no ambiente de teste.
+
+1. Antes: pelo menos dois administradores; todos que editam com a sessão aberta no workers.dev, porque é de lá que sai a passagem do login; o que mudou no site atual repetido aqui; e o ponto de restauração do banco anotado (`npx wrangler d1 time-travel info cpps-site`).
+2. Aponte `cpps.franca.unesp.br` para o Worker. O hostname é um custom hostname do Cloudflare for SaaS (CNAME para `proxy.cppsunesp.org`, na zona `cppsunesp.org`), então use uma **rota**, não um *custom domain*. Acrescente ao `wrangler.jsonc` e faça o deploy:
+   ```jsonc
+   "routes": [{ "pattern": "cpps.franca.unesp.br/*", "zone_name": "cppsunesp.org" }],
+   ```
+   A partir daí, quem visita o domínio já vê o site novo. Em `https://cpps.franca.unesp.br/_emdash/admin` deve aparecer a tela de entrada do EmDash.
+3. No admin, em Settings → General → **Change domain**, informe `cpps.franca.unesp.br` e clique em **Check and switch**. Com rota, a verificação automática falha (a Cloudflare não roda o Worker para uma requisição que ele faz à própria rota): use **Use … anyway**.
+4. Cada pessoa, ainda logada no workers.dev, usa **Continue on cpps.franca.unesp.br** em Settings → General e cadastra uma chave de acesso no domínio, em Settings → Security. O link vale uma vez, por 5 minutos. Sem e-mail configurado, quem não fizer isso continua entrando só pelo workers.dev; no ensaio, confira se quem não é administrador vê esse botão.
+5. Desconecte o Pages `site-cpps` do repositório, para ele não tentar publicar o formato novo, faça o merge da branch na `main` e troque a branch de produção do Workers Builds para `main`.
+6. Quando todos entrarem pelo domínio: acrescente `"workers_dev": false` ao `wrangler.jsonc` e faça o deploy, para o site só responder no domínio; tire a variável de build `EMDASH_SITE_URL` do Workers Builds (o domínio já está autorizado no `astro.config.mjs`); e apague o projeto Pages `site-cpps`.
+7. Meça o custo real com tráfego: em Workers → `cpps-site` → Observability, o tempo de CPU das páginas (o limite gratuito é 10 ms; no ambiente de teste, a mediana foi 15 ms e o máximo, 153 ms). Confira também a ligação do cron com o Worker com `npx emdash doctor`.
 
 ## Deploys seguintes (Workers Builds)
 
@@ -78,8 +101,11 @@ No painel: Workers & Pages → `cpps-site` (o Worker) → Settings → Builds �
 
 - **Build command:** `npm run build`
 - **Deploy command:** `npx wrangler deploy`
-- **Production branch:** `main`
+- **Production branch:** `claude/bold-rubin-cekd64` até a migração; depois, `main`.
+- **Variável de build:** `EMDASH_SITE_URL=https://cpps-site.cpps-franca.workers.dev` até a migração, para as imagens no workers.dev serem otimizadas.
 - **Builds de outras branches: desligados.** Uma versão de preview roda com os mesmos D1, R2 e KV da produção: abrir o preview de um PR que atualiza o EmDash migraria o banco de produção, e o que for editado no admin do preview iria para o ar. Preview só com banco, bucket e KV próprios (seção "Preview deployments" do guia do EmDash), o que no plano gratuito gasta mais um dos 10 bancos D1.
+
+Enquanto o Pages existir, exclua esta branch das prévias dele (Settings → Build → Branch control): a prévia do Pages desta branch dá 404 em todas as páginas, porque ele não roda o EmDash, e confunde quem abre o link pelo PR.
 
 O `ci.yml` continua validando os PRs (seed, typecheck, lint e build); não faz deploy. Se o Workers Builds não aceitar o `lts/*` do `.nvmrc`, defina a variável de build `NODE_VERSION=24`.
 
@@ -109,6 +135,8 @@ O que existe hoje:
 
 - **D1 Time Travel:** restaura o banco para qualquer minuto dos últimos 7 dias (30 no plano pago), com `npx wrangler d1 time-travel restore`.
 - **Chave de criptografia:** guarde uma cópia da `EMDASH_ENCRYPTION_KEY` fora da Cloudflare.
+
+Desde 09/10/2026 o conteúdo de verdade está no banco `cpps-site`, então o backup fora da Cloudflare deixou de ser opcional. O EmDash tem as ferramentas: `npx emdash site export` gera um pacote `.emdash` com o site inteiro, e `npx emdash export-seed` gera o seed atualizado, para o Git.
 
 O que falta, e depende de criar um token da API da Cloudflare para rodar no GitHub Actions: um backup semanal fora da Cloudflare, como no guia [Backups](https://docs.emdashcms.com/guides/backups/) do EmDash. O `wrangler d1 export` simples falha por causa das tabelas de busca (FTS5), então o guia exporta tabela por tabela; o R2 é copiado à parte. O mesmo job pode gerar um `seed/seed.json` atualizado com `npx emdash export-seed` e abrir um PR, para o conteúdo voltar a ficar versionado no repositório público. O backup bruto do banco contém usuários e não pode ser commitado.
 

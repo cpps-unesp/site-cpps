@@ -1,6 +1,6 @@
 # Ambiente de teste na Cloudflare
 
-Registro de como o ambiente de teste do EmDash foi montado em 08/10/2026, do que o teste mostrou e do que falta antes de migrar a produção. O passo a passo da produção está em [deploy-e-redirects.md](deploy-e-redirects.md).
+Registro de como o ambiente de teste do EmDash foi montado em 08/10/2026 e do que o teste mostrou. Desde 09/10/2026 a produção existe à parte, em https://cpps-site.cpps-franca.workers.dev ([deploy-e-redirects.md](deploy-e-redirects.md#produção-antes-do-domínio)), e o teste serve só para experimentos: mudanças grandes, atualizações do EmDash e o ensaio da migração para o domínio.
 
 ## O que existe
 
@@ -16,7 +16,7 @@ Registro de como o ambiente de teste do EmDash foi montado em 08/10/2026, do que
 
 Nada aqui aponta para a produção: um ambiente do Wrangler não herda bindings nem vars do bloco principal. Enquanto existir, o teste ocupa 1 dos 5 crons e 1 dos 10 bancos da conta no plano gratuito.
 
-O conteúdo veio do `seed/seed.json`, importado na configuração inicial (**Sample content**). O que for editado aqui fica só no teste: até a migração, o site oficial continua sendo atualizado como hoje, e a produção começa do seed, atualizado antes com o que tiver mudado no site atual.
+O conteúdo veio do `seed/seed.json`, importado na configuração inicial (**Sample content**). O que for editado aqui fica só no teste; o conteúdo de verdade é editado na produção.
 
 Quem fez a configuração inicial é o administrador. Para chamar mais gente, use Usuários → Convidar no admin e mande o link à mão: no plano gratuito o Worker não envia e-mail. Cada passkey fica presa ao endereço de teste e não serve para a produção.
 
@@ -44,19 +44,9 @@ npx wrangler deploy
 
 Guarde o token num `.env` fora do Git (`CLOUDFLARE_API_TOKEN` e `CLOUDFLARE_ACCOUNT_ID`) e passe o arquivo ao Wrangler com `--env-file <arquivo>`. Apague o token quando não precisar mais dele.
 
-## Publicação automática (falta ligar)
+## Publicação automática
 
-Para cada push na branch publicar o teste sozinho, como o Pages fazia com as prévias:
-
-1. No painel: Workers & Pages → `cpps-site-teste` → Settings → Builds → Connect, repositório `cpps-unesp/site-cpps`.
-   - **Branch de produção:** `claude/bold-rubin-cekd64`. Depois do merge, trocar pela branch usada para testes.
-   - **Build command:** `npm run build`
-   - **Deploy command:** `npx wrangler deploy`
-   - **Builds de outras branches:** desligados.
-   - **Variáveis de build:** `CLOUDFLARE_ENV=teste`, `EMDASH_SITE_URL=https://cpps-site-teste.cpps-franca.workers.dev` e, se o `lts/*` do `.nvmrc` não for aceito, `NODE_VERSION=24`.
-2. No Pages `site-cpps`: Settings → Build → Branch control, exclua a branch das prévias. A prévia do Pages desta branch dá 404 em todas as páginas, porque o Pages não roda o EmDash, e confunde quem abre o link pelo PR.
-
-O token que o Workers Builds cria não tem permissão de D1. Por isso o ID do banco de teste está no `wrangler.jsonc`; o KV de sessões é reaproveitado do deploy anterior.
+O teste é publicado à mão. A publicação automática a cada push vale para a produção ([Deploys seguintes](deploy-e-redirects.md#deploys-seguintes-workers-builds)). Se o teste também for ligado ao Workers Builds, use uma branch própria para ele, com `CLOUDFLARE_ENV=teste` e `EMDASH_SITE_URL=https://cpps-site-teste.cpps-franca.workers.dev` nas variáveis de build. O token que o Workers Builds cria não tem permissão de D1; por isso o ID do banco de teste está no `wrangler.jsonc`.
 
 ## O que o teste mostrou
 
@@ -110,11 +100,11 @@ Mudar o seed não altera um banco que já existe, então no teste os padrões fo
 
 Até a configuração inicial, quem abre `/_emdash/admin` primeiro vira administrador. Por isso o primeiro deploy subiu com `--var EMDASH_SITE_URL:https://cpps-site-teste.invalid`. A passkey ficaria presa a um endereço que o navegador recusa, então ninguém conseguia se cadastrar enquanto o ambiente era conferido. Na hora da configuração, um deploy com o endereço de verdade destrancou o admin.
 
-O mesmo teste confirmou que o Worker lê o `EMDASH_SITE_URL` das `vars` em tempo de execução. É disso que a produção depende para prender o login ao domínio final.
+O mesmo teste confirmou que o Worker lê o `EMDASH_SITE_URL` das `vars` em tempo de execução: é o que prende o login do teste ao endereço dele e o que tranca o primeiro deploy. A produção usou a mesma trava.
 
-## Pendências antes da produção
+## Pendências
 
-- Ligar a publicação automática e excluir a branch das prévias do Pages (seção acima).
+- Ensaiar aqui a migração para o domínio ([Migração para o domínio](deploy-e-redirects.md#migração-para-o-domínio)).
 - Decidir o plano da conta, gratuito ou pago, olhando a CPU.
 - Testar aqui as migrações no deploy (`runtime: "check"` com `emdash migrate`).
 - Pôr prazo e restringir à conta do CPPS o token da API, e apagá-lo quando não for mais usado.
