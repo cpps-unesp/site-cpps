@@ -83,7 +83,7 @@ O guia recomenda para produção `migrations: { runtime: "check", dev: "auto" }`
 Medido com o conteúdo importado:
 
 - **No servidor**, pelo cabeçalho `Server-Timing`: mediana de 46 ms por página e máximo de 412 ms. A primeira página de cada instância nova do Worker gasta 0,2–0,5 s a mais iniciando o EmDash.
-- **CPU:** de 14 a 87 ms por página, e de 270 a 430 ms em cada lote da importação inicial. O plano gratuito permite 10 ms por requisição. Nenhuma foi cortada no teste, mas com tráfego real o excesso pode virar o erro 1102. Antes da produção, é preciso decidir entre o Workers Paid (US$ 5/mês por conta) e reduzir a CPU com cache ou pré-renderização.
+- **CPU:** em 156 páginas servidas durante os testes, mediana de 15 ms, 90% abaixo de 46 ms e máximo de 153 ms. Cada lote da importação inicial gastou de 270 a 430 ms. O plano gratuito permite 10 ms por requisição. Nenhuma foi cortada no teste, mas com tráfego real o excesso pode virar o erro 1102. Antes da produção, é preciso decidir entre o Workers Paid (US$ 5/mês por conta) e reduzir a CPU com cache ou pré-renderização.
 
 ### Conteúdo igual ao site atual
 
