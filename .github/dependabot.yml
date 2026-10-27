@@ -37,7 +37,10 @@ updates:
         update-types:
           - 'version-update:semver-major'
 
-  # Mantém atualizados os SHAs das actions. Esses PRs nunca entram sozinhos.
+  # Mantém atualizados os SHAs das actions. Esses PRs nunca entram sozinhos: o
+  # GITHUB_TOKEN não consegue mergear PR que altera workflow, e contornar isso
+  # exigiria credencial com `workflows: write` (ver workflows/dependabot-auto-merge.yml).
+  # Ficam na fila de revisão, que workflows/dependabot-parados.yml torna visível.
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:

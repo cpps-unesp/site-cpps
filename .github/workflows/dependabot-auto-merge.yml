@@ -30,6 +30,16 @@ jobs:
       # Entra sozinho: pacote npm, patch ou minor, e nenhum minor em pacote 0.x
       # (em 0.y.z o minor quebra compatibilidade; ^0.35 não aceita 0.36).
       # Sem versão anterior conhecida, o minor também fica para revisão.
+      #
+      # github-actions fica de fora de propósito, por dois motivos (out/2026):
+      # 1. Não funcionaria. Todo PR de action altera .github/workflows/, e o
+      #    GITHUB_TOKEN não pode ter a permissão `workflows`: o GitHub recusa o
+      #    merge e o PR fica parado com o auto-merge ligado.
+      # 2. Seria perigoso. A forma de contornar o item 1 é um PAT ou App com
+      #    `workflows: write` neste job, que roda em pull_request_target com
+      #    escrita. E uma release comprometida do próprio fetch-metadata abaixo
+      #    entraria sem revisão e poderia aprovar e mergear qualquer PR.
+      # A fila manual fica visível em workflows/dependabot-parados.yml.
       - name: Decidir se o PR entra sozinho
         id: decisao
         run: |
