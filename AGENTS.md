@@ -83,7 +83,8 @@
 
 ## Content Collections (Astro)
 
-- EmDash collections (schema in `seed/seed.json`): `noticias`, `paginas`, `sobre`, `equipe`, `documentos`, `cafe_episodios`, `projetos`.
+- EmDash collections (schema in `seed/seed.json`): `noticias`, `paginas`, `sobre`, `equipe`, `documentos`, `cafe_episodios`, `projetos`, `aparencia`.
+  - Appearance (colors, fonts, logo, header/hero variants, home sections, footer) and the `principal` menu: `src/utils/aparencia.ts`, read in `BaseLayout.astro`; always fall back to the CPPS defaults. See `docs/aparencia.md`.
   - News: `src/utils/noticias.ts`; routes in `src/pages/[lang]/noticias/` and `src/pages/[lang]/news/`.
   - Everything else: `src/utils/conteudo.ts` returns the shapes the existing components expect; untranslated entries fall back to pt.
   - Locale JSON files no longer hold `equipe`, `sobre`, `documentos`, `hero`, Café episodes or `projetosLista`.

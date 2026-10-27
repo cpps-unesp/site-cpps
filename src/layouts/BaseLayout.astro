@@ -2,6 +2,13 @@
 import { getTranslations, type Language } from '../utils/i18n';
 import { getLangFromUrl } from '../utils/getLangFromUrl';
 import { getLocalizedPathFromPathname, isSupportedLang } from '../utils/i18nRouteMatch';
+import {
+  APARENCIA_PADRAO,
+  cssAparencia,
+  getAparencia,
+  getMenuPrincipal,
+  urlFontes,
+} from '../utils/aparencia';
 
 const urlLang = getLangFromUrl(Astro.url) as Language;
 
@@ -10,6 +17,7 @@ interface Props {
   descricao?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   texts?: any;
+  // Ignorado: o logo vem de Aparência › site no EmDash (src/utils/aparencia.ts).
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   identidade?: any;
   lang?: Language;
@@ -18,15 +26,21 @@ interface Props {
   naoIndexar?: boolean;
 }
 
-const { lang: propLang, texts, identidade, githubPath, titulo, descricao, naoIndexar } =
-  Astro.props as Props;
+const { lang: propLang, texts, githubPath, titulo, descricao, naoIndexar } = Astro.props as Props;
 
 const lang = propLang ?? urlLang;
 const t = getTranslations(lang);
 const pageTexts = texts ?? t.texts;
-const pageIdentidade = identidade ?? t.identidade;
 const pageTitle = titulo ?? t.titulo;
 const pageDescription = descricao ?? t.descricao;
+
+// Aparência e menu do EmDash. As páginas pré-renderizadas (404, 500) não têm o
+// banco no build e ficam com o padrão.
+const preRenderizada = Astro.isPrerendered;
+const [aparencia, menu] = await Promise.all([
+  preRenderizada ? APARENCIA_PADRAO : getAparencia(lang),
+  getMenuPrincipal(lang, preRenderizada),
+]);
 
 // Canonical, og:url e hreflang sempre com barra final, como no sitemap e na
 // versão estática do site. No Worker, /x e /x/ respondem 200; sem isso, cada uma
@@ -86,7 +100,9 @@ import '../styles/global.css';
     <meta property="og:description" content={pageDescription} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content={ogLocale} />
-    {ogAlternateLocales.map((locale) => <meta property="og:locale:alternate" content={locale} />)}
+    {ogAlternateLocales.map((locale) => (
+      <meta property="og:locale:alternate" content={locale} />
+    ))}
     <meta
       property="og:image"
       content="https://cpps.franca.unesp.br/imagens/logos/cpps/logo-cpps-01_rev_1.png"
@@ -96,11 +112,9 @@ import '../styles/global.css';
     <meta property="og:image:height" content="630" />
 
     <!-- ✅ SEO multilíngue -->
-    {
-      alternateHrefs.map(({ hreflang, href }) => (
-        <link rel="alternate" hreflang={hreflang} href={href} />
-      ))
-    }
+    {alternateHrefs.map(({ hreflang, href }) => (
+      <link rel="alternate" hreflang={hreflang} href={href} />
+    ))}
     <link rel="alternate" hreflang="x-default" href={alternateHrefs[0].href} />
 
     <!-- ✅ canonical -->
@@ -109,14 +123,10 @@ import '../styles/global.css';
     <!-- ✅ Performance com fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap"
-      rel="stylesheet"
-    />
+    <link href={urlFontes(aparencia)} rel="stylesheet" />
+    {/* Cores e fontes validadas em src/utils/aparencia.ts (#rrggbb e fontes da lista). */}
+    {/* eslint-disable-next-line astro/no-set-html-directive */}
+    <style is:inline set:html={cssAparencia(aparencia)} />
     <!-- Font Awesome -->
     <link
       rel="stylesheet"
@@ -139,19 +149,17 @@ import '../styles/global.css';
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <Header lang={lang} texts={pageTexts} identidade={pageIdentidade} />
+    <Header lang={lang} texts={pageTexts} aparencia={aparencia} menu={menu} />
 
-    <main class:list={[isLangHome ? 'pt-0' : 'pt-20 md:pt-24', 'flex-1']}>
+    <main class:list={[isLangHome && aparencia.secoesHome[0] === 'hero' ? 'pt-0' : 'pt-20 md:pt-24', 'flex-1']}>
       <slot />
-      {
-        githubPath && (
-          <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
-            <GitHubEditLink githubPath={githubPath} lang={lang} texts={pageTexts} />
-          </div>
-        )
-      }
+      {githubPath && (
+        <div class="mx-auto max-w-screen-2xl px-4 md:px-8">
+          <GitHubEditLink githubPath={githubPath} lang={lang} texts={pageTexts} />
+        </div>
+      )}
     </main>
-    <Footer lang={lang} texts={pageTexts} githubPath={githubPath} />
+    <Footer aparencia={aparencia} />
     <BackToTop lang={lang} />
     <SearchModal lang={lang} texts={pageTexts} />
     <script type="module" src="/scripts/themeSwitcher.js"></script>

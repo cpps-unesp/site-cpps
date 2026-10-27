@@ -607,6 +607,212 @@
           }
         }
       ]
+    },
+    {
+      "slug": "aparencia",
+      "label": "Aparência",
+      "labelSingular": "Aparência",
+      "description": "Identidade visual e layout do site: um único item, \"site\". Cores no formato #rrggbb. Quando uma cor deixa o texto difícil de ler, o site usa a cor padrão no texto e mantém a escolhida nos botões e fundos.",
+      "icon": "palette",
+      "group": "Configurações",
+      "sortOrder": 1,
+      "supports": [
+        "drafts",
+        "revisions"
+      ],
+      "titleField": "title",
+      "fields": [
+        {
+          "slug": "title",
+          "label": "Nome curto (ao lado do logo)",
+          "type": "string",
+          "required": true
+        },
+        {
+          "slug": "nome_completo",
+          "label": "Nome completo (rodapé)",
+          "type": "string"
+        },
+        {
+          "slug": "logo",
+          "label": "Logo (cabeçalho e página inicial; a variante escura aparece no tema escuro)",
+          "type": "image",
+          "translatable": false
+        },
+        {
+          "slug": "mostrar_logos_unesp",
+          "label": "Mostrar os logos da UNESP no cabeçalho",
+          "type": "boolean",
+          "translatable": false
+        },
+        {
+          "slug": "cor_primaria",
+          "label": "Cor primária (botões, links, destaques)",
+          "type": "string",
+          "translatable": false,
+          "validation": {
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          }
+        },
+        {
+          "slug": "cor_secundaria",
+          "label": "Cor secundária",
+          "type": "string",
+          "translatable": false,
+          "validation": {
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          }
+        },
+        {
+          "slug": "cor_destaque",
+          "label": "Cor de destaque",
+          "type": "string",
+          "translatable": false,
+          "validation": {
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          }
+        },
+        {
+          "slug": "cor_rodape",
+          "label": "Cor de fundo do rodapé",
+          "type": "string",
+          "translatable": false,
+          "validation": {
+            "pattern": "^#[0-9a-fA-F]{6}$"
+          }
+        },
+        {
+          "slug": "fonte_texto",
+          "label": "Fonte do texto",
+          "type": "select",
+          "translatable": false,
+          "validation": {
+            "options": [
+              "Montserrat",
+              "Inter",
+              "Roboto",
+              "Open Sans",
+              "Lato",
+              "Source Sans 3",
+              "Nunito",
+              "Merriweather"
+            ]
+          }
+        },
+        {
+          "slug": "fonte_titulos",
+          "label": "Fonte dos títulos",
+          "type": "select",
+          "translatable": false,
+          "validation": {
+            "options": [
+              "Bebas Neue",
+              "Oswald",
+              "Montserrat",
+              "Playfair Display",
+              "Roboto Slab",
+              "Merriweather",
+              "Inter"
+            ]
+          }
+        },
+        {
+          "slug": "titulos_maiusculos",
+          "label": "Títulos em maiúsculas",
+          "type": "boolean",
+          "translatable": false
+        },
+        {
+          "slug": "layout_cabecalho",
+          "label": "Cabeçalho",
+          "type": "select",
+          "translatable": false,
+          "validation": {
+            "options": [
+              "claro",
+              "colorido"
+            ]
+          }
+        },
+        {
+          "slug": "layout_hero",
+          "label": "Abertura da página inicial",
+          "type": "select",
+          "translatable": false,
+          "validation": {
+            "options": [
+              "lateral",
+              "centralizado"
+            ]
+          }
+        },
+        {
+          "slug": "secoes_home",
+          "label": "Seções da página inicial, na ordem (desmarque para esconder)",
+          "type": "repeater",
+          "translatable": false,
+          "validation": {
+            "subFields": [
+              {
+                "slug": "secao",
+                "label": "Seção",
+                "type": "select",
+                "required": true,
+                "validation": {
+                  "options": [
+                    "hero",
+                    "noticias"
+                  ]
+                }
+              },
+              {
+                "slug": "ativa",
+                "label": "Mostrar",
+                "type": "boolean"
+              }
+            ]
+          }
+        },
+        {
+          "slug": "rodape_texto",
+          "label": "Texto do rodapé (endereço, contato)",
+          "type": "text"
+        },
+        {
+          "slug": "redes",
+          "label": "Redes sociais (rodapé)",
+          "type": "repeater",
+          "translatable": false,
+          "validation": {
+            "subFields": [
+              {
+                "slug": "tipo",
+                "label": "Rede",
+                "type": "select",
+                "required": true,
+                "validation": {
+                  "options": [
+                    "instagram",
+                    "facebook",
+                    "youtube",
+                    "linkedin",
+                    "x",
+                    "github",
+                    "email",
+                    "site"
+                  ]
+                }
+              },
+              {
+                "slug": "url",
+                "label": "Endereço (https://… ou mailto:…)",
+                "type": "string",
+                "required": true
+              }
+            ]
+          }
+        }
+      ]
     }
   ],
   "taxonomies": [
@@ -636,6 +842,253 @@
           "label": "Iniciação Científica"
         }
       ]
+    }
+  ],
+  "menus": [
+    {
+      "id": "menu:principal:pt",
+      "name": "principal",
+      "label": "Menu principal",
+      "locale": "pt",
+      "items": [
+        {
+          "id": "item:principal:home:pt",
+          "type": "custom",
+          "label": "Home",
+          "url": "/pt/",
+          "locale": "pt"
+        },
+        {
+          "id": "item:principal:noticias:pt",
+          "type": "custom",
+          "label": "Notícias",
+          "url": "/pt/noticias/",
+          "locale": "pt"
+        },
+        {
+          "id": "item:principal:institucional:pt",
+          "type": "custom",
+          "label": "Institucional",
+          "url": "#",
+          "locale": "pt",
+          "children": [
+            {
+              "id": "item:principal:sobre:pt",
+              "type": "custom",
+              "label": "Sobre",
+              "url": "/pt/institucional/sobre/",
+              "locale": "pt"
+            },
+            {
+              "id": "item:principal:equipe:pt",
+              "type": "custom",
+              "label": "Equipe",
+              "url": "/pt/institucional/equipe/",
+              "locale": "pt"
+            },
+            {
+              "id": "item:principal:documentos:pt",
+              "type": "custom",
+              "label": "Documentos",
+              "url": "/pt/institucional/documentos/",
+              "locale": "pt"
+            }
+          ]
+        },
+        {
+          "id": "item:principal:iniciativas:pt",
+          "type": "custom",
+          "label": "Iniciativas",
+          "url": "#",
+          "locale": "pt",
+          "children": [
+            {
+              "id": "item:principal:cafe:pt",
+              "type": "custom",
+              "label": "Café com Ciência",
+              "url": "/pt/iniciativas/cafe-com-ciencia/",
+              "locale": "pt"
+            },
+            {
+              "id": "item:principal:projetos:pt",
+              "type": "custom",
+              "label": "Projetos",
+              "url": "/pt/iniciativas/projetos/",
+              "locale": "pt"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "menu:principal:en",
+      "name": "principal",
+      "label": "Menu principal",
+      "locale": "en",
+      "items": [
+        {
+          "id": "item:principal:home:en",
+          "type": "custom",
+          "label": "Home",
+          "url": "/en/",
+          "locale": "en",
+          "translationOf": "item:principal:home:pt"
+        },
+        {
+          "id": "item:principal:noticias:en",
+          "type": "custom",
+          "label": "News",
+          "url": "/en/news/",
+          "locale": "en",
+          "translationOf": "item:principal:noticias:pt"
+        },
+        {
+          "id": "item:principal:institucional:en",
+          "type": "custom",
+          "label": "Institutional",
+          "url": "#",
+          "locale": "en",
+          "translationOf": "item:principal:institucional:pt",
+          "children": [
+            {
+              "id": "item:principal:sobre:en",
+              "type": "custom",
+              "label": "About",
+              "url": "/en/institutional/about/",
+              "locale": "en",
+              "translationOf": "item:principal:sobre:pt"
+            },
+            {
+              "id": "item:principal:equipe:en",
+              "type": "custom",
+              "label": "Team",
+              "url": "/en/institutional/team/",
+              "locale": "en",
+              "translationOf": "item:principal:equipe:pt"
+            },
+            {
+              "id": "item:principal:documentos:en",
+              "type": "custom",
+              "label": "Documents",
+              "url": "/en/institutional/documents/",
+              "locale": "en",
+              "translationOf": "item:principal:documentos:pt"
+            }
+          ]
+        },
+        {
+          "id": "item:principal:iniciativas:en",
+          "type": "custom",
+          "label": "Initiatives",
+          "url": "#",
+          "locale": "en",
+          "translationOf": "item:principal:iniciativas:pt",
+          "children": [
+            {
+              "id": "item:principal:cafe:en",
+              "type": "custom",
+              "label": "Coffee with Science",
+              "url": "/en/initiatives/coffee-with-science/",
+              "locale": "en",
+              "translationOf": "item:principal:cafe:pt"
+            },
+            {
+              "id": "item:principal:projetos:en",
+              "type": "custom",
+              "label": "Projects",
+              "url": "/en/initiatives/projects/",
+              "locale": "en",
+              "translationOf": "item:principal:projetos:pt"
+            }
+          ]
+        }
+      ],
+      "translationOf": "menu:principal:pt"
+    },
+    {
+      "id": "menu:principal:es",
+      "name": "principal",
+      "label": "Menu principal",
+      "locale": "es",
+      "items": [
+        {
+          "id": "item:principal:home:es",
+          "type": "custom",
+          "label": "Inicio",
+          "url": "/es/",
+          "locale": "es",
+          "translationOf": "item:principal:home:pt"
+        },
+        {
+          "id": "item:principal:noticias:es",
+          "type": "custom",
+          "label": "Noticias",
+          "url": "/es/noticias/",
+          "locale": "es",
+          "translationOf": "item:principal:noticias:pt"
+        },
+        {
+          "id": "item:principal:institucional:es",
+          "type": "custom",
+          "label": "Institucional",
+          "url": "#",
+          "locale": "es",
+          "translationOf": "item:principal:institucional:pt",
+          "children": [
+            {
+              "id": "item:principal:sobre:es",
+              "type": "custom",
+              "label": "Sobre nosotros",
+              "url": "/es/institucional/sobre/",
+              "locale": "es",
+              "translationOf": "item:principal:sobre:pt"
+            },
+            {
+              "id": "item:principal:equipe:es",
+              "type": "custom",
+              "label": "Equipo",
+              "url": "/es/institucional/equipo/",
+              "locale": "es",
+              "translationOf": "item:principal:equipe:pt"
+            },
+            {
+              "id": "item:principal:documentos:es",
+              "type": "custom",
+              "label": "Documentos",
+              "url": "/es/institucional/documentos/",
+              "locale": "es",
+              "translationOf": "item:principal:documentos:pt"
+            }
+          ]
+        },
+        {
+          "id": "item:principal:iniciativas:es",
+          "type": "custom",
+          "label": "Iniciativas",
+          "url": "#",
+          "locale": "es",
+          "translationOf": "item:principal:iniciativas:pt",
+          "children": [
+            {
+              "id": "item:principal:cafe:es",
+              "type": "custom",
+              "label": "Café con Ciencia",
+              "url": "/es/iniciativas/cafe-con-ciencia/",
+              "locale": "es",
+              "translationOf": "item:principal:cafe:pt"
+            },
+            {
+              "id": "item:principal:projetos:es",
+              "type": "custom",
+              "label": "Proyectos",
+              "url": "/es/iniciativas/proyectos/",
+              "locale": "es",
+              "translationOf": "item:principal:projetos:pt"
+            }
+          ]
+        }
+      ],
+      "translationOf": "menu:principal:pt"
     }
   ],
   "content": {
@@ -5522,6 +5975,40 @@
               "url": "https://sistemas.unesp.br/legislacao-web/?base=R&numero=19&ano=2020&dataDocumento=08/04/2020"
             }
           ]
+        }
+      }
+    ],
+    "aparencia": [
+      {
+        "id": "aparencia-site",
+        "slug": "site",
+        "locale": "pt",
+        "status": "published",
+        "data": {
+          "title": "CPPS",
+          "nome_completo": "CPPS - Centro de Pesquisa Política e Social",
+          "mostrar_logos_unesp": true,
+          "cor_primaria": "#007cad",
+          "cor_secundaria": "#347d9b",
+          "cor_destaque": "#2197c5",
+          "cor_rodape": "#2e3f46",
+          "fonte_texto": "Montserrat",
+          "fonte_titulos": "Bebas Neue",
+          "titulos_maiusculos": true,
+          "layout_cabecalho": "claro",
+          "layout_hero": "lateral",
+          "secoes_home": [
+            {
+              "secao": "hero",
+              "ativa": true
+            },
+            {
+              "secao": "noticias",
+              "ativa": false
+            }
+          ],
+          "rodape_texto": "",
+          "redes": []
         }
       }
     ]

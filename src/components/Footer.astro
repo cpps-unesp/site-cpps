@@ -1,9 +1,44 @@
 ---
+import type { Aparencia } from '../utils/aparencia';
+
+const { aparencia } = Astro.props as { aparencia: Aparencia };
+
 const currentYear = new Date().getFullYear();
+
+// Ícones do Font Awesome (carregado no BaseLayout) por rede.
+const icones: Record<string, string> = {
+  instagram: 'fa-brands fa-instagram',
+  facebook: 'fa-brands fa-facebook',
+  youtube: 'fa-brands fa-youtube',
+  linkedin: 'fa-brands fa-linkedin',
+  x: 'fa-brands fa-x-twitter',
+  github: 'fa-brands fa-github',
+  email: 'fa-solid fa-envelope',
+  site: 'fa-solid fa-globe',
+};
 ---
 
-<footer class="mt-auto bg-[#2E3F46] p-8 text-white">
+<!-- Cor, texto e redes: Aparência › site no EmDash. -->
+<footer class="mt-auto bg-[var(--cor-rodape,#2E3F46)] p-8 text-[var(--cor-rodape-texto,#fff)]">
   <div class="mx-auto flex max-w-screen-xl flex-col items-center justify-between gap-4 md:flex-row">
-    <p>&copy; {currentYear} CPPS - Centro de Pesquisa Política e Social</p>
+    <div>
+      <p>
+        &copy; {currentYear} {aparencia.nomeCompleto}
+      </p>
+      {aparencia.rodapeTexto && (
+        <p class="mt-2 text-sm whitespace-pre-line opacity-90">{aparencia.rodapeTexto}</p>
+      )}
+    </div>
+    {aparencia.redes.length > 0 && (
+      <ul class="flex gap-4 text-xl">
+        {aparencia.redes.map((rede) => (
+          <li>
+            <a href={rede.url} aria-label={rede.tipo} rel="noopener" target="_blank">
+              <i class={icones[rede.tipo]} aria-hidden="true" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
 </footer>

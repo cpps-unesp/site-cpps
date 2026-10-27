@@ -4,6 +4,7 @@ export const prerender = true;
 import { getTranslations, type Language } from '../utils/i18n';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { APARENCIA_PADRAO, getMenuPrincipal } from '../utils/aparencia';
 import GitHubEditLink from '../components/GitHubEditLink.astro';
 import SearchModal from '../components/SearchModal.astro';
 import BackToTop from '../components/BackToTop.astro';
@@ -17,7 +18,8 @@ const t = getTranslations(lang);
 const titulo = t.titulo;
 const descricao = t.descricao;
 const texts = t.texts;
-const identidade = t.identidade;
+// Pré-renderizada: sem o banco no build, aparência e menu ficam no padrão.
+const menu = await getMenuPrincipal(lang, true);
 ---
 
 <html lang={lang} dir="ltr">
@@ -62,13 +64,15 @@ const identidade = t.identidade;
   </head>
 
   <body class="bg-base-100 text-base-content">
-    <Header lang={lang} texts={texts} identidade={identidade} />
+    <Header lang={lang} texts={texts} aparencia={APARENCIA_PADRAO} menu={menu} />
 
     <main class="flex-1 pt-24">
       <section class="flex min-h-[60vh] items-center justify-center px-4">
         <div class="max-w-lg text-center">
           <h1 class="font-heading text-primary mb-4 text-8xl font-bold">404</h1>
-          <h2 id="not-found-title" class="font-heading mb-4 text-3xl font-semibold">{texts.notFound}</h2>
+          <h2 id="not-found-title" class="font-heading mb-4 text-3xl font-semibold">
+            {texts.notFound}
+          </h2>
           <p id="not-found-desc" class="text-base-content/70 mb-8 text-lg">
             {texts.notFoundDescription}
           </p>
@@ -84,7 +88,7 @@ const identidade = t.identidade;
       </section>
     </main>
 
-    <Footer lang={lang} texts={texts} />
+    <Footer aparencia={APARENCIA_PADRAO} />
     <BackToTop lang={lang} />
     <SearchModal lang={lang} texts={texts} />
     <script type="module" src="/scripts/themeSwitcher.js"></script>
@@ -106,7 +110,8 @@ const identidade = t.identidade;
         };
         const cookieMatch = document.cookie.match(/lang=(en|es)/);
         const pathLang = location.pathname.split('/')[1];
-        const lang = (cookieMatch && cookieMatch[1]) || (['en', 'es'].includes(pathLang) ? pathLang : null);
+        const lang =
+          (cookieMatch && cookieMatch[1]) || (['en', 'es'].includes(pathLang) ? pathLang : null);
         if (lang) {
           const t = i18n[lang];
           document.documentElement.lang = lang;

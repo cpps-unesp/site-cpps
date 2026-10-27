@@ -137,6 +137,34 @@ export interface Noticia {
   terms?: Record<string, TaxonomyTerm[]>;
 }
 
+export interface Aparencia {
+  id: string;
+  slug: string | null;
+  status: string;
+  title: string;
+  nome_completo?: string;
+  logo?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown>; darkVariant?: { id: string; src?: string; alt?: string; width?: number; height?: number; filename?: string; mimeType?: string; blurhash?: string; dominantColor?: string; focalX?: number; focalY?: number; provider?: string; previewUrl?: string; meta?: Record<string, unknown> } };
+  mostrar_logos_unesp?: boolean;
+  cor_primaria?: string;
+  cor_secundaria?: string;
+  cor_destaque?: string;
+  cor_rodape?: string;
+  fonte_texto?: "Montserrat" | "Inter" | "Roboto" | "Open Sans" | "Lato" | "Source Sans 3" | "Nunito" | "Merriweather";
+  fonte_titulos?: "Bebas Neue" | "Oswald" | "Montserrat" | "Playfair Display" | "Roboto Slab" | "Merriweather" | "Inter";
+  titulos_maiusculos?: boolean;
+  layout_cabecalho?: "claro" | "colorido";
+  layout_hero?: "lateral" | "centralizado";
+  secoes_home?: { "secao": "hero" | "noticias"; "ativa"?: boolean }[];
+  rodape_texto?: string;
+  redes?: { "tipo": "instagram" | "facebook" | "youtube" | "linkedin" | "x" | "github" | "email" | "site"; "url": string }[];
+  createdAt: Date;
+  updatedAt: Date;
+  publishedAt: Date | null;
+  byline?: BylineSummary | null;
+  bylines?: ContentBylineCredit[];
+  terms?: Record<string, TaxonomyTerm[]>;
+}
+
 declare module "emdash" {
   interface EmDashCollections {
     paginas: Pagina;
@@ -146,5 +174,6 @@ declare module "emdash" {
     cafe_episodios: CafeEpisodio;
     projetos: Projeto;
     noticias: Noticia;
+    aparencia: Aparencia;
   }
 }

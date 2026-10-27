@@ -4,7 +4,7 @@
 @plugin 'daisyui/theme' {
   name: 'light';
   default: true;
-  --color-primary: #00acf0;
+  --color-primary: #007cad;
   --color-secondary: #347d9b;
   --color-accent: #2197c5;
   --color-neutral: #2e3f46;
@@ -15,7 +15,7 @@
 
 @plugin 'daisyui/theme' {
   name: 'dark';
-  --color-primary: #00acf0;
+  --color-primary: #007cad;
   --color-secondary: #347d9b;
   --color-accent: #2197c5;
   --color-neutral: #b2bed7;
@@ -40,7 +40,8 @@ body {
   padding: 0;
   overflow-x: hidden;
   background-color: theme('colors.base-100');
-  font-family: 'Montserrat', sans-serif;
+  /* Fontes e caixa dos títulos: Aparência › site no EmDash (src/utils/aparencia.ts). */
+  font-family: var(--fonte-texto, 'Montserrat', sans-serif);
 }
 
 body > *:last-child {
@@ -54,9 +55,9 @@ h2,
 h3,
 h4,
 .titulo {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--fonte-titulos, 'Bebas Neue', sans-serif);
   letter-spacing: 0.5px;
-  text-transform: uppercase;
+  text-transform: var(--titulos-caixa, uppercase);
   font-weight: normal;
 }
 
@@ -89,7 +90,7 @@ h4,
   hyphens: auto;
 }
 .paragrafo a {
-  color: #00acf0;
+  color: #007cad;
   font-weight: 600;
   text-decoration: none;
 }
@@ -120,7 +121,7 @@ h4,
   font-size: clamp(1.6rem, 3.1vw, 2.2rem) !important;
   margin-top: 2.6rem !important;
   margin-bottom: 1.1rem !important;
-  color: var(--color-primary) !important;
+  color: var(--cor-texto-destaque, var(--color-primary)) !important;
   border-bottom: 2px solid color-mix(in srgb, var(--color-primary), transparent 85%);
   padding-bottom: 0.35rem;
   font-weight: 800 !important;
@@ -178,7 +179,7 @@ h4,
 }
 
 :global([data-theme='dark']) .prose code {
-  color: var(--color-primary) !important;
+  color: var(--cor-texto-destaque, var(--color-primary)) !important;
 }
 
 .prose code::before,
@@ -214,7 +215,7 @@ h4,
 .prose th {
   background-color: color-mix(in srgb, var(--color-primary), transparent 90%) !important;
   font-weight: 700 !important;
-  color: var(--color-primary) !important;
+  color: var(--cor-texto-destaque, var(--color-primary)) !important;
 }
 
 .prose tr:nth-child(even) {
