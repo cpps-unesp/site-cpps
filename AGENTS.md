@@ -152,6 +152,11 @@
 - Main is protected by CI/merge guard workflows; merge via PR with green checks.
 - Without GitHub branch protection, direct pushes are discouraged but not technically blocked.
 
+## EmDash Skills and MCP
+
+- The official EmDash skills come from the `emdash` plugin enabled in `.claude/settings.json` (`emdash:building-emdash-site`, `emdash:emdash-cli`, `emdash:upgrading-emdash`); prefer them for EmDash APIs, schema/seed and CLI work.
+- `.mcp.json` points to the production EmDash MCP server (`/_emdash/api/mcp`). It writes to the live database: create drafts, and do not bulk-edit or change the schema without the maintainer asking. See `docs/mcp-e-skills.md`.
+
 ## When in Doubt
 
 - Follow patterns from nearby files.

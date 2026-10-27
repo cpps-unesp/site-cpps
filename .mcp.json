@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "cpps-site": {
+      "type": "http",
+      "url": "https://cpps-site.cpps-franca.workers.dev/_emdash/api/mcp"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extraKnownMarketplaces": {
+    "emdash": {
+      "source": { "source": "github", "repo": "emdash-cms/skills" }
+    }
+  },
+  "enabledPlugins": {
+    "emdash@emdash": true
+  }
+}
