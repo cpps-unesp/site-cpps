@@ -116,7 +116,7 @@ Deploys seguintes não mexem no conteúdo do banco. Mudanças no modelo de conte
 Uma versão nova do EmDash pode trazer migrações do banco. Elas rodam sozinhas no primeiro acesso depois do deploy, só andam para frente, e voltar o código para a versão anterior não as desfaz. Por isso o Dependabot não faz merge sozinho de `emdash`, `@emdash-cms/*`, `astro`, `@astrojs/*` nem `wrangler`.
 
 1. Numa branch, rode `npx upgrade-emdash@latest` (a ferramenta oficial, desde a 1.2). Ele atualiza juntos `emdash` e `@emdash-cms/cloudflare` (o segundo exige a versão exata do primeiro), roda o npm e escreve `.emdash/UPGRADE.md` com as entradas do changelog entre as duas versões e as migrações novas. Se o Dependabot abriu um PR para cada pacote, feche os dois e use este caminho.
-   - O comando também instala skills de agente de IA em `.agents/` e `.claude/`, mais um `skills-lock.json`. Não faça commit delas sem decidir: mudam o comportamento de quem usa assistentes de IA no repositório.
+   - O comando também instala skills de agente de IA em `.agents/` e `.claude/skills/`, mais um `skills-lock.json`. Descarte esses arquivos: o Claude Code já recebe as skills pelo plugin `emdash` ativado em `.claude/settings.json` ([mcp-e-skills.md](mcp-e-skills.md#skills-de-agente-mexer-no-código)).
 2. Leia o `.emdash/UPGRADE.md` (fora do Git) e ajuste o que cada entrada pedir. As notas também saem no blog, em https://emdashcms.com/blog.
 3. Teste localmente com `npm run dev` (o banco local também migra) e rode `npm run ci`.
 4. Se houver migração nova, antes do merge anote o ponto de restauração do banco: `npx wrangler d1 time-travel info cpps-site`.
