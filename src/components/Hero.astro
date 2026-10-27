@@ -1,14 +1,19 @@
 ---
 import { Image } from 'emdash/ui';
 import { getTranslatedPath } from '../utils/getTranslatedPath';
+import { APARENCIA_PADRAO, type Aparencia } from '../utils/aparencia';
 
 interface Props {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   heroData: any;
   lang?: string;
+  aparencia?: Aparencia;
 }
 
-const { heroData, lang = 'pt' } = Astro.props;
+const { heroData, lang = 'pt', aparencia = APARENCIA_PADRAO } = Astro.props;
+// Aparência › Abertura da página inicial: "lateral" (imagem à direita, texto à
+// esquerda) ou "centralizado" (imagem de fundo inteira, texto no centro).
+const centralizado = aparencia.layoutHero === 'centralizado';
 // Edição visual (Páginas › home). A marca da imagem fica na seção inteira: o fundo
 // está atrás dos gradientes, e um clique fora do texto escolhe a imagem.
 const edit = heroData?.hero.edit;
@@ -25,31 +30,46 @@ const edit = heroData?.hero.edit;
 
   <!-- 🔳 Overlay em mobile usando base-100 para adaptação automática ao tema -->
   <div
-    class="from-base-100 via-base-100/90 to-base-100/80 absolute inset-0 z-0 bg-gradient-to-b sm:hidden"
-  >
-  </div>
+    class:list={[
+      'from-base-100 via-base-100/90 to-base-100/80 absolute inset-0 z-0 bg-gradient-to-b',
+      !centralizado && 'sm:hidden',
+    ]}
+  ></div>
 
   <!-- 🔳 Gradiente lateral no desktop usando base-100 para adaptação automática ao tema -->
-  <div class="absolute inset-0 z-0 hidden sm:block">
+  <div class:list={['absolute inset-0 z-0 hidden', !centralizado && 'sm:block']}>
     <div class="bg-base-100 absolute inset-y-0 left-0 w-80"></div>
-    <div
-      class="from-base-100 via-base-100/90 absolute inset-y-0 right-[35%] left-80 bg-gradient-to-r to-transparent"
-    >
-    </div>
+    <div class="from-base-100 via-base-100/90 absolute inset-y-0 right-[35%] left-80 bg-gradient-to-r to-transparent"></div>
   </div>
 
   <!-- Conteúdo -->
-  <div
-    class="relative z-10 mx-auto flex h-full min-h-[100dvh] w-full max-w-7xl items-start px-4 pt-32 sm:items-center sm:px-6 sm:pt-0 lg:px-8"
-  >
-    <div class="flex w-full flex-col items-start text-left">
+  <div class="relative z-10 mx-auto flex h-full min-h-[100dvh] w-full max-w-7xl items-start px-4 pt-32 sm:items-center sm:px-6 sm:pt-0 lg:px-8">
+    <div
+      class:list={[
+        'flex w-full flex-col',
+        centralizado ? 'items-center text-center' : 'items-start text-left',
+      ]}
+    >
       <!-- Logo + Título -->
-      <div class="mb-8 flex flex-col items-center gap-6 text-center sm:flex-row sm:text-left">
-        <img
-          src="/imagens/logos/cpps/logo-cpps-01_rev_1.png"
-          alt="Logo CPPS"
-          class="z-10 h-32 w-auto sm:h-48 md:h-64"
-        />
+      <div
+        class:list={[
+          'mb-8 flex flex-col items-center gap-6 text-center',
+          !centralizado && 'sm:flex-row sm:text-left',
+        ]}
+      >
+        {typeof aparencia.logo === 'string' ? (
+          <img
+            src={aparencia.logo}
+            alt={`Logo ${aparencia.nome}`}
+            class="z-10 h-32 w-auto sm:h-48 md:h-64"
+          />
+        ) : (
+          <Image
+            image={aparencia.logo}
+            alt={`Logo ${aparencia.nome}`}
+            class="z-10 h-32 w-auto sm:h-48 md:h-64"
+          />
+        )}
         <h1
           {...edit?.title}
           class="titulo text-base-content z-10 mt-4 text-3xl leading-tight text-balance sm:mt-0 sm:max-w-[9em] sm:text-5xl md:text-6xl"
@@ -60,7 +80,9 @@ const edit = heroData?.hero.edit;
       </div>
 
       <!-- Descrição -->
-      <div class="w-full max-w-2xl px-2 text-center sm:px-0 sm:text-left">
+      <div
+        class:list={['w-full max-w-2xl px-2 text-center sm:px-0', !centralizado && 'sm:text-left']}
+      >
         <p
           {...edit?.introducao}
           class="text-base-content mb-6 text-base leading-relaxed md:text-lg"
@@ -71,28 +93,28 @@ const edit = heroData?.hero.edit;
 
         <!-- Botão -->
         <div
-          class="mt-4 flex flex-col items-center justify-end gap-4 sm:flex-row sm:items-end sm:justify-end"
+          class:list={[
+            'mt-4 flex flex-col items-center gap-4 sm:flex-row',
+            centralizado ? 'justify-center' : 'justify-end sm:items-end sm:justify-end',
+          ]}
         >
-          {
-            heroData?.hero.button && (
-              <a
-                href={(() => {
-                  const url = heroData.hero.button.url || '';
-                  if (url.startsWith('http://') || url.startsWith('https://')) return url;
-                  if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
-                  const normalized = url.startsWith('/') ? url.slice(1) : url;
-                  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  const translated = getTranslatedPath(normalized as any, lang as any);
-                  const path = translated.startsWith('/') ? translated : `/${translated}`;
-                  return `/${lang}${path}`;
-                })()}
-                class="btn btn-primary px-6 py-3 text-lg whitespace-nowrap shadow-lg"
-                style="color: white;"
-              >
-                <span {...edit?.botao_texto}>{heroData.hero.button.text}</span>
-              </a>
-            )
-          }
+          {heroData?.hero.button && (
+            <a
+              href={(() => {
+                const url = heroData.hero.button.url || '';
+                if (url.startsWith('http://') || url.startsWith('https://')) return url;
+                if (url.startsWith(`/${lang}/`) || url === `/${lang}`) return url;
+                const normalized = url.startsWith('/') ? url.slice(1) : url;
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const translated = getTranslatedPath(normalized as any, lang as any);
+                const path = translated.startsWith('/') ? translated : `/${translated}`;
+                return `/${lang}${path}`;
+              })()}
+              class="btn btn-primary px-6 py-3 text-lg whitespace-nowrap shadow-lg"
+            >
+              <span {...edit?.botao_texto}>{heroData.hero.button.text}</span>
+            </a>
+          )}
         </div>
       </div>
     </div>

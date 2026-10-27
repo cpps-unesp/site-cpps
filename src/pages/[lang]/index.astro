@@ -7,6 +7,9 @@ import Hero from '../../components/Hero.astro';
 import AtividadesSection from '../../components/AtividadesSection.astro';
 import ProdutosSection from '../../components/ProdutosSection.astro';
 import FAQSection from '../../components/FAQSection.astro';
+import NewsHomeSection from '../../components/NewsHomeSection.astro';
+import { getAparencia } from '../../utils/aparencia';
+import { getNoticiasDaHome } from '../../utils/noticias';
 import { getTranslations } from '../../utils/i18n';
 import { getHero } from '../../utils/conteudo';
 import type { SupportedLang } from '../../types/lang';
@@ -21,14 +24,12 @@ if (!allowedLangs.includes(currentLang)) {
 }
 
 const locale = getTranslations(currentLang);
-const hero = await getHero(currentLang);
+const [hero, aparencia] = await Promise.all([getHero(currentLang), getAparencia(currentLang)]);
+// Aparência › Seções da página inicial: quais aparecem e em que ordem.
+const secoes = aparencia.secoesHome;
+const noticias = secoes.includes('noticias') ? await getNoticiasDaHome(currentLang) : [];
 
-const {
-  titulo,
-  descricao,
-  atividadesPesquisa,
-  produtos,
-} = locale;
+const { titulo, descricao, atividadesPesquisa, produtos } = locale;
 ---
 
 <BaseLayout
@@ -39,30 +40,32 @@ const {
   identidade={locale.identidade}
   githubPath="src/pages/[lang]/index.astro"
 >
-  <Hero heroData={{ hero }} lang={currentLang} />
-
-  {
-    atividadesPesquisa && (
-      <AtividadesSection
-        id="atividades"
-        title={atividadesPesquisa.title}
-        description={atividadesPesquisa.description}
-        image={hero.imagem}
-        activities={atividadesPesquisa.items}
-      />
+  {secoes.map((secao) =>
+    secao === 'hero' ? (
+      <Hero heroData={{ hero }} lang={currentLang} aparencia={aparencia} />
+    ) : (
+      noticias.length > 0 && <NewsHomeSection lang={currentLang} noticias={noticias} />
     )
-  }
+  )}
 
-  {
-    produtos && (
-      <ProdutosSection
-        title={produtos.title}
-        description={produtos.description}
-        image={hero.imagem}
-        produtos={produtos.items}
-      />
-    )
-  }
+  {atividadesPesquisa && (
+    <AtividadesSection
+      id="atividades"
+      title={atividadesPesquisa.title}
+      description={atividadesPesquisa.description}
+      image={hero.imagem}
+      activities={atividadesPesquisa.items}
+    />
+  )}
+
+  {produtos && (
+    <ProdutosSection
+      title={produtos.title}
+      description={produtos.description}
+      image={hero.imagem}
+      produtos={produtos.items}
+    />
+  )}
 
   {locale.faqs && <FAQSection faqs={locale.faqs.items} />}
 </BaseLayout>

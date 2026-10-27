@@ -67,6 +67,15 @@ async function listNoticias(lang: SupportedLang) {
   return { noticias: entries.map(toNoticia), error };
 }
 
+// Notícias da seção da página inicial: as do idioma e as em pt, de onde o
+// NewsHomeSection tira as três mais recentes (as em pt quando falta tradução).
+export async function getNoticiasDaHome(lang: SupportedLang): Promise<Noticia[]> {
+  const listas = await Promise.all(
+    [...new Set<SupportedLang>([lang, 'pt'])].map((idioma) => listNoticias(idioma))
+  );
+  return listas.flatMap(({ noticias, error }) => (error ? [] : noticias));
+}
+
 // O slug vem do admin e o EmDash não restringe os caracteres: codifica para a URL.
 export function getNoticiaUrl(slug: string, lang: SupportedLang): string {
   return `/${lang}/${routeTranslations.noticias[lang]}/${encodeURIComponent(slug)}`;
@@ -141,7 +150,11 @@ export async function resolveNoticiasRoute(
   if (slugParts.length !== 1) return { kind: 'not-found' };
 
   // Sem tradução no idioma pedido, o EmDash devolve a versão em pt.
-  const { entry, error: entryError, isPreview } = await getEmDashEntry('noticias', slugParts[0], {
+  const {
+    entry,
+    error: entryError,
+    isPreview,
+  } = await getEmDashEntry('noticias', slugParts[0], {
     locale: lang,
   });
   if (entryError) return { kind: 'error', error: entryError };
@@ -172,7 +185,9 @@ export async function getNoticiasSitemapPaths(): Promise<string[]> {
     for (const slug of new Set(noticias.map((noticia) => noticia.slug))) {
       paths.push(getNoticiaUrl(slug, lang));
     }
-    for (const tagSlug of new Set(noticias.flatMap((noticia) => noticia.tags.map((tag) => tag.slug)))) {
+    for (const tagSlug of new Set(
+      noticias.flatMap((noticia) => noticia.tags.map((tag) => tag.slug))
+    )) {
       paths.push(getNoticiaCategoriaUrl(tagSlug, lang));
     }
   }

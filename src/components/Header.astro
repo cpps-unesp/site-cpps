@@ -1,141 +1,121 @@
 ---
+import { Image } from 'emdash/ui';
 import AlterarTema from './AlterarTema.astro';
 import LanguageSelector from './LanguageSelector.astro';
 import IconSearch from '../icons/IconSearch.astro';
-import { getTranslatedPath } from '../utils/getTranslatedPath';
+import type { Aparencia, ItemMenu } from '../utils/aparencia';
 import type { SupportedLang } from '../types/lang';
 
 const {
   lang = 'pt',
   texts = {},
-  identidade = { logo: '' } as { logo: string },
+  aparencia,
+  menu,
 } = Astro.props as {
   lang: SupportedLang;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   texts: Record<string, any>;
-  identidade: { logo: string };
+  aparencia: Aparencia;
+  // Menu "principal" do EmDash (ou o padrão): ver getMenuPrincipal.
+  menu: ItemMenu[];
 };
 
-const h = texts.header ?? {};
+// Cabeçalho "colorido": fundo na cor primária, com o texto que tiver mais
+// contraste com ela (--color-primary-content, calculado em cssAparencia).
+const colorido = aparencia.layoutCabecalho === 'colorido';
+const corDoCabecalho = colorido
+  ? 'cabecalho-colorido bg-primary text-primary-content border-primary'
+  : 'bg-base-100 text-base-content border-base-300';
+const hover = colorido ? 'hover:opacity-75' : 'hover:text-primary';
 ---
 
 <nav
-  class="bg-base-100 text-base-content border-base-300 fixed top-0 z-50 w-full border-b transition-transform duration-300"
+  class:list={[
+    corDoCabecalho,
+    'fixed top-0 z-50 w-full border-b transition-transform duration-300',
+  ]}
 >
   <div class="mx-auto max-w-screen-2xl px-4 py-2 md:px-8">
     <div class="flex items-center justify-between">
       <!-- 🔹 ESQUERDA: Logo CPPS + texto -->
       <a href={`/${lang}/`} class="flex items-center gap-3">
-        <img
-          src={identidade.logo ?? '/imagens/logos/cpps/logo-cpps-01_rev_1.png'}
-          alt="Logo CPPS UNESP"
-          class="h-16 w-auto"
-        />
-        <span class="text-2xl leading-tight font-bold">CPPS</span>
+        {typeof aparencia.logo === 'string' ? (
+          <img src={aparencia.logo} alt={`Logo ${aparencia.nome}`} class="h-16 w-auto" />
+        ) : (
+          <Image image={aparencia.logo} alt={`Logo ${aparencia.nome}`} class="h-16 w-auto" />
+        )}
+        <span class="text-2xl leading-tight font-bold">{aparencia.nome}</span>
       </a>
 
       <!-- 🔹 MENU DESKTOP -->
       <ul class="hidden items-center gap-6 text-sm font-semibold sm:text-base lg:flex">
+        {menu.map((item) =>
+          item.children.length > 0 ? (
+            <li class="dropdown dropdown-hover group">
+              <label
+                tabindex="0"
+                class:list={[hover, 'flex cursor-pointer items-center transition']}
+              >
+                {item.label}
+                <svg class="ml-1 h-3 w-3 fill-current" viewBox="0 0 20 20">
+                  <path d="M5.25 7.75L10 12.5l4.75-4.75" />
+                </svg>
+              </label>
+              <ul class="dropdown-content menu bg-base-100 text-base-content w-64 rounded-sm p-2 shadow">
+                {item.children.map((filho) => (
+                  <li>
+                    <a href={filho.url} target={filho.target}>
+                      {filho.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ) : (
+            <li>
+              <a class:list={[hover, 'transition']} href={item.url} target={item.target}>
+                {item.label}
+              </a>
+            </li>
+          )
+        )}
+
         <li>
-          <a class="hover:text-primary transition" href={`/${lang}/`}>
-            {h.home}
-          </a>
+          <LanguageSelector lang={lang} texts={texts} />
         </li>
-
         <li>
-          <a
-            class="hover:text-primary transition"
-            href={`/${lang}/${getTranslatedPath('noticias', lang)}`}
-          >
-            {h.noticias}
-          </a>
+          <AlterarTema />
         </li>
-
-        <!-- Institucional -->
-        <li class="dropdown dropdown-hover group">
-          <label
-            tabindex="0"
-            class="hover:text-primary flex cursor-pointer items-center transition"
-          >
-            {h.institucional}
-            <svg class="ml-1 h-3 w-3 fill-current" viewBox="0 0 20 20">
-              <path d="M5.25 7.75L10 12.5l4.75-4.75"></path>
-            </svg>
-          </label>
-          <ul
-            class="dropdown-content menu bg-base-100 text-base-content w-40 rounded-sm p-2 shadow"
-          >
-            <li>
-              <a href={`/${lang}/${getTranslatedPath('institucional/sobre', lang)}`}>{h.sobre}</a>
-            </li>
-            <li>
-              <a href={`/${lang}/${getTranslatedPath('institucional/equipe', lang)}`}>{h.equipe}</a>
-            </li>
-            <li>
-              <a href={`/${lang}/${getTranslatedPath('institucional/documentos', lang)}`}
-                >{h.documentos}</a
-              >
-            </li>
-          </ul>
-        </li>
-
-        <!-- Iniciativas -->
-        <li class="dropdown dropdown-hover group">
-          <label
-            tabindex="0"
-            class="hover:text-primary flex cursor-pointer items-center transition"
-          >
-            {h.iniciativas}
-            <svg class="ml-1 h-3 w-3 fill-current" viewBox="0 0 20 20">
-              <path d="M5.25 7.75L10 12.5l4.75-4.75"></path>
-            </svg>
-          </label>
-          <ul
-            class="dropdown-content menu bg-base-100 text-base-content w-64 rounded-sm p-2 shadow"
-          >
-            <li>
-              <a href={`/${lang}/${getTranslatedPath('iniciativas/cafe-com-ciencia', lang)}`}
-                >{h.cafe}</a
-              >
-            </li>
-            <li>
-              <a href={`/${lang}/${getTranslatedPath('iniciativas/projetos', lang)}`}
-                >{h.projetos}</a
-              >
-            </li>
-          </ul>
-        </li>
-
-        <li><LanguageSelector lang={lang} texts={texts} /></li>
-        <li><AlterarTema /></li>
         <li>
           <label
             for="search-modal"
-            class="hover:text-primary flex cursor-pointer items-center transition"
+            class:list={[hover, 'flex cursor-pointer items-center transition']}
           >
             <IconSearch />
           </label>
         </li>
       </ul>
 
-      <!-- 🔹 DIREITA: Logos -->
-      <div class="hidden items-center gap-3 lg:flex">
-        <img
-          src="/imagens/logos/logo-unesp02/AV01A.svg"
-          alt="Logo UNESP"
-          class="logo-unesp-light h-16 w-auto"
-        />
-        <img
-          src="/imagens/logos/logo-unesp03/AV01F.svg"
-          alt="Logo UNESP"
-          class="logo-unesp-dark h-16 w-auto"
-        />
-        <img
-          src="/imagens/logos/cpps/circulos_grade_01.svg"
-          alt="Círculos decorativos"
-          class="h-16 w-auto"
-        />
-      </div>
+      <!-- 🔹 DIREITA: Logos (Aparência › Mostrar os logos da UNESP) -->
+      {aparencia.mostrarLogosUnesp && (
+        <div class="hidden items-center gap-3 lg:flex">
+          <img
+            src="/imagens/logos/logo-unesp02/AV01A.svg"
+            alt="Logo UNESP"
+            class="logo-unesp-light h-16 w-auto"
+          />
+          <img
+            src="/imagens/logos/logo-unesp03/AV01F.svg"
+            alt="Logo UNESP"
+            class="logo-unesp-dark h-16 w-auto"
+          />
+          <img
+            src="/imagens/logos/cpps/circulos_grade_01.svg"
+            alt="Círculos decorativos"
+            class="h-16 w-auto"
+          />
+        </div>
+      )}
 
       <!-- 🔹 BOTÃO HAMBÚRGUER -->
       <div class="lg:hidden">
@@ -154,7 +134,8 @@ const h = texts.header ?? {};
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
           </svg>
         </button>
       </div>
@@ -163,47 +144,36 @@ const h = texts.header ?? {};
     <!-- 🔹 MENU MOBILE -->
     <div id="menu-mobile" class="mt-2 hidden lg:hidden">
       <ul class="flex flex-col gap-2 text-base font-semibold">
-        <li><a href={`/${lang}/`}>{h.home}</a></li>
-        <li><a href={`/${lang}/${getTranslatedPath('noticias', lang)}`}>{h.noticias}</a></li>
+        {menu.map((item) =>
+          item.children.length > 0 ? (
+            <li>
+              <details>
+                <summary class="cursor-pointer">{item.label}</summary>
+                <ul>
+                  {item.children.map((filho) => (
+                    <li>
+                      <a href={filho.url} target={filho.target}>
+                        {filho.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            </li>
+          ) : (
+            <li>
+              <a href={item.url} target={item.target}>
+                {item.label}
+              </a>
+            </li>
+          )
+        )}
         <li>
-          <details>
-            <summary class="cursor-pointer">{h.institucional}</summary>
-            <ul>
-              <li>
-                <a href={`/${lang}/${getTranslatedPath('institucional/sobre', lang)}`}>{h.sobre}</a>
-              </li>
-              <li>
-                <a href={`/${lang}/${getTranslatedPath('institucional/equipe', lang)}`}
-                  >{h.equipe}</a
-                >
-              </li>
-              <li>
-                <a href={`/${lang}/${getTranslatedPath('institucional/documentos', lang)}`}
-                  >{h.documentos}</a
-                >
-              </li>
-            </ul>
-          </details>
+          <LanguageSelector lang={lang} texts={texts} />
         </li>
         <li>
-          <details>
-            <summary class="cursor-pointer">{h.iniciativas}</summary>
-            <ul>
-              <li>
-                <a href={`/${lang}/${getTranslatedPath('iniciativas/cafe-com-ciencia', lang)}`}
-                  >{h.cafe}</a
-                >
-              </li>
-              <li>
-                <a href={`/${lang}/${getTranslatedPath('iniciativas/projetos', lang)}`}
-                  >{h.projetos}</a
-                >
-              </li>
-            </ul>
-          </details>
+          <AlterarTema />
         </li>
-        <li><LanguageSelector lang={lang} texts={texts} /></li>
-        <li><AlterarTema /></li>
         <li>
           <label for="search-modal" class="flex cursor-pointer items-center">
             <IconSearch />
@@ -223,5 +193,17 @@ const h = texts.header ?? {};
   }
   :global([data-theme='dark']) .logo-unesp-dark {
     display: block;
+  }
+  /* Cabeçalho colorido: o logo branco da UNESP nos dois temas, e o seletor de
+     idioma e o de tema na cor do texto do cabeçalho (fora dos menus abertos). */
+  .cabecalho-colorido .logo-unesp-light {
+    display: none;
+  }
+  .cabecalho-colorido .logo-unesp-dark {
+    display: block;
+  }
+  .cabecalho-colorido :global(.dropdown > label),
+  .cabecalho-colorido :global(.dropdown > label .text-base-content) {
+    color: inherit;
   }
 </style>
