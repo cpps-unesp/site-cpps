@@ -66,7 +66,9 @@ export const APARENCIA_PADRAO: Aparencia = {
   logo: '/imagens/logos/cpps/logo-cpps-01_rev_1.png',
   mostrarLogosUnesp: true,
   cores: {
-    primaria: '#00acf0',
+    // Azul do CPPS escurecido (era #00acf0): texto branco a 4,7:1 nos botões e
+    // 3,1:1 como texto no tema escuro.
+    primaria: '#007cad',
     secundaria: '#347d9b',
     destaque: '#2197c5',
     rodape: '#2e3f46',

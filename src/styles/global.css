@@ -4,7 +4,7 @@
 @plugin 'daisyui/theme' {
   name: 'light';
   default: true;
-  --color-primary: #00acf0;
+  --color-primary: #007cad;
   --color-secondary: #347d9b;
   --color-accent: #2197c5;
   --color-neutral: #2e3f46;
@@ -15,7 +15,7 @@
 
 @plugin 'daisyui/theme' {
   name: 'dark';
-  --color-primary: #00acf0;
+  --color-primary: #007cad;
   --color-secondary: #347d9b;
   --color-accent: #2197c5;
   --color-neutral: #b2bed7;
@@ -90,7 +90,7 @@ h4,
   hyphens: auto;
 }
 .paragrafo a {
-  color: #00acf0;
+  color: #007cad;
   font-weight: 600;
   text-decoration: none;
 }
