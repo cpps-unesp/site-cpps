@@ -12,7 +12,7 @@ Site institucional do Centro de Pesquisa Política e Social da Faculdade de Ciê
 - **[TypeScript](https://www.typescriptlang.org/)** - JavaScript com tipagem estática
 - **[Tailwind CSS](https://tailwindcss.com/)** + **[DaisyUI](https://daisyui.com/)** - Estilização e componentes UI
 - **[MDX](https://mdxjs.com/)** - Markdown com componentes
-- **[Pagefind](https://pagefind.app/)** - Busca estática no site
+- **[EmDash](https://emdashcms.com/)** - CMS do conteúdo editável, com a busca do site
 
 ## Pré-requisitos
 
@@ -46,7 +46,6 @@ site-cpps/
 │   ├── components/       # Componentes reutilizáveis
 │   ├── content/         # Conteúdo em MDX
 │   │   ├── membros/     # Perfis dos membros da equipe
-│   │   ├── noticias/    # Posts de notícias
 │   │   ├── publicacoes/ # Publicações acadêmicas
 │   │   └── atividades/  # Wiki e material didático
 │   ├── i18n/           # Internacionalização
@@ -64,6 +63,41 @@ site-cpps/
 ├── src/styles/global.css # Configuração do Tailwind + DaisyUI
 └── package.json
 ```
+
+## Conteúdo editável (EmDash)
+
+O conteúdo abaixo é editado no [EmDash](https://emdashcms.com), em `/_emdash/admin`, e as páginas são renderizadas a cada acesso: o que é publicado no admin aparece no site sem novo build.
+
+| No admin | Página do site |
+|---|---|
+| Notícias | Notícias (lista, categorias e notícia) |
+| Institucional > Páginas | Título e texto de abertura da Home, Equipe, Documentos, Café com Ciência e Projetos de Pesquisa |
+| Institucional > Sobre | Blocos da página Sobre |
+| Institucional > Equipe | Pessoas da página Equipe |
+| Institucional > Documentos | Documentos |
+| Iniciativas > Café com Ciência | Episódios |
+| Iniciativas > Projetos de Pesquisa | Projetos |
+
+Cada item tem versões em pt, en e es (painel **Translations** no admin). Sem tradução, o site mostra a versão em português. O botão **Visualização ao vivo** abre a página do site em que o item aparece, no idioma da versão. Nome, foto, links e outros dados que não dependem do idioma são compartilhados entre as versões.
+
+**Edição visual.** Quem entra no admin como autor ou acima vê uma barra do EmDash ao navegar pelo site. Com o modo de edição ligado na barra, um clique num título, nome, cargo ou resumo edita o texto ali mesmo; numa imagem, abre a biblioteca de mídia; no corpo de uma notícia, abre o editor de texto na página. Listas (parágrafos do Sobre, redes, arquivos, materiais) e textos com formatação abrem o item no admin. As mudanças ficam em rascunho até alguém publicar pela barra ou pelo admin. Páginas em en ou es que mostram o português por falta de tradução não são editáveis por ali, para ninguém sobrescrever o português sem querer: use o painel **Translations** no admin. Os Projetos de Pesquisa são editados só pelo admin, porque a lista é montada no navegador.
+
+Continuam no repositório: os textos de interface em `src/i18n/locales/*.json`, as demais páginas de Iniciativas, a wiki e os guias em `src/content/`, e as páginas pessoais em `src/content/membros/`.
+
+Para rodar localmente:
+
+```bash
+npm install
+# Uma vez; o .env não vai para o Git.
+npx emdash secrets generate --write .env
+npm run dev
+```
+
+Abra `http://localhost:4321/_emdash/admin` (use `localhost`, não `127.0.0.1`: passkeys não funcionam em endereço IP) e conclua o assistente escolhendo **Sample content**, que importa o conteúdo de `seed/seed.json`. Depois crie sua conta e registre uma passkey. Para entrar sem passkey no desenvolvimento, use `http://localhost:4321/_emdash/api/setup/dev-bypass?redirect=/_emdash/admin`.
+
+O banco (D1) e as imagens (R2) locais são simulados pelo Wrangler em `.wrangler/`; apague essa pasta para começar do zero. O assistente baixa as imagens do seed pela internet e, se um download falha, grava o campo vazio sem avisar: se alguma imagem não aparecer depois do assistente, confira a rede (DNS lento basta), apague `.wrangler/` e refaça.
+
+**Site novo.** O site com o EmDash já está no ar em https://cpps-site.cpps-franca.workers.dev, e é lá que o conteúdo é editado; o endereço oficial continua no site atual até a migração ([docs/deploy-e-redirects.md](docs/deploy-e-redirects.md#produção-antes-do-domínio)). Para experimentar sem mexer no conteúdo de verdade, há um ambiente de teste separado: [docs/ambiente-de-teste.md](docs/ambiente-de-teste.md).
 
 ## Internacionalização
 
@@ -83,7 +117,7 @@ O site suporta temas claro e escuro, com detecção automática do sistema. Os t
 
 ## Busca
 
-A busca é implementada com Pagefind e indexa automaticamente todo o conteúdo do site durante o build.
+A busca usa o índice do EmDash (`/_emdash/api/search`): encontra notícias, equipe, Sobre, documentos, episódios do Café com Ciência e projetos assim que são publicados, no idioma da página e, sem tradução, em português. O modal fica em `src/components/SearchModal.astro`. As páginas que não vêm do EmDash (demais Iniciativas, wiki) não entram na busca.
 
 ## Scripts Disponíveis
 
@@ -103,7 +137,7 @@ npm run ci            # Typecheck + build (pipeline local)
 O Dependabot abre um PR por dependência toda semana ([.github/dependabot.yml](.github/dependabot.yml)):
 
 - **Patch e minor de npm**, inclusive correções de segurança de dependências indiretas, entram sozinhos quando o check `ci` passa ([dependabot-auto-merge.yml](.github/workflows/dependabot-auto-merge.yml)).
-- **Precisam de revisão humana:** majors, minors de pacotes 0.x (como `sharp`, em que o minor quebra compatibilidade) e atualizações de GitHub Actions.
+- **Precisam de revisão humana:** majors, minors de pacotes 0.x (como `sharp`, em que o minor quebra compatibilidade), atualizações de GitHub Actions e qualquer versão do EmDash (`emdash`, `@emdash-cms/*`), do Astro (`astro`, `@astrojs/*`) e do Wrangler. Nesses três, o merge vira deploy, e uma versão nova do EmDash migra o banco de produção no primeiro acesso; siga o roteiro de [docs/deploy-e-redirects.md](docs/deploy-e-redirects.md).
 - Versões incompatíveis conhecidas ficam em `ignore`, com o motivo comentado.
 - O auto-merge depende do check `ci` obrigatório no ruleset da `main`. Sem ele, o workflow falha em vez de aprovar.
 
@@ -115,11 +149,11 @@ O Dependabot abre um PR por dependência toda semana ([.github/dependabot.yml](.
 npm run build
 ```
 
-Os arquivos estáticos serão gerados em `./dist/`
+Os arquivos estáticos são gerados em `./dist/client/` e o Worker em `./dist/server/`. Para testar o build localmente no runtime da Cloudflare: `npx wrangler dev`.
 
 ### Configurações importantes
 
-- O projeto usa `output: 'static'`. O deploy é feito automaticamente pela Cloudflare Pages a cada push (build_command: `npm run build`, destination_dir: `dist`). Detalhes da arquitetura de deploy e como funciona o `public/_redirects`: [docs/deploy-e-redirects.md](docs/deploy-e-redirects.md).
+- O site roda inteiro na Cloudflare: um Worker (`wrangler.jsonc`, `src/worker.ts`) com D1 para o banco do EmDash e R2 para as imagens. Primeiro deploy, deploys automáticos e `public/_redirects`: [docs/deploy-e-redirects.md](docs/deploy-e-redirects.md).
 - Atualize a URL base em `astro.config.mjs`
 - Configure o sitemap em `pages/sitemap.xml.ts`
 - Ajuste as meta tags em `layouts/BaseLayout.astro`

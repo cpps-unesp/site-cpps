@@ -12,10 +12,10 @@ const ordemInicial = ordemValida.includes(ordemParam) ? ordemParam : 'titulo';
 
 <section class="mx-auto max-w-5xl space-y-8 px-4 py-16">
   <div class="mb-8 text-center">
-    <h1 class="text-primary mb-4 text-4xl font-bold">
+    <h1 {...iniciativas?.edit?.title} class="text-primary mb-4 text-4xl font-bold">
       {iniciativas?.projetosDePesquisa ?? 'Projetos de Pesquisa'}
     </h1>
-    <p class="text-base-content mx-auto max-w-3xl text-lg">
+    <p {...iniciativas?.edit?.introducao} class="text-base-content mx-auto max-w-3xl text-lg">
       {
         iniciativas?.descricaoProjetosDePesquisa ??
           'Projetos desenvolvidos por docentes e associados ao CPPS.'

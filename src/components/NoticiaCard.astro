@@ -1,5 +1,8 @@
 ---
-import { getNoticiaCategoriaUrl } from '../utils/noticiaSlug';
+import { Image } from 'emdash/ui';
+import type { EditProxy } from 'emdash';
+import type { Imagem } from '../utils/conteudo';
+import { formatNoticiaDate, getNoticiaCategoriaUrl, type NoticiaTag } from '../utils/noticias';
 import pt from '../i18n/locales/pt.json';
 import en from '../i18n/locales/en.json';
 import es from '../i18n/locales/es.json';
@@ -7,16 +10,19 @@ import es from '../i18n/locales/es.json';
 interface Props {
   title: string;
   resumo: string;
-  image: string;
-  tags: string[];
+  image: Imagem;
+  imageAlt?: string;
+  tags: NoticiaTag[];
   slug: string;
   lang: 'pt' | 'en' | 'es';
-  date: string | Date;
+  date: Date;
   author?: string;
   featured?: boolean;
+  // Edição visual: só para notícias no idioma da página.
+  edit?: EditProxy;
 }
 
-const { title, resumo, image, tags, slug, lang, date, author } = Astro.props;
+const { title, resumo, image, imageAlt, tags, slug, lang, date, author, edit } = Astro.props;
 const displayAuthor = author?.trim() || 'Equipe CPPS';
 
 const translations = { pt, en, es };
@@ -26,10 +32,10 @@ const t = translations[lang] || translations.pt;
 <article
   class="bg-base-100 group border-base-200 flex h-full flex-col overflow-hidden rounded-2xl border shadow-md transition-all duration-300 hover:shadow-xl"
 >
-  <a href={slug} class="relative block aspect-video overflow-hidden">
-    <img
-      src={image}
-      alt={title}
+  <a {...edit?.image} href={slug} class="relative block aspect-video overflow-hidden">
+    <Image
+      image={image}
+      alt={imageAlt ?? title}
       class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
     />
     <div
@@ -41,12 +47,12 @@ const t = translations[lang] || translations.pt;
   <div class="flex flex-1 flex-col p-6">
     <div class="mb-4 flex flex-wrap gap-2">
       {
-        tags.map((tag: string) => (
+        tags.map((tag) => (
           <a
-            href={getNoticiaCategoriaUrl(tag, lang)}
+            href={getNoticiaCategoriaUrl(tag.slug, lang)}
             class="text-primary text-[10px] font-bold tracking-widest uppercase hover:underline"
           >
-            {tag}
+            {tag.label}
           </a>
         ))
       }
@@ -55,10 +61,10 @@ const t = translations[lang] || translations.pt;
     <h3
       class="text-base-content group-hover:text-primary mb-3 line-clamp-2 text-xl font-bold transition-colors"
     >
-      <a href={slug}>{title}</a>
+      <a href={slug}><span {...edit?.title}>{title}</span></a>
     </h3>
 
-    <p class="text-base-content/70 mb-6 line-clamp-3 flex-1 text-sm">
+    <p {...edit?.resumo} class="text-base-content/70 mb-6 line-clamp-3 flex-1 text-sm">
       {resumo}
     </p>
 
@@ -66,7 +72,7 @@ const t = translations[lang] || translations.pt;
       class="border-base-100 text-base-content/60 flex items-center justify-between border-t pt-4 text-xs"
     >
       <span>
-        {new Date(date).toLocaleDateString(lang === 'pt' ? 'pt-BR' : 'en-US')}
+        {formatNoticiaDate(date, lang)}
         <>
           <span class="mx-2">•</span>
           <span>{displayAuthor}</span>

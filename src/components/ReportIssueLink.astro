@@ -17,7 +17,9 @@ const {
   labels = ['report-error'],
 } = Astro.props;
 
-const currentUrl = Astro.url.href;
+// Só o caminho: a query pode trazer o token de pré-visualização (?_preview=),
+// e o link abre uma issue pública.
+const currentUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).href;
 const labelValue = Array.isArray(labels) ? labels.join(',') : labels;
 const issueUrl =
   `https://github.com/${owner}/${repo}/issues/new` +

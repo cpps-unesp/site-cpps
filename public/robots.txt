@@ -1,0 +1,6 @@
+# Arquivo estático: servido sem acionar o Worker. O EmDash teria um robots.txt
+# próprio, mas montado a cada acesso com uma consulta ao banco.
+User-agent: *
+Disallow: /_emdash/
+
+Sitemap: https://cpps.franca.unesp.br/sitemap.xml

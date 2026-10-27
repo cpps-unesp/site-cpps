@@ -1,32 +1,6 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
-import slugify from 'slugify';
 import { PUBLICATION_TYPES } from './config/publicationTypes';
-
-const noticias = defineCollection({
-  loader: glob({
-    pattern: '**/*.{md,mdx}',
-    base: './src/content/noticias',
-  }),
-  schema: z
-    .object({
-      title: z.string(),
-      date: z.date(),
-      resumo: z.string(),
-      image: z.string(),
-      tags: z.array(z.string()).optional().default([]),
-      lang: z.enum(['pt', 'en', 'es']),
-      featured: z.boolean().optional().default(false),
-      author: z.string().optional(),
-    })
-    .transform((data) => ({
-      ...data,
-      slug: slugify(`${data.date.toISOString().split('T')[0]}-${data.title}`, {
-        lower: true,
-        strict: true,
-      }),
-    })),
-});
 
 const publicacoes = defineCollection({
   loader: glob({
@@ -146,7 +120,6 @@ const editarSite = defineCollection({
 });
 
 export const collections = {
-  noticias,
   publicacoes,
   atividades,
   atendimento,

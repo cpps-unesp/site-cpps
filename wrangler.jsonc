@@ -1,0 +1,77 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cpps-site",
+  "main": "./src/worker.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Endereço do site: sem EMDASH_SITE_URL fixo. Até a migração, a produção atende
+  // em https://cpps-site.cpps-franca.workers.dev; a troca para o domínio é feita
+  // pelo admin (Settings → General → Change domain), como no guia "Move to a New
+  // Domain" do EmDash, e cada pessoa passa o login para o domínio com "Continue
+  // on…". Com o endereço fixo aqui, a passkey ficaria presa a ele e o login no
+  // workers.dev pararia na hora da troca. Não usar `siteUrl` no astro.config.mjs:
+  // ele vai embutido em todo build, inclusive nos previews.
+
+  // Banco do EmDash, criado na região ENAM, a que o placement abaixo mira.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cpps-site",
+      "database_id": "0e04b343-d0ed-4082-85c7-013d0f65c8f3",
+    },
+  ],
+
+  // Imagens e arquivos enviados pelo admin.
+  "r2_buckets": [
+    {
+      "binding": "MEDIA",
+      "bucket_name": "cpps-site-media",
+    },
+  ],
+
+  // Publicação agendada, backups e manutenção do EmDash, a cada minuto como no
+  // guia. Desde a 1.2, a limpeza pesada roda só uma vez por hora (até a 1.1 ela
+  // rodava a cada minuto e, no plano gratuito, podia esgotar as leituras do D1 e
+  // estourar os 10 ms de CPU: emdash-cms/emdash#3748 e #3858). Para trocar o
+  // intervalo, passe a mesma expressão a `createScheduledHandler` em src/worker.ts.
+  "triggers": { "crons": ["* * * * *"] },
+
+  // Logs e métricas do Worker, inclusive o tempo de CPU por requisição (o plano
+  // gratuito tem limite de 10 ms). Veja com `npx wrangler tail` ou no painel.
+  "observability": { "enabled": true },
+
+  // Roda o Worker perto do banco D1, que fica no leste da América do Norte (ENAM;
+  // confira com `npx wrangler d1 info <banco>`). Cada página faz dezenas de
+  // consultas ao banco: sem isto, o Worker rodava em São Paulo, cada consulta ia
+  // e voltava até lá, e as páginas levavam mais de 15 s no ambiente de teste. Ver
+  // "Place the Worker near D1" no guia de deploy do EmDash. Os arquivos estáticos
+  // continuam saindo do ponto da Cloudflare mais perto do visitante.
+  "placement": { "mode": "targeted", "region": "aws:us-east-1" },
+
+  // Ambiente de teste: outro Worker (cpps-site-teste), com banco, bucket e sessões
+  // próprios, em https://cpps-site-teste.cpps-franca.workers.dev. Um ambiente não
+  // herda bindings nem vars daqui de cima, então nada aponta para a produção. O
+  // placement vale para os dois. Build com CLOUDFLARE_ENV=teste; ver "Ambiente de
+  // teste" em docs/deploy-e-redirects.md.
+  "env": {
+    "teste": {
+      // A passkey de quem entra no admin de teste fica presa a este endereço.
+      "vars": {
+        "EMDASH_SITE_URL": "https://cpps-site-teste.cpps-franca.workers.dev",
+      },
+      // O ID fica aqui porque o deploy a partir do build do Astro não o grava de
+      // volta neste arquivo, e o token do Workers Builds não tem permissão de D1.
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "cpps-site-teste",
+          "database_id": "c6ddbf65-5edd-428b-bd83-ab301e0a4e43",
+        },
+      ],
+      "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "cpps-site-teste-media" }],
+      "triggers": { "crons": ["* * * * *"] },
+      "observability": { "enabled": true },
+    },
+  },
+}

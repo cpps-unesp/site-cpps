@@ -1,5 +1,7 @@
 ---
+import { Image } from 'emdash/ui';
 import AtividadesCard from './AtividadesCard.astro';
+import type { Imagem } from '../utils/conteudo';
 
 type ActivityItem = {
   icon: string;
@@ -17,7 +19,7 @@ const {
 } = Astro.props as {
   title: string;
   description: string;
-  image: string;
+  image?: Imagem;
   activities: ActivityItem[];
   reverse?: boolean;
   id?: string;
@@ -44,7 +46,7 @@ const sectionClasses = reverse
     </div>
 
     <div class="transform transition duration-500 hover:scale-105 md:w-1/2">
-      <img src={image} alt={title} class="rounded-lg shadow-lg" />
+      <Image image={image} alt={title} class="rounded-lg shadow-lg" />
     </div>
   </div>
 </section>

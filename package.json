@@ -4,22 +4,28 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site ./dist",
+    "build": "astro build",
     "preview": "astro preview",
     "lint": "eslint .",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit && astro check",
-    "ci": "astro sync && npm run typecheck && npm run lint && npm run build",
+    "seed:check": "emdash seed seed/seed.json --validate",
+    "ci": "npm run seed:check && astro sync && npm run typecheck && npm run lint && npm run build",
     "astro": "astro",
     "prepare": "[ -d .git ] && git config core.hooksPath .githooks || true"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.3.4",
     "@astrojs/mdx": "^8.1.1",
+    "@astrojs/react": "^7.0.1",
+    "@emdash-cms/cloudflare": "^1.2.0",
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.4.2",
-    "astro-pagefind": "^2.0.1",
     "daisyui": "^5.7.50",
+    "emdash": "^1.2.0",
     "marked": "^18.1.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
     "sharp": "^0.35.5",
     "slugify": "^1.6.9",
     "tailwindcss": "^4.3.3",
@@ -27,14 +33,18 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",
+    "@cloudflare/workers-types": "^5.20261006.1",
     "@types/node": "^25.9.9",
     "eslint": "^9.39.5",
     "eslint-plugin-astro": "^1.7.0",
-    "pagefind": "^1.5.2",
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.72.0"
+    "typescript-eslint": "^8.72.0",
+    "wrangler": "^4.149.0"
+  },
+  "emdash": {
+    "seed": "seed/seed.json"
   }
 }

@@ -1,6 +1,6 @@
-import slugify from 'slugify';
 import routeTranslations from '../i18n/routeTranslations';
 import type { SupportedLang } from '../types/lang';
+import { getNoticiaUrl } from './noticias';
 
 type RoutePath = { params: { lang: SupportedLang; slug: string } };
 
@@ -18,7 +18,6 @@ export function buildRouteTranslationPaths(langs: SupportedLang[]): RoutePath[] 
     'institucional/sobre',
     'institucional/equipe',
     'institucional/documentos',
-    'noticias',
   ];
 
   for (const routeKey of catchAllRouteKeys) {
@@ -28,47 +27,6 @@ export function buildRouteTranslationPaths(langs: SupportedLang[]): RoutePath[] 
       if (typeof slugValue === 'string') {
         paths.push({ params: { lang, slug: slugValue } });
       }
-    }
-  }
-
-  return paths;
-}
-
-export function buildLocalizedContentPaths(
-  langs: SupportedLang[],
-  routeKey: 'noticias' | 'publicacao',
-  slugs: string[]
-): RoutePath[] {
-  const paths: RoutePath[] = [];
-
-  for (const slug of slugs) {
-    for (const lang of langs) {
-      const prefix = routeTranslations[routeKey][lang];
-      paths.push({
-        params: {
-          lang,
-          slug: `${prefix}/${slug}`,
-        },
-      });
-    }
-  }
-
-  return paths;
-}
-
-export function buildNewsCategoryPaths(langs: SupportedLang[], tags: string[]): RoutePath[] {
-  const paths: RoutePath[] = [];
-
-  for (const lang of langs) {
-    const prefix = routeTranslations.noticias[lang];
-    for (const tag of tags) {
-      const tagSlug = slugify(tag, { lower: true, strict: true });
-      paths.push({
-        params: {
-          lang,
-          slug: `${prefix}/categoria/${tagSlug}`,
-        },
-      });
     }
   }
 
@@ -95,4 +53,33 @@ export function findOriginalKey(translatedSlug: string, lang: SupportedLang): st
     }
   }
   return null;
+}
+
+// Rota de cada entrada da coleção `paginas` do EmDash ('' é a Home).
+const ROTA_DA_PAGINA: Record<string, string> = {
+  home: '',
+  equipe: 'institucional/equipe',
+  documentos: 'institucional/documentos',
+  'cafe-com-ciencia': 'iniciativas/cafe-com-ciencia',
+  'projetos-de-pesquisa': 'iniciativas/projetos-de-pesquisa',
+};
+
+// Links "Visualização ao vivo" e de pré-visualização do admin do EmDash. Ele monta a
+// URL com o urlPattern da coleção (seed/seed.json), escrito com o caminho em pt, e
+// só põe o idioma na frente fora do pt, porque o roteamento do Astro é manual:
+// /pt/equipe, /en/pt/institucional/equipe#<slug>, /es/pt/noticias/<slug>.
+// Devolve a página de verdade no idioma, ou null se o caminho não veio do admin.
+export function getCaminhoDoAdmin(lang: SupportedLang, slugPath: string): string | null {
+  const caminho = slugPath.replace(/\/+$/, '');
+  const emPt = lang === 'pt' ? caminho : caminho.replace(/^pt\//, '');
+  if (lang !== 'pt' && emPt === caminho) return null;
+
+  const noticia = /^noticias\/([^/]+)$/.exec(emPt);
+  if (noticia) return lang === 'pt' ? null : getNoticiaUrl(noticia[1], lang);
+
+  const chave = emPt in ROTA_DA_PAGINA ? ROTA_DA_PAGINA[emPt] : lang === 'pt' ? null : emPt;
+  if (chave === null) return null;
+  if (chave === '') return `/${lang}/`;
+  const destino = routeTranslations[chave]?.[lang];
+  return destino ? `/${lang}/${destino}/` : null;
 }
