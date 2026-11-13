@@ -30,7 +30,7 @@
     "@types/node": "^25.9.9",
     "eslint": "^9.39.5",
     "eslint-plugin-astro": "^1.7.0",
-    "pagefind": "^1.5.2",
+    "pagefind": "^1.6.0",
     "prettier": "^3.9.10",
     "prettier-plugin-astro": "^1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1",
