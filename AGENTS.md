@@ -153,10 +153,12 @@
 - Main is protected by CI/merge guard workflows; merge via PR with green checks.
 - Without GitHub branch protection, direct pushes are discouraged but not technically blocked.
 
-## EmDash Skills and MCP
+## EmDash: documentação, MCP e skills
 
-- The official EmDash skills come from the `emdash` plugin enabled in `.claude/settings.json` (`emdash:building-emdash-site`, `emdash:emdash-cli`, `emdash:upgrading-emdash`); prefer them for EmDash APIs, schema/seed and CLI work.
-- `.mcp.json` points to the production EmDash MCP server (`/_emdash/api/mcp`). It writes to the live database: create drafts, and do not bulk-edit or change the schema without the maintainer asking. See `docs/mcp-e-skills.md`.
+- Antes de responder sobre APIs, configuração ou comportamento do EmDash, consulte o MCP `emdash-docs` (`search_docs`, documentação atual) e o código em `node_modules/emdash/src`. A memória do modelo sobre o EmDash costuma estar desatualizada.
+- As skills oficiais vêm do plugin `emdash` ativado em `.claude/settings.json` (`emdash:building-emdash-site`, `emdash:emdash-cli`, `emdash:creating-plugins`, `emdash:upgrading-emdash` e, para migrações, `emdash:wordpress-theme-to-emdash` e `emdash:wordpress-plugin-to-emdash`); prefira-as para APIs, schema/seed e CLI do EmDash.
+- O MCP `cpps-site` do `.mcp.json` edita o banco de produção, com o papel de quem fez login. Crie como rascunho e peça conferência no admin antes de publicar; não faça edição em lote nem mude o modelo de conteúdo sem pedido de quem cuida do site.
+- Guia para pessoas (o que isso permite, como configurar e usar, como levar para outro site): `docs/mcp-e-skills.md`.
 
 ## When in Doubt
 
