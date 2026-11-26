@@ -99,6 +99,10 @@ O banco (D1) e as imagens (R2) locais são simulados pelo Wrangler em `.wrangler
 
 **Site novo.** O site com o EmDash já está no ar em https://cpps-site.cpps-franca.workers.dev, e é lá que o conteúdo é editado; o endereço oficial continua no site atual até a migração ([docs/deploy-e-redirects.md](docs/deploy-e-redirects.md#produção-antes-do-domínio)). Para experimentar sem mexer no conteúdo de verdade, há um ambiente de teste separado: [docs/ambiente-de-teste.md](docs/ambiente-de-teste.md).
 
+## Apoio de IA
+
+O repositório já vem pronto para assistentes de IA (Claude Code, claude.ai, Codex, Cursor e outros): um MCP que pesquisa a documentação atual do EmDash, o MCP do próprio site, que lê e edita o conteúdo com a sua passkey, e as skills oficiais do EmDash para quem mexe no código. O que isso permite, o que configurar uma vez e como usar: [docs/mcp-e-skills.md](docs/mcp-e-skills.md). As regras para assistentes estão no [AGENTS.md](AGENTS.md).
+
 ## Internacionalização
 
 O site suporta 3 idiomas:

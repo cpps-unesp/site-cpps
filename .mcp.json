@@ -1,5 +1,9 @@
 {
   "mcpServers": {
+    "emdash-docs": {
+      "type": "http",
+      "url": "https://docs.emdashcms.com/mcp"
+    },
     "cpps-site": {
       "type": "http",
       "url": "https://cpps-site.cpps-franca.workers.dev/_emdash/api/mcp"
